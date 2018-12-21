@@ -23,7 +23,7 @@
   color: #666;
   line-height: 1rem;
   display: inline-block;
-    font-size: 12px;
+    font-size: 16px;
     text-transform: uppercase;
 
    margin:0; 
@@ -222,7 +222,9 @@ padding: 8px 0px; margin: 0;
 .markdown-body h1 {
   font-size: 2rem;
   margin: 0.67rem 0;
-  background: none;
+  background: linear-gradient(to right, red, blue);
+  -webkit-background-clip: text; 
+  color: transparent;   
 }
 
 .markdown-body img {
@@ -333,23 +335,23 @@ padding: 8px 0px; margin: 0;
 }
 
 .markdown-body h2 {
-  font-size: 21px;
+  font-size: 24px;
 }
 
 .markdown-body h3 {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .markdown-body h4 {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .markdown-body h5 {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .markdown-body h6 {
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .markdown-body blockquote {
@@ -715,12 +717,12 @@ font-family: "PT Sans", "SF UI Display", ".PingFang SC","PingFang SC", "Neue Haa
 }
 
 
-#main-content .markdown-body h1{font-size: 28px;border-bottom: none; }
-#main-content .markdown-body h2{font-size: 24px;border-bottom: none;}
-#main-content .markdown-body h3{font-size: 22px;}
+#main-content .markdown-body h1{font-size: 30px;border-bottom: none; }
+#main-content .markdown-body h2{font-size: 28px;border-bottom: none; }
+#main-content .markdown-body h3{font-size: 23px;}
 #main-content .markdown-body h4{font-size: 20px;}
 #main-content .markdown-body h5{font-size: 18px;}
-#main-content .markdown-body h6{font-size: 18px;}
+#main-content .markdown-body h6{font-size: 16px;}
 
 #main-content .markdown-body .article{ padding: 38px 0px; border-bottom: solid 1px #e6e6e6;}
 #main-content .markdown-body .article:first-child{padding-top: 20px;}

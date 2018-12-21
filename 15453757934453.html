@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  lonelyorのblog
+  css美化文章标题 - lonelyorのblog
   
   </title>
   
@@ -112,99 +112,86 @@
        
 
  <script type="text/javascript">
-	$(function(){
-		$('#menu_item_index').addClass('is_active');
-	});
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
 </script>
 <div class="row">
-	<div class="large-8 medium-8 columns">
-		<div class="markdown-body home-categories">
-		
-			<div class="article">
-                <a class="clearlink" href="15453574952135.html">
-                
-                  <h1>crontab设置定时任务</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>文章参考自：<a href="http://blog.csdn.net/xiaochuige/article/details/49252741">http://blog.csdn.net/xiaochuige/article/details/49252741</a> 感谢作者。</p>
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>css美化文章标题</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2018/12/21 15:3 下午</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='CSS.html'>CSS</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <blockquote>
+<p>MWeb自带的标题不好看，特别是首页展示的文章多的时候，没有区分度，看的眼花缭乱的。</p>
 </blockquote>
 
-<p>crontab的基本格式：</p>
+<p>下面是我添加的css代码，用来稍微美化一下文章标题。</p>
 
-<pre class="line-numbers"><code class="language-text">* * * * * command
-几个星号分别为：分 时 日 月 周，最后是要执行的命令。
-分：0~59
-时：0~23
-日：1~31
-月：1~12
-周：0～6（0表示星期天）
-除了数字还有几个个特殊的符号就是* / - ：
-* 代表所有的取值范围内的数字
-/ 代表每的意思
-*/5 表示每5个单位
-- 代表从某个数字到某个数字
-, 分开几个离散的数字
+<pre class="line-numbers"><code class="language-css3">.markdown-body h1 {
+  font-size: 2rem;
+  margin: 0.67rem 0;
+  background: linear-gradient(to right, red, blue);
+  -webkit-background-clip: text; 
+  color: transparent;   
+}
 </code></pre>
 
-<p>配置文件的一些例子：</p>
 
-<pre class="line-numbers"><code class="language-text">0 3 * * * /root/test.sh 每天凌晨3点执行test.sh文件
-* 23-7/1 * * * /root/lnmp restart 晚上11点到早上7点之间，每隔一小时重启lnmp套件
-*/30 * * * * /usr/sbin/ntpdate 每半小时同步一下时间
-0 23 * * 6 /lnmp restart 每星期六的11 : 00 pm重启重启lnmp套件。
-*/1 * * * * echo &quot;i am running.&quot;&gt;&gt;/tmp/running.txt 每隔1分钟向/tmp/running.txt写一个&quot;i am running.&quot;字符串。
-</code></pre>
+    
 
-<p>运行<br/>
-我以为编辑crontab保存后会自动执行，其实不然，必须通过重启cron才可以，命令如下：<br/>
-启动/etc/init.d/cron start<br/>
-关闭/etc/init.d/cron stop<br/>
-重启/etc/init.d/cron restart</p>
+      </div>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/21 9:58 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15453720146052.html" 
+          title="Next Post: Pycharm编程遇到的技巧">Pycharm编程遇到的技巧 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-              
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
 
 
-			<div class="row">
-			  <div class="large-6 columns">
-			  <p class="text-left" style="padding-top:25px;">
-			   <a href="all_18.html">&laquo; Prev Page</a>  
-			  </p>
-			  </div>
-			  <div class="large-6 columns">
-			<p class="text-right" style="padding-top:25px;">
-			 <a href="all_20.html">&raquo; Next Page</a> 
-			</p>
-			  </div>
-			</div>
-		</div>
-	</div><!-- large 8 -->
-
+  <link rel="bookmark" href="http://images.lonelyor.org/favicon.ico" />
+  <link rel="shortcut icon" href="http://images.lonelyor.org/favicon.ico" />
+  <script id="dsq-count-scr" src="//lonelyor.disqus.com/count.js" async></script>
  <div class="large-4 medium-4 columns">
   <div class="hide-for-small">
     <div id="sidebar" class="sidebar">

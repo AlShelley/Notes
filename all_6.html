@@ -121,22 +121,40 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15453709108643.html">
+                <a class="clearlink" href="15453712257423.html">
                 
-                  <h1>python弱口令脚本的一点备注</h1>
+                  <h1>arch设置屏幕分辨率</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>很久以前写的</p>
+<p><a href="https://wiki.archlinux.org/index.php/Xrandr_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">https://wiki.archlinux.org/index.php/Xrandr_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)</a></p>
 </blockquote>
 
-<p>跑弱口令的脚本<br/>
-不要使用字典这种操作，这不利于跑大量数据的场景。<br/>
-应该制定规则去跑，比如：<br/>
-取出一个用户名，然后根据规则生成弱口令，然后再去匹配用户名对应的密码，匹配则是弱口令，不匹配则不是弱口令。<br/>
-这样可以后续变成一个服务，用户输入密码，触发了规则则告诉他密码是弱口令。</p>
+<p>1、先使用xrandr查看屏幕相关信息<br/>
+2、编辑/e/X/xorg.conf.d ❯❯❯ sudo nano 11-lonelyorx.conf (自己新建)<br/>
+结果我不怎么会写配置文件，导致写了都没法启动图形界面了，于是又删了，打算手动更改。<br/>
+3、<br/>
+xrandr查看当前设置 <br/>
+<code>cvt 1920 1080</code><br/>
+<code>cvt 2560 1440</code><br/>
+找到正确的参数 <br/>
+<code>xrandr --newmode &quot;1920x1080_60.00&quot;  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync</code><br/>
+<code>xrandr --newmode &quot;2560x1440_60.00&quot;  312.25  2560 2752 3024 3488  1440 1443 1448 1493 -hsync +vsync</code><br/>
+然后设置 <br/>
+<code>xrandr --addmode eDP1 1920x1080_60.00</code><br/>
+<code>xrandr --addmode HDMI1 2560x1440_60.00</code><br/>
+如果一且顺利的话，此时再查看xrandr命令，将发现最佳分辨率设置成功。 <br/>
+4、修改分辨率<br/>
+<code>xrandr --output eDP1 --mode 1920x1080_60.00</code><br/>
+<code>xrandr --output HDMI1 --mode 2560x1440_60.00</code></p>
+
+<p><code>xrandr --newmode &quot;1920x1080_60.00&quot;  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync</code><br/>
+<code>xrandr --addmode eDP1 1920x1080_60.00</code><br/>
+<code>xrandr --output eDP1 --mode 1920x1080_60.00</code></p>
+
+<p>这样屏幕分辨率就变成1080p了。</p>
 
                         
                       </div>
@@ -145,10 +163,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 13:41 下午</span>
+                    <span class="date">2018/12/21 13:47 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Python.html'>Python</a></span>
+          					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -245,6 +263,12 @@
 	      
 		      
 			      <li class="post">
+			        <a href="15453757934453.html">css美化文章标题</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15453720146052.html">Pycharm编程遇到的技巧</a>
 			      </li>
 		     
@@ -264,12 +288,6 @@
 		      
 			      <li class="post">
 			        <a href="15453714645346.html">linux安装配置aria2及其Web图形界面（debian为例）</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15453713553710.html">linux下搜狗输入法不能用的解决办法</a>
 			      </li>
 		     
 		  

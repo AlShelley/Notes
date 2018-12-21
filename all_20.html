@@ -121,14 +121,36 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15449531124166.html">
+                <a class="clearlink" href="15453572892743.html">
                 
-                  <h1>Markdown基础语法</h1>
+                  <h1>Atom设置和取消代理</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>占坑，内容以后写</p>
+                        	<h2 id="toc_0">设置本地上游代理</h2>
+
+<p>apm config set http-proxy socks5:127.0.0.1:1080<br/>
+apm config set https-proxy socks5:127.0.0.1:1080</p>
+
+<h2 id="toc_1">取消SSL</h2>
+
+<p>apm config set strict-ssl false</p>
+
+<h2 id="toc_2">取消代理</h2>
+
+<p>apm config set http-proxy null<br/>
+apm config set https-proxy null</p>
+
+<h2 id="toc_3">查看代理设置</h2>
+
+<p>apm config get http-proxy<br/>
+apm config get https-proxy</p>
+
+<p>编辑～/.atom/.apmrc文件，配置为：<br/>
+strict-ssl=false<br/>
+http_proxy = socks5: 127.0.0.1:1080<br/>
+https_proxy = socks5: 127.0.0.1:1080</p>
 
                         
                       </div>
@@ -137,10 +159,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/16 17:38 下午</span>
+                    <span class="date">2018/12/21 9:54 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E6%8A%80%E5%B7%A7.html'>技巧</a></span>
+          					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -237,6 +259,12 @@
 	      
 		      
 			      <li class="post">
+			        <a href="15453757934453.html">css美化文章标题</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15453720146052.html">Pycharm编程遇到的技巧</a>
 			      </li>
 		     
@@ -256,12 +284,6 @@
 		      
 			      <li class="post">
 			        <a href="15453714645346.html">linux安装配置aria2及其Web图形界面（debian为例）</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15453713553710.html">linux下搜狗输入法不能用的解决办法</a>
 			      </li>
 		     
 		  

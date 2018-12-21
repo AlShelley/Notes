@@ -121,170 +121,31 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15453714645346.html">
+                <a class="clearlink" href="15453716917526.html">
                 
-                  <h1>linux安装配置aria2及其Web图形界面（debian为例）</h1>
+                  <h1>mongodb安装配置（arch）</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>下载aria2：apt-get install aria2<br/>
-创建配置文件：mkdir /etc/aria2_conf/aria2.conf<br/>
-编辑配置文件：nano /etc/aria2_conf/aria2.conf</p>
+                        	<blockquote>
+<p>参考文档：<a href="https://wiki.archlinux.org/index.php/MongoDB_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E4.BD.BF.E7.94.A8">https://wiki.archlinux.org/index.php/MongoDB_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E4.BD.BF.E7.94.A8</a></p>
+</blockquote>
 
-<p>aria2.conf配置：</p>
+<p><code>pacman -S mongo</code><br/>
+<code>/usr/bin/.mongo --help</code><br/>
+<code>systemctl start mongodb.service</code><br/>
+这样就启动了mongo，启动的配置文件是：<code>cat /etc/mongodb.conf</code><br/>
+然后退出到用户目录，运行mongo<br/>
+<code>~ ❯❯❯ mongo</code><br/>
+<code>/var/lib/mongodb/ 是Arch Linux 的 ** 默认dbpath**</code><br/>
+但是无法访问<br/>
+修改mongodb的用户组为自己的<br/>
+<code>chown mongodb:lonelyor mongodb</code></p>
 
-<pre class="line-numbers"><code class="language-text">#用户名
-#rpc-user=user
-#密码
-#rpc-passwd=passwd
-#上面的认证方式不建议使用,建议使用下面的token方式
-#设置加密的密钥
-rpc-secret=token
-#允许rpc
-enable-rpc=true
-#允许所有来源, web界面跨域权限需要
-rpc-allow-origin-all=true
-#允许外部访问，false的话只监听本地端口
-rpc-listen-all=true
-#RPC端口, 仅当默认端口被占用时修改
-rpc-listen-port=6800
-#最大同时下载数(任务数), 路由建议值: 3
-max-concurrent-downloads=5
-#断点续传
-continue=true
-#同服务器连接数
-max-connection-per-server=5
-#最小文件分片大小, 下载线程数上限取决于能分出多少片, 对于小文件重要
-min-split-size=10M
-#单文件最大线程数, 路由建议值: 5
-split=10
-#下载速度限制
-max-overall-download-limit=0
-#单文件速度限制
-max-download-limit=0
-#上传速度限制
-max-overall-upload-limit=0
-#单文件速度限制
-max-upload-limit=0
-#断开速度过慢的连接
-#lowest-speed-limit=0
-#验证用，需要1.16.1之后的release版本
-#referer=*
-#文件保存路径, 默认为当前启动位置
-dir=/root/downloads
-#文件缓存, 使用内置的文件缓存, 如果你不相信Linux内核文件缓存和磁盘内置缓存时使用, 需要1.16及以上版本
-#disk-cache=0
-#另一种Linux文件缓存方式, 使用前确保您使用的内核支持此选项, 需要1.15及以上版本(?)
-#enable-mmap=true
-#文件预分配, 能有效降低文件碎片, 提高磁盘性能. 缺点是预分配时间较长
-#所需时间 none &lt; falloc ? trunc &lt;&lt; prealloc, falloc和trunc需要文件系统和内核支持
-file-allocation=prealloc
-</code></pre>
-
-<p>然后配置开机启动：<br/>
-<code>nano /etc/init.d/aria2</code></p>
-
-<pre class="line-numbers"><code class="language-text">#!/bin/bash
-#
-# aria2 - this script starts and stops the aria2 daemon
-#
-# chkconfig:   - 85 15
-# description: Aria2 - Download Manager
-# processname: aria2c
-# config:      /etc/aria2/aria2.conf
-# pidfile:
-
-# Source function library.
-. /etc/rc.d/init.d/functions
-
-# Source networking configuration.
-. /etc/sysconfig/network
-
-# Check that networking is up.
-[ &quot;$NETWORKING&quot; = &quot;no&quot; ] &amp;&amp; exit 0
-
-aria2c=&quot;/usr/bin/aria2c&quot;
-ARIA2C_CONF_FILE=&quot;/etc/aria2/aria2.conf&quot;
-options=&quot; --conf-path=$ARIA2C_CONF_FILE -D &quot;
-
-RETVAL=0
-
-start() {
-    # code here to start the program
-    echo -n &quot;Starting aria2c daemon.&quot;
-    ${aria2c} ${options}
-    RETVAL=$?
-    echo
-}
-
-stop() {
-    echo -n &quot;Shutting down aria2c daemon.&quot;
-    /usr/bin/killall aria2c
-    RETVAL=$?
-    echo
-}
-
-status() {
-    ID=$(/bin/ps -ef | grep &#39;aria2c&#39; | grep -v &#39;grep&#39; | awk &#39;{print $2}&#39;)
-    if [[ &quot;x$ID&quot; != &quot;x&quot; ]]; then
-            echo &quot;Aria2 is running.&quot;
-    else
-            echo &quot;Aria2 is not running.&quot;
-    fi
-}
-
-restart() {
-    stop
-    sleep 3
-    start
-}
-
-case &quot;$1&quot; in
-    start)
-            start
-            ;;
-    stop)
-            stop
-            ;;
-    status)
-            status
-            ;;
-    restart)
-            restart
-            ;;
-    *)
-            echo &quot;Usage: service aria2c {start|stop|restart}&quot;
-            RETVAL=1
-esac
-
-exit $RETVAL
-</code></pre>
-
-<p>使用以下命令来立即启动 Aria2：</p>
-
-<p><code>/usr/bin/aria2c --conf-path=/etc/aria2_conf/aria2.conf -D</code></p>
-
-<p>保存之后配置 WebUI，首先开启 Web 服务，然后安装 WebUI 到指定目录，比如我的目录是/opt/aria2webUI/<br/>
-<code>git clone https://github.com/ziahamza/webui-aria2.git</code><br/>
-这样就下载了 WebUI，然后用 nginx 反代这个文件就ok了。</p>
-
-<p>nginx(/etc/nginx/conf.d/aria2.conf)配置文件如下：</p>
-
-<pre class="line-numbers"><code class="language-text">aria2.conf
-
-server
-{
-listen 80;
-server_name aria2.lonelyor.org;
-location / {
-    root /opt/aria2webUI/;
-}
-access_log logs/aria2_access.log;
-}
-</code></pre>
-
-<p>然后打开浏览器访问 aria2.lonelyor.org 就可以了。</p>
+<p><code>mkdir /home/lonelyor/工作/mongodb</code><br/>
+<code>touch /home/lonelyor/工作/mongodb/data</code><br/>
+<code>touch /home/lonelyor/工作/mongodb/logs</code></p>
 
                         
                       </div>
@@ -293,7 +154,7 @@ access_log logs/aria2_access.log;
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 13:51 下午</span>
+                    <span class="date">2018/12/21 13:54 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
@@ -393,6 +254,12 @@ access_log logs/aria2_access.log;
 	      
 		      
 			      <li class="post">
+			        <a href="15453757934453.html">css美化文章标题</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15453720146052.html">Pycharm编程遇到的技巧</a>
 			      </li>
 		     
@@ -412,12 +279,6 @@ access_log logs/aria2_access.log;
 		      
 			      <li class="post">
 			        <a href="15453714645346.html">linux安装配置aria2及其Web图形界面（debian为例）</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15453713553710.html">linux下搜狗输入法不能用的解决办法</a>
 			      </li>
 		     
 		  

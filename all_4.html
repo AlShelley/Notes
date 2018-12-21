@@ -121,170 +121,45 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15453714645346.html">
+                <a class="clearlink" href="15453702906439.html">
                 
-                  <h1>linux安装配置aria2及其Web图形界面（debian为例）</h1>
+                  <h1>backup系统备份工具介绍</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>下载aria2：apt-get install aria2<br/>
-创建配置文件：mkdir /etc/aria2_conf/aria2.conf<br/>
-编辑配置文件：nano /etc/aria2_conf/aria2.conf</p>
+                        	<blockquote>
+<p>backup是一款强大的备份软件，用于系统备份、增量备份、远程备份，企业级。<br/>
+我还是当年使用debian时用过...这是以前的笔记，留一份在这好了。</p>
+</blockquote>
 
-<p>aria2.conf配置：</p>
+<p>软件安装（debian 9）<br/>
+<code>apt-get install backuppc</code><br/>
+然后会弹窗：<br/>
+backuppc设定<br/>
+管理web地址：<br/>
+<code>http://lonelyor/backuppc</code><br/>
+<code>user：backuppc</code><br/>
+<code>passwd：u6oN2KE1</code><br/>
+可以通过运行<code>htpasswd /etc/backuppc/htpasswd</code>来修改密码<br/>
+这些信息要记住！</p>
 
-<pre class="line-numbers"><code class="language-text">#用户名
-#rpc-user=user
-#密码
-#rpc-passwd=passwd
-#上面的认证方式不建议使用,建议使用下面的token方式
-#设置加密的密钥
-rpc-secret=token
-#允许rpc
-enable-rpc=true
-#允许所有来源, web界面跨域权限需要
-rpc-allow-origin-all=true
-#允许外部访问，false的话只监听本地端口
-rpc-listen-all=true
-#RPC端口, 仅当默认端口被占用时修改
-rpc-listen-port=6800
-#最大同时下载数(任务数), 路由建议值: 3
-max-concurrent-downloads=5
-#断点续传
-continue=true
-#同服务器连接数
-max-connection-per-server=5
-#最小文件分片大小, 下载线程数上限取决于能分出多少片, 对于小文件重要
-min-split-size=10M
-#单文件最大线程数, 路由建议值: 5
-split=10
-#下载速度限制
-max-overall-download-limit=0
-#单文件速度限制
-max-download-limit=0
-#上传速度限制
-max-overall-upload-limit=0
-#单文件速度限制
-max-upload-limit=0
-#断开速度过慢的连接
-#lowest-speed-limit=0
-#验证用，需要1.16.1之后的release版本
-#referer=*
-#文件保存路径, 默认为当前启动位置
-dir=/root/downloads
-#文件缓存, 使用内置的文件缓存, 如果你不相信Linux内核文件缓存和磁盘内置缓存时使用, 需要1.16及以上版本
-#disk-cache=0
-#另一种Linux文件缓存方式, 使用前确保您使用的内核支持此选项, 需要1.15及以上版本(?)
-#enable-mmap=true
-#文件预分配, 能有效降低文件碎片, 提高磁盘性能. 缺点是预分配时间较长
-#所需时间 none &lt; falloc ? trunc &lt;&lt; prealloc, falloc和trunc需要文件系统和内核支持
-file-allocation=prealloc
-</code></pre>
+<p>安装后：<br/>
+<code>Creating config file /etc/backuppc/config.pl with new version（可以暂时忽略）</code></p>
 
-<p>然后配置开机启动：<br/>
-<code>nano /etc/init.d/aria2</code></p>
+<p>然后运行：<br/>
+<code>systemctl restart apache2</code><br/>
+<code>/etc/init.d/backuppc restart</code></p>
 
-<pre class="line-numbers"><code class="language-text">#!/bin/bash
-#
-# aria2 - this script starts and stops the aria2 daemon
-#
-# chkconfig:   - 85 15
-# description: Aria2 - Download Manager
-# processname: aria2c
-# config:      /etc/aria2/aria2.conf
-# pidfile:
+<p>接着就打开浏览器访问：<br/>
+<code>http://lonelyor/backuppc</code><br/>
+就能看到web管理界面了。<br/>
+如果进不去可以打开隐身模式或者清除cookie再试。</p>
 
-# Source function library.
-. /etc/rc.d/init.d/functions
+<p>官方安装文档：<code>http://backuppc.sourceforge.net/BackupPC-4.1.3.html#Installing-BackupPC</code></p>
 
-# Source networking configuration.
-. /etc/sysconfig/network
-
-# Check that networking is up.
-[ &quot;$NETWORKING&quot; = &quot;no&quot; ] &amp;&amp; exit 0
-
-aria2c=&quot;/usr/bin/aria2c&quot;
-ARIA2C_CONF_FILE=&quot;/etc/aria2/aria2.conf&quot;
-options=&quot; --conf-path=$ARIA2C_CONF_FILE -D &quot;
-
-RETVAL=0
-
-start() {
-    # code here to start the program
-    echo -n &quot;Starting aria2c daemon.&quot;
-    ${aria2c} ${options}
-    RETVAL=$?
-    echo
-}
-
-stop() {
-    echo -n &quot;Shutting down aria2c daemon.&quot;
-    /usr/bin/killall aria2c
-    RETVAL=$?
-    echo
-}
-
-status() {
-    ID=$(/bin/ps -ef | grep &#39;aria2c&#39; | grep -v &#39;grep&#39; | awk &#39;{print $2}&#39;)
-    if [[ &quot;x$ID&quot; != &quot;x&quot; ]]; then
-            echo &quot;Aria2 is running.&quot;
-    else
-            echo &quot;Aria2 is not running.&quot;
-    fi
-}
-
-restart() {
-    stop
-    sleep 3
-    start
-}
-
-case &quot;$1&quot; in
-    start)
-            start
-            ;;
-    stop)
-            stop
-            ;;
-    status)
-            status
-            ;;
-    restart)
-            restart
-            ;;
-    *)
-            echo &quot;Usage: service aria2c {start|stop|restart}&quot;
-            RETVAL=1
-esac
-
-exit $RETVAL
-</code></pre>
-
-<p>使用以下命令来立即启动 Aria2：</p>
-
-<p><code>/usr/bin/aria2c --conf-path=/etc/aria2_conf/aria2.conf -D</code></p>
-
-<p>保存之后配置 WebUI，首先开启 Web 服务，然后安装 WebUI 到指定目录，比如我的目录是/opt/aria2webUI/<br/>
-<code>git clone https://github.com/ziahamza/webui-aria2.git</code><br/>
-这样就下载了 WebUI，然后用 nginx 反代这个文件就ok了。</p>
-
-<p>nginx(/etc/nginx/conf.d/aria2.conf)配置文件如下：</p>
-
-<pre class="line-numbers"><code class="language-text">aria2.conf
-
-server
-{
-listen 80;
-server_name aria2.lonelyor.org;
-location / {
-    root /opt/aria2webUI/;
-}
-access_log logs/aria2_access.log;
-}
-</code></pre>
-
-<p>然后打开浏览器访问 aria2.lonelyor.org 就可以了。</p>
+<p>参考文档：<br/>
+<code>http://server.zol.com.cn/513/5130348.html</code></p>
 
                         
                       </div>
@@ -293,7 +168,86 @@ access_log logs/aria2_access.log;
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 13:51 下午</span>
+                    <span class="date">2018/12/21 13:31 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15453702115650.html">
+                
+                  <h1>VMware14秘钥</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>CG54H-D8D0H-H8DHY-C6X7X-N2KG6<br/>
+ZC3WK-AFXEK-488JP-A7MQX-XL8YF<br/>
+AC5XK-0ZD4H-088HP-9NQZV-ZG2R4<br/>
+ZC5XK-A6E0M-080XQ-04ZZG-YF08D<br/>
+ZY5H0-D3Y8K-M89EZ-AYPEG-MYUA8<br/>
+FF590-2DX83-M81LZ-XDM7E-MKUT4</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21 13:30 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%A5%87%E6%B7%AB%E5%B7%A7%E6%8A%80.html'>奇淫巧技</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15453701535252.html">
+                
+                  <h1>v2ray使用方法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>编辑 /etc/v2ray/config.json 文件来配置你需要的代理方式；</p>
+
+<p>运行 service v2ray start 来启动 V2Ray 进程；<br/>
+之后可以使用 service v2ray start|stop|status|reload|restart|force-reload 控制 V2Ray 的运行。</p>
+
+<p>v2ray官网：<br/>
+<a href="https://www.v2ray.com/chapter_00/install.html">https://www.v2ray.com/chapter_00/install.html</a><br/>
+v2ray一键安装：<br/>
+bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.direct/go.sh</a>)</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21 13:29 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>

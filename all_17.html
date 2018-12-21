@@ -121,47 +121,188 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15453579778110.html">
+                <a class="clearlink" href="15428591301433.html">
                 
-                  <h1>nano常见设置，如语法高亮、启用行号、启用鼠标等</h1>
+                  <h1>Web安全检测checklist</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>下载nano<br/>
-linux根据包管理不同，使用不通的命令。<br/>
-macosx使用brew安装。</p>
+                        	<h2 id="toc_0">x01 爆破</h2>
 
-<p>编辑（没有就创建）配置文件<br/>
-nano ～/.nanorc<br/>
-然后添加以下内容</p>
+<h3 id="toc_1">弱口令</h3>
 
-<pre class="line-numbers"><code class="language-text"># 语法高亮
-include &quot;/usr/share/nano/*.nanorc&quot;
-</code></pre>
+<p>HTTP登录<br/>
+SSH<br/>
+MySQL<br/>
+Telnet</p>
 
-<p>或者</p>
+<h3 id="toc_2">遍历</h3>
 
-<pre class="line-numbers"><code class="language-text"># 语法高亮
-include &quot;/usr/local/share/nano/*.nanorc&quot;
-</code></pre>
+<p>网站敏感文件<br/>
+    源码<br/>
+    配置文件<br/>
+    备份文件<br/>
+    探针类文件<br/>
+网站敏感目录<br/>
+    物理路径<br/>
+    网站管理后台<br/>
+    上传目录<br/>
+    数据库Web管理入口<br/>
+    现成的Webshell<br/>
+端口扫描<br/>
+0day扫描<br/>
+子域名</p>
 
-<p>这里include哪一个主要取决于nanorc的具体位置。通常linux在share，macosx在local/share。<br/>
-其他内容如：</p>
+<h2 id="toc_3">x02 不安全配置</h2>
 
-<pre class="line-numbers"><code class="language-text"># 启用行号
-set linenumbers
-# 平滑滚动
-set smooth
-# 自动缩进
-set autoindent
-# tab为空格
-set tabstospaces
-# 启用鼠标
-set mouse
-</code></pre>
+<h3 id="toc_4">Web服务器</h3>
 
-<p>然后保存，重新打开终端，即可发现设置生效，以上方法适用于linux和macosx。</p>
+<p>Nginx<br/>
+Apache<br/>
+IIS</p>
+
+<h3 id="toc_5">Web应用服务器</h3>
+
+<p>Tomcat<br/>
+JBoss<br/>
+Weblogic</p>
+
+<h3 id="toc_6">HTTP安全特性</h3>
+
+<p>HTTP Headers<br/>
+HTTP Options<br/>
+rebots.txt<br/>
+flash跨域策略</p>
+
+<h2 id="toc_7">x03 敏感信息泄露</h2>
+
+<h3 id="toc_8">用户敏感信息</h3>
+
+<p>手机号<br/>
+身份证号<br/>
+社保<br/>
+银行卡号<br/>
+家庭住址</p>
+
+<h3 id="toc_9">应用敏感信息</h3>
+
+<p>debug信息<br/>
+堆栈报错</p>
+
+<h3 id="toc_10">站点敏感信息</h3>
+
+<p>测试页面<br/>
+备份文件</p>
+
+<h3 id="toc_11">本地敏感信息</h3>
+
+<p>前端保存用户密码<br/>
+前端保存验证码</p>
+
+<h2 id="toc_12">x04 xss跨站脚本</h2>
+
+<p>反射型xss<br/>
+存储型xss<br/>
+DOM型xss</p>
+
+<h2 id="toc_13">x05 请求伪造</h2>
+
+<p>csrf跨站请求伪造<br/>
+ssrf服务器请求伪造</p>
+
+<h2 id="toc_14">x06 注入</h2>
+
+<p>LDAP注入<br/>
+ORM注入<br/>
+XML注入<br/>
+XPath注入<br/>
+IMAP/SMTP注入<br/>
+SQL注入<br/>
+代码注入<br/>
+客户端模板注入（CSTI）<br/>
+服务端模板注入（SSTI）<br/>
+服务器端包含注入（SSI）</p>
+
+<h2 id="toc_15">x07 已知漏洞组件</h2>
+
+<p>库文件（某些库会导致远程命令执行）<br/>
+框架（如wordpress、thinkphp、django等）<br/>
+模块（python的某些模块会导致代码注入）</p>
+
+<h2 id="toc_16">x08 文件类漏洞</h2>
+
+<p>文件包含漏洞<br/>
+任意文件创建<br/>
+任意文件读取<br/>
+任意文件上传<br/>
+任意文件下载<br/>
+任意文件删除</p>
+
+<h2 id="toc_17">x09 解析漏洞</h2>
+
+<p>IIS解析漏洞<br/>
+Nginx解析漏洞<br/>
+Apache解析漏洞<br/>
+PHP CGI解析漏洞</p>
+
+<h2 id="toc_18">x10 劫持类漏洞</h2>
+
+<p>点击劫持<br/>
+Jsonp劫持<br/>
+WebSocket劫持<br/>
+DNS劫持<br/>
+二维码劫持<br/>
+子域名劫持</p>
+
+<h2 id="toc_19">x11 业务逻辑漏洞</h2>
+
+<h3 id="toc_20">认证</h3>
+
+<p>使用默认凭证<br/>
+冻结账户策略不当<br/>
+弱用户名和密码<br/>
+“记住我”功能<br/>
+自动登录<br/>
+单点登录<br/>
+弱口令<br/>
+弱安全问题/答案<br/>
+第三方登录风险<br/>
+Oauth2.0安全<br/>
+JWT安全<br/>
+注册覆盖<br/>
+未验证的重定向和转发<br/>
+双因素认证不当</p>
+
+<h3 id="toc_21">授权</h3>
+
+<p>测试角色定义<br/>
+权限管理缺失<br/>
+匿名访问（备用接口——常见于兼容老的不安全的接口时产生）<br/>
+水平越权<br/>
+垂直越权<br/>
+超级账户<br/>
+实名认证不严格</p>
+
+<h3 id="toc_22">会话管理</h3>
+
+<p>cookie安全属性<br/>
+cookie可猜解<br/>
+cookie溢出<br/>
+会话固定<br/>
+用户凭证不安全传输（弱加密或明文传输）<br/>
+用户凭证未一次失效<br/>
+用户凭证可猜解<br/>
+注销与会话超时<br/>
+敏感数据不安全传输</p>
+
+<h3 id="toc_23">流程绕过</h3>
+
+<p>找回密码流程绕过</p>
+
+<h2 id="toc_24">x12 API安全</h2>
+
+<p>整理中</p>
 
                         
                       </div>
@@ -170,10 +311,10 @@ set mouse
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 10:6 上午</span>
+                    <span class="date">2018/11/22 11:58 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
+          					    <span class="posted-in"><a href='Checklist.html'>Checklist</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -197,7 +338,7 @@ set mouse
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			 <a href="all_18.html">&raquo; Next Page</a> 
+			
 			</p>
 			  </div>
 			</div>

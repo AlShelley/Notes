@@ -121,22 +121,66 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15453701535252.html">
+                <a class="clearlink" href="15446861280668.html">
                 
-                  <h1>v2ray使用方法</h1>
+                  <h1>hackthebox邀请码</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>编辑 /etc/v2ray/config.json 文件来配置你需要的代理方式；</p>
+                        	<blockquote>
+<p>不打算好好玩的麻烦不要瞎注册，大量的垃圾账号只会污染整个生态环境。</p>
+</blockquote>
 
-<p>运行 service v2ray start 来启动 V2Ray 进程；<br/>
-之后可以使用 service v2ray start|stop|status|reload|restart|force-reload 控制 V2Ray 的运行。</p>
+<p>进入注册页面，观察页面js文件会找到以下内容：</p>
 
-<p>v2ray官网：<br/>
-<a href="https://www.v2ray.com/chapter_00/install.html">https://www.v2ray.com/chapter_00/install.html</a><br/>
-v2ray一键安装：<br/>
-bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.direct/go.sh</a>)</p>
+<pre class="line-numbers"><code class="language-javascript">eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!&#39;&#39;.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return&#39;\\w+&#39;};c=1};while(c--){if(k[c]){p=p.replace(new RegExp(&#39;\\b&#39;+e(c)+&#39;\\b&#39;,&#39;g&#39;),k[c])}}return p}(&#39;1 i(4){h 8={&quot;4&quot;:4};$.9({a:&quot;7&quot;,5:&quot;6&quot;,g:8,b:\&#39;/d/e/n\&#39;,c:1(0){3.2(0)},f:1(0){3.2(0)}})}1 j(){$.9({a:&quot;7&quot;,5:&quot;6&quot;,b:\&#39;/d/e/k/l/m\&#39;,c:1(0){3.2(0)},f:1(0){3.2(0)}})}&#39;,24,24,&#39;response|function|log|console|code|dataType|json|POST|formData|ajax|type|url|success|api|invite|error|data|var|verifyInviteCode|makeInviteCode|how|to|generate|verify&#39;.split(&#39;|&#39;),0,{}))
+</code></pre>
+
+<p>1、然后把这段代码放到 <a href="http://jsbeautifier.org/">http://jsbeautifier.org/</a> 进行美化，得出：<br/>
+2、</p>
+
+<pre class="line-numbers"><code class="language-javascript">function verifyInviteCode(code) {
+    var formData = {
+        &quot;code&quot;: code
+    };
+    $.ajax({
+        type: &quot;POST&quot;,
+        dataType: &quot;json&quot;,
+        data: formData,
+        url: &#39;/api/invite/verify&#39;,
+        success: function(response) {
+            console.log(response)
+        },
+        error: function(response) {
+            console.log(response)
+        }
+    })
+}
+
+function makeInviteCode() {
+    $.ajax({
+        type: &quot;POST&quot;,
+        dataType: &quot;json&quot;,
+        url: &#39;/api/invite/how/to/generate&#39;,
+        success: function(response) {
+            console.log(response)
+        },
+        error: function(response) {
+            console.log(response)
+        }
+    })
+}
+</code></pre>
+
+<p>可以看出上述代码是让我们访问：<a href="https://www.hackthebox.eu/api/invite/generate">https://www.hackthebox.eu/api/invite/generate</a><br/>
+然后修改请求方式为post<br/>
+于是就得到了：</p>
+
+<pre class="line-numbers"><code class="language-javascript">{&quot;success&quot;:1,&quot;data&quot;:{&quot;code&quot;:&quot;VlJQS1QtQUNXRUstT0tYREwtQ0lZQVUtS0NZSlU=&quot;,&quot;format&quot;:&quot;encoded&quot;},&quot;0&quot;:200}
+</code></pre>
+
+<p>将code进行base64解码，就得到了邀请码。</p>
 
                         
                       </div>
@@ -145,10 +189,86 @@ bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.dire
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 13:29 下午</span>
+                    <span class="date">2018/12/13 15:28 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
+          					    <span class="posted-in"><a href='CTF.html'>CTF</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15433912730163.html">
+                
+                  <h1>FOEENSICS 101</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>题目：<a href="https://ctflearn.com/problems/96">https://ctflearn.com/problems/96</a><br/>
+<img src="http://images.lonelyor.org/ctflearn-96-1.png" alt="ctflearn-96-1"/><br/>
+访问域名，然后会下载一张图片。<br/>
+接下来我们使用十六进制编码器打开这张图片，会发现：<br/>
+<img src="http://images.lonelyor.org/ctflearn-96-2.png" alt="ctflearn-96-2"/><br/>
+标红部分即是flag。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/28 15:47 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='ctflearn.html'>ctflearn</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15433875205785.html">
+                
+                  <h1>BASIC INJECTION 基本注入</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>题目：<a href="https://ctflearn.com/problems/88">https://ctflearn.com/problems/88</a><br/>
+解：<br/>
+访问题目中提到的：<a href="https://web.ctflearn.com/web4/">域名</a><br/>
+<img src="http://images.lonelyor.org/ctflearn-basic-injection-1.png" alt="ctflearn-basic-injection-1"/><br/>
+然后输入payload，得到以下数据，方框中的即为flag。<br/>
+<img src="http://images.lonelyor.org/ctflearn-basic-injection-2.png" alt="ctflearn-basic-injection-2"/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/28 14:45 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='ctflearn.html'>ctflearn</a></span>
           				   
                   </div>
                   <div class="more-right right">

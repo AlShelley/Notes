@@ -121,18 +121,22 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15453706658952.html">
+                <a class="clearlink" href="15428714021434.html">
                 
-                  <h1>查看端口占用</h1>
+                  <h1>linux将shell脚本添加到系统命令的方法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>使用命令：<br/>
-<code>lsof -i:8000</code><br/>
-或<br/>
-<code>netstat -tunlp|grep 8000</code><br/>
-均可。</p>
+                        	<blockquote>
+<p>可以自定义一些shell脚本，用来提高执行常用组合命令的效率。还有一种方式是使用alias命令。</p>
+</blockquote>
+
+<p>两种方法：<br/>
+1、直接把shell脚本放到/usr/local/bin ，然后添加权限 <code>sudo chmod +x xxx.sh</code> 就ok了。这样是在本地用户添加命令。<br/>
+root用户添加命令则把脚本放在 /usr/bin 即可。<br/>
+2、使用软连接的方式<code>ln -s 【源文件或目录】【目标文件或目录】</code><br/>
+注意要使用绝对路径。</p>
 
                         
                       </div>
@@ -141,7 +145,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 13:37 下午</span>
+                    <span class="date">2018/11/22 15:23 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
@@ -168,7 +172,7 @@
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			 <a href="Linux_7.html">&raquo; Next Page</a> 
+			
 			</p>
 			  </div>
 			</div>

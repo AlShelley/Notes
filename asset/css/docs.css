@@ -4,7 +4,7 @@
 }
 
 
-.top-bar,.tab-bar{ background-color: #fff; height: 65px;  border-bottom: solid 1px #F5F5F5;}
+.top-bar,.tab-bar{ background-color: #f5f5f5; height: 65px;  border-bottom: solid 1px #F5F5F5;}
 
 .tab-bar{ padding-top: 6px; height: 59px;}
 .tab-bar .menu-icon{ width: 100%; color: #333; }
@@ -222,7 +222,7 @@ padding: 8px 0px; margin: 0;
 .markdown-body h1 {
   font-size: 2rem;
   margin: 0.67rem 0;
-  background: linear-gradient(to right, red, blue);
+  background: linear-gradient(to right, red, orange, green, blue, indigo, violet);
   -webkit-background-clip: text; 
   color: transparent;   
 }

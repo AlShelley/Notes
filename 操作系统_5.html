@@ -121,6 +121,73 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15453574952135.html">
+                
+                  <h1>crontab设置定时任务</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>文章参考自：<a href="http://blog.csdn.net/xiaochuige/article/details/49252741">http://blog.csdn.net/xiaochuige/article/details/49252741</a> 感谢作者。</p>
+</blockquote>
+
+<p>crontab的基本格式：</p>
+
+<pre class="line-numbers"><code class="language-text">* * * * * command
+几个星号分别为：分 时 日 月 周，最后是要执行的命令。
+分：0~59
+时：0~23
+日：1~31
+月：1~12
+周：0～6（0表示星期天）
+除了数字还有几个个特殊的符号就是* / - ：
+* 代表所有的取值范围内的数字
+/ 代表每的意思
+*/5 表示每5个单位
+- 代表从某个数字到某个数字
+, 分开几个离散的数字
+</code></pre>
+
+<p>配置文件的一些例子：</p>
+
+<pre class="line-numbers"><code class="language-text">0 3 * * * /root/test.sh 每天凌晨3点执行test.sh文件
+* 23-7/1 * * * /root/lnmp restart 晚上11点到早上7点之间，每隔一小时重启lnmp套件
+*/30 * * * * /usr/sbin/ntpdate 每半小时同步一下时间
+0 23 * * 6 /lnmp restart 每星期六的11 : 00 pm重启重启lnmp套件。
+*/1 * * * * echo &quot;i am running.&quot;&gt;&gt;/tmp/running.txt 每隔1分钟向/tmp/running.txt写一个&quot;i am running.&quot;字符串。
+</code></pre>
+
+<p>运行<br/>
+我以为编辑crontab保存后会自动执行，其实不然，必须通过重启cron才可以，命令如下：<br/>
+启动/etc/init.d/cron start<br/>
+关闭/etc/init.d/cron stop<br/>
+重启/etc/init.d/cron restart</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21 9:58 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15453572892743.html">
                 
                   <h1>Atom设置和取消代理</h1>
@@ -566,41 +633,6 @@ ADDUSER （“” ， “tester2” ， “secret2” ，“”  ）
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15446973583267.html">
-                
-                  <h1>解决npm更新或安装软件时下载较慢等问题</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>更换淘宝源即可，<br/>
-在终端执行命令：<br/>
-<code>npm config set registry https://registry.npm.taobao.org</code></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/13 18:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -685,6 +717,12 @@ ADDUSER （“” ， “tester2” ， “secret2” ，“”  ）
 	      
 		      
 			      <li class="post">
+			        <a href="15456175398128.html">自建kms服务器激活windows</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15453757934453.html">css美化文章标题</a>
 			      </li>
 		     
@@ -704,12 +742,6 @@ ADDUSER （“” ， “tester2” ， “secret2” ，“”  ）
 		      
 			      <li class="post">
 			        <a href="15453716917526.html">mongodb安装配置（arch）</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15453714645346.html">linux安装配置aria2及其Web图形界面（debian为例）</a>
 			      </li>
 		     
 		  

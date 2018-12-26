@@ -4,13 +4,26 @@
   <title><![CDATA[lonelyorのblog]]></title>
   <link href="www.lonelyor.org/lonelyorNotes/atom.xml" rel="self"/>
   <link href="www.lonelyor.org/lonelyorNotes/"/>
-  <updated>2018-12-24T11:17:54+08:00</updated>
+  <updated>2018-12-26T10:05:52+08:00</updated>
   <id>www.lonelyor.org/lonelyorNotes/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[将网页保存为PDF]]></title>
+    <link href="www.lonelyor.org/lonelyorNotes/15457897865747.html"/>
+    <updated>2018-12-26T10:03:06+08:00</updated>
+    <id>www.lonelyor.org/lonelyorNotes/15457897865747.html</id>
+    <content type="html"><![CDATA[
+<p>如果使用 google chrome 则不需要任何辅助工具即可做到。<br/>
+Mac用户使用cmd+p即可；<br/>
+Windows用户使用ctrl+p即可。</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[自建kms服务器激活windows]]></title>
@@ -833,23 +846,6 @@ set mouse
 </code></pre>
 
 <p>然后保存，重新打开终端，即可发现设置生效，以上方法适用于linux和macosx。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[linux查看磁盘空间占用情况]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15453576869884.html"/>
-    <updated>2018-12-21T10:01:26+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15453576869884.html</id>
-    <content type="html"><![CDATA[
-<p>主要是使用 df 命令，使用 df --help 可以查看更多选项。</p>
-
-<p>举例：<br/>
-df -k 以KB为单位显示磁盘使用量和占用率。<br/>
-df -k 以M×××</p>
-
-<p>使用“du -ck /home”命令，列出home目录下所有文件或目录占用的大小，以KB作为计量单位。以及统计出当前home目录占用的总大小。</p>
 
 ]]></content>
   </entry>

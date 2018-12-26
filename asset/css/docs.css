@@ -222,7 +222,7 @@ padding: 8px 0px; margin: 0;
 .markdown-body h1 {
   font-size: 2rem;
   margin: 0.67rem 0;
-  background: linear-gradient(to right, red, orange, green, blue, indigo, violet);
+  background: linear-gradient(to right, #50c87e, #55CFF8);
   -webkit-background-clip: text; 
   color: transparent;   
 }
@@ -718,7 +718,7 @@ font-family: "PT Sans", "SF UI Display", ".PingFang SC","PingFang SC", "Neue Haa
 
 
 #main-content .markdown-body h1{font-size: 30px;border-bottom: none; }
-#main-content .markdown-body h2{font-size: 28px;border-bottom: none; }
+#main-content .markdown-body h2{font-size: 25px;border-bottom: none; }
 #main-content .markdown-body h3{font-size: 23px;}
 #main-content .markdown-body h4{font-size: 20px;}
 #main-content .markdown-body h5{font-size: 18px;}
@@ -786,3 +786,14 @@ font-family: "PT Sans", "SF UI Display", ".PingFang SC","PingFang SC", "Neue Haa
     box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.5); }
   .markdown-body ul.clearing-thumbs a.radius {
     border-radius: 3px; }
+
+
+
+
+    /*********************************我写的css部分*************	
+  background-color: #fff;
+  box-shadow: 5px 5px 2px #55CFF8;
+  *************************/
+.article{
+  border-top:1px solid #24c1f6
+}

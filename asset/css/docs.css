@@ -220,11 +220,7 @@ padding: 8px 0px; margin: 0;
 }
 
 .markdown-body h1 {
-  font-size: 2rem;
-  margin: 0.67rem 0;
-  background: linear-gradient(to right, #50c87e, #55CFF8);
-  -webkit-background-clip: text; 
-  color: transparent;   
+  font-size: 2rem;  
 }
 
 .markdown-body img {
@@ -332,26 +328,47 @@ padding: 8px 0px; margin: 0;
 
 .markdown-body h1 {
   font-size: 30px;
+  color:  #00cccc;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  overflow-y: hidden;
+  margin: 0px;
 }
 
 .markdown-body h2 {
   font-size: 24px;
+  color:  #606c76;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  overflow-y: hidden;
+  margin: 0px;
 }
 
 .markdown-body h3 {
   font-size: 20px;
+  color:  #606c76;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  overflow-y: hidden;
+  margin: 0px;
 }
 
 .markdown-body h4 {
   font-size: 16px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  overflow-y: hidden;
+  margin: 0px;
 }
 
 .markdown-body h5 {
   font-size: 14px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  overflow-y: hidden;
+  margin: 0px;
 }
 
 .markdown-body h6 {
   font-size: 12px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  overflow-y: hidden;
+  margin: 0px;
 }
 
 .markdown-body blockquote {
@@ -724,7 +741,7 @@ font-family: "PT Sans", "SF UI Display", ".PingFang SC","PingFang SC", "Neue Haa
 #main-content .markdown-body h5{font-size: 18px;}
 #main-content .markdown-body h6{font-size: 16px;}
 
-#main-content .markdown-body .article{ padding: 38px 0px; border-bottom: solid 1px #e6e6e6;}
+#main-content .markdown-body .article{ padding: 38px 0px; borde: solid 2px #e6e6e6;}
 #main-content .markdown-body .article:first-child{padding-top: 20px;}
 #main-content .markdown-body .a-content{padding-bottom: 20px; padding-left: 2px; line-height: 1.6rem;}
 
@@ -794,6 +811,10 @@ font-family: "PT Sans", "SF UI Display", ".PingFang SC","PingFang SC", "Neue Haa
   background-color: #fff;
   box-shadow: 5px 5px 2px #55CFF8;
   *************************/
+  /*******
 .article{
-  border-top:1px solid #24c1f6
+  border:1px solid #24c1f6;
+  border-style: inset;
+  margin-bottom: 16px;
 }
+******/

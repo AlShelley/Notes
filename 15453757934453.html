@@ -146,6 +146,8 @@
 参考自：<a href="http://www.fly63.com/article/detial/642">http://www.fly63.com/article/detial/642</a></p>
 </blockquote>
 
+<h2 id="toc_0">彩虹字</h2>
+
 <p>下面是我添加的css代码，用来稍微美化一下文章标题。</p>
 
 <pre class="line-numbers"><code class="language-css3">.markdown-body h1 {
@@ -154,6 +156,17 @@
   background: linear-gradient(to right, red, orange, green, blue, indigo, violet);
   -webkit-background-clip: text; 
   color: transparent;   
+}
+</code></pre>
+
+<h2 id="toc_1">虚化标题</h2>
+
+<pre class="line-numbers"><code class="language-text">.markdown-body h1 {
+  font-size: 30px;
+  color:  #00cccc;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  overflow-y: scroll;
+  margin: 0px;
 }
 </code></pre>
 

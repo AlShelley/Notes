@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="asset/img/favicon.ico" type="images/x-icon"/>
     <title>
     
-  解决npm更新或安装软件时下载较慢等问题 - lonelyorのblog
+  使用python快速搭建ftp服务器 - lonelyorのblog
   
   </title>
   
@@ -126,14 +126,14 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>解决npm更新或安装软件时下载较慢等问题</h1>
+          <h1>使用python快速搭建ftp服务器</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2018/12/13 18:35 下午</span>
+          <span class="date">2019/1/7 22:10 下午</span>
 
           <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='Linux.html'>Linux</a></span>
+              <span class="posted-in"><a href='Python.html'>Python</a></span>
            
          
           <span class="comments">
@@ -146,9 +146,14 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <p>更换淘宝源即可，<br/>
-在终端执行命令：<br/>
-<code>npm config set registry https://registry.npm.taobao.org</code></p>
+      <p>使用第三方库：pyftpdlib<br/>
+安装库：pip3 install pyftpdlib<br/>
+其他依赖项：<br/>
+<code>pip3 install PyOpenSSL</code> 用来支持ftps。<br/>
+<code>pip3 install pysendfile</code> 用来在unix上加速上传（服务器到客户端）。<br/>
+安装python库的时候要注意大小写。</p>
+
+<p>后面的事情就是看官方示例，然后copy了。</p>
 
 
     
@@ -159,16 +164,13 @@
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15446974404003.html" 
-          title="Previous Post: wsgidav独立服务器使用手册">&laquo; wsgidav独立服务器使用手册</a>
-      
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15446972266900.html" 
-          title="Next Post: 汉化firefox火狐浏览器">汉化firefox火狐浏览器 &raquo;</a>
+          <a  href="15457897865747.html" 
+          title="Next Post: 将网页保存为PDF">将网页保存为PDF &raquo;</a>
       
       </p>
         </div>

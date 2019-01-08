@@ -126,6 +126,199 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15446869314706.html">
+                
+                  <h1>xss、csrf、sql注入快速检测方法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">CSRF跨站请求伪造</h2>
+
+<ul>
+<li>原理<br/>
+攻击者在受害者不知情的情况下，以受害者的名义伪造请求发送给受攻击的站点，从而在未授权的情况下执行在权限保护之下的操作。<br/>
+CSRF攻击的对象是那些可以直接产生数据改变的服务，而对于读取数据的服务，则不需要进行 CSRF 的保护。<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>检测方法<br/>
+1.查看重要操作接口提交的请求中是否包含 csrf_token<br/>
+2.更改和删除 csrf_token 后提交表单，查看请求是否能被正确响应。<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>修复方案<br/>
+1.对涉及数据<strong>增、删、改</strong>操作提交的表单中添加csrf_token，token 参数应校验一次后失效。<br/>
+2.最好是在容器或框架上<strong>全局</strong>启用 csrf_token。(很多框架自带的解决办法容易遗漏一次失效的问题)<br/>
+3.token 应有一定的<strong>时效性</strong>，建议为30分钟，过期需失效（即：单页面停留30分钟后，用户提交请求需提示“页面过期，请刷新页面后再次提交”）<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>参考<br/>
+<a href="https://www.owasp.org/index.php/Testing_for_CSRF_(OTG-SESS-005)">CSRF测试</a><br/>
+<a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">跨站请求伪造（CSRF）</a><br/>
+<a href="https://www.ibm.com/developerworks/cn/web/1102_niugang_csrf/">CSRF 攻击的应对之道</a><br/>
+## XSS跨站脚本攻击<br/>
+### 反射型</li>
+<li>原理<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>检测方法<br/>
+<strong>检测场景</strong>：任何有输入输出地方......<br/>
+1.使用通用的web扫描器一般的都能发掘潜在的反射型XSS漏洞。<br/>
+2.手工在一些输入框中或者post参数中加入拼凑过的JS代码，根据返回的页面源码中是否成功嵌入JS代码来判断XSS是否存在。<br/>
+3.如果注入的代码经过后端处理后，永久性的嵌入到了页面当中，则该XSS为存储型的，反射型的XSS一般依赖于该次请求，且同时只能被用户自己所看到。<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>修复方案<br/>
+1.输出时统一使用 htmlEscape（）转义用户输入的数据，将html、js中涉及到的关键字符进行html编码处理后再输出到页面上。<br/>
+2.如果存在用户编写文章等类似用户可以自定义页面样式的功能，则限制用户输入，采用严格的白名单来过滤用户的输入，这种过滤应在后端应实现。(很多开源的第三方富文本编辑器，部分编辑器仅在JS端进行过滤，而不在后端进行关键字过滤)。<br/></li>
+</ul>
+
+<hr/>
+
+<h3 id="toc_1">存储型</h3>
+
+<ul>
+<li>原理<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>检测方法<br/>
+<strong>检测场景</strong>：存在富文本编辑器的地方；用户的输入信息会作为固定的值回显到页面中；后台管理应用中维护用户输入的相关信息。<br/>
+1.手工在一些输入框中或者post参数中加入污染的JS代码，根据返回的页面源码中是否成功嵌入JS代码来判断XSS是否存在(注入前端转义的情况)。<br/>
+2.如果注入的代码经过后端处理后，永久性的嵌入到了页面当中，则该XSS为存储型的。<br/>
+3.如果尝试注入的代码在页面中均被html编码，则再考虑其数据的流转会不会在后台其他应用中处理这些输入数据，如果有，对应的后台应用是否也做了完善的过滤机制。<br/>
+4.可远程搭建XSS检测平台，如果有XSS测试代码被触发，则自动发起链接到该平台上，这样相对来说可以测试那些未知的数据流向是否造成问题。<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>修复方案<br/>
+1.输出时统一使用 htmlEscape（）转义用户输入的数据，将html、js中涉及到的关键字符进行html编码处理后再输出到页面上。<br/>
+2.如果存在用户编写文章等类似用户可以自定义页面样式的功能，则限制用户输入，采用严格的白名单来过滤用户的输入，这种过滤应在后端应实现。(很多开源的第三方富文本编辑器，部分编辑器仅在JS端进行过滤，而不在后端进行关键字过滤)。<br/></li>
+</ul>
+
+<hr/>
+
+<h3 id="toc_2">基于DOM型</h3>
+
+<ul>
+<li>原理<br/></li>
+</ul>
+
+<hr/>
+
+<p>没啥可说的，可以当成是特殊的反射型。</p>
+
+<ul>
+<li>检测方法<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>修复方案<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>参考<br/>
+<a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">XSS跨站脚本</a>
+## SQL_Inject<br/></li>
+<li>原理<br/></li>
+</ul>
+
+<hr/>
+
+<p>开发人员使用直接拼接 sql 的方法来访问数据库，导致攻击者能通过特殊构造的语句控制代码逻辑。典型的代码与数据没有分离导致的安全问题之一。</p>
+
+<ul>
+<li>检测方法<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>常规方法<br/>
+<code>
+1 ，新建一个1 .txt文件，burp抓包将包含关键参数的请求存入。<br/>
+2 ，使用sqlmap 进行扫描（python sqlmap [options] [file path]）<br/>
+3、等待结果输出
+</code></li>
+<li>另一种常规方法<br/>
+<code>
+使用burp插件SQLiPy<br/>
+方案一（通用）：将sqlapi地址配置成 192.168.2.22 2222<br/>
+方案二：使用sqlipy生成测试语句，然后添加 -p 参数，指定注入参数，然后在 shell 里面运行 sqlmap。<br/>
+一个指定参数的SqlMap示例语句：    <br/>
+sqlmap -u “ http://xxxxxx.com:80/x/xx?x_id=1507 ” --method = “GET”-- cookie = “SESSIONID = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;<br/>
+--user-agent= &quot;Mozilla / 5.0（X11; Linux_x86_64; RV：60.0）/ 20100101火狐/ 60.0&quot;  --delay=0 --timeout=30 --retries=0 --dbms=&quot;MySQL&quot;  --os=Linux   <br/>
+--level=3 --risk=3 --threads=2 --time-sec=10 -b --batch --answers=&quot;crack=N,dict = N&quot;  -p &quot;zone_id&quot; --tables           
+</code>
+我们在跑注入的时候需要重点设置的参数：<br/>
+-risk=3<br/>
+-level=3<br/>
+--threads=2<br/>
+--dbms和–os去问开发或者测试<br/>
+-p 指定阐述减少服务器压力</li>
+<li>不太常规的方法<br/>
+1、写一个web界面调用sqlmapapi<br/>
+2、直接找开发拉代码过来进行审计</li>
+<li>修复方案<br/></li>
+</ul>
+
+<hr/>
+
+<p>1、使用安全的API ，完全避免使用解释器，或提供参数化界面的接口，或迁移到ORM 或实体框架(通常开发框架里会自带访问sql的方法来预防注入)。<br/><br/>
+2、做参数绑定，预编译查询。</p>
+
+<ul>
+<li>参考<br/>
+<a href="https://www.owasp.org/index.php/SQL_Injection">SQL注入</a></li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13 15:42 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%8A%80%E5%B7%A7.html'>技巧</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15446866501207.html">
                 
                   <h1>IIS短文件名漏洞</h1>
@@ -507,91 +700,6 @@ wordpress 有一个备份博客的插件，该插件会为备份创建一个自�
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15446861280668.html">
-                
-                  <h1>hackthebox邀请码</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>不打算好好玩的麻烦不要瞎注册，大量的垃圾账号只会污染整个生态环境。</p>
-</blockquote>
-
-<p>进入注册页面，观察页面js文件会找到以下内容：</p>
-
-<pre class="line-numbers"><code class="language-javascript">eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!&#39;&#39;.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return&#39;\\w+&#39;};c=1};while(c--){if(k[c]){p=p.replace(new RegExp(&#39;\\b&#39;+e(c)+&#39;\\b&#39;,&#39;g&#39;),k[c])}}return p}(&#39;1 i(4){h 8={&quot;4&quot;:4};$.9({a:&quot;7&quot;,5:&quot;6&quot;,g:8,b:\&#39;/d/e/n\&#39;,c:1(0){3.2(0)},f:1(0){3.2(0)}})}1 j(){$.9({a:&quot;7&quot;,5:&quot;6&quot;,b:\&#39;/d/e/k/l/m\&#39;,c:1(0){3.2(0)},f:1(0){3.2(0)}})}&#39;,24,24,&#39;response|function|log|console|code|dataType|json|POST|formData|ajax|type|url|success|api|invite|error|data|var|verifyInviteCode|makeInviteCode|how|to|generate|verify&#39;.split(&#39;|&#39;),0,{}))
-</code></pre>
-
-<p>1、然后把这段代码放到 <a href="http://jsbeautifier.org/">http://jsbeautifier.org/</a> 进行美化，得出：<br/>
-2、</p>
-
-<pre class="line-numbers"><code class="language-javascript">function verifyInviteCode(code) {
-    var formData = {
-        &quot;code&quot;: code
-    };
-    $.ajax({
-        type: &quot;POST&quot;,
-        dataType: &quot;json&quot;,
-        data: formData,
-        url: &#39;/api/invite/verify&#39;,
-        success: function(response) {
-            console.log(response)
-        },
-        error: function(response) {
-            console.log(response)
-        }
-    })
-}
-
-function makeInviteCode() {
-    $.ajax({
-        type: &quot;POST&quot;,
-        dataType: &quot;json&quot;,
-        url: &#39;/api/invite/how/to/generate&#39;,
-        success: function(response) {
-            console.log(response)
-        },
-        error: function(response) {
-            console.log(response)
-        }
-    })
-}
-</code></pre>
-
-<p>可以看出上述代码是让我们访问：<a href="https://www.hackthebox.eu/api/invite/generate">https://www.hackthebox.eu/api/invite/generate</a><br/>
-然后修改请求方式为post<br/>
-于是就得到了：</p>
-
-<pre class="line-numbers"><code class="language-javascript">{&quot;success&quot;:1,&quot;data&quot;:{&quot;code&quot;:&quot;VlJQS1QtQUNXRUstT0tYREwtQ0lZQVUtS0NZSlU=&quot;,&quot;format&quot;:&quot;encoded&quot;},&quot;0&quot;:200}
-</code></pre>
-
-<p>将code进行base64解码，就得到了邀请码。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/13 15:28 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='CTF.html'>CTF</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -676,6 +784,12 @@ function makeInviteCode() {
 	      
 		      
 			      <li class="post">
+			        <a href="15468702076334.html">使用python快速搭建ftp服务器</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15457897865747.html">将网页保存为PDF</a>
 			      </li>
 		     
@@ -695,12 +809,6 @@ function makeInviteCode() {
 		      
 			      <li class="post">
 			        <a href="15453720146052.html">Pycharm编程遇到的技巧</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15453717965995.html">npm Cannot find module 'semver' --解决方案</a>
 			      </li>
 		     
 		  

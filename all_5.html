@@ -126,6 +126,71 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15453704835251.html">
+                
+                  <h1>fluxgui安装与卸载</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>很久以前的笔记了</p>
+</blockquote>
+
+<pre class="line-numbers"><code class="language-text">Ubuntu/Debian Manual Install
+# Install dependencies
+sudo apt-get install git python-appindicator python-xdg python-pexpect python-gconf python-gtk2 python-glade2 libxxf86vm1
+
+# Download fluxgui
+cd /tmp
+git clone &quot;https://github.com/xflux-gui/fluxgui.git&quot;
+cd fluxgui
+python download-xflux.py
+
+# EITHER install globally
+sudo python setup.py install
+# EXCLUSIVE OR, install in your home directory. The binary installs
+# into ~/.local/bin, so be sure to add that to your PATH if installing locally.
+python setup.py install --user
+
+# Run flux
+fluxgui
+Ubuntu/Debian Manual Uninstall
+If you manually installed instead of using the PPA, you can uninstall by making setup.py tell you where it installed files and then removing the installed files.
+
+# EITHER uninstall globally
+sudo python setup.py install --record installed.txt
+sudo xargs rm -vr &lt; installed.txt
+
+# EXCLUSIVE OR uinstall in your home directory
+python setup.py install --user --record installed.txt
+xargs rm -vr &lt; installed.txt
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21 13:34 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15453702906439.html">
                 
                   <h1>backup系统备份工具介绍</h1>
@@ -227,47 +292,6 @@ FF590-2DX83-M81LZ-XDM7E-MKUT4</p>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15453701535252.html">
-                
-                  <h1>v2ray使用方法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>编辑 /etc/v2ray/config.json 文件来配置你需要的代理方式；</p>
-
-<p>运行 service v2ray start 来启动 V2Ray 进程；<br/>
-之后可以使用 service v2ray start|stop|status|reload|restart|force-reload 控制 V2Ray 的运行。</p>
-
-<p>v2ray官网：<br/>
-<a href="https://www.v2ray.com/chapter_00/install.html">https://www.v2ray.com/chapter_00/install.html</a><br/>
-v2ray一键安装：<br/>
-bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.direct/go.sh</a>)</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/21 13:29 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -352,6 +376,12 @@ bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.dire
 	      
 		      
 			      <li class="post">
+			        <a href="15470313638273.html">修改Mac主机名、计算机名</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15468702076334.html">使用python快速搭建ftp服务器</a>
 			      </li>
 		     
@@ -371,12 +401,6 @@ bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.dire
 		      
 			      <li class="post">
 			        <a href="15453757934453.html">css美化文章标题</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15453720146052.html">Pycharm编程遇到的技巧</a>
 			      </li>
 		     
 		  

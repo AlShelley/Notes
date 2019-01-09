@@ -126,6 +126,56 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15453716917526.html">
+                
+                  <h1>mongodb安装配置（arch）</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>参考文档：<a href="https://wiki.archlinux.org/index.php/MongoDB_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E4.BD.BF.E7.94.A8">https://wiki.archlinux.org/index.php/MongoDB_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E4.BD.BF.E7.94.A8</a></p>
+</blockquote>
+
+<p><code>pacman -S mongo</code><br/>
+<code>/usr/bin/.mongo --help</code><br/>
+<code>systemctl start mongodb.service</code><br/>
+这样就启动了mongo，启动的配置文件是：<code>cat /etc/mongodb.conf</code><br/>
+然后退出到用户目录，运行mongo<br/>
+<code>~ ❯❯❯ mongo</code><br/>
+<code>/var/lib/mongodb/ 是Arch Linux 的 ** 默认dbpath**</code><br/>
+但是无法访问<br/>
+修改mongodb的用户组为自己的<br/>
+<code>chown mongodb:lonelyor mongodb</code></p>
+
+<p><code>mkdir /home/lonelyor/工作/mongodb</code><br/>
+<code>touch /home/lonelyor/工作/mongodb/data</code><br/>
+<code>touch /home/lonelyor/工作/mongodb/logs</code></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21 13:54 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15453714645346.html">
                 
                   <h1>linux安装配置aria2及其Web图形界面（debian为例）</h1>
@@ -353,65 +403,6 @@ access_log logs/aria2_access.log;
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15453712257423.html">
-                
-                  <h1>arch设置屏幕分辨率</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p><a href="https://wiki.archlinux.org/index.php/Xrandr_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">https://wiki.archlinux.org/index.php/Xrandr_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)</a></p>
-</blockquote>
-
-<p>1、先使用xrandr查看屏幕相关信息<br/>
-2、编辑/e/X/xorg.conf.d ❯❯❯ sudo nano 11-lonelyorx.conf (自己新建)<br/>
-结果我不怎么会写配置文件，导致写了都没法启动图形界面了，于是又删了，打算手动更改。<br/>
-3、<br/>
-xrandr查看当前设置 <br/>
-<code>cvt 1920 1080</code><br/>
-<code>cvt 2560 1440</code><br/>
-找到正确的参数 <br/>
-<code>xrandr --newmode &quot;1920x1080_60.00&quot;  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync</code><br/>
-<code>xrandr --newmode &quot;2560x1440_60.00&quot;  312.25  2560 2752 3024 3488  1440 1443 1448 1493 -hsync +vsync</code><br/>
-然后设置 <br/>
-<code>xrandr --addmode eDP1 1920x1080_60.00</code><br/>
-<code>xrandr --addmode HDMI1 2560x1440_60.00</code><br/>
-如果一且顺利的话，此时再查看xrandr命令，将发现最佳分辨率设置成功。 <br/>
-4、修改分辨率<br/>
-<code>xrandr --output eDP1 --mode 1920x1080_60.00</code><br/>
-<code>xrandr --output HDMI1 --mode 2560x1440_60.00</code></p>
-
-<p><code>xrandr --newmode &quot;1920x1080_60.00&quot;  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync</code><br/>
-<code>xrandr --addmode eDP1 1920x1080_60.00</code><br/>
-<code>xrandr --output eDP1 --mode 1920x1080_60.00</code></p>
-
-<p>这样屏幕分辨率就变成1080p了。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/21 13:47 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -496,6 +487,12 @@ xrandr查看当前设置 <br/>
 	      
 		      
 			      <li class="post">
+			        <a href="15470313638273.html">修改Mac主机名、计算机名</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15468702076334.html">使用python快速搭建ftp服务器</a>
 			      </li>
 		     
@@ -515,12 +512,6 @@ xrandr查看当前设置 <br/>
 		      
 			      <li class="post">
 			        <a href="15453757934453.html">css美化文章标题</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15453720146052.html">Pycharm编程遇到的技巧</a>
 			      </li>
 		     
 		  

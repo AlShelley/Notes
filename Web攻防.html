@@ -91,6 +91,10 @@
     <li><label>Categories</label></li>
 
         
+            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
+        
+            <li><a href="%E5%B9%BD%E6%A2%A6%E5%BD%B1.html">幽梦影</a></li>
+        
             <li><a href="Web%E6%94%BB%E9%98%B2.html">Web攻防</a></li>
         
             <li><a href="%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html">操作系统</a></li>
@@ -104,6 +108,8 @@
             <li><a href="%E6%B5%8F%E8%A7%88%E5%99%A8.html">浏览器</a></li>
         
             <li><a href="%E5%A5%87%E6%B7%AB%E5%B7%A7%E6%8A%80.html">奇淫巧技</a></li>
+        
+            <li><a href="%E9%A1%B5%E9%9D%A2.html">页面</a></li>
          
 
       </ul>
@@ -125,39 +131,6 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
-			<div class="article">
-                <a class="clearlink" href="15449531124166.html">
-                
-                  <h1>Markdown基础语法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>占坑，内容以后写</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/16 17:38 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%8A%80%E5%B7%A7.html'>技巧</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
 			<div class="article">
                 <a class="clearlink" href="15447676167973.html">
                 
@@ -444,6 +417,74 @@ https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGw
                 </div>
               </div><!-- article -->
         
+			<div class="article">
+                <a class="clearlink" href="15446892905759.html">
+                
+                  <h1>同源策略</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>摘自网络，出处忘了。</p>
+</blockquote>
+
+<p>同源策略（SOP，Same Origin Policy），两个页面的【协议】【域名】【端口】都相同，则两个页面具有相同的源，任何一个不同都是不同源的。<br/>
+举例：<br/>
+假设源是：<code>http://store.company.com/dir/page.html</code><br/>
+同源的是：<br/>
+<code>http://store.company.com/dir2/other.html</code><br/>
+<code>http://store.company.com/dir/inner/another.html</code><br/>
+不同源的是：<br/>
+<code>https://store.company.com/secure.html</code> 不同协议 ( https和http )<br/>
+<code>http://store.company.com:81/dir/etc.html</code> 不同端口 ( 81和80)<br/>
+<code>http://news.company.com/dir/other.html</code> 不同域名 ( news和store )</p>
+
+<h2 id="toc_0">同源策略控制内容</h2>
+
+<p><em>同源策略是禁止读取HTTP回复，并不会禁止脚本执行，也不会禁止HTTP请求，因此在防御CSRF上作用是非常有限的，因为CSRF在请求发出的时候就已经达到了攻击的目的。</em><br/>
+一般情况下，静态资源通常不受同源策略限制，如有js/css/jpg/png等。</p>
+
+<p>同源策略控制了不同源之间的交互，例如在使用<code>XMLHttpRequest</code>或<code>img</code>标签时则会受到同源策略的约束，这些交互通常分为三类。</p>
+
+<ul>
+<li>通常允许跨域写（Cross-origin writes），例如链接（links），重定向以及表单提交。少数特定的HTTP请求需要添加&quot;预检请求&quot;<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Preflighted_requests">preflight</a>如OPTIONS来查询可用的方法。</li>
+<li>通常允许跨域资源嵌入（Cross-origin embedding）</li>
+<li>通常 <strong>不允许</strong> 跨域读（Cross-origin reads），但常可以通过内嵌资源来巧妙的进行读取访问。例如可以读取嵌入图片的高度和宽度，调用内嵌脚本的方法，或<a href="https://www.grepular.com/Abusing_HTTP_Status_Codes_to_Expose_Private_Information">availability of an embedded resource</a></li>
+</ul>
+
+<p>下面是可能嵌入跨域资源的示例：<br/>
+<code>&lt;script src=&quot;...&quot;&gt;&lt;/script&gt;</code> 标签嵌入跨域脚本。语法错误信息只能在同源脚本中捕捉到。<br/>
+<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;...&quot;&gt;</code> 标签嵌入CSS。由于CSS的<a href="http://scarybeastsecurity.blogspot.dk/2009/12/generic-cross-browser-cross-domain.html">松散的语法规则</a>，CSS的跨域需要一个设置正确的Content-Type 消息头。不同浏览器有不同的限制： <a href="https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622939(v=vs.85)">IE</a>, <a href="https://www.mozilla.org/en-US/security/advisories/mfsa2010-46/">Firefox</a>, <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=9877">Chrome</a>, <a href="https://support.apple.com/zh-cn/HT4070">Safari</a> (跳至CVE-2010-0051)部分 和 <a href="https://security.opera.com/">Opera</a>。<br/>
+<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a>嵌入图片。支持的图片格式包括PNG,JPEG,GIF,BMP,SVG,...<br/>
+<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio"><code>&lt;audio&gt;</code></a>嵌入多媒体资源。<br/>
+<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object"><code>&lt;object&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed"><code>&lt;embed&gt;</code></a> 和 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/applet"><code>&lt;applet&gt;</code></a> 的插件。<br/>
+<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@font-face">@font-face</a> 引入的字体。一些浏览器允许跨域字体（ cross-origin fonts），一些需要同源字体（same-origin fonts）。<br/>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/frame"><code>&lt;frame&gt;</code></a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe"><code>&lt;iframe&gt;</code></a> 载入的任何资源。站点可以使用X-Frame-Options消息头来阻止这种形式的跨域交互。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13 16:21 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='xss%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC.html'>xss跨站脚本</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
               
 
 
@@ -499,6 +540,10 @@ https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGw
 
       	<p class="cat-list">
         
+            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
+        
+            <a href="%E5%B9%BD%E6%A2%A6%E5%BD%B1.html"><strong>幽梦影</strong></a>
+        
             <a href="Web%E6%94%BB%E9%98%B2.html"><strong>Web攻防</strong></a>
         
             <a href="%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html"><strong>操作系统</strong></a>
@@ -512,6 +557,8 @@ https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGw
             <a href="%E6%B5%8F%E8%A7%88%E5%99%A8.html"><strong>浏览器</strong></a>
         
             <a href="%E5%A5%87%E6%B7%AB%E5%B7%A7%E6%8A%80.html"><strong>奇淫巧技</strong></a>
+        
+            <a href="%E9%A1%B5%E9%9D%A2.html"><strong>页面</strong></a>
          
         </p>
 
@@ -528,31 +575,31 @@ https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGw
 	      
 		      
 			      <li class="post">
+			        <a href="15473537388156.html">彼岸</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15473527344022.html">惊鸿</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15473524859484.html">msf更新</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15473464131197.html">读 Monyer 文章有感</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15470313638273.html">修改Mac主机名、计算机名</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15468702076334.html">使用python快速搭建ftp服务器</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15457897865747.html">将网页保存为PDF</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15456175398128.html">自建kms服务器激活windows</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15453757934453.html">css美化文章标题</a>
 			      </li>
 		     
 		  

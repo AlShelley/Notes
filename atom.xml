@@ -4,13 +4,69 @@
   <title><![CDATA[lonelyorのblog]]></title>
   <link href="www.lonelyor.org/lonelyorNotes/atom.xml" rel="self"/>
   <link href="www.lonelyor.org/lonelyorNotes/"/>
-  <updated>2019-01-09T18:56:51+08:00</updated>
+  <updated>2019-01-13T12:34:44+08:00</updated>
   <id>www.lonelyor.org/lonelyorNotes/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[彼岸]]></title>
+    <link href="www.lonelyor.org/lonelyorNotes/15473537388156.html"/>
+    <updated>2019-01-13T12:28:58+08:00</updated>
+    <id>www.lonelyor.org/lonelyorNotes/15473537388156.html</id>
+    <content type="html"><![CDATA[
+<blockquote>
+<p>放一些收藏的东西<br/>
+<img src="media/15473537388156/53003270_p0.jpg" alt="53003270_p0"/></p>
+</blockquote>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[惊鸿]]></title>
+    <link href="www.lonelyor.org/lonelyorNotes/15473527344022.html"/>
+    <updated>2019-01-13T12:12:14+08:00</updated>
+    <id>www.lonelyor.org/lonelyorNotes/15473527344022.html</id>
+    <content type="html"><![CDATA[
+<blockquote>
+<p>唯音乐与美食不可辜负。<br/>
+<img src="media/15473527344022/308ab02001724b748644f923.jpg" alt="308ab02001724b748644f923"/></p>
+</blockquote>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[msf更新]]></title>
+    <link href="www.lonelyor.org/lonelyorNotes/15473524859484.html"/>
+    <updated>2019-01-13T12:08:05+08:00</updated>
+    <id>www.lonelyor.org/lonelyorNotes/15473524859484.html</id>
+    <content type="html"><![CDATA[
+<p>1、打开终端输入 msf 进入msfconsole<br/>
+2、在 msfconsole 中输入 msfupdate 即可自动更新</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[读 Monyer 文章有感]]></title>
+    <link href="www.lonelyor.org/lonelyorNotes/15473464131197.html"/>
+    <updated>2019-01-13T10:26:53+08:00</updated>
+    <id>www.lonelyor.org/lonelyorNotes/15473464131197.html</id>
+    <content type="html"><![CDATA[
+<p>1、黑客是一种兴趣爱好<br/>
+2、选行需谨慎，选前需要调研<br/>
+3、技术分化，很难再&quot;全栈&quot;，知识面扩宽的同时，需要抓重点精深。<br/>
+4、技术人员发展路线：技术输出阶段、经验输出阶段、思路输出阶段和决策输出阶段。<br/>
+5、学习永不停歇<br/>
+6、小游戏地址：<a href="http://monyer.com/game/game1/">http://monyer.com/game/game1/</a></p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[修改Mac主机名、计算机名]]></title>
@@ -744,100 +800,6 @@ sudo xargs rm -vr &lt; installed.txt
 python setup.py install --user --record installed.txt
 xargs rm -vr &lt; installed.txt
 </code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[backup系统备份工具介绍]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15453702906439.html"/>
-    <updated>2018-12-21T13:31:30+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15453702906439.html</id>
-    <content type="html"><![CDATA[
-<blockquote>
-<p>backup是一款强大的备份软件，用于系统备份、增量备份、远程备份，企业级。<br/>
-我还是当年使用debian时用过...这是以前的笔记，留一份在这好了。</p>
-</blockquote>
-
-<p>软件安装（debian 9）<br/>
-<code>apt-get install backuppc</code><br/>
-然后会弹窗：<br/>
-backuppc设定<br/>
-管理web地址：<br/>
-<code>http://lonelyor/backuppc</code><br/>
-<code>user：backuppc</code><br/>
-<code>passwd：u6oN2KE1</code><br/>
-可以通过运行<code>htpasswd /etc/backuppc/htpasswd</code>来修改密码<br/>
-这些信息要记住！</p>
-
-<p>安装后：<br/>
-<code>Creating config file /etc/backuppc/config.pl with new version（可以暂时忽略）</code></p>
-
-<p>然后运行：<br/>
-<code>systemctl restart apache2</code><br/>
-<code>/etc/init.d/backuppc restart</code></p>
-
-<p>接着就打开浏览器访问：<br/>
-<code>http://lonelyor/backuppc</code><br/>
-就能看到web管理界面了。<br/>
-如果进不去可以打开隐身模式或者清除cookie再试。</p>
-
-<p>官方安装文档：<code>http://backuppc.sourceforge.net/BackupPC-4.1.3.html#Installing-BackupPC</code></p>
-
-<p>参考文档：<br/>
-<code>http://server.zol.com.cn/513/5130348.html</code></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[VMware14秘钥]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15453702115650.html"/>
-    <updated>2018-12-21T13:30:11+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15453702115650.html</id>
-    <content type="html"><![CDATA[
-<p>CG54H-D8D0H-H8DHY-C6X7X-N2KG6<br/>
-ZC3WK-AFXEK-488JP-A7MQX-XL8YF<br/>
-AC5XK-0ZD4H-088HP-9NQZV-ZG2R4<br/>
-ZC5XK-A6E0M-080XQ-04ZZG-YF08D<br/>
-ZY5H0-D3Y8K-M89EZ-AYPEG-MYUA8<br/>
-FF590-2DX83-M81LZ-XDM7E-MKUT4</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[v2ray使用方法]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15453701535252.html"/>
-    <updated>2018-12-21T13:29:13+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15453701535252.html</id>
-    <content type="html"><![CDATA[
-<p>编辑 /etc/v2ray/config.json 文件来配置你需要的代理方式；</p>
-
-<p>运行 service v2ray start 来启动 V2Ray 进程；<br/>
-之后可以使用 service v2ray start|stop|status|reload|restart|force-reload 控制 V2Ray 的运行。</p>
-
-<p>v2ray官网：<br/>
-<a href="https://www.v2ray.com/chapter_00/install.html">https://www.v2ray.com/chapter_00/install.html</a><br/>
-v2ray一键安装：<br/>
-bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.direct/go.sh</a>)</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[使用ssh科学上网]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15453699439742.html"/>
-    <updated>2018-12-21T13:25:43+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15453699439742.html</id>
-    <content type="html"><![CDATA[
-<p>打开终端输入：<br/>
- <code>ssh -D 1085 -p 6754 root@xx.xx.xx.xx</code><br/>
- 然后输入密码即可。xx即远程服务器ip。<br/>
- 这意味着本地1085端口被转发到了远程服务器的6754上，然后在浏览器配置socks5代理：127.0.0.1 1085<br/>
- 就可以科学上网了。</p>
-
-<p>如果不稳定，可以考虑使用autossh。</p>
 
 ]]></content>
   </entry>

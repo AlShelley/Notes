@@ -91,6 +91,10 @@
     <li><label>Categories</label></li>
 
         
+            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
+        
+            <li><a href="%E5%B9%BD%E6%A2%A6%E5%BD%B1.html">幽梦影</a></li>
+        
             <li><a href="Web%E6%94%BB%E9%98%B2.html">Web攻防</a></li>
         
             <li><a href="%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html">操作系统</a></li>
@@ -104,6 +108,8 @@
             <li><a href="%E6%B5%8F%E8%A7%88%E5%99%A8.html">浏览器</a></li>
         
             <li><a href="%E5%A5%87%E6%B7%AB%E5%B7%A7%E6%8A%80.html">奇淫巧技</a></li>
+        
+            <li><a href="%E9%A1%B5%E9%9D%A2.html">页面</a></li>
          
 
       </ul>
@@ -126,46 +132,22 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15453704835251.html">
+                <a class="clearlink" href="15453709108643.html">
                 
-                  <h1>fluxgui安装与卸载</h1>
+                  <h1>python弱口令脚本的一点备注</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>很久以前的笔记了</p>
+<p>很久以前写的</p>
 </blockquote>
 
-<pre class="line-numbers"><code class="language-text">Ubuntu/Debian Manual Install
-# Install dependencies
-sudo apt-get install git python-appindicator python-xdg python-pexpect python-gconf python-gtk2 python-glade2 libxxf86vm1
-
-# Download fluxgui
-cd /tmp
-git clone &quot;https://github.com/xflux-gui/fluxgui.git&quot;
-cd fluxgui
-python download-xflux.py
-
-# EITHER install globally
-sudo python setup.py install
-# EXCLUSIVE OR, install in your home directory. The binary installs
-# into ~/.local/bin, so be sure to add that to your PATH if installing locally.
-python setup.py install --user
-
-# Run flux
-fluxgui
-Ubuntu/Debian Manual Uninstall
-If you manually installed instead of using the PPA, you can uninstall by making setup.py tell you where it installed files and then removing the installed files.
-
-# EITHER uninstall globally
-sudo python setup.py install --record installed.txt
-sudo xargs rm -vr &lt; installed.txt
-
-# EXCLUSIVE OR uinstall in your home directory
-python setup.py install --user --record installed.txt
-xargs rm -vr &lt; installed.txt
-</code></pre>
+<p>跑弱口令的脚本<br/>
+不要使用字典这种操作，这不利于跑大量数据的场景。<br/>
+应该制定规则去跑，比如：<br/>
+取出一个用户名，然后根据规则生成弱口令，然后再去匹配用户名对应的密码，匹配则是弱口令，不匹配则不是弱口令。<br/>
+这样可以后续变成一个服务，用户输入密码，触发了规则则告诉他密码是弱口令。</p>
 
                         
                       </div>
@@ -174,7 +156,46 @@ xargs rm -vr &lt; installed.txt
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 13:34 下午</span>
+                    <span class="date">2018/12/21 13:41 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Python.html'>Python</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15453707290429.html">
+                
+                  <h1>msf安装与维护</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><code>curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb &gt; msfinstall &amp;&amp; \<br/>
+  chmod 755 msfinstall &amp;&amp; \<br/>
+  ./msfinstall</code></p>
+
+<p>上面是官方提供的一键安装脚本</p>
+
+<p>使用msfupdate可以进行更新</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21 13:38 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
@@ -191,45 +212,18 @@ xargs rm -vr &lt; installed.txt
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15453702906439.html">
+                <a class="clearlink" href="15453706658952.html">
                 
-                  <h1>backup系统备份工具介绍</h1>
+                  <h1>查看端口占用</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>backup是一款强大的备份软件，用于系统备份、增量备份、远程备份，企业级。<br/>
-我还是当年使用debian时用过...这是以前的笔记，留一份在这好了。</p>
-</blockquote>
-
-<p>软件安装（debian 9）<br/>
-<code>apt-get install backuppc</code><br/>
-然后会弹窗：<br/>
-backuppc设定<br/>
-管理web地址：<br/>
-<code>http://lonelyor/backuppc</code><br/>
-<code>user：backuppc</code><br/>
-<code>passwd：u6oN2KE1</code><br/>
-可以通过运行<code>htpasswd /etc/backuppc/htpasswd</code>来修改密码<br/>
-这些信息要记住！</p>
-
-<p>安装后：<br/>
-<code>Creating config file /etc/backuppc/config.pl with new version（可以暂时忽略）</code></p>
-
-<p>然后运行：<br/>
-<code>systemctl restart apache2</code><br/>
-<code>/etc/init.d/backuppc restart</code></p>
-
-<p>接着就打开浏览器访问：<br/>
-<code>http://lonelyor/backuppc</code><br/>
-就能看到web管理界面了。<br/>
-如果进不去可以打开隐身模式或者清除cookie再试。</p>
-
-<p>官方安装文档：<code>http://backuppc.sourceforge.net/BackupPC-4.1.3.html#Installing-BackupPC</code></p>
-
-<p>参考文档：<br/>
-<code>http://server.zol.com.cn/513/5130348.html</code></p>
+                        	<p>使用命令：<br/>
+<code>lsof -i:8000</code><br/>
+或<br/>
+<code>netstat -tunlp|grep 8000</code><br/>
+均可。</p>
 
                         
                       </div>
@@ -238,48 +232,10 @@ backuppc设定<br/>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 13:31 下午</span>
+                    <span class="date">2018/12/21 13:37 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15453702115650.html">
-                
-                  <h1>VMware14秘钥</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>CG54H-D8D0H-H8DHY-C6X7X-N2KG6<br/>
-ZC3WK-AFXEK-488JP-A7MQX-XL8YF<br/>
-AC5XK-0ZD4H-088HP-9NQZV-ZG2R4<br/>
-ZC5XK-A6E0M-080XQ-04ZZG-YF08D<br/>
-ZY5H0-D3Y8K-M89EZ-AYPEG-MYUA8<br/>
-FF590-2DX83-M81LZ-XDM7E-MKUT4</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/21 13:30 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%A5%87%E6%B7%AB%E5%B7%A7%E6%8A%80.html'>奇淫巧技</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -347,6 +303,10 @@ FF590-2DX83-M81LZ-XDM7E-MKUT4</p>
 
       	<p class="cat-list">
         
+            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
+        
+            <a href="%E5%B9%BD%E6%A2%A6%E5%BD%B1.html"><strong>幽梦影</strong></a>
+        
             <a href="Web%E6%94%BB%E9%98%B2.html"><strong>Web攻防</strong></a>
         
             <a href="%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html"><strong>操作系统</strong></a>
@@ -360,6 +320,8 @@ FF590-2DX83-M81LZ-XDM7E-MKUT4</p>
             <a href="%E6%B5%8F%E8%A7%88%E5%99%A8.html"><strong>浏览器</strong></a>
         
             <a href="%E5%A5%87%E6%B7%AB%E5%B7%A7%E6%8A%80.html"><strong>奇淫巧技</strong></a>
+        
+            <a href="%E9%A1%B5%E9%9D%A2.html"><strong>页面</strong></a>
          
         </p>
 
@@ -376,31 +338,31 @@ FF590-2DX83-M81LZ-XDM7E-MKUT4</p>
 	      
 		      
 			      <li class="post">
+			        <a href="15473537388156.html">彼岸</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15473527344022.html">惊鸿</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15473524859484.html">msf更新</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15473464131197.html">读 Monyer 文章有感</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15470313638273.html">修改Mac主机名、计算机名</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15468702076334.html">使用python快速搭建ftp服务器</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15457897865747.html">将网页保存为PDF</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15456175398128.html">自建kms服务器激活windows</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15453757934453.html">css美化文章标题</a>
 			      </li>
 		     
 		  

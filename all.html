@@ -115,7 +115,7 @@
         
             <li><a href="%E6%B5%8F%E8%A7%88%E5%99%A8.html">浏览器</a></li>
         
-            <li><a href="%E5%A5%87%E6%B7%AB%E5%B7%A7%E6%8A%80.html">奇淫巧技</a></li>
+            <li><a href="%E6%9C%AA%E5%88%86%E7%B1%BB.html">未分类</a></li>
          
 
       </ul>
@@ -138,6 +138,110 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15473910152747.html">
+                
+                  <h1>给网站嵌入百度搜索框</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>只需要在 htm 页面中嵌入以下代码即可：</p>
+
+<pre class="line-numbers"><code class="language-markup"> &lt;div style=&#39;overflow:hidden&#39;&gt;
+        &lt;form onsubmit=&quot;return baiduWithHttps(this)&quot; action=&quot;http://www.baidu.com/s&quot; target=&quot;_blank&quot;&gt;
+        &lt;input class=&#39;bdtext&#39; type=&quot;text&quot;  onfocus=&quot;checkHttps&quot; name=&quot;wd&quot;  size=&quot;30&quot;&gt;
+        &lt;input class=&#39;bdbtn&#39; type=&quot;submit&quot;value=&quot;百度搜索&quot;&gt;
+        &lt;/form&gt;
+        &lt;script&gt;
+            function checkHttps () {
+                BaiduHttps.useHttps();    
+            };
+            function baiduWithHttps (formname) {
+                var data = BaiduHttps.useHttps();
+                if (data.s === 0) {
+                    return true;
+                }
+                else {
+                    formname.action = &#39;https://www.baidu.com/s&#39; + &#39;?wd&#39; + data.ssl_code;
+                    return true;
+                }
+            };
+        &lt;/script&gt; 
+    &lt;/div&gt;
+</code></pre>
+
+<p>效果如下：<br/>
+<img src="media/15473910152747/%E5%B5%8C%E5%85%A5%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2.png" alt="嵌入百度搜索"/><br/>
+觉得不好看的可以自行加入 css 改变样式，我觉得就这样还蛮好看的。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/13 22:50 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15473903423452.html">
+                
+                  <h1>vscode 快速生成 html 代码</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>参考的博客如下：<br/>
+<a href="https://blog.csdn.net/weixin_42659625/article/details/82941394">https://blog.csdn.net/weixin_42659625/article/details/82941394</a><br/>
+图是直接复制的别人博客的图</p>
+</blockquote>
+
+<p>1、首先创建一个 html 文件如：index.html<br/>
+2、在编辑器中输入感叹号（！）<br/>
+3、此时会弹出下拉项，直接在感叹号❗️上回车即可。<br/>
+<img src="media/15473903423452/15473904287496.jpg" alt=""/><br/>
+4、自动生成的html 代码如下：<br/>
+<img src="media/15473903423452/15473904546232.jpg" alt=""/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/13 22:39 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15473524859484.html">
                 
                   <h1>msf更新</h1>
@@ -159,85 +263,6 @@
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15473464131197.html">
-                
-                  <h1>读 Monyer 文章有感</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>1、黑客是一种兴趣爱好<br/>
-2、选行需谨慎，选前需要调研<br/>
-3、技术分化，很难再&quot;全栈&quot;，知识面扩宽的同时，需要抓重点精深。<br/>
-4、技术人员发展路线：技术输出阶段、经验输出阶段、思路输出阶段和决策输出阶段。<br/>
-5、学习永不停歇<br/>
-6、小游戏地址：<a href="http://monyer.com/game/game1/">http://monyer.com/game/game1/</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/13 10:26 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B9%BD%E6%A2%A6%E5%BD%B1.html'>幽梦影</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15470313638273.html">
-                
-                  <h1>修改Mac主机名、计算机名</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><code>$sudo scutil --set ComputerName 你想要的计算机名称</code><br/>
-<code>$sudo scutil --set HostName 你想要的主机名称</code></p>
-
-<p>举例：<br/>
-<code>$sudo scutil --set HostName lonelyor</code></p>
-
-<p>使用以下命令查看主机名或计算机名<br/>
-<code>$ scutil --get ComputerName</code><br/>
-<code>$ scutil --get HostName</code></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/9 18:56 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='MacOSX.html'>MacOSX</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -321,7 +346,7 @@
         
             <a href="%E6%B5%8F%E8%A7%88%E5%99%A8.html"><strong>浏览器</strong></a>
         
-            <a href="%E5%A5%87%E6%B7%AB%E5%B7%A7%E6%8A%80.html"><strong>奇淫巧技</strong></a>
+            <a href="%E6%9C%AA%E5%88%86%E7%B1%BB.html"><strong>未分类</strong></a>
          
         </p>
 
@@ -338,6 +363,18 @@
 	      
 		      
 			      <li class="post">
+			        <a href="15473910152747.html">给网站嵌入百度搜索框</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15473903423452.html">vscode 快速生成 html 代码</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15473524859484.html">msf更新</a>
 			      </li>
 		     
@@ -351,18 +388,6 @@
 		      
 			      <li class="post">
 			        <a href="15470313638273.html">修改Mac主机名、计算机名</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15468702076334.html">使用python快速搭建ftp服务器</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15457897865747.html">将网页保存为PDF</a>
 			      </li>
 		     
 		  

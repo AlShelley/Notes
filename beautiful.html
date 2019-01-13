@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="asset/img/favicon.ico" type="images/x-icon"/>
     <title>
     
-  HttpOnly - lonelyorのblog
+  惊鸿 - lonelyorのblog
   
   </title>
   
@@ -129,221 +129,26 @@
        
 
  <script type="text/javascript">
-  $(function(){
-    $('#menu_item_index').addClass('is_active');
-  });
+	$(function(){
+		var currentURL = 'beautiful.html';
+		currentURL = currentURL.substr(0,currentURL.length-5);
+		$('#menu_item_'+currentURL).addClass('is_active');
+	});
 </script>
 <div class="row">
-  <div class="large-8 medium-8 columns">
-      <div class="markdown-body article-wrap">
-       <div class="article">
-          
-          <h1>HttpOnly</h1>
-     
-        <div class="read-more clearfix">
-          <span class="date">2018/11/28 11:27 上午</span>
 
-          <span>posted in&nbsp;</span> 
-          
-              <span class="posted-in"><a href='xss%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC.html'>xss跨站脚本</a></span>
-           
-         
-          <span class="comments">
-            
+    <div id="single-page-wrap">
+        <h1>惊鸿</h1>
 
-            
-          </span>
-
-        </div>
-      </div><!-- article -->
-
-      <div class="article-content">
-      <p>HttpOnly是 Set-Cookie HTTP响应头中包含的附加标志。生成cookie时使用httponly标志有助于降低客户端脚本访问受保护cookie的风险。</p>
-
-<p>如果HTTP响应头中包含HttpOnly标志，则无法通过客户端脚本访问cookie。因此即使存在xss跨站脚本漏洞，并且用户意外访问到恶意链接，浏览器也不会向第三方透露cookie（前提是浏览器支持HttpOnly）。</p>
-
-<p>参考链接：</p>
-
-<blockquote>
-<p><a href="https://www.owasp.org/index.php/HttpOnly">https://www.owasp.org/index.php/HttpOnly</a></p>
+        <div class="markdown-body post-page">
+        <blockquote>
+<p>唯音乐与美食不可辜负。<br/>
+<img src="media/15473527344022/308ab02001724b748644f923.jpg" alt="308ab02001724b748644f923"/></p>
 </blockquote>
 
-
-    
-
-      </div>
-
-      <div class="row">
-        <div class="large-6 columns">
-        <p class="text-left" style="padding:15px 0px;">
-      
-          <a href="15433875205785.html" 
-          title="Previous Post: BASIC INJECTION 基本注入">&laquo; BASIC INJECTION 基本注入</a>
-      
-        </p>
         </div>
-        <div class="large-6 columns">
-      <p class="text-right" style="padding:15px 0px;">
-      
-          <a  href="15428715286450.html" 
-          title="Next Post: windows右键添加管理员获得所有权">windows右键添加管理员获得所有权 &raquo;</a>
-      
-      </p>
-        </div>
-      </div>
-      <div class="comments-wrap">
-        <div class="share-comments">
-          
-
-          
-
-          
-        </div>
-      </div>
-    </div><!-- article-wrap -->
-  </div><!-- large 8 -->
-
-
-  <link rel="bookmark" href="http://images.lonelyor.org/favicon.ico" />
-  <link rel="shortcut icon" href="http://images.lonelyor.org/favicon.ico" />
-  <script id="dsq-count-scr" src="//lonelyor.disqus.com/count.js" async></script>
- <div class="large-4 medium-4 columns">
-  <div class="hide-for-small">
-    <div id="sidebar" class="sidebar">
-          <div id="site-info" class="site-info">
-            
-              <div class="site-a-logo"><img src="http://images.lonelyor.org/lonelyornotesico.jpeg" /></div>
-            
-          </br>
-                <h1>lonelyorのblog</h1>
-                <div class="site-des">一个用来记录学习笔记的网站</div>
-                <div class="social">
-
-
-
-
-
-
-
-
-
-<a target="_blank" class="github" target="_blank" href="https://github.com/AlShelley/lonelyorNotes" title="GitHub">GitHub</a>
-<a target="_blank" class="email" href="mailto:lonelyor.org@gmail.com" title="Email">Email</a>
-  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
-                
-              	 </div>
-          	</div>
-
-             
-
-              <div id="site-categories" class="side-item ">
-                <div class="side-header">
-                  <h2>分类</h2>
-                </div>
-                <div class="side-content">
-
-      	<p class="cat-list">
-        
-            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
-        
-            <a href="%E5%B9%BD%E6%A2%A6%E5%BD%B1.html"><strong>幽梦影</strong></a>
-        
-            <a href="Web%E6%94%BB%E9%98%B2.html"><strong>Web攻防</strong></a>
-        
-            <a href="%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html"><strong>操作系统</strong></a>
-        
-            <a href="%E8%99%9A%E6%8B%9F%E5%AE%9E%E9%AA%8C%E5%AE%A4.html"><strong>虚拟实验室</strong></a>
-        
-            <a href="CTF.html"><strong>CTF</strong></a>
-        
-            <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
-        
-            <a href="%E6%B5%8F%E8%A7%88%E5%99%A8.html"><strong>浏览器</strong></a>
-        
-            <a href="%E5%A5%87%E6%B7%AB%E5%B7%A7%E6%8A%80.html"><strong>奇淫巧技</strong></a>
-         
-        </p>
-
-
-                </div>
-              </div>
-
-              <div id="site-categories" class="side-item">
-                <div class="side-header">
-                  <h2>最新文章</h2>
-                </div>
-                <div class="side-content">
-                <ul class="posts-list">
-	      
-		      
-			      <li class="post">
-			        <a href="15473524859484.html">msf更新</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15473464131197.html">读 Monyer 文章有感</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15470313638273.html">修改Mac主机名、计算机名</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15468702076334.html">使用python快速搭建ftp服务器</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15457897865747.html">将网页保存为PDF</a>
-			      </li>
-		     
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		   
-		  		</ul>
-                </div>
-              </div>
-        </div><!-- sidebar -->
-      </div><!-- hide for small -->
-</div><!-- large 4 -->
-
-</div><!-- row -->
-
+    </div>
+</div>              
  <div class="page-bottom clearfix">
   <div class="row">
    <p class="copyright">Copyright &copy; 2018

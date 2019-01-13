@@ -50,6 +50,10 @@
         
         <li id=""><a target="_self" href="archives.html">归档</a></li>
         
+        <li id=""><a target="_self" href="collect">彼岸</a></li>
+        
+        <li id=""><a target="_self" href="beautiful">惊鸿</a></li>
+        
         <li id=""><a target="_self" href="lost.html">失乐园</a></li>
         
         <li id=""><a target="_self" href="about.html">关于</a></li>
@@ -83,6 +87,10 @@
         
         <li><a target="_self" href="archives.html">归档</a></li>
         
+        <li><a target="_self" href="collect">彼岸</a></li>
+        
+        <li><a target="_self" href="beautiful">惊鸿</a></li>
+        
         <li><a target="_self" href="lost.html">失乐园</a></li>
         
         <li><a target="_self" href="about.html">关于</a></li>
@@ -108,8 +116,6 @@
             <li><a href="%E6%B5%8F%E8%A7%88%E5%99%A8.html">浏览器</a></li>
         
             <li><a href="%E5%A5%87%E6%B7%AB%E5%B7%A7%E6%8A%80.html">奇淫巧技</a></li>
-        
-            <li><a href="%E9%A1%B5%E9%9D%A2.html">页面</a></li>
          
 
       </ul>
@@ -131,124 +137,6 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
-			<div class="article">
-                <a class="clearlink" href="15453720146052.html">
-                
-                  <h1>Pycharm编程遇到的技巧</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">pycharm技巧</h2>
-
-<p>ctrl+z 撤回<br/>
-全部选中然后tab是全部缩进<br/>
-全部选中然后shift+tab是全部反缩进</p>
-
-<h2 id="toc_1">编程技巧</h2>
-
-<p>dir()    #输出函数包含的方法<br/>
-type() #输出类型</p>
-
-<p>更多技巧可以查阅官方文档的使用帮助。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/21 14:0 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15453717965995.html">
-                
-                  <h1>npm Cannot find module 'semver' --解决方案</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p><a href="https://blog.csdn.net/hanshuonb/article/details/77969080">https://blog.csdn.net/hanshuonb/article/details/77969080</a></p>
-</blockquote>
-
-<p>度娘上面我没有找到相关的解决方法所以只能去Stack Overflow上寻找答案，找到的结果是这样的：</p>
-
-<pre class="line-numbers"><code class="language-text">sudo rm -rf /usr/local/lib/node_modules
-sudo rm -rf ~/.npm
-brew uninstall --force node
-brew install node
-</code></pre>
-
-<p>上面命令的意思删除所有全局包和.npm文件夹，重新安装node。 <br/>
-这种方法我没试过，因为肯定有很多小伙伴安装了除npm之外的全局包比如express、webpack等等，如果不考虑清楚直接全删了的话。。。后果惨不忍睹。。。(ps:因为本人英语实在不好，所以经常直接傻瓜式粘命令，提醒小伙伴们最好粘命令之前去查查是什么意思，否则出了问题有可能都没法回退。。。)</p>
-
-<p>说了这么多，下面切入正题 <br/>
-首先需要知道为啥有报这个错，可以到全局的npm包看一下，路径是</p>
-
-<p><code>/usr/local/lib/node_modules/npm</code><br/>
-进入npm的node_modules中的semver文件夹可以看到里面变成空的了！具体的原因不好意思我没有深究，但是我觉得一定和yarn是有关系的。不仅如此，你会看到其他的文件夹也基本都是变成空的了，这下咱们就知道为啥报semver这个module找不到了吧！</p>
-
-<p>网上还有解决方法是说用 <code>npm unintall npm -g</code> 删除npm包，实测不好使。。。npm所有的命令都不行了 uninstall肯定也不行了啊！！！</p>
-
-<h2 id="toc_0">我的解决方法：</h2>
-
-<p>1.先删除全局的npm包：也就是把刚才提到的<code>/usr/local/lib/node_modules/npm</code>，这个npm文件夹删除掉 <br/>
-2.回到<code>/usr/local/lib/node_modules</code>这个目录，从GitHub上重新clone下git包 <br/>
-终端:<br/>
-<code>git clone --recursive git://github.com/isaacs/npm.git</code><br/>
-这样新的npm包就回到了全局node_modules中 <br/>
-3.打开终端输入<br/>
-<code>npm -v</code><br/>
-看一下npm是否可以打印出版本号，如果可以，npm就可以正常使用啦！</p>
-
-<p>说白了就是：</p>
-
-<pre class="line-numbers"><code class="language-text">rm -rf /usr/local/lib/node_modules/npm
-cd /usr/local/lib/node_modules
-git clone --recursive git://github.com/isaacs/npm.git`
-</code></pre>
-
-<p>搞定</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/21 13:56 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
 			<div class="article">
                 <a class="clearlink" href="15453716917526.html">
                 
@@ -284,6 +172,234 @@ git clone --recursive git://github.com/isaacs/npm.git`
                   <div class="more-left left">
                   
                     <span class="date">2018/12/21 13:54 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15453714645346.html">
+                
+                  <h1>linux安装配置aria2及其Web图形界面（debian为例）</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>下载aria2：apt-get install aria2<br/>
+创建配置文件：mkdir /etc/aria2_conf/aria2.conf<br/>
+编辑配置文件：nano /etc/aria2_conf/aria2.conf</p>
+
+<p>aria2.conf配置：</p>
+
+<pre class="line-numbers"><code class="language-text">#用户名
+#rpc-user=user
+#密码
+#rpc-passwd=passwd
+#上面的认证方式不建议使用,建议使用下面的token方式
+#设置加密的密钥
+rpc-secret=token
+#允许rpc
+enable-rpc=true
+#允许所有来源, web界面跨域权限需要
+rpc-allow-origin-all=true
+#允许外部访问，false的话只监听本地端口
+rpc-listen-all=true
+#RPC端口, 仅当默认端口被占用时修改
+rpc-listen-port=6800
+#最大同时下载数(任务数), 路由建议值: 3
+max-concurrent-downloads=5
+#断点续传
+continue=true
+#同服务器连接数
+max-connection-per-server=5
+#最小文件分片大小, 下载线程数上限取决于能分出多少片, 对于小文件重要
+min-split-size=10M
+#单文件最大线程数, 路由建议值: 5
+split=10
+#下载速度限制
+max-overall-download-limit=0
+#单文件速度限制
+max-download-limit=0
+#上传速度限制
+max-overall-upload-limit=0
+#单文件速度限制
+max-upload-limit=0
+#断开速度过慢的连接
+#lowest-speed-limit=0
+#验证用，需要1.16.1之后的release版本
+#referer=*
+#文件保存路径, 默认为当前启动位置
+dir=/root/downloads
+#文件缓存, 使用内置的文件缓存, 如果你不相信Linux内核文件缓存和磁盘内置缓存时使用, 需要1.16及以上版本
+#disk-cache=0
+#另一种Linux文件缓存方式, 使用前确保您使用的内核支持此选项, 需要1.15及以上版本(?)
+#enable-mmap=true
+#文件预分配, 能有效降低文件碎片, 提高磁盘性能. 缺点是预分配时间较长
+#所需时间 none &lt; falloc ? trunc &lt;&lt; prealloc, falloc和trunc需要文件系统和内核支持
+file-allocation=prealloc
+</code></pre>
+
+<p>然后配置开机启动：<br/>
+<code>nano /etc/init.d/aria2</code></p>
+
+<pre class="line-numbers"><code class="language-text">#!/bin/bash
+#
+# aria2 - this script starts and stops the aria2 daemon
+#
+# chkconfig:   - 85 15
+# description: Aria2 - Download Manager
+# processname: aria2c
+# config:      /etc/aria2/aria2.conf
+# pidfile:
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+# Check that networking is up.
+[ &quot;$NETWORKING&quot; = &quot;no&quot; ] &amp;&amp; exit 0
+
+aria2c=&quot;/usr/bin/aria2c&quot;
+ARIA2C_CONF_FILE=&quot;/etc/aria2/aria2.conf&quot;
+options=&quot; --conf-path=$ARIA2C_CONF_FILE -D &quot;
+
+RETVAL=0
+
+start() {
+    # code here to start the program
+    echo -n &quot;Starting aria2c daemon.&quot;
+    ${aria2c} ${options}
+    RETVAL=$?
+    echo
+}
+
+stop() {
+    echo -n &quot;Shutting down aria2c daemon.&quot;
+    /usr/bin/killall aria2c
+    RETVAL=$?
+    echo
+}
+
+status() {
+    ID=$(/bin/ps -ef | grep &#39;aria2c&#39; | grep -v &#39;grep&#39; | awk &#39;{print $2}&#39;)
+    if [[ &quot;x$ID&quot; != &quot;x&quot; ]]; then
+            echo &quot;Aria2 is running.&quot;
+    else
+            echo &quot;Aria2 is not running.&quot;
+    fi
+}
+
+restart() {
+    stop
+    sleep 3
+    start
+}
+
+case &quot;$1&quot; in
+    start)
+            start
+            ;;
+    stop)
+            stop
+            ;;
+    status)
+            status
+            ;;
+    restart)
+            restart
+            ;;
+    *)
+            echo &quot;Usage: service aria2c {start|stop|restart}&quot;
+            RETVAL=1
+esac
+
+exit $RETVAL
+</code></pre>
+
+<p>使用以下命令来立即启动 Aria2：</p>
+
+<p><code>/usr/bin/aria2c --conf-path=/etc/aria2_conf/aria2.conf -D</code></p>
+
+<p>保存之后配置 WebUI，首先开启 Web 服务，然后安装 WebUI 到指定目录，比如我的目录是/opt/aria2webUI/<br/>
+<code>git clone https://github.com/ziahamza/webui-aria2.git</code><br/>
+这样就下载了 WebUI，然后用 nginx 反代这个文件就ok了。</p>
+
+<p>nginx(/etc/nginx/conf.d/aria2.conf)配置文件如下：</p>
+
+<pre class="line-numbers"><code class="language-text">aria2.conf
+
+server
+{
+listen 80;
+server_name aria2.lonelyor.org;
+location / {
+    root /opt/aria2webUI/;
+}
+access_log logs/aria2_access.log;
+}
+</code></pre>
+
+<p>然后打开浏览器访问 aria2.lonelyor.org 就可以了。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21 13:51 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15453713553710.html">
+                
+                  <h1>linux下搜狗输入法不能用的解决办法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>删除<br/>
+<code>～/config</code><br/>
+下的<br/>
+<code>sogou-qimpanel</code><br/>
+<code>SogouPY</code><br/>
+<code>SogouPY.users</code><br/>
+这三个文件夹，然后重启。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21 13:49 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
@@ -371,8 +487,6 @@ git clone --recursive git://github.com/isaacs/npm.git`
             <a href="%E6%B5%8F%E8%A7%88%E5%99%A8.html"><strong>浏览器</strong></a>
         
             <a href="%E5%A5%87%E6%B7%AB%E5%B7%A7%E6%8A%80.html"><strong>奇淫巧技</strong></a>
-        
-            <a href="%E9%A1%B5%E9%9D%A2.html"><strong>页面</strong></a>
          
         </p>
 
@@ -389,18 +503,6 @@ git clone --recursive git://github.com/isaacs/npm.git`
 	      
 		      
 			      <li class="post">
-			        <a href="15473537388156.html">彼岸</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15473527344022.html">惊鸿</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="15473524859484.html">msf更新</a>
 			      </li>
 		     
@@ -414,6 +516,18 @@ git clone --recursive git://github.com/isaacs/npm.git`
 		      
 			      <li class="post">
 			        <a href="15470313638273.html">修改Mac主机名、计算机名</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15468702076334.html">使用python快速搭建ftp服务器</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15457897865747.html">将网页保存为PDF</a>
 			      </li>
 		     
 		  

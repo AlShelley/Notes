@@ -50,6 +50,8 @@
         
         <li id=""><a target="_self" href="archives.html">归档</a></li>
         
+        <li id=""><a target="_self" href="beidou.html">北斗</a></li>
+        
         <li id=""><a target="_self" href="collect">彼岸</a></li>
         
         <li id=""><a target="_self" href="beautiful">惊鸿</a></li>
@@ -86,6 +88,8 @@
         <li><a target="_self" href="index.html">主页</a></li>
         
         <li><a target="_self" href="archives.html">归档</a></li>
+        
+        <li><a target="_self" href="beidou.html">北斗</a></li>
         
         <li><a target="_self" href="collect">彼岸</a></li>
         
@@ -146,28 +150,6 @@
 </blockquote>
 
 <p><img src="media/15473537388156/53003270_p0.jpg" alt="53003270_p0"/></p>
-
-<p><div style='overflow:hidden'><br/>
-        <form onsubmit="return baiduWithHttps(this)" action="http://www.baidu.com/s" target="_blank"><br/>
-        <input class='bdtext' type="text"  onfocus="checkHttps" name="wd"  size="30"><br/>
-        <input class='bdbtn' type="submit"value="百度搜索"><br/>
-        </form><br/>
-        <script><br/>
-            function checkHttps () {<br/>
-                BaiduHttps.useHttps();<br/><br/>
-            };<br/>
-            function baiduWithHttps (formname) {<br/>
-                var data = BaiduHttps.useHttps();<br/>
-                if (data.s === 0) {<br/>
-                    return true;<br/>
-                }<br/>
-                else {<br/>
-                    formname.action = &#39;<a href="https://www.baidu.com/s">https://www.baidu.com/s</a>&#39; + &#39;?wd&#39; + data.ssl_code;<br/>
-                    return true;<br/>
-                }<br/>
-            };<br/>
-        </script> <br/>
-    </div></p>
 
         </div>
     </div>

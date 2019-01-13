@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
   <loc>www.lonelyor.org/lonelyorNotes/</loc>
-  <lastmod>2019-01-13T22:55:30+08:00</lastmod>
+  <lastmod>2019-01-13T23:02:43+08:00</lastmod>
 </url>
 
 <url>
@@ -323,7 +323,12 @@
 
 <url>
   <loc>www.lonelyor.org/lonelyorNotes/collect.html</loc>
-  <lastmod>2019-01-13T22:55:24+08:00</lastmod>
+  <lastmod>2019-01-13T23:00:41+08:00</lastmod>
+</url>
+
+<url>
+  <loc>www.lonelyor.org/lonelyorNotes/beidou.html</loc>
+  <lastmod>2019-01-13T23:01:07+08:00</lastmod>
 </url>
 
 

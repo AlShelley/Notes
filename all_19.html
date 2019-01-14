@@ -107,6 +107,8 @@
         
             <li><a href="%E5%B9%BD%E6%A2%A6%E5%BD%B1.html">幽梦影</a></li>
         
+            <li><a href="%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90.html">数据分析</a></li>
+        
             <li><a href="Web%E6%94%BB%E9%98%B2.html">Web攻防</a></li>
         
             <li><a href="%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html">操作系统</a></li>
@@ -141,6 +143,132 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15428712896668.html">
+                
+                  <h1>CRLF注入</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>文章翻译自OWASP的<a href="https://www.owasp.org/index.php/CRLF_Injection">CRLF_Injection</a></p>
+</blockquote>
+
+<p>CRLF即回车Carriage Return (ASCII 13, \r) 和 换行 Line Feed (ASCII 10, \n)。他们被用于注释掉一行的终止。不过不同系统的处理方式有点不同。windows中，CR和LF都被用于注释掉一行的结尾，而linux/unix中只需要一个LF。在HTTP协议中，CRLF序列始终用于一行的终止。<br/>
+当用户设法将CRLF提交到应用程序时，可能发生CRLF注入攻击，这通常是通过修改HTTP参数或URL来完成。</p>
+
+<p>CRLF注入可能产生这样的问题：</p>
+
+<ul>
+<li>HTTP响应拆分</li>
+<li>日志注入<br/>
+## HTTP响应拆分<br/>
+通常，当出现以下情况时会发生HTTP响应拆分</li>
+<li>数据通过不受信任的来源进入Web应用程序，如HTTP请求。</li>
+<li>数据包含在发送给Web用户的HTTP响应标头中，而不会对恶意字符进行验证。<br/>
+HTTP响应拆分是达到目的的手段而不是目的本身。<br/>
+攻击方式如下：攻击者将恶意数据传递给易受攻击的应用程序，应用程序将数据包含在HTTP响应中。<br/>
+要成功利用漏洞，应用程序必须允许<strong>包含有 CR（回车，即 %0d 或者 \r\n）和 LF（换行符，%0a 或者 \n）的输入在header中</strong>和<strong>底层平台必须容易注入这样的字符</strong>。</li>
+</ul>
+
+<p><em>大多数现代应用程序服务器(无论用什么语言编写的代码)，都已经不存在HTTP响应拆分漏洞。</em></p>
+
+<p>下面上一段java代码来举例说明：</p>
+
+<pre class="line-numbers"><code class="language-java">String author = request.getParameter(AUTHOR_PARAM);
+...
+Cookie cookie = new Cookie(&quot;author&quot;, author);
+      cookie.setMaxAge(cookieExpiration);
+      response.addCookie(cookie);
+</code></pre>
+
+<p>上述代码的意思是：从客户端HTTP请求中接受参数（author），并将其设置在HTTP响应的cookie头中。<br/>
+如果我们正常提交数据(author=lonelyor)，HTTP响应应该是这样：</p>
+
+<pre class="line-numbers"><code class="language-java">HTTP/1.1 200 OK
+...
+Set-Cookie: author=Jane Smith
+...
+</code></pre>
+
+<p>但是，由于源代码中的cookie是由未经验证的用户输入组成的，因此如果我们提交恶意代码<code>Hacker By xxx\r\nContent-Length:45\r\n\r\n...</code>则HTTP响应将被拆分为原始响应和伪造响应。</p>
+
+<pre class="line-numbers"><code class="language-java">HTTP/1.1 200 OK
+    ...
+    Set-Cookie: author=Hacker By xxx
+    Content-Length: 999
+    
+    &lt;html&gt;恶意内容...&lt;/html&gt; (这个例子中为第999个字符)
+    原始内容以1000开头, 现在被浏览器忽略了...
+</code></pre>
+
+<h3 id="toc_0">危害</h3>
+
+<p>攻击者构建任意HTTP响应的能力可能导致以下攻击：<br/>
+跨用户污染（Cross-User_Defacement）——利用条件很苛刻<br/>
+缓存中毒（Cache_Poisoning）——利用条件很苛刻<br/>
+XSS跨站脚本攻击<br/>
+页面劫持</p>
+
+<h2 id="toc_1">日志注入</h2>
+
+<p>将未经验证的用户输入写入日志文件可能导致攻击者伪造日志或者将恶意内容注入日志。<br/>
+以下情况可能导致日志伪造漏洞：</p>
+
+<ul>
+<li>数据从不受信任的来源进入应用程序</li>
+<li>数据将写入应用程序或者系统日志文件</li>
+</ul>
+
+<p>下面上一段java代码来举例说明：</p>
+
+<pre class="line-numbers"><code class="language-java">...
+String val = request.getParameter(&quot;val&quot;);
+try {
+  int value = Integer.parseInt(val);
+}
+catch (NumberFormatException) {
+  log.info(&quot;Failed to parse val = &quot; + val);
+}
+...
+</code></pre>
+
+<p>上述代码的功能是，从请求对象中读取整数值，如果该值无法解析为整数，则会记录输入，并显示一条错误信息。<br/>
+如果用户提交字符串“one”，则会记录以下条目<br/>
+<code>INFO: Failed to parse val=one</code><br/>
+然而，如果攻击者提交字符串<code>one%0a%0aINFO:+User+logged+out%3dbadguy</code>则会在日志中显示：</p>
+
+<pre class="line-numbers"><code class="language-text">    INFO: Failed to parse val=one
+
+    INFO: User logged out=badguy
+</code></pre>
+
+<p>显然攻击者可以使用相同机制插入任意日志条目。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/22 15:21 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B3%A8%E5%85%A5.html'>注入</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15428711597348.html">
                 
@@ -265,213 +393,6 @@ date: 2018-09-06 17:42:40
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15428591301433.html">
-                
-                  <h1>Web安全检测checklist</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">x01 爆破</h2>
-
-<h3 id="toc_1">弱口令</h3>
-
-<p>HTTP登录<br/>
-SSH<br/>
-MySQL<br/>
-Telnet</p>
-
-<h3 id="toc_2">遍历</h3>
-
-<p>网站敏感文件<br/>
-    源码<br/>
-    配置文件<br/>
-    备份文件<br/>
-    探针类文件<br/>
-网站敏感目录<br/>
-    物理路径<br/>
-    网站管理后台<br/>
-    上传目录<br/>
-    数据库Web管理入口<br/>
-    现成的Webshell<br/>
-端口扫描<br/>
-0day扫描<br/>
-子域名</p>
-
-<h2 id="toc_3">x02 不安全配置</h2>
-
-<h3 id="toc_4">Web服务器</h3>
-
-<p>Nginx<br/>
-Apache<br/>
-IIS</p>
-
-<h3 id="toc_5">Web应用服务器</h3>
-
-<p>Tomcat<br/>
-JBoss<br/>
-Weblogic</p>
-
-<h3 id="toc_6">HTTP安全特性</h3>
-
-<p>HTTP Headers<br/>
-HTTP Options<br/>
-rebots.txt<br/>
-flash跨域策略</p>
-
-<h2 id="toc_7">x03 敏感信息泄露</h2>
-
-<h3 id="toc_8">用户敏感信息</h3>
-
-<p>手机号<br/>
-身份证号<br/>
-社保<br/>
-银行卡号<br/>
-家庭住址</p>
-
-<h3 id="toc_9">应用敏感信息</h3>
-
-<p>debug信息<br/>
-堆栈报错</p>
-
-<h3 id="toc_10">站点敏感信息</h3>
-
-<p>测试页面<br/>
-备份文件</p>
-
-<h3 id="toc_11">本地敏感信息</h3>
-
-<p>前端保存用户密码<br/>
-前端保存验证码</p>
-
-<h2 id="toc_12">x04 xss跨站脚本</h2>
-
-<p>反射型xss<br/>
-存储型xss<br/>
-DOM型xss</p>
-
-<h2 id="toc_13">x05 请求伪造</h2>
-
-<p>csrf跨站请求伪造<br/>
-ssrf服务器请求伪造</p>
-
-<h2 id="toc_14">x06 注入</h2>
-
-<p>LDAP注入<br/>
-ORM注入<br/>
-XML注入<br/>
-XPath注入<br/>
-IMAP/SMTP注入<br/>
-SQL注入<br/>
-代码注入<br/>
-客户端模板注入（CSTI）<br/>
-服务端模板注入（SSTI）<br/>
-服务器端包含注入（SSI）</p>
-
-<h2 id="toc_15">x07 已知漏洞组件</h2>
-
-<p>库文件（某些库会导致远程命令执行）<br/>
-框架（如wordpress、thinkphp、django等）<br/>
-模块（python的某些模块会导致代码注入）</p>
-
-<h2 id="toc_16">x08 文件类漏洞</h2>
-
-<p>文件包含漏洞<br/>
-任意文件创建<br/>
-任意文件读取<br/>
-任意文件上传<br/>
-任意文件下载<br/>
-任意文件删除</p>
-
-<h2 id="toc_17">x09 解析漏洞</h2>
-
-<p>IIS解析漏洞<br/>
-Nginx解析漏洞<br/>
-Apache解析漏洞<br/>
-PHP CGI解析漏洞</p>
-
-<h2 id="toc_18">x10 劫持类漏洞</h2>
-
-<p>点击劫持<br/>
-Jsonp劫持<br/>
-WebSocket劫持<br/>
-DNS劫持<br/>
-二维码劫持<br/>
-子域名劫持</p>
-
-<h2 id="toc_19">x11 业务逻辑漏洞</h2>
-
-<h3 id="toc_20">认证</h3>
-
-<p>使用默认凭证<br/>
-冻结账户策略不当<br/>
-弱用户名和密码<br/>
-“记住我”功能<br/>
-自动登录<br/>
-单点登录<br/>
-弱口令<br/>
-弱安全问题/答案<br/>
-第三方登录风险<br/>
-Oauth2.0安全<br/>
-JWT安全<br/>
-注册覆盖<br/>
-未验证的重定向和转发<br/>
-双因素认证不当</p>
-
-<h3 id="toc_21">授权</h3>
-
-<p>测试角色定义<br/>
-权限管理缺失<br/>
-匿名访问（备用接口——常见于兼容老的不安全的接口时产生）<br/>
-水平越权<br/>
-垂直越权<br/>
-超级账户<br/>
-实名认证不严格</p>
-
-<h3 id="toc_22">会话管理</h3>
-
-<p>cookie安全属性<br/>
-cookie可猜解<br/>
-cookie溢出<br/>
-会话固定<br/>
-用户凭证不安全传输（弱加密或明文传输）<br/>
-用户凭证未一次失效<br/>
-用户凭证可猜解<br/>
-注销与会话超时<br/>
-敏感数据不安全传输</p>
-
-<h3 id="toc_23">流程绕过</h3>
-
-<p>找回密码流程绕过</p>
-
-<h2 id="toc_24">x12 API安全</h2>
-
-<p>整理中</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/22 11:58 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Checklist.html'>Checklist</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -483,7 +404,7 @@ cookie溢出<br/>
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			
+			 <a href="all_20.html">&raquo; Next Page</a> 
 			</p>
 			  </div>
 			</div>
@@ -531,6 +452,8 @@ cookie溢出<br/>
         
             <a href="%E5%B9%BD%E6%A2%A6%E5%BD%B1.html"><strong>幽梦影</strong></a>
         
+            <a href="%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90.html"><strong>数据分析</strong></a>
+        
             <a href="Web%E6%94%BB%E9%98%B2.html"><strong>Web攻防</strong></a>
         
             <a href="%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html"><strong>操作系统</strong></a>
@@ -560,6 +483,12 @@ cookie溢出<br/>
 	      
 		      
 			      <li class="post">
+			        <a href="15474694746707.html">十大经典排序算法（动图演示）</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15473910152747.html">给网站嵌入百度搜索框</a>
 			      </li>
 		     
@@ -579,12 +508,6 @@ cookie溢出<br/>
 		      
 			      <li class="post">
 			        <a href="15473464131197.html">读 Monyer 文章有感</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15470313638273.html">修改Mac主机名、计算机名</a>
 			      </li>
 		     
 		  

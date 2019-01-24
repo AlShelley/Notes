@@ -26,7 +26,7 @@
   <script>hljs.initHighlightingOnLoad();</script>
 <script type="text/javascript">
   function before_search(){
-    var searchVal = 'site:www.lonelyor.org/lonelyorNotes ' + document.getElementById('search_input').value;
+    var searchVal = 'site:www.lonelyor.org/lonelyorWiki ' + document.getElementById('search_input').value;
     document.getElementById('search_q').value = searchVal;
     return true;
   }
@@ -144,18 +144,47 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15453706658952.html">
+                <a class="clearlink" href="15453579778110.html">
                 
-                  <h1>查看端口占用</h1>
+                  <h1>nano常见设置，如语法高亮、启用行号、启用鼠标等</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>使用命令：<br/>
-<code>lsof -i:8000</code><br/>
-或<br/>
-<code>netstat -tunlp|grep 8000</code><br/>
-均可。</p>
+                        	<p>下载nano<br/>
+linux根据包管理不同，使用不通的命令。<br/>
+macosx使用brew安装。</p>
+
+<p>编辑（没有就创建）配置文件<br/>
+nano ～/.nanorc<br/>
+然后添加以下内容</p>
+
+<pre class="line-numbers"><code class="language-text"># 语法高亮
+include &quot;/usr/share/nano/*.nanorc&quot;
+</code></pre>
+
+<p>或者</p>
+
+<pre class="line-numbers"><code class="language-text"># 语法高亮
+include &quot;/usr/local/share/nano/*.nanorc&quot;
+</code></pre>
+
+<p>这里include哪一个主要取决于nanorc的具体位置。通常linux在share，macosx在local/share。<br/>
+其他内容如：</p>
+
+<pre class="line-numbers"><code class="language-text"># 启用行号
+set linenumbers
+# 平滑滚动
+set smooth
+# 自动缩进
+set autoindent
+# tab为空格
+set tabstospaces
+# 启用鼠标
+set mouse
+</code></pre>
+
+<p>然后保存，重新打开终端，即可发现设置生效，以上方法适用于linux和macosx。</p>
 
                         
                       </div>
@@ -164,7 +193,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 13:37 下午</span>
+                    <span class="date">2018/12/21 10:6 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
@@ -181,108 +210,20 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15453705663839.html">
+                <a class="clearlink" href="15453576869884.html">
                 
-                  <h1>fsarchiver备份文件介绍</h1>
+                  <h1>linux查看磁盘空间占用情况</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>多年以前的笔记</p>
-</blockquote>
+                        	<p>主要是使用 df 命令，使用 df --help 可以查看更多选项。</p>
 
-<p>fsarchiver安装<br/>
-<code>apt-get install fsarchiver</code></p>
+<p>举例：<br/>
+df -k 以KB为单位显示磁盘使用量和占用率。<br/>
+df -k 以M×××</p>
 
-<pre class="line-numbers"><code class="language-text"># 对于备份操作，我们需要以只读形式重新挂载文件系统或者有条件的话直接卸载。也可以-A忽略
-[peter@test88 ~]$ sudo /home/peter/fsarchiver savefs backup.fsa /dev/sdb1
-oper_save.c#938,filesystem_mount_partition(): partition [/dev/sdb1] is mounted read/write. please mount it read-only
-and then try again. you can do &quot;mount -o remount,ro /dev/sdb1&quot;. you can
-also run fsarchiver with option &#39;-A&#39; if you know what you are doing.
-removed backup.fsa
- 
-# 对于恢复操作，我们必须先卸载文件系统。
-[peter@test88 ~]$ sudo /home/peter/fsarchiver restfs backup2.fsa id=0,dest=/dev/sdb2
-oper_restore.c#1230,extractar_filesystem_extract(): partition [/dev/sdb2] is mounted on [/home/peter/sder].
-cannot restore an archive to a partition which is mounted, unmount it first: umount /home/peter/sder
- 
-# 创建文件系统备份
-# 可以将多个文件系统备份在一个文件中
-[peter@test88 ~]$ sudo /home/peter/fsarchiver savefs backup.fsa /dev/sdb1 /dev/sdb2
- 
-# 恢复文件系统
-# id=0表明从归档中提取第一个文件系统的内容
-[peter@test88 ~]$ sudo /home/peter/fsarchiver restfs backup.fsa id=0,dest=/dev/sdc1 id=1,dest=/dev/sdc2
-
-
-
-# 软件说明文档
-====&gt; fsarchiver version 0.8.1 (2017-01-10) - http://www.fsarchiver.org &lt;====           
-Distributed under the GPL v2 license (GNU General Public License v2).                   
- * usage: fsarchiver [&lt;options&gt;] &lt;command&gt; &lt;archive&gt; [&lt;dev1&gt; [&lt;dev2&gt; [...]]]            
-&lt;commands&gt;                                                                              
- * savefs: save filesystems to an archive file (backup a device to a file)              
- * restfs: restore filesystems from an archive (overwrites the existing data)           
- * savedir: save directories to the archive (similar to a compressed tarball)           
- * restdir: restore data from an archive which is not based on a filesystem             
- * archinfo: show information about an existing archive file and its contents           
- * probe [detailed]: show list of filesystems detected on the disks                     
-&lt;options&gt;                                                                               
- -o: overwrite the archive if it already exists instead of failing                      
- -v: verbose mode (can be used several times to increase the level of details)          
- -d: debug mode (can be used several times to increase the level of details)            
- -A: allow to save a filesystem which is mounted in read-write (live backup)            
- -a: allow to save a filesystem when acls and xattrs are not supported                  
- -x: enable support for experimental features (they are disabled by default)            
- -e &lt;pattern&gt;: exclude files and directories that match that pattern                    
- -L &lt;label&gt;: set the label of the archive (comment about the contents)                  
- -z &lt;level&gt;: compression level from 1 (very fast) to 9 (very good) default=3            
- -s &lt;mbsize&gt;: split the archive into several files of &lt;mbsize&gt; megabytes each           
- -j &lt;count&gt;: create more than one (de)compression thread. useful on multi-core cpu      
- -c &lt;password&gt;: encrypt/decrypt data in archive, &quot;-c -&quot; for interactive password        
- -h: show help and information about how to use fsarchiver with examples                
- -V: show program version and exit                                                      
-&lt;information&gt;                                                                           
- * Support included for: lzo=yes, lzma=yes                                              
- * Support for ntfs filesystems is unstable: don&#39;t use it for production.               
-&lt;examples&gt;                                                                              
- * save only one filesystem (/dev/sda1) to an archive:                                  
-   fsarchiver savefs /data/myarchive1.fsa /dev/sda1                                     
- * save two filesystems (/dev/sda1 and /dev/sdb1) to an archive:
-   fsarchiver savefs /data/myarchive2.fsa /dev/sda1 /dev/sdb1
- * restore the first filesystem from an archive (first = number 0):
-   fsarchiver restfs /data/myarchive2.fsa id=0,dest=/dev/sda1
- * restore the second filesystem from an archive (second = number 1):
-   fsarchiver restfs /data/myarchive2.fsa id=1,dest=/dev/sdb1
- * restore two filesystems from an archive (number 0 and 1):
-   fsarchiver restfs /data/arch2.fsa id=0,dest=/dev/sda1 id=1,dest=/dev/sdb1
- * restore a filesystem from an archive and convert it to reiserfs:
-   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,mkfs=reiserfs
- * restore a filesystem from an archive and specify extra mkfs options:
-   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,mkfs=ext4,mkfsopt=&quot;-I 256&quot;
- * restore a filesystem from an archive and specify a new label and a new UUID:
-   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,label=root,uuid=5f6e5f4f-dc2a-4dbd-a6ea-9ca997cde75e
- * save the contents of /usr/src/linux to an archive (similar to tar):
-   fsarchiver savedir /data/linux-sources.fsa /usr/src/linux
- * save a filesystem (/dev/sda1) to an archive split into volumes of 680MB:
-   fsarchiver savefs -s 680 /data/myarchive1.fsa /dev/sda1
- * save a filesystem and exclude all files/dirs called &#39;pagefile.*&#39;:
-   fsarchiver savefs /data/myarchive.fsa /dev/sda1 --exclude=&#39;pagefile.*&#39;
- * generic exclude for &#39;share&#39; such as &#39;/usr/share&#39; and &#39;/usr/local/share&#39;:
-   fsarchiver savefs /data/myarchive.fsa --exclude=share
- * absolute exclude valid for &#39;/usr/share&#39; but not for &#39;/usr/local/share&#39;:
-   fsarchiver savefs /data/myarchive.fsa --exclude=/usr/share
- * save a filesystem (/dev/sda1) to an encrypted archive:
-   fsarchiver savefs -c mypassword /data/myarchive1.fsa /dev/sda1
- * same as before but prompt for password in the terminal:
-   fsarchiver savefs -c - /data/myarchive1.fsa /dev/sda1
- * extract an archive made of simple files to /tmp/extract:
-   fsarchiver restdir /data/linux-sources.fsa /tmp/extract
- * show information about an archive and its filesystems:
-   fsarchiver archinfo /data/myarchive2.fsa
-   ```
-</code></pre>
+<p>使用“du -ck /home”命令，列出home目录下所有文件或目录占用的大小，以KB作为计量单位。以及统计出当前home目录占用的总大小。</p>
 
                         
                       </div>
@@ -291,7 +232,7 @@ Distributed under the GPL v2 license (GNU General Public License v2).
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 13:36 下午</span>
+                    <span class="date">2018/12/21 10:1 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
@@ -308,45 +249,493 @@ Distributed under the GPL v2 license (GNU General Public License v2).
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15453704835251.html">
+                <a class="clearlink" href="15453574952135.html">
                 
-                  <h1>fluxgui安装与卸载</h1>
+                  <h1>crontab设置定时任务</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>很久以前的笔记了</p>
+<p>文章参考自：<a href="http://blog.csdn.net/xiaochuige/article/details/49252741">http://blog.csdn.net/xiaochuige/article/details/49252741</a> 感谢作者。</p>
 </blockquote>
 
-<pre class="line-numbers"><code class="language-text">Ubuntu/Debian Manual Install
-# Install dependencies
-sudo apt-get install git python-appindicator python-xdg python-pexpect python-gconf python-gtk2 python-glade2 libxxf86vm1
+<p>crontab的基本格式：</p>
 
-# Download fluxgui
-cd /tmp
-git clone &quot;https://github.com/xflux-gui/fluxgui.git&quot;
-cd fluxgui
-python download-xflux.py
+<pre class="line-numbers"><code class="language-text">* * * * * command
+几个星号分别为：分 时 日 月 周，最后是要执行的命令。
+分：0~59
+时：0~23
+日：1~31
+月：1~12
+周：0～6（0表示星期天）
+除了数字还有几个个特殊的符号就是* / - ：
+* 代表所有的取值范围内的数字
+/ 代表每的意思
+*/5 表示每5个单位
+- 代表从某个数字到某个数字
+, 分开几个离散的数字
+</code></pre>
 
-# EITHER install globally
-sudo python setup.py install
-# EXCLUSIVE OR, install in your home directory. The binary installs
-# into ~/.local/bin, so be sure to add that to your PATH if installing locally.
-python setup.py install --user
+<p>配置文件的一些例子：</p>
 
-# Run flux
-fluxgui
-Ubuntu/Debian Manual Uninstall
-If you manually installed instead of using the PPA, you can uninstall by making setup.py tell you where it installed files and then removing the installed files.
+<pre class="line-numbers"><code class="language-text">0 3 * * * /root/test.sh 每天凌晨3点执行test.sh文件
+* 23-7/1 * * * /root/lnmp restart 晚上11点到早上7点之间，每隔一小时重启lnmp套件
+*/30 * * * * /usr/sbin/ntpdate 每半小时同步一下时间
+0 23 * * 6 /lnmp restart 每星期六的11 : 00 pm重启重启lnmp套件。
+*/1 * * * * echo &quot;i am running.&quot;&gt;&gt;/tmp/running.txt 每隔1分钟向/tmp/running.txt写一个&quot;i am running.&quot;字符串。
+</code></pre>
 
-# EITHER uninstall globally
-sudo python setup.py install --record installed.txt
-sudo xargs rm -vr &lt; installed.txt
+<p>运行<br/>
+我以为编辑crontab保存后会自动执行，其实不然，必须通过重启cron才可以，命令如下：<br/>
+启动/etc/init.d/cron start<br/>
+关闭/etc/init.d/cron stop<br/>
+重启/etc/init.d/cron restart</p>
 
-# EXCLUSIVE OR uinstall in your home directory
-python setup.py install --user --record installed.txt
-xargs rm -vr &lt; installed.txt
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21 9:58 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15453572892743.html">
+                
+                  <h1>Atom设置和取消代理</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">设置本地上游代理</h2>
+
+<p>apm config set http-proxy socks5:127.0.0.1:1080<br/>
+apm config set https-proxy socks5:127.0.0.1:1080</p>
+
+<h2 id="toc_1">取消SSL</h2>
+
+<p>apm config set strict-ssl false</p>
+
+<h2 id="toc_2">取消代理</h2>
+
+<p>apm config set http-proxy null<br/>
+apm config set https-proxy null</p>
+
+<h2 id="toc_3">查看代理设置</h2>
+
+<p>apm config get http-proxy<br/>
+apm config get https-proxy</p>
+
+<p>编辑～/.atom/.apmrc文件，配置为：<br/>
+strict-ssl=false<br/>
+http_proxy = socks5: 127.0.0.1:1080<br/>
+https_proxy = socks5: 127.0.0.1:1080</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21 9:54 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15446974404003.html">
+                
+                  <h1>wsgidav独立服务器使用手册</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>很久以前写的，我也不记得写的什么东西了。wsgidav是一个提供webdav服务的python库，可以用来共享文件。更多相关知识可以自行百度“什么是webdav？”。</p>
+</blockquote>
+
+<h1 id="toc_0">使用示例（或者说是个本地测试）</h1>
+
+<p>sudo wsgidav --host=0.0.0.0 --port=80 --root=/home/lonelyor<br/>
+这里的sudo是个坑，不加的话就找不到wsgidav指令，为此搞了好久诶。</p>
+
+<h1 id="toc_1">wsgidav高级设置：</h1>
+
+<p>sudo wsgidav  --config=./wsgidav.conf<br/>
+引用配置文件，配置文件使用python语法来指定这些选项：<br/>
+服务器选项（主机名，端口，SSL证书，...）<br/>
+共享名称/ WebDAV提供程序映射列表<br/>
+认证用户列表<br/>
+可选的自定义DAV提供程序（即FilesystemProvider以外）<br/>
+可选的自定义锁管理器，属性管理器和域控制器<br/>
+高级调试选项<br/>
+（和更多）</p>
+
+<h1 id="toc_2">配置文件示例</h1>
+
+<pre class="line-numbers"><code class="language-python">＃注意：这个文件是Python的语法和格式
+
+####################################### #########################################＃
+WsgiDAV配置文件
+＃请参阅
+＃http ： //wsgidav.readthedocs.io/en/latest/run-configure.html＃
+以获取配置文件格式的一些解释。
+################################################## ############################## 
+
+＃助手-请不要修改此节
+
+provider_mapping  =  {} 
+user_mapping  =  {} 
+
+高清 addShare （SHARENAME ， davProvider ）：
+    provider_mapping [ shareName ]  =  davProvider
+
+    
+def  addUser （realmName ， user ， password ， description ， roles = []）：
+    realmName  =  “/”  +  realmName 。条（- [R “\ /” ）
+    的UserDict  =  user_mapping 。setdefault （realmName ， {}）。setdefault （user ， {}）
+    userDict [ “password” ]  =  密码
+    userDict [ “description”]  =  描述
+    userDict [ “roles” ]  =  角色
+
+
+####################################### #########################################＃
+SERVER OPTIONS 
+＃===== ================================================== ======================== 
+＃在这个WSGI服务器中运行WsgiDAV。
+＃支持的服务器：“cheroot”，“cherrypy-wsgiserver”，“ext_wsgiutils”，
+＃“flup-fcgi”，“flup-fcgi-fork”，“paste”，“wsgiref” 
+＃“wsgiref”和“ext_wsgiutils”内置的服务器，应该*不* 
+生产中使用。
+＃所有其他服务器必须已经安装，例如`pip install cheroot`。
+＃（二进制发行版已经包含了&#39;cheroot&#39;）
+＃默认：“cheroot”，使用命令行上的--server选项来改变它。
+
+#server =“cheroot” 
+
+＃在初始化时传递给服务器的附加参数（取决于`server`）
+＃例如，对于cheroot：
+
+#server_args = { 
+＃“numthreads”：10，
+＃“max”：-1，
+＃“request_queue_size “：5，
+＃”timeout“：10，
+＃”shutdown_timeout“：5，
+＃”verbose“：0，
+＃} 
+
+＃服务器端口（默认：8080，在命令行使用--port）
+port  =  8080 
+
+＃服务器主机名默认：localhost，
+  
+
+＃================================================= ============================== 
+＃启用SSL支持
+＃注意：
+＃有效的证书必须与服务器的主机名匹配，所以假的证书将
+不会在所有情况下工作。
+＃改为创建自己的证书！
+ 
+＃ssl_certificate =“wsgidav / server / sample_bogo_server.crt” 
+＃ssl_private_key =“wsgidav / server / sample_bogo_server.key” 
+＃ssl_certificate_chain = None 
+
+＃cheroot服务器支持&#39;builtin&#39;和&#39;pyopenssl&#39;（默认值：&#39;builtin&#39;）
+＃ssl_adapter = pyopenssl“ 
+
+
+＃=============================================== ================================= 
+＃Misc。setings 
+＃
+
+＃将MS-Author-Via响应头添加到OPTIONS命令，以允许
+使用Microsoft Office 
+
+编辑＃（默认值：False）add_header_MS_Author_Via  =  True 
+
+
+＃以字节为单位的块大小
+
+＃block_size = 8192 
+
+
+＃将此值设置为True，强制不引用PATH_INFO。这应该已经由WSGI 
+＃Framework 
+
+完成了，所以这个设置只能用来解决那里的意外问题（见问题＃8）。＃unquote_path_info = False 
+
+
+＃使用UTF-8重新编码PATH_INFO（回落到ISO-8859-1）。
+＃这似乎是错误的，因为每个PEP 3333 PATH_INFO始终是ISO-8859-1编码
+＃（请参阅https://www.python.org/dev/peps/pep-3333/#unicode-issues）。
+＃但是，在使用中文字符访问资源时，似乎可以解决错误
+（例如，参见问题＃73）。
+＃设置为`None`（默认），仅对Python 3启用。
+
+＃re_encode_path_info =无
+
+
+＃============================================= ================================== 
+＃中间件
+＃＃
+使用此部分来修改默认中间件堆栈
+
+＃from wsgidav .dir_browser import WsgiDavDirBrowser＃
+from debug_filter import WsgiDavDebugFilter＃
+from http_authenticator import HTTPAuthenticator 
+#from error_printer import ErrorPrinter 
+#middleware_stack = [WsgiDavDirBrowser，HTTPAuthenticator，ErrorPrinter，WsgiDavDebugFilter]
+
+＃================================================= ============================== 
+＃调试
+
+verbose  =  1        ＃0  - 没有输出（除了应用程序例外）          
+                     ＃1  - 显示单一（HTTP日志记录）
+                     ＃2  - 显示附加事件
+                     ＃3  - 显示完整的请求/响应头信息（HTTP日志记录）
+                     ＃请求正文和GET响应正文未显示
+
+
+＃启用特定的模块记录器
+＃Eg [“lock_manager”，“property_manager “，”http_authenticator“，...] 
+enable_loggers  =  [] 
+
+＃启用最大值。记录某些http方法
+＃Eg [“COPY”，“DELETE”，“GET”，“HEAD”，“LOCK”，“MOVE”，
+debug_methods  =  [] 
+
+＃启用最大值。在包含某些字符串的石蕊套件测试中进行日志记录
+＃Eg [“lock_excl”，“notowner_modify”，“fail_cond_put_unlocked”，...] 
+debug_litmus  =  [] 
+
+
+################## ################################################## ############# 
+WsgiDavDirBrowser 
+
+dir_browser  =  { 
+    “enable” ： True ，               ＃为集合的GET请求呈现HTML列表
+    “response_trailer” ： “” ，       ＃原始HTML代码，附加为页脚
+    “davmount” ： 假，            ＃发送&lt;dm：mount&gt;
+    “ms_mount” ： False ，            ＃添加一个“打开为webfolder”链接（需要Windows）
+    “ms_sharepoint_plugin” ： True ， ＃调用MS 
+    Offce 文档以使用WebDAV进行编辑“ms_sharepoint_urls” ： False ，  ＃
+Prepend&#39;ms -word：ofe | u |” 到MS Offce 
+文档的URL ＃“app_class”：MyBrowser，
+
+
+
+
+
+
+
+
+
+＃默认值：死性不支持
+wsgidav.property_manager.PropertyManager：＃也可用
+＃wsgidav.property_manager.ShelvePropertyManager 
+＃
+＃查看如何开发定制物业管理的文档。
+＃注意，默认的PropertyManager在内存中工作，因此不是
+＃持久化的。
+
+###使用内存中的属性管理器（不是永久的）
+＃（这与传递&#39;propsmanager = True&#39;相同）
+＃from wsgidav.property_manager import PropertyManager 
+#propsmanager = PropertyManager（）
+
+###使用基于持久性架构的属性管理器
+＃从wsgidav.property_manager导入ShelvePropertyManager
+#propsmanager = ShelvePropertyManager（“wsgidav-props.shelve”）
+
+###使用基于持久性MongoDB的属性管理器
+＃from wsgidav.addons.mongo_property_manager import MongoPropertyManager 
+#prop_man_opts = {} 
+#propsmanager = MongoPropertyManager（prop_man_opts）
+
+###使用基于持久性CouchDB属性管理器
+#from wsgidav.addons.couch_property_manager import CouchPropertyManager 
+#prop_man_opts = {} 
+#propsmanager = CouchPropertyManager（prop_man_opts）
+
+###使用内存中的属性管理器（NOT persistent）
+propsmanager  =  True 
+
+
+###可选的附加动态属性修改
+＃注意：默认情况下，像文件大小和上次修改时间的生活属性是
+＃只读，但如果底层DAV提供程序
+＃支持
+，则可以在这里覆盖。现在只有FileSystemProvider支持它，只有＃更改为上次修改的时间戳。使用下面的mutable_live_props 
+＃列表来
+启用它，以允许客户端使用utime系统调用，或者例如＃touch 或cp / rsync命令与挂载的
+＃DAV共享中
+的preserve-timestamp标志一起使用。＃请注意，时间戳是在实际的文件或目录中设置的，所以
+即使对于内存中的属性管理器
+，它也是持久的。还应该注意＃可变的最后修改可能不符合RFC 
+4918. #mutable_live_props = [“{DAV：} getlastmodified”]
+
+
+＃================================================= ============================== 
+＃锁管理器
+＃＃
+取消注释此行以指定您自己的锁管理器。                    
+＃默认值：wsgidav.lock_storage.LockStorageDict 
+＃还有：wsgidav.lock_storage.LockStorageShelve 
+＃
+＃查看如何开发自定义锁管理器的文档。
+＃注意默认的LockStorageDict在内存中工作，因此不是
+＃持久化的。
+                 
+＃示例：使用内存中的锁存储
+＃（这与默认情况下传递&#39;locksmanager = True&#39;相同）
+＃from wsgidav.lock_storage import LockStorageDict 
+#locksmanager = LockStorageDict（）
+
+
+＃示例：使用基于PERSISTENT架构的锁管理器
+＃from wsgidav.lock_storage import LockStorageShelve 
+#locksmanager = LockStorageShelve（“wsgidav-locks.shelve”）
+
+
+##################### ################################################## #########＃
+SHARES 
+＃＃
+如果您想通过
+＃WsgiDAV共享文件
+发布位置“/ v_root”中的文件，以便可以通过以下URL访问文件：＃http   ：/ / /服务器：端口/文件
+＃插入以下行：
+＃addShare（ “文件”， “/ v_root”） 
+＃或者，在Windows中：
+＃addShare（ “文件”， “C：\\ v_root”） ＃
+＃
+要使用根级别共享访问相同的目录
+＃http：// server：港口/
+
+＃add this line：＃addShare（“”，“/ v_root”）
+＃＃
+上面的例子使用wsgidav.fs_dav_provider.FilesystemProvider，它是
+缺省提供程序实现。
+＃＃
+如果您希望使用自定义提供程序，则必须将对象作为第二个
+参数
+
+
+传递。看下面的例子。  ###添加一个读写文件共享：
+addShare （“dav” ， r “C：\ temp” ）
+
+###添加一个只读文件共享：
+＃from wsgidav.fs_dav_provider import FilesystemProvider 
+#addShare（“tmp”， FilesystemProvider（“/ tmp”，readonly = True））
+
+
+###发布MySQL&#39;world&#39;数据库作为共享&#39;/ world-db&#39;
+#from wsgidav.addons.mysql_dav_provider import MySQLBrowserProvider 
+#addShare（“world-db”，MySQLBrowserProvider（“localhost”，“root”，“test”，“world”））
+
+
+### 
+从wsgidav.samples 
+发布一个虚拟结构。 virtual_dav_provider import VirtualResourceProvider #addShare（“virtres”，VirtualResourceProvider（））
+
+
+###发布一个Mercurial仓库
+＃from wsgidav.addons.hg_dav_provider import HgResourceProvider 
+#addShare（“hg”，HgResourceProvider（“PATH_OR_URL”））
+
+
+###发布一个MongoDB 
+#from wsgidav.samples.mongo_dav_provider import MongoResourceProvider 
+#mongo_dav_opts = {} 
+#addShare（“mongo”，MongoResourceProvider（mongo_dav_opts））
+
+
+################################################## ##############################＃
+AUTHENTICATION 
+＃================= ================================================== ============ 
+＃HTTP验证选项
+
+acceptbasic  =  True     ＃允许基本验证，True或False 
+acceptdigest  =  True    ＃允许摘要验证，True或False 
+defaultdigest  =  True   ＃True（默认摘要）或False默认基本）
+
+＃输入将被接受为授权用户的标题字段的名称。
+＃包括引号，例如：trusted_auth_header =“REMOTE_USER” 
+trusted_auth_header  =  无
+
+
+＃================================================= ============================== 
+＃域控制器
+＃取消注释此行以指定您自己的域控制器
+＃默认值：wsgidav.domain_controller，它采用下面的用户部分
+＃
+＃示例：
+＃使用域控制器，允许用户对一个认证
+＃Windows NT域或本地计算机。
+＃注意：NTDomainController需要基本身份验证：
+＃set acceptbasic = True，acceptdigest = False，defaultdigest = False 
+
+#from wsgidav.addons.nt_domain_controller import NTDomainController 
+#domaincontroller = NTDomainController（presetdomain = None，presetserver = None）
+#acceptbasic = True 
+#acceptdigest =假
+#defaultdigest = False 
+
+
+＃============================================= ================================== 
+＃USERS 
+＃＃
+此部分仅供DEFAULT域控制器使用。
+＃
+＃用户被每领域中定义的：
+＃ADDUSER（&lt;境界&gt;，&lt;用户&gt;，&lt;密码&gt;，&lt;描述&gt;） ＃   
+＃
+请注意，缺省域控制器使用共享名作为领域名称。   
+＃＃
+如果没有用户指定领域，则不需要认证。
+＃因此授予读写访问匿名！
+＃＃
+注意：如果您希望使用Windows WebDAV支持（例如Windows XP的My 
+＃网络位置），则需要将用户的域作为
+
+＃username 
+
+（注意DOUBLE斜线），例如：＃addUser（“v_root”，“domain \\ user”，“password”，“description”）addUser （“” ， “tester” ， “secret” ， “” ）
+ADDUSER （“” ， “tester2” ， “secret2” ，“”  ）
+
+#addUser（ “DAV”， “测试器”， “秘密”， “”）
+#addUser（ “DAV”， “tester2”， “secret2”，“ “）
+
+#addUser（”virtres“，”tester“，”secret“，”“）
 </code></pre>
 
                         
@@ -356,7 +745,42 @@ xargs rm -vr &lt; installed.txt
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 13:34 下午</span>
+                    <span class="date">2018/12/13 18:37 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15446973583267.html">
+                
+                  <h1>解决npm更新或安装软件时下载较慢等问题</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>更换淘宝源即可，<br/>
+在终端执行命令：<br/>
+<code>npm config set registry https://registry.npm.taobao.org</code></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13 18:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='Linux.html'>Linux</a></span>
@@ -399,7 +823,7 @@ xargs rm -vr &lt; installed.txt
             
           </br>
                 <h1>lonelyorのblog</h1>
-                <div class="site-des">一个用来记录学习笔记的网站</div>
+                <div class="site-des">一个用来记录知识的网站</div>
                 <div class="social">
 
 
@@ -410,7 +834,7 @@ xargs rm -vr &lt; installed.txt
 
 
 
-<a target="_blank" class="github" target="_blank" href="https://github.com/AlShelley/lonelyorNotes" title="GitHub">GitHub</a>
+<a target="_blank" class="github" target="_blank" href="https://github.com/AlShelley/lonelyorWiki" title="GitHub">GitHub</a>
 <a target="_blank" class="email" href="mailto:lonelyor.org@gmail.com" title="Email">Email</a>
   <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[lonelyorのblog]]></title>
-  <link href="www.lonelyor.org/lonelyorNotes/atom.xml" rel="self"/>
-  <link href="www.lonelyor.org/lonelyorNotes/"/>
-  <updated>2019-01-13T23:05:45+08:00</updated>
-  <id>www.lonelyor.org/lonelyorNotes/</id>
+  <link href="www.lonelyor.org/lonelyorWiki/atom.xml" rel="self"/>
+  <link href="www.lonelyor.org/lonelyorWiki/"/>
+  <updated>2019-01-14T20:53:38+08:00</updated>
+  <id>www.lonelyor.org/lonelyorWiki/</id>
   <author>
     <name><![CDATA[]]></name>
     
@@ -14,9 +14,9 @@
   
   <entry>
     <title type="html"><![CDATA[十大经典排序算法（动图演示）]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15474694746707.html"/>
+    <link href="www.lonelyor.org/lonelyorWiki/15474694746707.html"/>
     <updated>2019-01-14T20:37:54+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15474694746707.html</id>
+    <id>www.lonelyor.org/lonelyorWiki/15474694746707.html</id>
     <content type="html"><![CDATA[
 <blockquote>
 <p>转载自：<a href="https://www.cnblogs.com/onepixel/articles/7674659.html">https://www.cnblogs.com/onepixel/articles/7674659.html</a></p>
@@ -517,9 +517,9 @@ function radixSort(arr, maxDigit) {
   
   <entry>
     <title type="html"><![CDATA[给网站嵌入百度搜索框]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15473910152747.html"/>
+    <link href="www.lonelyor.org/lonelyorWiki/15473910152747.html"/>
     <updated>2019-01-13T22:50:15+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15473910152747.html</id>
+    <id>www.lonelyor.org/lonelyorWiki/15473910152747.html</id>
     <content type="html"><![CDATA[
 <p>只需要在 htm 页面中嵌入以下代码即可：</p>
 
@@ -555,9 +555,9 @@ function radixSort(arr, maxDigit) {
   
   <entry>
     <title type="html"><![CDATA[vscode 快速生成 html 代码]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15473903423452.html"/>
+    <link href="www.lonelyor.org/lonelyorWiki/15473903423452.html"/>
     <updated>2019-01-13T22:39:02+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15473903423452.html</id>
+    <id>www.lonelyor.org/lonelyorWiki/15473903423452.html</id>
     <content type="html"><![CDATA[
 <blockquote>
 <p>参考的博客如下：<br/>
@@ -577,9 +577,9 @@ function radixSort(arr, maxDigit) {
   
   <entry>
     <title type="html"><![CDATA[msf更新]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15473524859484.html"/>
+    <link href="www.lonelyor.org/lonelyorWiki/15473524859484.html"/>
     <updated>2019-01-13T12:08:05+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15473524859484.html</id>
+    <id>www.lonelyor.org/lonelyorWiki/15473524859484.html</id>
     <content type="html"><![CDATA[
 <p>1、打开终端输入 msf 进入msfconsole<br/>
 2、在 msfconsole 中输入 msfupdate 即可自动更新</p>
@@ -589,9 +589,9 @@ function radixSort(arr, maxDigit) {
   
   <entry>
     <title type="html"><![CDATA[读 Monyer 文章有感]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15473464131197.html"/>
+    <link href="www.lonelyor.org/lonelyorWiki/15473464131197.html"/>
     <updated>2019-01-13T10:26:53+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15473464131197.html</id>
+    <id>www.lonelyor.org/lonelyorWiki/15473464131197.html</id>
     <content type="html"><![CDATA[
 <p>1、黑客是一种兴趣爱好<br/>
 2、选行需谨慎，选前需要调研<br/>
@@ -605,9 +605,9 @@ function radixSort(arr, maxDigit) {
   
   <entry>
     <title type="html"><![CDATA[修改Mac主机名、计算机名]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15470313638273.html"/>
+    <link href="www.lonelyor.org/lonelyorWiki/15470313638273.html"/>
     <updated>2019-01-09T18:56:03+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15470313638273.html</id>
+    <id>www.lonelyor.org/lonelyorWiki/15470313638273.html</id>
     <content type="html"><![CDATA[
 <p><code>$sudo scutil --set ComputerName 你想要的计算机名称</code><br/>
 <code>$sudo scutil --set HostName 你想要的主机名称</code></p>
@@ -624,9 +624,9 @@ function radixSort(arr, maxDigit) {
   
   <entry>
     <title type="html"><![CDATA[使用python快速搭建ftp服务器]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15468702076334.html"/>
+    <link href="www.lonelyor.org/lonelyorWiki/15468702076334.html"/>
     <updated>2019-01-07T22:10:07+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15468702076334.html</id>
+    <id>www.lonelyor.org/lonelyorWiki/15468702076334.html</id>
     <content type="html"><![CDATA[
 <p>使用第三方库：pyftpdlib<br/>
 安装库：pip3 install pyftpdlib<br/>
@@ -642,9 +642,9 @@ function radixSort(arr, maxDigit) {
   
   <entry>
     <title type="html"><![CDATA[将网页保存为PDF]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15457897865747.html"/>
+    <link href="www.lonelyor.org/lonelyorWiki/15457897865747.html"/>
     <updated>2018-12-26T10:03:06+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15457897865747.html</id>
+    <id>www.lonelyor.org/lonelyorWiki/15457897865747.html</id>
     <content type="html"><![CDATA[
 <p>如果使用 google chrome 则不需要任何辅助工具即可做到。<br/>
 Mac用户使用cmd+p即可；<br/>
@@ -655,9 +655,9 @@ Windows用户使用ctrl+p即可。</p>
   
   <entry>
     <title type="html"><![CDATA[自建kms服务器激活windows]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15456175398128.html"/>
+    <link href="www.lonelyor.org/lonelyorWiki/15456175398128.html"/>
     <updated>2018-12-24T10:12:19+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15456175398128.html</id>
+    <id>www.lonelyor.org/lonelyorWiki/15456175398128.html</id>
     <content type="html"><![CDATA[
 <blockquote>
 <p>kms的脚本来自：<a href="https://github.com/SystemRage/py-kms">https://github.com/SystemRage/py-kms</a><br/>
@@ -781,9 +781,9 @@ cmd /k
   
   <entry>
     <title type="html"><![CDATA[css美化文章标题]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15453757934453.html"/>
+    <link href="www.lonelyor.org/lonelyorWiki/15453757934453.html"/>
     <updated>2018-12-21T15:03:13+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15453757934453.html</id>
+    <id>www.lonelyor.org/lonelyorWiki/15453757934453.html</id>
     <content type="html"><![CDATA[
 <blockquote>
 <p>MWeb自带的标题不好看，特别是首页展示的文章多的时候，没有区分度，看的眼花缭乱的。<br/>
@@ -819,9 +819,9 @@ cmd /k
   
   <entry>
     <title type="html"><![CDATA[Pycharm编程遇到的技巧]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15453720146052.html"/>
+    <link href="www.lonelyor.org/lonelyorWiki/15453720146052.html"/>
     <updated>2018-12-21T14:00:14+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15453720146052.html</id>
+    <id>www.lonelyor.org/lonelyorWiki/15453720146052.html</id>
     <content type="html"><![CDATA[
 <h2 id="toc_0">pycharm技巧</h2>
 
@@ -841,9 +841,9 @@ type() #输出类型</p>
   
   <entry>
     <title type="html"><![CDATA[npm Cannot find module 'semver' --解决方案]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15453717965995.html"/>
+    <link href="www.lonelyor.org/lonelyorWiki/15453717965995.html"/>
     <updated>2018-12-21T13:56:36+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15453717965995.html</id>
+    <id>www.lonelyor.org/lonelyorWiki/15453717965995.html</id>
     <content type="html"><![CDATA[
 <blockquote>
 <p><a href="https://blog.csdn.net/hanshuonb/article/details/77969080">https://blog.csdn.net/hanshuonb/article/details/77969080</a></p>
@@ -893,9 +893,9 @@ git clone --recursive git://github.com/isaacs/npm.git`
   
   <entry>
     <title type="html"><![CDATA[mongodb安装配置（arch）]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15453716917526.html"/>
+    <link href="www.lonelyor.org/lonelyorWiki/15453716917526.html"/>
     <updated>2018-12-21T13:54:51+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15453716917526.html</id>
+    <id>www.lonelyor.org/lonelyorWiki/15453716917526.html</id>
     <content type="html"><![CDATA[
 <blockquote>
 <p>参考文档：<a href="https://wiki.archlinux.org/index.php/MongoDB_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E4.BD.BF.E7.94.A8">https://wiki.archlinux.org/index.php/MongoDB_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E4.BD.BF.E7.94.A8</a></p>
@@ -921,9 +921,9 @@ git clone --recursive git://github.com/isaacs/npm.git`
   
   <entry>
     <title type="html"><![CDATA[linux安装配置aria2及其Web图形界面（debian为例）]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15453714645346.html"/>
+    <link href="www.lonelyor.org/lonelyorWiki/15453714645346.html"/>
     <updated>2018-12-21T13:51:04+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15453714645346.html</id>
+    <id>www.lonelyor.org/lonelyorWiki/15453714645346.html</id>
     <content type="html"><![CDATA[
 <p>下载aria2：apt-get install aria2<br/>
 创建配置文件：mkdir /etc/aria2_conf/aria2.conf<br/>
@@ -1088,9 +1088,9 @@ access_log logs/aria2_access.log;
   
   <entry>
     <title type="html"><![CDATA[linux下搜狗输入法不能用的解决办法]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15453713553710.html"/>
+    <link href="www.lonelyor.org/lonelyorWiki/15453713553710.html"/>
     <updated>2018-12-21T13:49:15+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15453713553710.html</id>
+    <id>www.lonelyor.org/lonelyorWiki/15453713553710.html</id>
     <content type="html"><![CDATA[
 <p>删除<br/>
 <code>～/config</code><br/>
@@ -1105,9 +1105,9 @@ access_log logs/aria2_access.log;
   
   <entry>
     <title type="html"><![CDATA[arch设置屏幕分辨率]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15453712257423.html"/>
+    <link href="www.lonelyor.org/lonelyorWiki/15453712257423.html"/>
     <updated>2018-12-21T13:47:05+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15453712257423.html</id>
+    <id>www.lonelyor.org/lonelyorWiki/15453712257423.html</id>
     <content type="html"><![CDATA[
 <blockquote>
 <p><a href="https://wiki.archlinux.org/index.php/Xrandr_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">https://wiki.archlinux.org/index.php/Xrandr_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)</a></p>
@@ -1142,9 +1142,9 @@ xrandr查看当前设置 <br/>
   
   <entry>
     <title type="html"><![CDATA[python弱口令脚本的一点备注]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15453709108643.html"/>
+    <link href="www.lonelyor.org/lonelyorWiki/15453709108643.html"/>
     <updated>2018-12-21T13:41:50+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15453709108643.html</id>
+    <id>www.lonelyor.org/lonelyorWiki/15453709108643.html</id>
     <content type="html"><![CDATA[
 <blockquote>
 <p>很久以前写的</p>
@@ -1161,9 +1161,9 @@ xrandr查看当前设置 <br/>
   
   <entry>
     <title type="html"><![CDATA[msf安装与维护]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15453707290429.html"/>
+    <link href="www.lonelyor.org/lonelyorWiki/15453707290429.html"/>
     <updated>2018-12-21T13:38:49+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15453707290429.html</id>
+    <id>www.lonelyor.org/lonelyorWiki/15453707290429.html</id>
     <content type="html"><![CDATA[
 <p><code>curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb &gt; msfinstall &amp;&amp; \<br/>
   chmod 755 msfinstall &amp;&amp; \<br/>
@@ -1178,9 +1178,9 @@ xrandr查看当前设置 <br/>
   
   <entry>
     <title type="html"><![CDATA[查看端口占用]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15453706658952.html"/>
+    <link href="www.lonelyor.org/lonelyorWiki/15453706658952.html"/>
     <updated>2018-12-21T13:37:45+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15453706658952.html</id>
+    <id>www.lonelyor.org/lonelyorWiki/15453706658952.html</id>
     <content type="html"><![CDATA[
 <p>使用命令：<br/>
 <code>lsof -i:8000</code><br/>
@@ -1193,9 +1193,9 @@ xrandr查看当前设置 <br/>
   
   <entry>
     <title type="html"><![CDATA[fsarchiver备份文件介绍]]></title>
-    <link href="www.lonelyor.org/lonelyorNotes/15453705663839.html"/>
+    <link href="www.lonelyor.org/lonelyorWiki/15453705663839.html"/>
     <updated>2018-12-21T13:36:06+08:00</updated>
-    <id>www.lonelyor.org/lonelyorNotes/15453705663839.html</id>
+    <id>www.lonelyor.org/lonelyorWiki/15453705663839.html</id>
     <content type="html"><![CDATA[
 <blockquote>
 <p>多年以前的笔记</p>

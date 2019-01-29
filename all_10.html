@@ -3,20 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <link rel="bookmark" href="http://images.lonelyor.org/favicon.ico" type="images/x-icon"/>
-    <link rel="shortcut icon" href="http://images.lonelyor.org/favicon.ico" type="images/x-icon"/>
-    <link rel="bookmark" href="asset/img/favicon.ico" type="images/x-icon"/>
-    <link rel="shortcut icon" href="asset/img/favicon.ico" type="images/x-icon"/>
     <title>
     
-  lonelyorのblog
+  lonelyorWiki
   
   </title>
   
   
-  
-  <link href="atom.xml" rel="alternate" title="lonelyorのblog" type="application/atom+xml">
+  <link href="atom.xml" rel="alternate" title="lonelyorWiki" type="application/atom+xml">
     <link rel="stylesheet" href="asset/css/foundation.min.css" />
     <link rel="stylesheet" href="asset/css/docs.css" />
     <script src="asset/js/vendor/modernizr.js"></script>
@@ -46,17 +40,17 @@
       <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
         <ul id="main-menu" class="left">
         
-        <li id=""><a target="_self" href="index.html">主页</a></li>
+        <li id=""><a target="_self" href="index.html">首页</a></li>
         
         <li id=""><a target="_self" href="archives.html">归档</a></li>
         
-        <li id=""><a target="_self" href="beidou">北斗</a></li>
+        <li id=""><a target="_self" href="beautiful.html">惊鸿</a></li>
         
-        <li id=""><a target="_self" href="collect">彼岸</a></li>
+        <li id=""><a target="_self" href="ruby.html">流光</a></li>
         
-        <li id=""><a target="_self" href="beautiful">惊鸿</a></li>
+        <li id=""><a target="_self" href="search.html">北斗</a></li>
         
-        <li id=""><a target="_self" href="lost">失乐园</a></li>
+        <li id=""><a target="_self" href="lose.html">失乐园</a></li>
         
         <li id=""><a target="_self" href="about.html">关于</a></li>
         
@@ -78,24 +72,24 @@
 
         <nav class="tab-bar show-for-small">
   <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-    <span> &nbsp; lonelyorのblog</span>
+    <span> &nbsp; lonelyorWiki</span>
   </a>
 </nav>
 
 <aside class="left-off-canvas-menu">
       <ul class="off-canvas-list">
         
-        <li><a target="_self" href="index.html">主页</a></li>
+        <li><a target="_self" href="index.html">首页</a></li>
         
         <li><a target="_self" href="archives.html">归档</a></li>
         
-        <li><a target="_self" href="beidou">北斗</a></li>
+        <li><a target="_self" href="beautiful.html">惊鸿</a></li>
         
-        <li><a target="_self" href="collect">彼岸</a></li>
+        <li><a target="_self" href="ruby.html">流光</a></li>
         
-        <li><a target="_self" href="beautiful">惊鸿</a></li>
+        <li><a target="_self" href="search.html">北斗</a></li>
         
-        <li><a target="_self" href="lost">失乐园</a></li>
+        <li><a target="_self" href="lose.html">失乐园</a></li>
         
         <li><a target="_self" href="about.html">关于</a></li>
         
@@ -103,25 +97,15 @@
     <li><label>Categories</label></li>
 
         
-            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
+            <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
         
-            <li><a href="%E5%B9%BD%E6%A2%A6%E5%BD%B1.html">幽梦影</a></li>
-        
-            <li><a href="%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90.html">数据分析</a></li>
-        
-            <li><a href="Web%E6%94%BB%E9%98%B2.html">Web攻防</a></li>
-        
-            <li><a href="%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html">操作系统</a></li>
-        
-            <li><a href="%E8%99%9A%E6%8B%9F%E5%AE%9E%E9%AA%8C%E5%AE%A4.html">虚拟实验室</a></li>
-        
-            <li><a href="CTF.html">CTF</a></li>
+            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
         
             <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
         
-            <li><a href="%E6%B5%8F%E8%A7%88%E5%99%A8.html">浏览器</a></li>
+            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
-            <li><a href="%E6%9C%AA%E5%88%86%E7%B1%BB.html">未分类</a></li>
+            <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
          
 
       </ul>
@@ -144,188 +128,170 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15428591301433.html">
+                <a class="clearlink" href="15483045487920.html">
                 
-                  <h1>Web安全检测checklist</h1>
+                  <h1>linux安装配置aria2及其Web图形界面（debian为例）</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">x01 爆破</h2>
+                        	<p>下载aria2：apt-get install aria2<br/>
+创建配置文件：mkdir /etc/aria2_conf/aria2.conf<br/>
+编辑配置文件：nano /etc/aria2_conf/aria2.conf</p>
 
-<h3 id="toc_1">弱口令</h3>
+<p>aria2.conf配置：</p>
 
-<p>HTTP登录<br/>
-SSH<br/>
-MySQL<br/>
-Telnet</p>
+<pre class="line-numbers"><code class="language-text">#用户名
+#rpc-user=user
+#密码
+#rpc-passwd=passwd
+#上面的认证方式不建议使用,建议使用下面的token方式
+#设置加密的密钥
+rpc-secret=token
+#允许rpc
+enable-rpc=true
+#允许所有来源, web界面跨域权限需要
+rpc-allow-origin-all=true
+#允许外部访问，false的话只监听本地端口
+rpc-listen-all=true
+#RPC端口, 仅当默认端口被占用时修改
+rpc-listen-port=6800
+#最大同时下载数(任务数), 路由建议值: 3
+max-concurrent-downloads=5
+#断点续传
+continue=true
+#同服务器连接数
+max-connection-per-server=5
+#最小文件分片大小, 下载线程数上限取决于能分出多少片, 对于小文件重要
+min-split-size=10M
+#单文件最大线程数, 路由建议值: 5
+split=10
+#下载速度限制
+max-overall-download-limit=0
+#单文件速度限制
+max-download-limit=0
+#上传速度限制
+max-overall-upload-limit=0
+#单文件速度限制
+max-upload-limit=0
+#断开速度过慢的连接
+#lowest-speed-limit=0
+#验证用，需要1.16.1之后的release版本
+#referer=*
+#文件保存路径, 默认为当前启动位置
+dir=/root/downloads
+#文件缓存, 使用内置的文件缓存, 如果你不相信Linux内核文件缓存和磁盘内置缓存时使用, 需要1.16及以上版本
+#disk-cache=0
+#另一种Linux文件缓存方式, 使用前确保您使用的内核支持此选项, 需要1.15及以上版本(?)
+#enable-mmap=true
+#文件预分配, 能有效降低文件碎片, 提高磁盘性能. 缺点是预分配时间较长
+#所需时间 none &lt; falloc ? trunc &lt;&lt; prealloc, falloc和trunc需要文件系统和内核支持
+file-allocation=prealloc
+</code></pre>
 
-<h3 id="toc_2">遍历</h3>
+<p>然后配置开机启动：<br/>
+<code>nano /etc/init.d/aria2</code></p>
 
-<p>网站敏感文件<br/>
-    源码<br/>
-    配置文件<br/>
-    备份文件<br/>
-    探针类文件<br/>
-网站敏感目录<br/>
-    物理路径<br/>
-    网站管理后台<br/>
-    上传目录<br/>
-    数据库Web管理入口<br/>
-    现成的Webshell<br/>
-端口扫描<br/>
-0day扫描<br/>
-子域名</p>
+<pre class="line-numbers"><code class="language-text">#!/bin/bash
+#
+# aria2 - this script starts and stops the aria2 daemon
+#
+# chkconfig:   - 85 15
+# description: Aria2 - Download Manager
+# processname: aria2c
+# config:      /etc/aria2/aria2.conf
+# pidfile:
 
-<h2 id="toc_3">x02 不安全配置</h2>
+# Source function library.
+. /etc/rc.d/init.d/functions
 
-<h3 id="toc_4">Web服务器</h3>
+# Source networking configuration.
+. /etc/sysconfig/network
 
-<p>Nginx<br/>
-Apache<br/>
-IIS</p>
+# Check that networking is up.
+[ &quot;$NETWORKING&quot; = &quot;no&quot; ] &amp;&amp; exit 0
 
-<h3 id="toc_5">Web应用服务器</h3>
+aria2c=&quot;/usr/bin/aria2c&quot;
+ARIA2C_CONF_FILE=&quot;/etc/aria2/aria2.conf&quot;
+options=&quot; --conf-path=$ARIA2C_CONF_FILE -D &quot;
 
-<p>Tomcat<br/>
-JBoss<br/>
-Weblogic</p>
+RETVAL=0
 
-<h3 id="toc_6">HTTP安全特性</h3>
+start() {
+    # code here to start the program
+    echo -n &quot;Starting aria2c daemon.&quot;
+    ${aria2c} ${options}
+    RETVAL=$?
+    echo
+}
 
-<p>HTTP Headers<br/>
-HTTP Options<br/>
-rebots.txt<br/>
-flash跨域策略</p>
+stop() {
+    echo -n &quot;Shutting down aria2c daemon.&quot;
+    /usr/bin/killall aria2c
+    RETVAL=$?
+    echo
+}
 
-<h2 id="toc_7">x03 敏感信息泄露</h2>
+status() {
+    ID=$(/bin/ps -ef | grep &#39;aria2c&#39; | grep -v &#39;grep&#39; | awk &#39;{print $2}&#39;)
+    if [[ &quot;x$ID&quot; != &quot;x&quot; ]]; then
+            echo &quot;Aria2 is running.&quot;
+    else
+            echo &quot;Aria2 is not running.&quot;
+    fi
+}
 
-<h3 id="toc_8">用户敏感信息</h3>
+restart() {
+    stop
+    sleep 3
+    start
+}
 
-<p>手机号<br/>
-身份证号<br/>
-社保<br/>
-银行卡号<br/>
-家庭住址</p>
+case &quot;$1&quot; in
+    start)
+            start
+            ;;
+    stop)
+            stop
+            ;;
+    status)
+            status
+            ;;
+    restart)
+            restart
+            ;;
+    *)
+            echo &quot;Usage: service aria2c {start|stop|restart}&quot;
+            RETVAL=1
+esac
 
-<h3 id="toc_9">应用敏感信息</h3>
+exit $RETVAL
+</code></pre>
 
-<p>debug信息<br/>
-堆栈报错</p>
+<p>使用以下命令来立即启动 Aria2：</p>
 
-<h3 id="toc_10">站点敏感信息</h3>
+<p><code>/usr/bin/aria2c --conf-path=/etc/aria2_conf/aria2.conf -D</code></p>
 
-<p>测试页面<br/>
-备份文件</p>
+<p>保存之后配置 WebUI，首先开启 Web 服务，然后安装 WebUI 到指定目录，比如我的目录是/opt/aria2webUI/<br/>
+<code>git clone https://github.com/ziahamza/webui-aria2.git</code><br/>
+这样就下载了 WebUI，然后用 nginx 反代这个文件就ok了。</p>
 
-<h3 id="toc_11">本地敏感信息</h3>
+<p>nginx(/etc/nginx/conf.d/aria2.conf)配置文件如下：</p>
 
-<p>前端保存用户密码<br/>
-前端保存验证码</p>
+<pre class="line-numbers"><code class="language-text">aria2.conf
 
-<h2 id="toc_12">x04 xss跨站脚本</h2>
+server
+{
+listen 80;
+server_name aria2.lonelyor.org;
+location / {
+    root /opt/aria2webUI/;
+}
+access_log logs/aria2_access.log;
+}
+</code></pre>
 
-<p>反射型xss<br/>
-存储型xss<br/>
-DOM型xss</p>
-
-<h2 id="toc_13">x05 请求伪造</h2>
-
-<p>csrf跨站请求伪造<br/>
-ssrf服务器请求伪造</p>
-
-<h2 id="toc_14">x06 注入</h2>
-
-<p>LDAP注入<br/>
-ORM注入<br/>
-XML注入<br/>
-XPath注入<br/>
-IMAP/SMTP注入<br/>
-SQL注入<br/>
-代码注入<br/>
-客户端模板注入（CSTI）<br/>
-服务端模板注入（SSTI）<br/>
-服务器端包含注入（SSI）</p>
-
-<h2 id="toc_15">x07 已知漏洞组件</h2>
-
-<p>库文件（某些库会导致远程命令执行）<br/>
-框架（如wordpress、thinkphp、django等）<br/>
-模块（python的某些模块会导致代码注入）</p>
-
-<h2 id="toc_16">x08 文件类漏洞</h2>
-
-<p>文件包含漏洞<br/>
-任意文件创建<br/>
-任意文件读取<br/>
-任意文件上传<br/>
-任意文件下载<br/>
-任意文件删除</p>
-
-<h2 id="toc_17">x09 解析漏洞</h2>
-
-<p>IIS解析漏洞<br/>
-Nginx解析漏洞<br/>
-Apache解析漏洞<br/>
-PHP CGI解析漏洞</p>
-
-<h2 id="toc_18">x10 劫持类漏洞</h2>
-
-<p>点击劫持<br/>
-Jsonp劫持<br/>
-WebSocket劫持<br/>
-DNS劫持<br/>
-二维码劫持<br/>
-子域名劫持</p>
-
-<h2 id="toc_19">x11 业务逻辑漏洞</h2>
-
-<h3 id="toc_20">认证</h3>
-
-<p>使用默认凭证<br/>
-冻结账户策略不当<br/>
-弱用户名和密码<br/>
-“记住我”功能<br/>
-自动登录<br/>
-单点登录<br/>
-弱口令<br/>
-弱安全问题/答案<br/>
-第三方登录风险<br/>
-Oauth2.0安全<br/>
-JWT安全<br/>
-注册覆盖<br/>
-未验证的重定向和转发<br/>
-双因素认证不当</p>
-
-<h3 id="toc_21">授权</h3>
-
-<p>测试角色定义<br/>
-权限管理缺失<br/>
-匿名访问（备用接口——常见于兼容老的不安全的接口时产生）<br/>
-水平越权<br/>
-垂直越权<br/>
-超级账户<br/>
-实名认证不严格</p>
-
-<h3 id="toc_22">会话管理</h3>
-
-<p>cookie安全属性<br/>
-cookie可猜解<br/>
-cookie溢出<br/>
-会话固定<br/>
-用户凭证不安全传输（弱加密或明文传输）<br/>
-用户凭证未一次失效<br/>
-用户凭证可猜解<br/>
-注销与会话超时<br/>
-敏感数据不安全传输</p>
-
-<h3 id="toc_23">流程绕过</h3>
-
-<p>找回密码流程绕过</p>
-
-<h2 id="toc_24">x12 API安全</h2>
-
-<p>整理中</p>
+<p>然后打开浏览器访问 aria2.lonelyor.org 就可以了。</p>
 
                         
                       </div>
@@ -334,10 +300,90 @@ cookie溢出<br/>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/11/22 11:58 上午</span>
+                    <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Checklist.html'>Checklist</a></span>
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045491201.html">
+                
+                  <h1>linux将shell脚本添加到系统命令的方法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>可以自定义一些shell脚本，用来提高执行常用组合命令的效率。还有一种方式是使用alias命令。</p>
+</blockquote>
+
+<p>两种方法：<br/>
+1、直接把shell脚本放到/usr/local/bin ，然后添加权限 <code>sudo chmod +x xxx.sh</code> 就ok了。这样是在本地用户添加命令。<br/>
+root用户添加命令则把脚本放在 /usr/bin 即可。<br/>
+2、使用软连接的方式<code>ln -s 【源文件或目录】【目标文件或目录】</code><br/>
+注意要使用绝对路径。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045487681.html">
+                
+                  <h1>linux查看磁盘空间占用情况</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>主要是使用 df 命令，使用 df --help 可以查看更多选项。</p>
+
+<p>举例：<br/>
+df -k 以KB为单位显示磁盘使用量和占用率。<br/>
+df -k 以M×××</p>
+
+<p>使用“du -ck /home”命令，列出home目录下所有文件或目录占用的大小，以KB作为计量单位。以及统计出当前home目录占用的总大小。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -361,7 +407,7 @@ cookie溢出<br/>
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			
+			 <a href="all_11.html">&raquo; Next Page</a> 
 			</p>
 			  </div>
 			</div>
@@ -373,10 +419,9 @@ cookie溢出<br/>
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-              <div class="site-a-logo"><img src="http://images.lonelyor.org/lonelyornotesico.jpeg" /></div>
+                <div class="site-a-logo"><img src="http://images.lonelyor.org/favicon.jpg" /></div>
             
-          </br>
-                <h1>lonelyorのblog</h1>
+                <h1>lonelyorWiki</h1>
                 <div class="site-des">一个用来记录知识的网站</div>
                 <div class="social">
 
@@ -399,31 +444,21 @@ cookie溢出<br/>
 
               <div id="site-categories" class="side-item ">
                 <div class="side-header">
-                  <h2>分类</h2>
+                  <h2>Categories</h2>
                 </div>
                 <div class="side-content">
 
       	<p class="cat-list">
         
-            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
+            <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
         
-            <a href="%E5%B9%BD%E6%A2%A6%E5%BD%B1.html"><strong>幽梦影</strong></a>
-        
-            <a href="%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90.html"><strong>数据分析</strong></a>
-        
-            <a href="Web%E6%94%BB%E9%98%B2.html"><strong>Web攻防</strong></a>
-        
-            <a href="%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html"><strong>操作系统</strong></a>
-        
-            <a href="%E8%99%9A%E6%8B%9F%E5%AE%9E%E9%AA%8C%E5%AE%A4.html"><strong>虚拟实验室</strong></a>
-        
-            <a href="CTF.html"><strong>CTF</strong></a>
+            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
         
             <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
         
-            <a href="%E6%B5%8F%E8%A7%88%E5%99%A8.html"><strong>浏览器</strong></a>
+            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
-            <a href="%E6%9C%AA%E5%88%86%E7%B1%BB.html"><strong>未分类</strong></a>
+            <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
          
         </p>
 
@@ -433,38 +468,38 @@ cookie溢出<br/>
 
               <div id="site-categories" class="side-item">
                 <div class="side-header">
-                  <h2>最新文章</h2>
+                  <h2>Recent Posts</h2>
                 </div>
                 <div class="side-content">
                 <ul class="posts-list">
 	      
 		      
 			      <li class="post">
-			        <a href="15474694746707.html">十大经典排序算法（动图演示）</a>
+			        <a href="15483045487644.html">Atom设置和取消代理</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15473910152747.html">给网站嵌入百度搜索框</a>
+			        <a href="15483045486850.html">BASIC INJECTION 基本注入</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15473903423452.html">vscode 快速生成 html 代码</a>
+			        <a href="15483045491221.html">CRLF注入</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15473524859484.html">msf更新</a>
+			        <a href="15483045491124.html">FOEENSICS 101</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15473464131197.html">读 Monyer 文章有感</a>
+			        <a href="15483045490848.html">HttpOnly</a>
 			      </li>
 		     
 		  
@@ -511,9 +546,7 @@ cookie溢出<br/>
   <div class="row">
    <p class="copyright">Copyright &copy; 2018
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
-Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>,&nbsp; 
-Author is <a target="_blank" href="http://lonelyor.org">lonelyor</a>
-</p>
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
   </div>
 </div>
 
@@ -543,8 +576,7 @@ Author is <a target="_blank" href="http://lonelyor.org">lonelyor</a>
 
     
 
-<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more">分享到：</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook">Facebook</a></div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"来自：http://www.lonelyor.org/","bdMini":"1","bdMiniList":["sqq","weixin","fbook","twi","qzone","tsina","tqq","tieba","douban","tsohu","linkedin","mshare","copy"],"bdPic":"http://images.lonelyor.org/lonelyornotesico.jpeg","bdStyle":"1","bdSize":"16"},"share":{"bdSize":16},"image":{"viewList":["qzone","weixin","tsina","tqq","fbook"],"viewText":"分享到：","viewSize":"24"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","weixin","tsina","tqq","fbook"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
 
   </body>
 </html>

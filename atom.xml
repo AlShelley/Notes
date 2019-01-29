@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[lonelyorのblog]]></title>
-  <link href="www.lonelyor.org/lonelyorWiki/atom.xml" rel="self"/>
-  <link href="www.lonelyor.org/lonelyorWiki/"/>
-  <updated>2019-01-14T20:53:38+08:00</updated>
-  <id>www.lonelyor.org/lonelyorWiki/</id>
+  <title><![CDATA[lonelyorWiki]]></title>
+  <link href="http://www.lonelyor.org/lonelyorWiki/atom.xml" rel="self"/>
+  <link href="http://www.lonelyor.org/lonelyorWiki/"/>
+  <updated>2019-01-29T11:21:20+08:00</updated>
+  <id>http://www.lonelyor.org/lonelyorWiki/</id>
   <author>
     <name><![CDATA[]]></name>
     
@@ -13,815 +13,520 @@
   <generator uri="http://www.mweb.im/">MWeb</generator>
   
   <entry>
-    <title type="html"><![CDATA[十大经典排序算法（动图演示）]]></title>
-    <link href="www.lonelyor.org/lonelyorWiki/15474694746707.html"/>
-    <updated>2019-01-14T20:37:54+08:00</updated>
-    <id>www.lonelyor.org/lonelyorWiki/15474694746707.html</id>
+    <title type="html"><![CDATA[Atom设置和取消代理]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15483045487644.html"/>
+    <updated>2019-01-24T12:35:48+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15483045487644.html</id>
+    <content type="html"><![CDATA[
+<h2 id="toc_0">设置本地上游代理</h2>
+
+<p>apm config set http-proxy socks5:127.0.0.1:1080<br/>
+apm config set https-proxy socks5:127.0.0.1:1080</p>
+
+<h2 id="toc_1">取消SSL</h2>
+
+<p>apm config set strict-ssl false</p>
+
+<h2 id="toc_2">取消代理</h2>
+
+<p>apm config set http-proxy null<br/>
+apm config set https-proxy null</p>
+
+<h2 id="toc_3">查看代理设置</h2>
+
+<p>apm config get http-proxy<br/>
+apm config get https-proxy</p>
+
+<p>编辑～/.atom/.apmrc文件，配置为：<br/>
+strict-ssl=false<br/>
+http_proxy = socks5: 127.0.0.1:1080<br/>
+https_proxy = socks5: 127.0.0.1:1080</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[BASIC INJECTION 基本注入]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15483045486850.html"/>
+    <updated>2019-01-24T12:35:48+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15483045486850.html</id>
+    <content type="html"><![CDATA[
+<p>题目：<a href="https://ctflearn.com/problems/88">https://ctflearn.com/problems/88</a><br/>
+解：<br/>
+访问题目中提到的：<a href="https://web.ctflearn.com/web4/">域名</a><br/>
+<img src="http://images.lonelyor.org/ctflearn-basic-injection-1.png" alt="ctflearn-basic-injection-1"/><br/>
+然后输入payload，得到以下数据，方框中的即为flag。<br/>
+<img src="http://images.lonelyor.org/ctflearn-basic-injection-2.png" alt="ctflearn-basic-injection-2"/></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CRLF注入]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15483045491221.html"/>
+    <updated>2019-01-24T12:35:49+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15483045491221.html</id>
     <content type="html"><![CDATA[
 <blockquote>
-<p>转载自：<a href="https://www.cnblogs.com/onepixel/articles/7674659.html">https://www.cnblogs.com/onepixel/articles/7674659.html</a></p>
+<p>文章翻译自OWASP的<a href="https://www.owasp.org/index.php/CRLF_Injection">CRLF_Injection</a></p>
 </blockquote>
 
-<h2 id="toc_0">0、算法概述</h2>
+<p>CRLF即回车Carriage Return (ASCII 13, \r) 和 换行 Line Feed (ASCII 10, \n)。他们被用于注释掉一行的终止。不过不同系统的处理方式有点不同。windows中，CR和LF都被用于注释掉一行的结尾，而linux/unix中只需要一个LF。在HTTP协议中，CRLF序列始终用于一行的终止。<br/>
+当用户设法将CRLF提交到应用程序时，可能发生CRLF注入攻击，这通常是通过修改HTTP参数或URL来完成。</p>
 
-<h3 id="toc_1">0.1 算法分类</h3>
-
-<p>十种常见排序算法可以分为两大类：</p>
-
-<blockquote>
-<p>非线性时间比较类排序：通过比较来决定元素间的相对次序，由于其时间复杂度不能突破O(nlogn)，因此称为非线性时间比较类排序。</p>
-
-<p>线性时间非比较类排序：不通过比较来决定元素间的相对次序，它可以突破基于比较排序的时间下界，以线性时间运行，因此称为线性时间非比较类排序。 </p>
-</blockquote>
-
-<p><img src="media/15474694746707/15474696026744.jpg" alt=""/></p>
-
-<h3 id="toc_2">0.2 算法复杂度</h3>
-
-<p><img src="media/15474694746707/15474696174505.jpg" alt=""/></p>
-
-<h3 id="toc_3">0.3 相关概念</h3>
-
-<blockquote>
-<p>稳定：如果a原本在b前面，而a=b，排序之后a仍然在b的前面。</p>
-
-<p>不稳定：如果a原本在b的前面，而a=b，排序之后 a 可能会出现在 b 的后面。</p>
-
-<p>时间复杂度：对排序数据的总的操作次数。反映当n变化时，操作次数呈现什么规律。</p>
-
-<p>空间复杂度：是指算法在计算机内执行时所需存储空间的度量，它也是数据规模n的函数。 </p>
-</blockquote>
-
-<h2 id="toc_4">1、冒泡排序（Bubble Sort）</h2>
-
-<p>冒泡排序是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果它们的顺序错误就把它们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端。 </p>
-
-<h3 id="toc_5">1.1 算法描述</h3>
-
-<p>比较相邻的元素。如果第一个比第二个大，就交换它们两个；<br/>
-对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对，这样在最后的元素应该会是最大的数；<br/>
-针对所有的元素重复以上的步骤，除了最后一个；<br/>
-重复步骤1~3，直到排序完成。</p>
-
-<h3 id="toc_6">1.2 动图演示</h3>
-<img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015223238449-2146169197.gif" alt="" width="681" height="212">
-<h3 id="toc_7">1.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">function bubbleSort(arr) {
-    var len = arr.length;
-    for (var i = 0; i &lt; len - 1; i++) {
-        for (var j = 0; j &lt; len - 1 - i; j++) {
-            if (arr[j] &gt; arr[j+1]) {        // 相邻元素两两对比
-                var temp = arr[j+1];        // 元素交换
-                arr[j+1] = arr[j];
-                arr[j] = temp;
-            }
-        }
-    }
-    return arr;
-}
-</code></pre>
-
-<h2 id="toc_8">2、选择排序（Selection Sort）</h2>
-
-<p>选择排序(Selection-sort)是一种简单直观的排序算法。它的工作原理：首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。 </p>
-
-<h3 id="toc_9">2.1 算法描述</h3>
-
-<p>n个记录的直接选择排序可经过n-1趟直接选择排序得到有序结果。具体算法描述如下：</p>
-
-<p>初始状态：无序区为R[1..n]，有序区为空；<br/>
-第i趟排序(i=1,2,3…n-1)开始时，当前有序区和无序区分别为R[1..i-1]和R(i..n）。该趟排序从当前无序区中-选出关键字最小的记录 R[k]，将它与无序区的第1个记录R交换，使R[1..i]和R[i+1..n)分别变为记录个数增加1个的新有序区和记录个数减少1个的新无序区；<br/>
-n-1趟结束，数组有序化了。<br/>
-2.2 动图演示<br/>
-　　<br/>
-<img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015224719590-1433219824.gif" alt="" width="684" height="209"></p>
-
-<h3 id="toc_10">2.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">function selectionSort(arr) {
-    var len = arr.length;
-    var minIndex, temp;
-    for (var i = 0; i &lt; len - 1; i++) {
-        minIndex = i;
-        for (var j = i + 1; j &lt; len; j++) {
-            if (arr[j] &lt; arr[minIndex]) {     // 寻找最小的数
-                minIndex = j;                 // 将最小数的索引保存
-            }
-        }
-        temp = arr[i];
-        arr[i] = arr[minIndex];
-        arr[minIndex] = temp;
-    }
-    return arr;
-} 
-</code></pre>
-
-<h3 id="toc_11">2.4 算法分析</h3>
-
-<p>表现最稳定的排序算法之一，因为无论什么数据进去都是O(n2)的时间复杂度，所以用到它的时候，数据规模越小越好。唯一的好处可能就是不占用额外的内存空间了吧。理论上讲，选择排序可能也是平时排序一般人想到的最多的排序方法了吧。</p>
-
-<h2 id="toc_12">3、插入排序（Insertion Sort）</h2>
-
-<p>插入排序（Insertion-Sort）的算法描述是一种简单直观的排序算法。它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。</p>
-
-<h3 id="toc_13">3.1 算法描述</h3>
-
-<p>一般来说，插入排序都采用in-place在数组上实现。具体算法描述如下：</p>
-
-<p>从第一个元素开始，该元素可以认为已经被排序；<br/>
-取出下一个元素，在已经排序的元素序列中从后向前扫描；<br/>
-如果该元素（已排序）大于新元素，将该元素移到下一位置；<br/>
-重复步骤3，直到找到已排序的元素小于或者等于新元素的位置；<br/>
-将新元素插入到该位置后；<br/>
-重复步骤2~5。</p>
-
-<h3 id="toc_14">3.2 动图演示</h3>
-<img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015225645277-1151100000.gif" alt="" width="671" height="418">
-<h3 id="toc_15">3.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">function insertionSort(arr) {
-    var len = arr.length;
-    var preIndex, current;
-    for (var i = 1; i &lt; len; i++) {
-        preIndex = i - 1;
-        current = arr[i];
-        while (preIndex &gt;= 0 &amp;&amp; arr[preIndex] &gt; current) {
-            arr[preIndex + 1] = arr[preIndex];
-            preIndex--;
-        }
-        arr[preIndex + 1] = current;
-    }
-    return arr;
-}
-</code></pre>
-
-<h3 id="toc_16">3.4 算法分析</h3>
-
-<p>插入排序在实现上，通常采用in-place排序（即只需用到O(1)的额外空间的排序），因而在从后向前扫描过程中，需要反复把已排序元素逐步向后挪位，为最新元素提供插入空间。</p>
-
-<h2 id="toc_17">4、希尔排序（Shell Sort）</h2>
-
-<p>1959年Shell发明，第一个突破O(n2)的排序算法，是简单插入排序的改进版。它与插入排序的不同之处在于，它会优先比较距离较远的元素。希尔排序又叫缩小增量排序。</p>
-
-<h3 id="toc_18">4.1 算法描述</h3>
-
-<p>先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，具体算法描述：</p>
-
-<p>选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1；<br/>
-按增量序列个数k，对序列进行k 趟排序；<br/>
-每趟排序，根据对应的增量ti，将待排序列分割成若干长度为m 的子序列，分别对各子表进行直接插入排序。仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。</p>
-
-<h3 id="toc_19">4.2 动图演示</h3>
-<img src="https://images2018.cnblogs.com/blog/849589/201803/849589-20180331170017421-364506073.gif" alt="">
-<h3 id="toc_20">4.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">function shellSort(arr) {
-    var len = arr.length,
-        temp,
-        gap = 1;
-    while (gap &lt; len / 3) {          // 动态定义间隔序列
-        gap = gap * 3 + 1;
-    }
-    for (gap; gap &gt; 0; gap = Math.floor(gap / 3)) {
-        for (var i = gap; i &lt; len; i++) {
-            temp = arr[i];
-            for (var j = i-gap; j &gt; 0 &amp;&amp; arr[j]&gt; temp; j-=gap) {
-                arr[j + gap] = arr[j];
-            }
-            arr[j + gap] = temp;
-        }
-    }
-    return arr;
-}
-</code></pre>
-
-<h3 id="toc_21">4.4 算法分析</h3>
-
-<p>希尔排序的核心在于间隔序列的设定。既可以提前设定好间隔序列，也可以动态的定义间隔序列。动态定义间隔序列的算法是《算法（第4版）》的合著者Robert Sedgewick提出的。　</p>
-
-<h2 id="toc_22">5、归并排序（Merge Sort）</h2>
-
-<p>归并排序是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为2-路归并。 </p>
-
-<h3 id="toc_23">5.1 算法描述</h3>
-
-<p>把长度为n的输入序列分成两个长度为n/2的子序列；<br/>
-对这两个子序列分别采用归并排序；<br/>
-将两个排序好的子序列合并成一个最终的排序序列。</p>
-
-<h3 id="toc_24">5.2 动图演示</h3>
-<img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015230557043-37375010.gif" alt="" width="678" height="422">
-<h2 id="toc_25">5.3 代码实现</h2>
-
-<pre class="line-numbers"><code class="language-text">function mergeSort(arr) {  // 采用自上而下的递归方法
-    var len = arr.length;
-    if (len &lt; 2) {
-        return arr;
-    }
-    var middle = Math.floor(len / 2),
-        left = arr.slice(0, middle),
-        right = arr.slice(middle);
-    return merge(mergeSort(left), mergeSort(right));
-}
- 
-function merge(left, right) {
-    var result = [];
- 
-    while (left.length&gt;0 &amp;&amp; right.length&gt;0) {
-        if (left[0] &lt;= right[0]) {
-            result.push(left.shift());
-        } else {
-            result.push(right.shift());
-        }
-    }
- 
-    while (left.length)
-        result.push(left.shift());
- 
-    while (right.length)
-        result.push(right.shift());
- 
-    return result;
-}
-</code></pre>
-
-<h3 id="toc_26">5.4 算法分析</h3>
-
-<p>归并排序是一种稳定的排序方法。和选择排序一样，归并排序的性能不受输入数据的影响，但表现比选择排序好的多，因为始终都是O(nlogn）的时间复杂度。代价是需要额外的内存空间。</p>
-
-<h2 id="toc_27">6、快速排序（Quick Sort）</h2>
-
-<p>快速排序的基本思想：通过一趟排序将待排记录分隔成独立的两部分，其中一部分记录的关键字均比另一部分的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序。</p>
-
-<h3 id="toc_28">6.1 算法描述</h3>
-
-<p>快速排序使用分治法来把一个串（list）分为两个子串（sub-lists）。具体算法描述如下：</p>
-
-<p>从数列中挑出一个元素，称为 “基准”（pivot）；<br/>
-重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；<br/>
-递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。</p>
-
-<h3 id="toc_29">6.2 动图演示</h3>
-<img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015230936371-1413523412.gif" alt="" width="682" height="212">
-<h3 id="toc_30">6.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">function quickSort(arr, left, right) {
-    var len = arr.length,
-        partitionIndex,
-        left = typeof left != &#39;number&#39; ? 0 : left,
-        right = typeof right != &#39;number&#39; ? len - 1 : right;
- 
-    if (left &lt; right) {
-        partitionIndex = partition(arr, left, right);
-        quickSort(arr, left, partitionIndex-1);
-        quickSort(arr, partitionIndex+1, right);
-    }
-    return arr;
-}
- 
-function partition(arr, left ,right) {     // 分区操作
-    var pivot = left,                      // 设定基准值（pivot）
-        index = pivot + 1;
-    for (var i = index; i &lt;= right; i++) {
-        if (arr[i] &lt; arr[pivot]) {
-            swap(arr, i, index);
-            index++;
-        }       
-    }
-    swap(arr, pivot, index - 1);
-    return index-1;
-}
- 
-function swap(arr, i, j) {
-    var temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
-}
-</code></pre>
-
-<h2 id="toc_31">7、堆排序（Heap Sort）</h2>
-
-<p>堆排序（Heapsort）是指利用堆这种数据结构所设计的一种排序算法。堆积是一个近似完全二叉树的结构，并同时满足堆积的性质：即子结点的键值或索引总是小于（或者大于）它的父节点。</p>
-
-<h3 id="toc_32">7.1 算法描述</h3>
-
-<p>将初始待排序关键字序列(R1,R2….Rn)构建成大顶堆，此堆为初始的无序区；<br/>
-将堆顶元素R[1]与最后一个元素R[n]交换，此时得到新的无序区(R1,R2,……Rn-1)和新的有序区(Rn),且满足R[1,2…n-1]&lt;=R[n]；<br/>
-由于交换后新的堆顶R[1]可能违反堆的性质，因此需要对当前无序区(R1,R2,……Rn-1)调整为新堆，然后再次将R[1]与无序区最后一个元素交换，得到新的无序区(R1,R2….Rn-2)和新的有序区(Rn-1,Rn)。不断重复此过程直到有序区的元素个数为n-1，则整个排序过程完成。</p>
-
-<h3 id="toc_33">7.2 动图演示</h3>
-<img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015231308699-356134237.gif" alt="">
-<h3 id="toc_34">7.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">var len;    // 因为声明的多个函数都需要数据长度，所以把len设置成为全局变量
- 
-function buildMaxHeap(arr) {   // 建立大顶堆
-    len = arr.length;
-    for (var i = Math.floor(len/2); i &gt;= 0; i--) {
-        heapify(arr, i);
-    }
-}
- 
-function heapify(arr, i) {     // 堆调整
-    var left = 2 * i + 1,
-        right = 2 * i + 2,
-        largest = i;
- 
-    if (left &lt; len &amp;&amp; arr[left] &gt; arr[largest]) {
-        largest = left;
-    }
- 
-    if (right &lt; len &amp;&amp; arr[right] &gt; arr[largest]) {
-        largest = right;
-    }
- 
-    if (largest != i) {
-        swap(arr, i, largest);
-        heapify(arr, largest);
-    }
-}
- 
-function swap(arr, i, j) {
-    var temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
-}
- 
-function heapSort(arr) {
-    buildMaxHeap(arr);
- 
-    for (var i = arr.length - 1; i &gt; 0; i--) {
-        swap(arr, 0, i);
-        len--;
-        heapify(arr, 0);
-    }
-    return arr;
-}
-</code></pre>
-
-<h2 id="toc_35">8、计数排序（Counting Sort）</h2>
-
-<p>计数排序不是基于比较的排序算法，其核心在于将输入的数据值转化为键存储在额外开辟的数组空间中。 作为一种线性时间复杂度的排序，计数排序要求输入的数据必须是有确定范围的整数。</p>
-
-<h3 id="toc_36">8.1 算法描述</h3>
-
-<p>找出待排序的数组中最大和最小的元素；<br/>
-统计数组中每个值为i的元素出现的次数，存入数组C的第i项；<br/>
-对所有的计数累加（从C中的第一个元素开始，每一项和前一项相加）；<br/>
-反向填充目标数组：将每个元素i放在新数组的第C(i)项，每放一个元素就将C(i)减去1。</p>
-
-<h3 id="toc_37">8.2 动图演示</h3>
-<img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015231740840-6968181.gif" alt="" width="690" height="380">
-<h3 id="toc_38">8.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">function countingSort(arr, maxValue) {
-    var bucket = new Array(maxValue + 1),
-        sortedIndex = 0;
-        arrLen = arr.length,
-        bucketLen = maxValue + 1;
- 
-    for (var i = 0; i &lt; arrLen; i++) {
-        if (!bucket[arr[i]]) {
-            bucket[arr[i]] = 0;
-        }
-        bucket[arr[i]]++;
-    }
- 
-    for (var j = 0; j &lt; bucketLen; j++) {
-        while(bucket[j] &gt; 0) {
-            arr[sortedIndex++] = j;
-            bucket[j]--;
-        }
-    }
- 
-    return arr;
-}
-</code></pre>
-
-<h3 id="toc_39">8.4 算法分析</h3>
-
-<p>计数排序是一个稳定的排序算法。当输入的元素是 n 个 0到 k 之间的整数时，时间复杂度是O(n+k)，空间复杂度也是O(n+k)，其排序速度快于任何比较排序算法。当k不是很大并且序列比较集中时，计数排序是一个很有效的排序算法。</p>
-
-<h2 id="toc_40">9、桶排序（Bucket Sort）</h2>
-
-<p>桶排序是计数排序的升级版。它利用了函数的映射关系，高效与否的关键就在于这个映射函数的确定。桶排序 (Bucket sort)的工作的原理：假设输入数据服从均匀分布，将数据分到有限数量的桶里，每个桶再分别排序（有可能再使用别的排序算法或是以递归方式继续使用桶排序进行排）。</p>
-
-<h3 id="toc_41">9.1 算法描述</h3>
-
-<p>设置一个定量的数组当作空桶；<br/>
-遍历输入数据，并且把数据一个一个放到对应的桶里去；<br/>
-对每个不是空的桶进行排序；<br/>
-从不是空的桶里把排好序的数据拼接起来。 </p>
-
-<h3 id="toc_42">9.2 图片演示</h3>
-
-<p><img src="media/15474694746707/15474703458460.jpg" alt=""/></p>
-
-<h3 id="toc_43">9.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">function bucketSort(arr, bucketSize) {
-    if (arr.length === 0) {
-      return arr;
-    }
- 
-    var i;
-    var minValue = arr[0];
-    var maxValue = arr[0];
-    for (i = 1; i &lt; arr.length; i++) {
-      if (arr[i] &lt; minValue) {
-          minValue = arr[i];                // 输入数据的最小值
-      } else if (arr[i] &gt; maxValue) {
-          maxValue = arr[i];                // 输入数据的最大值
-      }
-    }
- 
-    // 桶的初始化
-    var DEFAULT_BUCKET_SIZE = 5;            // 设置桶的默认数量为5
-    bucketSize = bucketSize || DEFAULT_BUCKET_SIZE;
-    var bucketCount = Math.floor((maxValue - minValue) / bucketSize) + 1;  
-    var buckets = new Array(bucketCount);
-    for (i = 0; i &lt; buckets.length; i++) {
-        buckets[i] = [];
-    }
- 
-    // 利用映射函数将数据分配到各个桶中
-    for (i = 0; i &lt; arr.length; i++) {
-        buckets[Math.floor((arr[i] - minValue) / bucketSize)].push(arr[i]);
-    }
- 
-    arr.length = 0;
-    for (i = 0; i &lt; buckets.length; i++) {
-        insertionSort(buckets[i]);                      // 对每个桶进行排序，这里使用了插入排序
-        for (var j = 0; j &lt; buckets[i].length; j++) {
-            arr.push(buckets[i][j]);                     
-        }
-    }
- 
-    return arr;
-}
-</code></pre>
-
-<h3 id="toc_44">9.4 算法分析</h3>
-
-<p>桶排序最好情况下使用线性时间O(n)，桶排序的时间复杂度，取决与对各个桶之间数据进行排序的时间复杂度，因为其它部分的时间复杂度都为O(n)。很显然，桶划分的越小，各个桶之间的数据越少，排序所用的时间也会越少。但相应的空间消耗就会增大。 </p>
-
-<h2 id="toc_45">10、基数排序（Radix Sort）</h2>
-
-<p>基数排序是按照低位先排序，然后收集；再按照高位排序，然后再收集；依次类推，直到最高位。有时候有些属性是有优先级顺序的，先按低优先级排序，再按高优先级排序。最后的次序就是高优先级高的在前，高优先级相同的低优先级高的在前。</p>
-
-<h3 id="toc_46">10.1 算法描述</h3>
-
-<p>取得数组中的最大数，并取得位数；<br/>
-arr为原始数组，从最低位开始取每个位组成radix数组；<br/>
-对radix进行计数排序（利用计数排序适用于小范围数的特点）；<br/>
-10.2 动图演示</p>
-<img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015232453668-1397662527.gif" alt="" width="686" height="389">
-<h3 id="toc_47">10.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">// LSD Radix Sort
-var counter = [];
-function radixSort(arr, maxDigit) {
-    var mod = 10;
-    var dev = 1;
-    for (var i = 0; i &lt; maxDigit; i++, dev *= 10, mod *= 10) {
-        for(var j = 0; j &lt; arr.length; j++) {
-            var bucket = parseInt((arr[j] % mod) / dev);
-            if(counter[bucket]==null) {
-                counter[bucket] = [];
-            }
-            counter[bucket].push(arr[j]);
-        }
-        var pos = 0;
-        for(var j = 0; j &lt; counter.length; j++) {
-            var value = null;
-            if(counter[j]!=null) {
-                while ((value = counter[j].shift()) != null) {
-                      arr[pos++] = value;
-                }
-          }
-        }
-    }
-    return arr;
-}
-</code></pre>
-
-<h3 id="toc_48">10.4 算法分析</h3>
-
-<p>基数排序基于分别排序，分别收集，所以是稳定的。但基数排序的性能比桶排序要略差，每一次关键字的桶分配都需要O(n)的时间复杂度，而且分配之后得到新的关键字序列又需要O(n)的时间复杂度。假如待排数据可以分为d个关键字，则基数排序的时间复杂度将是O(d*2n) ，当然d要远远小于n，因此基本上还是线性级别的。</p>
-
-<p>基数排序的空间复杂度为O(n+k)，其中k为桶的数量。一般来说n&gt;&gt;k，因此额外空间需要大概n个左右。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[给网站嵌入百度搜索框]]></title>
-    <link href="www.lonelyor.org/lonelyorWiki/15473910152747.html"/>
-    <updated>2019-01-13T22:50:15+08:00</updated>
-    <id>www.lonelyor.org/lonelyorWiki/15473910152747.html</id>
-    <content type="html"><![CDATA[
-<p>只需要在 htm 页面中嵌入以下代码即可：</p>
-
-<pre class="line-numbers"><code class="language-markup"> &lt;div style=&#39;overflow:hidden&#39;&gt;
-        &lt;form onsubmit=&quot;return baiduWithHttps(this)&quot; action=&quot;http://www.baidu.com/s&quot; target=&quot;_blank&quot;&gt;
-        &lt;input class=&#39;bdtext&#39; type=&quot;text&quot;  onfocus=&quot;checkHttps&quot; name=&quot;wd&quot;  size=&quot;30&quot;&gt;
-        &lt;input class=&#39;bdbtn&#39; type=&quot;submit&quot;value=&quot;百度搜索&quot;&gt;
-        &lt;/form&gt;
-        &lt;script&gt;
-            function checkHttps () {
-                BaiduHttps.useHttps();    
-            };
-            function baiduWithHttps (formname) {
-                var data = BaiduHttps.useHttps();
-                if (data.s === 0) {
-                    return true;
-                }
-                else {
-                    formname.action = &#39;https://www.baidu.com/s&#39; + &#39;?wd&#39; + data.ssl_code;
-                    return true;
-                }
-            };
-        &lt;/script&gt; 
-    &lt;/div&gt;
-</code></pre>
-
-<p>效果如下：<br/>
-<img src="media/15473910152747/%E5%B5%8C%E5%85%A5%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2.png" alt="嵌入百度搜索"/><br/>
-觉得不好看的可以自行加入 css 改变样式，我觉得就这样还蛮好看的。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[vscode 快速生成 html 代码]]></title>
-    <link href="www.lonelyor.org/lonelyorWiki/15473903423452.html"/>
-    <updated>2019-01-13T22:39:02+08:00</updated>
-    <id>www.lonelyor.org/lonelyorWiki/15473903423452.html</id>
-    <content type="html"><![CDATA[
-<blockquote>
-<p>参考的博客如下：<br/>
-<a href="https://blog.csdn.net/weixin_42659625/article/details/82941394">https://blog.csdn.net/weixin_42659625/article/details/82941394</a><br/>
-图是直接复制的别人博客的图</p>
-</blockquote>
-
-<p>1、首先创建一个 html 文件如：index.html<br/>
-2、在编辑器中输入感叹号（！）<br/>
-3、此时会弹出下拉项，直接在感叹号❗️上回车即可。<br/>
-<img src="media/15473903423452/15473904287496.jpg" alt=""/><br/>
-4、自动生成的html 代码如下：<br/>
-<img src="media/15473903423452/15473904546232.jpg" alt=""/></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[msf更新]]></title>
-    <link href="www.lonelyor.org/lonelyorWiki/15473524859484.html"/>
-    <updated>2019-01-13T12:08:05+08:00</updated>
-    <id>www.lonelyor.org/lonelyorWiki/15473524859484.html</id>
-    <content type="html"><![CDATA[
-<p>1、打开终端输入 msf 进入msfconsole<br/>
-2、在 msfconsole 中输入 msfupdate 即可自动更新</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[读 Monyer 文章有感]]></title>
-    <link href="www.lonelyor.org/lonelyorWiki/15473464131197.html"/>
-    <updated>2019-01-13T10:26:53+08:00</updated>
-    <id>www.lonelyor.org/lonelyorWiki/15473464131197.html</id>
-    <content type="html"><![CDATA[
-<p>1、黑客是一种兴趣爱好<br/>
-2、选行需谨慎，选前需要调研<br/>
-3、技术分化，很难再&quot;全栈&quot;，知识面扩宽的同时，需要抓重点精深。<br/>
-4、技术人员发展路线：技术输出阶段、经验输出阶段、思路输出阶段和决策输出阶段。<br/>
-5、学习永不停歇<br/>
-6、小游戏地址：<a href="http://monyer.com/game/game1/">http://monyer.com/game/game1/</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[修改Mac主机名、计算机名]]></title>
-    <link href="www.lonelyor.org/lonelyorWiki/15470313638273.html"/>
-    <updated>2019-01-09T18:56:03+08:00</updated>
-    <id>www.lonelyor.org/lonelyorWiki/15470313638273.html</id>
-    <content type="html"><![CDATA[
-<p><code>$sudo scutil --set ComputerName 你想要的计算机名称</code><br/>
-<code>$sudo scutil --set HostName 你想要的主机名称</code></p>
-
-<p>举例：<br/>
-<code>$sudo scutil --set HostName lonelyor</code></p>
-
-<p>使用以下命令查看主机名或计算机名<br/>
-<code>$ scutil --get ComputerName</code><br/>
-<code>$ scutil --get HostName</code></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[使用python快速搭建ftp服务器]]></title>
-    <link href="www.lonelyor.org/lonelyorWiki/15468702076334.html"/>
-    <updated>2019-01-07T22:10:07+08:00</updated>
-    <id>www.lonelyor.org/lonelyorWiki/15468702076334.html</id>
-    <content type="html"><![CDATA[
-<p>使用第三方库：pyftpdlib<br/>
-安装库：pip3 install pyftpdlib<br/>
-其他依赖项：<br/>
-<code>pip3 install PyOpenSSL</code> 用来支持ftps。<br/>
-<code>pip3 install pysendfile</code> 用来在unix上加速上传（服务器到客户端）。<br/>
-安装python库的时候要注意大小写。</p>
-
-<p>后面的事情就是看官方示例，然后copy了。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[将网页保存为PDF]]></title>
-    <link href="www.lonelyor.org/lonelyorWiki/15457897865747.html"/>
-    <updated>2018-12-26T10:03:06+08:00</updated>
-    <id>www.lonelyor.org/lonelyorWiki/15457897865747.html</id>
-    <content type="html"><![CDATA[
-<p>如果使用 google chrome 则不需要任何辅助工具即可做到。<br/>
-Mac用户使用cmd+p即可；<br/>
-Windows用户使用ctrl+p即可。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[自建kms服务器激活windows]]></title>
-    <link href="www.lonelyor.org/lonelyorWiki/15456175398128.html"/>
-    <updated>2018-12-24T10:12:19+08:00</updated>
-    <id>www.lonelyor.org/lonelyorWiki/15456175398128.html</id>
-    <content type="html"><![CDATA[
-<blockquote>
-<p>kms的脚本来自：<a href="https://github.com/SystemRage/py-kms">https://github.com/SystemRage/py-kms</a><br/>
-密钥来自：<br/>
-<a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj612867(v%3dws.11)">https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj612867(v%3dws.11)</a><br/>
-<a href="https://github.com/SystemRage/py-kms/wiki/Office-GVLK-Keys">https://github.com/SystemRage/py-kms/wiki/Office-GVLK-Keys</a><br/>
-<a href="https://github.com/SystemRage/py-kms/wiki/Windows-GVLK-Keys">https://github.com/SystemRage/py-kms/wiki/Windows-GVLK-Keys</a></p>
-</blockquote>
-
-<h2 id="toc_0">下载kms服务端和客户端程序</h2>
-
-<p>分别在服务器和客户端下载py-kms<br/>
-<code>git clone https://github.com/SystemRage/py-kms.git</code></p>
-
-<h2 id="toc_1">服务器设置</h2>
-
-<p>使用python3</p>
-
-<pre class="line-numbers"><code class="language-text">python3 -m pip install argparse
-python3 -m pip install tzlocal
-python3 -m pip install pysqlite3
-python3 server
-</code></pre>
-
-<p>在一台服务器上运行server，默认运行在 0.0.0.0 1688。<br/>
-这里的服务器可以是你的本地Mac主机，或者本地or远程Linux主机，Windows没试过不清楚。</p>
-
-<h2 id="toc_2">客户端设置(不需要)</h2>
-
-<p><code>python client.py 0.0.0.0（使用服务端ip） 1688</code>我运行了上述指令发现并没有什么卵用，也对，密钥都没导入，能有用才怪了。<br/>
-现在我们创建一个activate.bat脚本：</p>
-
-<pre class="line-numbers"><code class="language-bat">cscript //nologo slmgr.vbs /upk
-cscript //nologo slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GXc
-cscript //nologo slmgr.vbs /ipk MH37W-N47XK-V7XM9-C7227-GCQG9
-cscript //nologo slmgr.vbs /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43
-cscript //nologo slmgr.vbs /ipk DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4
-cscript //nologo slmgr.vbs /ipk NW6C2-QMPVW-D7KKK-3GKT6-VCFB2
-cscript //nologo slmgr.vbs /ipk DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ
-cscript //nologo slmgr.vbs /ipk D2N9P-3P6X9-2R39C-7RTCD-MDVJX
-cscript //nologo slmgr.vbs /ipk W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9
-cscript //nologo slmgr.vbs /ipk KNC87-3J2TX-XB4WP-VCPJV-M4FWM
-cscript //nologo slmgr.vbs /ipk FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4
-cscript //nologo slmgr.vbs /ipk MRPKT-YTG23-K7D7T-X2JMM-QY7MG
-cscript //nologo slmgr.vbs /ipk W82YF-2Q76Y-63HXB-FGJG9-GF7QX
-cscript //nologo slmgr.vbs /ipk 33PXH-7Y6KF-2VJC9-XBBR8-HVTHH
-cscript //nologo slmgr.vbs /ipk YDRBP-3D83W-TY26F-D46B2-XCKRJ
-cscript //nologo slmgr.vbs /ipk CB7KF-BWN84-R7R2Y-793K2-8XDDG
-cscript //nologo slmgr.vbs /ipk WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY
-cscript //nologo slmgr.vbs /ipk JCKRF-N37P4-C2D82-9YXRT-4M63B
-cscript //nologo slmgr.vbs /ipk YC7DK-G2NP3-2QQC3-J6H88-GVGXT
-cscript //nologo slmgr.vbs /ipk KBKQT-2NMXY-JJWGP-M62JB-92CD4
-cscript //nologo slmgr.vbs /ipk XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99
-cscript //nologo slmgr.vbs /ipk JNRGM-WHDWX-FJJG3-K47QV-DRTFM
-cscript //nologo slmgr.vbs /ipk YC7DK-G2NP3-2QQC3-J6H88-GVGXT
-cscript //nologo slmgr.vbs /ipk KBKQT-2NMXY-JJWGP-M62JB-92CD4
-cscript //nologo slmgr.vbs /ipk FN8TT-7WMH6-2D4X9-M337T-2342K
-cscript //nologo slmgr.vbs /ipk 6NTH3-CW976-3G3Y2-JK3TX-8QHTT
-cscript //nologo slmgr.vbs /ipk C2FG9-N6J68-H8BTJ-BW3QX-RM3B3
-cscript //nologo slmgr.vbs /ipk J484Y-4NKBF-W2HMG-DBMJC-PGWR7
-cscript //nologo slmgr.vbs /ipk VGPNG-Y7HQW-9RHP7-TKPV3-BG7GB
-cscript //nologo slmgr.vbs /ipk TGN6P-8MMBC-37P2F-XHXXK-P34VW
-cscript //nologo slmgr.vbs /ipk 4NT99-8RJFH-Q2VDH-KYG2C-4RD4F
-cscript //nologo slmgr.vbs /ipk 6Q7VD-NX8JD-WJ2VH-88V73-4GBJ7
-cscript //nologo slmgr.vbs /ipk XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99
-cscript //nologo slmgr.vbs /ipk JNRGM-WHDWX-FJJG3-K47QV-DRTFM
-cscript //nologo slmgr.vbs /ipk YG9NW-3K39V-2T3HJ-93F3Q-G83KT
-cscript //nologo slmgr.vbs /ipk WGT24-HCNMF-FQ7XH-6M8K7-DRTW9
-cscript //nologo slmgr.vbs /ipk GNFHQ-F6YQM-KQDGJ-327XX-KQBVC
-cscript //nologo slmgr.vbs /ipk D8NRQ-JTYM3-7J2DX-646CT-6836M
-cscript //nologo slmgr.vbs /ipk PD3PC-RHNGV-FXJ29-8JK7D-RJRJK
-cscript //nologo slmgr.vbs /ipk 69WXN-MBYV6-22PQG-3WGHK-RM6XC
-cscript //nologo slmgr.vbs /ipk 7WHWN-4T7MP-G96JF-G33KR-W8GF4
-cscript //nologo slmgr.vbs /ipk NY48V-PPYYH-3F4PX-XJRKJ-W4423
-cscript //nologo slmgr.vbs /ipk 9C2PK-NWTVB-JMPW8-BFT28-7FTBF
-cscript //nologo slmgr.vbs /ipk DR92N-9HTF2-97XKM-XW2WJ-XW3J6
-cscript //nologo slmgr.vbs /ipk R69KK-NTPKF-7M3Q4-QYBHW-6MT9B
-cscript //nologo slmgr.vbs /ipk WXY84-JN2Q9-RBCCQ-3Q3J3-3PFJ6
-cscript //nologo slmgr.vbs /ipk J7MQP-HNJ4Y-WJ7YM-PFYGF-BY6C6
-cscript //nologo slmgr.vbs /ipk VQ9DP-NVHPH-T9HJC-J9PDT-KTQRG
-cscript //nologo slmgr.vbs /ipk NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP
-cscript //nologo slmgr.vbs /ipk XM2V9-DN9HH-QB449-XDGKC-W2RMW
-cscript //nologo slmgr.vbs /ipk B4NPR-3FKK7-T2MBV-FRQ4W-PKD2B
-cscript //nologo slmgr.vbs /ipk C4F7P-NCP8C-6CQPT-MQHV9-JXD2M
-cscript //nologo slmgr.vbs /ipk TMJWT-YYNMB-3BKTF-644FC-RVXBD
-cscript //nologo slmgr.vbs /ipk 7HD7K-N4PVK-BHBCQ-YWQRW-XW4VK
-cscript //nologo slmgr.vbs /ipk RRNCX-C64HY-W2MM7-MCH9G-TJHMQ
-cscript //nologo slmgr.vbs /ipk PBX3G-NWMT6-Q7XBW-PYJGG-WXD33
-cscript //nologo slmgr.vbs /ipk N2CG9-YD3YK-936X4-3WR82-Q3X4H
-cscript //nologo slmgr.vbs /ipk 9BGNQ-K37YR-RQHF2-38RQ3-7VCBB
-cscript //nologo slmgr.vbs /ipk 7TQNQ-K3YQQ-3PFH7-CCPPM-X4VQ2c
-cscript //nologo slmgr.vbs /skms 192.168.220.187:1688
-cscript //nologo slmgr.vbs /ato
-cscript //nologo slmgr.vbs /ato
-cscript //nologo slmgr.vbs /dlv
-cmd /k
-</code></pre>
-
-<p>上面的脚本包含了win10、win7、office2019、office2016、office2013的大部分密钥（主要是专业版），基本满足需求，不过其实也没必要搞那么多，但是懒得筛选了。</p>
-
-<h2 id="toc_3">激活win和office</h2>
-
-<p>首先在服务器上运行 kms server。</p>
+<p>CRLF注入可能产生这样的问题：</p>
 
 <ul>
-<li>打开终端然后进入py-kms的py3-kms目录</li>
-<li>然后输入<code>python3 server</code>并回车</li>
-<li>右键点击以管理员身份运行 activate.bat 即可。</li>
+<li>HTTP响应拆分</li>
+<li>日志注入<br/>
+## HTTP响应拆分<br/>
+通常，当出现以下情况时会发生HTTP响应拆分</li>
+<li>数据通过不受信任的来源进入Web应用程序，如HTTP请求。</li>
+<li>数据包含在发送给Web用户的HTTP响应标头中，而不会对恶意字符进行验证。<br/>
+HTTP响应拆分是达到目的的手段而不是目的本身。<br/>
+攻击方式如下：攻击者将恶意数据传递给易受攻击的应用程序，应用程序将数据包含在HTTP响应中。<br/>
+要成功利用漏洞，应用程序必须允许<strong>包含有 CR（回车，即 %0d 或者 \r\n）和 LF（换行符，%0a 或者 \n）的输入在header中</strong>和<strong>底层平台必须容易注入这样的字符</strong>。</li>
 </ul>
 
-<p>显示如下信息表示激活成功：</p>
+<p><em>大多数现代应用程序服务器(无论用什么语言编写的代码)，都已经不存在HTTP响应拆分漏洞。</em></p>
 
-<p><img src="media/15456175398128/win%E6%BF%80%E6%B4%BB2018-12-24%2011-12-38.png" alt="win激活2018-12-24 11-12-38"/></p>
+<p>下面上一段java代码来举例说明：</p>
 
-<h2 id="toc_4">其他</h2>
+<pre class="line-numbers"><code class="language-java">String author = request.getParameter(AUTHOR_PARAM);
+...
+Cookie cookie = new Cookie(&quot;author&quot;, author);
+      cookie.setMaxAge(cookieExpiration);
+      response.addCookie(cookie);
+</code></pre>
 
-<p>kms每次只激活180天也就是3个月，这样每三个月就要重新激活一次，你可以每次提醒的时候再打开server然后运行activate.bat脚本。也可以把server部署在远程服务器上，然后在client添加一个计时任务周期性的运行bat脚本。</p>
+<p>上述代码的意思是：从客户端HTTP请求中接受参数（author），并将其设置在HTTP响应的cookie头中。<br/>
+如果我们正常提交数据(author=lonelyor)，HTTP响应应该是这样：</p>
+
+<pre class="line-numbers"><code class="language-java">HTTP/1.1 200 OK
+...
+Set-Cookie: author=Jane Smith
+...
+</code></pre>
+
+<p>但是，由于源代码中的cookie是由未经验证的用户输入组成的，因此如果我们提交恶意代码<code>Hacker By xxx\r\nContent-Length:45\r\n\r\n...</code>则HTTP响应将被拆分为原始响应和伪造响应。</p>
+
+<pre class="line-numbers"><code class="language-java">HTTP/1.1 200 OK
+    ...
+    Set-Cookie: author=Hacker By xxx
+    Content-Length: 999
+    
+    &lt;html&gt;恶意内容...&lt;/html&gt; (这个例子中为第999个字符)
+    原始内容以1000开头, 现在被浏览器忽略了...
+</code></pre>
+
+<h3 id="toc_0">危害</h3>
+
+<p>攻击者构建任意HTTP响应的能力可能导致以下攻击：<br/>
+跨用户污染（Cross-User_Defacement）——利用条件很苛刻<br/>
+缓存中毒（Cache_Poisoning）——利用条件很苛刻<br/>
+XSS跨站脚本攻击<br/>
+页面劫持</p>
+
+<h2 id="toc_1">日志注入</h2>
+
+<p>将未经验证的用户输入写入日志文件可能导致攻击者伪造日志或者将恶意内容注入日志。<br/>
+以下情况可能导致日志伪造漏洞：</p>
+
+<ul>
+<li>数据从不受信任的来源进入应用程序</li>
+<li>数据将写入应用程序或者系统日志文件</li>
+</ul>
+
+<p>下面上一段java代码来举例说明：</p>
+
+<pre class="line-numbers"><code class="language-java">...
+String val = request.getParameter(&quot;val&quot;);
+try {
+  int value = Integer.parseInt(val);
+}
+catch (NumberFormatException) {
+  log.info(&quot;Failed to parse val = &quot; + val);
+}
+...
+</code></pre>
+
+<p>上述代码的功能是，从请求对象中读取整数值，如果该值无法解析为整数，则会记录输入，并显示一条错误信息。<br/>
+如果用户提交字符串“one”，则会记录以下条目<br/>
+<code>INFO: Failed to parse val=one</code><br/>
+然而，如果攻击者提交字符串<code>one%0a%0aINFO:+User+logged+out%3dbadguy</code>则会在日志中显示：</p>
+
+<pre class="line-numbers"><code class="language-text">    INFO: Failed to parse val=one
+
+    INFO: User logged out=badguy
+</code></pre>
+
+<p>显然攻击者可以使用相同机制插入任意日志条目。</p>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[css美化文章标题]]></title>
-    <link href="www.lonelyor.org/lonelyorWiki/15453757934453.html"/>
-    <updated>2018-12-21T15:03:13+08:00</updated>
-    <id>www.lonelyor.org/lonelyorWiki/15453757934453.html</id>
+    <title type="html"><![CDATA[FOEENSICS 101]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15483045491124.html"/>
+    <updated>2019-01-24T12:35:49+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15483045491124.html</id>
     <content type="html"><![CDATA[
+<p>题目：<a href="https://ctflearn.com/problems/96">https://ctflearn.com/problems/96</a><br/>
+<img src="http://images.lonelyor.org/ctflearn-96-1.png" alt="ctflearn-96-1"/><br/>
+访问域名，然后会下载一张图片。<br/>
+接下来我们使用十六进制编码器打开这张图片，会发现：<br/>
+<img src="http://images.lonelyor.org/ctflearn-96-2.png" alt="ctflearn-96-2"/><br/>
+标红部分即是flag。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HttpOnly]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15483045490848.html"/>
+    <updated>2019-01-24T12:35:49+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15483045490848.html</id>
+    <content type="html"><![CDATA[
+<p>HttpOnly是 Set-Cookie HTTP响应头中包含的附加标志。生成cookie时使用httponly标志有助于降低客户端脚本访问受保护cookie的风险。</p>
+
+<p>如果HTTP响应头中包含HttpOnly标志，则无法通过客户端脚本访问cookie。因此即使存在xss跨站脚本漏洞，并且用户意外访问到恶意链接，浏览器也不会向第三方透露cookie（前提是浏览器支持HttpOnly）。</p>
+
+<p>参考链接：</p>
+
 <blockquote>
-<p>MWeb自带的标题不好看，特别是首页展示的文章多的时候，没有区分度，看的眼花缭乱的。<br/>
-参考自：<a href="http://www.fly63.com/article/detial/642">http://www.fly63.com/article/detial/642</a></p>
+<p><a href="https://www.owasp.org/index.php/HttpOnly">https://www.owasp.org/index.php/HttpOnly</a></p>
 </blockquote>
 
-<h2 id="toc_0">彩虹字</h2>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[IIS短文件名漏洞]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15483045487043.html"/>
+    <updated>2019-01-24T12:35:48+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15483045487043.html</id>
+    <content type="html"><![CDATA[
+<h2 id="toc_0">漏洞原理</h2>
 
-<p>下面是我添加的css代码，用来稍微美化一下文章标题。</p>
+<hr/>
 
-<pre class="line-numbers"><code class="language-css3">.markdown-body h1 {
-  font-size: 2rem;
-  margin: 0.67rem 0;
-  background: linear-gradient(to right, red, orange, green, blue, indigo, violet);
-  -webkit-background-clip: text; 
-  color: transparent;   
+<p>windows在创建一个新文件时，操作系统还会生成 8.3 格式的兼容 MS-DOS 的（短）文件名，以允许基于 MS-DOS 或16位 windows 的程序访问这些文件。    </p>
+
+<h2 id="toc_1">利用场景</h2>
+
+<hr/>
+
+<p>1、用于猜解文件/文件名<br/><br/>
+2、.Net Framework 的拒绝服务攻击（不常见）</p>
+
+<h2 id="toc_2">检测方法</h2>
+
+<hr/>
+
+<p><strong>黑盒测试</strong><br/><br/>
+使用<a href="https://github.com/lijiejie/IIS_shortname_Scanner">IIS短文件名扫描器</a><br/><br/>
+<strong>白盒测试</strong><br/>
+几乎所有的 windows 操作系统，在 cmd 中使用命令：</p>
+
+<pre class="line-numbers"><code class="language-bat">dir /x
+</code></pre>
+
+<p>如图：<br/>
+<img src="media/15483045487043/%E7%9F%AD%E6%96%87%E4%BB%B6%E5%90%8D%E6%98%BE%E7%A4%BA.png" alt="短文件名显示"/></p>
+
+<h2 id="toc_3">修复方案</h2>
+
+<hr/>
+
+<p>1、升级 .net framework 至 4.0 版本或以上<br/><br/>
+2、修改注册表键值<br/><br/>
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem 修改NtfsDisable8dot3NameCreation为1。（此项默认为0）<br/><br/>
+此设置用于禁用短文件名功能，重启后生效。<br/><br/>
+或者通过 CMD 命令：    </p>
+
+<pre class="line-numbers"><code class="language-txt">Windows Server 2008 R2
+查询是否开启短文件名功能：fsutil 8dot3name query
+关闭该功能：fsutil 8dot3name set 1
+
+Windows Server 2003
+关闭该功能：fsutil behavior set disable8dot3 1
+</code></pre>
+
+<p>以上操作只能防止新创建的文件/文件名不会出现短文件名，而当前文件/文件名依然保持短文件名。完整解决方案还需要如下操作：<br/><br/>
+3、<br/><br/>
+　　a、从当前目录中创建一个副本,并将其重命名为 tempNew；<br/><br/>
+　　b、将当前目录重命名为“tempOld”；<br/><br/>
+　　c、将“tempNew”重命名为原来的目录名。<br/><br/>
+4、禁止 url 中使用 “~” 或它的 Unicode 编码。（IIS7.0的请求阻塞不能完全阻止“~”波浪号。）</p>
+
+<hr/>
+
+<hr/>
+
+<hr/>
+
+<h2 id="toc_4">背景知识</h2>
+
+<hr/>
+
+<p>windows 支持的长文件名最多为 255 个字符。windows 还以 8.3 格式生成与 MS-DOS 兼容的（短）文件名，以允许基于 MS-DOS 或 16 位 windows 的程序访问这些文件。<br/><br/>
+8.3格式短文件名规范中：<br/><br/>
+‘8’是指文件名或目录名的主体部分小于等于 8 个字节；‘3’是指文件名的扩展名部分小于等于 3 个字节。<br/><br/>
+windows 会按以下方式从长文件名生成短文件名：<br/><br/>
+windows 首先会删除文件名中的任何无效字符和空格。无效字符包括：</p>
+
+<pre class="line-numbers"><code class="language-txt">.&quot;/\[]:;=,
+</code></pre>
+
+<p>由于短文件名只能包含一个英文句点（.），因此 windows 将删除文件名中的其他英文句点，即使文件名中最后一个英文句点后面是有效的非空格字符也是如此。例如：windows 从长文件名 This is a really long filename.123.456.789.txt 生成短文件名 Thisis~1.txt 否则，windows 将忽略最后一个英文句点，而使用倒数第二个英文句点。例如：windows从长文件名 This is a really long filename.123.456.789. 生成短文件名 Thisis~1.789。<br/><br/>
+生成短文件名若需要复制的话，windows 将文件名截断为 6 个字符，并在后边附加一个波形符号（~）和一个数字（创建的每一个以 ~1 结尾的唯一文件名，复制文件以 ~2、~3等结尾。）    </p>
+
+<h2 id="toc_5">影响范围</h2>
+
+<hr/>
+
+<p>Windows 10 Pro released in July 2015Windows 10 Enterprise released in July 2015Microsoft Windows Server 2003 Standard EditionMicrosoft Windows Server 2003 Enterprise EditionMicrosoft Windows Server 2003 Datacenter EditionMicrosoft Windows Server 2003 Web EditionMicrosoft Windows Server 2003, Enterprise x64 EditionMicrosoft Windows Small Business Server 2003 Standard EditionMicrosoft Windows Small Business Server 2003 Premium EditionMicrosoft Windows XP Home EditionMicrosoft Windows XP Professional EditionMicrosoft Windows Datacenter Server Limited EditionMicrosoft Windows Advanced Server, Limited EditionMicrosoft Windows 2000 ServerMicrosoft Windows 2000 Advanced ServerMicrosoft Windows 2000 Professional EditionMicrosoft Windows NT Workstation 3.5Microsoft Windows NT Workstation 3.51Microsoft Windows NT Workstation 4.0 开发员版Microsoft Windows NT Server 3.51Microsoft Windows NT Server 4.0 Standard EditionWindows Vista Service Pack 2Windows Vista BusinessWindows Vista EnterpriseWindows Vista Home PremiumWindows Vista UltimateWindows Server 2008 Service Pack 2Windows Server 2008 StandardWindows Server 2008 EnterpriseWindows Server 2008 DatacenterWindows Server 2008 for Itanium-Based SystemsWindows 7 Service Pack 1Windows 7 Home PremiumWindows 7 ProfessionalWindows 7 EnterpriseWindows 7 UltimateWindows Server 2008 R2 Service Pack 1Windows Server 2008 R2 StandardWindows Server 2008 R2 EnterpriseWindows Server 2008 R2 DatacenterWindows Server 2008 R2 for Itanium-Based SystemsWindows 8 EnterpriseWindows 8 ProWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 DatacenterWindows Server 2012 DatacenterWindows Server 2012 DatacenterWindows Server 2012 Datacenter<br/>
+列表内所有操作系统均受影响（数据来源日期：20171213）<br/><br/>
+该漏洞有其局限性：<br/><br/>
+1、只能猜解文件/文件夹名前六位，以及扩展名前三位<br/><br/>
+2、名称较短的文件是没有响应的短文件名的<br/><br/>
+3、需要 IIS 和 .net 同时满足。  </p>
+
+<h2 id="toc_6">漏洞详情</h2>
+
+<hr/>
+
+<p>在 windows 上的 Apache（Apache支持短文件名）上运行的 web 应用程序正在创建一个长文件名文件（如sql备份文件或会话文件，假设文件名是 backup-082119f75623eb7abd7bf357698ff66c.sql，windows 将创建短文件名 BACKUP〜1.SQL）。这种情况下，如果我们用短文件名访问这个文件，那么就有可能获取这个包含sql数据库备份的文件。<br/><br/>
+比较著名的一个例子：<br/><br/>
+wordpress 有一个备份博客的插件，该插件会为备份创建一个自定义目录（backup-88456）。备份完成后，该目录包含一个名为 wordpress_wp_20120702_576.sql 的文件  ，即 WordPress 数据库备份。这本应该难以猜测的，因为我们的目录名称中有5个数字加上日期和另外3个数字，即使忽略日期也至少有 100,000,000 个组合。然而由于短文件名的原因，目录名会变成 BACKUP~1 而文件名会变成 WORDPR~1.SQL。100,000,000 个组合被缩减为一个组合。    </p>
+
+<h2 id="toc_7">漏洞利用</h2>
+
+<hr/>
+
+<p><strong>短文件名漏洞</strong><br/>
+漏洞利用需要使用到通配符。在 windows 中，* 可以匹配n个字符（n可以为0,一个星号和n个星号的意义一样）。判断某站点是否存在 IIS 短文件名爆破，构造如下payload：    </p>
+
+<pre class="line-numbers"><code class="language-http">1. http://www.xxx.com/*~1*/.aspx
+2. http://www.xxx.com/l1j1e*~1*/.aspx
+</code></pre>
+
+<p>若1返回404而2返回400，则可以判断目标站点存在漏洞。<br/><br/>
+判断漏洞存在后，继续猜解目录下是否存在a开头的文件或文件夹，访问：    </p>
+
+<pre class="line-numbers"><code class="language-http">http://www.xxx.com/a*~1*/.aspx
+</code></pre>
+
+<p>若存在将返回404，不存在则返回400。以此类推，不断向下猜解所有的6个字符。<br/><br/>
+到此要考虑两种情况，若abcdef开头的是一个文件夹则    </p>
+
+<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*/~1/.aspx
+</code></pre>
+
+<p>返回404。若abcdef开头的是一个文件，则    </p>
+
+<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*~1/.aspx
+</code></pre>
+
+<p>返回404（注意！返回404表示存在）同理我们可以猜出文件后缀名：    </p>
+
+<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*~1*h*/.aspx
+</code></pre>
+
+<p>若返回404则代表扩展名中肯定存在h字符。<br/><br/>
+利用此漏洞可以猜解后台地址、敏感文件/文件名（如备份的rar、bak、sql等）；某些情况下，可以通过短文件名漏洞直接下载对应的文件（如备份sql文件）。<br/><br/>
+<br><br/>
+<strong>.Net Framework 拒绝服务攻击</strong><br/><br/>
+当请求文件夹名称包含 ~1 的请求，会导致不存在该文件的 .Net Framework 去递归查询所有根目录。如果只有一个“~1”是无效的，当“~1”大于一个，比如像这样：        </p>
+
+<pre class="line-numbers"><code class="language-http">\wwwtest\fuck~1\~1\~1\~1.aspx
+</code></pre>
+
+<p>此时文件系统会这样调用：    </p>
+
+<pre class="line-numbers"><code class="language-txt">\wwwtest                           SUCCESS
+\wwwtest\fuck~1\~1\~1\~1           PATH NOT FOUND
+\wwwtest\fuck~1                    NAME NOT FOUND
+\wwwtest\fuck~1\~1\                PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1\             PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1              PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1              PATH NOT FOUND
+\wwwtest\fuck~1\~1                 PATH NOT FOUND
+\wwwtest\fuck~1                    NAME NOT FOUND
+\wwwtest                           SUCCESS
+\wwwtest                           SUCCESS
+</code></pre>
+
+<p>如果我们请求的文件/文件夹名同时存在大小写时，这个请求会被请求两次，一次是原封不动的请求，一次是全部使用小写的请求。<br/><br/>
+下表显示了每个请求的FS调用的数量（Windows 2008 R2, IIS 7.5(latest patch – June 2012), and .Net framework 4.0.30319 (在别的系统下可能会不同)）<br/><br/>
+<img src="media/15483045487043/F5%E8%B0%83%E7%94%A8.png" alt="F5调用"/></p>
+
+<p>这个问题适用于当时的 .Net framework 的所有版本(<br/><br/>
+    IIS 1.0, Windows NT 3.51<br/><br/>
+    IIS 2.0, Windows NT 4.0<br/><br/>
+    IIS 3.0, Windows NT 4.0 Service Pack 2<br/><br/>
+    IIS 4.0, Windows NT 4.0 Option Pack<br/><br/>
+    IIS 5.0, Windows 2000<br/><br/>
+    IIS 5.1, Windows XP Professional and Windows XP Media Center Edition<br/><br/>
+    IIS 6.0, Windows Server 2003 and Windows XP Professional x64 Edition<br/><br/>
+    IIS 7.0, Windows Server 2008 and Windows Vista<br/><br/>
+    IIS 7.5, Windows 7 (error remotely enabled or no web.config)<br/><br/>
+    IIS 7.5, Windows 2008 (classic pipeline mode))<br/><br/>
+只是 F5 的调用次数会有不同。    </p>
+
+<h2 id="toc_8">参考链接</h2>
+
+<hr/>
+
+<ul>
+<li><a href="http://www.lijiejie.com/iis-win8-3-shortname-brute/">http://www.lijiejie.com/iis-win8-3-shortname-brute/</a><br/></li>
+<li><a href="https://www.acunetix.com/blog/articles/windows-short-8-3-filenames-web-security-problem/">https://www.acunetix.com/blog/articles/windows-short-8-3-filenames-web-security-problem/</a><br/></li>
+<li><a href="http://www.freebuf.com/articles/4908.html">http://www.freebuf.com/articles/4908.html</a><br/></li>
+<li><a href="https://support.microsoft.com/zh-cn/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions">https://support.microsoft.com/zh-cn/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions</a><br/></li>
+<li><a href="https://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf">https://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf</a><br/></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript基础]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15483045491003.html"/>
+    <updated>2019-01-24T12:35:49+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15483045491003.html</id>
+    <content type="html"><![CDATA[
+<p>JavaScript是一种脚本编程语言。<br/>
+JavaScript运行顺序是从上往下，因此要注意代码的顺序。</p>
+
+<h2 id="toc_0">如何使用JavaScript</h2>
+
+<p>内部JavaScript：在html页面中嵌入<code>&lt;script&gt;这里写js代码&lt;/script&gt;</code>即可插入js代码。<br/>
+外部JavaScript：<code>&lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;</code>可以调用html文件同级目录下的script.js文件。</p>
+
+<h2 id="toc_1">注释</h2>
+
+<p><code>// 这是单行注释</code><br/>
+<code>/* 这是多行注释 */</code></p>
+
+<h2 id="toc_2">变量</h2>
+
+<p>var用来定义变量</p>
+
+<h2 id="toc_3">函数</h2>
+
+<p>function funName(){<br/>
+    js代码<br/>
+}<br/>
+函数是可复用的代码块，可以一次编写反复使用。</p>
+
+<h2 id="toc_4">运算符</h2>
+
+<p><code>+</code>、<code>-</code>、<code>*</code>、<code>/</code> 分别是加减乘除<br/>
+<code>===</code>、<code>!==</code>、<code>&lt;</code>、<code>&gt;</code> 分别是等于、不等于、小于、大于<br/>
+<code>&amp;&amp;</code>、<code>||</code>、<code>!</code> 分别表示与、或、非</p>
+
+<h2 id="toc_5">条件语句</h2>
+
+<p>if(条件){<br/>
+    js代码<br/>
+} else {<br/>
+    js代码<br/>
+}</p>
+
+<h2 id="toc_6">事件</h2>
+
+<p>事件相关函数分为：事件监听器和事件处理器 </p>
+
+<h2 id="toc_7">循环</h2>
+
+<p>for(起式值；退出条件；增加器){<br/>
+    js代码<br/>
+}</p>
+
+<h2 id="toc_8">switch语句</h2>
+
+<p>switch - 他们以单个表达式/值作为输入，然后查看多个选项，直到找到与该值相匹配的选项，执行与之相关的代码。</p>
+
+<pre class="line-numbers"><code class="language-javascript">switch (expression) {
+  case choice1:
+    run this code
+    break;
+
+  case choice2:
+    run this code instead
+    break;
+    
+  // include as many cases as you like
+
+  default:
+    actually, just run this code
 }
 </code></pre>
 
-<h2 id="toc_1">虚化标题</h2>
+<h2 id="toc_9">写一个猜数字的小游戏</h2>
 
-<pre class="line-numbers"><code class="language-text">.markdown-body h1 {
-  font-size: 30px;
-  color:  #00cccc;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-  overflow-y: scroll;
-  margin: 0px;
-}
-</code></pre>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/First_steps/A_first_splash#%E7%8C%9C%E6%95%B0%E5%AD%97%E6%B8%B8%E6%88%8F">猜数字游戏</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[MWeb打开文档库快捷键]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15483045488875.html"/>
+    <updated>2019-01-24T12:35:48+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15483045488875.html</id>
+    <content type="html"><![CDATA[
+<p>CMD + L 即可显示</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac大小写切换]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15483045488856.html"/>
+    <updated>2019-01-24T12:35:48+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15483045488856.html</id>
+    <content type="html"><![CDATA[
+<p>无论中文还是英文状态下,按住 shift 输入即是大写</p>
+
+<p>长按 caps lock 2s 灯亮后输入即是大写</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Markdown基础语法]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15483045490336.html"/>
+    <updated>2019-01-24T12:35:49+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15483045490336.html</id>
+    <content type="html"><![CDATA[
+<p>占坑，内容以后写</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[OneDrive映射到本地（像访问本地磁盘一样访问网盘）]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15483045490562.html"/>
+    <updated>2019-01-24T12:35:49+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15483045490562.html</id>
+    <content type="html"><![CDATA[
+<p>参考以下链接即可：<br/>
+<a href="http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc">http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc</a></p>
+
+<p>举一反三，webdav、nfs、samba等都可以使用这种方式挂载，来方便访问。</p>
 
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Pycharm编程遇到的技巧]]></title>
-    <link href="www.lonelyor.org/lonelyorWiki/15453720146052.html"/>
-    <updated>2018-12-21T14:00:14+08:00</updated>
-    <id>www.lonelyor.org/lonelyorWiki/15453720146052.html</id>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15483045487979.html"/>
+    <updated>2019-01-24T12:35:48+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15483045487979.html</id>
     <content type="html"><![CDATA[
 <h2 id="toc_0">pycharm技巧</h2>
 
@@ -840,274 +545,378 @@ type() #输出类型</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[npm Cannot find module 'semver' --解决方案]]></title>
-    <link href="www.lonelyor.org/lonelyorWiki/15453717965995.html"/>
-    <updated>2018-12-21T13:56:36+08:00</updated>
-    <id>www.lonelyor.org/lonelyorWiki/15453717965995.html</id>
+    <title type="html"><![CDATA[Snipaste 无法在 Mac 上截图的解决办法]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15484074464554.html"/>
+    <updated>2019-01-25T17:10:46+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15484074464554.html</id>
+    <content type="html"><![CDATA[
+<p>MacOSX 版本：Mojave 10.14.2<br/>
+Snipaste 版本：1.16.2</p>
+
+<p>以下列出遇到部分问题：<br/>
+1、使用截图功能，手动画矩形框，但是选定框画完后松开触摸板，选定框自动消失，导致无法截图。（手动选定截图区域占截图使用时间99%）<br/>
+2、使用截图功能，程序自动识别截图区域，双击可以得到截图并且有箭头等选项，画一个箭头后，选定框自动消失，截图会带着箭头自动保存到图片目录。（这导致没法多画几个箭头，也没法另存为图片）</p>
+
+<h1 id="toc_0">解决办法</h1>
+
+<p>我后来在 <a href="https://github.com/Snipaste/feedback/issues/1012">https://github.com/Snipaste/feedback/issues/1012</a> 这里找到了答案。<br/>
+关闭欧路词典的划词翻译功能，即可正常使用截图。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[VMware14秘钥]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15483045490138.html"/>
+    <updated>2019-01-24T12:35:49+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15483045490138.html</id>
+    <content type="html"><![CDATA[
+<p>CG54H-D8D0H-H8DHY-C6X7X-N2KG6<br/>
+ZC3WK-AFXEK-488JP-A7MQX-XL8YF<br/>
+AC5XK-0ZD4H-088HP-9NQZV-ZG2R4<br/>
+ZC5XK-A6E0M-080XQ-04ZZG-YF08D<br/>
+ZY5H0-D3Y8K-M89EZ-AYPEG-MYUA8<br/>
+FF590-2DX83-M81LZ-XDM7E-MKUT4</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Web安全工程师求职清单]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15483045490948.html"/>
+    <updated>2019-01-24T12:35:49+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15483045490948.html</id>
     <content type="html"><![CDATA[
 <blockquote>
-<p><a href="https://blog.csdn.net/hanshuonb/article/details/77969080">https://blog.csdn.net/hanshuonb/article/details/77969080</a></p>
+<p>一年前写的一点玩意，没什么卵用</p>
 </blockquote>
 
-<p>度娘上面我没有找到相关的解决方法所以只能去Stack Overflow上寻找答案，找到的结果是这样的：</p>
+<h2 id="toc_0">安全资讯</h2>
 
-<pre class="line-numbers"><code class="language-text">sudo rm -rf /usr/local/lib/node_modules
-sudo rm -rf ~/.npm
-brew uninstall --force node
-brew install node
-</code></pre>
+<p><a href="http://www.freebuf.com/">freebuf</a></p>
 
-<p>上面命令的意思删除所有全局包和.npm文件夹，重新安装node。 <br/>
-这种方法我没试过，因为肯定有很多小伙伴安装了除npm之外的全局包比如express、webpack等等，如果不考虑清楚直接全删了的话。。。后果惨不忍睹。。。(ps:因为本人英语实在不好，所以经常直接傻瓜式粘命令，提醒小伙伴们最好粘命令之前去查查是什么意思，否则出了问题有可能都没法回退。。。)</p>
+<p><a href="https://www.t00ls.net/">tools</a></p>
 
-<p>说了这么多，下面切入正题 <br/>
-首先需要知道为啥有报这个错，可以到全局的npm包看一下，路径是</p>
+<p><a href="https://www.secpulse.com/">安全脉搏</a></p>
 
-<p><code>/usr/local/lib/node_modules/npm</code><br/>
-进入npm的node_modules中的semver文件夹可以看到里面变成空的了！具体的原因不好意思我没有深究，但是我觉得一定和yarn是有关系的。不仅如此，你会看到其他的文件夹也基本都是变成空的了，这下咱们就知道为啥报semver这个module找不到了吧！</p>
+<p><a href="https://packetstormsecurity.com/">数据包风暴</a></p>
 
-<p>网上还有解决方法是说用 <code>npm unintall npm -g</code> 删除npm包，实测不好使。。。npm所有的命令都不行了 uninstall肯定也不行了啊！！！</p>
+<p><a href="http://www.4hou.com/">嘶吼</a></p>
 
-<h2 id="toc_0">我的解决方法：</h2>
+<p><a href="https://www.aqniu.com/">安全牛</a></p>
 
-<p>1.先删除全局的npm包：也就是把刚才提到的<code>/usr/local/lib/node_modules/npm</code>，这个npm文件夹删除掉 <br/>
-2.回到<code>/usr/local/lib/node_modules</code>这个目录，从GitHub上重新clone下git包 <br/>
-终端:<br/>
-<code>git clone --recursive git://github.com/isaacs/npm.git</code><br/>
-这样新的npm包就回到了全局node_modules中 <br/>
-3.打开终端输入<br/>
-<code>npm -v</code><br/>
-看一下npm是否可以打印出版本号，如果可以，npm就可以正常使用啦！</p>
+<p><a href="https://www.anquanke.com/">安全客</a></p>
 
-<p>说白了就是：</p>
+<p><a href="https://www.sec-wiki.com/">sec-wiki</a></p>
 
-<pre class="line-numbers"><code class="language-text">rm -rf /usr/local/lib/node_modules/npm
-cd /usr/local/lib/node_modules
-git clone --recursive git://github.com/isaacs/npm.git`
-</code></pre>
+<p><a href="http://www.secdoctor.com/">中国信息安全博士网</a></p>
 
-<p>搞定</p>
+<h2 id="toc_1">威胁情报</h2>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[mongodb安装配置（arch）]]></title>
-    <link href="www.lonelyor.org/lonelyorWiki/15453716917526.html"/>
-    <updated>2018-12-21T13:54:51+08:00</updated>
-    <id>www.lonelyor.org/lonelyorWiki/15453716917526.html</id>
-    <content type="html"><![CDATA[
-<blockquote>
-<p>参考文档：<a href="https://wiki.archlinux.org/index.php/MongoDB_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E4.BD.BF.E7.94.A8">https://wiki.archlinux.org/index.php/MongoDB_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E4.BD.BF.E7.94.A8</a></p>
-</blockquote>
+<p>暂略</p>
 
-<p><code>pacman -S mongo</code><br/>
-<code>/usr/bin/.mongo --help</code><br/>
-<code>systemctl start mongodb.service</code><br/>
-这样就启动了mongo，启动的配置文件是：<code>cat /etc/mongodb.conf</code><br/>
-然后退出到用户目录，运行mongo<br/>
-<code>~ ❯❯❯ mongo</code><br/>
-<code>/var/lib/mongodb/ 是Arch Linux 的 ** 默认dbpath**</code><br/>
-但是无法访问<br/>
-修改mongodb的用户组为自己的<br/>
-<code>chown mongodb:lonelyor mongodb</code></p>
+<h2 id="toc_2">安全工具</h2>
 
-<p><code>mkdir /home/lonelyor/工作/mongodb</code><br/>
-<code>touch /home/lonelyor/工作/mongodb/data</code><br/>
-<code>touch /home/lonelyor/工作/mongodb/logs</code></p>
+<p><a href="https://www.ctftools.com/down/">最强安全工具集</a></p>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[linux安装配置aria2及其Web图形界面（debian为例）]]></title>
-    <link href="www.lonelyor.org/lonelyorWiki/15453714645346.html"/>
-    <updated>2018-12-21T13:51:04+08:00</updated>
-    <id>www.lonelyor.org/lonelyorWiki/15453714645346.html</id>
-    <content type="html"><![CDATA[
-<p>下载aria2：apt-get install aria2<br/>
-创建配置文件：mkdir /etc/aria2_conf/aria2.conf<br/>
-编辑配置文件：nano /etc/aria2_conf/aria2.conf</p>
+<ul>
+<li>burpsuite(抓包)</li>
+<li>sqlmap(sql注入)</li>
+<li>whireshark(网络抓包)</li>
+<li>中国菜刀(webshell、一句话后门)</li>
+<li>HxD(十六进制编辑器和磁盘编辑器)</li>
+<li>nmap(扫描)</li>
+<li>hydra(爆破)</li>
+<li>cain(爆破)</li>
+<li>metasploit(漏洞利用)</li>
+<li>mitmproxy(http/https代理)</li>
+<li>commix(命令注入)</li>
+<li>httrack(网站克隆)</li>
+<li>netcat(瑞士军刀-网络调试和探测工具)</li>
+<li>scapy(python的交互式数据包操作程序和库)</li>
+<li>empire(域渗透)</li>
+</ul>
 
-<p>aria2.conf配置：</p>
+<h2 id="toc_3">靶机环境</h2>
 
-<pre class="line-numbers"><code class="language-text">#用户名
-#rpc-user=user
-#密码
-#rpc-passwd=passwd
-#上面的认证方式不建议使用,建议使用下面的token方式
-#设置加密的密钥
-rpc-secret=token
-#允许rpc
-enable-rpc=true
-#允许所有来源, web界面跨域权限需要
-rpc-allow-origin-all=true
-#允许外部访问，false的话只监听本地端口
-rpc-listen-all=true
-#RPC端口, 仅当默认端口被占用时修改
-rpc-listen-port=6800
-#最大同时下载数(任务数), 路由建议值: 3
-max-concurrent-downloads=5
-#断点续传
-continue=true
-#同服务器连接数
-max-connection-per-server=5
-#最小文件分片大小, 下载线程数上限取决于能分出多少片, 对于小文件重要
-min-split-size=10M
-#单文件最大线程数, 路由建议值: 5
-split=10
-#下载速度限制
-max-overall-download-limit=0
-#单文件速度限制
-max-download-limit=0
-#上传速度限制
-max-overall-upload-limit=0
-#单文件速度限制
-max-upload-limit=0
-#断开速度过慢的连接
-#lowest-speed-limit=0
-#验证用，需要1.16.1之后的release版本
-#referer=*
-#文件保存路径, 默认为当前启动位置
-dir=/root/downloads
-#文件缓存, 使用内置的文件缓存, 如果你不相信Linux内核文件缓存和磁盘内置缓存时使用, 需要1.16及以上版本
-#disk-cache=0
-#另一种Linux文件缓存方式, 使用前确保您使用的内核支持此选项, 需要1.15及以上版本(?)
-#enable-mmap=true
-#文件预分配, 能有效降低文件碎片, 提高磁盘性能. 缺点是预分配时间较长
-#所需时间 none &lt; falloc ? trunc &lt;&lt; prealloc, falloc和trunc需要文件系统和内核支持
-file-allocation=prealloc
-</code></pre>
+<h2 id="toc_4">安全知识库</h2>
 
-<p>然后配置开机启动：<br/>
-<code>nano /etc/init.d/aria2</code></p>
+<p><a href="https://www.anquanquan.info/">安全圈</a></p>
 
-<pre class="line-numbers"><code class="language-text">#!/bin/bash
-#
-# aria2 - this script starts and stops the aria2 daemon
-#
-# chkconfig:   - 85 15
-# description: Aria2 - Download Manager
-# processname: aria2c
-# config:      /etc/aria2/aria2.conf
-# pidfile:
+<p><a href="http://wiki.open.qq.com/wiki/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8%E8%A7%84%E8%8C%83">腾讯安全开发规范</a></p>
 
-# Source function library.
-. /etc/rc.d/init.d/functions
+<p><a href="https://highon.coffee/blog/cheat-sheet/">安全研究备忘单</a></p>
 
-# Source networking configuration.
-. /etc/sysconfig/network
+<p><a href="https://portswigger.net/kb/issues">Burp漏洞定义</a></p>
 
-# Check that networking is up.
-[ &quot;$NETWORKING&quot; = &quot;no&quot; ] &amp;&amp; exit 0
+<p><a href="https://www.offensive-security.com/metasploit-unleashed/">MSF框架终极指南</a></p>
 
-aria2c=&quot;/usr/bin/aria2c&quot;
-ARIA2C_CONF_FILE=&quot;/etc/aria2/aria2.conf&quot;
-options=&quot; --conf-path=$ARIA2C_CONF_FILE -D &quot;
+<p><a href="https://www.owasp.org/index.php/Main_Page">OWASP</a></p>
 
-RETVAL=0
+<p><a href="http://vipread.com/index">vipread知识库</a></p>
 
-start() {
-    # code here to start the program
-    echo -n &quot;Starting aria2c daemon.&quot;
-    ${aria2c} ${options}
-    RETVAL=$?
-    echo
-}
+<p><a href="https://kb.help.rapid7.com/docs/">Rapid7知识库</a></p>
 
-stop() {
-    echo -n &quot;Shutting down aria2c daemon.&quot;
-    /usr/bin/killall aria2c
-    RETVAL=$?
-    echo
-}
+<p><a href="https://kernelnewbies.org/">linux内核研究</a></p>
 
-status() {
-    ID=$(/bin/ps -ef | grep &#39;aria2c&#39; | grep -v &#39;grep&#39; | awk &#39;{print $2}&#39;)
-    if [[ &quot;x$ID&quot; != &quot;x&quot; ]]; then
-            echo &quot;Aria2 is running.&quot;
-    else
-            echo &quot;Aria2 is not running.&quot;
-    fi
-}
+<p><a href="http://www.loner.fm/bugs/">乌云漏洞</a></p>
 
-restart() {
-    stop
-    sleep 3
-    start
-}
+<p><a href="https://wooyun.js.org/">乌云文章</a></p>
 
-case &quot;$1&quot; in
-    start)
-            start
-            ;;
-    stop)
-            stop
-            ;;
-    status)
-            status
-            ;;
-    restart)
-            restart
-            ;;
-    *)
-            echo &quot;Usage: service aria2c {start|stop|restart}&quot;
-            RETVAL=1
-esac
+<p><a href="http://www.office-cn.net/t/api/index.html?web.htm">WindowsAPI参考手册</a></p>
 
-exit $RETVAL
-</code></pre>
+<p><a href="https://support.portswigger.net/customer/portal/articles/2326039-the-burp-methodology">Burp方法论</a></p>
 
-<p>使用以下命令来立即启动 Aria2：</p>
+<p><a href="https://ctf-wiki.github.io/ctf-wiki/">CTF-Wiki</a></p>
 
-<p><code>/usr/bin/aria2c --conf-path=/etc/aria2_conf/aria2.conf -D</code></p>
+<p><a href="https://github.com/ctfs/">CTFs</a></p>
 
-<p>保存之后配置 WebUI，首先开启 Web 服务，然后安装 WebUI 到指定目录，比如我的目录是/opt/aria2webUI/<br/>
-<code>git clone https://github.com/ziahamza/webui-aria2.git</code><br/>
-这样就下载了 WebUI，然后用 nginx 反代这个文件就ok了。</p>
+<p><a href="https://ctftime.org">ctftime</a></p>
 
-<p>nginx(/etc/nginx/conf.d/aria2.conf)配置文件如下：</p>
+<p><a href="https://www.codesec.net/">代码安全</a></p>
 
-<pre class="line-numbers"><code class="language-text">aria2.conf
+<p><a href="https://silic.wiki/doku.php">习科小黑板</a></p>
 
-server
-{
-listen 80;
-server_name aria2.lonelyor.org;
-location / {
-    root /opt/aria2webUI/;
-}
-access_log logs/aria2_access.log;
-}
-</code></pre>
+<p><a href="https://bbs.safewiki.org/portal.php">安全文库</a></p>
 
-<p>然后打开浏览器访问 aria2.lonelyor.org 就可以了。</p>
+<p><a href="http://webscan.360.cn/vul">360网站常见漏洞</a></p>
+
+<h2 id="toc_5">漏洞平台</h2>
+
+<p><a href="https://butian.360.cn/">补天</a></p>
+
+<p><a href="https://www.vulbox.com/">漏洞盒子</a></p>
+
+<p><a href="https://www.bugbank.cn/">漏洞银行</a></p>
+
+<p><a href="http://www.cnvd.org.cn/">CNVD国家信息安全漏洞共享平台</a></p>
+
+<p><a href="https://src.edu-info.edu.cn/">教育行业漏洞报告平台</a></p>
+
+<p><a href="https://www.seebug.org">Seebug</a></p>
+
+<p><a href="http://0xsafe.org/vuldb.html">Vuldbs漏洞平台</a></p>
+
+<h2 id="toc_6">技能要求</h2>
+
+<ul>
+<li>不同场景下的渗透测试流程、方法</li>
+<li>常见漏洞的攻击方法和防御方法</li>
+<li>代码级白盒测试能力</li>
+<li>owasp_top10概念、原理、测试方法、防御方法</li>
+<li>主流防火墙、IDS、IPS、漏洞扫描工具的安装、使用方法</li>
+<li>熟悉python、php、javascript、c、c++等语言的一种或多种</li>
+<li>cissp之类的证书或ctf解题能力是加分项</li>
+<li>各种靶机环境搭建</li>
+<li>安全分析报告的编写</li>
+<li>对业务快速熟悉的能力（业务安全重点、应用范围划分、业务安全基线）</li>
+<li>spring、struts、hibernate框架安全相关</li>
+<li>web组件加固、服务器加固、数据库加固</li>
+<li>域渗透、dns、arp等内网渗透知识</li>
+<li>各类提权如系统提权、数据库提权等</li>
+<li>风险评估、等级保护、安全体系规划、安全体系建设。包括信息资产管理、安全威胁和风险评估、安全解决方案制定、信息安全体系实施</li>
+<li>Nginx、Apache、Tomcat等安全配置基线</li>
+<li>各类安全测试标准(ISSAF、OSSTMM、OWASP、微软SDLC、OPENSAMM、BSIMM、SSECMM)</li>
+<li>网络日志分析、攻击流量检测</li>
+<li>hadoop、openstack、sdn云安全</li>
+<li>mongodb、redis、HBASE等nosql安全</li>
+<li>burpsuite插件编写</li>
+<li>python脚本开发能力、shell脚本开发能力</li>
+</ul>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[linux下搜狗输入法不能用的解决办法]]></title>
-    <link href="www.lonelyor.org/lonelyorWiki/15453713553710.html"/>
-    <updated>2018-12-21T13:49:15+08:00</updated>
-    <id>www.lonelyor.org/lonelyorWiki/15453713553710.html</id>
+    <title type="html"><![CDATA[Web安全检测checklist]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15483045487207.html"/>
+    <updated>2019-01-24T12:35:48+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15483045487207.html</id>
     <content type="html"><![CDATA[
-<p>删除<br/>
-<code>～/config</code><br/>
-下的<br/>
-<code>sogou-qimpanel</code><br/>
-<code>SogouPY</code><br/>
-<code>SogouPY.users</code><br/>
-这三个文件夹，然后重启。</p>
+<h2 id="toc_0">x01 爆破</h2>
+
+<h3 id="toc_1">弱口令</h3>
+
+<p>HTTP登录<br/>
+SSH<br/>
+MySQL<br/>
+Telnet</p>
+
+<h3 id="toc_2">遍历</h3>
+
+<p>网站敏感文件<br/>
+    源码<br/>
+    配置文件<br/>
+    备份文件<br/>
+    探针类文件<br/>
+网站敏感目录<br/>
+    物理路径<br/>
+    网站管理后台<br/>
+    上传目录<br/>
+    数据库Web管理入口<br/>
+    现成的Webshell<br/>
+端口扫描<br/>
+0day扫描<br/>
+子域名</p>
+
+<h2 id="toc_3">x02 不安全配置</h2>
+
+<h3 id="toc_4">Web服务器</h3>
+
+<p>Nginx<br/>
+Apache<br/>
+IIS</p>
+
+<h3 id="toc_5">Web应用服务器</h3>
+
+<p>Tomcat<br/>
+JBoss<br/>
+Weblogic</p>
+
+<h3 id="toc_6">HTTP安全特性</h3>
+
+<p>HTTP Headers<br/>
+HTTP Options<br/>
+rebots.txt<br/>
+flash跨域策略</p>
+
+<h2 id="toc_7">x03 敏感信息泄露</h2>
+
+<h3 id="toc_8">用户敏感信息</h3>
+
+<p>手机号<br/>
+身份证号<br/>
+社保<br/>
+银行卡号<br/>
+家庭住址</p>
+
+<h3 id="toc_9">应用敏感信息</h3>
+
+<p>debug信息<br/>
+堆栈报错</p>
+
+<h3 id="toc_10">站点敏感信息</h3>
+
+<p>测试页面<br/>
+备份文件</p>
+
+<h3 id="toc_11">本地敏感信息</h3>
+
+<p>前端保存用户密码<br/>
+前端保存验证码</p>
+
+<h2 id="toc_12">x04 xss跨站脚本</h2>
+
+<p>反射型xss<br/>
+存储型xss<br/>
+DOM型xss</p>
+
+<h2 id="toc_13">x05 请求伪造</h2>
+
+<p>csrf跨站请求伪造<br/>
+ssrf服务器请求伪造</p>
+
+<h2 id="toc_14">x06 注入</h2>
+
+<p>LDAP注入<br/>
+ORM注入<br/>
+XML注入<br/>
+XPath注入<br/>
+IMAP/SMTP注入<br/>
+SQL注入<br/>
+代码注入<br/>
+客户端模板注入（CSTI）<br/>
+服务端模板注入（SSTI）<br/>
+服务器端包含注入（SSI）</p>
+
+<h2 id="toc_15">x07 已知漏洞组件</h2>
+
+<p>库文件（某些库会导致远程命令执行）<br/>
+框架（如wordpress、thinkphp、django等）<br/>
+模块（python的某些模块会导致代码注入）</p>
+
+<h2 id="toc_16">x08 文件类漏洞</h2>
+
+<p>文件包含漏洞<br/>
+任意文件创建<br/>
+任意文件读取<br/>
+任意文件上传<br/>
+任意文件下载<br/>
+任意文件删除</p>
+
+<h2 id="toc_17">x09 解析漏洞</h2>
+
+<p>IIS解析漏洞<br/>
+Nginx解析漏洞<br/>
+Apache解析漏洞<br/>
+PHP CGI解析漏洞</p>
+
+<h2 id="toc_18">x10 劫持类漏洞</h2>
+
+<p>点击劫持<br/>
+Jsonp劫持<br/>
+WebSocket劫持<br/>
+DNS劫持<br/>
+二维码劫持<br/>
+子域名劫持</p>
+
+<h2 id="toc_19">x11 业务逻辑漏洞</h2>
+
+<h3 id="toc_20">认证</h3>
+
+<p>使用默认凭证<br/>
+冻结账户策略不当<br/>
+弱用户名和密码<br/>
+“记住我”功能<br/>
+自动登录<br/>
+单点登录<br/>
+弱口令<br/>
+弱安全问题/答案<br/>
+第三方登录风险<br/>
+Oauth2.0安全<br/>
+JWT安全<br/>
+注册覆盖<br/>
+未验证的重定向和转发<br/>
+双因素认证不当</p>
+
+<h3 id="toc_21">授权</h3>
+
+<p>测试角色定义<br/>
+权限管理缺失<br/>
+匿名访问（备用接口——常见于兼容老的不安全的接口时产生）<br/>
+水平越权<br/>
+垂直越权<br/>
+超级账户<br/>
+实名认证不严格</p>
+
+<h3 id="toc_22">会话管理</h3>
+
+<p>cookie安全属性<br/>
+cookie可猜解<br/>
+cookie溢出<br/>
+会话固定<br/>
+用户凭证不安全传输（弱加密或明文传输）<br/>
+用户凭证未一次失效<br/>
+用户凭证可猜解<br/>
+注销与会话超时<br/>
+敏感数据不安全传输</p>
+
+<h3 id="toc_23">流程绕过</h3>
+
+<p>找回密码流程绕过</p>
+
+<h2 id="toc_24">x12 API安全</h2>
+
+<p>整理中</p>
 
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[arch设置屏幕分辨率]]></title>
-    <link href="www.lonelyor.org/lonelyorWiki/15453712257423.html"/>
-    <updated>2018-12-21T13:47:05+08:00</updated>
-    <id>www.lonelyor.org/lonelyorWiki/15453712257423.html</id>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15483045490018.html"/>
+    <updated>2019-01-24T12:35:49+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15483045490018.html</id>
     <content type="html"><![CDATA[
 <blockquote>
 <p><a href="https://wiki.archlinux.org/index.php/Xrandr_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">https://wiki.archlinux.org/index.php/Xrandr_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)</a></p>
@@ -1141,157 +950,185 @@ xrandr查看当前设置 <br/>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[python弱口令脚本的一点备注]]></title>
-    <link href="www.lonelyor.org/lonelyorWiki/15453709108643.html"/>
-    <updated>2018-12-21T13:41:50+08:00</updated>
-    <id>www.lonelyor.org/lonelyorWiki/15453709108643.html</id>
+    <title type="html"><![CDATA[backup系统备份工具介绍]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15483045490117.html"/>
+    <updated>2019-01-24T12:35:49+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15483045490117.html</id>
     <content type="html"><![CDATA[
 <blockquote>
-<p>很久以前写的</p>
+<p>backup是一款强大的备份软件，用于系统备份、增量备份、远程备份，企业级。<br/>
+我还是当年使用debian时用过...这是以前的笔记，留一份在这好了。</p>
 </blockquote>
 
-<p>跑弱口令的脚本<br/>
-不要使用字典这种操作，这不利于跑大量数据的场景。<br/>
-应该制定规则去跑，比如：<br/>
-取出一个用户名，然后根据规则生成弱口令，然后再去匹配用户名对应的密码，匹配则是弱口令，不匹配则不是弱口令。<br/>
-这样可以后续变成一个服务，用户输入密码，触发了规则则告诉他密码是弱口令。</p>
+<p>软件安装（debian 9）<br/>
+<code>apt-get install backuppc</code><br/>
+然后会弹窗：<br/>
+backuppc设定<br/>
+管理web地址：<br/>
+<code>http://lonelyor/backuppc</code><br/>
+<code>user：backuppc</code><br/>
+<code>passwd：u6oN2KE1</code><br/>
+可以通过运行<code>htpasswd /etc/backuppc/htpasswd</code>来修改密码<br/>
+这些信息要记住！</p>
+
+<p>安装后：<br/>
+<code>Creating config file /etc/backuppc/config.pl with new version（可以暂时忽略）</code></p>
+
+<p>然后运行：<br/>
+<code>systemctl restart apache2</code><br/>
+<code>/etc/init.d/backuppc restart</code></p>
+
+<p>接着就打开浏览器访问：<br/>
+<code>http://lonelyor/backuppc</code><br/>
+就能看到web管理界面了。<br/>
+如果进不去可以打开隐身模式或者清除cookie再试。</p>
+
+<p>官方安装文档：<code>http://backuppc.sourceforge.net/BackupPC-4.1.3.html#Installing-BackupPC</code></p>
+
+<p>参考文档：<br/>
+<code>http://server.zol.com.cn/513/5130348.html</code></p>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[msf安装与维护]]></title>
-    <link href="www.lonelyor.org/lonelyorWiki/15453707290429.html"/>
-    <updated>2018-12-21T13:38:49+08:00</updated>
-    <id>www.lonelyor.org/lonelyorWiki/15453707290429.html</id>
+    <title type="html"><![CDATA[burpsuite如何给数据打标的]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15483045488670.html"/>
+    <updated>2019-01-24T12:35:48+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15483045488670.html</id>
     <content type="html"><![CDATA[
-<p><code>curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb &gt; msfinstall &amp;&amp; \<br/>
-  chmod 755 msfinstall &amp;&amp; \<br/>
-  ./msfinstall</code></p>
+<p>用特殊字符标记关键字即可</p>
 
-<p>上面是官方提供的一键安装脚本</p>
-
-<p>使用msfupdate可以进行更新</p>
+<p>类似的有sqlmap，它是使用参数指定要打标的关键词</p>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[查看端口占用]]></title>
-    <link href="www.lonelyor.org/lonelyorWiki/15453706658952.html"/>
-    <updated>2018-12-21T13:37:45+08:00</updated>
-    <id>www.lonelyor.org/lonelyorWiki/15453706658952.html</id>
-    <content type="html"><![CDATA[
-<p>使用命令：<br/>
-<code>lsof -i:8000</code><br/>
-或<br/>
-<code>netstat -tunlp|grep 8000</code><br/>
-均可。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[fsarchiver备份文件介绍]]></title>
-    <link href="www.lonelyor.org/lonelyorWiki/15453705663839.html"/>
-    <updated>2018-12-21T13:36:06+08:00</updated>
-    <id>www.lonelyor.org/lonelyorWiki/15453705663839.html</id>
+    <title type="html"><![CDATA[burpsuite插件编写之官方代码示例解读]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15483045490884.html"/>
+    <updated>2019-01-24T12:35:49+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15483045490884.html</id>
     <content type="html"><![CDATA[
 <blockquote>
-<p>多年以前的笔记</p>
+<p>description: 分析burpsuite官方提供的示例代码，以此来学习插件编写。</p>
 </blockquote>
 
-<p>fsarchiver安装<br/>
-<code>apt-get install fsarchiver</code></p>
+<h2 id="toc_0">HelloWorld</h2>
 
-<pre class="line-numbers"><code class="language-text"># 对于备份操作，我们需要以只读形式重新挂载文件系统或者有条件的话直接卸载。也可以-A忽略
-[peter@test88 ~]$ sudo /home/peter/fsarchiver savefs backup.fsa /dev/sdb1
-oper_save.c#938,filesystem_mount_partition(): partition [/dev/sdb1] is mounted read/write. please mount it read-only
-and then try again. you can do &quot;mount -o remount,ro /dev/sdb1&quot;. you can
-also run fsarchiver with option &#39;-A&#39; if you know what you are doing.
-removed backup.fsa
- 
-# 对于恢复操作，我们必须先卸载文件系统。
-[peter@test88 ~]$ sudo /home/peter/fsarchiver restfs backup2.fsa id=0,dest=/dev/sdb2
-oper_restore.c#1230,extractar_filesystem_extract(): partition [/dev/sdb2] is mounted on [/home/peter/sder].
-cannot restore an archive to a partition which is mounted, unmount it first: umount /home/peter/sder
- 
-# 创建文件系统备份
-# 可以将多个文件系统备份在一个文件中
-[peter@test88 ~]$ sudo /home/peter/fsarchiver savefs backup.fsa /dev/sdb1 /dev/sdb2
- 
-# 恢复文件系统
-# id=0表明从归档中提取第一个文件系统的内容
-[peter@test88 ~]$ sudo /home/peter/fsarchiver restfs backup.fsa id=0,dest=/dev/sdc1 id=1,dest=/dev/sdc2
+<p>废话不多说，直接上代码！</p>
 
+<pre class="line-numbers"><code class="language-python">from burp import IBurpExtender
+from java.io import PrintWriter
+from java.lang import RuntimeException
 
-
-# 软件说明文档
-====&gt; fsarchiver version 0.8.1 (2017-01-10) - http://www.fsarchiver.org &lt;====           
-Distributed under the GPL v2 license (GNU General Public License v2).                   
- * usage: fsarchiver [&lt;options&gt;] &lt;command&gt; &lt;archive&gt; [&lt;dev1&gt; [&lt;dev2&gt; [...]]]            
-&lt;commands&gt;                                                                              
- * savefs: save filesystems to an archive file (backup a device to a file)              
- * restfs: restore filesystems from an archive (overwrites the existing data)           
- * savedir: save directories to the archive (similar to a compressed tarball)           
- * restdir: restore data from an archive which is not based on a filesystem             
- * archinfo: show information about an existing archive file and its contents           
- * probe [detailed]: show list of filesystems detected on the disks                     
-&lt;options&gt;                                                                               
- -o: overwrite the archive if it already exists instead of failing                      
- -v: verbose mode (can be used several times to increase the level of details)          
- -d: debug mode (can be used several times to increase the level of details)            
- -A: allow to save a filesystem which is mounted in read-write (live backup)            
- -a: allow to save a filesystem when acls and xattrs are not supported                  
- -x: enable support for experimental features (they are disabled by default)            
- -e &lt;pattern&gt;: exclude files and directories that match that pattern                    
- -L &lt;label&gt;: set the label of the archive (comment about the contents)                  
- -z &lt;level&gt;: compression level from 1 (very fast) to 9 (very good) default=3            
- -s &lt;mbsize&gt;: split the archive into several files of &lt;mbsize&gt; megabytes each           
- -j &lt;count&gt;: create more than one (de)compression thread. useful on multi-core cpu      
- -c &lt;password&gt;: encrypt/decrypt data in archive, &quot;-c -&quot; for interactive password        
- -h: show help and information about how to use fsarchiver with examples                
- -V: show program version and exit                                                      
-&lt;information&gt;                                                                           
- * Support included for: lzo=yes, lzma=yes                                              
- * Support for ntfs filesystems is unstable: don&#39;t use it for production.               
-&lt;examples&gt;                                                                              
- * save only one filesystem (/dev/sda1) to an archive:                                  
-   fsarchiver savefs /data/myarchive1.fsa /dev/sda1                                     
- * save two filesystems (/dev/sda1 and /dev/sdb1) to an archive:
-   fsarchiver savefs /data/myarchive2.fsa /dev/sda1 /dev/sdb1
- * restore the first filesystem from an archive (first = number 0):
-   fsarchiver restfs /data/myarchive2.fsa id=0,dest=/dev/sda1
- * restore the second filesystem from an archive (second = number 1):
-   fsarchiver restfs /data/myarchive2.fsa id=1,dest=/dev/sdb1
- * restore two filesystems from an archive (number 0 and 1):
-   fsarchiver restfs /data/arch2.fsa id=0,dest=/dev/sda1 id=1,dest=/dev/sdb1
- * restore a filesystem from an archive and convert it to reiserfs:
-   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,mkfs=reiserfs
- * restore a filesystem from an archive and specify extra mkfs options:
-   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,mkfs=ext4,mkfsopt=&quot;-I 256&quot;
- * restore a filesystem from an archive and specify a new label and a new UUID:
-   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,label=root,uuid=5f6e5f4f-dc2a-4dbd-a6ea-9ca997cde75e
- * save the contents of /usr/src/linux to an archive (similar to tar):
-   fsarchiver savedir /data/linux-sources.fsa /usr/src/linux
- * save a filesystem (/dev/sda1) to an archive split into volumes of 680MB:
-   fsarchiver savefs -s 680 /data/myarchive1.fsa /dev/sda1
- * save a filesystem and exclude all files/dirs called &#39;pagefile.*&#39;:
-   fsarchiver savefs /data/myarchive.fsa /dev/sda1 --exclude=&#39;pagefile.*&#39;
- * generic exclude for &#39;share&#39; such as &#39;/usr/share&#39; and &#39;/usr/local/share&#39;:
-   fsarchiver savefs /data/myarchive.fsa --exclude=share
- * absolute exclude valid for &#39;/usr/share&#39; but not for &#39;/usr/local/share&#39;:
-   fsarchiver savefs /data/myarchive.fsa --exclude=/usr/share
- * save a filesystem (/dev/sda1) to an encrypted archive:
-   fsarchiver savefs -c mypassword /data/myarchive1.fsa /dev/sda1
- * same as before but prompt for password in the terminal:
-   fsarchiver savefs -c - /data/myarchive1.fsa /dev/sda1
- * extract an archive made of simple files to /tmp/extract:
-   fsarchiver restdir /data/linux-sources.fsa /tmp/extract
- * show information about an archive and its filesystems:
-   fsarchiver archinfo /data/myarchive2.fsa
-   ```
+# 上面import的第一句是所有burp插件都必须有的
+# 下面开始创建一个burp插件的类来实现插件
+class BurpExtender(IBurpExtender):
+    def registerExtenderCallbacks(self, callbacks):
+        # 创建插件名
+        callbacks.setExtensionName(&quot;HelloWorld extension&quot;)
+        # 获取输出和错误流
+        stdout = PrintWriter(callbacks.getStdout(), True)
+        stderr = PrintWriter(callbacks.getStderr(), True)
+        # 在输出流和错误流中插入消息
+        stdout.println(&quot;Hello output&quot;)
+        stderr.println(&quot;Hello errors&quot;)
+        # 将消息插入burp的alert警报标签中
+        callbacks.issueAlert(&quot;Hello alerts&quot;)
+        # 抛出将出现在错误流中的异常
+        raise RuntimeException(&quot;Hello exception&quot;)
 </code></pre>
+
+<p>现在开始来说几个坑：<br/>
+1、插件最好尽量放在英文路径，不然可能会报错<br/>
+2、编写代码前指定编码(如：# -<em>- coding:utf8 -</em>-)<br/>
+3、raise RuntimeException(&quot;Hello exception&quot;) 这行代码我没看懂是要干嘛的，反正写了之后Errors就报错，不想看的话就注释掉好了。</p>
+
+<h2 id="toc_1">event_listeners 事件监听器</h2>
+
+<pre class="line-numbers"><code class="language-python">#!/usr/bin/python3
+# -*- coding:utf-8 -*-
+
+from burp import IBurpExtender
+from burp import IHttpListener
+from burp import IProxyListener
+from burp import IScannerListener
+from burp import IExtensionStateListener
+from java.io import PrintWriter
+
+class BurpExtender(IBurpExtender, IHttpListener, IProxyListener, IScannerListener, IExtensionStateListener):
+    def registerExtenderCallbacks(self, callbacks):
+        # 保持对回调对象的引用
+        self._callbacks = callbacks
+        # 创建插件名
+        callbacks.setExtensionName(&quot;Event Listeners&quot;)
+        # 获取输出流
+        self._stdout = PrintWriter(callbacks.getStdout(), True)
+        # 注册为http监听器
+        callbacks.registerHttpListener(self)
+        # 注册为proxy监听器
+        callbacks.registerProxyListener(self)
+        # 注册为scanner监听器
+        callbacks.registerScannerListener(self)
+        # 注册为扩展插件状态监听器
+        callbacks.registerExtensionStateListener(self)
+    # 下面几个函数各自实现监听
+    def processHttpMessage(self, toolFlag, messageIsRequest, messageInfo):
+        self._stdout.println(
+            (&quot;HTTP request to &quot; if messageIsRequest else &quot;HTTP response from&quot;) +
+            messageInfo.getHttpService().toString() +
+            &quot;[&quot; + self._callbacks.getToolName(toolFlag) + &quot;]&quot;
+        )
+
+    def processProxyMessage(self, messageIsRequest, message):
+        self._stdout.println(
+            (&quot;Proxy request to &quot; if messageIsRequest else &quot;Proxy response from&quot;) +
+            message.getMessageInfo.getHTTPService().toString()
+        )
+
+    def newScanIssue(self, issue):
+        self._stdout.prinln(&quot;New scan issue &quot; + issue.getIssueName())
+
+    def extensionUnloaded(self):
+        self._stdout.println(&quot;Extension was unloaded&quot;)
+</code></pre>
+
+<p>我是没搞懂这个插件做了什么，诶无所谓，也就是多敲敲代码，熟悉熟悉感觉。</p>
+
+<h2 id="toc_2">traffic_redirector 流量重定向</h2>
+
+<pre class="line-numbers"><code class="language-python">#!/usr/bin/python3
+# -*- coding:utf-8 -*-
+
+from burp import IBurpExtender
+from burp import IHttpListener
+
+HOST_FROM = &quot;www.baidu.com&quot;
+HOST_TO = &quot;www.zhihu.com&quot;
+
+class BurpExtender(IBurpExtender, IHttpListener):
+    def registerExtenderCallbacks(self, callbacks):
+        # 获取扩展helpers对象
+        self._helpers = callbacks.getHelpers()
+        # 设置扩展名
+        callbacks.setExtensionName(&quot;Traffic redirector&quot;)
+        # 将自己注册为HTTP侦听器
+        callbacks.registerHttpListener(self)
+
+    def processHttpMessage(self, toolsFlag, messageIsRequest, messageInfo):
+        # 只获取请求
+        if not messageIsRequest:
+            return
+        # 获取http服务的请求
+        httpService = messageInfo.getHttpService()
+        # 如果主机是HOST_FROM则将它改成HOST_TO
+        if (HOST_FROM == httpService.getHost()):
+            messageInfo.setHttpService(self._helpers.buildHttpService(HOST_TO,
+                httpService.getPort(), httpService.getProtocol()))
+</code></pre>
+
+<p>这个插件简单来说就是，把请求中的host部分修改掉。比如上述代码会监听所有host为百度的请求，一旦出现，就会把host改成知乎。</p>
 
 ]]></content>
   </entry>

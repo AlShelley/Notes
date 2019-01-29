@@ -1,0 +1,708 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  Web安全 - lonelyorWiki
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="lonelyorWiki" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:www.lonelyor.org/lonelyorWiki ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">首页</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">归档</a></li>
+        
+        <li id=""><a target="_self" href="beautiful.html">惊鸿</a></li>
+        
+        <li id=""><a target="_self" href="ruby.html">流光</a></li>
+        
+        <li id=""><a target="_self" href="search.html">北斗</a></li>
+        
+        <li id=""><a target="_self" href="lose.html">失乐园</a></li>
+        
+        <li id=""><a target="_self" href="about.html">关于</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; lonelyorWiki</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">首页</a></li>
+        
+        <li><a target="_self" href="archives.html">归档</a></li>
+        
+        <li><a target="_self" href="beautiful.html">惊鸿</a></li>
+        
+        <li><a target="_self" href="ruby.html">流光</a></li>
+        
+        <li><a target="_self" href="search.html">北斗</a></li>
+        
+        <li><a target="_self" href="lose.html">失乐园</a></li>
+        
+        <li><a target="_self" href="about.html">关于</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
+        
+            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
+        
+            <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
+        
+            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
+        
+            <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="15483045488017.html">
+                
+                  <h1>python弱口令脚本的一点备注</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>很久以前写的</p>
+</blockquote>
+
+<p>跑弱口令的脚本<br/>
+不要使用字典这种操作，这不利于跑大量数据的场景。<br/>
+应该制定规则去跑，比如：<br/>
+取出一个用户名，然后根据规则生成弱口令，然后再去匹配用户名对应的密码，匹配则是弱口令，不匹配则不是弱口令。<br/>
+这样可以后续变成一个服务，用户输入密码，触发了规则则告诉他密码是弱口令。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045490829.html">
+                
+                  <h1>xssing.org跨站的艺术</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>这个网站太棒了，强烈推荐阅读<br/>
+<a href="https://xssing.org/%E9%A6%96%E9%A1%B5">xssing.org跨站的艺术</a>若不能直接访问请使用科学上网工具。</p>
+</blockquote>
+
+<h1 id="toc_0">什么是XSS？</h1>
+
+<h1 id="toc_1">概述</h1>
+
+<p>XSS全称跨站脚本(Cross Site Scripting)，为不和层叠样式表(Cascading Style Sheets, CSS)的缩写混淆，故缩写为XSS，比较合适的方式应该叫做跨站脚本攻击。跨站点脚本（XSS）攻击是一种注射型攻击，攻击者在可信的网页中嵌入恶意代码，用户访问可信网页时触发XSS而被攻击.</p>
+
+<p>攻击者通过Web应用程序发送恶意代码，一般以浏览器脚本的形式发送给不同的终端用户。当一个Web程序的用户输入点没有进行校验和编码，将很容易的导致XSS。</p>
+
+<p>攻击者可以使用XSS发送恶意脚本给没有任何防备的用户。终端用户浏览器无法知道不应该信任叫嗯,而是执行了该脚本。因为它认为脚本来自可信的源,恶意脚本可以访问任何Cookies,会话令牌,或其浏览器和网站保留使用的他敏感信息。这些脚本甚至可以重写HTML页面的内容。更多的内容可以阅读本站其他内容。</p>
+
+<h1 id="toc_2">详细介绍</h1>
+
+<p>跨站脚本攻击在以下情况出现:</p>
+
+<ol>
+<li>Web应用程序通过不可信的来源进行数据输入，最常见是的Web请求(输入，比如如GET访问某Web应用的url，通过参数提交数据,比如提交input=<script>alert(0);&lt;/ script&gt;)。</li>
+<li>恶意数据包含在动态内容内在没有进行校验的情况下发送给用户(输出，比如提交的input的值在没有校验的情况下，用户访问页面，浏览器直接渲染了input的值执行了JS，导致弹窗)。</li>
+</ol>
+
+<p>发送到Web浏览器的恶意内容通常是以JavaScript代码的形式，当然也可以包括HTML，Flash或任何浏览器可以执行的其他类型的代码。基于XSS的攻击种类几乎是无限的，但它们通常包括发送隐私数据给攻击者，如cookies或其他会话信息；重定向受害者访问攻击者控制的页面；或者利用网站漏洞在用户机器上执行其他恶意操作。</p>
+
+<h2 id="toc_3">存储型和反射型XSS攻击</h2>
+
+<p>XSS攻击通常可以分为两类：存储型和反射型（也称持久性和非持久性）。还有第三种相对少为认知的XSS攻击类型，叫做DOM XSS ,具体可以点击这里阅读。</p>
+
+<p>同时最近还有一种XSS攻击类型被提出来，突变XSS，不过个人觉得突变XSS不合适作为第四种XSS攻击类型，因为这种突变XSS可以出现在以上三种类型的XSS里，不过比较特殊，我们同样也在这里进行单独介绍（Fooying注）。</p>
+
+<h2 id="toc_4">存储型XSS攻击</h2>
+
+<p>存储型攻击是指那些被注入脚本将被永久保存在目标服务器上，比如在数据库中，在消息板块，访客日志，注释字段等。受害人请求存储信息时，将再次检索到恶意脚本(比如，在留言板提交XSS攻击代码，会存储到数据库，当再次访问留言板会请求数据库中的留言信息，就会连同XSS攻击代码一起检索出来在页面展示，使得受害者再次被攻击)。存储型XSS有时也被称为持久性或Type-I XSS。</p>
+
+<h2 id="toc_5">反射型XSS攻击</h2>
+
+<p>反射型攻击是指那些被注入脚本反射出Web服务器，比如在一个错误信息、搜索结果，或者其他任何的包括一些或所有的输入作为请求的一部分发送到服务器的响应。反射型攻击是通过其他途径送达到受害者，比如一封邮件的内容，或者一些其他的网站。当用户被诱骗点击一个恶意链接，提交一个特制的表单，甚至只是浏览到恶意网站，被注入的脚本行进到有漏洞的网站，将攻击反射回用户浏览器。然后浏览器执行代码，因为它来自于一个“可信”的服务器。反射型XSS有时也被称为非持久性或Type-II XSS.</p>
+
+<h2 id="toc_6">其他类型的XSS漏洞的</h2>
+
+<p>除了反射型和存储型XSS,其他类型的XSS，Amit Klein在2005年发现DOM XSS。除此之外，推荐关于XSS分类描述的文章：XSS分类，它涵盖了所有这些方面的XSS，组成了矩阵，存储vs反射型XSS，以及服务端和客户端XSS，DOM XSS是客户端XSS。</p>
+
+<h2 id="toc_7">XSS攻击结果</h2>
+
+<p>无论是存储型还是反射型（或DOM XSS）的攻击结果都是相同的。不同的是Payload如何有效的到达服务器。不要错误的认为，一个“read only”或“brochureware”网站不容易受到严重的反射型XSS攻击。XSS可以引起终端用户的各种问题，包括不同的严重成都。最严重的XSS攻击涉及用户的会话cookie的披露，使攻击者劫持用户的会话和接管帐户。其他破坏性攻击包括终端用户的文件披露，特洛伊木马程序的安装，将用户重定向到其他网页或网站，或修改内容介绍。XSS漏洞允许攻击者修改新闻稿或新闻项目可以影响一个公司的股票价格或减少消费者的信心。一个药品网站XSS漏洞可能允许攻击者修改剂量信息导致过量。更多关于这些类型的攻击请看内容欺骗。</p>
+
+<h2 id="toc_8">如何确定存在漏洞</h2>
+
+<p>XSS漏洞比较难以识别和从Web应用程序中删除。发现漏洞的最佳方法是进行的代码的安全审计，搜索一个HTTP请求中可能进入HTML输出的所有输入点。值得注意的是，各种不同的HTML标签可以用来发送一个恶意的JavaScript。Nessus, Nikto以及其他的一些扫描器，可以用来扫描检测XSS，不过效果有限。如果一个网站的某部分存在漏洞，那么很有可能还有其他的问题。</p>
+
+<h2 id="toc_9">如何防范XSS</h2>
+
+<p>XSS防御的相关内容位于OWASP XSS防范备忘录 .</p>
+
+<p>另外，最主要的是关闭掉你所有Web服务对HTTP回调的支持。攻击者可以窃取cookie数据通过JavaScript，即使document.cookie被禁用或不支持客户端。用户可以在论坛发布一个恶意脚本，当其他人点击链接，异步回调请求就会被触发，用来收集来自服务器的用户的cookie信息，然后发送到另一个接收地址，这样攻击者就可以进行一个会话劫持攻击。关闭掉你所有Web服务对HTTP回调的支持是很容易的。</p>
+
+<p>OWASP ESAPI project已经开发了一套可重用的安全组件。包含多种编程语言，包括验证和转义来防止参数篡改和XSS攻击注射。此外，OWASP WebGoat Project训练应用，有跨站点脚本和数据编码的训练经验。</p>
+
+<h2 id="toc_10">XSS语句</h2>
+
+<p><strong>属性中使用脚本的XSS</strong><br/>
+XSS攻击可能在非<script></script> 标签中发生. 其他标签也可以做同样事，比如:</p>
+
+<p><code>&lt;body onload=alert(&#39;test1&#39;)&gt;</code><br/>
+或其他属性，如:onmouseover,onerror.onmouseover</p>
+
+<p><code>&lt;b onmouseover=alert(&#39;Wufff!&#39;)&gt;click me!&lt;/b&gt;</code><br/>
+onerror</p>
+
+<p><code>&lt;img src=&quot;http://url.to.file.which/not.exist&quot; onerror=alert(document.cookie);&gt;</code></p>
+
+<p><strong>利用XSS脚本通过编码的URI方案</strong><br/>
+如果我们需要绕过Web应用过滤器，我们可以尝试编码字符串，比如：a=A (UTF-8),在img标签中使用：</p>
+
+<p><code>&lt;IMG SRC=jAvascript:alert(&#39;test2&#39;)&gt;</code><br/>
+有许多不同的UTF-8编码符号可以给我们更多的可能性。</p>
+
+<p><strong>XSS利用代码的编码</strong><br/>
+在META标签，我们可以对我们的脚本进行base64编码，这样就不用输入alert()字符。这个方法的更多信息参考RFC 2397</p>
+
+<p><code>&lt;META HTTP-EQUIV=&quot;refresh&quot; <br/>
+CONTENT=&quot;0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgndGVzdDMnKTwvc2NyaXB0Pg&quot;&gt;</code></p>
+
+<p>这些以及其他的例子可以在OWASP XSS Filter Evasion Cheat Sheet查看。这是一个真正的备用XSS攻击代码的百科</p>
+
+<h1 id="toc_11">例子</h1>
+
+<p>跨站点脚本攻击可能发生在任何地方，可能是恶意用户被允许发送非规范内容到一个可信的网站给其他合法用户。最常见的例子发生在网站公告板，提供基于Web的邮件列表的功能</p>
+
+<h2 id="toc_12">例子 1</h2>
+
+<p>The following JSP code segment reads an employee ID, eid, from an HTTP request and displays it to the user. 下面的JSP代码块从一个HTTP请求读取employee ID, eid，并展示给用户。</p>
+
+<pre class="line-numbers"><code class="language-text">    &lt;% String eid = request.getParameter(&quot;eid&quot;); %&gt; 
+    ... 
+    Employee ID: &lt;%= eid %&gt;
+</code></pre>
+
+<p>如果eid仅包含标准字母数字文本，则此示例中的代码可正常运行。如果eid具有包含元字符或源代码的值，则代码将在Web浏览器显示HTTP响应时执行。</p>
+
+<p>最初，这似乎不是一个漏洞。毕竟，为什么有人会输入导致恶意代码在自己的计算机上运行的URL？真正的危险是攻击者会创建恶意URL，然后使用电子邮件或社交工程技巧诱使受害者访问URL的链接。当受害者点击该链接时，他们会无意中通过易受攻击的Web应用程序将恶意内容反映回自己的计算机。这种利用易受攻击的Web应用程序的机制称为反射型XSS。</p>
+
+<h2 id="toc_13">例子 2</h2>
+
+<p>The following JSP code segment queries a database for an employee with a given ID and prints the corresponding employee&#39;s name.</p>
+
+<pre class="line-numbers"><code class="language-jsp">    &lt;%...
+     Statement stmt = conn.createStatement(); 
+     ResultSet rs = stmt.executeQuery(&quot;select * from emp where id=&quot;+eid); 
+     if (rs != null) { 
+      rs.next(); 
+      String name = rs.getString(&quot;name&quot;); 
+    %&gt; 
+    Employee Name: &lt;%= name %&gt;
+```
+
+以上，是首页的部分内容，首页还有很多的参考链接，这些链接都非常有价值，可是不好copy，所以请读者自行前往原网站欣赏。
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045487066.html">
+                
+                  <h1>xss、csrf、sql注入快速检测方法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">CSRF跨站请求伪造</h2>
+
+<ul>
+<li>原理<br/>
+攻击者在受害者不知情的情况下，以受害者的名义伪造请求发送给受攻击的站点，从而在未授权的情况下执行在权限保护之下的操作。<br/>
+CSRF攻击的对象是那些可以直接产生数据改变的服务，而对于读取数据的服务，则不需要进行 CSRF 的保护。<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>检测方法<br/>
+1.查看重要操作接口提交的请求中是否包含 csrf_token<br/>
+2.更改和删除 csrf_token 后提交表单，查看请求是否能被正确响应。<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>修复方案<br/>
+1.对涉及数据<strong>增、删、改</strong>操作提交的表单中添加csrf_token，token 参数应校验一次后失效。<br/>
+2.最好是在容器或框架上<strong>全局</strong>启用 csrf_token。(很多框架自带的解决办法容易遗漏一次失效的问题)<br/>
+3.token 应有一定的<strong>时效性</strong>，建议为30分钟，过期需失效（即：单页面停留30分钟后，用户提交请求需提示“页面过期，请刷新页面后再次提交”）<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>参考<br/>
+<a href="https://www.owasp.org/index.php/Testing_for_CSRF_(OTG-SESS-005)">CSRF测试</a><br/>
+<a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">跨站请求伪造（CSRF）</a><br/>
+<a href="https://www.ibm.com/developerworks/cn/web/1102_niugang_csrf/">CSRF 攻击的应对之道</a><br/></li>
+</ul>
+
+<h2 id="toc_1">XSS跨站脚本攻击</h2>
+
+<h3 id="toc_2">反射型</h3>
+
+<ul>
+<li>原理<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>检测方法<br/>
+<strong>检测场景</strong>：任何有输入输出地方......<br/>
+1.使用通用的web扫描器一般的都能发掘潜在的反射型XSS漏洞。<br/>
+2.手工在一些输入框中或者post参数中加入拼凑过的JS代码，根据返回的页面源码中是否成功嵌入JS代码来判断XSS是否存在。<br/>
+3.如果注入的代码经过后端处理后，永久性的嵌入到了页面当中，则该XSS为存储型的，反射型的XSS一般依赖于该次请求，且同时只能被用户自己所看到。<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>修复方案<br/>
+1.输出时统一使用 htmlEscape（）转义用户输入的数据，将html、js中涉及到的关键字符进行html编码处理后再输出到页面上。<br/>
+2.如果存在用户编写文章等类似用户可以自定义页面样式的功能，则限制用户输入，采用严格的白名单来过滤用户的输入，这种过滤应在后端应实现。(很多开源的第三方富文本编辑器，部分编辑器仅在JS端进行过滤，而不在后端进行关键字过滤)。<br/></li>
+</ul>
+
+<hr/>
+
+<h3 id="toc_3">存储型</h3>
+
+<ul>
+<li>原理<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>检测方法<br/>
+<strong>检测场景</strong>：存在富文本编辑器的地方；用户的输入信息会作为固定的值回显到页面中；后台管理应用中维护用户输入的相关信息。<br/>
+1.手工在一些输入框中或者post参数中加入污染的JS代码，根据返回的页面源码中是否成功嵌入JS代码来判断XSS是否存在(注入前端转义的情况)。<br/>
+2.如果注入的代码经过后端处理后，永久性的嵌入到了页面当中，则该XSS为存储型的。<br/>
+3.如果尝试注入的代码在页面中均被html编码，则再考虑其数据的流转会不会在后台其他应用中处理这些输入数据，如果有，对应的后台应用是否也做了完善的过滤机制。<br/>
+4.可远程搭建XSS检测平台，如果有XSS测试代码被触发，则自动发起链接到该平台上，这样相对来说可以测试那些未知的数据流向是否造成问题。<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>修复方案<br/>
+1.输出时统一使用 htmlEscape（）转义用户输入的数据，将html、js中涉及到的关键字符进行html编码处理后再输出到页面上。<br/>
+2.如果存在用户编写文章等类似用户可以自定义页面样式的功能，则限制用户输入，采用严格的白名单来过滤用户的输入，这种过滤应在后端应实现。(很多开源的第三方富文本编辑器，部分编辑器仅在JS端进行过滤，而不在后端进行关键字过滤)。<br/></li>
+</ul>
+
+<hr/>
+
+<h3 id="toc_4">基于DOM型</h3>
+
+<ul>
+<li>原理<br/></li>
+</ul>
+
+<hr/>
+
+<p>没啥可说的，可以当成是特殊的反射型。</p>
+
+<ul>
+<li>检测方法<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>修复方案<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>参考<br/>
+<a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">XSS跨站脚本</a></li>
+</ul>
+
+<h2 id="toc_5">SQL_Inject</h2>
+
+<ul>
+<li>原理<br/></li>
+</ul>
+
+<hr/>
+
+<p>开发人员使用直接拼接 sql 的方法来访问数据库，导致攻击者能通过特殊构造的语句控制代码逻辑。典型的代码与数据没有分离导致的安全问题之一。</p>
+
+<ul>
+<li>检测方法<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>常规方法<br/>
+<code>
+1 ，新建一个1 .txt文件，burp抓包将包含关键参数的请求存入。<br/>
+2 ，使用sqlmap 进行扫描（python sqlmap [options] [file path]）<br/>
+3、等待结果输出
+</code></li>
+<li>另一种常规方法<br/>
+<code>
+使用burp插件SQLiPy<br/>
+方案一（通用）：将sqlapi地址配置成 192.168.2.22 2222<br/>
+方案二：使用sqlipy生成测试语句，然后添加 -p 参数，指定注入参数，然后在 shell 里面运行 sqlmap。<br/>
+一个指定参数的SqlMap示例语句：    <br/>
+sqlmap -u “ http://xxxxxx.com:80/x/xx?x_id=1507 ” --method = “GET”-- cookie = “SESSIONID = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;<br/>
+--user-agent= &quot;Mozilla / 5.0（X11; Linux_x86_64; RV：60.0）/ 20100101火狐/ 60.0&quot;  --delay=0 --timeout=30 --retries=0 --dbms=&quot;MySQL&quot;  --os=Linux   <br/>
+--level=3 --risk=3 --threads=2 --time-sec=10 -b --batch --answers=&quot;crack=N,dict = N&quot;  -p &quot;zone_id&quot; --tables           
+</code>
+我们在跑注入的时候需要重点设置的参数：<br/>
+-risk=3<br/>
+-level=3<br/>
+--threads=2<br/>
+--dbms和–os去问开发或者测试<br/>
+-p 指定阐述减少服务器压力</li>
+<li>不太常规的方法<br/>
+1、写一个web界面调用sqlmapapi<br/>
+2、直接找开发拉代码过来进行审计</li>
+<li>修复方案<br/></li>
+</ul>
+
+<hr/>
+
+<p>1、使用安全的API ，完全避免使用解释器，或提供参数化界面的接口，或迁移到ORM 或实体框架(通常开发框架里会自带访问sql的方法来预防注入)。<br/><br/>
+2、做参数绑定，预编译查询。</p>
+
+<ul>
+<li>参考<br/>
+<a href="https://www.owasp.org/index.php/SQL_Injection">SQL注入</a></li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   <a href="Web安全_3.html">&laquo; Prev Page</a>  
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			 <a href="Web安全_5.html">&raquo; Next Page</a> 
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <div class="site-a-logo"><img src="http://images.lonelyor.org/favicon.jpg" /></div>
+            
+                <h1>lonelyorWiki</h1>
+                <div class="site-des">一个用来记录知识的网站</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="https://github.com/AlShelley/lonelyorWiki" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:lonelyor.org@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
+        
+            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
+        
+            <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
+        
+            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
+        
+            <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15483045487644.html">Atom设置和取消代理</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15483045486850.html">BASIC INJECTION 基本注入</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15483045491221.html">CRLF注入</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15483045491124.html">FOEENSICS 101</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15483045490848.html">HttpOnly</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2018
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

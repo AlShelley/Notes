@@ -4,7 +4,7 @@
 }
 
 
-.top-bar,.tab-bar{ background-color: #f5f5f5; height: 65px;  border-bottom: solid 1px #F5F5F5;}
+.top-bar,.tab-bar{ background-color: #fff; height: 65px;  border-bottom: solid 1px #F5F5F5;}
 
 .tab-bar{ padding-top: 6px; height: 59px;}
 .tab-bar .menu-icon{ width: 100%; color: #333; }
@@ -23,7 +23,7 @@
   color: #666;
   line-height: 1rem;
   display: inline-block;
-    font-size: 16px;
+    font-size: 18px;
     text-transform: uppercase;
 
    margin:0; 
@@ -190,15 +190,21 @@ padding: 8px 0px; margin: 0;
 
 
 
-.home-categories{max-width: 640px;}
+/* .home-categories{max-width: 640px;} */
 
-.markdown-body{ margin-top: 34px;}
+/* .markdown-body{ margin-top: 34px;} */
 .markdown-body {
+  color: #606c76;
+  font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-size: 1.6em;
+  line-height: 1.6;
+  font-weight: 300;
+  text-shadow: 0 1px 3px rgba(233, 228, 232, 0.486);
+  /* overflow-y: scroll; */
+  margin: 0px;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  color: #333;
-  overflow: hidden;
-  font-family: "SF UI Display", ".PingFang SC","PingFang SC", "Neue Haas Grotesk Text Pro", "Arial Nova", "Segoe UI", "Microsoft YaHei", "Microsoft JhengHei", "Helvetica Neue", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "Hiragino Sans GB", sans-serif;
+  /* font-family: "SF UI Display", ".PingFang SC","PingFang SC", "Neue Haas Grotesk Text Pro", "Arial Nova", "Segoe UI", "Microsoft YaHei", "Microsoft JhengHei", "Helvetica Neue", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "Hiragino Sans GB", sans-serif; */
 
 
   font-size: 16px;
@@ -220,7 +226,12 @@ padding: 8px 0px; margin: 0;
 }
 
 .markdown-body h1 {
-  font-size: 2rem;  
+  font-size: 28px;
+  font-family: Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
+  color:  #00cccc;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  overflow-y: auto;
+  margin: 0px;
 }
 
 .markdown-body img {
@@ -327,48 +338,56 @@ padding: 8px 0px; margin: 0;
 }
 
 .markdown-body h1 {
-  font-size: 30px;
-  color:  #00cccc;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-  overflow-y: hidden;
-  margin: 0px;
+  font-size: 28px;
 }
 
 .markdown-body h2 {
-  font-size: 24px;
-  color:  #606c76;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-  overflow-y: hidden;
-  margin: 0px;
-}
-
-.markdown-body h3 {
   font-size: 20px;
   color:  #606c76;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   overflow-y: hidden;
   margin: 0px;
+  font-size: 21px;
+  /* font-family: Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif; */
+  font-family:"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu;
+}
+
+.markdown-body h3 {
+  font-size: 18px;
+  color:  #606c76;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  overflow-y: hidden;
+  margin: 0px;
+  font-size: 16px;
+  font-family: Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
 }
 
 .markdown-body h4 {
   font-size: 16px;
+  color:  #606c76;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   overflow-y: hidden;
   margin: 0px;
+  font-size: 14px;
+  font-family: Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
 }
 
 .markdown-body h5 {
-  font-size: 14px;
+  font-size: 15px;
+  color:  #606c76;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   overflow-y: hidden;
   margin: 0px;
+  font-size: 12px;
 }
 
 .markdown-body h6 {
-  font-size: 12px;
+  font-size: 14px;
+  color:  #606c76;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   overflow-y: hidden;
   margin: 0px;
+  font-size: 11px;
 }
 
 .markdown-body blockquote {
@@ -734,14 +753,14 @@ font-family: "PT Sans", "SF UI Display", ".PingFang SC","PingFang SC", "Neue Haa
 }
 
 
-#main-content .markdown-body h1{font-size: 30px;border-bottom: none; }
-#main-content .markdown-body h2{font-size: 25px;border-bottom: none; }
-#main-content .markdown-body h3{font-size: 23px;}
+#main-content .markdown-body h1{font-size: 28px;border-bottom: none; }
+#main-content .markdown-body h2{font-size: 25px;border-bottom: none;}
+#main-content .markdown-body h3{font-size: 22px;}
 #main-content .markdown-body h4{font-size: 20px;}
 #main-content .markdown-body h5{font-size: 18px;}
-#main-content .markdown-body h6{font-size: 16px;}
+#main-content .markdown-body h6{font-size: 17px;}
 
-#main-content .markdown-body .article{ padding: 38px 0px; borde: solid 2px #e6e6e6;}
+#main-content .markdown-body .article{ padding: 38px 0px; border-bottom: solid 1px #e6e6e6;}
 #main-content .markdown-body .article:first-child{padding-top: 20px;}
 #main-content .markdown-body .a-content{padding-bottom: 20px; padding-left: 2px; line-height: 1.6rem;}
 
@@ -803,18 +822,3 @@ font-family: "PT Sans", "SF UI Display", ".PingFang SC","PingFang SC", "Neue Haa
     box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.5); }
   .markdown-body ul.clearing-thumbs a.radius {
     border-radius: 3px; }
-
-
-
-
-    /*********************************我写的css部分*************	
-  background-color: #fff;
-  box-shadow: 5px 5px 2px #55CFF8;
-  *************************/
-  /*******
-.article{
-  border:1px solid #24c1f6;
-  border-style: inset;
-  margin-bottom: 16px;
-}
-******/

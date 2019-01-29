@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  lonelyorのblog
+  lonelyorWiki
   
   </title>
   
   
-  
-  <link href="atom.xml" rel="alternate" title="lonelyorのblog" type="application/atom+xml">
+  <link href="atom.xml" rel="alternate" title="lonelyorWiki" type="application/atom+xml">
     <link rel="stylesheet" href="asset/css/foundation.min.css" />
     <link rel="stylesheet" href="asset/css/docs.css" />
     <script src="asset/js/vendor/modernizr.js"></script>
@@ -21,7 +20,7 @@
   <script>hljs.initHighlightingOnLoad();</script>
 <script type="text/javascript">
   function before_search(){
-    var searchVal = 'site:www.lonelyor.org/lonelyorNotes ' + document.getElementById('search_input').value;
+    var searchVal = 'site:www.lonelyor.org/lonelyorWiki ' + document.getElementById('search_input').value;
     document.getElementById('search_q').value = searchVal;
     return true;
   }
@@ -41,11 +40,17 @@
       <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
         <ul id="main-menu" class="left">
         
-        <li id=""><a target="_self" href="index.html">主页</a></li>
+        <li id=""><a target="_self" href="index.html">首页</a></li>
         
         <li id=""><a target="_self" href="archives.html">归档</a></li>
         
-        <li id=""><a target="_self" href="lost.html">失乐园</a></li>
+        <li id=""><a target="_self" href="beautiful.html">惊鸿</a></li>
+        
+        <li id=""><a target="_self" href="ruby.html">流光</a></li>
+        
+        <li id=""><a target="_self" href="search.html">北斗</a></li>
+        
+        <li id=""><a target="_self" href="lose.html">失乐园</a></li>
         
         <li id=""><a target="_self" href="about.html">关于</a></li>
         
@@ -67,18 +72,24 @@
 
         <nav class="tab-bar show-for-small">
   <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-    <span> &nbsp; lonelyorのblog</span>
+    <span> &nbsp; lonelyorWiki</span>
   </a>
 </nav>
 
 <aside class="left-off-canvas-menu">
       <ul class="off-canvas-list">
         
-        <li><a target="_self" href="index.html">主页</a></li>
+        <li><a target="_self" href="index.html">首页</a></li>
         
         <li><a target="_self" href="archives.html">归档</a></li>
         
-        <li><a target="_self" href="lost.html">失乐园</a></li>
+        <li><a target="_self" href="beautiful.html">惊鸿</a></li>
+        
+        <li><a target="_self" href="ruby.html">流光</a></li>
+        
+        <li><a target="_self" href="search.html">北斗</a></li>
+        
+        <li><a target="_self" href="lose.html">失乐园</a></li>
         
         <li><a target="_self" href="about.html">关于</a></li>
         
@@ -86,19 +97,15 @@
     <li><label>Categories</label></li>
 
         
-            <li><a href="Web%E6%94%BB%E9%98%B2.html">Web攻防</a></li>
+            <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
         
-            <li><a href="%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html">操作系统</a></li>
-        
-            <li><a href="%E8%99%9A%E6%8B%9F%E5%AE%9E%E9%AA%8C%E5%AE%A4.html">虚拟实验室</a></li>
-        
-            <li><a href="CTF.html">CTF</a></li>
+            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
         
             <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
         
-            <li><a href="%E6%B5%8F%E8%A7%88%E5%99%A8.html">浏览器</a></li>
+            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
-            <li><a href="%E5%A5%87%E6%B7%AB%E5%B7%A7%E6%8A%80.html">奇淫巧技</a></li>
+            <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
          
 
       </ul>
@@ -121,17 +128,16 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15446978130922.html">
+                <a class="clearlink" href="15483045490471.html">
                 
-                  <h1>enigmagroup入门挑战-基础1</h1>
+                  <h1>解决npm更新或安装软件时下载较慢等问题</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="http://challenges.enigmagroup.org/basics/pre/1/">基础1题目地址</a><br/>
-1、右键查看源码<br/>
-2、ctrl+f查找passw<br/>
-3、注释里面说了：<code>&lt;!-- the first levels are easy, the password is 39f13b --&gt;</code></p>
+                        	<p>更换淘宝源即可，<br/>
+在终端执行命令：<br/>
+<code>npm config set registry https://registry.npm.taobao.org</code></p>
 
                         
                       </div>
@@ -140,10 +146,87 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/13 18:43 下午</span>
+                    <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='CTF.html'>CTF</a></span>
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045490538.html">
+                
+                  <h1>解决windows右键新建消失问题</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>新建一个文件后缀名写为reg（注册表文件格式）的文件。<br/>
+然后用记事本或文本编辑器打开，写入文件内容：</p>
+
+<pre class="line-numbers"><code class="language-text">Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\New]
+
+@=&quot;{D969A300-E7FF-11d0-A93B-00A0C90F2719}&quot;
+</code></pre>
+
+<p>保存，然后双击该文件，即可。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045488737.html">
+                
+                  <h1>降低cpu使用率</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>pulimit -l 50 -p 1234<br/>
+-l后面是使用百分比，-p后面是进城PID，可以使用htop查看进程pid</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -167,7 +250,7 @@
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			 <a href="all_24.html">&raquo; Next Page</a> 
+			
 			</p>
 			  </div>
 			</div>
@@ -179,11 +262,10 @@
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-              <div class="site-a-logo"><img src="http://images.lonelyor.org/lonelyornotesico.jpeg" /></div>
+                <div class="site-a-logo"><img src="http://images.lonelyor.org/favicon.jpg" /></div>
             
-          </br>
-                <h1>lonelyorのblog</h1>
-                <div class="site-des">一个用来记录学习笔记的网站</div>
+                <h1>lonelyorWiki</h1>
+                <div class="site-des">一个用来记录知识的网站</div>
                 <div class="social">
 
 
@@ -194,7 +276,7 @@
 
 
 
-<a target="_blank" class="github" target="_blank" href="https://github.com/AlShelley/lonelyorNotes" title="GitHub">GitHub</a>
+<a target="_blank" class="github" target="_blank" href="https://github.com/AlShelley/lonelyorWiki" title="GitHub">GitHub</a>
 <a target="_blank" class="email" href="mailto:lonelyor.org@gmail.com" title="Email">Email</a>
   <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 
@@ -205,25 +287,21 @@
 
               <div id="site-categories" class="side-item ">
                 <div class="side-header">
-                  <h2>分类</h2>
+                  <h2>Categories</h2>
                 </div>
                 <div class="side-content">
 
       	<p class="cat-list">
         
-            <a href="Web%E6%94%BB%E9%98%B2.html"><strong>Web攻防</strong></a>
+            <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
         
-            <a href="%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html"><strong>操作系统</strong></a>
-        
-            <a href="%E8%99%9A%E6%8B%9F%E5%AE%9E%E9%AA%8C%E5%AE%A4.html"><strong>虚拟实验室</strong></a>
-        
-            <a href="CTF.html"><strong>CTF</strong></a>
+            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
         
             <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
         
-            <a href="%E6%B5%8F%E8%A7%88%E5%99%A8.html"><strong>浏览器</strong></a>
+            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
-            <a href="%E5%A5%87%E6%B7%AB%E5%B7%A7%E6%8A%80.html"><strong>奇淫巧技</strong></a>
+            <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
          
         </p>
 
@@ -233,38 +311,38 @@
 
               <div id="site-categories" class="side-item">
                 <div class="side-header">
-                  <h2>最新文章</h2>
+                  <h2>Recent Posts</h2>
                 </div>
                 <div class="side-content">
                 <ul class="posts-list">
 	      
 		      
 			      <li class="post">
-			        <a href="15453757934453.html">css美化文章标题</a>
+			        <a href="15483045487644.html">Atom设置和取消代理</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15453720146052.html">Pycharm编程遇到的技巧</a>
+			        <a href="15483045486850.html">BASIC INJECTION 基本注入</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15453717965995.html">npm Cannot find module 'semver' --解决方案</a>
+			        <a href="15483045491221.html">CRLF注入</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15453716917526.html">mongodb安装配置（arch）</a>
+			        <a href="15483045491124.html">FOEENSICS 101</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15453714645346.html">linux安装配置aria2及其Web图形界面（debian为例）</a>
+			        <a href="15483045490848.html">HttpOnly</a>
 			      </li>
 		     
 		  
@@ -311,9 +389,7 @@
   <div class="row">
    <p class="copyright">Copyright &copy; 2018
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
-Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>,&nbsp; 
-Author is <a target="_blank" href="http://lonelyor.org">lonelyor</a>
-</p>
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
   </div>
 </div>
 
@@ -343,8 +419,7 @@ Author is <a target="_blank" href="http://lonelyor.org">lonelyor</a>
 
     
 
-<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more">分享到：</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook">Facebook</a></div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"来自：http://www.lonelyor.org/","bdMini":"1","bdMiniList":["sqq","weixin","fbook","twi","qzone","tsina","tqq","tieba","douban","tsohu","linkedin","mshare","copy"],"bdPic":"http://images.lonelyor.org/lonelyornotesico.jpeg","bdStyle":"1","bdSize":"16"},"share":{"bdSize":16},"image":{"viewList":["qzone","weixin","tsina","tqq","fbook"],"viewText":"分享到：","viewSize":"24"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","weixin","tsina","tqq","fbook"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
 
   </body>
 </html>

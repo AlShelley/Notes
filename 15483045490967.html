@@ -1,0 +1,409 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  hackthebox邀请码 - lonelyorWiki
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="lonelyorWiki" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:www.lonelyor.org/lonelyorWiki ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">首页</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">归档</a></li>
+        
+        <li id=""><a target="_self" href="beautiful.html">惊鸿</a></li>
+        
+        <li id=""><a target="_self" href="ruby.html">流光</a></li>
+        
+        <li id=""><a target="_self" href="search.html">北斗</a></li>
+        
+        <li id=""><a target="_self" href="lose.html">失乐园</a></li>
+        
+        <li id=""><a target="_self" href="about.html">关于</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; lonelyorWiki</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">首页</a></li>
+        
+        <li><a target="_self" href="archives.html">归档</a></li>
+        
+        <li><a target="_self" href="beautiful.html">惊鸿</a></li>
+        
+        <li><a target="_self" href="ruby.html">流光</a></li>
+        
+        <li><a target="_self" href="search.html">北斗</a></li>
+        
+        <li><a target="_self" href="lose.html">失乐园</a></li>
+        
+        <li><a target="_self" href="about.html">关于</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
+        
+            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
+        
+            <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
+        
+            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
+        
+            <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>hackthebox邀请码</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/1/24 12:35 下午</span>
+
+          <span>发表于&nbsp;</span> 
+          
+              <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <blockquote>
+<p>不打算好好玩的麻烦不要瞎注册，大量的垃圾账号只会污染整个生态环境。</p>
+</blockquote>
+
+<p>进入注册页面，观察页面js文件会找到以下内容：</p>
+
+<pre class="line-numbers"><code class="language-javascript">eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!&#39;&#39;.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return&#39;\\w+&#39;};c=1};while(c--){if(k[c]){p=p.replace(new RegExp(&#39;\\b&#39;+e(c)+&#39;\\b&#39;,&#39;g&#39;),k[c])}}return p}(&#39;1 i(4){h 8={&quot;4&quot;:4};$.9({a:&quot;7&quot;,5:&quot;6&quot;,g:8,b:\&#39;/d/e/n\&#39;,c:1(0){3.2(0)},f:1(0){3.2(0)}})}1 j(){$.9({a:&quot;7&quot;,5:&quot;6&quot;,b:\&#39;/d/e/k/l/m\&#39;,c:1(0){3.2(0)},f:1(0){3.2(0)}})}&#39;,24,24,&#39;response|function|log|console|code|dataType|json|POST|formData|ajax|type|url|success|api|invite|error|data|var|verifyInviteCode|makeInviteCode|how|to|generate|verify&#39;.split(&#39;|&#39;),0,{}))
+</code></pre>
+
+<p>1、然后把这段代码放到 <a href="http://jsbeautifier.org/">http://jsbeautifier.org/</a> 进行美化，得出：<br/>
+2、</p>
+
+<pre class="line-numbers"><code class="language-javascript">function verifyInviteCode(code) {
+    var formData = {
+        &quot;code&quot;: code
+    };
+    $.ajax({
+        type: &quot;POST&quot;,
+        dataType: &quot;json&quot;,
+        data: formData,
+        url: &#39;/api/invite/verify&#39;,
+        success: function(response) {
+            console.log(response)
+        },
+        error: function(response) {
+            console.log(response)
+        }
+    })
+}
+
+function makeInviteCode() {
+    $.ajax({
+        type: &quot;POST&quot;,
+        dataType: &quot;json&quot;,
+        url: &#39;/api/invite/how/to/generate&#39;,
+        success: function(response) {
+            console.log(response)
+        },
+        error: function(response) {
+            console.log(response)
+        }
+    })
+}
+</code></pre>
+
+<p>可以看出上述代码是让我们访问：<a href="https://www.hackthebox.eu/api/invite/generate">https://www.hackthebox.eu/api/invite/generate</a><br/>
+然后修改请求方式为post<br/>
+于是就得到了：</p>
+
+<pre class="line-numbers"><code class="language-javascript">{&quot;success&quot;:1,&quot;data&quot;:{&quot;code&quot;:&quot;VlJQS1QtQUNXRUstT0tYREwtQ0lZQVUtS0NZSlU=&quot;,&quot;format&quot;:&quot;encoded&quot;},&quot;0&quot;:200}
+</code></pre>
+
+<p>将code进行base64解码，就得到了邀请码。</p>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15483045490077.html" 
+          title="Previous Post: fsarchiver备份文件介绍">&laquo; fsarchiver备份文件介绍</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15483045488835.html" 
+          title="Next Post: iterm2 常用技巧">iterm2 常用技巧 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"内容来自 lonelyor 的Wiki","bdMini":"1","bdMiniList":["sqq","weixin","copy"],"bdPic":"http://images.lonelyor.org/favicon.jpg","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["weixin","sqq","copy"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["weixin","sqq","copy"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <div class="site-a-logo"><img src="http://images.lonelyor.org/favicon.jpg" /></div>
+            
+                <h1>lonelyorWiki</h1>
+                <div class="site-des">一个用来记录知识的网站</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="https://github.com/AlShelley/lonelyorWiki" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:lonelyor.org@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
+        
+            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
+        
+            <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
+        
+            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
+        
+            <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15483045487644.html">Atom设置和取消代理</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15483045486850.html">BASIC INJECTION 基本注入</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15483045491221.html">CRLF注入</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15483045491124.html">FOEENSICS 101</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15483045490848.html">HttpOnly</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2018
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  lonelyorのblog
+  lonelyorWiki
   
   </title>
   
   
-  
-  <link href="atom.xml" rel="alternate" title="lonelyorのblog" type="application/atom+xml">
+  <link href="atom.xml" rel="alternate" title="lonelyorWiki" type="application/atom+xml">
     <link rel="stylesheet" href="asset/css/foundation.min.css" />
     <link rel="stylesheet" href="asset/css/docs.css" />
     <script src="asset/js/vendor/modernizr.js"></script>
@@ -21,7 +20,7 @@
   <script>hljs.initHighlightingOnLoad();</script>
 <script type="text/javascript">
   function before_search(){
-    var searchVal = 'site:www.lonelyor.org/lonelyorNotes ' + document.getElementById('search_input').value;
+    var searchVal = 'site:www.lonelyor.org/lonelyorWiki ' + document.getElementById('search_input').value;
     document.getElementById('search_q').value = searchVal;
     return true;
   }
@@ -41,11 +40,17 @@
       <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
         <ul id="main-menu" class="left">
         
-        <li id=""><a target="_self" href="index.html">主页</a></li>
+        <li id=""><a target="_self" href="index.html">首页</a></li>
         
         <li id=""><a target="_self" href="archives.html">归档</a></li>
         
-        <li id=""><a target="_self" href="lost.html">失乐园</a></li>
+        <li id=""><a target="_self" href="beautiful.html">惊鸿</a></li>
+        
+        <li id=""><a target="_self" href="ruby.html">流光</a></li>
+        
+        <li id=""><a target="_self" href="search.html">北斗</a></li>
+        
+        <li id=""><a target="_self" href="lose.html">失乐园</a></li>
         
         <li id=""><a target="_self" href="about.html">关于</a></li>
         
@@ -67,18 +72,24 @@
 
         <nav class="tab-bar show-for-small">
   <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-    <span> &nbsp; lonelyorのblog</span>
+    <span> &nbsp; lonelyorWiki</span>
   </a>
 </nav>
 
 <aside class="left-off-canvas-menu">
       <ul class="off-canvas-list">
         
-        <li><a target="_self" href="index.html">主页</a></li>
+        <li><a target="_self" href="index.html">首页</a></li>
         
         <li><a target="_self" href="archives.html">归档</a></li>
         
-        <li><a target="_self" href="lost.html">失乐园</a></li>
+        <li><a target="_self" href="beautiful.html">惊鸿</a></li>
+        
+        <li><a target="_self" href="ruby.html">流光</a></li>
+        
+        <li><a target="_self" href="search.html">北斗</a></li>
+        
+        <li><a target="_self" href="lose.html">失乐园</a></li>
         
         <li><a target="_self" href="about.html">关于</a></li>
         
@@ -86,19 +97,15 @@
     <li><label>Categories</label></li>
 
         
-            <li><a href="Web%E6%94%BB%E9%98%B2.html">Web攻防</a></li>
+            <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
         
-            <li><a href="%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html">操作系统</a></li>
-        
-            <li><a href="%E8%99%9A%E6%8B%9F%E5%AE%9E%E9%AA%8C%E5%AE%A4.html">虚拟实验室</a></li>
-        
-            <li><a href="CTF.html">CTF</a></li>
+            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
         
             <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
         
-            <li><a href="%E6%B5%8F%E8%A7%88%E5%99%A8.html">浏览器</a></li>
+            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
-            <li><a href="%E5%A5%87%E6%B7%AB%E5%B7%A7%E6%8A%80.html">奇淫巧技</a></li>
+            <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
          
 
       </ul>
@@ -121,143 +128,14 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15447676167973.html">
+                <a class="clearlink" href="15483045488816.html">
                 
-                  <h1>我是如何从Google窃取你的照片的 - 我的3个Google漏洞赏金报告分享</h1>
+                  <h1>终端配置代理</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>文章转载自：<a href="https://nosec.org/home/detail/2063.html">https://nosec.org/home/detail/2063.html</a></p>
-</blockquote>
-
-<p>IT安全是一个非常宏大的主题，在找到第一个漏洞之前，您不能确定您拥有安全人员所需的知识、运气和耐心。作为一个新手，加入漏洞赏金猎人俱乐部是件很困难的事，在这里，让我和你分享我的故事。</p>
-
-<h1 id="toc_0">邀请欺诈</h1>
-
-<p>我的第一个漏洞是意外发现的，就在我试图和老师共享一个Google电子表格程序时。当时，我发送共享邀请到他的非Gmail电子邮件地址，然后用e-mail将链接发给他。当然，他无法访问它……幸运的是，Google非常强大，在这种情况下（当您试图打开一个不与您共享的文档时），曝出的错误消息下面有一个Request access 按钮，其功能是向共享文件所有者发送电子邮件，其中包含的链接如下：</p>
-
-<p><code>https://docs.google.com/spreadsheets/d/cmFuZG9t_c3ByZWFkc2hlZXQ_aWQ/edit?usp=sharing_erp&amp;userstoinvite=billgates@microsoft.com</code></p>
-
-<p>如果共享文件所有者打开上面的链接，则会加载文档，并弹出一个“与其他人共享”模式，该模式自填充了一个来自URL的电子邮件地址：</p>
-
-<p><img src="media/15447676167973/15447677231852.png" alt=""/></p>
-
-<p>我的第一个想法是“嗯……用户的输入反映在DOM中——我应该尝试XSS吗？但我的第二个念头立刻涌现：“我决不是第一个发现这点的人。”这是谷歌，世界上有很多比我更聪明的人一直在尝试攻击它。我不会把时间浪费在XSS上…”</p>
-
-<p>你可以称我为悲观主义者，但是我最近读过一些关于Google XSS漏洞的文章，我知道找到XSS的难度有多大。但是，这个url的其他一些东西引起了我的注意……参数的名称是userStoinvite，而不是usertoinvite，这意味着这个url可以用来同时邀请更多的用户，对吧？</p>
-
-<p>我开始测试这个参数，并且很快发现，如果我用逗号分隔多个电子邮件地址并添加到url中，那它们将都出现在表单中。就像你想给多个收件人发邮件一样……现在，让我看看如果我指定一个名字而不是电子邮件地址时会发生什么：</p>
-
-<p><code>https://docs.google.com/spreadsheets/d/cmFuZG9t_c3ByZWFkc2hlZXQ_aWQ/edit?usp=sharing_erp&amp;userstoinvite=Bill Gates&lt;billgates@microsoft.com&gt;</code></p>
-
-<p>它正如我所预期的那样——表单中显示的是名字而不是地址，只有当您将鼠标移到名称时才会显示真正的电子邮件地址。</p>
-
-<p><img src="media/15447676167973/15447678384880.png" alt=""/></p>
-
-<h1 id="toc_1">这会带来什么问题？</h1>
-
-<p>如果使用伪造的电子邮件地址代替你的姓名，则可以设计一个分享邀请欺诈，欺骗没有防范经验的用户允许你访问他的文件。攻击场景：</p>
-
-<p>您不再为公司工作，对重要电子表格的访问权限被撤销，但是您仍然知道访问的URL（例如，在浏览器历史中）</p>
-
-<p>用老板的电子邮件地址给秘书/会计发送一个虚假的共享邀请链接</p>
-
-<p>等待直到他们打开链接并允许您访问文件</p>
-
-<p>时间线：<br/>
-2017.10.03-漏洞报告<br/>
-2017.10.03-漏洞由安全工程师验证（P4-&gt;P3）<br/>
-2017.10.10-500美元奖金<br/>
-2018.01.16-漏洞修复</p>
-
-<h1 id="toc_2">从你的谷歌驱动中获取照片</h1>
-
-<p>在我发现第一个漏洞后，我的感觉好坏参半。一方面，我感到非常自豪和高兴，因为我在谷歌发现了一个安全问题，我也真的很感激这笔奖金。另一方面，我对自己并不满意，因为任何人只要运气好发过这样一封邮件，就会发现这个漏洞——我觉得我可以做得更好。但是从哪里开始呢？我敢肯定使用自动化工具会浪费时间，因为我认为其他人已经做过很多次，我想尝试一些不同的东西。我想我对web的基本概念（如SOP和CORS）有很好的理解，因为我真的爱上了Chrome Dev工具，所以我决定开始在JS文件中寻找不安全的API接口或敏感数据。我的代码如下：</p>
-
-<pre class="line-numbers"><code class="language-text">for webapp in literally_every_online_google_product_I_have_found:
-    devtools.open()
-    devtools.select_tab(&#39;network&#39;)
-    for button in webapp:
-        button.click()
-    for request, response in devtools.requests:
-        request.analyze_manually()
-        response.analyze_manually()
-</code></pre>
-
-<p>整个过程又长又无聊。我花了下午和晚上阅读发起的网络请求和回复，但没有成功。我甚至不记得我尝试过多少不同的测试：</p>
-
-<p>“也许这个CSS存在一些漏洞……那些字体如何？”<br/>
-“好的，如果我用另一个帐户的cookie回放这个请求会咋样？”“<br/>
-“嗯，我可以在这里上传SVG。是时候测试一些XSS了”。</p>
-
-<p>最后我关注了Drive和Google Docs系列应用，因为它们是相互连接的（Docs可以访问您的文件），很流行（因此出现安全缺陷就意味着严重安全威胁），并且它们有很多特性和设置。我首先注意到的是，Slides确实类似于文档和表格，但是它在不同的情况下了使用了不同的（遗留？）API接口。例如，当从我的驱动器插入一张图像时会触发这两个请求：</p>
-
-<pre class="line-numbers"><code class="language-text">curl &#39;https://docs.google.com/presentation/d/pReS3nTaT10N_1D/copyimages?id=bG9s_Y2hlY2tvdXR0aGlz_dDY4UkV1MEh3Qnc&#39; --data &#39;photo=bG9s_Y2hlY2tvdXR0aGlz_dDY4UkV1MEh3Qnc&#39;
-
-{&quot;bG9s_Y2hlY2tvdXR0aGlz_dDY4UkV1MEh3Qnc&quot;:&quot;MDRjYWVhO-QtYjc0Ny00NDdkLWJlODctZ-VmNzVkOTI1YTkw&quot;}
-
----
-
-curl &#39;https://docs.google.com/presentation/d/pReS3nTaT10N_1D/renderdata?id=bG9s_Y2hlY2tvdXR0aGlz_dDY4UkV1MEh3Qnc&#39; --data &#39;cosmoId=MDRjYWVhO-QtYjc0Ny00NDdkLWJlODctZ-VmNzVkOTI1YTkw&#39;
-
-{&quot;r0&quot;:&quot;https://lh6.googleusercontent.com/dmVyeXZlcnl2ZXJ5dmVyeXZlcnl2ZXJ5dmVyeXZlcnl2ZXJ5dmVyeXZlcnl2ZXJ5dmVyeXZlcnl2ZXJ5dmVyeXZlcnl2ZXJ5dmVyeXZlcnl2ZXJ5bG9uZ3N0cmluZw&quot;}
-</code></pre>
-
-<p>你应该也注意到，第一个响应包含有&quot;ID_OF_THE_IMAGE&quot;:&quot;SOME_RANDOM_ID&quot;, 而“SOME_RANDOM_ID”出现在第二个倾请求的cosmoId参数的值中。而且，第二个响应也包含图片链接。</p>
-
-<p>我真的不明白使用两个API接口处理图像的原因，感觉有点过于复杂——这就是为什么我认为Slides有一些值得关注的遗留问题。接下来，我用不同的cookie回放了上面的这些请求。</p>
-
-<p>幸运的是，这些接口缺乏权限控制，所以只要添加一个有效的谷歌会话cookie，我可以从任何驱动器得到任何图片的URL（如果我有文件的ID）！</p>
-
-<p>这听起来很酷，但事实是这些图像ID是很长的，并且包含大小写字符。这就是为什么我想不出什么可怕的攻击场景，这也是这个漏洞奖励相对较低的原因。</p>
-
-<p>时间线：<br/>
-2017.11.27-漏洞报告<br/>
-2017.12.09-漏洞由安全工程师验证（P3-&gt;P1）<br/>
-2018.01.09-500美元奖金<br/>
-2018.01.16-漏洞修复</p>
-
-<p>在模拟环境中，您可以看到这个漏洞是如何工作的（<a href="https://platform.avatao.com/challenges/630fa4fc-3138-4805-bd78-ea85e492c2e2%EF%BC%89%E3%80%82">https://platform.avatao.com/challenges/630fa4fc-3138-4805-bd78-ea85e492c2e2）。</a></p>
-
-<h1 id="toc_3">请登录后给我你的照片</h1>
-
-<p>在这两次漏洞之后，我休息了一段时间，因为我觉得我已经用尽了所有的运气，需要一些时间来恢复。在五月，我决定再尝试试一次，在3个小时内，我发现了一个可怕的漏洞。我认为这个漏洞太强了以至于不可能是真的，所以我在报告它之前检查了三四次。</p>
-
-<p>在我第一次安全测试时，不知何故我跳过了Google Photos，所以这次我用我的老方法开始集中精力寻找它的漏洞。</p>
-
-<p>“网络”选项卡上没有什么值得注意的地方，但“共享库（自动与伙伴共享照片）特性”看起来很有希望。如果你想建立合伙人账户，你必须先输入合伙人的电子邮件地址。提交之后，会出现一个带有Google帐户登录页面的弹出窗口。最后，您需要输入您的登入凭证，然后您的照片将被共享，并且您将被重定向到仅包含“成功消息”以及一个“关闭窗口”按钮的页面。弹出窗口的过小使我无法看到整个URL，所以我把它复制到记事本以便进一步研究：</p>
-
-<pre class="line-numbers"><code class="language-text">// URL before login
-https://accounts.google.com/signin/v2/sl/pwd?passive=801337085&amp;osid=1&amp;continue=https%3A%2F%2Fphotos.google.com%2Finitps%3Frequest%3DW1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGwsImUtbWFpbEBleGFtcGxlLmNvbSIsbnVsbCxbMixudWxsLCJXVzkxSUhKbFlXeHNlU0JzYVd0bElfR1JsWTI5a2FXNW5JSEpoYm1SdmJTQmlZWE5sTmpRZ2MzX1J5YVc1bmN5QXRJR1J2YmlkMElIbHZkVDgiXV0.
-
-// URL after login
-https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGwsImUtbWFpbEBleGFtcGxlLmNvbSIsbnVsbCxbMixudWxsLCJXVzkxSUhKbFlXeHNlU0JzYVd0bElfR1JsWTI5a2FXNW5JSEpoYm1SdmJTQmlZWE5sTmpRZ2MzX1J5YVc1bmN5QXRJR1J2YmlkMElIbHZkVDgiXV0.
-</code></pre>
-
-<p>显然，在continue参数被编码包含在第二个URL中，乍一看，request的值只是一组随机字符，末尾跟有一个点。这个点好像没有任何意义——为什么它只出现在最后，像填充物一样？如果它是一个等号，那么‘request’的值很可能就是一个经过ba se64编码的字符串……所以我修改了它，并将修改后的字符串粘贴到一个ba se64解码器中，看看这段字符串的明文是啥：</p>
-
-<pre class="line-numbers"><code class="language-text">[[null,&quot;12587427591239&quot;],null,&quot;e-mail@example.com&quot;,null,[2,null,&quot;WW91IHJlYWxseSBsaWtlI_GRlY29kaW5nIHJhbmRvbSBiYXNlNjQgc3_RyaW5ncyAtIGRvbid0IHlvdT8&quot;]]
-</code></pre>
-
-<p>我把其中的电子邮件改成了我自己的（不修改其他值），然后重新编码，并用点替换了最后的等号。并在我登录我的第二个帐户之后打开这个精心编制的URL，照片立刻被和第一个帐户共享。最棒的是，我甚至没有收到任何警告/通知/电子邮件。我迫不及待的想进一步分析漏洞。并且测试如果你直接访问第二个URL会发生什么——您甚至不需要登录就可以与攻击者共享您的图片，因为只要向发送第二个URL的GET请求就足够了。</p>
-
-<p>时间线：<br/>
-2018.05.12-漏洞报告<br/>
-2018.05.14-漏洞由安全工程师验证（P4-&gt;P2，P2-&gt;P1）<br/>
-2018.05.22-3133.70美元奖金<br/>
-2018.08.22-漏洞修复</p>
-
-<p>尝试使用我们的模拟环境，可以更好地理解这种漏洞。（<a href="https://platform.avatao.com/challenges/e069a6c1-8265-4115-9126-f8e188c62765%EF%BC%89">https://platform.avatao.com/challenges/e069a6c1-8265-4115-9126-f8e188c62765）</a></p>
-
-<p>最难的部分是不知道我们的目标是啥，这在大多数其他的漏洞悬赏项目中也一样。我从这些情况中得到的启发是，不要把自己局限于特定的漏洞，比如XSS或SQLi。要睁大眼睛，富有创造力。</p>
-
-<h1 id="toc_4">关于作者</h1>
-
-<p>Gergő是Avatao团队的第一批成员之一，现在他是我们最好的软件工程师之一。在大学，他对网络安全开始感兴趣并延续至今。他在Avatao平台上开发漏洞环境，同时还负责指导其他开发者。当然，空闲时他也会寻找漏洞。</p>
-
-<p>原文：<a href="https://blog.avatao.com/How-I-could-steal-your-photos-from-Google/">https://blog.avatao.com/How-I-could-steal-your-photos-from-Google/</a></p>
+                        	<p>export ALL_PROXY=socks5://127.0.0.1:1080</p>
 
                         
                       </div>
@@ -266,10 +144,218 @@ https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGw
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/14 14:6 下午</span>
+                    <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E8%BD%AC%E8%BD%BD.html'>转载</a></span>
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045488490.html">
+                
+                  <h1>给网站嵌入百度搜索框</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>只需要在 htm 页面中嵌入以下代码即可：</p>
+
+<pre class="line-numbers"><code class="language-markup"> &lt;div style=&#39;overflow:hidden&#39;&gt;
+        &lt;form onsubmit=&quot;return baiduWithHttps(this)&quot; action=&quot;http://www.baidu.com/s&quot; target=&quot;_blank&quot;&gt;
+        &lt;input class=&#39;bdtext&#39; type=&quot;text&quot;  onfocus=&quot;checkHttps&quot; name=&quot;wd&quot;  size=&quot;30&quot;&gt;
+        &lt;input class=&#39;bdbtn&#39; type=&quot;submit&quot;value=&quot;百度搜索&quot;&gt;
+        &lt;/form&gt;
+        &lt;script&gt;
+            function checkHttps () {
+                BaiduHttps.useHttps();    
+            };
+            function baiduWithHttps (formname) {
+                var data = BaiduHttps.useHttps();
+                if (data.s === 0) {
+                    return true;
+                }
+                else {
+                    formname.action = &#39;https://www.baidu.com/s&#39; + &#39;?wd&#39; + data.ssl_code;
+                    return true;
+                }
+            };
+        &lt;/script&gt; 
+    &lt;/div&gt;
+</code></pre>
+
+<p>效果如下：<br/>
+<img src="media/15483045488490/%E5%B5%8C%E5%85%A5%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2.png" alt="嵌入百度搜索"/><br/>
+觉得不好看的可以自行加入 css 改变样式，我觉得就这样还蛮好看的。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%BD%91%E7%BB%9C.html'>网络</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045488036.html">
+                
+                  <h1>自建kms服务器激活windows</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>kms的脚本来自：<a href="https://github.com/SystemRage/py-kms">https://github.com/SystemRage/py-kms</a><br/>
+密钥来自：<br/>
+<a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj612867(v%3dws.11)">https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj612867(v%3dws.11)</a><br/>
+<a href="https://github.com/SystemRage/py-kms/wiki/Office-GVLK-Keys">https://github.com/SystemRage/py-kms/wiki/Office-GVLK-Keys</a><br/>
+<a href="https://github.com/SystemRage/py-kms/wiki/Windows-GVLK-Keys">https://github.com/SystemRage/py-kms/wiki/Windows-GVLK-Keys</a></p>
+</blockquote>
+
+<h2 id="toc_0">下载kms服务端和客户端程序</h2>
+
+<p>分别在服务器和客户端下载py-kms<br/>
+<code>git clone https://github.com/SystemRage/py-kms.git</code></p>
+
+<h2 id="toc_1">服务器设置</h2>
+
+<p>使用python3</p>
+
+<pre class="line-numbers"><code class="language-text">python3 -m pip install argparse
+python3 -m pip install tzlocal
+python3 -m pip install pysqlite3
+python3 server
+</code></pre>
+
+<p>在一台服务器上运行server，默认运行在 0.0.0.0 1688。<br/>
+这里的服务器可以是你的本地Mac主机，或者本地or远程Linux主机，Windows没试过不清楚。</p>
+
+<h2 id="toc_2">客户端设置(不需要)</h2>
+
+<p><code>python client.py 0.0.0.0（使用服务端ip） 1688</code>我运行了上述指令发现并没有什么卵用，也对，密钥都没导入，能有用才怪了。<br/>
+现在我们创建一个activate.bat脚本：</p>
+
+<pre class="line-numbers"><code class="language-bat">cscript //nologo slmgr.vbs /upk
+cscript //nologo slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GXc
+cscript //nologo slmgr.vbs /ipk MH37W-N47XK-V7XM9-C7227-GCQG9
+cscript //nologo slmgr.vbs /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43
+cscript //nologo slmgr.vbs /ipk DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4
+cscript //nologo slmgr.vbs /ipk NW6C2-QMPVW-D7KKK-3GKT6-VCFB2
+cscript //nologo slmgr.vbs /ipk DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ
+cscript //nologo slmgr.vbs /ipk D2N9P-3P6X9-2R39C-7RTCD-MDVJX
+cscript //nologo slmgr.vbs /ipk W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9
+cscript //nologo slmgr.vbs /ipk KNC87-3J2TX-XB4WP-VCPJV-M4FWM
+cscript //nologo slmgr.vbs /ipk FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4
+cscript //nologo slmgr.vbs /ipk MRPKT-YTG23-K7D7T-X2JMM-QY7MG
+cscript //nologo slmgr.vbs /ipk W82YF-2Q76Y-63HXB-FGJG9-GF7QX
+cscript //nologo slmgr.vbs /ipk 33PXH-7Y6KF-2VJC9-XBBR8-HVTHH
+cscript //nologo slmgr.vbs /ipk YDRBP-3D83W-TY26F-D46B2-XCKRJ
+cscript //nologo slmgr.vbs /ipk CB7KF-BWN84-R7R2Y-793K2-8XDDG
+cscript //nologo slmgr.vbs /ipk WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY
+cscript //nologo slmgr.vbs /ipk JCKRF-N37P4-C2D82-9YXRT-4M63B
+cscript //nologo slmgr.vbs /ipk YC7DK-G2NP3-2QQC3-J6H88-GVGXT
+cscript //nologo slmgr.vbs /ipk KBKQT-2NMXY-JJWGP-M62JB-92CD4
+cscript //nologo slmgr.vbs /ipk XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99
+cscript //nologo slmgr.vbs /ipk JNRGM-WHDWX-FJJG3-K47QV-DRTFM
+cscript //nologo slmgr.vbs /ipk YC7DK-G2NP3-2QQC3-J6H88-GVGXT
+cscript //nologo slmgr.vbs /ipk KBKQT-2NMXY-JJWGP-M62JB-92CD4
+cscript //nologo slmgr.vbs /ipk FN8TT-7WMH6-2D4X9-M337T-2342K
+cscript //nologo slmgr.vbs /ipk 6NTH3-CW976-3G3Y2-JK3TX-8QHTT
+cscript //nologo slmgr.vbs /ipk C2FG9-N6J68-H8BTJ-BW3QX-RM3B3
+cscript //nologo slmgr.vbs /ipk J484Y-4NKBF-W2HMG-DBMJC-PGWR7
+cscript //nologo slmgr.vbs /ipk VGPNG-Y7HQW-9RHP7-TKPV3-BG7GB
+cscript //nologo slmgr.vbs /ipk TGN6P-8MMBC-37P2F-XHXXK-P34VW
+cscript //nologo slmgr.vbs /ipk 4NT99-8RJFH-Q2VDH-KYG2C-4RD4F
+cscript //nologo slmgr.vbs /ipk 6Q7VD-NX8JD-WJ2VH-88V73-4GBJ7
+cscript //nologo slmgr.vbs /ipk XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99
+cscript //nologo slmgr.vbs /ipk JNRGM-WHDWX-FJJG3-K47QV-DRTFM
+cscript //nologo slmgr.vbs /ipk YG9NW-3K39V-2T3HJ-93F3Q-G83KT
+cscript //nologo slmgr.vbs /ipk WGT24-HCNMF-FQ7XH-6M8K7-DRTW9
+cscript //nologo slmgr.vbs /ipk GNFHQ-F6YQM-KQDGJ-327XX-KQBVC
+cscript //nologo slmgr.vbs /ipk D8NRQ-JTYM3-7J2DX-646CT-6836M
+cscript //nologo slmgr.vbs /ipk PD3PC-RHNGV-FXJ29-8JK7D-RJRJK
+cscript //nologo slmgr.vbs /ipk 69WXN-MBYV6-22PQG-3WGHK-RM6XC
+cscript //nologo slmgr.vbs /ipk 7WHWN-4T7MP-G96JF-G33KR-W8GF4
+cscript //nologo slmgr.vbs /ipk NY48V-PPYYH-3F4PX-XJRKJ-W4423
+cscript //nologo slmgr.vbs /ipk 9C2PK-NWTVB-JMPW8-BFT28-7FTBF
+cscript //nologo slmgr.vbs /ipk DR92N-9HTF2-97XKM-XW2WJ-XW3J6
+cscript //nologo slmgr.vbs /ipk R69KK-NTPKF-7M3Q4-QYBHW-6MT9B
+cscript //nologo slmgr.vbs /ipk WXY84-JN2Q9-RBCCQ-3Q3J3-3PFJ6
+cscript //nologo slmgr.vbs /ipk J7MQP-HNJ4Y-WJ7YM-PFYGF-BY6C6
+cscript //nologo slmgr.vbs /ipk VQ9DP-NVHPH-T9HJC-J9PDT-KTQRG
+cscript //nologo slmgr.vbs /ipk NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP
+cscript //nologo slmgr.vbs /ipk XM2V9-DN9HH-QB449-XDGKC-W2RMW
+cscript //nologo slmgr.vbs /ipk B4NPR-3FKK7-T2MBV-FRQ4W-PKD2B
+cscript //nologo slmgr.vbs /ipk C4F7P-NCP8C-6CQPT-MQHV9-JXD2M
+cscript //nologo slmgr.vbs /ipk TMJWT-YYNMB-3BKTF-644FC-RVXBD
+cscript //nologo slmgr.vbs /ipk 7HD7K-N4PVK-BHBCQ-YWQRW-XW4VK
+cscript //nologo slmgr.vbs /ipk RRNCX-C64HY-W2MM7-MCH9G-TJHMQ
+cscript //nologo slmgr.vbs /ipk PBX3G-NWMT6-Q7XBW-PYJGG-WXD33
+cscript //nologo slmgr.vbs /ipk N2CG9-YD3YK-936X4-3WR82-Q3X4H
+cscript //nologo slmgr.vbs /ipk 9BGNQ-K37YR-RQHF2-38RQ3-7VCBB
+cscript //nologo slmgr.vbs /ipk 7TQNQ-K3YQQ-3PFH7-CCPPM-X4VQ2c
+cscript //nologo slmgr.vbs /skms 192.168.220.187:1688
+cscript //nologo slmgr.vbs /ato
+cscript //nologo slmgr.vbs /ato
+cscript //nologo slmgr.vbs /dlv
+cmd /k
+</code></pre>
+
+<p>上面的脚本包含了win10、win7、office2019、office2016、office2013的大部分密钥（主要是专业版），基本满足需求，不过其实也没必要搞那么多，但是懒得筛选了。</p>
+
+<h2 id="toc_3">激活win和office</h2>
+
+<p>首先在服务器上运行 kms server。</p>
+
+<ul>
+<li>打开终端然后进入py-kms的py3-kms目录</li>
+<li>然后输入<code>python3 server</code>并回车</li>
+<li>右键点击以管理员身份运行 activate.bat 即可。</li>
+</ul>
+
+<p>显示如下信息表示激活成功：</p>
+
+<p><img src="media/15483045488036/win%E6%BF%80%E6%B4%BB2018-12-24%2011-12-38.png" alt="win激活2018-12-24 11-12-38"/></p>
+
+<h2 id="toc_4">其他</h2>
+
+<p>kms每次只激活180天也就是3个月，这样每三个月就要重新激活一次，你可以每次提醒的时候再打开server然后运行activate.bat脚本。也可以把server部署在远程服务器上，然后在client添加一个计时任务周期性的运行bat脚本。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -305,11 +391,10 @@ https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGw
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-              <div class="site-a-logo"><img src="http://images.lonelyor.org/lonelyornotesico.jpeg" /></div>
+                <div class="site-a-logo"><img src="http://images.lonelyor.org/favicon.jpg" /></div>
             
-          </br>
-                <h1>lonelyorのblog</h1>
-                <div class="site-des">一个用来记录学习笔记的网站</div>
+                <h1>lonelyorWiki</h1>
+                <div class="site-des">一个用来记录知识的网站</div>
                 <div class="social">
 
 
@@ -320,7 +405,7 @@ https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGw
 
 
 
-<a target="_blank" class="github" target="_blank" href="https://github.com/AlShelley/lonelyorNotes" title="GitHub">GitHub</a>
+<a target="_blank" class="github" target="_blank" href="https://github.com/AlShelley/lonelyorWiki" title="GitHub">GitHub</a>
 <a target="_blank" class="email" href="mailto:lonelyor.org@gmail.com" title="Email">Email</a>
   <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 
@@ -331,25 +416,21 @@ https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGw
 
               <div id="site-categories" class="side-item ">
                 <div class="side-header">
-                  <h2>分类</h2>
+                  <h2>Categories</h2>
                 </div>
                 <div class="side-content">
 
       	<p class="cat-list">
         
-            <a href="Web%E6%94%BB%E9%98%B2.html"><strong>Web攻防</strong></a>
+            <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
         
-            <a href="%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html"><strong>操作系统</strong></a>
-        
-            <a href="%E8%99%9A%E6%8B%9F%E5%AE%9E%E9%AA%8C%E5%AE%A4.html"><strong>虚拟实验室</strong></a>
-        
-            <a href="CTF.html"><strong>CTF</strong></a>
+            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
         
             <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
         
-            <a href="%E6%B5%8F%E8%A7%88%E5%99%A8.html"><strong>浏览器</strong></a>
+            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
-            <a href="%E5%A5%87%E6%B7%AB%E5%B7%A7%E6%8A%80.html"><strong>奇淫巧技</strong></a>
+            <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
          
         </p>
 
@@ -359,38 +440,38 @@ https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGw
 
               <div id="site-categories" class="side-item">
                 <div class="side-header">
-                  <h2>最新文章</h2>
+                  <h2>Recent Posts</h2>
                 </div>
                 <div class="side-content">
                 <ul class="posts-list">
 	      
 		      
 			      <li class="post">
-			        <a href="15453757934453.html">css美化文章标题</a>
+			        <a href="15483045487644.html">Atom设置和取消代理</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15453720146052.html">Pycharm编程遇到的技巧</a>
+			        <a href="15483045486850.html">BASIC INJECTION 基本注入</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15453717965995.html">npm Cannot find module 'semver' --解决方案</a>
+			        <a href="15483045491221.html">CRLF注入</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15453716917526.html">mongodb安装配置（arch）</a>
+			        <a href="15483045491124.html">FOEENSICS 101</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15453714645346.html">linux安装配置aria2及其Web图形界面（debian为例）</a>
+			        <a href="15483045490848.html">HttpOnly</a>
 			      </li>
 		     
 		  
@@ -437,9 +518,7 @@ https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGw
   <div class="row">
    <p class="copyright">Copyright &copy; 2018
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
-Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>,&nbsp; 
-Author is <a target="_blank" href="http://lonelyor.org">lonelyor</a>
-</p>
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
   </div>
 </div>
 
@@ -469,8 +548,7 @@ Author is <a target="_blank" href="http://lonelyor.org">lonelyor</a>
 
     
 
-<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more">分享到：</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook">Facebook</a></div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"来自：http://www.lonelyor.org/","bdMini":"1","bdMiniList":["sqq","weixin","fbook","twi","qzone","tsina","tqq","tieba","douban","tsohu","linkedin","mshare","copy"],"bdPic":"http://images.lonelyor.org/lonelyornotesico.jpeg","bdStyle":"1","bdSize":"16"},"share":{"bdSize":16},"image":{"viewList":["qzone","weixin","tsina","tqq","fbook"],"viewText":"分享到：","viewSize":"24"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","weixin","tsina","tqq","fbook"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
 
   </body>
 </html>

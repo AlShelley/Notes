@@ -1,0 +1,706 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  Web安全 - lonelyorWiki
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="lonelyorWiki" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:www.lonelyor.org/lonelyorWiki ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">首页</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">归档</a></li>
+        
+        <li id=""><a target="_self" href="beautiful.html">惊鸿</a></li>
+        
+        <li id=""><a target="_self" href="ruby.html">流光</a></li>
+        
+        <li id=""><a target="_self" href="search.html">北斗</a></li>
+        
+        <li id=""><a target="_self" href="lose.html">失乐园</a></li>
+        
+        <li id=""><a target="_self" href="about.html">关于</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; lonelyorWiki</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">首页</a></li>
+        
+        <li><a target="_self" href="archives.html">归档</a></li>
+        
+        <li><a target="_self" href="beautiful.html">惊鸿</a></li>
+        
+        <li><a target="_self" href="ruby.html">流光</a></li>
+        
+        <li><a target="_self" href="search.html">北斗</a></li>
+        
+        <li><a target="_self" href="lose.html">失乐园</a></li>
+        
+        <li><a target="_self" href="about.html">关于</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
+        
+            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
+        
+            <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
+        
+            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
+        
+            <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="15483045487207.html">
+                
+                  <h1>Web安全检测checklist</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">x01 爆破</h2>
+
+<h3 id="toc_1">弱口令</h3>
+
+<p>HTTP登录<br/>
+SSH<br/>
+MySQL<br/>
+Telnet</p>
+
+<h3 id="toc_2">遍历</h3>
+
+<p>网站敏感文件<br/>
+    源码<br/>
+    配置文件<br/>
+    备份文件<br/>
+    探针类文件<br/>
+网站敏感目录<br/>
+    物理路径<br/>
+    网站管理后台<br/>
+    上传目录<br/>
+    数据库Web管理入口<br/>
+    现成的Webshell<br/>
+端口扫描<br/>
+0day扫描<br/>
+子域名</p>
+
+<h2 id="toc_3">x02 不安全配置</h2>
+
+<h3 id="toc_4">Web服务器</h3>
+
+<p>Nginx<br/>
+Apache<br/>
+IIS</p>
+
+<h3 id="toc_5">Web应用服务器</h3>
+
+<p>Tomcat<br/>
+JBoss<br/>
+Weblogic</p>
+
+<h3 id="toc_6">HTTP安全特性</h3>
+
+<p>HTTP Headers<br/>
+HTTP Options<br/>
+rebots.txt<br/>
+flash跨域策略</p>
+
+<h2 id="toc_7">x03 敏感信息泄露</h2>
+
+<h3 id="toc_8">用户敏感信息</h3>
+
+<p>手机号<br/>
+身份证号<br/>
+社保<br/>
+银行卡号<br/>
+家庭住址</p>
+
+<h3 id="toc_9">应用敏感信息</h3>
+
+<p>debug信息<br/>
+堆栈报错</p>
+
+<h3 id="toc_10">站点敏感信息</h3>
+
+<p>测试页面<br/>
+备份文件</p>
+
+<h3 id="toc_11">本地敏感信息</h3>
+
+<p>前端保存用户密码<br/>
+前端保存验证码</p>
+
+<h2 id="toc_12">x04 xss跨站脚本</h2>
+
+<p>反射型xss<br/>
+存储型xss<br/>
+DOM型xss</p>
+
+<h2 id="toc_13">x05 请求伪造</h2>
+
+<p>csrf跨站请求伪造<br/>
+ssrf服务器请求伪造</p>
+
+<h2 id="toc_14">x06 注入</h2>
+
+<p>LDAP注入<br/>
+ORM注入<br/>
+XML注入<br/>
+XPath注入<br/>
+IMAP/SMTP注入<br/>
+SQL注入<br/>
+代码注入<br/>
+客户端模板注入（CSTI）<br/>
+服务端模板注入（SSTI）<br/>
+服务器端包含注入（SSI）</p>
+
+<h2 id="toc_15">x07 已知漏洞组件</h2>
+
+<p>库文件（某些库会导致远程命令执行）<br/>
+框架（如wordpress、thinkphp、django等）<br/>
+模块（python的某些模块会导致代码注入）</p>
+
+<h2 id="toc_16">x08 文件类漏洞</h2>
+
+<p>文件包含漏洞<br/>
+任意文件创建<br/>
+任意文件读取<br/>
+任意文件上传<br/>
+任意文件下载<br/>
+任意文件删除</p>
+
+<h2 id="toc_17">x09 解析漏洞</h2>
+
+<p>IIS解析漏洞<br/>
+Nginx解析漏洞<br/>
+Apache解析漏洞<br/>
+PHP CGI解析漏洞</p>
+
+<h2 id="toc_18">x10 劫持类漏洞</h2>
+
+<p>点击劫持<br/>
+Jsonp劫持<br/>
+WebSocket劫持<br/>
+DNS劫持<br/>
+二维码劫持<br/>
+子域名劫持</p>
+
+<h2 id="toc_19">x11 业务逻辑漏洞</h2>
+
+<h3 id="toc_20">认证</h3>
+
+<p>使用默认凭证<br/>
+冻结账户策略不当<br/>
+弱用户名和密码<br/>
+“记住我”功能<br/>
+自动登录<br/>
+单点登录<br/>
+弱口令<br/>
+弱安全问题/答案<br/>
+第三方登录风险<br/>
+Oauth2.0安全<br/>
+JWT安全<br/>
+注册覆盖<br/>
+未验证的重定向和转发<br/>
+双因素认证不当</p>
+
+<h3 id="toc_21">授权</h3>
+
+<p>测试角色定义<br/>
+权限管理缺失<br/>
+匿名访问（备用接口——常见于兼容老的不安全的接口时产生）<br/>
+水平越权<br/>
+垂直越权<br/>
+超级账户<br/>
+实名认证不严格</p>
+
+<h3 id="toc_22">会话管理</h3>
+
+<p>cookie安全属性<br/>
+cookie可猜解<br/>
+cookie溢出<br/>
+会话固定<br/>
+用户凭证不安全传输（弱加密或明文传输）<br/>
+用户凭证未一次失效<br/>
+用户凭证可猜解<br/>
+注销与会话超时<br/>
+敏感数据不安全传输</p>
+
+<h3 id="toc_23">流程绕过</h3>
+
+<p>找回密码流程绕过</p>
+
+<h2 id="toc_24">x12 API安全</h2>
+
+<p>整理中</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045488670.html">
+                
+                  <h1>burpsuite如何给数据打标的</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>用特殊字符标记关键字即可</p>
+
+<p>类似的有sqlmap，它是使用参数指定要打标的关键词</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045490884.html">
+                
+                  <h1>burpsuite插件编写之官方代码示例解读</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>description: 分析burpsuite官方提供的示例代码，以此来学习插件编写。</p>
+</blockquote>
+
+<h2 id="toc_0">HelloWorld</h2>
+
+<p>废话不多说，直接上代码！</p>
+
+<pre class="line-numbers"><code class="language-python">from burp import IBurpExtender
+from java.io import PrintWriter
+from java.lang import RuntimeException
+
+# 上面import的第一句是所有burp插件都必须有的
+# 下面开始创建一个burp插件的类来实现插件
+class BurpExtender(IBurpExtender):
+    def registerExtenderCallbacks(self, callbacks):
+        # 创建插件名
+        callbacks.setExtensionName(&quot;HelloWorld extension&quot;)
+        # 获取输出和错误流
+        stdout = PrintWriter(callbacks.getStdout(), True)
+        stderr = PrintWriter(callbacks.getStderr(), True)
+        # 在输出流和错误流中插入消息
+        stdout.println(&quot;Hello output&quot;)
+        stderr.println(&quot;Hello errors&quot;)
+        # 将消息插入burp的alert警报标签中
+        callbacks.issueAlert(&quot;Hello alerts&quot;)
+        # 抛出将出现在错误流中的异常
+        raise RuntimeException(&quot;Hello exception&quot;)
+</code></pre>
+
+<p>现在开始来说几个坑：<br/>
+1、插件最好尽量放在英文路径，不然可能会报错<br/>
+2、编写代码前指定编码(如：# -<em>- coding:utf8 -</em>-)<br/>
+3、raise RuntimeException(&quot;Hello exception&quot;) 这行代码我没看懂是要干嘛的，反正写了之后Errors就报错，不想看的话就注释掉好了。</p>
+
+<h2 id="toc_1">event_listeners 事件监听器</h2>
+
+<pre class="line-numbers"><code class="language-python">#!/usr/bin/python3
+# -*- coding:utf-8 -*-
+
+from burp import IBurpExtender
+from burp import IHttpListener
+from burp import IProxyListener
+from burp import IScannerListener
+from burp import IExtensionStateListener
+from java.io import PrintWriter
+
+class BurpExtender(IBurpExtender, IHttpListener, IProxyListener, IScannerListener, IExtensionStateListener):
+    def registerExtenderCallbacks(self, callbacks):
+        # 保持对回调对象的引用
+        self._callbacks = callbacks
+        # 创建插件名
+        callbacks.setExtensionName(&quot;Event Listeners&quot;)
+        # 获取输出流
+        self._stdout = PrintWriter(callbacks.getStdout(), True)
+        # 注册为http监听器
+        callbacks.registerHttpListener(self)
+        # 注册为proxy监听器
+        callbacks.registerProxyListener(self)
+        # 注册为scanner监听器
+        callbacks.registerScannerListener(self)
+        # 注册为扩展插件状态监听器
+        callbacks.registerExtensionStateListener(self)
+    # 下面几个函数各自实现监听
+    def processHttpMessage(self, toolFlag, messageIsRequest, messageInfo):
+        self._stdout.println(
+            (&quot;HTTP request to &quot; if messageIsRequest else &quot;HTTP response from&quot;) +
+            messageInfo.getHttpService().toString() +
+            &quot;[&quot; + self._callbacks.getToolName(toolFlag) + &quot;]&quot;
+        )
+
+    def processProxyMessage(self, messageIsRequest, message):
+        self._stdout.println(
+            (&quot;Proxy request to &quot; if messageIsRequest else &quot;Proxy response from&quot;) +
+            message.getMessageInfo.getHTTPService().toString()
+        )
+
+    def newScanIssue(self, issue):
+        self._stdout.prinln(&quot;New scan issue &quot; + issue.getIssueName())
+
+    def extensionUnloaded(self):
+        self._stdout.println(&quot;Extension was unloaded&quot;)
+</code></pre>
+
+<p>我是没搞懂这个插件做了什么，诶无所谓，也就是多敲敲代码，熟悉熟悉感觉。</p>
+
+<h2 id="toc_2">traffic_redirector 流量重定向</h2>
+
+<pre class="line-numbers"><code class="language-python">#!/usr/bin/python3
+# -*- coding:utf-8 -*-
+
+from burp import IBurpExtender
+from burp import IHttpListener
+
+HOST_FROM = &quot;www.baidu.com&quot;
+HOST_TO = &quot;www.zhihu.com&quot;
+
+class BurpExtender(IBurpExtender, IHttpListener):
+    def registerExtenderCallbacks(self, callbacks):
+        # 获取扩展helpers对象
+        self._helpers = callbacks.getHelpers()
+        # 设置扩展名
+        callbacks.setExtensionName(&quot;Traffic redirector&quot;)
+        # 将自己注册为HTTP侦听器
+        callbacks.registerHttpListener(self)
+
+    def processHttpMessage(self, toolsFlag, messageIsRequest, messageInfo):
+        # 只获取请求
+        if not messageIsRequest:
+            return
+        # 获取http服务的请求
+        httpService = messageInfo.getHttpService()
+        # 如果主机是HOST_FROM则将它改成HOST_TO
+        if (HOST_FROM == httpService.getHost()):
+            messageInfo.setHttpService(self._helpers.buildHttpService(HOST_TO,
+                httpService.getPort(), httpService.getProtocol()))
+</code></pre>
+
+<p>这个插件简单来说就是，把请求中的host部分修改掉。比如上述代码会监听所有host为百度的请求，一旦出现，就会把host改成知乎。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   <a href="Web安全_1.html">&laquo; Prev Page</a>  
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			 <a href="Web安全_3.html">&raquo; Next Page</a> 
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <div class="site-a-logo"><img src="http://images.lonelyor.org/favicon.jpg" /></div>
+            
+                <h1>lonelyorWiki</h1>
+                <div class="site-des">一个用来记录知识的网站</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="https://github.com/AlShelley/lonelyorWiki" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:lonelyor.org@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
+        
+            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
+        
+            <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
+        
+            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
+        
+            <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15483045487644.html">Atom设置和取消代理</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15483045486850.html">BASIC INJECTION 基本注入</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15483045491221.html">CRLF注入</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15483045491124.html">FOEENSICS 101</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15483045490848.html">HttpOnly</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2018
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

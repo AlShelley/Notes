@@ -1,0 +1,472 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  自建kms服务器激活windows - lonelyorWiki
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="lonelyorWiki" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:www.lonelyor.org/lonelyorWiki ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">首页</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">归档</a></li>
+        
+        <li id=""><a target="_self" href="beautiful.html">惊鸿</a></li>
+        
+        <li id=""><a target="_self" href="ruby.html">流光</a></li>
+        
+        <li id=""><a target="_self" href="search.html">北斗</a></li>
+        
+        <li id=""><a target="_self" href="lose.html">失乐园</a></li>
+        
+        <li id=""><a target="_self" href="about.html">关于</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; lonelyorWiki</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">首页</a></li>
+        
+        <li><a target="_self" href="archives.html">归档</a></li>
+        
+        <li><a target="_self" href="beautiful.html">惊鸿</a></li>
+        
+        <li><a target="_self" href="ruby.html">流光</a></li>
+        
+        <li><a target="_self" href="search.html">北斗</a></li>
+        
+        <li><a target="_self" href="lose.html">失乐园</a></li>
+        
+        <li><a target="_self" href="about.html">关于</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
+        
+            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
+        
+            <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
+        
+            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
+        
+            <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>自建kms服务器激活windows</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/1/24 12:35 下午</span>
+
+          <span>发表于&nbsp;</span> 
+          
+              <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <blockquote>
+<p>kms的脚本来自：<a href="https://github.com/SystemRage/py-kms">https://github.com/SystemRage/py-kms</a><br/>
+密钥来自：<br/>
+<a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj612867(v%3dws.11)">https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj612867(v%3dws.11)</a><br/>
+<a href="https://github.com/SystemRage/py-kms/wiki/Office-GVLK-Keys">https://github.com/SystemRage/py-kms/wiki/Office-GVLK-Keys</a><br/>
+<a href="https://github.com/SystemRage/py-kms/wiki/Windows-GVLK-Keys">https://github.com/SystemRage/py-kms/wiki/Windows-GVLK-Keys</a></p>
+</blockquote>
+
+<h2 id="toc_0">下载kms服务端和客户端程序</h2>
+
+<p>分别在服务器和客户端下载py-kms<br/>
+<code>git clone https://github.com/SystemRage/py-kms.git</code></p>
+
+<h2 id="toc_1">服务器设置</h2>
+
+<p>使用python3</p>
+
+<pre class="line-numbers"><code class="language-text">python3 -m pip install argparse
+python3 -m pip install tzlocal
+python3 -m pip install pysqlite3
+python3 server
+</code></pre>
+
+<p>在一台服务器上运行server，默认运行在 0.0.0.0 1688。<br/>
+这里的服务器可以是你的本地Mac主机，或者本地or远程Linux主机，Windows没试过不清楚。</p>
+
+<h2 id="toc_2">客户端设置(不需要)</h2>
+
+<p><code>python client.py 0.0.0.0（使用服务端ip） 1688</code>我运行了上述指令发现并没有什么卵用，也对，密钥都没导入，能有用才怪了。<br/>
+现在我们创建一个activate.bat脚本：</p>
+
+<pre class="line-numbers"><code class="language-bat">cscript //nologo slmgr.vbs /upk
+cscript //nologo slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GXc
+cscript //nologo slmgr.vbs /ipk MH37W-N47XK-V7XM9-C7227-GCQG9
+cscript //nologo slmgr.vbs /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43
+cscript //nologo slmgr.vbs /ipk DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4
+cscript //nologo slmgr.vbs /ipk NW6C2-QMPVW-D7KKK-3GKT6-VCFB2
+cscript //nologo slmgr.vbs /ipk DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ
+cscript //nologo slmgr.vbs /ipk D2N9P-3P6X9-2R39C-7RTCD-MDVJX
+cscript //nologo slmgr.vbs /ipk W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9
+cscript //nologo slmgr.vbs /ipk KNC87-3J2TX-XB4WP-VCPJV-M4FWM
+cscript //nologo slmgr.vbs /ipk FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4
+cscript //nologo slmgr.vbs /ipk MRPKT-YTG23-K7D7T-X2JMM-QY7MG
+cscript //nologo slmgr.vbs /ipk W82YF-2Q76Y-63HXB-FGJG9-GF7QX
+cscript //nologo slmgr.vbs /ipk 33PXH-7Y6KF-2VJC9-XBBR8-HVTHH
+cscript //nologo slmgr.vbs /ipk YDRBP-3D83W-TY26F-D46B2-XCKRJ
+cscript //nologo slmgr.vbs /ipk CB7KF-BWN84-R7R2Y-793K2-8XDDG
+cscript //nologo slmgr.vbs /ipk WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY
+cscript //nologo slmgr.vbs /ipk JCKRF-N37P4-C2D82-9YXRT-4M63B
+cscript //nologo slmgr.vbs /ipk YC7DK-G2NP3-2QQC3-J6H88-GVGXT
+cscript //nologo slmgr.vbs /ipk KBKQT-2NMXY-JJWGP-M62JB-92CD4
+cscript //nologo slmgr.vbs /ipk XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99
+cscript //nologo slmgr.vbs /ipk JNRGM-WHDWX-FJJG3-K47QV-DRTFM
+cscript //nologo slmgr.vbs /ipk YC7DK-G2NP3-2QQC3-J6H88-GVGXT
+cscript //nologo slmgr.vbs /ipk KBKQT-2NMXY-JJWGP-M62JB-92CD4
+cscript //nologo slmgr.vbs /ipk FN8TT-7WMH6-2D4X9-M337T-2342K
+cscript //nologo slmgr.vbs /ipk 6NTH3-CW976-3G3Y2-JK3TX-8QHTT
+cscript //nologo slmgr.vbs /ipk C2FG9-N6J68-H8BTJ-BW3QX-RM3B3
+cscript //nologo slmgr.vbs /ipk J484Y-4NKBF-W2HMG-DBMJC-PGWR7
+cscript //nologo slmgr.vbs /ipk VGPNG-Y7HQW-9RHP7-TKPV3-BG7GB
+cscript //nologo slmgr.vbs /ipk TGN6P-8MMBC-37P2F-XHXXK-P34VW
+cscript //nologo slmgr.vbs /ipk 4NT99-8RJFH-Q2VDH-KYG2C-4RD4F
+cscript //nologo slmgr.vbs /ipk 6Q7VD-NX8JD-WJ2VH-88V73-4GBJ7
+cscript //nologo slmgr.vbs /ipk XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99
+cscript //nologo slmgr.vbs /ipk JNRGM-WHDWX-FJJG3-K47QV-DRTFM
+cscript //nologo slmgr.vbs /ipk YG9NW-3K39V-2T3HJ-93F3Q-G83KT
+cscript //nologo slmgr.vbs /ipk WGT24-HCNMF-FQ7XH-6M8K7-DRTW9
+cscript //nologo slmgr.vbs /ipk GNFHQ-F6YQM-KQDGJ-327XX-KQBVC
+cscript //nologo slmgr.vbs /ipk D8NRQ-JTYM3-7J2DX-646CT-6836M
+cscript //nologo slmgr.vbs /ipk PD3PC-RHNGV-FXJ29-8JK7D-RJRJK
+cscript //nologo slmgr.vbs /ipk 69WXN-MBYV6-22PQG-3WGHK-RM6XC
+cscript //nologo slmgr.vbs /ipk 7WHWN-4T7MP-G96JF-G33KR-W8GF4
+cscript //nologo slmgr.vbs /ipk NY48V-PPYYH-3F4PX-XJRKJ-W4423
+cscript //nologo slmgr.vbs /ipk 9C2PK-NWTVB-JMPW8-BFT28-7FTBF
+cscript //nologo slmgr.vbs /ipk DR92N-9HTF2-97XKM-XW2WJ-XW3J6
+cscript //nologo slmgr.vbs /ipk R69KK-NTPKF-7M3Q4-QYBHW-6MT9B
+cscript //nologo slmgr.vbs /ipk WXY84-JN2Q9-RBCCQ-3Q3J3-3PFJ6
+cscript //nologo slmgr.vbs /ipk J7MQP-HNJ4Y-WJ7YM-PFYGF-BY6C6
+cscript //nologo slmgr.vbs /ipk VQ9DP-NVHPH-T9HJC-J9PDT-KTQRG
+cscript //nologo slmgr.vbs /ipk NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP
+cscript //nologo slmgr.vbs /ipk XM2V9-DN9HH-QB449-XDGKC-W2RMW
+cscript //nologo slmgr.vbs /ipk B4NPR-3FKK7-T2MBV-FRQ4W-PKD2B
+cscript //nologo slmgr.vbs /ipk C4F7P-NCP8C-6CQPT-MQHV9-JXD2M
+cscript //nologo slmgr.vbs /ipk TMJWT-YYNMB-3BKTF-644FC-RVXBD
+cscript //nologo slmgr.vbs /ipk 7HD7K-N4PVK-BHBCQ-YWQRW-XW4VK
+cscript //nologo slmgr.vbs /ipk RRNCX-C64HY-W2MM7-MCH9G-TJHMQ
+cscript //nologo slmgr.vbs /ipk PBX3G-NWMT6-Q7XBW-PYJGG-WXD33
+cscript //nologo slmgr.vbs /ipk N2CG9-YD3YK-936X4-3WR82-Q3X4H
+cscript //nologo slmgr.vbs /ipk 9BGNQ-K37YR-RQHF2-38RQ3-7VCBB
+cscript //nologo slmgr.vbs /ipk 7TQNQ-K3YQQ-3PFH7-CCPPM-X4VQ2c
+cscript //nologo slmgr.vbs /skms 192.168.220.187:1688
+cscript //nologo slmgr.vbs /ato
+cscript //nologo slmgr.vbs /ato
+cscript //nologo slmgr.vbs /dlv
+cmd /k
+</code></pre>
+
+<p>上面的脚本包含了win10、win7、office2019、office2016、office2013的大部分密钥（主要是专业版），基本满足需求，不过其实也没必要搞那么多，但是懒得筛选了。</p>
+
+<h2 id="toc_3">激活win和office</h2>
+
+<p>首先在服务器上运行 kms server。</p>
+
+<ul>
+<li>打开终端然后进入py-kms的py3-kms目录</li>
+<li>然后输入<code>python3 server</code>并回车</li>
+<li>右键点击以管理员身份运行 activate.bat 即可。</li>
+</ul>
+
+<p>显示如下信息表示激活成功：</p>
+
+<p><img src="media/15483045488036/win%E6%BF%80%E6%B4%BB2018-12-24%2011-12-38.png" alt="win激活2018-12-24 11-12-38"/></p>
+
+<h2 id="toc_4">其他</h2>
+
+<p>kms每次只激活180天也就是3个月，这样每三个月就要重新激活一次，你可以每次提醒的时候再打开server然后运行activate.bat脚本。也可以把server部署在远程服务器上，然后在client添加一个计时任务周期性的运行bat脚本。</p>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15483045488490.html" 
+          title="Previous Post: 给网站嵌入百度搜索框">&laquo; 给网站嵌入百度搜索框</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15483045490471.html" 
+          title="Next Post: 解决npm更新或安装软件时下载较慢等问题">解决npm更新或安装软件时下载较慢等问题 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"内容来自 lonelyor 的Wiki","bdMini":"1","bdMiniList":["sqq","weixin","copy"],"bdPic":"http://images.lonelyor.org/favicon.jpg","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["weixin","sqq","copy"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["weixin","sqq","copy"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <div class="site-a-logo"><img src="http://images.lonelyor.org/favicon.jpg" /></div>
+            
+                <h1>lonelyorWiki</h1>
+                <div class="site-des">一个用来记录知识的网站</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="https://github.com/AlShelley/lonelyorWiki" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:lonelyor.org@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
+        
+            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
+        
+            <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
+        
+            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
+        
+            <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15483045487644.html">Atom设置和取消代理</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15483045486850.html">BASIC INJECTION 基本注入</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15483045491221.html">CRLF注入</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15483045491124.html">FOEENSICS 101</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15483045490848.html">HttpOnly</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2018
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

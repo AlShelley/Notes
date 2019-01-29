@@ -133,13 +133,9 @@
         <div class="markdown-body post-page">
         <h2 id="toc_0">搜索引擎</h2>
 
-<p><div style='overflow:hidden'><br/>
-        <form onsubmit="return baiduWithHttps(this)" action="http://www.baidu.com/s" target="_blank"><br/>
-        <input class='bdtext' type="text"  onfocus="checkHttps" name="wd"  size="30"><br/>
-        <input class='bdbtn' type="submit"value="百度搜索"><br/>
-        </form><br/>
-        <script><br/>
-            function checkHttps () {<br/>
+<p><div style='overflow:auto'><form onsubmit="return baiduWithHttps(this)" action="http://www.baidu.com/s" target="_blank"><br/>
+        <input class='bdtext' type="text"  onfocus="checkHttps" name="wd"  size="30"><input class='bdbtn' type="submit"value="百度搜索"><br/>
+        </form><script>function checkHttps () {<br/>
                 BaiduHttps.useHttps();<br/><br/>
             };<br/>
             function baiduWithHttps (formname) {<br/>
@@ -151,9 +147,21 @@
                     formname.action = &#39;<a href="https://www.baidu.com/s">https://www.baidu.com/s</a>&#39; + &#39;?wd&#39; + data.ssl_code;<br/>
                     return true;<br/>
                 }<br/>
-            };<br/>
-        </script> <br/>
-    </div></p>
+            };</script></div><div style='overflow:auto'><form onsubmit="return googleWithHttps(this)" action="http://www.google.com/search" target="_blank"><br/>
+    <input class='bdtext' type="text"  onfocus="checkHttps" name="q"  size="30"><input class='bdbtn' type="submit"value="谷歌搜索"><br/>
+    </form><script>function checkHttps () {<br/>
+            googleHttps.useHttps();<br/><br/>
+        };<br/>
+        function googleWithHttps (formname) {<br/>
+            var data = googleHttps.useHttps();<br/>
+            if (data.s === 0) {<br/>
+                return true;<br/>
+            }<br/>
+            else {<br/>
+                formname.action = &#39;<a href="https://www.google.com/search">https://www.google.com/search</a>&#39; + &#39;?q&#39; + data.ssl_code;<br/>
+                return true;<br/>
+            }<br/>
+        };</script></div></p>
 
         </div>
     </div>

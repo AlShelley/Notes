@@ -4,7 +4,7 @@
   <title><![CDATA[lonelyorWiki]]></title>
   <link href="http://www.lonelyor.org/lonelyorWiki/atom.xml" rel="self"/>
   <link href="http://www.lonelyor.org/lonelyorWiki/"/>
-  <updated>2019-01-29T11:21:20+08:00</updated>
+  <updated>2019-01-29T15:17:38+08:00</updated>
   <id>http://www.lonelyor.org/lonelyorWiki/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -469,6 +469,8 @@ JavaScript运行顺序是从上往下，因此要注意代码的顺序。</p>
 <h2 id="toc_9">写一个猜数字的小游戏</h2>
 
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/First_steps/A_first_splash#%E7%8C%9C%E6%95%B0%E5%AD%97%E6%B8%B8%E6%88%8F">猜数字游戏</a></p>
+
+<p>未完待续...</p>
 
 ]]></content>
   </entry>

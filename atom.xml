@@ -4,7 +4,7 @@
   <title><![CDATA[lonelyorWiki]]></title>
   <link href="http://www.lonelyor.org/lonelyorWiki/atom.xml" rel="self"/>
   <link href="http://www.lonelyor.org/lonelyorWiki/"/>
-  <updated>2019-01-31T17:28:34+08:00</updated>
+  <updated>2019-02-15T16:17:09+08:00</updated>
   <id>http://www.lonelyor.org/lonelyorWiki/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -19,7 +19,7 @@
     <id>http://www.lonelyor.org/lonelyorWiki/15488284836388.html</id>
     <content type="html"><![CDATA[
 <blockquote>
-<p>你永远不知道下一秒会发生什么，所以赶紧珍惜现在把。</p>
+<p>你永远不知道下一秒会发生什么，所以赶紧珍惜现在吧。</p>
 </blockquote>
 
 <h1 id="toc_0">生活习惯篇</h1>
@@ -553,6 +553,23 @@ JavaScript运行顺序是从上往下，因此要注意代码的顺序。</p>
   </entry>
   
   <entry>
+    <title type="html"><![CDATA[Mediakit报告设备商的空间不足以执行此操作]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15489296290618.html"/>
+    <updated>2019-01-31T18:13:49+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15489296290618.html</id>
+    <content type="html"><![CDATA[
+<p>网上大部分都写的去 windows 中使用DiskGenius重新分区，这搞麻烦了，不用这么麻烦的。</p>
+
+<p>1、打开终端，输入<code>diskutil list</code>列出磁盘内容，这里我们可以找到要格式化的磁盘，我是 disk2<br/>
+2、卸载要格式化的磁盘<code>diskutil unmountDisk force disk2</code><br/>
+3、写入启动扇区<code>sudo dd if=/dev/zero of=/dev/disk2 bs=1024 count=1024</code><br/>
+4、对磁盘进行分区<code>diskutil partitionDisk disk2 GPT JHFS+ &quot;AWESOME DISK&quot; 0g</code><br/>
+5、打完收工，写博客发出来。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[OneDrive映射到本地（像访问本地磁盘一样访问网盘）]]></title>
     <link href="http://www.lonelyor.org/lonelyorWiki/15483045490562.html"/>
     <updated>2019-01-24T12:35:49+08:00</updated>
@@ -1031,19 +1048,6 @@ backuppc设定<br/>
 
 <p>参考文档：<br/>
 <code>http://server.zol.com.cn/513/5130348.html</code></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[burpsuite如何给数据打标的]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15483045488670.html"/>
-    <updated>2019-01-24T12:35:48+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15483045488670.html</id>
-    <content type="html"><![CDATA[
-<p>用特殊字符标记关键字即可</p>
-
-<p>类似的有sqlmap，它是使用参数指定要打标的关键词</p>
 
 ]]></content>
   </entry>

@@ -107,7 +107,7 @@
         
             <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
         
-            <li><a href="%E7%BE%8E%E5%A5%BD.html">美好</a></li>
+            <li><a href="%E7%BE%8E%E5%A5%BD%E7%94%9F%E6%B4%BB.html">美好生活</a></li>
          
 
       </ul>
@@ -129,6 +129,42 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15483045490513.html">
+                
+                  <h1>此地址使用了一个通常用于网络浏览以外目的的端口.出于安全原因,Firefox取消了该请求</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>遇到标题出现的错误时，可以使用以下方法解决：<br/>
+1、打开火狐在地址栏输入&quot;about:config&quot;<br/>
+2、然后在&quot;首选项名称&quot;处点击右键选择&quot;新建&quot;-&quot;字符串&quot;，在弹框中输入&quot;network.security.banned.override&quot;，点确定<br/>
+3、在再次弹出的框&quot;输入字符串的值&quot;中输入要开放的端口，如666（不行的话就换其他的），最后单击&quot;确定&quot;，即可。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15483045490492.html">
                 
@@ -190,66 +226,6 @@
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15483045488490.html">
-                
-                  <h1>给网站嵌入百度搜索框</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>只需要在 htm 页面中嵌入以下代码即可：</p>
-
-<pre class="line-numbers"><code class="language-markup"> &lt;div style=&#39;overflow:hidden&#39;&gt;
-        &lt;form onsubmit=&quot;return baiduWithHttps(this)&quot; action=&quot;http://www.baidu.com/s&quot; target=&quot;_blank&quot;&gt;
-        &lt;input class=&#39;bdtext&#39; type=&quot;text&quot;  onfocus=&quot;checkHttps&quot; name=&quot;wd&quot;  size=&quot;30&quot;&gt;
-        &lt;input class=&#39;bdbtn&#39; type=&quot;submit&quot;value=&quot;百度搜索&quot;&gt;
-        &lt;/form&gt;
-        &lt;script&gt;
-            function checkHttps () {
-                BaiduHttps.useHttps();    
-            };
-            function baiduWithHttps (formname) {
-                var data = BaiduHttps.useHttps();
-                if (data.s === 0) {
-                    return true;
-                }
-                else {
-                    formname.action = &#39;https://www.baidu.com/s&#39; + &#39;?wd&#39; + data.ssl_code;
-                    return true;
-                }
-            };
-        &lt;/script&gt; 
-    &lt;/div&gt;
-</code></pre>
-
-<p>效果如下：<br/>
-<img src="media/15483045488490/%E5%B5%8C%E5%85%A5%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2.png" alt="嵌入百度搜索"/><br/>
-觉得不好看的可以自行加入 css 改变样式，我觉得就这样还蛮好看的。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%BD%91%E7%BB%9C.html'>网络</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -326,7 +302,7 @@
         
             <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
         
-            <a href="%E7%BE%8E%E5%A5%BD.html"><strong>美好</strong></a>
+            <a href="%E7%BE%8E%E5%A5%BD%E7%94%9F%E6%B4%BB.html"><strong>美好生活</strong></a>
          
         </p>
 

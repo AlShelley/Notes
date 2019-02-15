@@ -107,7 +107,7 @@
         
             <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
         
-            <li><a href="%E7%BE%8E%E5%A5%BD.html">美好</a></li>
+            <li><a href="%E7%BE%8E%E5%A5%BD%E7%94%9F%E6%B4%BB.html">美好生活</a></li>
          
 
       </ul>
@@ -129,6 +129,83 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15483045491239.html">
+                
+                  <h1>更优雅的使用Hexo写博客</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>曾经的博客是使用 Hexo 写的，我觉得Hexo这种在文章前面写上元信息的方式很棒。然而，每此写markdown文档都要输入这些元信息，这很麻烦，所以就写了个shell脚本来自动化输入文件元信息的过程。<br/>
+代码如下：</p>
+</blockquote>
+
+<pre class="line-numbers"><code class="language-bash">#!/bin/bash
+
+printf &quot;请输入文件名(example.md)，记得写后缀!\n&quot;
+read -p &quot;文件名是: &quot; filename
+# 这里的title取文件名不取后缀
+echo &quot;title: &quot;${filename%.*} &gt;&gt; $filename
+echo &quot;author: lonelyor&quot; &gt;&gt; $filename
+echo &quot;language: zh-CN&quot; &gt;&gt; $filename
+echo &quot;tags:&quot; &gt;&gt; $filename
+echo &quot;  - 标签&quot; &gt;&gt; $filename
+echo &quot;categories:&quot; &gt;&gt; $filename
+echo &quot;  - 分类&quot; &gt;&gt; $filename
+time=$(date &quot;+%Y-%m-%d %H:%M:%S&quot;)
+echo &quot;date: ${time}&quot;&gt;&gt; $filename
+echo &quot;---&quot; &gt;&gt; $filename
+echo &quot;&gt; description: &quot; &gt;&gt; $filename
+# printf和echo都是输出，&gt;&gt;表示追加，&gt;会覆盖文件
+# shell中使用变量需要先定义变量，然后使用时加 $
+# read 用来创建文件，文件名从终端获取
+</code></pre>
+
+<p>展示效果如下:</p>
+
+<pre class="line-numbers"><code class="language-md">title: 如何优雅的创建markdown文件
+author: lonelyor
+language: zh-CN
+tags:
+  - Hexo
+  - markdown
+categories:
+  - 技术杂文
+date: 2018-09-06 17:42:40
+---
+&gt; description: 若爱请深爱，若不爱请离开。
+</code></pre>
+
+<p>接下来说说如何使用(仅限linux、macos，或者说可以执行bash的环境，win用户请自行转换成bat)：<br/>
+首先，创建一个名叫 md.sh 的文件（名字你爱咋咋地），把代码copy进去。<br/>
+然后，<code>ln -s /md文件绝对路径 /usr/local/bin/md</code> ,这条语句的意思就是创建一个软连接，把 md.sh 连接到当前用户的 md 命令上。<br/>
+最后，打开终端输入 md ，然后输入要创建的markdown文件名（如：test.md），即可在当前目录下创建带有元信息的markdown文件。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15483045490053.html">
                 
@@ -176,42 +253,6 @@
                         
                         	<p>打开终端<br/>
 使用命令 md5 或 shawun 即可查看。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15483045490513.html">
-                
-                  <h1>此地址使用了一个通常用于网络浏览以外目的的端口.出于安全原因,Firefox取消了该请求</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>遇到标题出现的错误时，可以使用以下方法解决：<br/>
-1、打开火狐在地址栏输入&quot;about:config&quot;<br/>
-2、然后在&quot;首选项名称&quot;处点击右键选择&quot;新建&quot;-&quot;字符串&quot;，在弹框中输入&quot;network.security.banned.override&quot;，点确定<br/>
-3、在再次弹出的框&quot;输入字符串的值&quot;中输入要开放的端口，如666（不行的话就换其他的），最后单击&quot;确定&quot;，即可。</p>
 
                         
                       </div>
@@ -300,7 +341,7 @@
         
             <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
         
-            <a href="%E7%BE%8E%E5%A5%BD.html"><strong>美好</strong></a>
+            <a href="%E7%BE%8E%E5%A5%BD%E7%94%9F%E6%B4%BB.html"><strong>美好生活</strong></a>
          
         </p>
 

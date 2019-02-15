@@ -107,7 +107,7 @@
         
             <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
         
-            <li><a href="%E7%BE%8E%E5%A5%BD.html">美好</a></li>
+            <li><a href="%E7%BE%8E%E5%A5%BD%E7%94%9F%E6%B4%BB.html">美好生活</a></li>
          
 
       </ul>
@@ -129,6 +129,157 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15483045490583.html">
+                
+                  <h1>从零开始的DVWA之环境搭建</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>文章写于2017年7月6日，很久之前的东西了。</p>
+</blockquote>
+
+<h2 id="toc_0">0X01 主机配置</h2>
+
+<p>　　操作系统：Ubuntu-Kylin-16.04-LTS_x64（VritualBox虚拟机）<br/><br/>
+　　相关组件：XAMPP+DVWA    </p>
+
+<h2 id="toc_1">0X02 DVWA简介</h2>
+
+<p>　　DVWA是一个用来进行安全脆弱性鉴定（练习挖洞）的PHP/MySQL应用。旨在帮助安全爱好者（黑客白客红客白帽子黑帽子绿帽子等）测试自己的专业技能和工具提供合法的环境（不要瞎搞别人网站，这样不好...），提升技术能力的同时更好的维护比特世界的和平。       </p>
+
+<h2 id="toc_2">0X03 XAMPP简介</h2>
+
+<p>　　XAMPP（Apache+MySQL+PHP+PERL）是一个功能强大的建站集成软件包。这个软件包原来的名字是 LAMPP，但是为了避免误解，最新的几个版本就改名为 XAMPP 了。由于DWVA需要PHP环境，嗯，就由XAMMP来守护了。    </p>
+
+<h2 id="toc_3">0X04 XAMPP和DVWA安装</h2>
+
+<p>　　首先访问官网 <a href="https://www.apachefriends.org/zh_cn/download.html">https://www.apachefriends.org/zh_cn/download.html</a> 然后点击下载：<br/><br/>
+<img src="media/15483045490583/1.png" alt="1"/></p>
+
+<p>接着就会弹个框：<br/><br/>
+<img src="media/15483045490583/2.png" alt="2"/></p>
+
+<p>去一趟茅房回来就下完了，你要是嫌弃7下的太慢，可以去下5.6，速度会快些，接着就是安装。　　　　<br/>
+　　安装过程如下（记得加权限，然后）：　　　　<br/>
+<img src="media/15483045490583/3.png" alt="3"/><br/>
+　　　　<br/>
+<img src="media/15483045490583/4.png" alt="4"/><br/>
+　<br/>
+一直点击next就行了……　　　　<br/>
+<img src="media/15483045490583/5.png" alt="5"/><br/>
+　　　<br/>
+　　这里告诉我们XAMPP被安装在/opt/lampp文件（linux一切皆文件）里面。最后点击Finish就完成了安装。<br/><br/>
+启动XAMPP    </p>
+
+<pre class="line-numbers"><code class="language-shell">#cd /opt/lampp
+#./manager-linxu-x64.run
+或者
+#/opt/lamp/./manage-linux-x64.run  
+</code></pre>
+
+<p><img src="media/15483045490583/6.png" alt="6"/></p>
+
+<p>下面我们开始安装DWVA：<br/><br/>
+　　首先我们登录官网 <a href="http://www.dvwa.co.uk/">http://www.dvwa.co.uk/</a> 点击DOWNLOAD下载最新版的DWVA，是一个zip文件。<br/><br/>
+<img src="media/15483045490583/7.png" alt="7"/></p>
+
+<p>然后将文件解压（提取）到/opt/lamp/htdocs/目录下<br/><br/>
+<img src="media/15483045490583/8.png" alt="8"/></p>
+
+<p><img src="media/15483045490583/9.png" alt="9"/></p>
+
+<p>接着我们打开XAMPP的MySQL（默认只开了Apache）<br/><br/>
+<img src="media/15483045490583/10.png" alt="10"/></p>
+
+<p>然后访问 http://localhost/DVWA-master/index.php 诶!?报错<br/><br/>
+<img src="media/15483045490583/11.png" alt="11"/></p>
+
+<p>　　嗯，根据报错信息可知是配置文件有问题（废话啰），同样的根据提示我们知道要将文件名config.inc.php.dist改为config.inc.php（这里其实涉及到一个linux命令copy的用法，具体可自行百度： <a href="http://www.linuxdiyf.com/viewarticle.php?id=38590">http://www.linuxdiyf.com/viewarticle.php?id=38590</a> ）。改完名字之后就可以访问了，页面会自动跳转到： http://localhost/DVWA-master/setup.php 。然后我们用gedit打开这个文件config.inc.php看看是个什么东西，(⊙o⊙)哦原来是配置文件（废话连篇有木有），我们修改两个地方（1、数据库密码，我知道玩lol的你输入这个密码肯定飞快，不过我是玩dota的。2、安全等级设置为low，简单点容易玩，默认是难的。）     　<br/><br/>
+<img src="media/15483045490583/12.png" alt="12"/></p>
+
+<p>打开之后长这样：<br/><br/>
+<img src="media/15483045490583/13.png" alt="13"/></p>
+
+<p>怎么玩呢？我不知道啊，于是我瞎点了几下，<br/><br/>
+<img src="media/15483045490583/14.png" alt="14"/></p>
+
+<p>MMP又报错了，根据提示我们知道问题出在red部分,嗯，我们去修改一下所有带红色的地方的配置。<br/><br/>
+1、搞定PHP function allow_url_include：Disabled<br/><br/>
+找到php的配置文件，修改allow_url_include=Off 为allow_url_include=on（参考<a href="http://php.net/manual/zh/filesystem.configuration.php#ini.allow-url-include%EF%BC%89">http://php.net/manual/zh/filesystem.configuration.php#ini.allow-url-include）</a><br/><br/>
+<img src="media/15483045490583/15.png" alt="15"/></p>
+
+<p>然后修改/opt/lamp/etc/php.ini<br/><br/>
+<img src="media/15483045490583/16.png" alt="16"/></p>
+
+<p>2、解决reCAPTCHA key，配置文件里面有个谷歌连接，点进去剩下的估计你也看得懂应该知道该怎么做额。<br/><br/>
+<img src="media/15483045490583/17.png" alt="17"/></p>
+
+<p><img src="media/15483045490583/18.png" alt="18"/></p>
+
+<p>3、解决最后的两个NO<br/><br/>
+<img src="media/15483045490583/19.png" alt="19"/></p>
+
+<p>我们给这两个文件加权，运行命令：<br/><br/>
+<img src="media/15483045490583/20.png" alt="20"/></p>
+
+<p>然后点击<br/><br/>
+<img src="media/15483045490583/21.png" alt="21"/></p>
+
+<p>纳尼!?<br/><br/>
+<img src="media/15483045490583/22.png" alt="22"/></p>
+
+<p>只好回头再看看XAMPP的数据库配置文件，你会发现他的password默认是被注释了，我们取消注释。<br/><br/>
+<img src="media/15483045490583/23.png" alt="23"/></p>
+
+<p>最后你会发现不管怎么搞还是报错……这就尴尬了……<br/>
+经过尝试，我发现以下配置可以进入登录界面。<br/>
+XAMPP配置如下：<br/><br/>
+<img src="media/15483045490583/24.png" alt="24"/></p>
+
+<p>密码还是按照默认的注释掉<br/><br/>
+<img src="media/15483045490583/25.png" alt="25"/></p>
+
+<p>DVWA配置如下：<br/><br/>
+<img src="media/15483045490583/26.png" alt="26"/></p>
+
+<p>接着你就能进入登录界面了。恭喜！<br/>
+http://localhost/DVWA-master/login.php<br/><br/>
+<img src="media/15483045490583/27.png" alt="27"/></p>
+
+<p>输入账号密码然后登录就能愉快的玩耍了。<br/><br/>
+<img src="media/15483045490583/28.png" alt="28"/></p>
+
+<p>什么？你进不去？账号密码是什么？预知后事如何，请听下回分解。    </p>
+
+<p>下集预告：<br/><br/>
+　　欢迎来到DVWA的世界，这是你的第一关，登录破解…… </p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15483045488145.html">
                 
@@ -208,47 +359,6 @@
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15483045488313.html">
-                
-                  <h1>修改Mac主机名、计算机名</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><code>$sudo scutil --set ComputerName 你想要的计算机名称</code><br/>
-<code>$sudo scutil --set HostName 你想要的主机名称</code></p>
-
-<p>举例：<br/>
-<code>$sudo scutil --set HostName lonelyor</code></p>
-
-<p>使用以下命令查看主机名或计算机名<br/>
-<code>$ scutil --get ComputerName</code><br/>
-<code>$ scutil --get HostName</code></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -313,7 +423,7 @@
         
             <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
         
-            <a href="%E7%BE%8E%E5%A5%BD.html"><strong>美好</strong></a>
+            <a href="%E7%BE%8E%E5%A5%BD%E7%94%9F%E6%B4%BB.html"><strong>美好生活</strong></a>
          
         </p>
 

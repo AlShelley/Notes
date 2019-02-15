@@ -107,7 +107,7 @@
         
             <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
         
-            <li><a href="%E7%BE%8E%E5%A5%BD.html">美好</a></li>
+            <li><a href="%E7%BE%8E%E5%A5%BD%E7%94%9F%E6%B4%BB.html">美好生活</a></li>
          
 
       </ul>
@@ -129,6 +129,71 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15483045490098.html">
+                
+                  <h1>fluxgui安装与卸载</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>很久以前的笔记了</p>
+</blockquote>
+
+<pre class="line-numbers"><code class="language-text">Ubuntu/Debian Manual Install
+# Install dependencies
+sudo apt-get install git python-appindicator python-xdg python-pexpect python-gconf python-gtk2 python-glade2 libxxf86vm1
+
+# Download fluxgui
+cd /tmp
+git clone &quot;https://github.com/xflux-gui/fluxgui.git&quot;
+cd fluxgui
+python download-xflux.py
+
+# EITHER install globally
+sudo python setup.py install
+# EXCLUSIVE OR, install in your home directory. The binary installs
+# into ~/.local/bin, so be sure to add that to your PATH if installing locally.
+python setup.py install --user
+
+# Run flux
+fluxgui
+Ubuntu/Debian Manual Uninstall
+If you manually installed instead of using the PPA, you can uninstall by making setup.py tell you where it installed files and then removing the installed files.
+
+# EITHER uninstall globally
+sudo python setup.py install --record installed.txt
+sudo xargs rm -vr &lt; installed.txt
+
+# EXCLUSIVE OR uinstall in your home directory
+python setup.py install --user --record installed.txt
+xargs rm -vr &lt; installed.txt
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15483045490077.html">
                 
@@ -341,55 +406,6 @@ function makeInviteCode() {
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15483045488835.html">
-                
-                  <h1>iterm2 常用技巧</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>按住 com 键</p>
-
-<ul>
-<li>可以拖拽选中字符串</li>
-<li>点击url能直接打开</li>
-<li>点击文件：调用默认程序打开文件</li>
-<li>点击文件夹：在finder中打开文件夹</li>
-<li>同时按住option键，可以矩形选中</li>
-</ul>
-
-<p>新建windows：cmd+N<br/>
-新建tab：cmd+T<br/>
-切分屏幕：cmd+D水平切分<br/>
-智能查找，支持正则：cmd+F</p>
-
-<p>智能补全：cmd+；<br/>
-调用历史记录：cmd+shift+h</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -454,7 +470,7 @@ function makeInviteCode() {
         
             <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
         
-            <a href="%E7%BE%8E%E5%A5%BD.html"><strong>美好</strong></a>
+            <a href="%E7%BE%8E%E5%A5%BD%E7%94%9F%E6%B4%BB.html"><strong>美好生活</strong></a>
          
         </p>
 

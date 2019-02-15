@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  linux将shell脚本添加到系统命令的方法 - lonelyorWiki
+  Mediakit报告设备商的空间不足以执行此操作 - lonelyorWiki
   
   </title>
   
@@ -130,10 +130,10 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>linux将shell脚本添加到系统命令的方法</h1>
+          <h1>Mediakit报告设备商的空间不足以执行此操作</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2019/1/24 12:35 下午</span>
+          <span class="date">2019/1/31 18:13 下午</span>
 
           <span>发表于&nbsp;</span> 
           
@@ -150,15 +150,13 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <blockquote>
-<p>可以自定义一些shell脚本，用来提高执行常用组合命令的效率。还有一种方式是使用alias命令。</p>
-</blockquote>
+      <p>网上大部分都写的去 windows 中使用DiskGenius重新分区，这搞麻烦了，不用这么麻烦的。</p>
 
-<p>两种方法：<br/>
-1、直接把shell脚本放到/usr/local/bin ，然后添加权限 <code>sudo chmod +x xxx.sh</code> 就ok了。这样是在本地用户添加命令。<br/>
-root用户添加命令则把脚本放在 /usr/bin 即可。<br/>
-2、使用软连接的方式<code>ln -s 【源文件或目录】【目标文件或目录】</code><br/>
-注意要使用绝对路径。</p>
+<p>1、打开终端，输入<code>diskutil list</code>列出磁盘内容，这里我们可以找到要格式化的磁盘，我是 disk2<br/>
+2、卸载要格式化的磁盘<code>diskutil unmountDisk force disk2</code><br/>
+3、写入启动扇区<code>sudo dd if=/dev/zero of=/dev/disk2 bs=1024 count=1024</code><br/>
+4、对磁盘进行分区<code>diskutil partitionDisk disk2 GPT JHFS+ &quot;AWESOME DISK&quot; 0g</code><br/>
+5、打完收工，写博客发出来。</p>
 
 
     
@@ -169,16 +167,16 @@ root用户添加命令则把脚本放在 /usr/bin 即可。<br/>
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15483045487920.html" 
-          title="Previous Post: linux安装配置aria2及其Web图形界面（debian为例）">&laquo; linux安装配置aria2及其Web图形界面（debian为例）</a>
+          <a href="15483045490336.html" 
+          title="Previous Post: Markdown基础语法">&laquo; Markdown基础语法</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15483045487681.html" 
-          title="Next Post: linux查看磁盘空间占用情况">linux查看磁盘空间占用情况 &raquo;</a>
+          <a  href="15483045490562.html" 
+          title="Next Post: OneDrive映射到本地（像访问本地磁盘一样访问网盘）">OneDrive映射到本地（像访问本地磁盘一样访问网盘） &raquo;</a>
       
       </p>
         </div>

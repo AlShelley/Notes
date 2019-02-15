@@ -107,7 +107,7 @@
         
             <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
         
-            <li><a href="%E7%BE%8E%E5%A5%BD.html">美好</a></li>
+            <li><a href="%E7%BE%8E%E5%A5%BD%E7%94%9F%E6%B4%BB.html">美好生活</a></li>
          
 
       </ul>
@@ -198,17 +198,20 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045490562.html">
+                <a class="clearlink" href="15489296290618.html">
                 
-                  <h1>OneDrive映射到本地（像访问本地磁盘一样访问网盘）</h1>
+                  <h1>Mediakit报告设备商的空间不足以执行此操作</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>参考以下链接即可：<br/>
-<a href="http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc">http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc</a></p>
+                        	<p>网上大部分都写的去 windows 中使用DiskGenius重新分区，这搞麻烦了，不用这么麻烦的。</p>
 
-<p>举一反三，webdav、nfs、samba等都可以使用这种方式挂载，来方便访问。</p>
+<p>1、打开终端，输入<code>diskutil list</code>列出磁盘内容，这里我们可以找到要格式化的磁盘，我是 disk2<br/>
+2、卸载要格式化的磁盘<code>diskutil unmountDisk force disk2</code><br/>
+3、写入启动扇区<code>sudo dd if=/dev/zero of=/dev/disk2 bs=1024 count=1024</code><br/>
+4、对磁盘进行分区<code>diskutil partitionDisk disk2 GPT JHFS+ &quot;AWESOME DISK&quot; 0g</code><br/>
+5、打完收工，写博客发出来。</p>
 
                         
                       </div>
@@ -217,10 +220,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span class="date">2019/1/31 18:13 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -297,7 +300,7 @@
         
             <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
         
-            <a href="%E7%BE%8E%E5%A5%BD.html"><strong>美好</strong></a>
+            <a href="%E7%BE%8E%E5%A5%BD%E7%94%9F%E6%B4%BB.html"><strong>美好生活</strong></a>
          
         </p>
 

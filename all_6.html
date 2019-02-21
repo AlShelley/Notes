@@ -130,104 +130,14 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045490018.html">
+                <a class="clearlink" href="15483045490336.html">
                 
-                  <h1>arch设置屏幕分辨率</h1>
+                  <h1>Markdown基础语法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p><a href="https://wiki.archlinux.org/index.php/Xrandr_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">https://wiki.archlinux.org/index.php/Xrandr_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)</a></p>
-</blockquote>
-
-<p>1、先使用xrandr查看屏幕相关信息<br/>
-2、编辑/e/X/xorg.conf.d ❯❯❯ sudo nano 11-lonelyorx.conf (自己新建)<br/>
-结果我不怎么会写配置文件，导致写了都没法启动图形界面了，于是又删了，打算手动更改。<br/>
-3、<br/>
-xrandr查看当前设置 <br/>
-<code>cvt 1920 1080</code><br/>
-<code>cvt 2560 1440</code><br/>
-找到正确的参数 <br/>
-<code>xrandr --newmode &quot;1920x1080_60.00&quot;  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync</code><br/>
-<code>xrandr --newmode &quot;2560x1440_60.00&quot;  312.25  2560 2752 3024 3488  1440 1443 1448 1493 -hsync +vsync</code><br/>
-然后设置 <br/>
-<code>xrandr --addmode eDP1 1920x1080_60.00</code><br/>
-<code>xrandr --addmode HDMI1 2560x1440_60.00</code><br/>
-如果一且顺利的话，此时再查看xrandr命令，将发现最佳分辨率设置成功。 <br/>
-4、修改分辨率<br/>
-<code>xrandr --output eDP1 --mode 1920x1080_60.00</code><br/>
-<code>xrandr --output HDMI1 --mode 2560x1440_60.00</code></p>
-
-<p><code>xrandr --newmode &quot;1920x1080_60.00&quot;  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync</code><br/>
-<code>xrandr --addmode eDP1 1920x1080_60.00</code><br/>
-<code>xrandr --output eDP1 --mode 1920x1080_60.00</code></p>
-
-<p>这样屏幕分辨率就变成1080p了。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15483045490117.html">
-                
-                  <h1>backup系统备份工具介绍</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>backup是一款强大的备份软件，用于系统备份、增量备份、远程备份，企业级。<br/>
-我还是当年使用debian时用过...这是以前的笔记，留一份在这好了。</p>
-</blockquote>
-
-<p>软件安装（debian 9）<br/>
-<code>apt-get install backuppc</code><br/>
-然后会弹窗：<br/>
-backuppc设定<br/>
-管理web地址：<br/>
-<code>http://lonelyor/backuppc</code><br/>
-<code>user：backuppc</code><br/>
-<code>passwd：u6oN2KE1</code><br/>
-可以通过运行<code>htpasswd /etc/backuppc/htpasswd</code>来修改密码<br/>
-这些信息要记住！</p>
-
-<p>安装后：<br/>
-<code>Creating config file /etc/backuppc/config.pl with new version（可以暂时忽略）</code></p>
-
-<p>然后运行：<br/>
-<code>systemctl restart apache2</code><br/>
-<code>/etc/init.d/backuppc restart</code></p>
-
-<p>接着就打开浏览器访问：<br/>
-<code>http://lonelyor/backuppc</code><br/>
-就能看到web管理界面了。<br/>
-如果进不去可以打开隐身模式或者清除cookie再试。</p>
-
-<p>官方安装文档：<code>http://backuppc.sourceforge.net/BackupPC-4.1.3.html#Installing-BackupPC</code></p>
-
-<p>参考文档：<br/>
-<code>http://server.zol.com.cn/513/5130348.html</code></p>
+                        	<p>占坑，内容以后写</p>
 
                         
                       </div>
@@ -253,16 +163,85 @@ backuppc设定<br/>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045488670.html">
+                <a class="clearlink" href="15483045490355.html">
                 
-                  <h1>burpsuite如何给数据打标的</h1>
+                  <h1>同源策略</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>用特殊字符标记关键字即可</p>
+                        	<blockquote>
+<p>摘自网络，出处忘了。</p>
+</blockquote>
 
-<p>类似的有sqlmap，它是使用参数指定要打标的关键词</p>
+<p>同源策略（SOP，Same Origin Policy），两个页面的【协议】【域名】【端口】都相同，则两个页面具有相同的源，任何一个不同都是不同源的。<br/>
+举例：<br/>
+假设源是：<code>http://store.company.com/dir/page.html</code><br/>
+同源的是：<br/>
+<code>http://store.company.com/dir2/other.html</code><br/>
+<code>http://store.company.com/dir/inner/another.html</code><br/>
+不同源的是：<br/>
+<code>https://store.company.com/secure.html</code> 不同协议 ( https和http )<br/>
+<code>http://store.company.com:81/dir/etc.html</code> 不同端口 ( 81和80)<br/>
+<code>http://news.company.com/dir/other.html</code> 不同域名 ( news和store )</p>
+
+<h2 id="toc_0">同源策略控制内容</h2>
+
+<p><em>同源策略是禁止读取HTTP回复，并不会禁止脚本执行，也不会禁止HTTP请求，因此在防御CSRF上作用是非常有限的，因为CSRF在请求发出的时候就已经达到了攻击的目的。</em><br/>
+一般情况下，静态资源通常不受同源策略限制，如有js/css/jpg/png等。</p>
+
+<p>同源策略控制了不同源之间的交互，例如在使用<code>XMLHttpRequest</code>或<code>img</code>标签时则会受到同源策略的约束，这些交互通常分为三类。</p>
+
+<ul>
+<li>通常允许跨域写（Cross-origin writes），例如链接（links），重定向以及表单提交。少数特定的HTTP请求需要添加&quot;预检请求&quot;<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Preflighted_requests">preflight</a>如OPTIONS来查询可用的方法。</li>
+<li>通常允许跨域资源嵌入（Cross-origin embedding）</li>
+<li>通常 <strong>不允许</strong> 跨域读（Cross-origin reads），但常可以通过内嵌资源来巧妙的进行读取访问。例如可以读取嵌入图片的高度和宽度，调用内嵌脚本的方法，或<a href="https://www.grepular.com/Abusing_HTTP_Status_Codes_to_Expose_Private_Information">availability of an embedded resource</a></li>
+</ul>
+
+<p>下面是可能嵌入跨域资源的示例：<br/>
+<code>&lt;script src=&quot;...&quot;&gt;&lt;/script&gt;</code> 标签嵌入跨域脚本。语法错误信息只能在同源脚本中捕捉到。<br/>
+<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;...&quot;&gt;</code> 标签嵌入CSS。由于CSS的<a href="http://scarybeastsecurity.blogspot.dk/2009/12/generic-cross-browser-cross-domain.html">松散的语法规则</a>，CSS的跨域需要一个设置正确的Content-Type 消息头。不同浏览器有不同的限制： <a href="https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622939(v=vs.85)">IE</a>, <a href="https://www.mozilla.org/en-US/security/advisories/mfsa2010-46/">Firefox</a>, <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=9877">Chrome</a>, <a href="https://support.apple.com/zh-cn/HT4070">Safari</a> (跳至CVE-2010-0051)部分 和 <a href="https://security.opera.com/">Opera</a>。<br/>
+<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a>嵌入图片。支持的图片格式包括PNG,JPEG,GIF,BMP,SVG,...<br/>
+<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio"><code>&lt;audio&gt;</code></a>嵌入多媒体资源。<br/>
+<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object"><code>&lt;object&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed"><code>&lt;embed&gt;</code></a> 和 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/applet"><code>&lt;applet&gt;</code></a> 的插件。<br/>
+<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@font-face">@font-face</a> 引入的字体。一些浏览器允许跨域字体（ cross-origin fonts），一些需要同源字体（same-origin fonts）。<br/>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/frame"><code>&lt;frame&gt;</code></a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe"><code>&lt;iframe&gt;</code></a> 载入的任何资源。站点可以使用X-Frame-Options消息头来阻止这种形式的跨域交互。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045490429.html">
+                
+                  <h1>enigmagroup入门挑战-基础1</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><a href="http://challenges.enigmagroup.org/basics/pre/1/">基础1题目地址</a><br/>
+1、右键查看源码<br/>
+2、ctrl+f查找passw<br/>
+3、注释里面说了：<code>&lt;!-- the first levels are easy, the password is 39f13b --&gt;</code></p>
 
                         
                       </div>
@@ -368,31 +347,31 @@ backuppc设定<br/>
 	      
 		      
 			      <li class="post">
+			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15505564665657.html">深入了解最近普遍存在的DNS劫持攻击事件</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489008835167.html">黑链</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15488284836388.html">90后空巢青年生活指南</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045487644.html">Atom设置和取消代理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045486850.html">BASIC INJECTION 基本注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491221.html">CRLF注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491124.html">FOEENSICS 101</a>
 			      </li>
 		     
 		  

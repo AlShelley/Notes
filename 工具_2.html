@@ -130,62 +130,22 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15484074464554.html">
+                <a class="clearlink" href="15483045490159.html">
                 
-                  <h1>Snipaste 无法在 Mac 上截图的解决办法</h1>
+                  <h1>v2ray使用方法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>MacOSX 版本：Mojave 10.14.2<br/>
-Snipaste 版本：1.16.2</p>
+                        	<p>编辑 /etc/v2ray/config.json 文件来配置你需要的代理方式；</p>
 
-<p>以下列出遇到部分问题：<br/>
-1、使用截图功能，手动画矩形框，但是选定框画完后松开触摸板，选定框自动消失，导致无法截图。（手动选定截图区域占截图使用时间99%）<br/>
-2、使用截图功能，程序自动识别截图区域，双击可以得到截图并且有箭头等选项，画一个箭头后，选定框自动消失，截图会带着箭头自动保存到图片目录。（这导致没法多画几个箭头，也没法另存为图片）</p>
+<p>运行 service v2ray start 来启动 V2Ray 进程；<br/>
+之后可以使用 service v2ray start|stop|status|reload|restart|force-reload 控制 V2Ray 的运行。</p>
 
-<h1 id="toc_0">解决办法</h1>
-
-<p>我后来在 <a href="https://github.com/Snipaste/feedback/issues/1012">https://github.com/Snipaste/feedback/issues/1012</a> 这里找到了答案。<br/>
-关闭欧路词典的划词翻译功能，即可正常使用截图。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/25 17:10 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15483045490138.html">
-                
-                  <h1>VMware14秘钥</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>CG54H-D8D0H-H8DHY-C6X7X-N2KG6<br/>
-ZC3WK-AFXEK-488JP-A7MQX-XL8YF<br/>
-AC5XK-0ZD4H-088HP-9NQZV-ZG2R4<br/>
-ZC5XK-A6E0M-080XQ-04ZZG-YF08D<br/>
-ZY5H0-D3Y8K-M89EZ-AYPEG-MYUA8<br/>
-FF590-2DX83-M81LZ-XDM7E-MKUT4</p>
+<p>v2ray官网：<br/>
+<a href="https://www.v2ray.com/chapter_00/install.html">https://www.v2ray.com/chapter_00/install.html</a><br/>
+v2ray一键安装：<br/>
+bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.direct/go.sh</a>)</p>
 
                         
                       </div>
@@ -211,45 +171,80 @@ FF590-2DX83-M81LZ-XDM7E-MKUT4</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045490117.html">
+                <a class="clearlink" href="15483045490178.html">
                 
-                  <h1>backup系统备份工具介绍</h1>
+                  <h1>nano常见设置，如语法高亮、启用行号、启用鼠标等</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>backup是一款强大的备份软件，用于系统备份、增量备份、远程备份，企业级。<br/>
-我还是当年使用debian时用过...这是以前的笔记，留一份在这好了。</p>
-</blockquote>
+                        	<p>下载nano<br/>
+linux根据包管理不同，使用不通的命令。<br/>
+macosx使用brew安装。</p>
 
-<p>软件安装（debian 9）<br/>
-<code>apt-get install backuppc</code><br/>
-然后会弹窗：<br/>
-backuppc设定<br/>
-管理web地址：<br/>
-<code>http://lonelyor/backuppc</code><br/>
-<code>user：backuppc</code><br/>
-<code>passwd：u6oN2KE1</code><br/>
-可以通过运行<code>htpasswd /etc/backuppc/htpasswd</code>来修改密码<br/>
-这些信息要记住！</p>
+<p>编辑（没有就创建）配置文件<br/>
+nano ～/.nanorc<br/>
+然后添加以下内容</p>
 
-<p>安装后：<br/>
-<code>Creating config file /etc/backuppc/config.pl with new version（可以暂时忽略）</code></p>
+<pre class="line-numbers"><code class="language-text"># 语法高亮
+include &quot;/usr/share/nano/*.nanorc&quot;
+</code></pre>
 
-<p>然后运行：<br/>
-<code>systemctl restart apache2</code><br/>
-<code>/etc/init.d/backuppc restart</code></p>
+<p>或者</p>
 
-<p>接着就打开浏览器访问：<br/>
-<code>http://lonelyor/backuppc</code><br/>
-就能看到web管理界面了。<br/>
-如果进不去可以打开隐身模式或者清除cookie再试。</p>
+<pre class="line-numbers"><code class="language-text"># 语法高亮
+include &quot;/usr/local/share/nano/*.nanorc&quot;
+</code></pre>
 
-<p>官方安装文档：<code>http://backuppc.sourceforge.net/BackupPC-4.1.3.html#Installing-BackupPC</code></p>
+<p>这里include哪一个主要取决于nanorc的具体位置。通常linux在share，macosx在local/share。<br/>
+其他内容如：</p>
 
-<p>参考文档：<br/>
-<code>http://server.zol.com.cn/513/5130348.html</code></p>
+<pre class="line-numbers"><code class="language-text"># 启用行号
+set linenumbers
+# 平滑滚动
+set smooth
+# 自动缩进
+set autoindent
+# tab为空格
+set tabstospaces
+# 启用鼠标
+set mouse
+</code></pre>
+
+<p>然后保存，重新打开终端，即可发现设置生效，以上方法适用于linux和macosx。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045490336.html">
+                
+                  <h1>Markdown基础语法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>占坑，内容以后写</p>
 
                         
                       </div>
@@ -355,31 +350,31 @@ backuppc设定<br/>
 	      
 		      
 			      <li class="post">
+			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15505564665657.html">深入了解最近普遍存在的DNS劫持攻击事件</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489008835167.html">黑链</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15488284836388.html">90后空巢青年生活指南</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045487644.html">Atom设置和取消代理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045486850.html">BASIC INJECTION 基本注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491221.html">CRLF注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491124.html">FOEENSICS 101</a>
 			      </li>
 		     
 		  

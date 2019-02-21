@@ -130,20 +130,86 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045490036.html">
+                <a class="clearlink" href="15483045491003.html">
                 
-                  <h1>msf安装与维护</h1>
+                  <h1>JavaScript基础</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><code>curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb &gt; msfinstall &amp;&amp; \<br/>
-  chmod 755 msfinstall &amp;&amp; \<br/>
-  ./msfinstall</code></p>
+                        	<p>JavaScript是一种脚本编程语言。<br/>
+JavaScript运行顺序是从上往下，因此要注意代码的顺序。</p>
 
-<p>上面是官方提供的一键安装脚本</p>
+<h2 id="toc_0">如何使用JavaScript</h2>
 
-<p>使用msfupdate可以进行更新</p>
+<p>内部JavaScript：在html页面中嵌入<code>&lt;script&gt;这里写js代码&lt;/script&gt;</code>即可插入js代码。<br/>
+外部JavaScript：<code>&lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;</code>可以调用html文件同级目录下的script.js文件。</p>
+
+<h2 id="toc_1">注释</h2>
+
+<p><code>// 这是单行注释</code><br/>
+<code>/* 这是多行注释 */</code></p>
+
+<h2 id="toc_2">变量</h2>
+
+<p>var用来定义变量</p>
+
+<h2 id="toc_3">函数</h2>
+
+<p>function funName(){<br/>
+    js代码<br/>
+}<br/>
+函数是可复用的代码块，可以一次编写反复使用。</p>
+
+<h2 id="toc_4">运算符</h2>
+
+<p><code>+</code>、<code>-</code>、<code>*</code>、<code>/</code> 分别是加减乘除<br/>
+<code>===</code>、<code>!==</code>、<code>&lt;</code>、<code>&gt;</code> 分别是等于、不等于、小于、大于<br/>
+<code>&amp;&amp;</code>、<code>||</code>、<code>!</code> 分别表示与、或、非</p>
+
+<h2 id="toc_5">条件语句</h2>
+
+<p>if(条件){<br/>
+    js代码<br/>
+} else {<br/>
+    js代码<br/>
+}</p>
+
+<h2 id="toc_6">事件</h2>
+
+<p>事件相关函数分为：事件监听器和事件处理器 </p>
+
+<h2 id="toc_7">循环</h2>
+
+<p>for(起式值；退出条件；增加器){<br/>
+    js代码<br/>
+}</p>
+
+<h2 id="toc_8">switch语句</h2>
+
+<p>switch - 他们以单个表达式/值作为输入，然后查看多个选项，直到找到与该值相匹配的选项，执行与之相关的代码。</p>
+
+<pre class="line-numbers"><code class="language-javascript">switch (expression) {
+  case choice1:
+    run this code
+    break;
+
+  case choice2:
+    run this code instead
+    break;
+    
+  // include as many cases as you like
+
+  default:
+    actually, just run this code
+}
+</code></pre>
+
+<h2 id="toc_9">写一个猜数字的小游戏</h2>
+
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/First_steps/A_first_splash#%E7%8C%9C%E6%95%B0%E5%AD%97%E6%B8%B8%E6%88%8F">猜数字游戏</a></p>
+
+<p>未完待续...</p>
 
                         
                       </div>
@@ -155,7 +221,7 @@
                     <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -169,47 +235,19 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045490178.html">
+                <a class="clearlink" href="15483045491124.html">
                 
-                  <h1>nano常见设置，如语法高亮、启用行号、启用鼠标等</h1>
+                  <h1>FOEENSICS 101</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>下载nano<br/>
-linux根据包管理不同，使用不通的命令。<br/>
-macosx使用brew安装。</p>
-
-<p>编辑（没有就创建）配置文件<br/>
-nano ～/.nanorc<br/>
-然后添加以下内容</p>
-
-<pre class="line-numbers"><code class="language-text"># 语法高亮
-include &quot;/usr/share/nano/*.nanorc&quot;
-</code></pre>
-
-<p>或者</p>
-
-<pre class="line-numbers"><code class="language-text"># 语法高亮
-include &quot;/usr/local/share/nano/*.nanorc&quot;
-</code></pre>
-
-<p>这里include哪一个主要取决于nanorc的具体位置。通常linux在share，macosx在local/share。<br/>
-其他内容如：</p>
-
-<pre class="line-numbers"><code class="language-text"># 启用行号
-set linenumbers
-# 平滑滚动
-set smooth
-# 自动缩进
-set autoindent
-# tab为空格
-set tabstospaces
-# 启用鼠标
-set mouse
-</code></pre>
-
-<p>然后保存，重新打开终端，即可发现设置生效，以上方法适用于linux和macosx。</p>
+                        	<p>题目：<a href="https://ctflearn.com/problems/96">https://ctflearn.com/problems/96</a><br/>
+<img src="http://images.lonelyor.org/ctflearn-96-1.png" alt="ctflearn-96-1"/><br/>
+访问域名，然后会下载一张图片。<br/>
+接下来我们使用十六进制编码器打开这张图片，会发现：<br/>
+<img src="http://images.lonelyor.org/ctflearn-96-2.png" alt="ctflearn-96-2"/><br/>
+标红部分即是flag。</p>
 
                         
                       </div>
@@ -221,7 +259,7 @@ set mouse
                     <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -235,55 +273,28 @@ set mouse
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045487959.html">
+                <a class="clearlink" href="15483045491162.html">
                 
-                  <h1>npm Cannot find module 'semver' --解决方案</h1>
+                  <h1>burpsuite设置上游代理</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p><a href="https://blog.csdn.net/hanshuonb/article/details/77969080">https://blog.csdn.net/hanshuonb/article/details/77969080</a></p>
+<p>burpsuite的使用技巧之一，设置上游代理。比如测试境外网站时可能需要[fanqiang]才能访问，此时这个技巧就能用得上了。</p>
 </blockquote>
 
-<p>度娘上面我没有找到相关的解决方法所以只能去Stack Overflow上寻找答案，找到的结果是这样的：</p>
+<p><img src="http://images.lonelyor.org/burp%E8%AE%BE%E7%BD%AE%E4%B8%8A%E6%B8%B8%E4%BB%A3%E7%90%8620180823161146.png" alt="burp设置上游代理20180823161146"/></p>
 
-<pre class="line-numbers"><code class="language-text">sudo rm -rf /usr/local/lib/node_modules
-sudo rm -rf ~/.npm
-brew uninstall --force node
-brew install node
-</code></pre>
+<p>1、在浏览器中设置burp代理以保证可以抓包<br/>
+2、开启上游代理<br/>
+3、在burp的图中所示位置设置上游代理</p>
 
-<p>上面命令的意思删除所有全局包和.npm文件夹，重新安装node。 <br/>
-这种方法我没试过，因为肯定有很多小伙伴安装了除npm之外的全局包比如express、webpack等等，如果不考虑清楚直接全删了的话。。。后果惨不忍睹。。。(ps:因为本人英语实在不好，所以经常直接傻瓜式粘命令，提醒小伙伴们最好粘命令之前去查查是什么意思，否则出了问题有可能都没法回退。。。)</p>
+<p>打完收工</p>
 
-<p>说了这么多，下面切入正题 <br/>
-首先需要知道为啥有报这个错，可以到全局的npm包看一下，路径是</p>
+<h2 id="toc_0">参考链接</h2>
 
-<p><code>/usr/local/lib/node_modules/npm</code><br/>
-进入npm的node_modules中的semver文件夹可以看到里面变成空的了！具体的原因不好意思我没有深究，但是我觉得一定和yarn是有关系的。不仅如此，你会看到其他的文件夹也基本都是变成空的了，这下咱们就知道为啥报semver这个module找不到了吧！</p>
-
-<p>网上还有解决方法是说用 <code>npm unintall npm -g</code> 删除npm包，实测不好使。。。npm所有的命令都不行了 uninstall肯定也不行了啊！！！</p>
-
-<h2 id="toc_0">我的解决方法：</h2>
-
-<p>1.先删除全局的npm包：也就是把刚才提到的<code>/usr/local/lib/node_modules/npm</code>，这个npm文件夹删除掉 <br/>
-2.回到<code>/usr/local/lib/node_modules</code>这个目录，从GitHub上重新clone下git包 <br/>
-终端:<br/>
-<code>git clone --recursive git://github.com/isaacs/npm.git</code><br/>
-这样新的npm包就回到了全局node_modules中 <br/>
-3.打开终端输入<br/>
-<code>npm -v</code><br/>
-看一下npm是否可以打印出版本号，如果可以，npm就可以正常使用啦！</p>
-
-<p>说白了就是：</p>
-
-<pre class="line-numbers"><code class="language-text">rm -rf /usr/local/lib/node_modules/npm
-cd /usr/local/lib/node_modules
-git clone --recursive git://github.com/isaacs/npm.git`
-</code></pre>
-
-<p>搞定</p>
+<p><a href="http://www.360zhijia.com/360anquanke/191737.html">http://www.360zhijia.com/360anquanke/191737.html</a></p>
 
                         
                       </div>
@@ -295,7 +306,7 @@ git clone --recursive git://github.com/isaacs/npm.git`
                     <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -389,31 +400,31 @@ git clone --recursive git://github.com/isaacs/npm.git`
 	      
 		      
 			      <li class="post">
+			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15505564665657.html">深入了解最近普遍存在的DNS劫持攻击事件</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489008835167.html">黑链</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15488284836388.html">90后空巢青年生活指南</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045487644.html">Atom设置和取消代理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045486850.html">BASIC INJECTION 基本注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491221.html">CRLF注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491124.html">FOEENSICS 101</a>
 			      </li>
 		     
 		  

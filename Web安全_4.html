@@ -130,22 +130,132 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045488017.html">
+                <a class="clearlink" href="15483045490884.html">
                 
-                  <h1>python弱口令脚本的一点备注</h1>
+                  <h1>burpsuite插件编写之官方代码示例解读</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>很久以前写的</p>
+<p>description: 分析burpsuite官方提供的示例代码，以此来学习插件编写。</p>
 </blockquote>
 
-<p>跑弱口令的脚本<br/>
-不要使用字典这种操作，这不利于跑大量数据的场景。<br/>
-应该制定规则去跑，比如：<br/>
-取出一个用户名，然后根据规则生成弱口令，然后再去匹配用户名对应的密码，匹配则是弱口令，不匹配则不是弱口令。<br/>
-这样可以后续变成一个服务，用户输入密码，触发了规则则告诉他密码是弱口令。</p>
+<h2 id="toc_0">HelloWorld</h2>
+
+<p>废话不多说，直接上代码！</p>
+
+<pre class="line-numbers"><code class="language-python">from burp import IBurpExtender
+from java.io import PrintWriter
+from java.lang import RuntimeException
+
+# 上面import的第一句是所有burp插件都必须有的
+# 下面开始创建一个burp插件的类来实现插件
+class BurpExtender(IBurpExtender):
+    def registerExtenderCallbacks(self, callbacks):
+        # 创建插件名
+        callbacks.setExtensionName(&quot;HelloWorld extension&quot;)
+        # 获取输出和错误流
+        stdout = PrintWriter(callbacks.getStdout(), True)
+        stderr = PrintWriter(callbacks.getStderr(), True)
+        # 在输出流和错误流中插入消息
+        stdout.println(&quot;Hello output&quot;)
+        stderr.println(&quot;Hello errors&quot;)
+        # 将消息插入burp的alert警报标签中
+        callbacks.issueAlert(&quot;Hello alerts&quot;)
+        # 抛出将出现在错误流中的异常
+        raise RuntimeException(&quot;Hello exception&quot;)
+</code></pre>
+
+<p>现在开始来说几个坑：<br/>
+1、插件最好尽量放在英文路径，不然可能会报错<br/>
+2、编写代码前指定编码(如：# -<em>- coding:utf8 -</em>-)<br/>
+3、raise RuntimeException(&quot;Hello exception&quot;) 这行代码我没看懂是要干嘛的，反正写了之后Errors就报错，不想看的话就注释掉好了。</p>
+
+<h2 id="toc_1">event_listeners 事件监听器</h2>
+
+<pre class="line-numbers"><code class="language-python">#!/usr/bin/python3
+# -*- coding:utf-8 -*-
+
+from burp import IBurpExtender
+from burp import IHttpListener
+from burp import IProxyListener
+from burp import IScannerListener
+from burp import IExtensionStateListener
+from java.io import PrintWriter
+
+class BurpExtender(IBurpExtender, IHttpListener, IProxyListener, IScannerListener, IExtensionStateListener):
+    def registerExtenderCallbacks(self, callbacks):
+        # 保持对回调对象的引用
+        self._callbacks = callbacks
+        # 创建插件名
+        callbacks.setExtensionName(&quot;Event Listeners&quot;)
+        # 获取输出流
+        self._stdout = PrintWriter(callbacks.getStdout(), True)
+        # 注册为http监听器
+        callbacks.registerHttpListener(self)
+        # 注册为proxy监听器
+        callbacks.registerProxyListener(self)
+        # 注册为scanner监听器
+        callbacks.registerScannerListener(self)
+        # 注册为扩展插件状态监听器
+        callbacks.registerExtensionStateListener(self)
+    # 下面几个函数各自实现监听
+    def processHttpMessage(self, toolFlag, messageIsRequest, messageInfo):
+        self._stdout.println(
+            (&quot;HTTP request to &quot; if messageIsRequest else &quot;HTTP response from&quot;) +
+            messageInfo.getHttpService().toString() +
+            &quot;[&quot; + self._callbacks.getToolName(toolFlag) + &quot;]&quot;
+        )
+
+    def processProxyMessage(self, messageIsRequest, message):
+        self._stdout.println(
+            (&quot;Proxy request to &quot; if messageIsRequest else &quot;Proxy response from&quot;) +
+            message.getMessageInfo.getHTTPService().toString()
+        )
+
+    def newScanIssue(self, issue):
+        self._stdout.prinln(&quot;New scan issue &quot; + issue.getIssueName())
+
+    def extensionUnloaded(self):
+        self._stdout.println(&quot;Extension was unloaded&quot;)
+</code></pre>
+
+<p>我是没搞懂这个插件做了什么，诶无所谓，也就是多敲敲代码，熟悉熟悉感觉。</p>
+
+<h2 id="toc_2">traffic_redirector 流量重定向</h2>
+
+<pre class="line-numbers"><code class="language-python">#!/usr/bin/python3
+# -*- coding:utf-8 -*-
+
+from burp import IBurpExtender
+from burp import IHttpListener
+
+HOST_FROM = &quot;www.baidu.com&quot;
+HOST_TO = &quot;www.zhihu.com&quot;
+
+class BurpExtender(IBurpExtender, IHttpListener):
+    def registerExtenderCallbacks(self, callbacks):
+        # 获取扩展helpers对象
+        self._helpers = callbacks.getHelpers()
+        # 设置扩展名
+        callbacks.setExtensionName(&quot;Traffic redirector&quot;)
+        # 将自己注册为HTTP侦听器
+        callbacks.registerHttpListener(self)
+
+    def processHttpMessage(self, toolsFlag, messageIsRequest, messageInfo):
+        # 只获取请求
+        if not messageIsRequest:
+            return
+        # 获取http服务的请求
+        httpService = messageInfo.getHttpService()
+        # 如果主机是HOST_FROM则将它改成HOST_TO
+        if (HOST_FROM == httpService.getHost()):
+            messageInfo.setHttpService(self._helpers.buildHttpService(HOST_TO,
+                httpService.getPort(), httpService.getProtocol()))
+</code></pre>
+
+<p>这个插件简单来说就是，把请求中的host部分修改掉。比如上述代码会监听所有host为百度的请求，一旦出现，就会把host改成知乎。</p>
 
                         
                       </div>
@@ -171,133 +281,149 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045490829.html">
+                <a class="clearlink" href="15483045490948.html">
                 
-                  <h1>xssing.org跨站的艺术</h1>
+                  <h1>Web安全工程师求职清单</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>这个网站太棒了，强烈推荐阅读<br/>
-<a href="https://xssing.org/%E9%A6%96%E9%A1%B5">xssing.org跨站的艺术</a>若不能直接访问请使用科学上网工具。</p>
+<p>一年前写的一点玩意，没什么卵用</p>
 </blockquote>
 
-<h1 id="toc_0">什么是XSS？</h1>
+<h2 id="toc_0">安全资讯</h2>
 
-<h1 id="toc_1">概述</h1>
+<p><a href="http://www.freebuf.com/">freebuf</a></p>
 
-<p>XSS全称跨站脚本(Cross Site Scripting)，为不和层叠样式表(Cascading Style Sheets, CSS)的缩写混淆，故缩写为XSS，比较合适的方式应该叫做跨站脚本攻击。跨站点脚本（XSS）攻击是一种注射型攻击，攻击者在可信的网页中嵌入恶意代码，用户访问可信网页时触发XSS而被攻击.</p>
+<p><a href="https://www.t00ls.net/">tools</a></p>
 
-<p>攻击者通过Web应用程序发送恶意代码，一般以浏览器脚本的形式发送给不同的终端用户。当一个Web程序的用户输入点没有进行校验和编码，将很容易的导致XSS。</p>
+<p><a href="https://www.secpulse.com/">安全脉搏</a></p>
 
-<p>攻击者可以使用XSS发送恶意脚本给没有任何防备的用户。终端用户浏览器无法知道不应该信任叫嗯,而是执行了该脚本。因为它认为脚本来自可信的源,恶意脚本可以访问任何Cookies,会话令牌,或其浏览器和网站保留使用的他敏感信息。这些脚本甚至可以重写HTML页面的内容。更多的内容可以阅读本站其他内容。</p>
+<p><a href="https://packetstormsecurity.com/">数据包风暴</a></p>
 
-<h1 id="toc_2">详细介绍</h1>
+<p><a href="http://www.4hou.com/">嘶吼</a></p>
 
-<p>跨站脚本攻击在以下情况出现:</p>
+<p><a href="https://www.aqniu.com/">安全牛</a></p>
 
-<ol>
-<li>Web应用程序通过不可信的来源进行数据输入，最常见是的Web请求(输入，比如如GET访问某Web应用的url，通过参数提交数据,比如提交input=<script>alert(0);&lt;/ script&gt;)。</li>
-<li>恶意数据包含在动态内容内在没有进行校验的情况下发送给用户(输出，比如提交的input的值在没有校验的情况下，用户访问页面，浏览器直接渲染了input的值执行了JS，导致弹窗)。</li>
-</ol>
+<p><a href="https://www.anquanke.com/">安全客</a></p>
 
-<p>发送到Web浏览器的恶意内容通常是以JavaScript代码的形式，当然也可以包括HTML，Flash或任何浏览器可以执行的其他类型的代码。基于XSS的攻击种类几乎是无限的，但它们通常包括发送隐私数据给攻击者，如cookies或其他会话信息；重定向受害者访问攻击者控制的页面；或者利用网站漏洞在用户机器上执行其他恶意操作。</p>
+<p><a href="https://www.sec-wiki.com/">sec-wiki</a></p>
 
-<h2 id="toc_3">存储型和反射型XSS攻击</h2>
+<p><a href="http://www.secdoctor.com/">中国信息安全博士网</a></p>
 
-<p>XSS攻击通常可以分为两类：存储型和反射型（也称持久性和非持久性）。还有第三种相对少为认知的XSS攻击类型，叫做DOM XSS ,具体可以点击这里阅读。</p>
+<h2 id="toc_1">威胁情报</h2>
 
-<p>同时最近还有一种XSS攻击类型被提出来，突变XSS，不过个人觉得突变XSS不合适作为第四种XSS攻击类型，因为这种突变XSS可以出现在以上三种类型的XSS里，不过比较特殊，我们同样也在这里进行单独介绍（Fooying注）。</p>
+<p>暂略</p>
 
-<h2 id="toc_4">存储型XSS攻击</h2>
+<h2 id="toc_2">安全工具</h2>
 
-<p>存储型攻击是指那些被注入脚本将被永久保存在目标服务器上，比如在数据库中，在消息板块，访客日志，注释字段等。受害人请求存储信息时，将再次检索到恶意脚本(比如，在留言板提交XSS攻击代码，会存储到数据库，当再次访问留言板会请求数据库中的留言信息，就会连同XSS攻击代码一起检索出来在页面展示，使得受害者再次被攻击)。存储型XSS有时也被称为持久性或Type-I XSS。</p>
+<p><a href="https://www.ctftools.com/down/">最强安全工具集</a></p>
 
-<h2 id="toc_5">反射型XSS攻击</h2>
+<ul>
+<li>burpsuite(抓包)</li>
+<li>sqlmap(sql注入)</li>
+<li>whireshark(网络抓包)</li>
+<li>中国菜刀(webshell、一句话后门)</li>
+<li>HxD(十六进制编辑器和磁盘编辑器)</li>
+<li>nmap(扫描)</li>
+<li>hydra(爆破)</li>
+<li>cain(爆破)</li>
+<li>metasploit(漏洞利用)</li>
+<li>mitmproxy(http/https代理)</li>
+<li>commix(命令注入)</li>
+<li>httrack(网站克隆)</li>
+<li>netcat(瑞士军刀-网络调试和探测工具)</li>
+<li>scapy(python的交互式数据包操作程序和库)</li>
+<li>empire(域渗透)</li>
+</ul>
 
-<p>反射型攻击是指那些被注入脚本反射出Web服务器，比如在一个错误信息、搜索结果，或者其他任何的包括一些或所有的输入作为请求的一部分发送到服务器的响应。反射型攻击是通过其他途径送达到受害者，比如一封邮件的内容，或者一些其他的网站。当用户被诱骗点击一个恶意链接，提交一个特制的表单，甚至只是浏览到恶意网站，被注入的脚本行进到有漏洞的网站，将攻击反射回用户浏览器。然后浏览器执行代码，因为它来自于一个“可信”的服务器。反射型XSS有时也被称为非持久性或Type-II XSS.</p>
+<h2 id="toc_3">靶机环境</h2>
 
-<h2 id="toc_6">其他类型的XSS漏洞的</h2>
+<h2 id="toc_4">安全知识库</h2>
 
-<p>除了反射型和存储型XSS,其他类型的XSS，Amit Klein在2005年发现DOM XSS。除此之外，推荐关于XSS分类描述的文章：XSS分类，它涵盖了所有这些方面的XSS，组成了矩阵，存储vs反射型XSS，以及服务端和客户端XSS，DOM XSS是客户端XSS。</p>
+<p><a href="https://www.anquanquan.info/">安全圈</a></p>
 
-<h2 id="toc_7">XSS攻击结果</h2>
+<p><a href="http://wiki.open.qq.com/wiki/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8%E8%A7%84%E8%8C%83">腾讯安全开发规范</a></p>
 
-<p>无论是存储型还是反射型（或DOM XSS）的攻击结果都是相同的。不同的是Payload如何有效的到达服务器。不要错误的认为，一个“read only”或“brochureware”网站不容易受到严重的反射型XSS攻击。XSS可以引起终端用户的各种问题，包括不同的严重成都。最严重的XSS攻击涉及用户的会话cookie的披露，使攻击者劫持用户的会话和接管帐户。其他破坏性攻击包括终端用户的文件披露，特洛伊木马程序的安装，将用户重定向到其他网页或网站，或修改内容介绍。XSS漏洞允许攻击者修改新闻稿或新闻项目可以影响一个公司的股票价格或减少消费者的信心。一个药品网站XSS漏洞可能允许攻击者修改剂量信息导致过量。更多关于这些类型的攻击请看内容欺骗。</p>
+<p><a href="https://highon.coffee/blog/cheat-sheet/">安全研究备忘单</a></p>
 
-<h2 id="toc_8">如何确定存在漏洞</h2>
+<p><a href="https://portswigger.net/kb/issues">Burp漏洞定义</a></p>
 
-<p>XSS漏洞比较难以识别和从Web应用程序中删除。发现漏洞的最佳方法是进行的代码的安全审计，搜索一个HTTP请求中可能进入HTML输出的所有输入点。值得注意的是，各种不同的HTML标签可以用来发送一个恶意的JavaScript。Nessus, Nikto以及其他的一些扫描器，可以用来扫描检测XSS，不过效果有限。如果一个网站的某部分存在漏洞，那么很有可能还有其他的问题。</p>
+<p><a href="https://www.offensive-security.com/metasploit-unleashed/">MSF框架终极指南</a></p>
 
-<h2 id="toc_9">如何防范XSS</h2>
+<p><a href="https://www.owasp.org/index.php/Main_Page">OWASP</a></p>
 
-<p>XSS防御的相关内容位于OWASP XSS防范备忘录 .</p>
+<p><a href="http://vipread.com/index">vipread知识库</a></p>
 
-<p>另外，最主要的是关闭掉你所有Web服务对HTTP回调的支持。攻击者可以窃取cookie数据通过JavaScript，即使document.cookie被禁用或不支持客户端。用户可以在论坛发布一个恶意脚本，当其他人点击链接，异步回调请求就会被触发，用来收集来自服务器的用户的cookie信息，然后发送到另一个接收地址，这样攻击者就可以进行一个会话劫持攻击。关闭掉你所有Web服务对HTTP回调的支持是很容易的。</p>
+<p><a href="https://kb.help.rapid7.com/docs/">Rapid7知识库</a></p>
 
-<p>OWASP ESAPI project已经开发了一套可重用的安全组件。包含多种编程语言，包括验证和转义来防止参数篡改和XSS攻击注射。此外，OWASP WebGoat Project训练应用，有跨站点脚本和数据编码的训练经验。</p>
+<p><a href="https://kernelnewbies.org/">linux内核研究</a></p>
 
-<h2 id="toc_10">XSS语句</h2>
+<p><a href="http://www.loner.fm/bugs/">乌云漏洞</a></p>
 
-<p><strong>属性中使用脚本的XSS</strong><br/>
-XSS攻击可能在非<script></script> 标签中发生. 其他标签也可以做同样事，比如:</p>
+<p><a href="https://wooyun.js.org/">乌云文章</a></p>
 
-<p><code>&lt;body onload=alert(&#39;test1&#39;)&gt;</code><br/>
-或其他属性，如:onmouseover,onerror.onmouseover</p>
+<p><a href="http://www.office-cn.net/t/api/index.html?web.htm">WindowsAPI参考手册</a></p>
 
-<p><code>&lt;b onmouseover=alert(&#39;Wufff!&#39;)&gt;click me!&lt;/b&gt;</code><br/>
-onerror</p>
+<p><a href="https://support.portswigger.net/customer/portal/articles/2326039-the-burp-methodology">Burp方法论</a></p>
 
-<p><code>&lt;img src=&quot;http://url.to.file.which/not.exist&quot; onerror=alert(document.cookie);&gt;</code></p>
+<p><a href="https://ctf-wiki.github.io/ctf-wiki/">CTF-Wiki</a></p>
 
-<p><strong>利用XSS脚本通过编码的URI方案</strong><br/>
-如果我们需要绕过Web应用过滤器，我们可以尝试编码字符串，比如：a=A (UTF-8),在img标签中使用：</p>
+<p><a href="https://github.com/ctfs/">CTFs</a></p>
 
-<p><code>&lt;IMG SRC=jAvascript:alert(&#39;test2&#39;)&gt;</code><br/>
-有许多不同的UTF-8编码符号可以给我们更多的可能性。</p>
+<p><a href="https://ctftime.org">ctftime</a></p>
 
-<p><strong>XSS利用代码的编码</strong><br/>
-在META标签，我们可以对我们的脚本进行base64编码，这样就不用输入alert()字符。这个方法的更多信息参考RFC 2397</p>
+<p><a href="https://www.codesec.net/">代码安全</a></p>
 
-<p><code>&lt;META HTTP-EQUIV=&quot;refresh&quot; <br/>
-CONTENT=&quot;0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgndGVzdDMnKTwvc2NyaXB0Pg&quot;&gt;</code></p>
+<p><a href="https://silic.wiki/doku.php">习科小黑板</a></p>
 
-<p>这些以及其他的例子可以在OWASP XSS Filter Evasion Cheat Sheet查看。这是一个真正的备用XSS攻击代码的百科</p>
+<p><a href="https://bbs.safewiki.org/portal.php">安全文库</a></p>
 
-<h1 id="toc_11">例子</h1>
+<p><a href="http://webscan.360.cn/vul">360网站常见漏洞</a></p>
 
-<p>跨站点脚本攻击可能发生在任何地方，可能是恶意用户被允许发送非规范内容到一个可信的网站给其他合法用户。最常见的例子发生在网站公告板，提供基于Web的邮件列表的功能</p>
+<h2 id="toc_5">漏洞平台</h2>
 
-<h2 id="toc_12">例子 1</h2>
+<p><a href="https://butian.360.cn/">补天</a></p>
 
-<p>The following JSP code segment reads an employee ID, eid, from an HTTP request and displays it to the user. 下面的JSP代码块从一个HTTP请求读取employee ID, eid，并展示给用户。</p>
+<p><a href="https://www.vulbox.com/">漏洞盒子</a></p>
 
-<pre class="line-numbers"><code class="language-text">    &lt;% String eid = request.getParameter(&quot;eid&quot;); %&gt; 
-    ... 
-    Employee ID: &lt;%= eid %&gt;
-</code></pre>
+<p><a href="https://www.bugbank.cn/">漏洞银行</a></p>
 
-<p>如果eid仅包含标准字母数字文本，则此示例中的代码可正常运行。如果eid具有包含元字符或源代码的值，则代码将在Web浏览器显示HTTP响应时执行。</p>
+<p><a href="http://www.cnvd.org.cn/">CNVD国家信息安全漏洞共享平台</a></p>
 
-<p>最初，这似乎不是一个漏洞。毕竟，为什么有人会输入导致恶意代码在自己的计算机上运行的URL？真正的危险是攻击者会创建恶意URL，然后使用电子邮件或社交工程技巧诱使受害者访问URL的链接。当受害者点击该链接时，他们会无意中通过易受攻击的Web应用程序将恶意内容反映回自己的计算机。这种利用易受攻击的Web应用程序的机制称为反射型XSS。</p>
+<p><a href="https://src.edu-info.edu.cn/">教育行业漏洞报告平台</a></p>
 
-<h2 id="toc_13">例子 2</h2>
+<p><a href="https://www.seebug.org">Seebug</a></p>
 
-<p>The following JSP code segment queries a database for an employee with a given ID and prints the corresponding employee&#39;s name.</p>
+<p><a href="http://0xsafe.org/vuldb.html">Vuldbs漏洞平台</a></p>
 
-<pre class="line-numbers"><code class="language-jsp">    &lt;%...
-     Statement stmt = conn.createStatement(); 
-     ResultSet rs = stmt.executeQuery(&quot;select * from emp where id=&quot;+eid); 
-     if (rs != null) { 
-      rs.next(); 
-      String name = rs.getString(&quot;name&quot;); 
-    %&gt; 
-    Employee Name: &lt;%= name %&gt;
-```
+<h2 id="toc_6">技能要求</h2>
 
-以上，是首页的部分内容，首页还有很多的参考链接，这些链接都非常有价值，可是不好copy，所以请读者自行前往原网站欣赏。
-</code></pre>
+<ul>
+<li>不同场景下的渗透测试流程、方法</li>
+<li>常见漏洞的攻击方法和防御方法</li>
+<li>代码级白盒测试能力</li>
+<li>owasp_top10概念、原理、测试方法、防御方法</li>
+<li>主流防火墙、IDS、IPS、漏洞扫描工具的安装、使用方法</li>
+<li>熟悉python、php、javascript、c、c++等语言的一种或多种</li>
+<li>cissp之类的证书或ctf解题能力是加分项</li>
+<li>各种靶机环境搭建</li>
+<li>安全分析报告的编写</li>
+<li>对业务快速熟悉的能力（业务安全重点、应用范围划分、业务安全基线）</li>
+<li>spring、struts、hibernate框架安全相关</li>
+<li>web组件加固、服务器加固、数据库加固</li>
+<li>域渗透、dns、arp等内网渗透知识</li>
+<li>各类提权如系统提权、数据库提权等</li>
+<li>风险评估、等级保护、安全体系规划、安全体系建设。包括信息资产管理、安全威胁和风险评估、安全解决方案制定、信息安全体系实施</li>
+<li>Nginx、Apache、Tomcat等安全配置基线</li>
+<li>各类安全测试标准(ISSAF、OSSTMM、OWASP、微软SDLC、OPENSAMM、BSIMM、SSECMM)</li>
+<li>网络日志分析、攻击流量检测</li>
+<li>hadoop、openstack、sdn云安全</li>
+<li>mongodb、redis、HBASE等nosql安全</li>
+<li>burpsuite插件编写</li>
+<li>python脚本开发能力、shell脚本开发能力</li>
+</ul>
 
                         
                       </div>
@@ -323,183 +449,66 @@ CONTENT=&quot;0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgndGVzdDMnKTwvc2NyaX
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045487066.html">
+                <a class="clearlink" href="15483045490967.html">
                 
-                  <h1>xss、csrf、sql注入快速检测方法</h1>
+                  <h1>hackthebox邀请码</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">CSRF跨站请求伪造</h2>
+                        	<blockquote>
+<p>不打算好好玩的麻烦不要瞎注册，大量的垃圾账号只会污染整个生态环境。</p>
+</blockquote>
 
-<ul>
-<li>原理<br/>
-攻击者在受害者不知情的情况下，以受害者的名义伪造请求发送给受攻击的站点，从而在未授权的情况下执行在权限保护之下的操作。<br/>
-CSRF攻击的对象是那些可以直接产生数据改变的服务，而对于读取数据的服务，则不需要进行 CSRF 的保护。<br/></li>
-</ul>
+<p>进入注册页面，观察页面js文件会找到以下内容：</p>
 
-<hr/>
+<pre class="line-numbers"><code class="language-javascript">eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!&#39;&#39;.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return&#39;\\w+&#39;};c=1};while(c--){if(k[c]){p=p.replace(new RegExp(&#39;\\b&#39;+e(c)+&#39;\\b&#39;,&#39;g&#39;),k[c])}}return p}(&#39;1 i(4){h 8={&quot;4&quot;:4};$.9({a:&quot;7&quot;,5:&quot;6&quot;,g:8,b:\&#39;/d/e/n\&#39;,c:1(0){3.2(0)},f:1(0){3.2(0)}})}1 j(){$.9({a:&quot;7&quot;,5:&quot;6&quot;,b:\&#39;/d/e/k/l/m\&#39;,c:1(0){3.2(0)},f:1(0){3.2(0)}})}&#39;,24,24,&#39;response|function|log|console|code|dataType|json|POST|formData|ajax|type|url|success|api|invite|error|data|var|verifyInviteCode|makeInviteCode|how|to|generate|verify&#39;.split(&#39;|&#39;),0,{}))
+</code></pre>
 
-<ul>
-<li>检测方法<br/>
-1.查看重要操作接口提交的请求中是否包含 csrf_token<br/>
-2.更改和删除 csrf_token 后提交表单，查看请求是否能被正确响应。<br/></li>
-</ul>
+<p>1、然后把这段代码放到 <a href="http://jsbeautifier.org/">http://jsbeautifier.org/</a> 进行美化，得出：<br/>
+2、</p>
 
-<hr/>
+<pre class="line-numbers"><code class="language-javascript">function verifyInviteCode(code) {
+    var formData = {
+        &quot;code&quot;: code
+    };
+    $.ajax({
+        type: &quot;POST&quot;,
+        dataType: &quot;json&quot;,
+        data: formData,
+        url: &#39;/api/invite/verify&#39;,
+        success: function(response) {
+            console.log(response)
+        },
+        error: function(response) {
+            console.log(response)
+        }
+    })
+}
 
-<ul>
-<li>修复方案<br/>
-1.对涉及数据<strong>增、删、改</strong>操作提交的表单中添加csrf_token，token 参数应校验一次后失效。<br/>
-2.最好是在容器或框架上<strong>全局</strong>启用 csrf_token。(很多框架自带的解决办法容易遗漏一次失效的问题)<br/>
-3.token 应有一定的<strong>时效性</strong>，建议为30分钟，过期需失效（即：单页面停留30分钟后，用户提交请求需提示“页面过期，请刷新页面后再次提交”）<br/></li>
-</ul>
+function makeInviteCode() {
+    $.ajax({
+        type: &quot;POST&quot;,
+        dataType: &quot;json&quot;,
+        url: &#39;/api/invite/how/to/generate&#39;,
+        success: function(response) {
+            console.log(response)
+        },
+        error: function(response) {
+            console.log(response)
+        }
+    })
+}
+</code></pre>
 
-<hr/>
+<p>可以看出上述代码是让我们访问：<a href="https://www.hackthebox.eu/api/invite/generate">https://www.hackthebox.eu/api/invite/generate</a><br/>
+然后修改请求方式为post<br/>
+于是就得到了：</p>
 
-<ul>
-<li>参考<br/>
-<a href="https://www.owasp.org/index.php/Testing_for_CSRF_(OTG-SESS-005)">CSRF测试</a><br/>
-<a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">跨站请求伪造（CSRF）</a><br/>
-<a href="https://www.ibm.com/developerworks/cn/web/1102_niugang_csrf/">CSRF 攻击的应对之道</a><br/></li>
-</ul>
+<pre class="line-numbers"><code class="language-javascript">{&quot;success&quot;:1,&quot;data&quot;:{&quot;code&quot;:&quot;VlJQS1QtQUNXRUstT0tYREwtQ0lZQVUtS0NZSlU=&quot;,&quot;format&quot;:&quot;encoded&quot;},&quot;0&quot;:200}
+</code></pre>
 
-<h2 id="toc_1">XSS跨站脚本攻击</h2>
-
-<h3 id="toc_2">反射型</h3>
-
-<ul>
-<li>原理<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>检测方法<br/>
-<strong>检测场景</strong>：任何有输入输出地方......<br/>
-1.使用通用的web扫描器一般的都能发掘潜在的反射型XSS漏洞。<br/>
-2.手工在一些输入框中或者post参数中加入拼凑过的JS代码，根据返回的页面源码中是否成功嵌入JS代码来判断XSS是否存在。<br/>
-3.如果注入的代码经过后端处理后，永久性的嵌入到了页面当中，则该XSS为存储型的，反射型的XSS一般依赖于该次请求，且同时只能被用户自己所看到。<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>修复方案<br/>
-1.输出时统一使用 htmlEscape（）转义用户输入的数据，将html、js中涉及到的关键字符进行html编码处理后再输出到页面上。<br/>
-2.如果存在用户编写文章等类似用户可以自定义页面样式的功能，则限制用户输入，采用严格的白名单来过滤用户的输入，这种过滤应在后端应实现。(很多开源的第三方富文本编辑器，部分编辑器仅在JS端进行过滤，而不在后端进行关键字过滤)。<br/></li>
-</ul>
-
-<hr/>
-
-<h3 id="toc_3">存储型</h3>
-
-<ul>
-<li>原理<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>检测方法<br/>
-<strong>检测场景</strong>：存在富文本编辑器的地方；用户的输入信息会作为固定的值回显到页面中；后台管理应用中维护用户输入的相关信息。<br/>
-1.手工在一些输入框中或者post参数中加入污染的JS代码，根据返回的页面源码中是否成功嵌入JS代码来判断XSS是否存在(注入前端转义的情况)。<br/>
-2.如果注入的代码经过后端处理后，永久性的嵌入到了页面当中，则该XSS为存储型的。<br/>
-3.如果尝试注入的代码在页面中均被html编码，则再考虑其数据的流转会不会在后台其他应用中处理这些输入数据，如果有，对应的后台应用是否也做了完善的过滤机制。<br/>
-4.可远程搭建XSS检测平台，如果有XSS测试代码被触发，则自动发起链接到该平台上，这样相对来说可以测试那些未知的数据流向是否造成问题。<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>修复方案<br/>
-1.输出时统一使用 htmlEscape（）转义用户输入的数据，将html、js中涉及到的关键字符进行html编码处理后再输出到页面上。<br/>
-2.如果存在用户编写文章等类似用户可以自定义页面样式的功能，则限制用户输入，采用严格的白名单来过滤用户的输入，这种过滤应在后端应实现。(很多开源的第三方富文本编辑器，部分编辑器仅在JS端进行过滤，而不在后端进行关键字过滤)。<br/></li>
-</ul>
-
-<hr/>
-
-<h3 id="toc_4">基于DOM型</h3>
-
-<ul>
-<li>原理<br/></li>
-</ul>
-
-<hr/>
-
-<p>没啥可说的，可以当成是特殊的反射型。</p>
-
-<ul>
-<li>检测方法<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>修复方案<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>参考<br/>
-<a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">XSS跨站脚本</a></li>
-</ul>
-
-<h2 id="toc_5">SQL_Inject</h2>
-
-<ul>
-<li>原理<br/></li>
-</ul>
-
-<hr/>
-
-<p>开发人员使用直接拼接 sql 的方法来访问数据库，导致攻击者能通过特殊构造的语句控制代码逻辑。典型的代码与数据没有分离导致的安全问题之一。</p>
-
-<ul>
-<li>检测方法<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>常规方法<br/>
-<code>
-1 ，新建一个1 .txt文件，burp抓包将包含关键参数的请求存入。<br/>
-2 ，使用sqlmap 进行扫描（python sqlmap [options] [file path]）<br/>
-3、等待结果输出
-</code></li>
-<li>另一种常规方法<br/>
-<code>
-使用burp插件SQLiPy<br/>
-方案一（通用）：将sqlapi地址配置成 192.168.2.22 2222<br/>
-方案二：使用sqlipy生成测试语句，然后添加 -p 参数，指定注入参数，然后在 shell 里面运行 sqlmap。<br/>
-一个指定参数的SqlMap示例语句：    <br/>
-sqlmap -u “ http://xxxxxx.com:80/x/xx?x_id=1507 ” --method = “GET”-- cookie = “SESSIONID = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;<br/>
---user-agent= &quot;Mozilla / 5.0（X11; Linux_x86_64; RV：60.0）/ 20100101火狐/ 60.0&quot;  --delay=0 --timeout=30 --retries=0 --dbms=&quot;MySQL&quot;  --os=Linux   <br/>
---level=3 --risk=3 --threads=2 --time-sec=10 -b --batch --answers=&quot;crack=N,dict = N&quot;  -p &quot;zone_id&quot; --tables           
-</code>
-我们在跑注入的时候需要重点设置的参数：<br/>
--risk=3<br/>
--level=3<br/>
---threads=2<br/>
---dbms和–os去问开发或者测试<br/>
--p 指定阐述减少服务器压力</li>
-<li>不太常规的方法<br/>
-1、写一个web界面调用sqlmapapi<br/>
-2、直接找开发拉代码过来进行审计</li>
-<li>修复方案<br/></li>
-</ul>
-
-<hr/>
-
-<p>1、使用安全的API ，完全避免使用解释器，或提供参数化界面的接口，或迁移到ORM 或实体框架(通常开发框架里会自带访问sql的方法来预防注入)。<br/><br/>
-2、做参数绑定，预编译查询。</p>
-
-<ul>
-<li>参考<br/>
-<a href="https://www.owasp.org/index.php/SQL_Injection">SQL注入</a></li>
-</ul>
+<p>将code进行base64解码，就得到了邀请码。</p>
 
                         
                       </div>
@@ -605,31 +614,31 @@ sqlmap -u “ http://xxxxxx.com:80/x/xx?x_id=1507 ” --method = “GET”-- coo
 	      
 		      
 			      <li class="post">
+			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15505564665657.html">深入了解最近普遍存在的DNS劫持攻击事件</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489008835167.html">黑链</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15488284836388.html">90后空巢青年生活指南</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045487644.html">Atom设置和取消代理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045486850.html">BASIC INJECTION 基本注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491221.html">CRLF注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491124.html">FOEENSICS 101</a>
 			      </li>
 		     
 		  

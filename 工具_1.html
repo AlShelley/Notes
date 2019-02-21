@@ -130,14 +130,46 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045490336.html">
+                <a class="clearlink" href="15483045490098.html">
                 
-                  <h1>Markdown基础语法</h1>
+                  <h1>fluxgui安装与卸载</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>占坑，内容以后写</p>
+                        	<blockquote>
+<p>很久以前的笔记了</p>
+</blockquote>
+
+<pre class="line-numbers"><code class="language-text">Ubuntu/Debian Manual Install
+# Install dependencies
+sudo apt-get install git python-appindicator python-xdg python-pexpect python-gconf python-gtk2 python-glade2 libxxf86vm1
+
+# Download fluxgui
+cd /tmp
+git clone &quot;https://github.com/xflux-gui/fluxgui.git&quot;
+cd fluxgui
+python download-xflux.py
+
+# EITHER install globally
+sudo python setup.py install
+# EXCLUSIVE OR, install in your home directory. The binary installs
+# into ~/.local/bin, so be sure to add that to your PATH if installing locally.
+python setup.py install --user
+
+# Run flux
+fluxgui
+Ubuntu/Debian Manual Uninstall
+If you manually installed instead of using the PPA, you can uninstall by making setup.py tell you where it installed files and then removing the installed files.
+
+# EITHER uninstall globally
+sudo python setup.py install --record installed.txt
+sudo xargs rm -vr &lt; installed.txt
+
+# EXCLUSIVE OR uinstall in your home directory
+python setup.py install --user --record installed.txt
+xargs rm -vr &lt; installed.txt
+</code></pre>
 
                         
                       </div>
@@ -163,17 +195,45 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045490562.html">
+                <a class="clearlink" href="15483045490117.html">
                 
-                  <h1>OneDrive映射到本地（像访问本地磁盘一样访问网盘）</h1>
+                  <h1>backup系统备份工具介绍</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>参考以下链接即可：<br/>
-<a href="http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc">http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc</a></p>
+                        	<blockquote>
+<p>backup是一款强大的备份软件，用于系统备份、增量备份、远程备份，企业级。<br/>
+我还是当年使用debian时用过...这是以前的笔记，留一份在这好了。</p>
+</blockquote>
 
-<p>举一反三，webdav、nfs、samba等都可以使用这种方式挂载，来方便访问。</p>
+<p>软件安装（debian 9）<br/>
+<code>apt-get install backuppc</code><br/>
+然后会弹窗：<br/>
+backuppc设定<br/>
+管理web地址：<br/>
+<code>http://lonelyor/backuppc</code><br/>
+<code>user：backuppc</code><br/>
+<code>passwd：u6oN2KE1</code><br/>
+可以通过运行<code>htpasswd /etc/backuppc/htpasswd</code>来修改密码<br/>
+这些信息要记住！</p>
+
+<p>安装后：<br/>
+<code>Creating config file /etc/backuppc/config.pl with new version（可以暂时忽略）</code></p>
+
+<p>然后运行：<br/>
+<code>systemctl restart apache2</code><br/>
+<code>/etc/init.d/backuppc restart</code></p>
+
+<p>接着就打开浏览器访问：<br/>
+<code>http://lonelyor/backuppc</code><br/>
+就能看到web管理界面了。<br/>
+如果进不去可以打开隐身模式或者清除cookie再试。</p>
+
+<p>官方安装文档：<code>http://backuppc.sourceforge.net/BackupPC-4.1.3.html#Installing-BackupPC</code></p>
+
+<p>参考文档：<br/>
+<code>http://server.zol.com.cn/513/5130348.html</code></p>
 
                         
                       </div>
@@ -199,25 +259,19 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045487979.html">
+                <a class="clearlink" href="15483045490138.html">
                 
-                  <h1>Pycharm编程遇到的技巧</h1>
+                  <h1>VMware14秘钥</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">pycharm技巧</h2>
-
-<p>ctrl+z 撤回<br/>
-全部选中然后tab是全部缩进<br/>
-全部选中然后shift+tab是全部反缩进</p>
-
-<h2 id="toc_1">编程技巧</h2>
-
-<p>dir()    #输出函数包含的方法<br/>
-type() #输出类型</p>
-
-<p>更多技巧可以查阅官方文档的使用帮助。</p>
+                        	<p>CG54H-D8D0H-H8DHY-C6X7X-N2KG6<br/>
+ZC3WK-AFXEK-488JP-A7MQX-XL8YF<br/>
+AC5XK-0ZD4H-088HP-9NQZV-ZG2R4<br/>
+ZC5XK-A6E0M-080XQ-04ZZG-YF08D<br/>
+ZY5H0-D3Y8K-M89EZ-AYPEG-MYUA8<br/>
+FF590-2DX83-M81LZ-XDM7E-MKUT4</p>
 
                         
                       </div>
@@ -323,31 +377,31 @@ type() #输出类型</p>
 	      
 		      
 			      <li class="post">
+			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15505564665657.html">深入了解最近普遍存在的DNS劫持攻击事件</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489008835167.html">黑链</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15488284836388.html">90后空巢青年生活指南</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045487644.html">Atom设置和取消代理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045486850.html">BASIC INJECTION 基本注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491221.html">CRLF注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491124.html">FOEENSICS 101</a>
 			      </li>
 		     
 		  

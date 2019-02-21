@@ -130,107 +130,78 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045491221.html">
+                <a class="clearlink" href="15489008835167.html">
                 
-                  <h1>CRLF注入</h1>
+                  <h1>黑链</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>待整理</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/31 10:14 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15488284836388.html">
+                
+                  <h1>90后空巢青年生活指南</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>文章翻译自OWASP的<a href="https://www.owasp.org/index.php/CRLF_Injection">CRLF_Injection</a></p>
+<p>你永远不知道下一秒会发生什么，所以赶紧珍惜现在吧。</p>
 </blockquote>
 
-<p>CRLF即回车Carriage Return (ASCII 13, \r) 和 换行 Line Feed (ASCII 10, \n)。他们被用于注释掉一行的终止。不过不同系统的处理方式有点不同。windows中，CR和LF都被用于注释掉一行的结尾，而linux/unix中只需要一个LF。在HTTP协议中，CRLF序列始终用于一行的终止。<br/>
-当用户设法将CRLF提交到应用程序时，可能发生CRLF注入攻击，这通常是通过修改HTTP参数或URL来完成。</p>
+<h1 id="toc_0">生活习惯篇</h1>
 
-<p>CRLF注入可能产生这样的问题：</p>
+<h2 id="toc_1">多喝热水</h2>
 
-<ul>
-<li>HTTP响应拆分</li>
-<li>日志注入<br/>
-## HTTP响应拆分<br/>
-通常，当出现以下情况时会发生HTTP响应拆分</li>
-<li>数据通过不受信任的来源进入Web应用程序，如HTTP请求。</li>
-<li>数据包含在发送给Web用户的HTTP响应标头中，而不会对恶意字符进行验证。<br/>
-HTTP响应拆分是达到目的的手段而不是目的本身。<br/>
-攻击方式如下：攻击者将恶意数据传递给易受攻击的应用程序，应用程序将数据包含在HTTP响应中。<br/>
-要成功利用漏洞，应用程序必须允许<strong>包含有 CR（回车，即 %0d 或者 \r\n）和 LF（换行符，%0a 或者 \n）的输入在header中</strong>和<strong>底层平台必须容易注入这样的字符</strong>。</li>
-</ul>
+<p>不止&quot;女人是水做的&quot;，男人也是。人体70%是的成分是水。<br/>
+多喝水可以减肥、缓解皮肤干燥、排毒除痘、缓解眼睛疲劳等。多喝水还能治疗肾结石。</p>
 
-<p><em>大多数现代应用程序服务器(无论用什么语言编写的代码)，都已经不存在HTTP响应拆分漏洞。</em></p>
+<h2 id="toc_2">不要久坐</h2>
 
-<p>下面上一段java代码来举例说明：</p>
+<p>久坐和喝水少一样危害巨大，因此不可久坐。每坐一个小时就起来走动顺便喝点水吧。</p>
 
-<pre class="line-numbers"><code class="language-java">String author = request.getParameter(AUTHOR_PARAM);
-...
-Cookie cookie = new Cookie(&quot;author&quot;, author);
-      cookie.setMaxAge(cookieExpiration);
-      response.addCookie(cookie);
-</code></pre>
+<h2 id="toc_3">给物品定位</h2>
 
-<p>上述代码的意思是：从客户端HTTP请求中接受参数（author），并将其设置在HTTP响应的cookie头中。<br/>
-如果我们正常提交数据(author=lonelyor)，HTTP响应应该是这样：</p>
+<p>将各类常用物品找一个固定的位置，每次取用后将其放回原处，同时记录每一件物品。掌握自己的生活从掌握自己有多少物品开始。</p>
 
-<pre class="line-numbers"><code class="language-java">HTTP/1.1 200 OK
-...
-Set-Cookie: author=Jane Smith
-...
-</code></pre>
+<h2 id="toc_4">常清洁</h2>
 
-<p>但是，由于源代码中的cookie是由未经验证的用户输入组成的，因此如果我们提交恶意代码<code>Hacker By xxx\r\nContent-Length:45\r\n\r\n...</code>则HTTP响应将被拆分为原始响应和伪造响应。</p>
+<p>拒绝&quot;仓鼠症&quot;，不要囤积物品。制定房屋打扫计划，经常打扫、整理房间。<br/>
+学习&quot;断舍离&quot;</p>
 
-<pre class="line-numbers"><code class="language-java">HTTP/1.1 200 OK
-    ...
-    Set-Cookie: author=Hacker By xxx
-    Content-Length: 999
-    
-    &lt;html&gt;恶意内容...&lt;/html&gt; (这个例子中为第999个字符)
-    原始内容以1000开头, 现在被浏览器忽略了...
-</code></pre>
+<h2 id="toc_5">注意个人护理</h2>
 
-<h3 id="toc_0">危害</h3>
+<p>包括美容养颜、强身健体、预防疾病、个人卫生等。</p>
 
-<p>攻击者构建任意HTTP响应的能力可能导致以下攻击：<br/>
-跨用户污染（Cross-User_Defacement）——利用条件很苛刻<br/>
-缓存中毒（Cache_Poisoning）——利用条件很苛刻<br/>
-XSS跨站脚本攻击<br/>
-页面劫持</p>
+<h2 id="toc_6">迈开腿管住嘴</h2>
 
-<h2 id="toc_1">日志注入</h2>
-
-<p>将未经验证的用户输入写入日志文件可能导致攻击者伪造日志或者将恶意内容注入日志。<br/>
-以下情况可能导致日志伪造漏洞：</p>
-
-<ul>
-<li>数据从不受信任的来源进入应用程序</li>
-<li>数据将写入应用程序或者系统日志文件</li>
-</ul>
-
-<p>下面上一段java代码来举例说明：</p>
-
-<pre class="line-numbers"><code class="language-java">...
-String val = request.getParameter(&quot;val&quot;);
-try {
-  int value = Integer.parseInt(val);
-}
-catch (NumberFormatException) {
-  log.info(&quot;Failed to parse val = &quot; + val);
-}
-...
-</code></pre>
-
-<p>上述代码的功能是，从请求对象中读取整数值，如果该值无法解析为整数，则会记录输入，并显示一条错误信息。<br/>
-如果用户提交字符串“one”，则会记录以下条目<br/>
-<code>INFO: Failed to parse val=one</code><br/>
-然而，如果攻击者提交字符串<code>one%0a%0aINFO:+User+logged+out%3dbadguy</code>则会在日志中显示：</p>
-
-<pre class="line-numbers"><code class="language-text">    INFO: Failed to parse val=one
-
-    INFO: User logged out=badguy
-</code></pre>
-
-<p>显然攻击者可以使用相同机制插入任意日志条目。</p>
+<p>吃饭只吃八分饱，不可贪食吃十分。<br/>
+经常出门走走，有利身心健康。看看展馆、游玩山水。工作修炼的是技术、出门修的是身心。</p>
 
                         
                       </div>
@@ -239,10 +210,10 @@ catch (NumberFormatException) {
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span class="date">2019/1/30 14:8 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          					    <span class="posted-in"><a href='%E7%BE%8E%E5%A5%BD%E7%94%9F%E6%B4%BB.html'>美好生活</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -256,19 +227,45 @@ catch (NumberFormatException) {
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045491124.html">
+                <a class="clearlink" href="15487463359475.html">
                 
-                  <h1>FOEENSICS 101</h1>
+                  <h1>给网站添加百度、谷歌搜索框</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>题目：<a href="https://ctflearn.com/problems/96">https://ctflearn.com/problems/96</a><br/>
-<img src="http://images.lonelyor.org/ctflearn-96-1.png" alt="ctflearn-96-1"/><br/>
-访问域名，然后会下载一张图片。<br/>
-接下来我们使用十六进制编码器打开这张图片，会发现：<br/>
-<img src="http://images.lonelyor.org/ctflearn-96-2.png" alt="ctflearn-96-2"/><br/>
-标红部分即是flag。</p>
+                        	<p>以下是我北斗页面的搜索框代码：</p>
+
+<pre class="line-numbers"><code class="language-markup"> &lt;div style=&#39;overflow:auto&#39;&gt;&lt;form onsubmit=&quot;return baiduWithHttps(this)&quot; action=&quot;http://www.baidu.com/s&quot; target=&quot;_blank&quot;&gt;
+        &lt;input class=&#39;bdtext&#39; type=&quot;text&quot;  onfocus=&quot;checkHttps&quot; name=&quot;wd&quot;  size=&quot;30&quot;&gt;&lt;input class=&#39;bdbtn&#39; type=&quot;submit&quot;value=&quot;百度搜索&quot;&gt;
+        &lt;/form&gt;&lt;script&gt;function checkHttps () {
+                BaiduHttps.useHttps();    
+            };
+            function baiduWithHttps (formname) {
+                var data = BaiduHttps.useHttps();
+                if (data.s === 0) {
+                    return true;
+                }
+                else {
+                    formname.action = &#39;https://www.baidu.com/s&#39; + &#39;?wd&#39; + data.ssl_code;
+                    return true;
+                }
+            };&lt;/script&gt;&lt;/div&gt;&lt;div style=&#39;overflow:auto&#39;&gt;&lt;form onsubmit=&quot;return googleWithHttps(this)&quot; action=&quot;http://www.google.com/search&quot; target=&quot;_blank&quot;&gt;
+    &lt;input class=&#39;bdtext&#39; type=&quot;text&quot;  onfocus=&quot;checkHttps&quot; name=&quot;q&quot;  size=&quot;30&quot;&gt;&lt;input class=&#39;bdbtn&#39; type=&quot;submit&quot;value=&quot;谷歌搜索&quot;&gt;
+    &lt;/form&gt;&lt;script&gt;function checkHttps () {
+            googleHttps.useHttps();    
+        };
+        function googleWithHttps (formname) {
+            var data = googleHttps.useHttps();
+            if (data.s === 0) {
+                return true;
+            }
+            else {
+                formname.action = &#39;https://www.google.com/search&#39; + &#39;?q&#39; + data.ssl_code;
+                return true;
+            }
+        };&lt;/script&gt;&lt;/div&gt;
+</code></pre>
 
                         
                       </div>
@@ -277,51 +274,10 @@ catch (NumberFormatException) {
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span class="date">2019/1/29 15:18 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15483045490848.html">
-                
-                  <h1>HttpOnly</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>HttpOnly是 Set-Cookie HTTP响应头中包含的附加标志。生成cookie时使用httponly标志有助于降低客户端脚本访问受保护cookie的风险。</p>
-
-<p>如果HTTP响应头中包含HttpOnly标志，则无法通过客户端脚本访问cookie。因此即使存在xss跨站脚本漏洞，并且用户意外访问到恶意链接，浏览器也不会向第三方透露cookie（前提是浏览器支持HttpOnly）。</p>
-
-<p>参考链接：</p>
-
-<blockquote>
-<p><a href="https://www.owasp.org/index.php/HttpOnly">https://www.owasp.org/index.php/HttpOnly</a></p>
-</blockquote>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -415,31 +371,31 @@ catch (NumberFormatException) {
 	      
 		      
 			      <li class="post">
+			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15505564665657.html">深入了解最近普遍存在的DNS劫持攻击事件</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489008835167.html">黑链</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15488284836388.html">90后空巢青年生活指南</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045487644.html">Atom设置和取消代理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045486850.html">BASIC INJECTION 基本注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491221.html">CRLF注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491124.html">FOEENSICS 101</a>
 			      </li>
 		     
 		  

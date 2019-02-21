@@ -197,20 +197,24 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045487900.html">
+                <a class="clearlink" href="15483045490538.html">
                 
-                  <h1>linux下搜狗输入法不能用的解决办法</h1>
+                  <h1>解决windows右键新建消失问题</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>删除<br/>
-<code>～/config</code><br/>
-下的<br/>
-<code>sogou-qimpanel</code><br/>
-<code>SogouPY</code><br/>
-<code>SogouPY.users</code><br/>
-这三个文件夹，然后重启。</p>
+                        	<p>新建一个文件后缀名写为reg（注册表文件格式）的文件。<br/>
+然后用记事本或文本编辑器打开，写入文件内容：</p>
+
+<pre class="line-numbers"><code class="language-text">Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\New]
+
+@=&quot;{D969A300-E7FF-11d0-A93B-00A0C90F2719}&quot;
+</code></pre>
+
+<p>保存，然后双击该文件，即可。</p>
 
                         
                       </div>
@@ -357,31 +361,31 @@ root用户添加命令则把脚本放在 /usr/bin 即可。<br/>
 	      
 		      
 			      <li class="post">
+			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15505564665657.html">深入了解最近普遍存在的DNS劫持攻击事件</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489008835167.html">黑链</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15488284836388.html">90后空巢青年生活指南</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045487644.html">Atom设置和取消代理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045486850.html">BASIC INJECTION 基本注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491221.html">CRLF注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491124.html">FOEENSICS 101</a>
 			      </li>
 		     
 		  

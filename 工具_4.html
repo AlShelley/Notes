@@ -130,170 +130,17 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045487920.html">
+                <a class="clearlink" href="15483045490513.html">
                 
-                  <h1>linux安装配置aria2及其Web图形界面（debian为例）</h1>
+                  <h1>此地址使用了一个通常用于网络浏览以外目的的端口.出于安全原因,Firefox取消了该请求</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>下载aria2：apt-get install aria2<br/>
-创建配置文件：mkdir /etc/aria2_conf/aria2.conf<br/>
-编辑配置文件：nano /etc/aria2_conf/aria2.conf</p>
-
-<p>aria2.conf配置：</p>
-
-<pre class="line-numbers"><code class="language-text">#用户名
-#rpc-user=user
-#密码
-#rpc-passwd=passwd
-#上面的认证方式不建议使用,建议使用下面的token方式
-#设置加密的密钥
-rpc-secret=token
-#允许rpc
-enable-rpc=true
-#允许所有来源, web界面跨域权限需要
-rpc-allow-origin-all=true
-#允许外部访问，false的话只监听本地端口
-rpc-listen-all=true
-#RPC端口, 仅当默认端口被占用时修改
-rpc-listen-port=6800
-#最大同时下载数(任务数), 路由建议值: 3
-max-concurrent-downloads=5
-#断点续传
-continue=true
-#同服务器连接数
-max-connection-per-server=5
-#最小文件分片大小, 下载线程数上限取决于能分出多少片, 对于小文件重要
-min-split-size=10M
-#单文件最大线程数, 路由建议值: 5
-split=10
-#下载速度限制
-max-overall-download-limit=0
-#单文件速度限制
-max-download-limit=0
-#上传速度限制
-max-overall-upload-limit=0
-#单文件速度限制
-max-upload-limit=0
-#断开速度过慢的连接
-#lowest-speed-limit=0
-#验证用，需要1.16.1之后的release版本
-#referer=*
-#文件保存路径, 默认为当前启动位置
-dir=/root/downloads
-#文件缓存, 使用内置的文件缓存, 如果你不相信Linux内核文件缓存和磁盘内置缓存时使用, 需要1.16及以上版本
-#disk-cache=0
-#另一种Linux文件缓存方式, 使用前确保您使用的内核支持此选项, 需要1.15及以上版本(?)
-#enable-mmap=true
-#文件预分配, 能有效降低文件碎片, 提高磁盘性能. 缺点是预分配时间较长
-#所需时间 none &lt; falloc ? trunc &lt;&lt; prealloc, falloc和trunc需要文件系统和内核支持
-file-allocation=prealloc
-</code></pre>
-
-<p>然后配置开机启动：<br/>
-<code>nano /etc/init.d/aria2</code></p>
-
-<pre class="line-numbers"><code class="language-text">#!/bin/bash
-#
-# aria2 - this script starts and stops the aria2 daemon
-#
-# chkconfig:   - 85 15
-# description: Aria2 - Download Manager
-# processname: aria2c
-# config:      /etc/aria2/aria2.conf
-# pidfile:
-
-# Source function library.
-. /etc/rc.d/init.d/functions
-
-# Source networking configuration.
-. /etc/sysconfig/network
-
-# Check that networking is up.
-[ &quot;$NETWORKING&quot; = &quot;no&quot; ] &amp;&amp; exit 0
-
-aria2c=&quot;/usr/bin/aria2c&quot;
-ARIA2C_CONF_FILE=&quot;/etc/aria2/aria2.conf&quot;
-options=&quot; --conf-path=$ARIA2C_CONF_FILE -D &quot;
-
-RETVAL=0
-
-start() {
-    # code here to start the program
-    echo -n &quot;Starting aria2c daemon.&quot;
-    ${aria2c} ${options}
-    RETVAL=$?
-    echo
-}
-
-stop() {
-    echo -n &quot;Shutting down aria2c daemon.&quot;
-    /usr/bin/killall aria2c
-    RETVAL=$?
-    echo
-}
-
-status() {
-    ID=$(/bin/ps -ef | grep &#39;aria2c&#39; | grep -v &#39;grep&#39; | awk &#39;{print $2}&#39;)
-    if [[ &quot;x$ID&quot; != &quot;x&quot; ]]; then
-            echo &quot;Aria2 is running.&quot;
-    else
-            echo &quot;Aria2 is not running.&quot;
-    fi
-}
-
-restart() {
-    stop
-    sleep 3
-    start
-}
-
-case &quot;$1&quot; in
-    start)
-            start
-            ;;
-    stop)
-            stop
-            ;;
-    status)
-            status
-            ;;
-    restart)
-            restart
-            ;;
-    *)
-            echo &quot;Usage: service aria2c {start|stop|restart}&quot;
-            RETVAL=1
-esac
-
-exit $RETVAL
-</code></pre>
-
-<p>使用以下命令来立即启动 Aria2：</p>
-
-<p><code>/usr/bin/aria2c --conf-path=/etc/aria2_conf/aria2.conf -D</code></p>
-
-<p>保存之后配置 WebUI，首先开启 Web 服务，然后安装 WebUI 到指定目录，比如我的目录是/opt/aria2webUI/<br/>
-<code>git clone https://github.com/ziahamza/webui-aria2.git</code><br/>
-这样就下载了 WebUI，然后用 nginx 反代这个文件就ok了。</p>
-
-<p>nginx(/etc/nginx/conf.d/aria2.conf)配置文件如下：</p>
-
-<pre class="line-numbers"><code class="language-text">aria2.conf
-
-server
-{
-listen 80;
-server_name aria2.lonelyor.org;
-location / {
-    root /opt/aria2webUI/;
-}
-access_log logs/aria2_access.log;
-}
-</code></pre>
-
-<p>然后打开浏览器访问 aria2.lonelyor.org 就可以了。</p>
+                        	<p>遇到标题出现的错误时，可以使用以下方法解决：<br/>
+1、打开火狐在地址栏输入&quot;about:config&quot;<br/>
+2、然后在&quot;首选项名称&quot;处点击右键选择&quot;新建&quot;-&quot;字符串&quot;，在弹框中输入&quot;network.security.banned.override&quot;，点确定<br/>
+3、在再次弹出的框&quot;输入字符串的值&quot;中输入要开放的端口，如666（不行的话就换其他的），最后单击&quot;确定&quot;，即可。</p>
 
                         
                       </div>
@@ -319,70 +166,80 @@ access_log logs/aria2_access.log;
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045487940.html">
+                <a class="clearlink" href="15483045490562.html">
                 
-                  <h1>mongodb安装配置（arch）</h1>
+                  <h1>OneDrive映射到本地（像访问本地磁盘一样访问网盘）</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>参考以下链接即可：<br/>
+<a href="http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc">http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc</a></p>
+
+<p>举一反三，webdav、nfs、samba等都可以使用这种方式挂载，来方便访问。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045491180.html">
+                
+                  <h1>windows右键添加管理员获得所有权</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>参考文档：<a href="https://wiki.archlinux.org/index.php/MongoDB_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E4.BD.BF.E7.94.A8">https://wiki.archlinux.org/index.php/MongoDB_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E4.BD.BF.E7.94.A8</a></p>
+<p>右键添加获得管理员所有权是个比较方便的功能。</p>
 </blockquote>
 
-<p><code>pacman -S mongo</code><br/>
-<code>/usr/bin/.mongo --help</code><br/>
-<code>systemctl start mongodb.service</code><br/>
-这样就启动了mongo，启动的配置文件是：<code>cat /etc/mongodb.conf</code><br/>
-然后退出到用户目录，运行mongo<br/>
-<code>~ ❯❯❯ mongo</code><br/>
-<code>/var/lib/mongodb/ 是Arch Linux 的 ** 默认dbpath**</code><br/>
-但是无法访问<br/>
-修改mongodb的用户组为自己的<br/>
-<code>chown mongodb:lonelyor mongodb</code></p>
+<p>打开记事本或者别的文本编辑器，然后写入如下内容:</p>
 
-<p><code>mkdir /home/lonelyor/工作/mongodb</code><br/>
-<code>touch /home/lonelyor/工作/mongodb/data</code><br/>
-<code>touch /home/lonelyor/工作/mongodb/logs</code></p>
+<pre class="line-numbers"><code class="language-cmd">Windows Registry Editor Version 5.00
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+[HKEY_CLASSES_ROOT\*\shell\runas]
+@=&quot;管理员取得所有权&quot;
+&quot;NoWorkingDirectory&quot;=&quot;&quot;
+[HKEY_CLASSES_ROOT\*\shell\runas\command]
+@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
+&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
+[HKEY_CLASSES_ROOT\exefile\shell\runas2]
+@=&quot;管理员取得所有权&quot;
+&quot;NoWorkingDirectory&quot;=&quot;&quot;
+[HKEY_CLASSES_ROOT\exefile\shell\runas2\command]
+@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
+&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
+[HKEY_CLASSES_ROOT\Directory\shell\runas]
+@=&quot;管理员取得所有权&quot;
+&quot;NoWorkingDirectory&quot;=&quot;&quot;
+[HKEY_CLASSES_ROOT\Directory\shell\runas\command]
+@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; /r /d y &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F /t&quot;
+&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; /r /d y &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F /t&quot;
+</code></pre>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15483045490036.html">
-                
-                  <h1>msf安装与维护</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><code>curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb &gt; msfinstall &amp;&amp; \<br/>
-  chmod 755 msfinstall &amp;&amp; \<br/>
-  ./msfinstall</code></p>
-
-<p>上面是官方提供的一键安装脚本</p>
-
-<p>使用msfupdate可以进行更新</p>
+<p>然后另存为：管理员获得所有权.reg<br/>
+文件名可以随便写，但是后缀记得写成reg（改成这个后缀后文件图标就会变成一个破碎蓝色魔方）。<br/>
+然后右键以管理员身份运行，若弹框注册表xxx的，同意就行了。</p>
 
                         
                       </div>
@@ -488,31 +345,31 @@ access_log logs/aria2_access.log;
 	      
 		      
 			      <li class="post">
+			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15505564665657.html">深入了解最近普遍存在的DNS劫持攻击事件</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489008835167.html">黑链</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15488284836388.html">90后空巢青年生活指南</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045487644.html">Atom设置和取消代理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045486850.html">BASIC INJECTION 基本注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491221.html">CRLF注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491124.html">FOEENSICS 101</a>
 			      </li>
 		     
 		  

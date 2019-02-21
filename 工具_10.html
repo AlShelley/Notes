@@ -130,21 +130,15 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045490492.html">
+                <a class="clearlink" href="15483045488797.html">
                 
-                  <h1>汉化firefox火狐浏览器</h1>
+                  <h1>校验文件md5</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>1、点击 help——about 查看火狐版本<br/><br/>
-2、在火狐浏览器输入:<a href="http://ftp.mozilla.org,%E6%8C%89%E7%85%A7%E6%88%91%E4%B8%8B%E9%9D%A2%E7%BB%99%E7%9A%84%E7%BD%91%E5%9D%80%E4%BE%9D%E6%AC%A1%E9%80%89%E6%8B%A9%E7%9B%AE%E5%BD%95%EF%BC%8C%E8%AF%AD%E8%A8%80%E5%8C%85%E5%9C%A8xpi%E7%9B%AE%E5%BD%95%E4%B8%8B%EF%BC%8C%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%EF%BC%88zh-CN.xpi%EF%BC%89/%E7%B9%81%E4%BD%93%EF%BC%88zh-TW.xpi%EF%BC%89%E3%80%82">http://ftp.mozilla.org,按照我下面给的网址依次选择目录，语言包在xpi目录下，简体中文（zh-CN.xpi）/繁体（zh-TW.xpi）。</a><br/><br/>
-为了方便也可以直接拷贝下列链接到浏览器地址栏，安装。<br/><br/>
-32位系统目录：<a href="http://ftp.mozilla.org/pub/firefox/releases/50.1.0/linux-i686/xpi/zh-CN.xpi">http://ftp.mozilla.org/pub/firefox/releases/50.1.0/linux-i686/xpi/zh-CN.xpi</a><br/><br/>
-64位系统目录：<a href="http://ftp.mozilla.org/pub/firefox/releases/50.1.0/linux-x86_64/xpi/zh-CN.xpi">http://ftp.mozilla.org/pub/firefox/releases/50.1.0/linux-x86_64/xpi/zh-CN.xpi</a><br/><br/>
-记得把版本号修改成浏览器当前版本号。</p>
-
-<p>另一种方法是打开扩展商店，输入chinese，然后添加即可。</p>
+                        	<p>打开终端<br/>
+使用命令 md5 或 shawun 即可查看。</p>
 
                         
                       </div>
@@ -203,129 +197,30 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045488036.html">
+                <a class="clearlink" href="15483045488835.html">
                 
-                  <h1>自建kms服务器激活windows</h1>
+                  <h1>iterm2 常用技巧</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>kms的脚本来自：<a href="https://github.com/SystemRage/py-kms">https://github.com/SystemRage/py-kms</a><br/>
-密钥来自：<br/>
-<a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj612867(v%3dws.11)">https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj612867(v%3dws.11)</a><br/>
-<a href="https://github.com/SystemRage/py-kms/wiki/Office-GVLK-Keys">https://github.com/SystemRage/py-kms/wiki/Office-GVLK-Keys</a><br/>
-<a href="https://github.com/SystemRage/py-kms/wiki/Windows-GVLK-Keys">https://github.com/SystemRage/py-kms/wiki/Windows-GVLK-Keys</a></p>
-</blockquote>
-
-<h2 id="toc_0">下载kms服务端和客户端程序</h2>
-
-<p>分别在服务器和客户端下载py-kms<br/>
-<code>git clone https://github.com/SystemRage/py-kms.git</code></p>
-
-<h2 id="toc_1">服务器设置</h2>
-
-<p>使用python3</p>
-
-<pre class="line-numbers"><code class="language-text">python3 -m pip install argparse
-python3 -m pip install tzlocal
-python3 -m pip install pysqlite3
-python3 server
-</code></pre>
-
-<p>在一台服务器上运行server，默认运行在 0.0.0.0 1688。<br/>
-这里的服务器可以是你的本地Mac主机，或者本地or远程Linux主机，Windows没试过不清楚。</p>
-
-<h2 id="toc_2">客户端设置(不需要)</h2>
-
-<p><code>python client.py 0.0.0.0（使用服务端ip） 1688</code>我运行了上述指令发现并没有什么卵用，也对，密钥都没导入，能有用才怪了。<br/>
-现在我们创建一个activate.bat脚本：</p>
-
-<pre class="line-numbers"><code class="language-bat">cscript //nologo slmgr.vbs /upk
-cscript //nologo slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GXc
-cscript //nologo slmgr.vbs /ipk MH37W-N47XK-V7XM9-C7227-GCQG9
-cscript //nologo slmgr.vbs /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43
-cscript //nologo slmgr.vbs /ipk DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4
-cscript //nologo slmgr.vbs /ipk NW6C2-QMPVW-D7KKK-3GKT6-VCFB2
-cscript //nologo slmgr.vbs /ipk DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ
-cscript //nologo slmgr.vbs /ipk D2N9P-3P6X9-2R39C-7RTCD-MDVJX
-cscript //nologo slmgr.vbs /ipk W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9
-cscript //nologo slmgr.vbs /ipk KNC87-3J2TX-XB4WP-VCPJV-M4FWM
-cscript //nologo slmgr.vbs /ipk FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4
-cscript //nologo slmgr.vbs /ipk MRPKT-YTG23-K7D7T-X2JMM-QY7MG
-cscript //nologo slmgr.vbs /ipk W82YF-2Q76Y-63HXB-FGJG9-GF7QX
-cscript //nologo slmgr.vbs /ipk 33PXH-7Y6KF-2VJC9-XBBR8-HVTHH
-cscript //nologo slmgr.vbs /ipk YDRBP-3D83W-TY26F-D46B2-XCKRJ
-cscript //nologo slmgr.vbs /ipk CB7KF-BWN84-R7R2Y-793K2-8XDDG
-cscript //nologo slmgr.vbs /ipk WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY
-cscript //nologo slmgr.vbs /ipk JCKRF-N37P4-C2D82-9YXRT-4M63B
-cscript //nologo slmgr.vbs /ipk YC7DK-G2NP3-2QQC3-J6H88-GVGXT
-cscript //nologo slmgr.vbs /ipk KBKQT-2NMXY-JJWGP-M62JB-92CD4
-cscript //nologo slmgr.vbs /ipk XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99
-cscript //nologo slmgr.vbs /ipk JNRGM-WHDWX-FJJG3-K47QV-DRTFM
-cscript //nologo slmgr.vbs /ipk YC7DK-G2NP3-2QQC3-J6H88-GVGXT
-cscript //nologo slmgr.vbs /ipk KBKQT-2NMXY-JJWGP-M62JB-92CD4
-cscript //nologo slmgr.vbs /ipk FN8TT-7WMH6-2D4X9-M337T-2342K
-cscript //nologo slmgr.vbs /ipk 6NTH3-CW976-3G3Y2-JK3TX-8QHTT
-cscript //nologo slmgr.vbs /ipk C2FG9-N6J68-H8BTJ-BW3QX-RM3B3
-cscript //nologo slmgr.vbs /ipk J484Y-4NKBF-W2HMG-DBMJC-PGWR7
-cscript //nologo slmgr.vbs /ipk VGPNG-Y7HQW-9RHP7-TKPV3-BG7GB
-cscript //nologo slmgr.vbs /ipk TGN6P-8MMBC-37P2F-XHXXK-P34VW
-cscript //nologo slmgr.vbs /ipk 4NT99-8RJFH-Q2VDH-KYG2C-4RD4F
-cscript //nologo slmgr.vbs /ipk 6Q7VD-NX8JD-WJ2VH-88V73-4GBJ7
-cscript //nologo slmgr.vbs /ipk XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99
-cscript //nologo slmgr.vbs /ipk JNRGM-WHDWX-FJJG3-K47QV-DRTFM
-cscript //nologo slmgr.vbs /ipk YG9NW-3K39V-2T3HJ-93F3Q-G83KT
-cscript //nologo slmgr.vbs /ipk WGT24-HCNMF-FQ7XH-6M8K7-DRTW9
-cscript //nologo slmgr.vbs /ipk GNFHQ-F6YQM-KQDGJ-327XX-KQBVC
-cscript //nologo slmgr.vbs /ipk D8NRQ-JTYM3-7J2DX-646CT-6836M
-cscript //nologo slmgr.vbs /ipk PD3PC-RHNGV-FXJ29-8JK7D-RJRJK
-cscript //nologo slmgr.vbs /ipk 69WXN-MBYV6-22PQG-3WGHK-RM6XC
-cscript //nologo slmgr.vbs /ipk 7WHWN-4T7MP-G96JF-G33KR-W8GF4
-cscript //nologo slmgr.vbs /ipk NY48V-PPYYH-3F4PX-XJRKJ-W4423
-cscript //nologo slmgr.vbs /ipk 9C2PK-NWTVB-JMPW8-BFT28-7FTBF
-cscript //nologo slmgr.vbs /ipk DR92N-9HTF2-97XKM-XW2WJ-XW3J6
-cscript //nologo slmgr.vbs /ipk R69KK-NTPKF-7M3Q4-QYBHW-6MT9B
-cscript //nologo slmgr.vbs /ipk WXY84-JN2Q9-RBCCQ-3Q3J3-3PFJ6
-cscript //nologo slmgr.vbs /ipk J7MQP-HNJ4Y-WJ7YM-PFYGF-BY6C6
-cscript //nologo slmgr.vbs /ipk VQ9DP-NVHPH-T9HJC-J9PDT-KTQRG
-cscript //nologo slmgr.vbs /ipk NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP
-cscript //nologo slmgr.vbs /ipk XM2V9-DN9HH-QB449-XDGKC-W2RMW
-cscript //nologo slmgr.vbs /ipk B4NPR-3FKK7-T2MBV-FRQ4W-PKD2B
-cscript //nologo slmgr.vbs /ipk C4F7P-NCP8C-6CQPT-MQHV9-JXD2M
-cscript //nologo slmgr.vbs /ipk TMJWT-YYNMB-3BKTF-644FC-RVXBD
-cscript //nologo slmgr.vbs /ipk 7HD7K-N4PVK-BHBCQ-YWQRW-XW4VK
-cscript //nologo slmgr.vbs /ipk RRNCX-C64HY-W2MM7-MCH9G-TJHMQ
-cscript //nologo slmgr.vbs /ipk PBX3G-NWMT6-Q7XBW-PYJGG-WXD33
-cscript //nologo slmgr.vbs /ipk N2CG9-YD3YK-936X4-3WR82-Q3X4H
-cscript //nologo slmgr.vbs /ipk 9BGNQ-K37YR-RQHF2-38RQ3-7VCBB
-cscript //nologo slmgr.vbs /ipk 7TQNQ-K3YQQ-3PFH7-CCPPM-X4VQ2c
-cscript //nologo slmgr.vbs /skms 192.168.220.187:1688
-cscript //nologo slmgr.vbs /ato
-cscript //nologo slmgr.vbs /ato
-cscript //nologo slmgr.vbs /dlv
-cmd /k
-</code></pre>
-
-<p>上面的脚本包含了win10、win7、office2019、office2016、office2013的大部分密钥（主要是专业版），基本满足需求，不过其实也没必要搞那么多，但是懒得筛选了。</p>
-
-<h2 id="toc_3">激活win和office</h2>
-
-<p>首先在服务器上运行 kms server。</p>
+                        	<p>按住 com 键</p>
 
 <ul>
-<li>打开终端然后进入py-kms的py3-kms目录</li>
-<li>然后输入<code>python3 server</code>并回车</li>
-<li>右键点击以管理员身份运行 activate.bat 即可。</li>
+<li>可以拖拽选中字符串</li>
+<li>点击url能直接打开</li>
+<li>点击文件：调用默认程序打开文件</li>
+<li>点击文件夹：在finder中打开文件夹</li>
+<li>同时按住option键，可以矩形选中</li>
 </ul>
 
-<p>显示如下信息表示激活成功：</p>
+<p>新建windows：cmd+N<br/>
+新建tab：cmd+T<br/>
+切分屏幕：cmd+D水平切分<br/>
+智能查找，支持正则：cmd+F</p>
 
-<p><img src="media/15483045488036/win%E6%BF%80%E6%B4%BB2018-12-24%2011-12-38.png" alt="win激活2018-12-24 11-12-38"/></p>
-
-<h2 id="toc_4">其他</h2>
-
-<p>kms每次只激活180天也就是3个月，这样每三个月就要重新激活一次，你可以每次提醒的时候再打开server然后运行activate.bat脚本。也可以把server部署在远程服务器上，然后在client添加一个计时任务周期性的运行bat脚本。</p>
+<p>智能补全：cmd+；<br/>
+调用历史记录：cmd+shift+h</p>
 
                         
                       </div>
@@ -431,31 +326,31 @@ cmd /k
 	      
 		      
 			      <li class="post">
+			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15505564665657.html">深入了解最近普遍存在的DNS劫持攻击事件</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489008835167.html">黑链</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15488284836388.html">90后空巢青年生活指南</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045487644.html">Atom设置和取消代理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045486850.html">BASIC INJECTION 基本注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491221.html">CRLF注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491124.html">FOEENSICS 101</a>
 			      </li>
 		     
 		  

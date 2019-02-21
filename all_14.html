@@ -130,25 +130,58 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045488462.html">
+                <a class="clearlink" href="15483045491239.html">
                 
-                  <h1>vscode 快速生成 html 代码</h1>
+                  <h1>更优雅的使用Hexo写博客</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>参考的博客如下：<br/>
-<a href="https://blog.csdn.net/weixin_42659625/article/details/82941394">https://blog.csdn.net/weixin_42659625/article/details/82941394</a><br/>
-图是直接复制的别人博客的图</p>
+<p>曾经的博客是使用 Hexo 写的，我觉得Hexo这种在文章前面写上元信息的方式很棒。然而，每此写markdown文档都要输入这些元信息，这很麻烦，所以就写了个shell脚本来自动化输入文件元信息的过程。<br/>
+代码如下：</p>
 </blockquote>
 
-<p>1、首先创建一个 html 文件如：index.html<br/>
-2、在编辑器中输入感叹号（！）<br/>
-3、此时会弹出下拉项，直接在感叹号❗️上回车即可。<br/>
-<img src="media/15483045488462/15473904287496.jpg" alt=""/><br/>
-4、自动生成的html 代码如下：<br/>
-<img src="media/15483045488462/15473904546232.jpg" alt=""/></p>
+<pre class="line-numbers"><code class="language-bash">#!/bin/bash
+
+printf &quot;请输入文件名(example.md)，记得写后缀!\n&quot;
+read -p &quot;文件名是: &quot; filename
+# 这里的title取文件名不取后缀
+echo &quot;title: &quot;${filename%.*} &gt;&gt; $filename
+echo &quot;author: lonelyor&quot; &gt;&gt; $filename
+echo &quot;language: zh-CN&quot; &gt;&gt; $filename
+echo &quot;tags:&quot; &gt;&gt; $filename
+echo &quot;  - 标签&quot; &gt;&gt; $filename
+echo &quot;categories:&quot; &gt;&gt; $filename
+echo &quot;  - 分类&quot; &gt;&gt; $filename
+time=$(date &quot;+%Y-%m-%d %H:%M:%S&quot;)
+echo &quot;date: ${time}&quot;&gt;&gt; $filename
+echo &quot;---&quot; &gt;&gt; $filename
+echo &quot;&gt; description: &quot; &gt;&gt; $filename
+# printf和echo都是输出，&gt;&gt;表示追加，&gt;会覆盖文件
+# shell中使用变量需要先定义变量，然后使用时加 $
+# read 用来创建文件，文件名从终端获取
+</code></pre>
+
+<p>展示效果如下:</p>
+
+<pre class="line-numbers"><code class="language-md">title: 如何优雅的创建markdown文件
+author: lonelyor
+language: zh-CN
+tags:
+  - Hexo
+  - markdown
+categories:
+  - 技术杂文
+date: 2018-09-06 17:42:40
+---
+&gt; description: 若爱请深爱，若不爱请离开。
+</code></pre>
+
+<p>接下来说说如何使用(仅限linux、macos，或者说可以执行bash的环境，win用户请自行转换成bat)：<br/>
+首先，创建一个名叫 md.sh 的文件（名字你爱咋咋地），把代码copy进去。<br/>
+然后，<code>ln -s /md文件绝对路径 /usr/local/bin/md</code> ,这条语句的意思就是创建一个软连接，把 md.sh 连接到当前用户的 md 命令上。<br/>
+最后，打开终端输入 md ，然后输入要创建的markdown文件名（如：test.md），即可在当前目录下创建带有元信息的markdown文件。</p>
 
                         
                       </div>
@@ -174,44 +207,19 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045491180.html">
+                <a class="clearlink" href="15483045486850.html">
                 
-                  <h1>windows右键添加管理员获得所有权</h1>
+                  <h1>BASIC INJECTION 基本注入</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>右键添加获得管理员所有权是个比较方便的功能。</p>
-</blockquote>
-
-<p>打开记事本或者别的文本编辑器，然后写入如下内容:</p>
-
-<pre class="line-numbers"><code class="language-cmd">Windows Registry Editor Version 5.00
-
-[HKEY_CLASSES_ROOT\*\shell\runas]
-@=&quot;管理员取得所有权&quot;
-&quot;NoWorkingDirectory&quot;=&quot;&quot;
-[HKEY_CLASSES_ROOT\*\shell\runas\command]
-@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
-&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
-[HKEY_CLASSES_ROOT\exefile\shell\runas2]
-@=&quot;管理员取得所有权&quot;
-&quot;NoWorkingDirectory&quot;=&quot;&quot;
-[HKEY_CLASSES_ROOT\exefile\shell\runas2\command]
-@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
-&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
-[HKEY_CLASSES_ROOT\Directory\shell\runas]
-@=&quot;管理员取得所有权&quot;
-&quot;NoWorkingDirectory&quot;=&quot;&quot;
-[HKEY_CLASSES_ROOT\Directory\shell\runas\command]
-@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; /r /d y &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F /t&quot;
-&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; /r /d y &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F /t&quot;
-</code></pre>
-
-<p>然后另存为：管理员获得所有权.reg<br/>
-文件名可以随便写，但是后缀记得写成reg（改成这个后缀后文件图标就会变成一个破碎蓝色魔方）。<br/>
-然后右键以管理员身份运行，若弹框注册表xxx的，同意就行了。</p>
+                        	<p>题目：<a href="https://ctflearn.com/problems/88">https://ctflearn.com/problems/88</a><br/>
+解：<br/>
+访问题目中提到的：<a href="https://web.ctflearn.com/web4/">域名</a><br/>
+<img src="http://images.lonelyor.org/ctflearn-basic-injection-1.png" alt="ctflearn-basic-injection-1"/><br/>
+然后输入payload，得到以下数据，方框中的即为flag。<br/>
+<img src="http://images.lonelyor.org/ctflearn-basic-injection-2.png" alt="ctflearn-basic-injection-2"/></p>
 
                         
                       </div>
@@ -223,7 +231,7 @@
                     <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -237,372 +245,195 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045490451.html">
+                <a class="clearlink" href="15483045487043.html">
                 
-                  <h1>wsgidav独立服务器使用手册</h1>
+                  <h1>IIS短文件名漏洞</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>很久以前写的，我也不记得写的什么东西了。wsgidav是一个提供webdav服务的python库，可以用来共享文件。更多相关知识可以自行百度“什么是webdav？”。</p>
-</blockquote>
+                        	<h2 id="toc_0">漏洞原理</h2>
 
-<h1 id="toc_0">使用示例（或者说是个本地测试）</h1>
+<hr/>
 
-<p>sudo wsgidav --host=0.0.0.0 --port=80 --root=/home/lonelyor<br/>
-这里的sudo是个坑，不加的话就找不到wsgidav指令，为此搞了好久诶。</p>
+<p>windows在创建一个新文件时，操作系统还会生成 8.3 格式的兼容 MS-DOS 的（短）文件名，以允许基于 MS-DOS 或16位 windows 的程序访问这些文件。    </p>
 
-<h1 id="toc_1">wsgidav高级设置：</h1>
+<h2 id="toc_1">利用场景</h2>
 
-<p>sudo wsgidav  --config=./wsgidav.conf<br/>
-引用配置文件，配置文件使用python语法来指定这些选项：<br/>
-服务器选项（主机名，端口，SSL证书，...）<br/>
-共享名称/ WebDAV提供程序映射列表<br/>
-认证用户列表<br/>
-可选的自定义DAV提供程序（即FilesystemProvider以外）<br/>
-可选的自定义锁管理器，属性管理器和域控制器<br/>
-高级调试选项<br/>
-（和更多）</p>
+<hr/>
 
-<h1 id="toc_2">配置文件示例</h1>
+<p>1、用于猜解文件/文件名<br/><br/>
+2、.Net Framework 的拒绝服务攻击（不常见）</p>
 
-<pre class="line-numbers"><code class="language-python">＃注意：这个文件是Python的语法和格式
+<h2 id="toc_2">检测方法</h2>
 
-####################################### #########################################＃
-WsgiDAV配置文件
-＃请参阅
-＃http ： //wsgidav.readthedocs.io/en/latest/run-configure.html＃
-以获取配置文件格式的一些解释。
-################################################## ############################## 
+<hr/>
 
-＃助手-请不要修改此节
+<p><strong>黑盒测试</strong><br/><br/>
+使用<a href="https://github.com/lijiejie/IIS_shortname_Scanner">IIS短文件名扫描器</a><br/><br/>
+<strong>白盒测试</strong><br/>
+几乎所有的 windows 操作系统，在 cmd 中使用命令：</p>
 
-provider_mapping  =  {} 
-user_mapping  =  {} 
-
-高清 addShare （SHARENAME ， davProvider ）：
-    provider_mapping [ shareName ]  =  davProvider
-
-    
-def  addUser （realmName ， user ， password ， description ， roles = []）：
-    realmName  =  “/”  +  realmName 。条（- [R “\ /” ）
-    的UserDict  =  user_mapping 。setdefault （realmName ， {}）。setdefault （user ， {}）
-    userDict [ “password” ]  =  密码
-    userDict [ “description”]  =  描述
-    userDict [ “roles” ]  =  角色
-
-
-####################################### #########################################＃
-SERVER OPTIONS 
-＃===== ================================================== ======================== 
-＃在这个WSGI服务器中运行WsgiDAV。
-＃支持的服务器：“cheroot”，“cherrypy-wsgiserver”，“ext_wsgiutils”，
-＃“flup-fcgi”，“flup-fcgi-fork”，“paste”，“wsgiref” 
-＃“wsgiref”和“ext_wsgiutils”内置的服务器，应该*不* 
-生产中使用。
-＃所有其他服务器必须已经安装，例如`pip install cheroot`。
-＃（二进制发行版已经包含了&#39;cheroot&#39;）
-＃默认：“cheroot”，使用命令行上的--server选项来改变它。
-
-#server =“cheroot” 
-
-＃在初始化时传递给服务器的附加参数（取决于`server`）
-＃例如，对于cheroot：
-
-#server_args = { 
-＃“numthreads”：10，
-＃“max”：-1，
-＃“request_queue_size “：5，
-＃”timeout“：10，
-＃”shutdown_timeout“：5，
-＃”verbose“：0，
-＃} 
-
-＃服务器端口（默认：8080，在命令行使用--port）
-port  =  8080 
-
-＃服务器主机名默认：localhost，
-  
-
-＃================================================= ============================== 
-＃启用SSL支持
-＃注意：
-＃有效的证书必须与服务器的主机名匹配，所以假的证书将
-不会在所有情况下工作。
-＃改为创建自己的证书！
- 
-＃ssl_certificate =“wsgidav / server / sample_bogo_server.crt” 
-＃ssl_private_key =“wsgidav / server / sample_bogo_server.key” 
-＃ssl_certificate_chain = None 
-
-＃cheroot服务器支持&#39;builtin&#39;和&#39;pyopenssl&#39;（默认值：&#39;builtin&#39;）
-＃ssl_adapter = pyopenssl“ 
-
-
-＃=============================================== ================================= 
-＃Misc。setings 
-＃
-
-＃将MS-Author-Via响应头添加到OPTIONS命令，以允许
-使用Microsoft Office 
-
-编辑＃（默认值：False）add_header_MS_Author_Via  =  True 
-
-
-＃以字节为单位的块大小
-
-＃block_size = 8192 
-
-
-＃将此值设置为True，强制不引用PATH_INFO。这应该已经由WSGI 
-＃Framework 
-
-完成了，所以这个设置只能用来解决那里的意外问题（见问题＃8）。＃unquote_path_info = False 
-
-
-＃使用UTF-8重新编码PATH_INFO（回落到ISO-8859-1）。
-＃这似乎是错误的，因为每个PEP 3333 PATH_INFO始终是ISO-8859-1编码
-＃（请参阅https://www.python.org/dev/peps/pep-3333/#unicode-issues）。
-＃但是，在使用中文字符访问资源时，似乎可以解决错误
-（例如，参见问题＃73）。
-＃设置为`None`（默认），仅对Python 3启用。
-
-＃re_encode_path_info =无
-
-
-＃============================================= ================================== 
-＃中间件
-＃＃
-使用此部分来修改默认中间件堆栈
-
-＃from wsgidav .dir_browser import WsgiDavDirBrowser＃
-from debug_filter import WsgiDavDebugFilter＃
-from http_authenticator import HTTPAuthenticator 
-#from error_printer import ErrorPrinter 
-#middleware_stack = [WsgiDavDirBrowser，HTTPAuthenticator，ErrorPrinter，WsgiDavDebugFilter]
-
-＃================================================= ============================== 
-＃调试
-
-verbose  =  1        ＃0  - 没有输出（除了应用程序例外）          
-                     ＃1  - 显示单一（HTTP日志记录）
-                     ＃2  - 显示附加事件
-                     ＃3  - 显示完整的请求/响应头信息（HTTP日志记录）
-                     ＃请求正文和GET响应正文未显示
-
-
-＃启用特定的模块记录器
-＃Eg [“lock_manager”，“property_manager “，”http_authenticator“，...] 
-enable_loggers  =  [] 
-
-＃启用最大值。记录某些http方法
-＃Eg [“COPY”，“DELETE”，“GET”，“HEAD”，“LOCK”，“MOVE”，
-debug_methods  =  [] 
-
-＃启用最大值。在包含某些字符串的石蕊套件测试中进行日志记录
-＃Eg [“lock_excl”，“notowner_modify”，“fail_cond_put_unlocked”，...] 
-debug_litmus  =  [] 
-
-
-################## ################################################## ############# 
-WsgiDavDirBrowser 
-
-dir_browser  =  { 
-    “enable” ： True ，               ＃为集合的GET请求呈现HTML列表
-    “response_trailer” ： “” ，       ＃原始HTML代码，附加为页脚
-    “davmount” ： 假，            ＃发送&lt;dm：mount&gt;
-    “ms_mount” ： False ，            ＃添加一个“打开为webfolder”链接（需要Windows）
-    “ms_sharepoint_plugin” ： True ， ＃调用MS 
-    Offce 文档以使用WebDAV进行编辑“ms_sharepoint_urls” ： False ，  ＃
-Prepend&#39;ms -word：ofe | u |” 到MS Offce 
-文档的URL ＃“app_class”：MyBrowser，
-
-
-
-
-
-
-
-
-
-＃默认值：死性不支持
-wsgidav.property_manager.PropertyManager：＃也可用
-＃wsgidav.property_manager.ShelvePropertyManager 
-＃
-＃查看如何开发定制物业管理的文档。
-＃注意，默认的PropertyManager在内存中工作，因此不是
-＃持久化的。
-
-###使用内存中的属性管理器（不是永久的）
-＃（这与传递&#39;propsmanager = True&#39;相同）
-＃from wsgidav.property_manager import PropertyManager 
-#propsmanager = PropertyManager（）
-
-###使用基于持久性架构的属性管理器
-＃从wsgidav.property_manager导入ShelvePropertyManager
-#propsmanager = ShelvePropertyManager（“wsgidav-props.shelve”）
-
-###使用基于持久性MongoDB的属性管理器
-＃from wsgidav.addons.mongo_property_manager import MongoPropertyManager 
-#prop_man_opts = {} 
-#propsmanager = MongoPropertyManager（prop_man_opts）
-
-###使用基于持久性CouchDB属性管理器
-#from wsgidav.addons.couch_property_manager import CouchPropertyManager 
-#prop_man_opts = {} 
-#propsmanager = CouchPropertyManager（prop_man_opts）
-
-###使用内存中的属性管理器（NOT persistent）
-propsmanager  =  True 
-
-
-###可选的附加动态属性修改
-＃注意：默认情况下，像文件大小和上次修改时间的生活属性是
-＃只读，但如果底层DAV提供程序
-＃支持
-，则可以在这里覆盖。现在只有FileSystemProvider支持它，只有＃更改为上次修改的时间戳。使用下面的mutable_live_props 
-＃列表来
-启用它，以允许客户端使用utime系统调用，或者例如＃touch 或cp / rsync命令与挂载的
-＃DAV共享中
-的preserve-timestamp标志一起使用。＃请注意，时间戳是在实际的文件或目录中设置的，所以
-即使对于内存中的属性管理器
-，它也是持久的。还应该注意＃可变的最后修改可能不符合RFC 
-4918. #mutable_live_props = [“{DAV：} getlastmodified”]
-
-
-＃================================================= ============================== 
-＃锁管理器
-＃＃
-取消注释此行以指定您自己的锁管理器。                    
-＃默认值：wsgidav.lock_storage.LockStorageDict 
-＃还有：wsgidav.lock_storage.LockStorageShelve 
-＃
-＃查看如何开发自定义锁管理器的文档。
-＃注意默认的LockStorageDict在内存中工作，因此不是
-＃持久化的。
-                 
-＃示例：使用内存中的锁存储
-＃（这与默认情况下传递&#39;locksmanager = True&#39;相同）
-＃from wsgidav.lock_storage import LockStorageDict 
-#locksmanager = LockStorageDict（）
-
-
-＃示例：使用基于PERSISTENT架构的锁管理器
-＃from wsgidav.lock_storage import LockStorageShelve 
-#locksmanager = LockStorageShelve（“wsgidav-locks.shelve”）
-
-
-##################### ################################################## #########＃
-SHARES 
-＃＃
-如果您想通过
-＃WsgiDAV共享文件
-发布位置“/ v_root”中的文件，以便可以通过以下URL访问文件：＃http   ：/ / /服务器：端口/文件
-＃插入以下行：
-＃addShare（ “文件”， “/ v_root”） 
-＃或者，在Windows中：
-＃addShare（ “文件”， “C：\\ v_root”） ＃
-＃
-要使用根级别共享访问相同的目录
-＃http：// server：港口/
-
-＃add this line：＃addShare（“”，“/ v_root”）
-＃＃
-上面的例子使用wsgidav.fs_dav_provider.FilesystemProvider，它是
-缺省提供程序实现。
-＃＃
-如果您希望使用自定义提供程序，则必须将对象作为第二个
-参数
-
-
-传递。看下面的例子。  ###添加一个读写文件共享：
-addShare （“dav” ， r “C：\ temp” ）
-
-###添加一个只读文件共享：
-＃from wsgidav.fs_dav_provider import FilesystemProvider 
-#addShare（“tmp”， FilesystemProvider（“/ tmp”，readonly = True））
-
-
-###发布MySQL&#39;world&#39;数据库作为共享&#39;/ world-db&#39;
-#from wsgidav.addons.mysql_dav_provider import MySQLBrowserProvider 
-#addShare（“world-db”，MySQLBrowserProvider（“localhost”，“root”，“test”，“world”））
-
-
-### 
-从wsgidav.samples 
-发布一个虚拟结构。 virtual_dav_provider import VirtualResourceProvider #addShare（“virtres”，VirtualResourceProvider（））
-
-
-###发布一个Mercurial仓库
-＃from wsgidav.addons.hg_dav_provider import HgResourceProvider 
-#addShare（“hg”，HgResourceProvider（“PATH_OR_URL”））
-
-
-###发布一个MongoDB 
-#from wsgidav.samples.mongo_dav_provider import MongoResourceProvider 
-#mongo_dav_opts = {} 
-#addShare（“mongo”，MongoResourceProvider（mongo_dav_opts））
-
-
-################################################## ##############################＃
-AUTHENTICATION 
-＃================= ================================================== ============ 
-＃HTTP验证选项
-
-acceptbasic  =  True     ＃允许基本验证，True或False 
-acceptdigest  =  True    ＃允许摘要验证，True或False 
-defaultdigest  =  True   ＃True（默认摘要）或False默认基本）
-
-＃输入将被接受为授权用户的标题字段的名称。
-＃包括引号，例如：trusted_auth_header =“REMOTE_USER” 
-trusted_auth_header  =  无
-
-
-＃================================================= ============================== 
-＃域控制器
-＃取消注释此行以指定您自己的域控制器
-＃默认值：wsgidav.domain_controller，它采用下面的用户部分
-＃
-＃示例：
-＃使用域控制器，允许用户对一个认证
-＃Windows NT域或本地计算机。
-＃注意：NTDomainController需要基本身份验证：
-＃set acceptbasic = True，acceptdigest = False，defaultdigest = False 
-
-#from wsgidav.addons.nt_domain_controller import NTDomainController 
-#domaincontroller = NTDomainController（presetdomain = None，presetserver = None）
-#acceptbasic = True 
-#acceptdigest =假
-#defaultdigest = False 
-
-
-＃============================================= ================================== 
-＃USERS 
-＃＃
-此部分仅供DEFAULT域控制器使用。
-＃
-＃用户被每领域中定义的：
-＃ADDUSER（&lt;境界&gt;，&lt;用户&gt;，&lt;密码&gt;，&lt;描述&gt;） ＃   
-＃
-请注意，缺省域控制器使用共享名作为领域名称。   
-＃＃
-如果没有用户指定领域，则不需要认证。
-＃因此授予读写访问匿名！
-＃＃
-注意：如果您希望使用Windows WebDAV支持（例如Windows XP的My 
-＃网络位置），则需要将用户的域作为
-
-＃username 
-
-（注意DOUBLE斜线），例如：＃addUser（“v_root”，“domain \\ user”，“password”，“description”）addUser （“” ， “tester” ， “secret” ， “” ）
-ADDUSER （“” ， “tester2” ， “secret2” ，“”  ）
-
-#addUser（ “DAV”， “测试器”， “秘密”， “”）
-#addUser（ “DAV”， “tester2”， “secret2”，“ “）
-
-#addUser（”virtres“，”tester“，”secret“，”“）
+<pre class="line-numbers"><code class="language-bat">dir /x
 </code></pre>
+
+<p>如图：<br/>
+<img src="media/15483045487043/%E7%9F%AD%E6%96%87%E4%BB%B6%E5%90%8D%E6%98%BE%E7%A4%BA.png" alt="短文件名显示"/></p>
+
+<h2 id="toc_3">修复方案</h2>
+
+<hr/>
+
+<p>1、升级 .net framework 至 4.0 版本或以上<br/><br/>
+2、修改注册表键值<br/><br/>
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem 修改NtfsDisable8dot3NameCreation为1。（此项默认为0）<br/><br/>
+此设置用于禁用短文件名功能，重启后生效。<br/><br/>
+或者通过 CMD 命令：    </p>
+
+<pre class="line-numbers"><code class="language-txt">Windows Server 2008 R2
+查询是否开启短文件名功能：fsutil 8dot3name query
+关闭该功能：fsutil 8dot3name set 1
+
+Windows Server 2003
+关闭该功能：fsutil behavior set disable8dot3 1
+</code></pre>
+
+<p>以上操作只能防止新创建的文件/文件名不会出现短文件名，而当前文件/文件名依然保持短文件名。完整解决方案还需要如下操作：<br/><br/>
+3、<br/><br/>
+　　a、从当前目录中创建一个副本,并将其重命名为 tempNew；<br/><br/>
+　　b、将当前目录重命名为“tempOld”；<br/><br/>
+　　c、将“tempNew”重命名为原来的目录名。<br/><br/>
+4、禁止 url 中使用 “~” 或它的 Unicode 编码。（IIS7.0的请求阻塞不能完全阻止“~”波浪号。）</p>
+
+<hr/>
+
+<hr/>
+
+<hr/>
+
+<h2 id="toc_4">背景知识</h2>
+
+<hr/>
+
+<p>windows 支持的长文件名最多为 255 个字符。windows 还以 8.3 格式生成与 MS-DOS 兼容的（短）文件名，以允许基于 MS-DOS 或 16 位 windows 的程序访问这些文件。<br/><br/>
+8.3格式短文件名规范中：<br/><br/>
+‘8’是指文件名或目录名的主体部分小于等于 8 个字节；‘3’是指文件名的扩展名部分小于等于 3 个字节。<br/><br/>
+windows 会按以下方式从长文件名生成短文件名：<br/><br/>
+windows 首先会删除文件名中的任何无效字符和空格。无效字符包括：</p>
+
+<pre class="line-numbers"><code class="language-txt">.&quot;/\[]:;=,
+</code></pre>
+
+<p>由于短文件名只能包含一个英文句点（.），因此 windows 将删除文件名中的其他英文句点，即使文件名中最后一个英文句点后面是有效的非空格字符也是如此。例如：windows 从长文件名 This is a really long filename.123.456.789.txt 生成短文件名 Thisis~1.txt 否则，windows 将忽略最后一个英文句点，而使用倒数第二个英文句点。例如：windows从长文件名 This is a really long filename.123.456.789. 生成短文件名 Thisis~1.789。<br/><br/>
+生成短文件名若需要复制的话，windows 将文件名截断为 6 个字符，并在后边附加一个波形符号（~）和一个数字（创建的每一个以 ~1 结尾的唯一文件名，复制文件以 ~2、~3等结尾。）    </p>
+
+<h2 id="toc_5">影响范围</h2>
+
+<hr/>
+
+<p>Windows 10 Pro released in July 2015Windows 10 Enterprise released in July 2015Microsoft Windows Server 2003 Standard EditionMicrosoft Windows Server 2003 Enterprise EditionMicrosoft Windows Server 2003 Datacenter EditionMicrosoft Windows Server 2003 Web EditionMicrosoft Windows Server 2003, Enterprise x64 EditionMicrosoft Windows Small Business Server 2003 Standard EditionMicrosoft Windows Small Business Server 2003 Premium EditionMicrosoft Windows XP Home EditionMicrosoft Windows XP Professional EditionMicrosoft Windows Datacenter Server Limited EditionMicrosoft Windows Advanced Server, Limited EditionMicrosoft Windows 2000 ServerMicrosoft Windows 2000 Advanced ServerMicrosoft Windows 2000 Professional EditionMicrosoft Windows NT Workstation 3.5Microsoft Windows NT Workstation 3.51Microsoft Windows NT Workstation 4.0 开发员版Microsoft Windows NT Server 3.51Microsoft Windows NT Server 4.0 Standard EditionWindows Vista Service Pack 2Windows Vista BusinessWindows Vista EnterpriseWindows Vista Home PremiumWindows Vista UltimateWindows Server 2008 Service Pack 2Windows Server 2008 StandardWindows Server 2008 EnterpriseWindows Server 2008 DatacenterWindows Server 2008 for Itanium-Based SystemsWindows 7 Service Pack 1Windows 7 Home PremiumWindows 7 ProfessionalWindows 7 EnterpriseWindows 7 UltimateWindows Server 2008 R2 Service Pack 1Windows Server 2008 R2 StandardWindows Server 2008 R2 EnterpriseWindows Server 2008 R2 DatacenterWindows Server 2008 R2 for Itanium-Based SystemsWindows 8 EnterpriseWindows 8 ProWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 DatacenterWindows Server 2012 DatacenterWindows Server 2012 DatacenterWindows Server 2012 Datacenter<br/>
+列表内所有操作系统均受影响（数据来源日期：20171213）<br/><br/>
+该漏洞有其局限性：<br/><br/>
+1、只能猜解文件/文件夹名前六位，以及扩展名前三位<br/><br/>
+2、名称较短的文件是没有响应的短文件名的<br/><br/>
+3、需要 IIS 和 .net 同时满足。  </p>
+
+<h2 id="toc_6">漏洞详情</h2>
+
+<hr/>
+
+<p>在 windows 上的 Apache（Apache支持短文件名）上运行的 web 应用程序正在创建一个长文件名文件（如sql备份文件或会话文件，假设文件名是 backup-082119f75623eb7abd7bf357698ff66c.sql，windows 将创建短文件名 BACKUP〜1.SQL）。这种情况下，如果我们用短文件名访问这个文件，那么就有可能获取这个包含sql数据库备份的文件。<br/><br/>
+比较著名的一个例子：<br/><br/>
+wordpress 有一个备份博客的插件，该插件会为备份创建一个自定义目录（backup-88456）。备份完成后，该目录包含一个名为 wordpress_wp_20120702_576.sql 的文件  ，即 WordPress 数据库备份。这本应该难以猜测的，因为我们的目录名称中有5个数字加上日期和另外3个数字，即使忽略日期也至少有 100,000,000 个组合。然而由于短文件名的原因，目录名会变成 BACKUP~1 而文件名会变成 WORDPR~1.SQL。100,000,000 个组合被缩减为一个组合。    </p>
+
+<h2 id="toc_7">漏洞利用</h2>
+
+<hr/>
+
+<p><strong>短文件名漏洞</strong><br/>
+漏洞利用需要使用到通配符。在 windows 中，* 可以匹配n个字符（n可以为0,一个星号和n个星号的意义一样）。判断某站点是否存在 IIS 短文件名爆破，构造如下payload：    </p>
+
+<pre class="line-numbers"><code class="language-http">1. http://www.xxx.com/*~1*/.aspx
+2. http://www.xxx.com/l1j1e*~1*/.aspx
+</code></pre>
+
+<p>若1返回404而2返回400，则可以判断目标站点存在漏洞。<br/><br/>
+判断漏洞存在后，继续猜解目录下是否存在a开头的文件或文件夹，访问：    </p>
+
+<pre class="line-numbers"><code class="language-http">http://www.xxx.com/a*~1*/.aspx
+</code></pre>
+
+<p>若存在将返回404，不存在则返回400。以此类推，不断向下猜解所有的6个字符。<br/><br/>
+到此要考虑两种情况，若abcdef开头的是一个文件夹则    </p>
+
+<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*/~1/.aspx
+</code></pre>
+
+<p>返回404。若abcdef开头的是一个文件，则    </p>
+
+<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*~1/.aspx
+</code></pre>
+
+<p>返回404（注意！返回404表示存在）同理我们可以猜出文件后缀名：    </p>
+
+<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*~1*h*/.aspx
+</code></pre>
+
+<p>若返回404则代表扩展名中肯定存在h字符。<br/><br/>
+利用此漏洞可以猜解后台地址、敏感文件/文件名（如备份的rar、bak、sql等）；某些情况下，可以通过短文件名漏洞直接下载对应的文件（如备份sql文件）。<br/><br/>
+<br><br/>
+<strong>.Net Framework 拒绝服务攻击</strong><br/><br/>
+当请求文件夹名称包含 ~1 的请求，会导致不存在该文件的 .Net Framework 去递归查询所有根目录。如果只有一个“~1”是无效的，当“~1”大于一个，比如像这样：        </p>
+
+<pre class="line-numbers"><code class="language-http">\wwwtest\fuck~1\~1\~1\~1.aspx
+</code></pre>
+
+<p>此时文件系统会这样调用：    </p>
+
+<pre class="line-numbers"><code class="language-txt">\wwwtest                           SUCCESS
+\wwwtest\fuck~1\~1\~1\~1           PATH NOT FOUND
+\wwwtest\fuck~1                    NAME NOT FOUND
+\wwwtest\fuck~1\~1\                PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1\             PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1              PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1              PATH NOT FOUND
+\wwwtest\fuck~1\~1                 PATH NOT FOUND
+\wwwtest\fuck~1                    NAME NOT FOUND
+\wwwtest                           SUCCESS
+\wwwtest                           SUCCESS
+</code></pre>
+
+<p>如果我们请求的文件/文件夹名同时存在大小写时，这个请求会被请求两次，一次是原封不动的请求，一次是全部使用小写的请求。<br/><br/>
+下表显示了每个请求的FS调用的数量（Windows 2008 R2, IIS 7.5(latest patch – June 2012), and .Net framework 4.0.30319 (在别的系统下可能会不同)）<br/><br/>
+<img src="media/15483045487043/F5%E8%B0%83%E7%94%A8.png" alt="F5调用"/></p>
+
+<p>这个问题适用于当时的 .Net framework 的所有版本(<br/><br/>
+    IIS 1.0, Windows NT 3.51<br/><br/>
+    IIS 2.0, Windows NT 4.0<br/><br/>
+    IIS 3.0, Windows NT 4.0 Service Pack 2<br/><br/>
+    IIS 4.0, Windows NT 4.0 Option Pack<br/><br/>
+    IIS 5.0, Windows 2000<br/><br/>
+    IIS 5.1, Windows XP Professional and Windows XP Media Center Edition<br/><br/>
+    IIS 6.0, Windows Server 2003 and Windows XP Professional x64 Edition<br/><br/>
+    IIS 7.0, Windows Server 2008 and Windows Vista<br/><br/>
+    IIS 7.5, Windows 7 (error remotely enabled or no web.config)<br/><br/>
+    IIS 7.5, Windows 2008 (classic pipeline mode))<br/><br/>
+只是 F5 的调用次数会有不同。    </p>
+
+<h2 id="toc_8">参考链接</h2>
+
+<hr/>
+
+<ul>
+<li><a href="http://www.lijiejie.com/iis-win8-3-shortname-brute/">http://www.lijiejie.com/iis-win8-3-shortname-brute/</a><br/></li>
+<li><a href="https://www.acunetix.com/blog/articles/windows-short-8-3-filenames-web-security-problem/">https://www.acunetix.com/blog/articles/windows-short-8-3-filenames-web-security-problem/</a><br/></li>
+<li><a href="http://www.freebuf.com/articles/4908.html">http://www.freebuf.com/articles/4908.html</a><br/></li>
+<li><a href="https://support.microsoft.com/zh-cn/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions">https://support.microsoft.com/zh-cn/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions</a><br/></li>
+<li><a href="https://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf">https://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf</a><br/></li>
+</ul>
 
                         
                       </div>
@@ -614,7 +445,7 @@ ADDUSER （“” ， “tester2” ， “secret2” ，“”  ）
                     <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -708,31 +539,31 @@ ADDUSER （“” ， “tester2” ， “secret2” ，“”  ）
 	      
 		      
 			      <li class="post">
+			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15505564665657.html">深入了解最近普遍存在的DNS劫持攻击事件</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489008835167.html">黑链</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15488284836388.html">90后空巢青年生活指南</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045487644.html">Atom设置和取消代理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045486850.html">BASIC INJECTION 基本注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491221.html">CRLF注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491124.html">FOEENSICS 101</a>
 			      </li>
 		     
 		  

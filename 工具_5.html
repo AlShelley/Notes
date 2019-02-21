@@ -130,47 +130,58 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045490178.html">
+                <a class="clearlink" href="15483045491239.html">
                 
-                  <h1>nano常见设置，如语法高亮、启用行号、启用鼠标等</h1>
+                  <h1>更优雅的使用Hexo写博客</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>下载nano<br/>
-linux根据包管理不同，使用不通的命令。<br/>
-macosx使用brew安装。</p>
+                        	<blockquote>
+<p>曾经的博客是使用 Hexo 写的，我觉得Hexo这种在文章前面写上元信息的方式很棒。然而，每此写markdown文档都要输入这些元信息，这很麻烦，所以就写了个shell脚本来自动化输入文件元信息的过程。<br/>
+代码如下：</p>
+</blockquote>
 
-<p>编辑（没有就创建）配置文件<br/>
-nano ～/.nanorc<br/>
-然后添加以下内容</p>
+<pre class="line-numbers"><code class="language-bash">#!/bin/bash
 
-<pre class="line-numbers"><code class="language-text"># 语法高亮
-include &quot;/usr/share/nano/*.nanorc&quot;
+printf &quot;请输入文件名(example.md)，记得写后缀!\n&quot;
+read -p &quot;文件名是: &quot; filename
+# 这里的title取文件名不取后缀
+echo &quot;title: &quot;${filename%.*} &gt;&gt; $filename
+echo &quot;author: lonelyor&quot; &gt;&gt; $filename
+echo &quot;language: zh-CN&quot; &gt;&gt; $filename
+echo &quot;tags:&quot; &gt;&gt; $filename
+echo &quot;  - 标签&quot; &gt;&gt; $filename
+echo &quot;categories:&quot; &gt;&gt; $filename
+echo &quot;  - 分类&quot; &gt;&gt; $filename
+time=$(date &quot;+%Y-%m-%d %H:%M:%S&quot;)
+echo &quot;date: ${time}&quot;&gt;&gt; $filename
+echo &quot;---&quot; &gt;&gt; $filename
+echo &quot;&gt; description: &quot; &gt;&gt; $filename
+# printf和echo都是输出，&gt;&gt;表示追加，&gt;会覆盖文件
+# shell中使用变量需要先定义变量，然后使用时加 $
+# read 用来创建文件，文件名从终端获取
 </code></pre>
 
-<p>或者</p>
+<p>展示效果如下:</p>
 
-<pre class="line-numbers"><code class="language-text"># 语法高亮
-include &quot;/usr/local/share/nano/*.nanorc&quot;
+<pre class="line-numbers"><code class="language-md">title: 如何优雅的创建markdown文件
+author: lonelyor
+language: zh-CN
+tags:
+  - Hexo
+  - markdown
+categories:
+  - 技术杂文
+date: 2018-09-06 17:42:40
+---
+&gt; description: 若爱请深爱，若不爱请离开。
 </code></pre>
 
-<p>这里include哪一个主要取决于nanorc的具体位置。通常linux在share，macosx在local/share。<br/>
-其他内容如：</p>
-
-<pre class="line-numbers"><code class="language-text"># 启用行号
-set linenumbers
-# 平滑滚动
-set smooth
-# 自动缩进
-set autoindent
-# tab为空格
-set tabstospaces
-# 启用鼠标
-set mouse
-</code></pre>
-
-<p>然后保存，重新打开终端，即可发现设置生效，以上方法适用于linux和macosx。</p>
+<p>接下来说说如何使用(仅限linux、macos，或者说可以执行bash的环境，win用户请自行转换成bat)：<br/>
+首先，创建一个名叫 md.sh 的文件（名字你爱咋咋地），把代码copy进去。<br/>
+然后，<code>ln -s /md文件绝对路径 /usr/local/bin/md</code> ,这条语句的意思就是创建一个软连接，把 md.sh 连接到当前用户的 md 命令上。<br/>
+最后，打开终端输入 md ，然后输入要创建的markdown文件名（如：test.md），即可在当前目录下创建带有元信息的markdown文件。</p>
 
                         
                       </div>
@@ -196,55 +207,36 @@ set mouse
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045487959.html">
+                <a class="clearlink" href="15483045487644.html">
                 
-                  <h1>npm Cannot find module 'semver' --解决方案</h1>
+                  <h1>Atom设置和取消代理</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p><a href="https://blog.csdn.net/hanshuonb/article/details/77969080">https://blog.csdn.net/hanshuonb/article/details/77969080</a></p>
-</blockquote>
+                        	<h2 id="toc_0">设置本地上游代理</h2>
 
-<p>度娘上面我没有找到相关的解决方法所以只能去Stack Overflow上寻找答案，找到的结果是这样的：</p>
+<p>apm config set http-proxy socks5:127.0.0.1:1080<br/>
+apm config set https-proxy socks5:127.0.0.1:1080</p>
 
-<pre class="line-numbers"><code class="language-text">sudo rm -rf /usr/local/lib/node_modules
-sudo rm -rf ~/.npm
-brew uninstall --force node
-brew install node
-</code></pre>
+<h2 id="toc_1">取消SSL</h2>
 
-<p>上面命令的意思删除所有全局包和.npm文件夹，重新安装node。 <br/>
-这种方法我没试过，因为肯定有很多小伙伴安装了除npm之外的全局包比如express、webpack等等，如果不考虑清楚直接全删了的话。。。后果惨不忍睹。。。(ps:因为本人英语实在不好，所以经常直接傻瓜式粘命令，提醒小伙伴们最好粘命令之前去查查是什么意思，否则出了问题有可能都没法回退。。。)</p>
+<p>apm config set strict-ssl false</p>
 
-<p>说了这么多，下面切入正题 <br/>
-首先需要知道为啥有报这个错，可以到全局的npm包看一下，路径是</p>
+<h2 id="toc_2">取消代理</h2>
 
-<p><code>/usr/local/lib/node_modules/npm</code><br/>
-进入npm的node_modules中的semver文件夹可以看到里面变成空的了！具体的原因不好意思我没有深究，但是我觉得一定和yarn是有关系的。不仅如此，你会看到其他的文件夹也基本都是变成空的了，这下咱们就知道为啥报semver这个module找不到了吧！</p>
+<p>apm config set http-proxy null<br/>
+apm config set https-proxy null</p>
 
-<p>网上还有解决方法是说用 <code>npm unintall npm -g</code> 删除npm包，实测不好使。。。npm所有的命令都不行了 uninstall肯定也不行了啊！！！</p>
+<h2 id="toc_3">查看代理设置</h2>
 
-<h2 id="toc_0">我的解决方法：</h2>
+<p>apm config get http-proxy<br/>
+apm config get https-proxy</p>
 
-<p>1.先删除全局的npm包：也就是把刚才提到的<code>/usr/local/lib/node_modules/npm</code>，这个npm文件夹删除掉 <br/>
-2.回到<code>/usr/local/lib/node_modules</code>这个目录，从GitHub上重新clone下git包 <br/>
-终端:<br/>
-<code>git clone --recursive git://github.com/isaacs/npm.git</code><br/>
-这样新的npm包就回到了全局node_modules中 <br/>
-3.打开终端输入<br/>
-<code>npm -v</code><br/>
-看一下npm是否可以打印出版本号，如果可以，npm就可以正常使用啦！</p>
-
-<p>说白了就是：</p>
-
-<pre class="line-numbers"><code class="language-text">rm -rf /usr/local/lib/node_modules/npm
-cd /usr/local/lib/node_modules
-git clone --recursive git://github.com/isaacs/npm.git`
-</code></pre>
-
-<p>搞定</p>
+<p>编辑～/.atom/.apmrc文件，配置为：<br/>
+strict-ssl=false<br/>
+http_proxy = socks5: 127.0.0.1:1080<br/>
+https_proxy = socks5: 127.0.0.1:1080</p>
 
                         
                       </div>
@@ -391,31 +383,31 @@ bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.dire
 	      
 		      
 			      <li class="post">
+			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15505564665657.html">深入了解最近普遍存在的DNS劫持攻击事件</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489008835167.html">黑链</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15488284836388.html">90后空巢青年生活指南</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045487644.html">Atom设置和取消代理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045486850.html">BASIC INJECTION 基本注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491221.html">CRLF注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491124.html">FOEENSICS 101</a>
 			      </li>
 		     
 		  

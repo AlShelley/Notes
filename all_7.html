@@ -130,132 +130,372 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045490884.html">
+                <a class="clearlink" href="15483045490451.html">
                 
-                  <h1>burpsuite插件编写之官方代码示例解读</h1>
+                  <h1>wsgidav独立服务器使用手册</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>description: 分析burpsuite官方提供的示例代码，以此来学习插件编写。</p>
+<p>很久以前写的，我也不记得写的什么东西了。wsgidav是一个提供webdav服务的python库，可以用来共享文件。更多相关知识可以自行百度“什么是webdav？”。</p>
 </blockquote>
 
-<h2 id="toc_0">HelloWorld</h2>
+<h1 id="toc_0">使用示例（或者说是个本地测试）</h1>
 
-<p>废话不多说，直接上代码！</p>
+<p>sudo wsgidav --host=0.0.0.0 --port=80 --root=/home/lonelyor<br/>
+这里的sudo是个坑，不加的话就找不到wsgidav指令，为此搞了好久诶。</p>
 
-<pre class="line-numbers"><code class="language-python">from burp import IBurpExtender
-from java.io import PrintWriter
-from java.lang import RuntimeException
+<h1 id="toc_1">wsgidav高级设置：</h1>
 
-# 上面import的第一句是所有burp插件都必须有的
-# 下面开始创建一个burp插件的类来实现插件
-class BurpExtender(IBurpExtender):
-    def registerExtenderCallbacks(self, callbacks):
-        # 创建插件名
-        callbacks.setExtensionName(&quot;HelloWorld extension&quot;)
-        # 获取输出和错误流
-        stdout = PrintWriter(callbacks.getStdout(), True)
-        stderr = PrintWriter(callbacks.getStderr(), True)
-        # 在输出流和错误流中插入消息
-        stdout.println(&quot;Hello output&quot;)
-        stderr.println(&quot;Hello errors&quot;)
-        # 将消息插入burp的alert警报标签中
-        callbacks.issueAlert(&quot;Hello alerts&quot;)
-        # 抛出将出现在错误流中的异常
-        raise RuntimeException(&quot;Hello exception&quot;)
+<p>sudo wsgidav  --config=./wsgidav.conf<br/>
+引用配置文件，配置文件使用python语法来指定这些选项：<br/>
+服务器选项（主机名，端口，SSL证书，...）<br/>
+共享名称/ WebDAV提供程序映射列表<br/>
+认证用户列表<br/>
+可选的自定义DAV提供程序（即FilesystemProvider以外）<br/>
+可选的自定义锁管理器，属性管理器和域控制器<br/>
+高级调试选项<br/>
+（和更多）</p>
+
+<h1 id="toc_2">配置文件示例</h1>
+
+<pre class="line-numbers"><code class="language-python">＃注意：这个文件是Python的语法和格式
+
+####################################### #########################################＃
+WsgiDAV配置文件
+＃请参阅
+＃http ： //wsgidav.readthedocs.io/en/latest/run-configure.html＃
+以获取配置文件格式的一些解释。
+################################################## ############################## 
+
+＃助手-请不要修改此节
+
+provider_mapping  =  {} 
+user_mapping  =  {} 
+
+高清 addShare （SHARENAME ， davProvider ）：
+    provider_mapping [ shareName ]  =  davProvider
+
+    
+def  addUser （realmName ， user ， password ， description ， roles = []）：
+    realmName  =  “/”  +  realmName 。条（- [R “\ /” ）
+    的UserDict  =  user_mapping 。setdefault （realmName ， {}）。setdefault （user ， {}）
+    userDict [ “password” ]  =  密码
+    userDict [ “description”]  =  描述
+    userDict [ “roles” ]  =  角色
+
+
+####################################### #########################################＃
+SERVER OPTIONS 
+＃===== ================================================== ======================== 
+＃在这个WSGI服务器中运行WsgiDAV。
+＃支持的服务器：“cheroot”，“cherrypy-wsgiserver”，“ext_wsgiutils”，
+＃“flup-fcgi”，“flup-fcgi-fork”，“paste”，“wsgiref” 
+＃“wsgiref”和“ext_wsgiutils”内置的服务器，应该*不* 
+生产中使用。
+＃所有其他服务器必须已经安装，例如`pip install cheroot`。
+＃（二进制发行版已经包含了&#39;cheroot&#39;）
+＃默认：“cheroot”，使用命令行上的--server选项来改变它。
+
+#server =“cheroot” 
+
+＃在初始化时传递给服务器的附加参数（取决于`server`）
+＃例如，对于cheroot：
+
+#server_args = { 
+＃“numthreads”：10，
+＃“max”：-1，
+＃“request_queue_size “：5，
+＃”timeout“：10，
+＃”shutdown_timeout“：5，
+＃”verbose“：0，
+＃} 
+
+＃服务器端口（默认：8080，在命令行使用--port）
+port  =  8080 
+
+＃服务器主机名默认：localhost，
+  
+
+＃================================================= ============================== 
+＃启用SSL支持
+＃注意：
+＃有效的证书必须与服务器的主机名匹配，所以假的证书将
+不会在所有情况下工作。
+＃改为创建自己的证书！
+ 
+＃ssl_certificate =“wsgidav / server / sample_bogo_server.crt” 
+＃ssl_private_key =“wsgidav / server / sample_bogo_server.key” 
+＃ssl_certificate_chain = None 
+
+＃cheroot服务器支持&#39;builtin&#39;和&#39;pyopenssl&#39;（默认值：&#39;builtin&#39;）
+＃ssl_adapter = pyopenssl“ 
+
+
+＃=============================================== ================================= 
+＃Misc。setings 
+＃
+
+＃将MS-Author-Via响应头添加到OPTIONS命令，以允许
+使用Microsoft Office 
+
+编辑＃（默认值：False）add_header_MS_Author_Via  =  True 
+
+
+＃以字节为单位的块大小
+
+＃block_size = 8192 
+
+
+＃将此值设置为True，强制不引用PATH_INFO。这应该已经由WSGI 
+＃Framework 
+
+完成了，所以这个设置只能用来解决那里的意外问题（见问题＃8）。＃unquote_path_info = False 
+
+
+＃使用UTF-8重新编码PATH_INFO（回落到ISO-8859-1）。
+＃这似乎是错误的，因为每个PEP 3333 PATH_INFO始终是ISO-8859-1编码
+＃（请参阅https://www.python.org/dev/peps/pep-3333/#unicode-issues）。
+＃但是，在使用中文字符访问资源时，似乎可以解决错误
+（例如，参见问题＃73）。
+＃设置为`None`（默认），仅对Python 3启用。
+
+＃re_encode_path_info =无
+
+
+＃============================================= ================================== 
+＃中间件
+＃＃
+使用此部分来修改默认中间件堆栈
+
+＃from wsgidav .dir_browser import WsgiDavDirBrowser＃
+from debug_filter import WsgiDavDebugFilter＃
+from http_authenticator import HTTPAuthenticator 
+#from error_printer import ErrorPrinter 
+#middleware_stack = [WsgiDavDirBrowser，HTTPAuthenticator，ErrorPrinter，WsgiDavDebugFilter]
+
+＃================================================= ============================== 
+＃调试
+
+verbose  =  1        ＃0  - 没有输出（除了应用程序例外）          
+                     ＃1  - 显示单一（HTTP日志记录）
+                     ＃2  - 显示附加事件
+                     ＃3  - 显示完整的请求/响应头信息（HTTP日志记录）
+                     ＃请求正文和GET响应正文未显示
+
+
+＃启用特定的模块记录器
+＃Eg [“lock_manager”，“property_manager “，”http_authenticator“，...] 
+enable_loggers  =  [] 
+
+＃启用最大值。记录某些http方法
+＃Eg [“COPY”，“DELETE”，“GET”，“HEAD”，“LOCK”，“MOVE”，
+debug_methods  =  [] 
+
+＃启用最大值。在包含某些字符串的石蕊套件测试中进行日志记录
+＃Eg [“lock_excl”，“notowner_modify”，“fail_cond_put_unlocked”，...] 
+debug_litmus  =  [] 
+
+
+################## ################################################## ############# 
+WsgiDavDirBrowser 
+
+dir_browser  =  { 
+    “enable” ： True ，               ＃为集合的GET请求呈现HTML列表
+    “response_trailer” ： “” ，       ＃原始HTML代码，附加为页脚
+    “davmount” ： 假，            ＃发送&lt;dm：mount&gt;
+    “ms_mount” ： False ，            ＃添加一个“打开为webfolder”链接（需要Windows）
+    “ms_sharepoint_plugin” ： True ， ＃调用MS 
+    Offce 文档以使用WebDAV进行编辑“ms_sharepoint_urls” ： False ，  ＃
+Prepend&#39;ms -word：ofe | u |” 到MS Offce 
+文档的URL ＃“app_class”：MyBrowser，
+
+
+
+
+
+
+
+
+
+＃默认值：死性不支持
+wsgidav.property_manager.PropertyManager：＃也可用
+＃wsgidav.property_manager.ShelvePropertyManager 
+＃
+＃查看如何开发定制物业管理的文档。
+＃注意，默认的PropertyManager在内存中工作，因此不是
+＃持久化的。
+
+###使用内存中的属性管理器（不是永久的）
+＃（这与传递&#39;propsmanager = True&#39;相同）
+＃from wsgidav.property_manager import PropertyManager 
+#propsmanager = PropertyManager（）
+
+###使用基于持久性架构的属性管理器
+＃从wsgidav.property_manager导入ShelvePropertyManager
+#propsmanager = ShelvePropertyManager（“wsgidav-props.shelve”）
+
+###使用基于持久性MongoDB的属性管理器
+＃from wsgidav.addons.mongo_property_manager import MongoPropertyManager 
+#prop_man_opts = {} 
+#propsmanager = MongoPropertyManager（prop_man_opts）
+
+###使用基于持久性CouchDB属性管理器
+#from wsgidav.addons.couch_property_manager import CouchPropertyManager 
+#prop_man_opts = {} 
+#propsmanager = CouchPropertyManager（prop_man_opts）
+
+###使用内存中的属性管理器（NOT persistent）
+propsmanager  =  True 
+
+
+###可选的附加动态属性修改
+＃注意：默认情况下，像文件大小和上次修改时间的生活属性是
+＃只读，但如果底层DAV提供程序
+＃支持
+，则可以在这里覆盖。现在只有FileSystemProvider支持它，只有＃更改为上次修改的时间戳。使用下面的mutable_live_props 
+＃列表来
+启用它，以允许客户端使用utime系统调用，或者例如＃touch 或cp / rsync命令与挂载的
+＃DAV共享中
+的preserve-timestamp标志一起使用。＃请注意，时间戳是在实际的文件或目录中设置的，所以
+即使对于内存中的属性管理器
+，它也是持久的。还应该注意＃可变的最后修改可能不符合RFC 
+4918. #mutable_live_props = [“{DAV：} getlastmodified”]
+
+
+＃================================================= ============================== 
+＃锁管理器
+＃＃
+取消注释此行以指定您自己的锁管理器。                    
+＃默认值：wsgidav.lock_storage.LockStorageDict 
+＃还有：wsgidav.lock_storage.LockStorageShelve 
+＃
+＃查看如何开发自定义锁管理器的文档。
+＃注意默认的LockStorageDict在内存中工作，因此不是
+＃持久化的。
+                 
+＃示例：使用内存中的锁存储
+＃（这与默认情况下传递&#39;locksmanager = True&#39;相同）
+＃from wsgidav.lock_storage import LockStorageDict 
+#locksmanager = LockStorageDict（）
+
+
+＃示例：使用基于PERSISTENT架构的锁管理器
+＃from wsgidav.lock_storage import LockStorageShelve 
+#locksmanager = LockStorageShelve（“wsgidav-locks.shelve”）
+
+
+##################### ################################################## #########＃
+SHARES 
+＃＃
+如果您想通过
+＃WsgiDAV共享文件
+发布位置“/ v_root”中的文件，以便可以通过以下URL访问文件：＃http   ：/ / /服务器：端口/文件
+＃插入以下行：
+＃addShare（ “文件”， “/ v_root”） 
+＃或者，在Windows中：
+＃addShare（ “文件”， “C：\\ v_root”） ＃
+＃
+要使用根级别共享访问相同的目录
+＃http：// server：港口/
+
+＃add this line：＃addShare（“”，“/ v_root”）
+＃＃
+上面的例子使用wsgidav.fs_dav_provider.FilesystemProvider，它是
+缺省提供程序实现。
+＃＃
+如果您希望使用自定义提供程序，则必须将对象作为第二个
+参数
+
+
+传递。看下面的例子。  ###添加一个读写文件共享：
+addShare （“dav” ， r “C：\ temp” ）
+
+###添加一个只读文件共享：
+＃from wsgidav.fs_dav_provider import FilesystemProvider 
+#addShare（“tmp”， FilesystemProvider（“/ tmp”，readonly = True））
+
+
+###发布MySQL&#39;world&#39;数据库作为共享&#39;/ world-db&#39;
+#from wsgidav.addons.mysql_dav_provider import MySQLBrowserProvider 
+#addShare（“world-db”，MySQLBrowserProvider（“localhost”，“root”，“test”，“world”））
+
+
+### 
+从wsgidav.samples 
+发布一个虚拟结构。 virtual_dav_provider import VirtualResourceProvider #addShare（“virtres”，VirtualResourceProvider（））
+
+
+###发布一个Mercurial仓库
+＃from wsgidav.addons.hg_dav_provider import HgResourceProvider 
+#addShare（“hg”，HgResourceProvider（“PATH_OR_URL”））
+
+
+###发布一个MongoDB 
+#from wsgidav.samples.mongo_dav_provider import MongoResourceProvider 
+#mongo_dav_opts = {} 
+#addShare（“mongo”，MongoResourceProvider（mongo_dav_opts））
+
+
+################################################## ##############################＃
+AUTHENTICATION 
+＃================= ================================================== ============ 
+＃HTTP验证选项
+
+acceptbasic  =  True     ＃允许基本验证，True或False 
+acceptdigest  =  True    ＃允许摘要验证，True或False 
+defaultdigest  =  True   ＃True（默认摘要）或False默认基本）
+
+＃输入将被接受为授权用户的标题字段的名称。
+＃包括引号，例如：trusted_auth_header =“REMOTE_USER” 
+trusted_auth_header  =  无
+
+
+＃================================================= ============================== 
+＃域控制器
+＃取消注释此行以指定您自己的域控制器
+＃默认值：wsgidav.domain_controller，它采用下面的用户部分
+＃
+＃示例：
+＃使用域控制器，允许用户对一个认证
+＃Windows NT域或本地计算机。
+＃注意：NTDomainController需要基本身份验证：
+＃set acceptbasic = True，acceptdigest = False，defaultdigest = False 
+
+#from wsgidav.addons.nt_domain_controller import NTDomainController 
+#domaincontroller = NTDomainController（presetdomain = None，presetserver = None）
+#acceptbasic = True 
+#acceptdigest =假
+#defaultdigest = False 
+
+
+＃============================================= ================================== 
+＃USERS 
+＃＃
+此部分仅供DEFAULT域控制器使用。
+＃
+＃用户被每领域中定义的：
+＃ADDUSER（&lt;境界&gt;，&lt;用户&gt;，&lt;密码&gt;，&lt;描述&gt;） ＃   
+＃
+请注意，缺省域控制器使用共享名作为领域名称。   
+＃＃
+如果没有用户指定领域，则不需要认证。
+＃因此授予读写访问匿名！
+＃＃
+注意：如果您希望使用Windows WebDAV支持（例如Windows XP的My 
+＃网络位置），则需要将用户的域作为
+
+＃username 
+
+（注意DOUBLE斜线），例如：＃addUser（“v_root”，“domain \\ user”，“password”，“description”）addUser （“” ， “tester” ， “secret” ， “” ）
+ADDUSER （“” ， “tester2” ， “secret2” ，“”  ）
+
+#addUser（ “DAV”， “测试器”， “秘密”， “”）
+#addUser（ “DAV”， “tester2”， “secret2”，“ “）
+
+#addUser（”virtres“，”tester“，”secret“，”“）
 </code></pre>
-
-<p>现在开始来说几个坑：<br/>
-1、插件最好尽量放在英文路径，不然可能会报错<br/>
-2、编写代码前指定编码(如：# -<em>- coding:utf8 -</em>-)<br/>
-3、raise RuntimeException(&quot;Hello exception&quot;) 这行代码我没看懂是要干嘛的，反正写了之后Errors就报错，不想看的话就注释掉好了。</p>
-
-<h2 id="toc_1">event_listeners 事件监听器</h2>
-
-<pre class="line-numbers"><code class="language-python">#!/usr/bin/python3
-# -*- coding:utf-8 -*-
-
-from burp import IBurpExtender
-from burp import IHttpListener
-from burp import IProxyListener
-from burp import IScannerListener
-from burp import IExtensionStateListener
-from java.io import PrintWriter
-
-class BurpExtender(IBurpExtender, IHttpListener, IProxyListener, IScannerListener, IExtensionStateListener):
-    def registerExtenderCallbacks(self, callbacks):
-        # 保持对回调对象的引用
-        self._callbacks = callbacks
-        # 创建插件名
-        callbacks.setExtensionName(&quot;Event Listeners&quot;)
-        # 获取输出流
-        self._stdout = PrintWriter(callbacks.getStdout(), True)
-        # 注册为http监听器
-        callbacks.registerHttpListener(self)
-        # 注册为proxy监听器
-        callbacks.registerProxyListener(self)
-        # 注册为scanner监听器
-        callbacks.registerScannerListener(self)
-        # 注册为扩展插件状态监听器
-        callbacks.registerExtensionStateListener(self)
-    # 下面几个函数各自实现监听
-    def processHttpMessage(self, toolFlag, messageIsRequest, messageInfo):
-        self._stdout.println(
-            (&quot;HTTP request to &quot; if messageIsRequest else &quot;HTTP response from&quot;) +
-            messageInfo.getHttpService().toString() +
-            &quot;[&quot; + self._callbacks.getToolName(toolFlag) + &quot;]&quot;
-        )
-
-    def processProxyMessage(self, messageIsRequest, message):
-        self._stdout.println(
-            (&quot;Proxy request to &quot; if messageIsRequest else &quot;Proxy response from&quot;) +
-            message.getMessageInfo.getHTTPService().toString()
-        )
-
-    def newScanIssue(self, issue):
-        self._stdout.prinln(&quot;New scan issue &quot; + issue.getIssueName())
-
-    def extensionUnloaded(self):
-        self._stdout.println(&quot;Extension was unloaded&quot;)
-</code></pre>
-
-<p>我是没搞懂这个插件做了什么，诶无所谓，也就是多敲敲代码，熟悉熟悉感觉。</p>
-
-<h2 id="toc_2">traffic_redirector 流量重定向</h2>
-
-<pre class="line-numbers"><code class="language-python">#!/usr/bin/python3
-# -*- coding:utf-8 -*-
-
-from burp import IBurpExtender
-from burp import IHttpListener
-
-HOST_FROM = &quot;www.baidu.com&quot;
-HOST_TO = &quot;www.zhihu.com&quot;
-
-class BurpExtender(IBurpExtender, IHttpListener):
-    def registerExtenderCallbacks(self, callbacks):
-        # 获取扩展helpers对象
-        self._helpers = callbacks.getHelpers()
-        # 设置扩展名
-        callbacks.setExtensionName(&quot;Traffic redirector&quot;)
-        # 将自己注册为HTTP侦听器
-        callbacks.registerHttpListener(self)
-
-    def processHttpMessage(self, toolsFlag, messageIsRequest, messageInfo):
-        # 只获取请求
-        if not messageIsRequest:
-            return
-        # 获取http服务的请求
-        httpService = messageInfo.getHttpService()
-        # 如果主机是HOST_FROM则将它改成HOST_TO
-        if (HOST_FROM == httpService.getHost()):
-            messageInfo.setHttpService(self._helpers.buildHttpService(HOST_TO,
-                httpService.getPort(), httpService.getProtocol()))
-</code></pre>
-
-<p>这个插件简单来说就是，把请求中的host部分修改掉。比如上述代码会监听所有host为百度的请求，一旦出现，就会把host改成知乎。</p>
 
                         
                       </div>
@@ -267,7 +507,7 @@ class BurpExtender(IBurpExtender, IHttpListener):
                     <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -281,28 +521,16 @@ class BurpExtender(IBurpExtender, IHttpListener):
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045491162.html">
+                <a class="clearlink" href="15483045490471.html">
                 
-                  <h1>burpsuite设置上游代理</h1>
+                  <h1>解决npm更新或安装软件时下载较慢等问题</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>burpsuite的使用技巧之一，设置上游代理。比如测试境外网站时可能需要[fanqiang]才能访问，此时这个技巧就能用得上了。</p>
-</blockquote>
-
-<p><img src="http://images.lonelyor.org/burp%E8%AE%BE%E7%BD%AE%E4%B8%8A%E6%B8%B8%E4%BB%A3%E7%90%8620180823161146.png" alt="burp设置上游代理20180823161146"/></p>
-
-<p>1、在浏览器中设置burp代理以保证可以抓包<br/>
-2、开启上游代理<br/>
-3、在burp的图中所示位置设置上游代理</p>
-
-<p>打完收工</p>
-
-<h2 id="toc_0">参考链接</h2>
-
-<p><a href="http://www.360zhijia.com/360anquanke/191737.html">http://www.360zhijia.com/360anquanke/191737.html</a></p>
+                        	<p>更换淘宝源即可，<br/>
+在终端执行命令：<br/>
+<code>npm config set registry https://registry.npm.taobao.org</code></p>
 
                         
                       </div>
@@ -314,7 +542,7 @@ class BurpExtender(IBurpExtender, IHttpListener):
                     <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -328,48 +556,21 @@ class BurpExtender(IBurpExtender, IHttpListener):
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045487663.html">
+                <a class="clearlink" href="15483045490492.html">
                 
-                  <h1>crontab设置定时任务</h1>
+                  <h1>汉化firefox火狐浏览器</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>文章参考自：<a href="http://blog.csdn.net/xiaochuige/article/details/49252741">http://blog.csdn.net/xiaochuige/article/details/49252741</a> 感谢作者。</p>
-</blockquote>
+                        	<p>1、点击 help——about 查看火狐版本<br/><br/>
+2、在火狐浏览器输入:<a href="http://ftp.mozilla.org,%E6%8C%89%E7%85%A7%E6%88%91%E4%B8%8B%E9%9D%A2%E7%BB%99%E7%9A%84%E7%BD%91%E5%9D%80%E4%BE%9D%E6%AC%A1%E9%80%89%E6%8B%A9%E7%9B%AE%E5%BD%95%EF%BC%8C%E8%AF%AD%E8%A8%80%E5%8C%85%E5%9C%A8xpi%E7%9B%AE%E5%BD%95%E4%B8%8B%EF%BC%8C%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%EF%BC%88zh-CN.xpi%EF%BC%89/%E7%B9%81%E4%BD%93%EF%BC%88zh-TW.xpi%EF%BC%89%E3%80%82">http://ftp.mozilla.org,按照我下面给的网址依次选择目录，语言包在xpi目录下，简体中文（zh-CN.xpi）/繁体（zh-TW.xpi）。</a><br/><br/>
+为了方便也可以直接拷贝下列链接到浏览器地址栏，安装。<br/><br/>
+32位系统目录：<a href="http://ftp.mozilla.org/pub/firefox/releases/50.1.0/linux-i686/xpi/zh-CN.xpi">http://ftp.mozilla.org/pub/firefox/releases/50.1.0/linux-i686/xpi/zh-CN.xpi</a><br/><br/>
+64位系统目录：<a href="http://ftp.mozilla.org/pub/firefox/releases/50.1.0/linux-x86_64/xpi/zh-CN.xpi">http://ftp.mozilla.org/pub/firefox/releases/50.1.0/linux-x86_64/xpi/zh-CN.xpi</a><br/><br/>
+记得把版本号修改成浏览器当前版本号。</p>
 
-<p>crontab的基本格式：</p>
-
-<pre class="line-numbers"><code class="language-text">* * * * * command
-几个星号分别为：分 时 日 月 周，最后是要执行的命令。
-分：0~59
-时：0~23
-日：1~31
-月：1~12
-周：0～6（0表示星期天）
-除了数字还有几个个特殊的符号就是* / - ：
-* 代表所有的取值范围内的数字
-/ 代表每的意思
-*/5 表示每5个单位
-- 代表从某个数字到某个数字
-, 分开几个离散的数字
-</code></pre>
-
-<p>配置文件的一些例子：</p>
-
-<pre class="line-numbers"><code class="language-text">0 3 * * * /root/test.sh 每天凌晨3点执行test.sh文件
-* 23-7/1 * * * /root/lnmp restart 晚上11点到早上7点之间，每隔一小时重启lnmp套件
-*/30 * * * * /usr/sbin/ntpdate 每半小时同步一下时间
-0 23 * * 6 /lnmp restart 每星期六的11 : 00 pm重启重启lnmp套件。
-*/1 * * * * echo &quot;i am running.&quot;&gt;&gt;/tmp/running.txt 每隔1分钟向/tmp/running.txt写一个&quot;i am running.&quot;字符串。
-</code></pre>
-
-<p>运行<br/>
-我以为编辑crontab保存后会自动执行，其实不然，必须通过重启cron才可以，命令如下：<br/>
-启动/etc/init.d/cron start<br/>
-关闭/etc/init.d/cron stop<br/>
-重启/etc/init.d/cron restart</p>
+<p>另一种方法是打开扩展商店，输入chinese，然后添加即可。</p>
 
                         
                       </div>
@@ -381,7 +582,7 @@ class BurpExtender(IBurpExtender, IHttpListener):
                     <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -475,31 +676,31 @@ class BurpExtender(IBurpExtender, IHttpListener):
 	      
 		      
 			      <li class="post">
+			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15505564665657.html">深入了解最近普遍存在的DNS劫持攻击事件</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15489008835167.html">黑链</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15488284836388.html">90后空巢青年生活指南</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045487644.html">Atom设置和取消代理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045486850.html">BASIC INJECTION 基本注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491221.html">CRLF注入</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15483045491124.html">FOEENSICS 101</a>
 			      </li>
 		     
 		  

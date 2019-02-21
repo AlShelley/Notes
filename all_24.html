@@ -130,15 +130,36 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045488778.html">
+                <a class="clearlink" href="15483045487644.html">
                 
-                  <h1>无法安装docker</h1>
+                  <h1>Atom设置和取消代理</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>请检查是否开启防火墙，防火墙是否屏蔽了docker的传入链接。<br/>
-通常连不上docker是因为防火墙的原因</p>
+                        	<h2 id="toc_0">设置本地上游代理</h2>
+
+<p>apm config set http-proxy socks5:127.0.0.1:1080<br/>
+apm config set https-proxy socks5:127.0.0.1:1080</p>
+
+<h2 id="toc_1">取消SSL</h2>
+
+<p>apm config set strict-ssl false</p>
+
+<h2 id="toc_2">取消代理</h2>
+
+<p>apm config set http-proxy null<br/>
+apm config set https-proxy null</p>
+
+<h2 id="toc_3">查看代理设置</h2>
+
+<p>apm config get http-proxy<br/>
+apm config get https-proxy</p>
+
+<p>编辑～/.atom/.apmrc文件，配置为：<br/>
+strict-ssl=false<br/>
+http_proxy = socks5: 127.0.0.1:1080<br/>
+https_proxy = socks5: 127.0.0.1:1080</p>
 
                         
                       </div>
@@ -164,15 +185,188 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045488797.html">
+                <a class="clearlink" href="15483045487207.html">
                 
-                  <h1>校验文件md5</h1>
+                  <h1>Web安全检测checklist</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>打开终端<br/>
-使用命令 md5 或 shawun 即可查看。</p>
+                        	<h2 id="toc_0">x01 爆破</h2>
+
+<h3 id="toc_1">弱口令</h3>
+
+<p>HTTP登录<br/>
+SSH<br/>
+MySQL<br/>
+Telnet</p>
+
+<h3 id="toc_2">遍历</h3>
+
+<p>网站敏感文件<br/>
+    源码<br/>
+    配置文件<br/>
+    备份文件<br/>
+    探针类文件<br/>
+网站敏感目录<br/>
+    物理路径<br/>
+    网站管理后台<br/>
+    上传目录<br/>
+    数据库Web管理入口<br/>
+    现成的Webshell<br/>
+端口扫描<br/>
+0day扫描<br/>
+子域名</p>
+
+<h2 id="toc_3">x02 不安全配置</h2>
+
+<h3 id="toc_4">Web服务器</h3>
+
+<p>Nginx<br/>
+Apache<br/>
+IIS</p>
+
+<h3 id="toc_5">Web应用服务器</h3>
+
+<p>Tomcat<br/>
+JBoss<br/>
+Weblogic</p>
+
+<h3 id="toc_6">HTTP安全特性</h3>
+
+<p>HTTP Headers<br/>
+HTTP Options<br/>
+rebots.txt<br/>
+flash跨域策略</p>
+
+<h2 id="toc_7">x03 敏感信息泄露</h2>
+
+<h3 id="toc_8">用户敏感信息</h3>
+
+<p>手机号<br/>
+身份证号<br/>
+社保<br/>
+银行卡号<br/>
+家庭住址</p>
+
+<h3 id="toc_9">应用敏感信息</h3>
+
+<p>debug信息<br/>
+堆栈报错</p>
+
+<h3 id="toc_10">站点敏感信息</h3>
+
+<p>测试页面<br/>
+备份文件</p>
+
+<h3 id="toc_11">本地敏感信息</h3>
+
+<p>前端保存用户密码<br/>
+前端保存验证码</p>
+
+<h2 id="toc_12">x04 xss跨站脚本</h2>
+
+<p>反射型xss<br/>
+存储型xss<br/>
+DOM型xss</p>
+
+<h2 id="toc_13">x05 请求伪造</h2>
+
+<p>csrf跨站请求伪造<br/>
+ssrf服务器请求伪造</p>
+
+<h2 id="toc_14">x06 注入</h2>
+
+<p>LDAP注入<br/>
+ORM注入<br/>
+XML注入<br/>
+XPath注入<br/>
+IMAP/SMTP注入<br/>
+SQL注入<br/>
+代码注入<br/>
+客户端模板注入（CSTI）<br/>
+服务端模板注入（SSTI）<br/>
+服务器端包含注入（SSI）</p>
+
+<h2 id="toc_15">x07 已知漏洞组件</h2>
+
+<p>库文件（某些库会导致远程命令执行）<br/>
+框架（如wordpress、thinkphp、django等）<br/>
+模块（python的某些模块会导致代码注入）</p>
+
+<h2 id="toc_16">x08 文件类漏洞</h2>
+
+<p>文件包含漏洞<br/>
+任意文件创建<br/>
+任意文件读取<br/>
+任意文件上传<br/>
+任意文件下载<br/>
+任意文件删除</p>
+
+<h2 id="toc_17">x09 解析漏洞</h2>
+
+<p>IIS解析漏洞<br/>
+Nginx解析漏洞<br/>
+Apache解析漏洞<br/>
+PHP CGI解析漏洞</p>
+
+<h2 id="toc_18">x10 劫持类漏洞</h2>
+
+<p>点击劫持<br/>
+Jsonp劫持<br/>
+WebSocket劫持<br/>
+DNS劫持<br/>
+二维码劫持<br/>
+子域名劫持</p>
+
+<h2 id="toc_19">x11 业务逻辑漏洞</h2>
+
+<h3 id="toc_20">认证</h3>
+
+<p>使用默认凭证<br/>
+冻结账户策略不当<br/>
+弱用户名和密码<br/>
+“记住我”功能<br/>
+自动登录<br/>
+单点登录<br/>
+弱口令<br/>
+弱安全问题/答案<br/>
+第三方登录风险<br/>
+Oauth2.0安全<br/>
+JWT安全<br/>
+注册覆盖<br/>
+未验证的重定向和转发<br/>
+双因素认证不当</p>
+
+<h3 id="toc_21">授权</h3>
+
+<p>测试角色定义<br/>
+权限管理缺失<br/>
+匿名访问（备用接口——常见于兼容老的不安全的接口时产生）<br/>
+水平越权<br/>
+垂直越权<br/>
+超级账户<br/>
+实名认证不严格</p>
+
+<h3 id="toc_22">会话管理</h3>
+
+<p>cookie安全属性<br/>
+cookie可猜解<br/>
+cookie溢出<br/>
+会话固定<br/>
+用户凭证不安全传输（弱加密或明文传输）<br/>
+用户凭证未一次失效<br/>
+用户凭证可猜解<br/>
+注销与会话超时<br/>
+敏感数据不安全传输</p>
+
+<h3 id="toc_23">流程绕过</h3>
+
+<p>找回密码流程绕过</p>
+
+<h2 id="toc_24">x12 API安全</h2>
+
+<p>整理中</p>
 
                         
                       </div>
@@ -184,7 +378,7 @@
                     <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -198,14 +392,18 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045488816.html">
+                <a class="clearlink" href="15483045487101.html">
                 
-                  <h1>终端配置代理</h1>
+                  <h1>异常登录检测</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>export ALL_PROXY=socks5://127.0.0.1:1080</p>
+                        	<p>异常登录功能用来检测服务器上的登录行为。<br/>
+非常用地的登录行为告警（这个常用登陆地可以作为个人信息的一部分来由用户设置；或者收集第一次成功登录时的公网ip，然后将此ip地址设置位常用登陆地，从该时间往后顺延24小时内的所有公网登录地也会被记为常用登陆地，当超过24小时候，所有不在常用登陆地的登录行为均视为异地登录警告。当某个ip被判定为异地登录时，仅第一次登录行为进行告警，如果成功登录6次或以上，则默认将此ip的地点记录为常用登录地。）<br/>
+非常用登录ip告警<br/>
+非常用登录时间告警<br/>
+非常用登录账号告警（同一时间段内超多次登录同一账号、同一时间段内不同地理位置登录账号、同一时间段内多个ip登录同一账号、不同设备登录同一账号、同一设备不同ip登录同一账号）</p>
 
                         
                       </div>
@@ -217,7 +415,7 @@
                     <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -311,6 +509,12 @@
 	      
 		      
 			      <li class="post">
+			        <a href="15507295741483.html">最强渗透测试教程</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
 			      </li>
 		     
@@ -324,12 +528,6 @@
 		      
 			      <li class="post">
 			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15489008835167.html">黑链</a>
 			      </li>
 		     
 		  

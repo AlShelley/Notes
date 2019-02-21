@@ -130,16 +130,22 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045488856.html">
+                <a class="clearlink" href="15483045487735.html">
                 
-                  <h1>Mac大小写切换</h1>
+                  <h1>v2ray使用方法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>无论中文还是英文状态下,按住 shift 输入即是大写</p>
+                        	<p>编辑 /etc/v2ray/config.json 文件来配置你需要的代理方式；</p>
 
-<p>长按 caps lock 2s 灯亮后输入即是大写</p>
+<p>运行 service v2ray start 来启动 V2Ray 进程；<br/>
+之后可以使用 service v2ray start|stop|status|reload|restart|force-reload 控制 V2Ray 的运行。</p>
+
+<p>v2ray官网：<br/>
+<a href="https://www.v2ray.com/chapter_00/install.html">https://www.v2ray.com/chapter_00/install.html</a><br/>
+v2ray一键安装：<br/>
+bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.direct/go.sh</a>)</p>
 
                         
                       </div>
@@ -165,14 +171,36 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045488875.html">
+                <a class="clearlink" href="15483045487644.html">
                 
-                  <h1>MWeb打开文档库快捷键</h1>
+                  <h1>Atom设置和取消代理</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>CMD + L 即可显示</p>
+                        	<h2 id="toc_0">设置本地上游代理</h2>
+
+<p>apm config set http-proxy socks5:127.0.0.1:1080<br/>
+apm config set https-proxy socks5:127.0.0.1:1080</p>
+
+<h2 id="toc_1">取消SSL</h2>
+
+<p>apm config set strict-ssl false</p>
+
+<h2 id="toc_2">取消代理</h2>
+
+<p>apm config set http-proxy null<br/>
+apm config set https-proxy null</p>
+
+<h2 id="toc_3">查看代理设置</h2>
+
+<p>apm config get http-proxy<br/>
+apm config get https-proxy</p>
+
+<p>编辑～/.atom/.apmrc文件，配置为：<br/>
+strict-ssl=false<br/>
+http_proxy = socks5: 127.0.0.1:1080<br/>
+https_proxy = socks5: 127.0.0.1:1080</p>
 
                         
                       </div>
@@ -278,6 +306,12 @@
 	      
 		      
 			      <li class="post">
+			        <a href="15507295741483.html">最强渗透测试教程</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
 			      </li>
 		     
@@ -291,12 +325,6 @@
 		      
 			      <li class="post">
 			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15489008835167.html">黑链</a>
 			      </li>
 		     
 		  

@@ -173,20 +173,58 @@ Snipaste 版本：1.16.2</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045490036.html">
+                <a class="clearlink" href="15483045491239.html">
                 
-                  <h1>msf安装与维护</h1>
+                  <h1>更优雅的使用Hexo写博客</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><code>curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb &gt; msfinstall &amp;&amp; \<br/>
-  chmod 755 msfinstall &amp;&amp; \<br/>
-  ./msfinstall</code></p>
+                        	<blockquote>
+<p>曾经的博客是使用 Hexo 写的，我觉得Hexo这种在文章前面写上元信息的方式很棒。然而，每此写markdown文档都要输入这些元信息，这很麻烦，所以就写了个shell脚本来自动化输入文件元信息的过程。<br/>
+代码如下：</p>
+</blockquote>
 
-<p>上面是官方提供的一键安装脚本</p>
+<pre class="line-numbers"><code class="language-bash">#!/bin/bash
 
-<p>使用msfupdate可以进行更新</p>
+printf &quot;请输入文件名(example.md)，记得写后缀!\n&quot;
+read -p &quot;文件名是: &quot; filename
+# 这里的title取文件名不取后缀
+echo &quot;title: &quot;${filename%.*} &gt;&gt; $filename
+echo &quot;author: lonelyor&quot; &gt;&gt; $filename
+echo &quot;language: zh-CN&quot; &gt;&gt; $filename
+echo &quot;tags:&quot; &gt;&gt; $filename
+echo &quot;  - 标签&quot; &gt;&gt; $filename
+echo &quot;categories:&quot; &gt;&gt; $filename
+echo &quot;  - 分类&quot; &gt;&gt; $filename
+time=$(date &quot;+%Y-%m-%d %H:%M:%S&quot;)
+echo &quot;date: ${time}&quot;&gt;&gt; $filename
+echo &quot;---&quot; &gt;&gt; $filename
+echo &quot;&gt; description: &quot; &gt;&gt; $filename
+# printf和echo都是输出，&gt;&gt;表示追加，&gt;会覆盖文件
+# shell中使用变量需要先定义变量，然后使用时加 $
+# read 用来创建文件，文件名从终端获取
+</code></pre>
+
+<p>展示效果如下:</p>
+
+<pre class="line-numbers"><code class="language-md">title: 如何优雅的创建markdown文件
+author: lonelyor
+language: zh-CN
+tags:
+  - Hexo
+  - markdown
+categories:
+  - 技术杂文
+date: 2018-09-06 17:42:40
+---
+&gt; description: 若爱请深爱，若不爱请离开。
+</code></pre>
+
+<p>接下来说说如何使用(仅限linux、macos，或者说可以执行bash的环境，win用户请自行转换成bat)：<br/>
+首先，创建一个名叫 md.sh 的文件（名字你爱咋咋地），把代码copy进去。<br/>
+然后，<code>ln -s /md文件绝对路径 /usr/local/bin/md</code> ,这条语句的意思就是创建一个软连接，把 md.sh 连接到当前用户的 md 命令上。<br/>
+最后，打开终端输入 md ，然后输入要创建的markdown文件名（如：test.md），即可在当前目录下创建带有元信息的markdown文件。</p>
 
                         
                       </div>
@@ -212,108 +250,44 @@ Snipaste 版本：1.16.2</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045490077.html">
+                <a class="clearlink" href="15483045491180.html">
                 
-                  <h1>fsarchiver备份文件介绍</h1>
+                  <h1>windows右键添加管理员获得所有权</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>多年以前的笔记</p>
+<p>右键添加获得管理员所有权是个比较方便的功能。</p>
 </blockquote>
 
-<p>fsarchiver安装<br/>
-<code>apt-get install fsarchiver</code></p>
+<p>打开记事本或者别的文本编辑器，然后写入如下内容:</p>
 
-<pre class="line-numbers"><code class="language-text"># 对于备份操作，我们需要以只读形式重新挂载文件系统或者有条件的话直接卸载。也可以-A忽略
-[peter@test88 ~]$ sudo /home/peter/fsarchiver savefs backup.fsa /dev/sdb1
-oper_save.c#938,filesystem_mount_partition(): partition [/dev/sdb1] is mounted read/write. please mount it read-only
-and then try again. you can do &quot;mount -o remount,ro /dev/sdb1&quot;. you can
-also run fsarchiver with option &#39;-A&#39; if you know what you are doing.
-removed backup.fsa
- 
-# 对于恢复操作，我们必须先卸载文件系统。
-[peter@test88 ~]$ sudo /home/peter/fsarchiver restfs backup2.fsa id=0,dest=/dev/sdb2
-oper_restore.c#1230,extractar_filesystem_extract(): partition [/dev/sdb2] is mounted on [/home/peter/sder].
-cannot restore an archive to a partition which is mounted, unmount it first: umount /home/peter/sder
- 
-# 创建文件系统备份
-# 可以将多个文件系统备份在一个文件中
-[peter@test88 ~]$ sudo /home/peter/fsarchiver savefs backup.fsa /dev/sdb1 /dev/sdb2
- 
-# 恢复文件系统
-# id=0表明从归档中提取第一个文件系统的内容
-[peter@test88 ~]$ sudo /home/peter/fsarchiver restfs backup.fsa id=0,dest=/dev/sdc1 id=1,dest=/dev/sdc2
+<pre class="line-numbers"><code class="language-cmd">Windows Registry Editor Version 5.00
 
-
-
-# 软件说明文档
-====&gt; fsarchiver version 0.8.1 (2017-01-10) - http://www.fsarchiver.org &lt;====           
-Distributed under the GPL v2 license (GNU General Public License v2).                   
- * usage: fsarchiver [&lt;options&gt;] &lt;command&gt; &lt;archive&gt; [&lt;dev1&gt; [&lt;dev2&gt; [...]]]            
-&lt;commands&gt;                                                                              
- * savefs: save filesystems to an archive file (backup a device to a file)              
- * restfs: restore filesystems from an archive (overwrites the existing data)           
- * savedir: save directories to the archive (similar to a compressed tarball)           
- * restdir: restore data from an archive which is not based on a filesystem             
- * archinfo: show information about an existing archive file and its contents           
- * probe [detailed]: show list of filesystems detected on the disks                     
-&lt;options&gt;                                                                               
- -o: overwrite the archive if it already exists instead of failing                      
- -v: verbose mode (can be used several times to increase the level of details)          
- -d: debug mode (can be used several times to increase the level of details)            
- -A: allow to save a filesystem which is mounted in read-write (live backup)            
- -a: allow to save a filesystem when acls and xattrs are not supported                  
- -x: enable support for experimental features (they are disabled by default)            
- -e &lt;pattern&gt;: exclude files and directories that match that pattern                    
- -L &lt;label&gt;: set the label of the archive (comment about the contents)                  
- -z &lt;level&gt;: compression level from 1 (very fast) to 9 (very good) default=3            
- -s &lt;mbsize&gt;: split the archive into several files of &lt;mbsize&gt; megabytes each           
- -j &lt;count&gt;: create more than one (de)compression thread. useful on multi-core cpu      
- -c &lt;password&gt;: encrypt/decrypt data in archive, &quot;-c -&quot; for interactive password        
- -h: show help and information about how to use fsarchiver with examples                
- -V: show program version and exit                                                      
-&lt;information&gt;                                                                           
- * Support included for: lzo=yes, lzma=yes                                              
- * Support for ntfs filesystems is unstable: don&#39;t use it for production.               
-&lt;examples&gt;                                                                              
- * save only one filesystem (/dev/sda1) to an archive:                                  
-   fsarchiver savefs /data/myarchive1.fsa /dev/sda1                                     
- * save two filesystems (/dev/sda1 and /dev/sdb1) to an archive:
-   fsarchiver savefs /data/myarchive2.fsa /dev/sda1 /dev/sdb1
- * restore the first filesystem from an archive (first = number 0):
-   fsarchiver restfs /data/myarchive2.fsa id=0,dest=/dev/sda1
- * restore the second filesystem from an archive (second = number 1):
-   fsarchiver restfs /data/myarchive2.fsa id=1,dest=/dev/sdb1
- * restore two filesystems from an archive (number 0 and 1):
-   fsarchiver restfs /data/arch2.fsa id=0,dest=/dev/sda1 id=1,dest=/dev/sdb1
- * restore a filesystem from an archive and convert it to reiserfs:
-   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,mkfs=reiserfs
- * restore a filesystem from an archive and specify extra mkfs options:
-   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,mkfs=ext4,mkfsopt=&quot;-I 256&quot;
- * restore a filesystem from an archive and specify a new label and a new UUID:
-   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,label=root,uuid=5f6e5f4f-dc2a-4dbd-a6ea-9ca997cde75e
- * save the contents of /usr/src/linux to an archive (similar to tar):
-   fsarchiver savedir /data/linux-sources.fsa /usr/src/linux
- * save a filesystem (/dev/sda1) to an archive split into volumes of 680MB:
-   fsarchiver savefs -s 680 /data/myarchive1.fsa /dev/sda1
- * save a filesystem and exclude all files/dirs called &#39;pagefile.*&#39;:
-   fsarchiver savefs /data/myarchive.fsa /dev/sda1 --exclude=&#39;pagefile.*&#39;
- * generic exclude for &#39;share&#39; such as &#39;/usr/share&#39; and &#39;/usr/local/share&#39;:
-   fsarchiver savefs /data/myarchive.fsa --exclude=share
- * absolute exclude valid for &#39;/usr/share&#39; but not for &#39;/usr/local/share&#39;:
-   fsarchiver savefs /data/myarchive.fsa --exclude=/usr/share
- * save a filesystem (/dev/sda1) to an encrypted archive:
-   fsarchiver savefs -c mypassword /data/myarchive1.fsa /dev/sda1
- * same as before but prompt for password in the terminal:
-   fsarchiver savefs -c - /data/myarchive1.fsa /dev/sda1
- * extract an archive made of simple files to /tmp/extract:
-   fsarchiver restdir /data/linux-sources.fsa /tmp/extract
- * show information about an archive and its filesystems:
-   fsarchiver archinfo /data/myarchive2.fsa
-   ```
+[HKEY_CLASSES_ROOT\*\shell\runas]
+@=&quot;管理员取得所有权&quot;
+&quot;NoWorkingDirectory&quot;=&quot;&quot;
+[HKEY_CLASSES_ROOT\*\shell\runas\command]
+@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
+&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
+[HKEY_CLASSES_ROOT\exefile\shell\runas2]
+@=&quot;管理员取得所有权&quot;
+&quot;NoWorkingDirectory&quot;=&quot;&quot;
+[HKEY_CLASSES_ROOT\exefile\shell\runas2\command]
+@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
+&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
+[HKEY_CLASSES_ROOT\Directory\shell\runas]
+@=&quot;管理员取得所有权&quot;
+&quot;NoWorkingDirectory&quot;=&quot;&quot;
+[HKEY_CLASSES_ROOT\Directory\shell\runas\command]
+@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; /r /d y &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F /t&quot;
+&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; /r /d y &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F /t&quot;
 </code></pre>
+
+<p>然后另存为：管理员获得所有权.reg<br/>
+文件名可以随便写，但是后缀记得写成reg（改成这个后缀后文件图标就会变成一个破碎蓝色魔方）。<br/>
+然后右键以管理员身份运行，若弹框注册表xxx的，同意就行了。</p>
 
                         
                       </div>
@@ -419,6 +393,12 @@ Distributed under the GPL v2 license (GNU General Public License v2).
 	      
 		      
 			      <li class="post">
+			        <a href="15507295741483.html">最强渗透测试教程</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
 			      </li>
 		     
@@ -432,12 +412,6 @@ Distributed under the GPL v2 license (GNU General Public License v2).
 		      
 			      <li class="post">
 			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15489008835167.html">黑链</a>
 			      </li>
 		     
 		  

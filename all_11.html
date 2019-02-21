@@ -130,132 +130,48 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045490884.html">
+                <a class="clearlink" href="15483045490241.html">
                 
-                  <h1>burpsuite插件编写之官方代码示例解读</h1>
+                  <h1>crontab设置定时任务</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>description: 分析burpsuite官方提供的示例代码，以此来学习插件编写。</p>
+<p>文章参考自：<a href="http://blog.csdn.net/xiaochuige/article/details/49252741">http://blog.csdn.net/xiaochuige/article/details/49252741</a> 感谢作者。</p>
 </blockquote>
 
-<h2 id="toc_0">HelloWorld</h2>
+<p>crontab的基本格式：</p>
 
-<p>废话不多说，直接上代码！</p>
-
-<pre class="line-numbers"><code class="language-python">from burp import IBurpExtender
-from java.io import PrintWriter
-from java.lang import RuntimeException
-
-# 上面import的第一句是所有burp插件都必须有的
-# 下面开始创建一个burp插件的类来实现插件
-class BurpExtender(IBurpExtender):
-    def registerExtenderCallbacks(self, callbacks):
-        # 创建插件名
-        callbacks.setExtensionName(&quot;HelloWorld extension&quot;)
-        # 获取输出和错误流
-        stdout = PrintWriter(callbacks.getStdout(), True)
-        stderr = PrintWriter(callbacks.getStderr(), True)
-        # 在输出流和错误流中插入消息
-        stdout.println(&quot;Hello output&quot;)
-        stderr.println(&quot;Hello errors&quot;)
-        # 将消息插入burp的alert警报标签中
-        callbacks.issueAlert(&quot;Hello alerts&quot;)
-        # 抛出将出现在错误流中的异常
-        raise RuntimeException(&quot;Hello exception&quot;)
+<pre class="line-numbers"><code class="language-text">* * * * * command
+几个星号分别为：分 时 日 月 周，最后是要执行的命令。
+分：0~59
+时：0~23
+日：1~31
+月：1~12
+周：0～6（0表示星期天）
+除了数字还有几个个特殊的符号就是* / - ：
+* 代表所有的取值范围内的数字
+/ 代表每的意思
+*/5 表示每5个单位
+- 代表从某个数字到某个数字
+, 分开几个离散的数字
 </code></pre>
 
-<p>现在开始来说几个坑：<br/>
-1、插件最好尽量放在英文路径，不然可能会报错<br/>
-2、编写代码前指定编码(如：# -<em>- coding:utf8 -</em>-)<br/>
-3、raise RuntimeException(&quot;Hello exception&quot;) 这行代码我没看懂是要干嘛的，反正写了之后Errors就报错，不想看的话就注释掉好了。</p>
+<p>配置文件的一些例子：</p>
 
-<h2 id="toc_1">event_listeners 事件监听器</h2>
-
-<pre class="line-numbers"><code class="language-python">#!/usr/bin/python3
-# -*- coding:utf-8 -*-
-
-from burp import IBurpExtender
-from burp import IHttpListener
-from burp import IProxyListener
-from burp import IScannerListener
-from burp import IExtensionStateListener
-from java.io import PrintWriter
-
-class BurpExtender(IBurpExtender, IHttpListener, IProxyListener, IScannerListener, IExtensionStateListener):
-    def registerExtenderCallbacks(self, callbacks):
-        # 保持对回调对象的引用
-        self._callbacks = callbacks
-        # 创建插件名
-        callbacks.setExtensionName(&quot;Event Listeners&quot;)
-        # 获取输出流
-        self._stdout = PrintWriter(callbacks.getStdout(), True)
-        # 注册为http监听器
-        callbacks.registerHttpListener(self)
-        # 注册为proxy监听器
-        callbacks.registerProxyListener(self)
-        # 注册为scanner监听器
-        callbacks.registerScannerListener(self)
-        # 注册为扩展插件状态监听器
-        callbacks.registerExtensionStateListener(self)
-    # 下面几个函数各自实现监听
-    def processHttpMessage(self, toolFlag, messageIsRequest, messageInfo):
-        self._stdout.println(
-            (&quot;HTTP request to &quot; if messageIsRequest else &quot;HTTP response from&quot;) +
-            messageInfo.getHttpService().toString() +
-            &quot;[&quot; + self._callbacks.getToolName(toolFlag) + &quot;]&quot;
-        )
-
-    def processProxyMessage(self, messageIsRequest, message):
-        self._stdout.println(
-            (&quot;Proxy request to &quot; if messageIsRequest else &quot;Proxy response from&quot;) +
-            message.getMessageInfo.getHTTPService().toString()
-        )
-
-    def newScanIssue(self, issue):
-        self._stdout.prinln(&quot;New scan issue &quot; + issue.getIssueName())
-
-    def extensionUnloaded(self):
-        self._stdout.println(&quot;Extension was unloaded&quot;)
+<pre class="line-numbers"><code class="language-text">0 3 * * * /root/test.sh 每天凌晨3点执行test.sh文件
+* 23-7/1 * * * /root/lnmp restart 晚上11点到早上7点之间，每隔一小时重启lnmp套件
+*/30 * * * * /usr/sbin/ntpdate 每半小时同步一下时间
+0 23 * * 6 /lnmp restart 每星期六的11 : 00 pm重启重启lnmp套件。
+*/1 * * * * echo &quot;i am running.&quot;&gt;&gt;/tmp/running.txt 每隔1分钟向/tmp/running.txt写一个&quot;i am running.&quot;字符串。
 </code></pre>
 
-<p>我是没搞懂这个插件做了什么，诶无所谓，也就是多敲敲代码，熟悉熟悉感觉。</p>
-
-<h2 id="toc_2">traffic_redirector 流量重定向</h2>
-
-<pre class="line-numbers"><code class="language-python">#!/usr/bin/python3
-# -*- coding:utf-8 -*-
-
-from burp import IBurpExtender
-from burp import IHttpListener
-
-HOST_FROM = &quot;www.baidu.com&quot;
-HOST_TO = &quot;www.zhihu.com&quot;
-
-class BurpExtender(IBurpExtender, IHttpListener):
-    def registerExtenderCallbacks(self, callbacks):
-        # 获取扩展helpers对象
-        self._helpers = callbacks.getHelpers()
-        # 设置扩展名
-        callbacks.setExtensionName(&quot;Traffic redirector&quot;)
-        # 将自己注册为HTTP侦听器
-        callbacks.registerHttpListener(self)
-
-    def processHttpMessage(self, toolsFlag, messageIsRequest, messageInfo):
-        # 只获取请求
-        if not messageIsRequest:
-            return
-        # 获取http服务的请求
-        httpService = messageInfo.getHttpService()
-        # 如果主机是HOST_FROM则将它改成HOST_TO
-        if (HOST_FROM == httpService.getHost()):
-            messageInfo.setHttpService(self._helpers.buildHttpService(HOST_TO,
-                httpService.getPort(), httpService.getProtocol()))
-</code></pre>
-
-<p>这个插件简单来说就是，把请求中的host部分修改掉。比如上述代码会监听所有host为百度的请求，一旦出现，就会把host改成知乎。</p>
+<p>运行<br/>
+我以为编辑crontab保存后会自动执行，其实不然，必须通过重启cron才可以，命令如下：<br/>
+启动/etc/init.d/cron start<br/>
+关闭/etc/init.d/cron stop<br/>
+重启/etc/init.d/cron restart</p>
 
                         
                       </div>
@@ -267,7 +183,7 @@ class BurpExtender(IBurpExtender, IHttpListener):
                     <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -281,149 +197,47 @@ class BurpExtender(IBurpExtender, IHttpListener):
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045490948.html">
+                <a class="clearlink" href="15483045490178.html">
                 
-                  <h1>Web安全工程师求职清单</h1>
+                  <h1>nano常见设置，如语法高亮、启用行号、启用鼠标等</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>一年前写的一点玩意，没什么卵用</p>
-</blockquote>
+                        	<p>下载nano<br/>
+linux根据包管理不同，使用不通的命令。<br/>
+macosx使用brew安装。</p>
 
-<h2 id="toc_0">安全资讯</h2>
+<p>编辑（没有就创建）配置文件<br/>
+nano ～/.nanorc<br/>
+然后添加以下内容</p>
 
-<p><a href="http://www.freebuf.com/">freebuf</a></p>
+<pre class="line-numbers"><code class="language-text"># 语法高亮
+include &quot;/usr/share/nano/*.nanorc&quot;
+</code></pre>
 
-<p><a href="https://www.t00ls.net/">tools</a></p>
+<p>或者</p>
 
-<p><a href="https://www.secpulse.com/">安全脉搏</a></p>
+<pre class="line-numbers"><code class="language-text"># 语法高亮
+include &quot;/usr/local/share/nano/*.nanorc&quot;
+</code></pre>
 
-<p><a href="https://packetstormsecurity.com/">数据包风暴</a></p>
+<p>这里include哪一个主要取决于nanorc的具体位置。通常linux在share，macosx在local/share。<br/>
+其他内容如：</p>
 
-<p><a href="http://www.4hou.com/">嘶吼</a></p>
+<pre class="line-numbers"><code class="language-text"># 启用行号
+set linenumbers
+# 平滑滚动
+set smooth
+# 自动缩进
+set autoindent
+# tab为空格
+set tabstospaces
+# 启用鼠标
+set mouse
+</code></pre>
 
-<p><a href="https://www.aqniu.com/">安全牛</a></p>
-
-<p><a href="https://www.anquanke.com/">安全客</a></p>
-
-<p><a href="https://www.sec-wiki.com/">sec-wiki</a></p>
-
-<p><a href="http://www.secdoctor.com/">中国信息安全博士网</a></p>
-
-<h2 id="toc_1">威胁情报</h2>
-
-<p>暂略</p>
-
-<h2 id="toc_2">安全工具</h2>
-
-<p><a href="https://www.ctftools.com/down/">最强安全工具集</a></p>
-
-<ul>
-<li>burpsuite(抓包)</li>
-<li>sqlmap(sql注入)</li>
-<li>whireshark(网络抓包)</li>
-<li>中国菜刀(webshell、一句话后门)</li>
-<li>HxD(十六进制编辑器和磁盘编辑器)</li>
-<li>nmap(扫描)</li>
-<li>hydra(爆破)</li>
-<li>cain(爆破)</li>
-<li>metasploit(漏洞利用)</li>
-<li>mitmproxy(http/https代理)</li>
-<li>commix(命令注入)</li>
-<li>httrack(网站克隆)</li>
-<li>netcat(瑞士军刀-网络调试和探测工具)</li>
-<li>scapy(python的交互式数据包操作程序和库)</li>
-<li>empire(域渗透)</li>
-</ul>
-
-<h2 id="toc_3">靶机环境</h2>
-
-<h2 id="toc_4">安全知识库</h2>
-
-<p><a href="https://www.anquanquan.info/">安全圈</a></p>
-
-<p><a href="http://wiki.open.qq.com/wiki/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8%E8%A7%84%E8%8C%83">腾讯安全开发规范</a></p>
-
-<p><a href="https://highon.coffee/blog/cheat-sheet/">安全研究备忘单</a></p>
-
-<p><a href="https://portswigger.net/kb/issues">Burp漏洞定义</a></p>
-
-<p><a href="https://www.offensive-security.com/metasploit-unleashed/">MSF框架终极指南</a></p>
-
-<p><a href="https://www.owasp.org/index.php/Main_Page">OWASP</a></p>
-
-<p><a href="http://vipread.com/index">vipread知识库</a></p>
-
-<p><a href="https://kb.help.rapid7.com/docs/">Rapid7知识库</a></p>
-
-<p><a href="https://kernelnewbies.org/">linux内核研究</a></p>
-
-<p><a href="http://www.loner.fm/bugs/">乌云漏洞</a></p>
-
-<p><a href="https://wooyun.js.org/">乌云文章</a></p>
-
-<p><a href="http://www.office-cn.net/t/api/index.html?web.htm">WindowsAPI参考手册</a></p>
-
-<p><a href="https://support.portswigger.net/customer/portal/articles/2326039-the-burp-methodology">Burp方法论</a></p>
-
-<p><a href="https://ctf-wiki.github.io/ctf-wiki/">CTF-Wiki</a></p>
-
-<p><a href="https://github.com/ctfs/">CTFs</a></p>
-
-<p><a href="https://ctftime.org">ctftime</a></p>
-
-<p><a href="https://www.codesec.net/">代码安全</a></p>
-
-<p><a href="https://silic.wiki/doku.php">习科小黑板</a></p>
-
-<p><a href="https://bbs.safewiki.org/portal.php">安全文库</a></p>
-
-<p><a href="http://webscan.360.cn/vul">360网站常见漏洞</a></p>
-
-<h2 id="toc_5">漏洞平台</h2>
-
-<p><a href="https://butian.360.cn/">补天</a></p>
-
-<p><a href="https://www.vulbox.com/">漏洞盒子</a></p>
-
-<p><a href="https://www.bugbank.cn/">漏洞银行</a></p>
-
-<p><a href="http://www.cnvd.org.cn/">CNVD国家信息安全漏洞共享平台</a></p>
-
-<p><a href="https://src.edu-info.edu.cn/">教育行业漏洞报告平台</a></p>
-
-<p><a href="https://www.seebug.org">Seebug</a></p>
-
-<p><a href="http://0xsafe.org/vuldb.html">Vuldbs漏洞平台</a></p>
-
-<h2 id="toc_6">技能要求</h2>
-
-<ul>
-<li>不同场景下的渗透测试流程、方法</li>
-<li>常见漏洞的攻击方法和防御方法</li>
-<li>代码级白盒测试能力</li>
-<li>owasp_top10概念、原理、测试方法、防御方法</li>
-<li>主流防火墙、IDS、IPS、漏洞扫描工具的安装、使用方法</li>
-<li>熟悉python、php、javascript、c、c++等语言的一种或多种</li>
-<li>cissp之类的证书或ctf解题能力是加分项</li>
-<li>各种靶机环境搭建</li>
-<li>安全分析报告的编写</li>
-<li>对业务快速熟悉的能力（业务安全重点、应用范围划分、业务安全基线）</li>
-<li>spring、struts、hibernate框架安全相关</li>
-<li>web组件加固、服务器加固、数据库加固</li>
-<li>域渗透、dns、arp等内网渗透知识</li>
-<li>各类提权如系统提权、数据库提权等</li>
-<li>风险评估、等级保护、安全体系规划、安全体系建设。包括信息资产管理、安全威胁和风险评估、安全解决方案制定、信息安全体系实施</li>
-<li>Nginx、Apache、Tomcat等安全配置基线</li>
-<li>各类安全测试标准(ISSAF、OSSTMM、OWASP、微软SDLC、OPENSAMM、BSIMM、SSECMM)</li>
-<li>网络日志分析、攻击流量检测</li>
-<li>hadoop、openstack、sdn云安全</li>
-<li>mongodb、redis、HBASE等nosql安全</li>
-<li>burpsuite插件编写</li>
-<li>python脚本开发能力、shell脚本开发能力</li>
-</ul>
+<p>然后保存，重新打开终端，即可发现设置生效，以上方法适用于linux和macosx。</p>
 
                         
                       </div>
@@ -435,7 +249,7 @@ class BurpExtender(IBurpExtender, IHttpListener):
                     <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -449,66 +263,22 @@ class BurpExtender(IBurpExtender, IHttpListener):
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045490967.html">
+                <a class="clearlink" href="15483045490159.html">
                 
-                  <h1>hackthebox邀请码</h1>
+                  <h1>v2ray使用方法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>不打算好好玩的麻烦不要瞎注册，大量的垃圾账号只会污染整个生态环境。</p>
-</blockquote>
+                        	<p>编辑 /etc/v2ray/config.json 文件来配置你需要的代理方式；</p>
 
-<p>进入注册页面，观察页面js文件会找到以下内容：</p>
+<p>运行 service v2ray start 来启动 V2Ray 进程；<br/>
+之后可以使用 service v2ray start|stop|status|reload|restart|force-reload 控制 V2Ray 的运行。</p>
 
-<pre class="line-numbers"><code class="language-javascript">eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!&#39;&#39;.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return&#39;\\w+&#39;};c=1};while(c--){if(k[c]){p=p.replace(new RegExp(&#39;\\b&#39;+e(c)+&#39;\\b&#39;,&#39;g&#39;),k[c])}}return p}(&#39;1 i(4){h 8={&quot;4&quot;:4};$.9({a:&quot;7&quot;,5:&quot;6&quot;,g:8,b:\&#39;/d/e/n\&#39;,c:1(0){3.2(0)},f:1(0){3.2(0)}})}1 j(){$.9({a:&quot;7&quot;,5:&quot;6&quot;,b:\&#39;/d/e/k/l/m\&#39;,c:1(0){3.2(0)},f:1(0){3.2(0)}})}&#39;,24,24,&#39;response|function|log|console|code|dataType|json|POST|formData|ajax|type|url|success|api|invite|error|data|var|verifyInviteCode|makeInviteCode|how|to|generate|verify&#39;.split(&#39;|&#39;),0,{}))
-</code></pre>
-
-<p>1、然后把这段代码放到 <a href="http://jsbeautifier.org/">http://jsbeautifier.org/</a> 进行美化，得出：<br/>
-2、</p>
-
-<pre class="line-numbers"><code class="language-javascript">function verifyInviteCode(code) {
-    var formData = {
-        &quot;code&quot;: code
-    };
-    $.ajax({
-        type: &quot;POST&quot;,
-        dataType: &quot;json&quot;,
-        data: formData,
-        url: &#39;/api/invite/verify&#39;,
-        success: function(response) {
-            console.log(response)
-        },
-        error: function(response) {
-            console.log(response)
-        }
-    })
-}
-
-function makeInviteCode() {
-    $.ajax({
-        type: &quot;POST&quot;,
-        dataType: &quot;json&quot;,
-        url: &#39;/api/invite/how/to/generate&#39;,
-        success: function(response) {
-            console.log(response)
-        },
-        error: function(response) {
-            console.log(response)
-        }
-    })
-}
-</code></pre>
-
-<p>可以看出上述代码是让我们访问：<a href="https://www.hackthebox.eu/api/invite/generate">https://www.hackthebox.eu/api/invite/generate</a><br/>
-然后修改请求方式为post<br/>
-于是就得到了：</p>
-
-<pre class="line-numbers"><code class="language-javascript">{&quot;success&quot;:1,&quot;data&quot;:{&quot;code&quot;:&quot;VlJQS1QtQUNXRUstT0tYREwtQ0lZQVUtS0NZSlU=&quot;,&quot;format&quot;:&quot;encoded&quot;},&quot;0&quot;:200}
-</code></pre>
-
-<p>将code进行base64解码，就得到了邀请码。</p>
+<p>v2ray官网：<br/>
+<a href="https://www.v2ray.com/chapter_00/install.html">https://www.v2ray.com/chapter_00/install.html</a><br/>
+v2ray一键安装：<br/>
+bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.direct/go.sh</a>)</p>
 
                         
                       </div>
@@ -520,7 +290,7 @@ function makeInviteCode() {
                     <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -614,6 +384,12 @@ function makeInviteCode() {
 	      
 		      
 			      <li class="post">
+			        <a href="15507295741483.html">最强渗透测试教程</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
 			      </li>
 		     
@@ -627,12 +403,6 @@ function makeInviteCode() {
 		      
 			      <li class="post">
 			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15489008835167.html">黑链</a>
 			      </li>
 		     
 		  

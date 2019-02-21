@@ -130,87 +130,22 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045487663.html">
+                <a class="clearlink" href="15483045488313.html">
                 
-                  <h1>crontab设置定时任务</h1>
+                  <h1>修改Mac主机名、计算机名</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>文章参考自：<a href="http://blog.csdn.net/xiaochuige/article/details/49252741">http://blog.csdn.net/xiaochuige/article/details/49252741</a> 感谢作者。</p>
-</blockquote>
-
-<p>crontab的基本格式：</p>
-
-<pre class="line-numbers"><code class="language-text">* * * * * command
-几个星号分别为：分 时 日 月 周，最后是要执行的命令。
-分：0~59
-时：0~23
-日：1~31
-月：1~12
-周：0～6（0表示星期天）
-除了数字还有几个个特殊的符号就是* / - ：
-* 代表所有的取值范围内的数字
-/ 代表每的意思
-*/5 表示每5个单位
-- 代表从某个数字到某个数字
-, 分开几个离散的数字
-</code></pre>
-
-<p>配置文件的一些例子：</p>
-
-<pre class="line-numbers"><code class="language-text">0 3 * * * /root/test.sh 每天凌晨3点执行test.sh文件
-* 23-7/1 * * * /root/lnmp restart 晚上11点到早上7点之间，每隔一小时重启lnmp套件
-*/30 * * * * /usr/sbin/ntpdate 每半小时同步一下时间
-0 23 * * 6 /lnmp restart 每星期六的11 : 00 pm重启重启lnmp套件。
-*/1 * * * * echo &quot;i am running.&quot;&gt;&gt;/tmp/running.txt 每隔1分钟向/tmp/running.txt写一个&quot;i am running.&quot;字符串。
-</code></pre>
-
-<p>运行<br/>
-我以为编辑crontab保存后会自动执行，其实不然，必须通过重启cron才可以，命令如下：<br/>
-启动/etc/init.d/cron start<br/>
-关闭/etc/init.d/cron stop<br/>
-重启/etc/init.d/cron restart</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15483045487681.html">
-                
-                  <h1>linux查看磁盘空间占用情况</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>主要是使用 df 命令，使用 df --help 可以查看更多选项。</p>
+                        	<p><code>$sudo scutil --set ComputerName 你想要的计算机名称</code><br/>
+<code>$sudo scutil --set HostName 你想要的主机名称</code></p>
 
 <p>举例：<br/>
-df -k 以KB为单位显示磁盘使用量和占用率。<br/>
-df -k 以M×××</p>
+<code>$sudo scutil --set HostName lonelyor</code></p>
 
-<p>使用“du -ck /home”命令，列出home目录下所有文件或目录占用的大小，以KB作为计量单位。以及统计出当前home目录占用的总大小。</p>
+<p>使用以下命令查看主机名或计算机名<br/>
+<code>$ scutil --get ComputerName</code><br/>
+<code>$ scutil --get HostName</code></p>
 
                         
                       </div>
@@ -250,6 +185,45 @@ df -k 以M×××</p>
 <code>SogouPY</code><br/>
 <code>SogouPY.users</code><br/>
 这三个文件夹，然后重启。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045487681.html">
+                
+                  <h1>linux查看磁盘空间占用情况</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>主要是使用 df 命令，使用 df --help 可以查看更多选项。</p>
+
+<p>举例：<br/>
+df -k 以KB为单位显示磁盘使用量和占用率。<br/>
+df -k 以M×××</p>
+
+<p>使用“du -ck /home”命令，列出home目录下所有文件或目录占用的大小，以KB作为计量单位。以及统计出当前home目录占用的总大小。</p>
 
                         
                       </div>
@@ -355,6 +329,12 @@ df -k 以M×××</p>
 	      
 		      
 			      <li class="post">
+			        <a href="15507295741483.html">最强渗透测试教程</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
 			      </li>
 		     
@@ -368,12 +348,6 @@ df -k 以M×××</p>
 		      
 			      <li class="post">
 			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15489008835167.html">黑链</a>
 			      </li>
 		     
 		  

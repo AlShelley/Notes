@@ -130,58 +130,20 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045491239.html">
+                <a class="clearlink" href="15483045490036.html">
                 
-                  <h1>更优雅的使用Hexo写博客</h1>
+                  <h1>msf安装与维护</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>曾经的博客是使用 Hexo 写的，我觉得Hexo这种在文章前面写上元信息的方式很棒。然而，每此写markdown文档都要输入这些元信息，这很麻烦，所以就写了个shell脚本来自动化输入文件元信息的过程。<br/>
-代码如下：</p>
-</blockquote>
+                        	<p><code>curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb &gt; msfinstall &amp;&amp; \<br/>
+  chmod 755 msfinstall &amp;&amp; \<br/>
+  ./msfinstall</code></p>
 
-<pre class="line-numbers"><code class="language-bash">#!/bin/bash
+<p>上面是官方提供的一键安装脚本</p>
 
-printf &quot;请输入文件名(example.md)，记得写后缀!\n&quot;
-read -p &quot;文件名是: &quot; filename
-# 这里的title取文件名不取后缀
-echo &quot;title: &quot;${filename%.*} &gt;&gt; $filename
-echo &quot;author: lonelyor&quot; &gt;&gt; $filename
-echo &quot;language: zh-CN&quot; &gt;&gt; $filename
-echo &quot;tags:&quot; &gt;&gt; $filename
-echo &quot;  - 标签&quot; &gt;&gt; $filename
-echo &quot;categories:&quot; &gt;&gt; $filename
-echo &quot;  - 分类&quot; &gt;&gt; $filename
-time=$(date &quot;+%Y-%m-%d %H:%M:%S&quot;)
-echo &quot;date: ${time}&quot;&gt;&gt; $filename
-echo &quot;---&quot; &gt;&gt; $filename
-echo &quot;&gt; description: &quot; &gt;&gt; $filename
-# printf和echo都是输出，&gt;&gt;表示追加，&gt;会覆盖文件
-# shell中使用变量需要先定义变量，然后使用时加 $
-# read 用来创建文件，文件名从终端获取
-</code></pre>
-
-<p>展示效果如下:</p>
-
-<pre class="line-numbers"><code class="language-md">title: 如何优雅的创建markdown文件
-author: lonelyor
-language: zh-CN
-tags:
-  - Hexo
-  - markdown
-categories:
-  - 技术杂文
-date: 2018-09-06 17:42:40
----
-&gt; description: 若爱请深爱，若不爱请离开。
-</code></pre>
-
-<p>接下来说说如何使用(仅限linux、macos，或者说可以执行bash的环境，win用户请自行转换成bat)：<br/>
-首先，创建一个名叫 md.sh 的文件（名字你爱咋咋地），把代码copy进去。<br/>
-然后，<code>ln -s /md文件绝对路径 /usr/local/bin/md</code> ,这条语句的意思就是创建一个软连接，把 md.sh 连接到当前用户的 md 命令上。<br/>
-最后，打开终端输入 md ，然后输入要创建的markdown文件名（如：test.md），即可在当前目录下创建带有元信息的markdown文件。</p>
+<p>使用msfupdate可以进行更新</p>
 
                         
                       </div>
@@ -207,36 +169,14 @@ date: 2018-09-06 17:42:40
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045487644.html">
+                <a class="clearlink" href="15483045488875.html">
                 
-                  <h1>Atom设置和取消代理</h1>
+                  <h1>MWeb打开文档库快捷键</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">设置本地上游代理</h2>
-
-<p>apm config set http-proxy socks5:127.0.0.1:1080<br/>
-apm config set https-proxy socks5:127.0.0.1:1080</p>
-
-<h2 id="toc_1">取消SSL</h2>
-
-<p>apm config set strict-ssl false</p>
-
-<h2 id="toc_2">取消代理</h2>
-
-<p>apm config set http-proxy null<br/>
-apm config set https-proxy null</p>
-
-<h2 id="toc_3">查看代理设置</h2>
-
-<p>apm config get http-proxy<br/>
-apm config get https-proxy</p>
-
-<p>编辑～/.atom/.apmrc文件，配置为：<br/>
-strict-ssl=false<br/>
-http_proxy = socks5: 127.0.0.1:1080<br/>
-https_proxy = socks5: 127.0.0.1:1080</p>
+                        	<p>CMD + L 即可显示</p>
 
                         
                       </div>
@@ -262,22 +202,16 @@ https_proxy = socks5: 127.0.0.1:1080</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045487735.html">
+                <a class="clearlink" href="15483045488856.html">
                 
-                  <h1>v2ray使用方法</h1>
+                  <h1>Mac大小写切换</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>编辑 /etc/v2ray/config.json 文件来配置你需要的代理方式；</p>
+                        	<p>无论中文还是英文状态下,按住 shift 输入即是大写</p>
 
-<p>运行 service v2ray start 来启动 V2Ray 进程；<br/>
-之后可以使用 service v2ray start|stop|status|reload|restart|force-reload 控制 V2Ray 的运行。</p>
-
-<p>v2ray官网：<br/>
-<a href="https://www.v2ray.com/chapter_00/install.html">https://www.v2ray.com/chapter_00/install.html</a><br/>
-v2ray一键安装：<br/>
-bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.direct/go.sh</a>)</p>
+<p>长按 caps lock 2s 灯亮后输入即是大写</p>
 
                         
                       </div>
@@ -383,6 +317,12 @@ bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.dire
 	      
 		      
 			      <li class="post">
+			        <a href="15507295741483.html">最强渗透测试教程</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
 			      </li>
 		     
@@ -396,12 +336,6 @@ bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.dire
 		      
 			      <li class="post">
 			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15489008835167.html">黑链</a>
 			      </li>
 		     
 		  

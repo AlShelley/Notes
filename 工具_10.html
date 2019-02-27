@@ -107,7 +107,7 @@
         
             <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
         
-            <li><a href="%E7%BE%8E%E5%A5%BD%E7%94%9F%E6%B4%BB.html">美好生活</a></li>
+            <li><a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html">星火流萤</a></li>
          
 
       </ul>
@@ -129,6 +129,50 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15483045487979.html">
+                
+                  <h1>Pycharm编程遇到的技巧</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">pycharm技巧</h2>
+
+<p>ctrl+z 撤回<br/>
+全部选中然后tab是全部缩进<br/>
+全部选中然后shift+tab是全部反缩进</p>
+
+<h2 id="toc_1">编程技巧</h2>
+
+<p>dir()    #输出函数包含的方法<br/>
+type() #输出类型</p>
+
+<p>更多技巧可以查阅官方文档的使用帮助。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15483045487959.html">
                 
@@ -253,195 +297,6 @@ git clone --recursive git://github.com/isaacs/npm.git`
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15483045487920.html">
-                
-                  <h1>linux安装配置aria2及其Web图形界面（debian为例）</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>下载aria2：apt-get install aria2<br/>
-创建配置文件：mkdir /etc/aria2_conf/aria2.conf<br/>
-编辑配置文件：nano /etc/aria2_conf/aria2.conf</p>
-
-<p>aria2.conf配置：</p>
-
-<pre class="line-numbers"><code class="language-text">#用户名
-#rpc-user=user
-#密码
-#rpc-passwd=passwd
-#上面的认证方式不建议使用,建议使用下面的token方式
-#设置加密的密钥
-rpc-secret=token
-#允许rpc
-enable-rpc=true
-#允许所有来源, web界面跨域权限需要
-rpc-allow-origin-all=true
-#允许外部访问，false的话只监听本地端口
-rpc-listen-all=true
-#RPC端口, 仅当默认端口被占用时修改
-rpc-listen-port=6800
-#最大同时下载数(任务数), 路由建议值: 3
-max-concurrent-downloads=5
-#断点续传
-continue=true
-#同服务器连接数
-max-connection-per-server=5
-#最小文件分片大小, 下载线程数上限取决于能分出多少片, 对于小文件重要
-min-split-size=10M
-#单文件最大线程数, 路由建议值: 5
-split=10
-#下载速度限制
-max-overall-download-limit=0
-#单文件速度限制
-max-download-limit=0
-#上传速度限制
-max-overall-upload-limit=0
-#单文件速度限制
-max-upload-limit=0
-#断开速度过慢的连接
-#lowest-speed-limit=0
-#验证用，需要1.16.1之后的release版本
-#referer=*
-#文件保存路径, 默认为当前启动位置
-dir=/root/downloads
-#文件缓存, 使用内置的文件缓存, 如果你不相信Linux内核文件缓存和磁盘内置缓存时使用, 需要1.16及以上版本
-#disk-cache=0
-#另一种Linux文件缓存方式, 使用前确保您使用的内核支持此选项, 需要1.15及以上版本(?)
-#enable-mmap=true
-#文件预分配, 能有效降低文件碎片, 提高磁盘性能. 缺点是预分配时间较长
-#所需时间 none &lt; falloc ? trunc &lt;&lt; prealloc, falloc和trunc需要文件系统和内核支持
-file-allocation=prealloc
-</code></pre>
-
-<p>然后配置开机启动：<br/>
-<code>nano /etc/init.d/aria2</code></p>
-
-<pre class="line-numbers"><code class="language-text">#!/bin/bash
-#
-# aria2 - this script starts and stops the aria2 daemon
-#
-# chkconfig:   - 85 15
-# description: Aria2 - Download Manager
-# processname: aria2c
-# config:      /etc/aria2/aria2.conf
-# pidfile:
-
-# Source function library.
-. /etc/rc.d/init.d/functions
-
-# Source networking configuration.
-. /etc/sysconfig/network
-
-# Check that networking is up.
-[ &quot;$NETWORKING&quot; = &quot;no&quot; ] &amp;&amp; exit 0
-
-aria2c=&quot;/usr/bin/aria2c&quot;
-ARIA2C_CONF_FILE=&quot;/etc/aria2/aria2.conf&quot;
-options=&quot; --conf-path=$ARIA2C_CONF_FILE -D &quot;
-
-RETVAL=0
-
-start() {
-    # code here to start the program
-    echo -n &quot;Starting aria2c daemon.&quot;
-    ${aria2c} ${options}
-    RETVAL=$?
-    echo
-}
-
-stop() {
-    echo -n &quot;Shutting down aria2c daemon.&quot;
-    /usr/bin/killall aria2c
-    RETVAL=$?
-    echo
-}
-
-status() {
-    ID=$(/bin/ps -ef | grep &#39;aria2c&#39; | grep -v &#39;grep&#39; | awk &#39;{print $2}&#39;)
-    if [[ &quot;x$ID&quot; != &quot;x&quot; ]]; then
-            echo &quot;Aria2 is running.&quot;
-    else
-            echo &quot;Aria2 is not running.&quot;
-    fi
-}
-
-restart() {
-    stop
-    sleep 3
-    start
-}
-
-case &quot;$1&quot; in
-    start)
-            start
-            ;;
-    stop)
-            stop
-            ;;
-    status)
-            status
-            ;;
-    restart)
-            restart
-            ;;
-    *)
-            echo &quot;Usage: service aria2c {start|stop|restart}&quot;
-            RETVAL=1
-esac
-
-exit $RETVAL
-</code></pre>
-
-<p>使用以下命令来立即启动 Aria2：</p>
-
-<p><code>/usr/bin/aria2c --conf-path=/etc/aria2_conf/aria2.conf -D</code></p>
-
-<p>保存之后配置 WebUI，首先开启 Web 服务，然后安装 WebUI 到指定目录，比如我的目录是/opt/aria2webUI/<br/>
-<code>git clone https://github.com/ziahamza/webui-aria2.git</code><br/>
-这样就下载了 WebUI，然后用 nginx 反代这个文件就ok了。</p>
-
-<p>nginx(/etc/nginx/conf.d/aria2.conf)配置文件如下：</p>
-
-<pre class="line-numbers"><code class="language-text">aria2.conf
-
-server
-{
-listen 80;
-server_name aria2.lonelyor.org;
-location / {
-    root /opt/aria2webUI/;
-}
-access_log logs/aria2_access.log;
-}
-</code></pre>
-
-<p>然后打开浏览器访问 aria2.lonelyor.org 就可以了。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -506,7 +361,7 @@ access_log logs/aria2_access.log;
         
             <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
         
-            <a href="%E7%BE%8E%E5%A5%BD%E7%94%9F%E6%B4%BB.html"><strong>美好生活</strong></a>
+            <a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html"><strong>星火流萤</strong></a>
          
         </p>
 
@@ -521,6 +376,12 @@ access_log logs/aria2_access.log;
                 <div class="side-content">
                 <ul class="posts-list">
 	      
+		      
+			      <li class="post">
+			        <a href="15512579928868.html">excel for Mac 如何点击单元格高亮整行</a>
+			      </li>
+		     
+		  
 		      
 			      <li class="post">
 			        <a href="15507295741483.html">最强渗透测试教程</a>
@@ -542,12 +403,6 @@ access_log logs/aria2_access.log;
 		      
 			      <li class="post">
 			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15488284836388.html">90后空巢青年生活指南</a>
 			      </li>
 		     
 		  

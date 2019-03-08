@@ -109,7 +109,7 @@
         
             <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
-            <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
+            <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
             <li><a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html">星火流萤</a></li>
          
@@ -133,6 +133,126 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15484074464554.html">
+                
+                  <h1>Snipaste 无法在 Mac 上截图的解决办法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>MacOSX 版本：Mojave 10.14.2<br/>
+Snipaste 版本：1.16.2</p>
+
+<p>以下列出遇到部分问题：<br/>
+1、使用截图功能，手动画矩形框，但是选定框画完后松开触摸板，选定框自动消失，导致无法截图。（手动选定截图区域占截图使用时间99%）<br/>
+2、使用截图功能，程序自动识别截图区域，双击可以得到截图并且有箭头等选项，画一个箭头后，选定框自动消失，截图会带着箭头自动保存到图片目录。（这导致没法多画几个箭头，也没法另存为图片）</p>
+
+<h1 id="toc_0">解决办法</h1>
+
+<p>我后来在 <a href="https://github.com/Snipaste/feedback/issues/1012">https://github.com/Snipaste/feedback/issues/1012</a> 这里找到了答案。<br/>
+关闭欧路词典的划词翻译功能，即可正常使用截图。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/25 17:10 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045491239.html">
+                
+                  <h1>更优雅的使用Hexo写博客</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>曾经的博客是使用 Hexo 写的，我觉得Hexo这种在文章前面写上元信息的方式很棒。然而，每此写markdown文档都要输入这些元信息，这很麻烦，所以就写了个shell脚本来自动化输入文件元信息的过程。<br/>
+代码如下：</p>
+</blockquote>
+
+<pre class="line-numbers"><code class="language-bash">#!/bin/bash
+
+printf &quot;请输入文件名(example.md)，记得写后缀!\n&quot;
+read -p &quot;文件名是: &quot; filename
+# 这里的title取文件名不取后缀
+echo &quot;title: &quot;${filename%.*} &gt;&gt; $filename
+echo &quot;author: lonelyor&quot; &gt;&gt; $filename
+echo &quot;language: zh-CN&quot; &gt;&gt; $filename
+echo &quot;tags:&quot; &gt;&gt; $filename
+echo &quot;  - 标签&quot; &gt;&gt; $filename
+echo &quot;categories:&quot; &gt;&gt; $filename
+echo &quot;  - 分类&quot; &gt;&gt; $filename
+time=$(date &quot;+%Y-%m-%d %H:%M:%S&quot;)
+echo &quot;date: ${time}&quot;&gt;&gt; $filename
+echo &quot;---&quot; &gt;&gt; $filename
+echo &quot;&gt; description: &quot; &gt;&gt; $filename
+# printf和echo都是输出，&gt;&gt;表示追加，&gt;会覆盖文件
+# shell中使用变量需要先定义变量，然后使用时加 $
+# read 用来创建文件，文件名从终端获取
+</code></pre>
+
+<p>展示效果如下:</p>
+
+<pre class="line-numbers"><code class="language-md">title: 如何优雅的创建markdown文件
+author: lonelyor
+language: zh-CN
+tags:
+  - Hexo
+  - markdown
+categories:
+  - 技术杂文
+date: 2018-09-06 17:42:40
+---
+&gt; description: 若爱请深爱，若不爱请离开。
+</code></pre>
+
+<p>接下来说说如何使用(仅限linux、macos，或者说可以执行bash的环境，win用户请自行转换成bat)：<br/>
+首先，创建一个名叫 md.sh 的文件（名字你爱咋咋地），把代码copy进去。<br/>
+然后，<code>ln -s /md文件绝对路径 /usr/local/bin/md</code> ,这条语句的意思就是创建一个软连接，把 md.sh 连接到当前用户的 md 命令上。<br/>
+最后，打开终端输入 md ，然后输入要创建的markdown文件名（如：test.md），即可在当前目录下创建带有元信息的markdown文件。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15483045491180.html">
                 
@@ -172,78 +292,6 @@
 <p>然后另存为：管理员获得所有权.reg<br/>
 文件名可以随便写，但是后缀记得写成reg（改成这个后缀后文件图标就会变成一个破碎蓝色魔方）。<br/>
 然后右键以管理员身份运行，若弹框注册表xxx的，同意就行了。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15483045490562.html">
-                
-                  <h1>OneDrive映射到本地（像访问本地磁盘一样访问网盘）</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>参考以下链接即可：<br/>
-<a href="http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc">http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc</a></p>
-
-<p>举一反三，webdav、nfs、samba等都可以使用这种方式挂载，来方便访问。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15483045490513.html">
-                
-                  <h1>此地址使用了一个通常用于网络浏览以外目的的端口.出于安全原因,Firefox取消了该请求</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>遇到标题出现的错误时，可以使用以下方法解决：<br/>
-1、打开火狐在地址栏输入&quot;about:config&quot;<br/>
-2、然后在&quot;首选项名称&quot;处点击右键选择&quot;新建&quot;-&quot;字符串&quot;，在弹框中输入&quot;network.security.banned.override&quot;，点确定<br/>
-3、在再次弹出的框&quot;输入字符串的值&quot;中输入要开放的端口，如666（不行的话就换其他的），最后单击&quot;确定&quot;，即可。</p>
 
                         
                       </div>
@@ -330,7 +378,7 @@
         
             <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
-            <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
+            <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
             <a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html"><strong>星火流萤</strong></a>
          
@@ -349,31 +397,31 @@
 	      
 		      
 			      <li class="post">
+			        <a href="15520392147631.html">GTD 管理法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15520390232741.html">用四象限管理任务</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15520320136368.html">bundle install 无法使用的解决办法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15515375536566.html">rclone挂载 onedrive 教程</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15512579928868.html">excel for Mac 如何点击单元格高亮整行</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15507295741483.html">最强渗透测试教程</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15505564665657.html">深入了解最近普遍存在的DNS劫持攻击事件</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
 			      </li>
 		     
 		  

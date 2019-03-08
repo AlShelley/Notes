@@ -109,7 +109,7 @@
         
             <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
-            <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
+            <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
             <li><a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html">星火流萤</a></li>
          
@@ -141,7 +141,7 @@
 
           <span>发表于&nbsp;</span> 
           
-              <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+              <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
            
          
           <span class="comments">
@@ -162,7 +162,7 @@
 
 <p>这篇文章旨在记录这些攻击的程度，并将这一绝对成功的网络间谍活动的起源追溯到关键互联网基础设施提供商的一系列连锁违规行为。</p>
 
-<p><img src="media/15505564665657/15505565989858.jpg" alt=""/></p>
+<p><figure><img src="media/15505564665657/15505565989858.jpg" alt=""/></figure></p>
 
 <p>在我们深入研究在这篇文章中达到高潮的广泛研究之前，回顾到目前为止公开披露的事实是有帮助的。在2018年11月27日，思科的Talos研究部门<a href="https://blog.talosintelligence.com/2018/11/dnspionage-campaign-targets-middle-east.html">发表了一篇文章</a>，概述了一项名为“ DNSpionage ” 的复杂网络间谍活动的轮廓。</p>
 
@@ -178,7 +178,7 @@
 
 <p>这种情况在2019年1月25日发生了变化，当时安全公司CrowdStrike <a href="https://www.crowdstrike.com/blog/widespread-dns-hijacking-activity-targets-multiple-sectors/">发布了一篇博文</a>，列出了迄今为止间谍活动所使用的几乎所有互联网地址。本篇文章的其余部分基于KrebsOnSecurity进行的开源研究和访谈，旨在更加了解这种非同寻常的持续攻击的真实程度。</p>
 
-<p><img src="media/15505564665657/15505567298359.jpg" alt=""/></p>
+<p><figure><img src="media/15505564665657/15505567298359.jpg" alt=""/></figure></p>
 
 <p>与CrowdStrike发布的DNSpionage活动相关的“妥协指标”。</p>
 
@@ -216,19 +216,19 @@
 
 <p>第一个域是“ <strong>ns0.idm.net.lb</strong> ”，它是黎巴嫩互联网服务提供商IDM的服务器。从2014年初到2018年12月，ns0.idm.net.lb指向<strong>194.126.10[.]18</strong>，其中足够的是一个基于黎巴嫩的互联网地址。但正如我们在下面的Farsight数据截图中看到的那样，2018年12月18日，该ISP的DNS记录被更改为将指向IDM的互联网流量指向德国的托管服务提供商（ 139.59.134[.]216 地址）。</p>
 
-<p><img src="media/15505564665657/15505569469853.jpg" alt=""/></p>
+<p><figure><img src="media/15505564665657/15505569469853.jpg" alt=""/></figure></p>
 
 <p>资料来源：远见安全</p>
 
 <p>根据Farsight的说法，请注意在IDM的域名中列出的其他内容为139.59.134 [。] 216：</p>
 
-<p><img src="media/15505564665657/15505569541143.jpg" alt=""/></p>
+<p><figure><img src="media/15505564665657/15505569541143.jpg" alt=""/></figure></p>
 
 <p>域名<strong>sa1.dnsnode.net和fork.sth.dnsnode.net</strong>的DNS记录也从他们在瑞典的合法家园改为12月份由攻击者控制的德国托管服务提供商。这些域名由<a href="https://www.netnod.se/">Netnod Internet Exchange</a>拥有，  <a href="https://www.netnod.se/">Netnod Internet Exchange</a>是一家位于瑞典的主要全球DNS提供商。Netnod还运营着<a href="https://en.wikipedia.org/wiki/Root_name_server">13个“根”名称服务器之一</a>，  这是构成全球DNS系统基础的关键资源。</p>
 
 <p>我们马上回到Netnod。但首先让我们看看CrowdStrike报告中引用的另一个Internet地址，作为DNSpionage黑客滥用的基础设施的一部分：<strong>82.196.11[.]127</strong>。荷兰的这个地址也是域名<strong>mmfasi[.]com</strong>的所在地，Crowdstrike说这是一个攻击者的域名之一，被用作一些被劫持的基础设施的DNS服务器。</p>
 
-<p><img src="media/15505564665657/15505570490488.jpg" alt=""/></p>
+<p><figure><img src="media/15505564665657/15505570490488.jpg" alt=""/></figure></p>
 
 <p>正如我们在上面的屏幕截图中看到的那样，82.196.11[.]127暂时是另一对Netnod DNS服务器以及服务器“ ns.anycast.woodynet.net ”的所在地。该域名来源于昵称  <a href="https://en.wikipedia.org/wiki/Bill_Woodcock">Bill Woodcock</a>，担任<a href="https://www.pch.net/">Packet Clearing House（PCH）</a>的执行董事  。</p>
 
@@ -261,7 +261,7 @@ Netnod首席执行官 LarsMichaelJogbäck于2月14日与KrebsOnSecurity联系，
 
 <p>这些攻击的一个更有趣的方面是，Netnod和PCH都是DNSSEC（又称“DNS安全扩展”）的声音支持者和采用者，这是一种旨在打败DNSpionage黑客能够攻击的那种攻击的技术。执行。</p>
 
-<p><img src="media/15505564665657/15505571774864.jpg" alt=""/><br/>
+<p><figure><img src="media/15505564665657/15505571774864.jpg" alt=""/></figure><br/>
 图片：APNIC</p>
 
 <p>DNSSEC通过要求对给定域或域集的所有DNS查询进行数字签名来保护应用程序不使用伪造或操纵的DNS数据。在DNSSEC中，如果名称服务器确定给定域的地址记录在传输过程中未被修改，则它会解析域并让用户访问该站点。但是，如果该记录已以某种方式被修改或与所请求的域不匹配，则名称服务器会阻止用户访问欺诈性地址。</p>
@@ -590,7 +590,7 @@ Dnspionage<br/>
         
             <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
-            <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
+            <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
             <a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html"><strong>星火流萤</strong></a>
          
@@ -609,31 +609,31 @@ Dnspionage<br/>
 	      
 		      
 			      <li class="post">
+			        <a href="15520392147631.html">GTD 管理法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15520390232741.html">用四象限管理任务</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15520320136368.html">bundle install 无法使用的解决办法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15515375536566.html">rclone挂载 onedrive 教程</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15512579928868.html">excel for Mac 如何点击单元格高亮整行</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15507295741483.html">最强渗透测试教程</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15505564665657.html">深入了解最近普遍存在的DNS劫持攻击事件</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
 			      </li>
 		     
 		  

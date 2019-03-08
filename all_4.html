@@ -109,7 +109,7 @@
         
             <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
-            <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
+            <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
             <li><a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html">星火流萤</a></li>
          
@@ -134,171 +134,58 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045491162.html">
+                <a class="clearlink" href="15483045491239.html">
                 
-                  <h1>burpsuite设置上游代理</h1>
+                  <h1>更优雅的使用Hexo写博客</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>burpsuite的使用技巧之一，设置上游代理。比如测试境外网站时可能需要[fanqiang]才能访问，此时这个技巧就能用得上了。</p>
+<p>曾经的博客是使用 Hexo 写的，我觉得Hexo这种在文章前面写上元信息的方式很棒。然而，每此写markdown文档都要输入这些元信息，这很麻烦，所以就写了个shell脚本来自动化输入文件元信息的过程。<br/>
+代码如下：</p>
 </blockquote>
 
-<p><img src="http://images.lonelyor.org/burp%E8%AE%BE%E7%BD%AE%E4%B8%8A%E6%B8%B8%E4%BB%A3%E7%90%8620180823161146.png" alt="burp设置上游代理20180823161146"/></p>
+<pre class="line-numbers"><code class="language-bash">#!/bin/bash
 
-<p>1、在浏览器中设置burp代理以保证可以抓包<br/>
-2、开启上游代理<br/>
-3、在burp的图中所示位置设置上游代理</p>
-
-<p>打完收工</p>
-
-<h2 id="toc_0">参考链接</h2>
-
-<p><a href="http://www.360zhijia.com/360anquanke/191737.html">http://www.360zhijia.com/360anquanke/191737.html</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15483045491124.html">
-                
-                  <h1>FOEENSICS 101</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>题目：<a href="https://ctflearn.com/problems/96">https://ctflearn.com/problems/96</a><br/>
-<img src="http://images.lonelyor.org/ctflearn-96-1.png" alt="ctflearn-96-1"/><br/>
-访问域名，然后会下载一张图片。<br/>
-接下来我们使用十六进制编码器打开这张图片，会发现：<br/>
-<img src="http://images.lonelyor.org/ctflearn-96-2.png" alt="ctflearn-96-2"/><br/>
-标红部分即是flag。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15483045491003.html">
-                
-                  <h1>JavaScript基础</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>JavaScript是一种脚本编程语言。<br/>
-JavaScript运行顺序是从上往下，因此要注意代码的顺序。</p>
-
-<h2 id="toc_0">如何使用JavaScript</h2>
-
-<p>内部JavaScript：在html页面中嵌入<code>&lt;script&gt;这里写js代码&lt;/script&gt;</code>即可插入js代码。<br/>
-外部JavaScript：<code>&lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;</code>可以调用html文件同级目录下的script.js文件。</p>
-
-<h2 id="toc_1">注释</h2>
-
-<p><code>// 这是单行注释</code><br/>
-<code>/* 这是多行注释 */</code></p>
-
-<h2 id="toc_2">变量</h2>
-
-<p>var用来定义变量</p>
-
-<h2 id="toc_3">函数</h2>
-
-<p>function funName(){<br/>
-    js代码<br/>
-}<br/>
-函数是可复用的代码块，可以一次编写反复使用。</p>
-
-<h2 id="toc_4">运算符</h2>
-
-<p><code>+</code>、<code>-</code>、<code>*</code>、<code>/</code> 分别是加减乘除<br/>
-<code>===</code>、<code>!==</code>、<code>&lt;</code>、<code>&gt;</code> 分别是等于、不等于、小于、大于<br/>
-<code>&amp;&amp;</code>、<code>||</code>、<code>!</code> 分别表示与、或、非</p>
-
-<h2 id="toc_5">条件语句</h2>
-
-<p>if(条件){<br/>
-    js代码<br/>
-} else {<br/>
-    js代码<br/>
-}</p>
-
-<h2 id="toc_6">事件</h2>
-
-<p>事件相关函数分为：事件监听器和事件处理器 </p>
-
-<h2 id="toc_7">循环</h2>
-
-<p>for(起式值；退出条件；增加器){<br/>
-    js代码<br/>
-}</p>
-
-<h2 id="toc_8">switch语句</h2>
-
-<p>switch - 他们以单个表达式/值作为输入，然后查看多个选项，直到找到与该值相匹配的选项，执行与之相关的代码。</p>
-
-<pre class="line-numbers"><code class="language-javascript">switch (expression) {
-  case choice1:
-    run this code
-    break;
-
-  case choice2:
-    run this code instead
-    break;
-    
-  // include as many cases as you like
-
-  default:
-    actually, just run this code
-}
+printf &quot;请输入文件名(example.md)，记得写后缀!\n&quot;
+read -p &quot;文件名是: &quot; filename
+# 这里的title取文件名不取后缀
+echo &quot;title: &quot;${filename%.*} &gt;&gt; $filename
+echo &quot;author: lonelyor&quot; &gt;&gt; $filename
+echo &quot;language: zh-CN&quot; &gt;&gt; $filename
+echo &quot;tags:&quot; &gt;&gt; $filename
+echo &quot;  - 标签&quot; &gt;&gt; $filename
+echo &quot;categories:&quot; &gt;&gt; $filename
+echo &quot;  - 分类&quot; &gt;&gt; $filename
+time=$(date &quot;+%Y-%m-%d %H:%M:%S&quot;)
+echo &quot;date: ${time}&quot;&gt;&gt; $filename
+echo &quot;---&quot; &gt;&gt; $filename
+echo &quot;&gt; description: &quot; &gt;&gt; $filename
+# printf和echo都是输出，&gt;&gt;表示追加，&gt;会覆盖文件
+# shell中使用变量需要先定义变量，然后使用时加 $
+# read 用来创建文件，文件名从终端获取
 </code></pre>
 
-<h2 id="toc_9">写一个猜数字的小游戏</h2>
+<p>展示效果如下:</p>
 
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/First_steps/A_first_splash#%E7%8C%9C%E6%95%B0%E5%AD%97%E6%B8%B8%E6%88%8F">猜数字游戏</a></p>
+<pre class="line-numbers"><code class="language-md">title: 如何优雅的创建markdown文件
+author: lonelyor
+language: zh-CN
+tags:
+  - Hexo
+  - markdown
+categories:
+  - 技术杂文
+date: 2018-09-06 17:42:40
+---
+&gt; description: 若爱请深爱，若不爱请离开。
+</code></pre>
 
-<p>未完待续...</p>
+<p>接下来说说如何使用(仅限linux、macos，或者说可以执行bash的环境，win用户请自行转换成bat)：<br/>
+首先，创建一个名叫 md.sh 的文件（名字你爱咋咋地），把代码copy进去。<br/>
+然后，<code>ln -s /md文件绝对路径 /usr/local/bin/md</code> ,这条语句的意思就是创建一个软连接，把 md.sh 连接到当前用户的 md 命令上。<br/>
+最后，打开终端输入 md ，然后输入要创建的markdown文件名（如：test.md），即可在当前目录下创建带有元信息的markdown文件。</p>
 
                         
                       </div>
@@ -310,7 +197,174 @@ JavaScript运行顺序是从上往下，因此要注意代码的顺序。</p>
                     <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045491221.html">
+                
+                  <h1>CRLF注入</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>文章翻译自OWASP的<a href="https://www.owasp.org/index.php/CRLF_Injection">CRLF_Injection</a></p>
+</blockquote>
+
+<p>CRLF即回车Carriage Return (ASCII 13, \r) 和 换行 Line Feed (ASCII 10, \n)。他们被用于注释掉一行的终止。不过不同系统的处理方式有点不同。windows中，CR和LF都被用于注释掉一行的结尾，而linux/unix中只需要一个LF。在HTTP协议中，CRLF序列始终用于一行的终止。<br/>
+当用户设法将CRLF提交到应用程序时，可能发生CRLF注入攻击，这通常是通过修改HTTP参数或URL来完成。</p>
+
+<p>CRLF注入可能产生这样的问题：</p>
+
+<ul>
+<li>HTTP响应拆分</li>
+<li>日志注入<br/>
+## HTTP响应拆分<br/>
+通常，当出现以下情况时会发生HTTP响应拆分</li>
+<li>数据通过不受信任的来源进入Web应用程序，如HTTP请求。</li>
+<li>数据包含在发送给Web用户的HTTP响应标头中，而不会对恶意字符进行验证。<br/>
+HTTP响应拆分是达到目的的手段而不是目的本身。<br/>
+攻击方式如下：攻击者将恶意数据传递给易受攻击的应用程序，应用程序将数据包含在HTTP响应中。<br/>
+要成功利用漏洞，应用程序必须允许<strong>包含有 CR（回车，即 %0d 或者 \r\n）和 LF（换行符，%0a 或者 \n）的输入在header中</strong>和<strong>底层平台必须容易注入这样的字符</strong>。</li>
+</ul>
+
+<p><em>大多数现代应用程序服务器(无论用什么语言编写的代码)，都已经不存在HTTP响应拆分漏洞。</em></p>
+
+<p>下面上一段java代码来举例说明：</p>
+
+<pre class="line-numbers"><code class="language-java">String author = request.getParameter(AUTHOR_PARAM);
+...
+Cookie cookie = new Cookie(&quot;author&quot;, author);
+      cookie.setMaxAge(cookieExpiration);
+      response.addCookie(cookie);
+</code></pre>
+
+<p>上述代码的意思是：从客户端HTTP请求中接受参数（author），并将其设置在HTTP响应的cookie头中。<br/>
+如果我们正常提交数据(author=lonelyor)，HTTP响应应该是这样：</p>
+
+<pre class="line-numbers"><code class="language-java">HTTP/1.1 200 OK
+...
+Set-Cookie: author=Jane Smith
+...
+</code></pre>
+
+<p>但是，由于源代码中的cookie是由未经验证的用户输入组成的，因此如果我们提交恶意代码<code>Hacker By xxx\r\nContent-Length:45\r\n\r\n...</code>则HTTP响应将被拆分为原始响应和伪造响应。</p>
+
+<pre class="line-numbers"><code class="language-java">HTTP/1.1 200 OK
+    ...
+    Set-Cookie: author=Hacker By xxx
+    Content-Length: 999
+    
+    &lt;html&gt;恶意内容...&lt;/html&gt; (这个例子中为第999个字符)
+    原始内容以1000开头, 现在被浏览器忽略了...
+</code></pre>
+
+<h3 id="toc_0">危害</h3>
+
+<p>攻击者构建任意HTTP响应的能力可能导致以下攻击：<br/>
+跨用户污染（Cross-User_Defacement）——利用条件很苛刻<br/>
+缓存中毒（Cache_Poisoning）——利用条件很苛刻<br/>
+XSS跨站脚本攻击<br/>
+页面劫持</p>
+
+<h2 id="toc_1">日志注入</h2>
+
+<p>将未经验证的用户输入写入日志文件可能导致攻击者伪造日志或者将恶意内容注入日志。<br/>
+以下情况可能导致日志伪造漏洞：</p>
+
+<ul>
+<li>数据从不受信任的来源进入应用程序</li>
+<li>数据将写入应用程序或者系统日志文件</li>
+</ul>
+
+<p>下面上一段java代码来举例说明：</p>
+
+<pre class="line-numbers"><code class="language-java">...
+String val = request.getParameter(&quot;val&quot;);
+try {
+  int value = Integer.parseInt(val);
+}
+catch (NumberFormatException) {
+  log.info(&quot;Failed to parse val = &quot; + val);
+}
+...
+</code></pre>
+
+<p>上述代码的功能是，从请求对象中读取整数值，如果该值无法解析为整数，则会记录输入，并显示一条错误信息。<br/>
+如果用户提交字符串“one”，则会记录以下条目<br/>
+<code>INFO: Failed to parse val=one</code><br/>
+然而，如果攻击者提交字符串<code>one%0a%0aINFO:+User+logged+out%3dbadguy</code>则会在日志中显示：</p>
+
+<pre class="line-numbers"><code class="language-text">    INFO: Failed to parse val=one
+
+    INFO: User logged out=badguy
+</code></pre>
+
+<p>显然攻击者可以使用相同机制插入任意日志条目。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045491201.html">
+                
+                  <h1>linux将shell脚本添加到系统命令的方法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>可以自定义一些shell脚本，用来提高执行常用组合命令的效率。还有一种方式是使用alias命令。</p>
+</blockquote>
+
+<p>两种方法：<br/>
+1、直接把shell脚本放到/usr/local/bin ，然后添加权限 <code>sudo chmod +x xxx.sh</code> 就ok了。这样是在本地用户添加命令。<br/>
+root用户添加命令则把脚本放在 /usr/bin 即可。<br/>
+2、使用软连接的方式<code>ln -s 【源文件或目录】【目标文件或目录】</code><br/>
+注意要使用绝对路径。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -385,7 +439,7 @@ JavaScript运行顺序是从上往下，因此要注意代码的顺序。</p>
         
             <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
-            <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
+            <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
             <a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html"><strong>星火流萤</strong></a>
          
@@ -404,31 +458,31 @@ JavaScript运行顺序是从上往下，因此要注意代码的顺序。</p>
 	      
 		      
 			      <li class="post">
+			        <a href="15520392147631.html">GTD 管理法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15520390232741.html">用四象限管理任务</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15520320136368.html">bundle install 无法使用的解决办法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15515375536566.html">rclone挂载 onedrive 教程</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15512579928868.html">excel for Mac 如何点击单元格高亮整行</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15507295741483.html">最强渗透测试教程</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15505564665657.html">深入了解最近普遍存在的DNS劫持攻击事件</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
 			      </li>
 		     
 		  

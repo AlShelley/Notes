@@ -109,7 +109,7 @@
         
             <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
-            <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
+            <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
             <li><a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html">星火流萤</a></li>
          
@@ -134,16 +134,57 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045488856.html">
+                <a class="clearlink" href="15483045490053.html">
                 
-                  <h1>Mac大小写切换</h1>
+                  <h1>查看端口占用</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>无论中文还是英文状态下,按住 shift 输入即是大写</p>
+                        	<p>使用命令：<br/>
+<code>lsof -i:8000</code><br/>
+或<br/>
+<code>netstat -tunlp|grep 8000</code><br/>
+均可。</p>
 
-<p>长按 caps lock 2s 灯亮后输入即是大写</p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045490036.html">
+                
+                  <h1>msf安装与维护</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><code>curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb &gt; msfinstall &amp;&amp; \<br/>
+  chmod 755 msfinstall &amp;&amp; \<br/>
+  ./msfinstall</code></p>
+
+<p>上面是官方提供的一键安装脚本</p>
+
+<p>使用msfupdate可以进行更新</p>
 
                         
                       </div>
@@ -169,30 +210,40 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045488835.html">
+                <a class="clearlink" href="15483045490018.html">
                 
-                  <h1>iterm2 常用技巧</h1>
+                  <h1>arch设置屏幕分辨率</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>按住 com 键</p>
+                        	<blockquote>
+<p><a href="https://wiki.archlinux.org/index.php/Xrandr_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">https://wiki.archlinux.org/index.php/Xrandr_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)</a></p>
+</blockquote>
 
-<ul>
-<li>可以拖拽选中字符串</li>
-<li>点击url能直接打开</li>
-<li>点击文件：调用默认程序打开文件</li>
-<li>点击文件夹：在finder中打开文件夹</li>
-<li>同时按住option键，可以矩形选中</li>
-</ul>
+<p>1、先使用xrandr查看屏幕相关信息<br/>
+2、编辑/e/X/xorg.conf.d ❯❯❯ sudo nano 11-lonelyorx.conf (自己新建)<br/>
+结果我不怎么会写配置文件，导致写了都没法启动图形界面了，于是又删了，打算手动更改。<br/>
+3、<br/>
+xrandr查看当前设置 <br/>
+<code>cvt 1920 1080</code><br/>
+<code>cvt 2560 1440</code><br/>
+找到正确的参数 <br/>
+<code>xrandr --newmode &quot;1920x1080_60.00&quot;  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync</code><br/>
+<code>xrandr --newmode &quot;2560x1440_60.00&quot;  312.25  2560 2752 3024 3488  1440 1443 1448 1493 -hsync +vsync</code><br/>
+然后设置 <br/>
+<code>xrandr --addmode eDP1 1920x1080_60.00</code><br/>
+<code>xrandr --addmode HDMI1 2560x1440_60.00</code><br/>
+如果一且顺利的话，此时再查看xrandr命令，将发现最佳分辨率设置成功。 <br/>
+4、修改分辨率<br/>
+<code>xrandr --output eDP1 --mode 1920x1080_60.00</code><br/>
+<code>xrandr --output HDMI1 --mode 2560x1440_60.00</code></p>
 
-<p>新建windows：cmd+N<br/>
-新建tab：cmd+T<br/>
-切分屏幕：cmd+D水平切分<br/>
-智能查找，支持正则：cmd+F</p>
+<p><code>xrandr --newmode &quot;1920x1080_60.00&quot;  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync</code><br/>
+<code>xrandr --addmode eDP1 1920x1080_60.00</code><br/>
+<code>xrandr --output eDP1 --mode 1920x1080_60.00</code></p>
 
-<p>智能补全：cmd+；<br/>
-调用历史记录：cmd+shift+h</p>
+<p>这样屏幕分辨率就变成1080p了。</p>
 
                         
                       </div>
@@ -204,40 +255,7 @@
                     <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15483045488816.html">
-                
-                  <h1>终端配置代理</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>export ALL_PROXY=socks5://127.0.0.1:1080</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -312,7 +330,7 @@
         
             <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
-            <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
+            <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
             <a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html"><strong>星火流萤</strong></a>
          
@@ -331,31 +349,31 @@
 	      
 		      
 			      <li class="post">
+			        <a href="15520392147631.html">GTD 管理法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15520390232741.html">用四象限管理任务</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15520320136368.html">bundle install 无法使用的解决办法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15515375536566.html">rclone挂载 onedrive 教程</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15512579928868.html">excel for Mac 如何点击单元格高亮整行</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15507295741483.html">最强渗透测试教程</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15505564665657.html">深入了解最近普遍存在的DNS劫持攻击事件</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
 			      </li>
 		     
 		  

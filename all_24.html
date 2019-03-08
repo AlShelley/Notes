@@ -109,7 +109,7 @@
         
             <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
-            <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
+            <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
             <li><a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html">星火流萤</a></li>
          
@@ -134,48 +134,20 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045487663.html">
+                <a class="clearlink" href="15483045487900.html">
                 
-                  <h1>crontab设置定时任务</h1>
+                  <h1>linux下搜狗输入法不能用的解决办法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>文章参考自：<a href="http://blog.csdn.net/xiaochuige/article/details/49252741">http://blog.csdn.net/xiaochuige/article/details/49252741</a> 感谢作者。</p>
-</blockquote>
-
-<p>crontab的基本格式：</p>
-
-<pre class="line-numbers"><code class="language-text">* * * * * command
-几个星号分别为：分 时 日 月 周，最后是要执行的命令。
-分：0~59
-时：0~23
-日：1~31
-月：1~12
-周：0～6（0表示星期天）
-除了数字还有几个个特殊的符号就是* / - ：
-* 代表所有的取值范围内的数字
-/ 代表每的意思
-*/5 表示每5个单位
-- 代表从某个数字到某个数字
-, 分开几个离散的数字
-</code></pre>
-
-<p>配置文件的一些例子：</p>
-
-<pre class="line-numbers"><code class="language-text">0 3 * * * /root/test.sh 每天凌晨3点执行test.sh文件
-* 23-7/1 * * * /root/lnmp restart 晚上11点到早上7点之间，每隔一小时重启lnmp套件
-*/30 * * * * /usr/sbin/ntpdate 每半小时同步一下时间
-0 23 * * 6 /lnmp restart 每星期六的11 : 00 pm重启重启lnmp套件。
-*/1 * * * * echo &quot;i am running.&quot;&gt;&gt;/tmp/running.txt 每隔1分钟向/tmp/running.txt写一个&quot;i am running.&quot;字符串。
-</code></pre>
-
-<p>运行<br/>
-我以为编辑crontab保存后会自动执行，其实不然，必须通过重启cron才可以，命令如下：<br/>
-启动/etc/init.d/cron start<br/>
-关闭/etc/init.d/cron stop<br/>
-重启/etc/init.d/cron restart</p>
+                        	<p>删除<br/>
+<code>～/config</code><br/>
+下的<br/>
+<code>sogou-qimpanel</code><br/>
+<code>SogouPY</code><br/>
+<code>SogouPY.users</code><br/>
+这三个文件夹，然后重启。</p>
 
                         
                       </div>
@@ -201,36 +173,22 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045487644.html">
+                <a class="clearlink" href="15483045487735.html">
                 
-                  <h1>Atom设置和取消代理</h1>
+                  <h1>v2ray使用方法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">设置本地上游代理</h2>
+                        	<p>编辑 /etc/v2ray/config.json 文件来配置你需要的代理方式；</p>
 
-<p>apm config set http-proxy socks5:127.0.0.1:1080<br/>
-apm config set https-proxy socks5:127.0.0.1:1080</p>
+<p>运行 service v2ray start 来启动 V2Ray 进程；<br/>
+之后可以使用 service v2ray start|stop|status|reload|restart|force-reload 控制 V2Ray 的运行。</p>
 
-<h2 id="toc_1">取消SSL</h2>
-
-<p>apm config set strict-ssl false</p>
-
-<h2 id="toc_2">取消代理</h2>
-
-<p>apm config set http-proxy null<br/>
-apm config set https-proxy null</p>
-
-<h2 id="toc_3">查看代理设置</h2>
-
-<p>apm config get http-proxy<br/>
-apm config get https-proxy</p>
-
-<p>编辑～/.atom/.apmrc文件，配置为：<br/>
-strict-ssl=false<br/>
-http_proxy = socks5: 127.0.0.1:1080<br/>
-https_proxy = socks5: 127.0.0.1:1080</p>
+<p>v2ray官网：<br/>
+<a href="https://www.v2ray.com/chapter_00/install.html">https://www.v2ray.com/chapter_00/install.html</a><br/>
+v2ray一键安装：<br/>
+bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.direct/go.sh</a>)</p>
 
                         
                       </div>
@@ -256,188 +214,17 @@ https_proxy = socks5: 127.0.0.1:1080</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045487207.html">
+                <a class="clearlink" href="15483045487699.html">
                 
-                  <h1>Web安全检测checklist</h1>
+                  <h1>扫描网站备份文件思路</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">x01 爆破</h2>
+                        	<p>sk15大佬提供一个思路，使用备份文件名list+域名list2扫描，这样每次循环都是一个备份文件名扫描list2次。<br/>
+如果使用域名list2+备份文件名list1则每次循环都是一个域名就会扫描list1次（这样由于请求频次高容易导致服务器宕机）</p>
 
-<h3 id="toc_1">弱口令</h3>
-
-<p>HTTP登录<br/>
-SSH<br/>
-MySQL<br/>
-Telnet</p>
-
-<h3 id="toc_2">遍历</h3>
-
-<p>网站敏感文件<br/>
-    源码<br/>
-    配置文件<br/>
-    备份文件<br/>
-    探针类文件<br/>
-网站敏感目录<br/>
-    物理路径<br/>
-    网站管理后台<br/>
-    上传目录<br/>
-    数据库Web管理入口<br/>
-    现成的Webshell<br/>
-端口扫描<br/>
-0day扫描<br/>
-子域名</p>
-
-<h2 id="toc_3">x02 不安全配置</h2>
-
-<h3 id="toc_4">Web服务器</h3>
-
-<p>Nginx<br/>
-Apache<br/>
-IIS</p>
-
-<h3 id="toc_5">Web应用服务器</h3>
-
-<p>Tomcat<br/>
-JBoss<br/>
-Weblogic</p>
-
-<h3 id="toc_6">HTTP安全特性</h3>
-
-<p>HTTP Headers<br/>
-HTTP Options<br/>
-rebots.txt<br/>
-flash跨域策略</p>
-
-<h2 id="toc_7">x03 敏感信息泄露</h2>
-
-<h3 id="toc_8">用户敏感信息</h3>
-
-<p>手机号<br/>
-身份证号<br/>
-社保<br/>
-银行卡号<br/>
-家庭住址</p>
-
-<h3 id="toc_9">应用敏感信息</h3>
-
-<p>debug信息<br/>
-堆栈报错</p>
-
-<h3 id="toc_10">站点敏感信息</h3>
-
-<p>测试页面<br/>
-备份文件</p>
-
-<h3 id="toc_11">本地敏感信息</h3>
-
-<p>前端保存用户密码<br/>
-前端保存验证码</p>
-
-<h2 id="toc_12">x04 xss跨站脚本</h2>
-
-<p>反射型xss<br/>
-存储型xss<br/>
-DOM型xss</p>
-
-<h2 id="toc_13">x05 请求伪造</h2>
-
-<p>csrf跨站请求伪造<br/>
-ssrf服务器请求伪造</p>
-
-<h2 id="toc_14">x06 注入</h2>
-
-<p>LDAP注入<br/>
-ORM注入<br/>
-XML注入<br/>
-XPath注入<br/>
-IMAP/SMTP注入<br/>
-SQL注入<br/>
-代码注入<br/>
-客户端模板注入（CSTI）<br/>
-服务端模板注入（SSTI）<br/>
-服务器端包含注入（SSI）</p>
-
-<h2 id="toc_15">x07 已知漏洞组件</h2>
-
-<p>库文件（某些库会导致远程命令执行）<br/>
-框架（如wordpress、thinkphp、django等）<br/>
-模块（python的某些模块会导致代码注入）</p>
-
-<h2 id="toc_16">x08 文件类漏洞</h2>
-
-<p>文件包含漏洞<br/>
-任意文件创建<br/>
-任意文件读取<br/>
-任意文件上传<br/>
-任意文件下载<br/>
-任意文件删除</p>
-
-<h2 id="toc_17">x09 解析漏洞</h2>
-
-<p>IIS解析漏洞<br/>
-Nginx解析漏洞<br/>
-Apache解析漏洞<br/>
-PHP CGI解析漏洞</p>
-
-<h2 id="toc_18">x10 劫持类漏洞</h2>
-
-<p>点击劫持<br/>
-Jsonp劫持<br/>
-WebSocket劫持<br/>
-DNS劫持<br/>
-二维码劫持<br/>
-子域名劫持</p>
-
-<h2 id="toc_19">x11 业务逻辑漏洞</h2>
-
-<h3 id="toc_20">认证</h3>
-
-<p>使用默认凭证<br/>
-冻结账户策略不当<br/>
-弱用户名和密码<br/>
-“记住我”功能<br/>
-自动登录<br/>
-单点登录<br/>
-弱口令<br/>
-弱安全问题/答案<br/>
-第三方登录风险<br/>
-Oauth2.0安全<br/>
-JWT安全<br/>
-注册覆盖<br/>
-未验证的重定向和转发<br/>
-双因素认证不当</p>
-
-<h3 id="toc_21">授权</h3>
-
-<p>测试角色定义<br/>
-权限管理缺失<br/>
-匿名访问（备用接口——常见于兼容老的不安全的接口时产生）<br/>
-水平越权<br/>
-垂直越权<br/>
-超级账户<br/>
-实名认证不严格</p>
-
-<h3 id="toc_22">会话管理</h3>
-
-<p>cookie安全属性<br/>
-cookie可猜解<br/>
-cookie溢出<br/>
-会话固定<br/>
-用户凭证不安全传输（弱加密或明文传输）<br/>
-用户凭证未一次失效<br/>
-用户凭证可猜解<br/>
-注销与会话超时<br/>
-敏感数据不安全传输</p>
-
-<h3 id="toc_23">流程绕过</h3>
-
-<p>找回密码流程绕过</p>
-
-<h2 id="toc_24">x12 API安全</h2>
-
-<p>整理中</p>
+<p>大佬还提供了一个更有意思的方法，将list1和list2做成一个list，然后将其打乱，再扫描。（骚思路就像好算法，是编程的精髓。）</p>
 
                         
                       </div>
@@ -449,7 +236,7 @@ cookie溢出<br/>
                     <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -524,7 +311,7 @@ cookie溢出<br/>
         
             <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
-            <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
+            <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
             <a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html"><strong>星火流萤</strong></a>
          
@@ -543,31 +330,31 @@ cookie溢出<br/>
 	      
 		      
 			      <li class="post">
+			        <a href="15520392147631.html">GTD 管理法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15520390232741.html">用四象限管理任务</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15520320136368.html">bundle install 无法使用的解决办法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15515375536566.html">rclone挂载 onedrive 教程</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15512579928868.html">excel for Mac 如何点击单元格高亮整行</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15507295741483.html">最强渗透测试教程</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15505564665657.html">深入了解最近普遍存在的DNS劫持攻击事件</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
 			      </li>
 		     
 		  

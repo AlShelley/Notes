@@ -109,7 +109,7 @@
         
             <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
-            <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
+            <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
             <li><a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html">星火流萤</a></li>
          
@@ -134,46 +134,47 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045490098.html">
+                <a class="clearlink" href="15483045490178.html">
                 
-                  <h1>fluxgui安装与卸载</h1>
+                  <h1>nano常见设置，如语法高亮、启用行号、启用鼠标等</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>很久以前的笔记了</p>
-</blockquote>
+                        	<p>下载nano<br/>
+linux根据包管理不同，使用不通的命令。<br/>
+macosx使用brew安装。</p>
 
-<pre class="line-numbers"><code class="language-text">Ubuntu/Debian Manual Install
-# Install dependencies
-sudo apt-get install git python-appindicator python-xdg python-pexpect python-gconf python-gtk2 python-glade2 libxxf86vm1
+<p>编辑（没有就创建）配置文件<br/>
+nano ～/.nanorc<br/>
+然后添加以下内容</p>
 
-# Download fluxgui
-cd /tmp
-git clone &quot;https://github.com/xflux-gui/fluxgui.git&quot;
-cd fluxgui
-python download-xflux.py
-
-# EITHER install globally
-sudo python setup.py install
-# EXCLUSIVE OR, install in your home directory. The binary installs
-# into ~/.local/bin, so be sure to add that to your PATH if installing locally.
-python setup.py install --user
-
-# Run flux
-fluxgui
-Ubuntu/Debian Manual Uninstall
-If you manually installed instead of using the PPA, you can uninstall by making setup.py tell you where it installed files and then removing the installed files.
-
-# EITHER uninstall globally
-sudo python setup.py install --record installed.txt
-sudo xargs rm -vr &lt; installed.txt
-
-# EXCLUSIVE OR uinstall in your home directory
-python setup.py install --user --record installed.txt
-xargs rm -vr &lt; installed.txt
+<pre class="line-numbers"><code class="language-text"># 语法高亮
+include &quot;/usr/share/nano/*.nanorc&quot;
 </code></pre>
+
+<p>或者</p>
+
+<pre class="line-numbers"><code class="language-text"># 语法高亮
+include &quot;/usr/local/share/nano/*.nanorc&quot;
+</code></pre>
+
+<p>这里include哪一个主要取决于nanorc的具体位置。通常linux在share，macosx在local/share。<br/>
+其他内容如：</p>
+
+<pre class="line-numbers"><code class="language-text"># 启用行号
+set linenumbers
+# 平滑滚动
+set smooth
+# 自动缩进
+set autoindent
+# tab为空格
+set tabstospaces
+# 启用鼠标
+set mouse
+</code></pre>
+
+<p>然后保存，重新打开终端，即可发现设置生效，以上方法适用于linux和macosx。</p>
 
                         
                       </div>
@@ -199,108 +200,22 @@ xargs rm -vr &lt; installed.txt
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045490077.html">
+                <a class="clearlink" href="15483045490159.html">
                 
-                  <h1>fsarchiver备份文件介绍</h1>
+                  <h1>v2ray使用方法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>多年以前的笔记</p>
-</blockquote>
+                        	<p>编辑 /etc/v2ray/config.json 文件来配置你需要的代理方式；</p>
 
-<p>fsarchiver安装<br/>
-<code>apt-get install fsarchiver</code></p>
+<p>运行 service v2ray start 来启动 V2Ray 进程；<br/>
+之后可以使用 service v2ray start|stop|status|reload|restart|force-reload 控制 V2Ray 的运行。</p>
 
-<pre class="line-numbers"><code class="language-text"># 对于备份操作，我们需要以只读形式重新挂载文件系统或者有条件的话直接卸载。也可以-A忽略
-[peter@test88 ~]$ sudo /home/peter/fsarchiver savefs backup.fsa /dev/sdb1
-oper_save.c#938,filesystem_mount_partition(): partition [/dev/sdb1] is mounted read/write. please mount it read-only
-and then try again. you can do &quot;mount -o remount,ro /dev/sdb1&quot;. you can
-also run fsarchiver with option &#39;-A&#39; if you know what you are doing.
-removed backup.fsa
- 
-# 对于恢复操作，我们必须先卸载文件系统。
-[peter@test88 ~]$ sudo /home/peter/fsarchiver restfs backup2.fsa id=0,dest=/dev/sdb2
-oper_restore.c#1230,extractar_filesystem_extract(): partition [/dev/sdb2] is mounted on [/home/peter/sder].
-cannot restore an archive to a partition which is mounted, unmount it first: umount /home/peter/sder
- 
-# 创建文件系统备份
-# 可以将多个文件系统备份在一个文件中
-[peter@test88 ~]$ sudo /home/peter/fsarchiver savefs backup.fsa /dev/sdb1 /dev/sdb2
- 
-# 恢复文件系统
-# id=0表明从归档中提取第一个文件系统的内容
-[peter@test88 ~]$ sudo /home/peter/fsarchiver restfs backup.fsa id=0,dest=/dev/sdc1 id=1,dest=/dev/sdc2
-
-
-
-# 软件说明文档
-====&gt; fsarchiver version 0.8.1 (2017-01-10) - http://www.fsarchiver.org &lt;====           
-Distributed under the GPL v2 license (GNU General Public License v2).                   
- * usage: fsarchiver [&lt;options&gt;] &lt;command&gt; &lt;archive&gt; [&lt;dev1&gt; [&lt;dev2&gt; [...]]]            
-&lt;commands&gt;                                                                              
- * savefs: save filesystems to an archive file (backup a device to a file)              
- * restfs: restore filesystems from an archive (overwrites the existing data)           
- * savedir: save directories to the archive (similar to a compressed tarball)           
- * restdir: restore data from an archive which is not based on a filesystem             
- * archinfo: show information about an existing archive file and its contents           
- * probe [detailed]: show list of filesystems detected on the disks                     
-&lt;options&gt;                                                                               
- -o: overwrite the archive if it already exists instead of failing                      
- -v: verbose mode (can be used several times to increase the level of details)          
- -d: debug mode (can be used several times to increase the level of details)            
- -A: allow to save a filesystem which is mounted in read-write (live backup)            
- -a: allow to save a filesystem when acls and xattrs are not supported                  
- -x: enable support for experimental features (they are disabled by default)            
- -e &lt;pattern&gt;: exclude files and directories that match that pattern                    
- -L &lt;label&gt;: set the label of the archive (comment about the contents)                  
- -z &lt;level&gt;: compression level from 1 (very fast) to 9 (very good) default=3            
- -s &lt;mbsize&gt;: split the archive into several files of &lt;mbsize&gt; megabytes each           
- -j &lt;count&gt;: create more than one (de)compression thread. useful on multi-core cpu      
- -c &lt;password&gt;: encrypt/decrypt data in archive, &quot;-c -&quot; for interactive password        
- -h: show help and information about how to use fsarchiver with examples                
- -V: show program version and exit                                                      
-&lt;information&gt;                                                                           
- * Support included for: lzo=yes, lzma=yes                                              
- * Support for ntfs filesystems is unstable: don&#39;t use it for production.               
-&lt;examples&gt;                                                                              
- * save only one filesystem (/dev/sda1) to an archive:                                  
-   fsarchiver savefs /data/myarchive1.fsa /dev/sda1                                     
- * save two filesystems (/dev/sda1 and /dev/sdb1) to an archive:
-   fsarchiver savefs /data/myarchive2.fsa /dev/sda1 /dev/sdb1
- * restore the first filesystem from an archive (first = number 0):
-   fsarchiver restfs /data/myarchive2.fsa id=0,dest=/dev/sda1
- * restore the second filesystem from an archive (second = number 1):
-   fsarchiver restfs /data/myarchive2.fsa id=1,dest=/dev/sdb1
- * restore two filesystems from an archive (number 0 and 1):
-   fsarchiver restfs /data/arch2.fsa id=0,dest=/dev/sda1 id=1,dest=/dev/sdb1
- * restore a filesystem from an archive and convert it to reiserfs:
-   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,mkfs=reiserfs
- * restore a filesystem from an archive and specify extra mkfs options:
-   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,mkfs=ext4,mkfsopt=&quot;-I 256&quot;
- * restore a filesystem from an archive and specify a new label and a new UUID:
-   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,label=root,uuid=5f6e5f4f-dc2a-4dbd-a6ea-9ca997cde75e
- * save the contents of /usr/src/linux to an archive (similar to tar):
-   fsarchiver savedir /data/linux-sources.fsa /usr/src/linux
- * save a filesystem (/dev/sda1) to an archive split into volumes of 680MB:
-   fsarchiver savefs -s 680 /data/myarchive1.fsa /dev/sda1
- * save a filesystem and exclude all files/dirs called &#39;pagefile.*&#39;:
-   fsarchiver savefs /data/myarchive.fsa /dev/sda1 --exclude=&#39;pagefile.*&#39;
- * generic exclude for &#39;share&#39; such as &#39;/usr/share&#39; and &#39;/usr/local/share&#39;:
-   fsarchiver savefs /data/myarchive.fsa --exclude=share
- * absolute exclude valid for &#39;/usr/share&#39; but not for &#39;/usr/local/share&#39;:
-   fsarchiver savefs /data/myarchive.fsa --exclude=/usr/share
- * save a filesystem (/dev/sda1) to an encrypted archive:
-   fsarchiver savefs -c mypassword /data/myarchive1.fsa /dev/sda1
- * same as before but prompt for password in the terminal:
-   fsarchiver savefs -c - /data/myarchive1.fsa /dev/sda1
- * extract an archive made of simple files to /tmp/extract:
-   fsarchiver restdir /data/linux-sources.fsa /tmp/extract
- * show information about an archive and its filesystems:
-   fsarchiver archinfo /data/myarchive2.fsa
-   ```
-</code></pre>
+<p>v2ray官网：<br/>
+<a href="https://www.v2ray.com/chapter_00/install.html">https://www.v2ray.com/chapter_00/install.html</a><br/>
+v2ray一键安装：<br/>
+bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.direct/go.sh</a>)</p>
 
                         
                       </div>
@@ -326,18 +241,19 @@ Distributed under the GPL v2 license (GNU General Public License v2).
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045490053.html">
+                <a class="clearlink" href="15483045490138.html">
                 
-                  <h1>查看端口占用</h1>
+                  <h1>VMware14秘钥</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>使用命令：<br/>
-<code>lsof -i:8000</code><br/>
-或<br/>
-<code>netstat -tunlp|grep 8000</code><br/>
-均可。</p>
+                        	<p>CG54H-D8D0H-H8DHY-C6X7X-N2KG6<br/>
+ZC3WK-AFXEK-488JP-A7MQX-XL8YF<br/>
+AC5XK-0ZD4H-088HP-9NQZV-ZG2R4<br/>
+ZC5XK-A6E0M-080XQ-04ZZG-YF08D<br/>
+ZY5H0-D3Y8K-M89EZ-AYPEG-MYUA8<br/>
+FF590-2DX83-M81LZ-XDM7E-MKUT4</p>
 
                         
                       </div>
@@ -349,7 +265,7 @@ Distributed under the GPL v2 license (GNU General Public License v2).
                     <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -424,7 +340,7 @@ Distributed under the GPL v2 license (GNU General Public License v2).
         
             <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
-            <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
+            <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
             <a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html"><strong>星火流萤</strong></a>
          
@@ -443,31 +359,31 @@ Distributed under the GPL v2 license (GNU General Public License v2).
 	      
 		      
 			      <li class="post">
+			        <a href="15520392147631.html">GTD 管理法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15520390232741.html">用四象限管理任务</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15520320136368.html">bundle install 无法使用的解决办法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15515375536566.html">rclone挂载 onedrive 教程</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15512579928868.html">excel for Mac 如何点击单元格高亮整行</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15507295741483.html">最强渗透测试教程</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15506293038772.html">使用浏览器进行Web应用安全测试</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15505564665657.html">深入了解最近普遍存在的DNS劫持攻击事件</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15489296290618.html">Mediakit报告设备商的空间不足以执行此操作</a>
 			      </li>
 		     
 		  

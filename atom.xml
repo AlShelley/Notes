@@ -4,13 +4,200 @@
   <title><![CDATA[lonelyorWiki]]></title>
   <link href="http://www.lonelyor.org/lonelyorWiki/atom.xml" rel="self"/>
   <link href="http://www.lonelyor.org/lonelyorWiki/"/>
-  <updated>2019-02-27T18:03:35+08:00</updated>
+  <updated>2019-02-27T18:55:27+08:00</updated>
   <id>http://www.lonelyor.org/lonelyorWiki/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[GTD 管理法]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15520392147631.html"/>
+    <updated>2019-03-08T18:00:14+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15520392147631.html</id>
+    <content type="html"><![CDATA[
+<p>GTD 分为5个步骤</p>
+
+<ul>
+<li>收集</li>
+<li>理清</li>
+<li>组织</li>
+<li>执行</li>
+<li>回顾</li>
+</ul>
+
+<p>每一步都很重要，但是我觉得比较难的还是执行。</p>
+
+<p>执行的精髓是一定要去做</p>
+
+<p>不去做的原因可能是因为目标困难，难以去实现，此时要降低困难度（举个例子：每天都要读书，然后规定自己每天读2页而不是每天读50页，这样每天就能至少读2页，时间充足的话还能多读48页，主动去坚持才是最棒的）</p>
+
+<p>科学的养成一个习惯，在前期我们尽量做到：</p>
+
+<ul>
+<li>这个习惯划分到每天的目标量足够小，这样易获得成就感，也没有放弃的理由。</li>
+<li>不间断，不管这一天发生了什么，哪怕是你削减目标量，也要每天都去做。</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[用四象限管理任务]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15520390232741.html"/>
+    <updated>2019-03-08T17:57:03+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15520390232741.html</id>
+    <content type="html"><![CDATA[
+<blockquote>
+<p>文章来自滴答清单帮助中心</p>
+</blockquote>
+
+<p>四象限是一种常用的时间管理理论，它将需要处理的事按“重要”和“紧急”两个维度划分，并对应到四种待处理状态中，帮助你决定下一步应该做什么。</p>
+
+<p><figure><img src="media/15520390232741/15520390786216.jpg" alt=""/></figure></p>
+
+<p>通常，你需要马上执行“急事”，确保它们不会延期，比如：</p>
+
+<p>本周五前必须冻结项目到可发布状态<br/>
+明天女友生日，所以今天要去买礼物<br/>
+但长远来看，最好将重心放在“要事”上。想想看，需要马上执行的“急事”是否曾经也是“要事”？早点把“要事”消化掉就不会压力满满了。</p>
+
+<p>不过在实际情况中，恼人的“烦事”会比预期多。这些突发事件本不在你的计划中，但又不得不尽快解决，比如：</p>
+
+<p>小区门禁升级需要去物业更换房卡<br/>
+亲朋好友突然造访，向你咨询些事情<br/>
+因为迫切的呼声让你产生“这很重要”的错觉——实际上就算重要也是对别人而言。一旦进入忙碌的状态，你可能更想在结束后去打个游戏、看看综艺节目、约朋友聊个天放松放松......乍一想没什么不对是吧？忙碌之后确实需要缓缓，但是朋友，你还记得第一象限里的“要事”吗？</p>
+
+<p>所以，减少在第三象限的忙碌，尽早处理第二象限的事情，合理分配时间，去做对你而言重要的事情，才是四象限理论的核心。</p>
+
+<h2 id="toc_0">一、利用清单创建四象限系统</h2>
+
+<p>如果你的事情不太多，那么使用这种方式可以快速搭建起简易的四象限任务系统。你只需要做好以下四步，就能在滴答清单里实践四象限了：</p>
+
+<p>创建四个清单，对应四个象限<br/>
+将这四个清单放进同一个文件夹“四象限”<br/>
+将收集箱的任务移动到对应清单<br/>
+每天在“四象限”文件夹下查看并及时调整任务的状态<br/>
+在处理收集箱前，先在侧边栏创建四个清单，分别和四个象限对应。然后为它们创建文件夹“四象限”。</p>
+
+<p><figure><img src="media/15520390232741/15520390924137.jpg" alt=""/></figure></p>
+
+<blockquote>
+<p>注：长按清单A并拖放到清单B上即可为清单A和B创建文件夹。推荐给清单设置不同的颜色，更好的区分任务在哪个象限。</p>
+</blockquote>
+
+<p>以后每天处理收集箱时，就可以将任务逐条移动到对应的清单内。</p>
+
+<ul>
+<li>今天去给女友买生日礼物 → 重要且紧急</li>
+<li>打电话给小文，帮忙购买《哈利波特 8》英文原版书 → 重要不紧急</li>
+<li>明天下午2点去面试 → 重要且紧急</li>
+<li>买回家的火车票 → 重要不紧急</li>
+<li>帮赵星问推荐信的书写要求 → 不重要但紧急</li>
+<li>预定纪念款球衣 → 不重要不紧急<br/>
+在“四象限”文件夹的“所有任务”中，选择「按清单排序」，就能清晰的看到每个象限中都有什么事情。</li>
+</ul>
+
+<p><figure><img src="media/15520390232741/15520391146931.jpg" alt=""/></figure></p>
+
+<blockquote>
+<p>注：当某件事情从某个象限转化到其他象限时，你可以直接在文件夹的“所有任务”中，长按这条任务，并拖动到对应的清单<br/>
+注：如果需要提醒，记得给任务设置好日期和时间</p>
+</blockquote>
+
+<p>接下来，就可以每天查看、处理并调整任务——做完的事情及时打勾，有变更的事情及时移动。</p>
+
+<ul>
+<li>优先执行重要且紧急的事件</li>
+<li>尽量提前规划重要不紧急事件，在它们变得紧急前就完成</li>
+<li>如果可以的话，试着将不重要但紧急的事情交由他人处理，或者学会对别人的请求说 Sorry</li>
+<li><p>需要控制去做不重要不紧急事件的时间，不要过度放松</p>
+<h2 id="toc_1">二、利用自定义智能清单创建四象限系统</h2>
+<p>如果你已经创建了“工作”、“学习”、“生日提醒”等不同的类别的清单，那么把任务从“生日提醒”清单移动到“重要且紧急”清单也许不是好的选择。这时候不妨试试创建自定义智能清单，可以在保留现有清单的基础上创建四象限系统。同样的，四个步骤即可搞定：</p></li>
+<li><p>创建四个自定义智能清单，对应四个象限</p></li>
+<li><p>设置好每个自定义智能清单的筛选条件</p></li>
+<li><p>为收集箱的任务设置优先级和日期</p></li>
+<li><p>每天在自定义智能清单里查看并处理任务<br/>
+首先，进入「智能清单」，在页面底部添加自定义智能清单，分别和四个象限对应。</p></li>
+</ul>
+
+<p><figure><img src="media/15520390232741/15520391551650.jpg" alt=""/></figure></p>
+
+<p>几天内的事情算紧急？什么状态的任务算重要？创建自定义智能清单时，记得给每个象限都设置好对应的筛选规则。例如，“重要且紧急”的筛选条件可以设置如下：</p>
+
+<p><figure><img src="media/15520390232741/15520391631530.jpg" alt=""/></figure></p>
+
+<ul>
+<li>日期选中「今天」、「明天」</li>
+<li>优先级选中「高优先级」、「中优先级」<br/>
+自定义清单创建完，你的四象限系统框架就搭好了。以后处理收集箱时，除了移动到对应分类，也要记得给任务都设置好优先级和日期，如果一些不紧急的事情无法估计什么时候完成，可以只设置优先级。</li>
+</ul>
+
+<p><figure><img src="media/15520390232741/15520391757107.jpg" alt=""/></figure></p>
+
+<blockquote>
+<p>注：任务前面的小方框，红色代表高优先级，黄色代表中优先级，蓝色代表低优先级，灰色代表无优先级。其中，红色和黄色都可以表示任务是重要的，蓝色和灰色则可以表示任务是不重要的。任务后面的日期，则代表了紧急程度。</p>
+</blockquote>
+
+<ul>
+<li>今天去给女友买生日礼物 → 中优先级，今天下午5点</li>
+<li>明天下午2点去面试 → 高优先级，明天下午2点</li>
+<li>买回家的火车票 → 高优先级，没有日期</li>
+<li>帮赵星问推荐信的书写要求 → 低优先级，明天</li>
+<li>预定纪念款球衣 → 无优先级，下周三<br/>
+设置优先级和日期时，你不需要去思考这些事属于哪个象限，只需要根据实际情况设置好即可，剩下的工作都交给自定义智能清单，它会帮你将符合条件的任务都筛选出来。</li>
+</ul>
+
+<p><figure><img src="media/15520390232741/15520391940195.jpg" alt=""/></figure></p>
+
+<p>并且，你不用手动去调整任务的状态，如果一个重要不紧急的任务没有被及时处理，它会自动从重要不紧急转移到重要且紧急。不过，你应该不希望这事儿发生吧:)</p>
+
+<p>以上两种方法都能帮助你在滴答里实践四象限系统，快来试试吧。别忘记四象限的核心：去做对你真正重要的事儿，合理分配你的时间。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[bundle install 无法使用的解决办法]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15520320136368.html"/>
+    <updated>2019-03-08T16:00:13+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15520320136368.html</id>
+    <content type="html"><![CDATA[
+<p>在学习 hack101 课程的时候，发现无法使用bundle install 安装所需库，考虑到可能是墙的问题。</p>
+
+<p>解决办法如下：<br/>
+更换源<br/>
+访问网站 <a href="https://gems.ruby-china.com/">Ruby China</a>，然后按照如下操作即可。<br/>
+<figure><img src="media/15520320136368/15520321533528.jpg" alt=""/></figure></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[rclone挂载 onedrive 教程]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15515375536566.html"/>
+    <updated>2019-03-02T22:39:13+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15515375536566.html</id>
+    <content type="html"><![CDATA[
+<p>1、rclone config选 n<br/>
+2、给网盘起个名字如 xlz<br/>
+3、选择要挂载的网盘类型，输入数字即可，如 onedrive 则输入18<br/>
+4、按回车直到<code>Edit advanced config</code>选 y 来编辑配置<br/>
+5、<code>chunk-size</code>我选了200M,这个随便写。<br/>
+6、连续回车直到<code>expose_onenote_files&gt; true</code>，这里默认为 false，选 true 是为了在 finder 中显示。<br/>
+7、<code>Use auto config</code>，我选的是，然后浏览器自动弹出来进行认证<br/>
+8、认证结束后，<code>Your choice&gt; 1</code><br/>
+9、<code>Chose drive to use:&gt;</code>选你要用的（数字）然后选y<br/>
+10、<code>y/e/d&gt; y</code>选 y 然后就添加好了<br/>
+11、新开一个终端，然后新建一个目录（待会儿网盘就会挂载到这个目录下，比如我新建 xlz）<br/>
+12、rclone mount xlz:/ /Users/lonelyor/NBonedrive/xlz<br/>
+13、如果要在后台运行就<code>nohup rclone mount xlz:/ /Users/lonelyor/NBonedrive/xlz &amp;</code><br/>
+14、终端输入 <code>df -h</code> 查看</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[excel for Mac 如何点击单元格高亮整行]]></title>
@@ -88,7 +275,7 @@ End Sub
 
 <p>这篇文章旨在记录这些攻击的程度，并将这一绝对成功的网络间谍活动的起源追溯到关键互联网基础设施提供商的一系列连锁违规行为。</p>
 
-<p><img src="media/15505564665657/15505565989858.jpg" alt=""/></p>
+<p><figure><img src="media/15505564665657/15505565989858.jpg" alt=""/></figure></p>
 
 <p>在我们深入研究在这篇文章中达到高潮的广泛研究之前，回顾到目前为止公开披露的事实是有帮助的。在2018年11月27日，思科的Talos研究部门<a href="https://blog.talosintelligence.com/2018/11/dnspionage-campaign-targets-middle-east.html">发表了一篇文章</a>，概述了一项名为“ DNSpionage ” 的复杂网络间谍活动的轮廓。</p>
 
@@ -104,7 +291,7 @@ End Sub
 
 <p>这种情况在2019年1月25日发生了变化，当时安全公司CrowdStrike <a href="https://www.crowdstrike.com/blog/widespread-dns-hijacking-activity-targets-multiple-sectors/">发布了一篇博文</a>，列出了迄今为止间谍活动所使用的几乎所有互联网地址。本篇文章的其余部分基于KrebsOnSecurity进行的开源研究和访谈，旨在更加了解这种非同寻常的持续攻击的真实程度。</p>
 
-<p><img src="media/15505564665657/15505567298359.jpg" alt=""/></p>
+<p><figure><img src="media/15505564665657/15505567298359.jpg" alt=""/></figure></p>
 
 <p>与CrowdStrike发布的DNSpionage活动相关的“妥协指标”。</p>
 
@@ -142,19 +329,19 @@ End Sub
 
 <p>第一个域是“ <strong>ns0.idm.net.lb</strong> ”，它是黎巴嫩互联网服务提供商IDM的服务器。从2014年初到2018年12月，ns0.idm.net.lb指向<strong>194.126.10[.]18</strong>，其中足够的是一个基于黎巴嫩的互联网地址。但正如我们在下面的Farsight数据截图中看到的那样，2018年12月18日，该ISP的DNS记录被更改为将指向IDM的互联网流量指向德国的托管服务提供商（ 139.59.134[.]216 地址）。</p>
 
-<p><img src="media/15505564665657/15505569469853.jpg" alt=""/></p>
+<p><figure><img src="media/15505564665657/15505569469853.jpg" alt=""/></figure></p>
 
 <p>资料来源：远见安全</p>
 
 <p>根据Farsight的说法，请注意在IDM的域名中列出的其他内容为139.59.134 [。] 216：</p>
 
-<p><img src="media/15505564665657/15505569541143.jpg" alt=""/></p>
+<p><figure><img src="media/15505564665657/15505569541143.jpg" alt=""/></figure></p>
 
 <p>域名<strong>sa1.dnsnode.net和fork.sth.dnsnode.net</strong>的DNS记录也从他们在瑞典的合法家园改为12月份由攻击者控制的德国托管服务提供商。这些域名由<a href="https://www.netnod.se/">Netnod Internet Exchange</a>拥有，  <a href="https://www.netnod.se/">Netnod Internet Exchange</a>是一家位于瑞典的主要全球DNS提供商。Netnod还运营着<a href="https://en.wikipedia.org/wiki/Root_name_server">13个“根”名称服务器之一</a>，  这是构成全球DNS系统基础的关键资源。</p>
 
 <p>我们马上回到Netnod。但首先让我们看看CrowdStrike报告中引用的另一个Internet地址，作为DNSpionage黑客滥用的基础设施的一部分：<strong>82.196.11[.]127</strong>。荷兰的这个地址也是域名<strong>mmfasi[.]com</strong>的所在地，Crowdstrike说这是一个攻击者的域名之一，被用作一些被劫持的基础设施的DNS服务器。</p>
 
-<p><img src="media/15505564665657/15505570490488.jpg" alt=""/></p>
+<p><figure><img src="media/15505564665657/15505570490488.jpg" alt=""/></figure></p>
 
 <p>正如我们在上面的屏幕截图中看到的那样，82.196.11[.]127暂时是另一对Netnod DNS服务器以及服务器“ ns.anycast.woodynet.net ”的所在地。该域名来源于昵称  <a href="https://en.wikipedia.org/wiki/Bill_Woodcock">Bill Woodcock</a>，担任<a href="https://www.pch.net/">Packet Clearing House（PCH）</a>的执行董事  。</p>
 
@@ -187,7 +374,7 @@ Netnod首席执行官 LarsMichaelJogbäck于2月14日与KrebsOnSecurity联系，
 
 <p>这些攻击的一个更有趣的方面是，Netnod和PCH都是DNSSEC（又称“DNS安全扩展”）的声音支持者和采用者，这是一种旨在打败DNSpionage黑客能够攻击的那种攻击的技术。执行。</p>
 
-<p><img src="media/15505564665657/15505571774864.jpg" alt=""/><br/>
+<p><figure><img src="media/15505564665657/15505571774864.jpg" alt=""/></figure><br/>
 图片：APNIC</p>
 
 <p>DNSSEC通过要求对给定域或域集的所有DNS查询进行数字签名来保护应用程序不使用伪造或操纵的DNS数据。在DNSSEC中，如果名称服务器确定给定域的地址记录在传输过程中未被修改，则它会解析域并让用户访问该站点。但是，如果该记录已以某种方式被修改或与所请求的域不匹配，则名称服务器会阻止用户访问欺诈性地址。</p>
@@ -787,7 +974,7 @@ root用户添加命令则把脚本放在 /usr/bin 即可。<br/>
 <p>burpsuite的使用技巧之一，设置上游代理。比如测试境外网站时可能需要[fanqiang]才能访问，此时这个技巧就能用得上了。</p>
 </blockquote>
 
-<p><img src="http://images.lonelyor.org/burp%E8%AE%BE%E7%BD%AE%E4%B8%8A%E6%B8%B8%E4%BB%A3%E7%90%8620180823161146.png" alt="burp设置上游代理20180823161146"/></p>
+<p><figure><img src="http://images.lonelyor.org/burp%E8%AE%BE%E7%BD%AE%E4%B8%8A%E6%B8%B8%E4%BB%A3%E7%90%8620180823161146.png" alt="burp设置上游代理20180823161146"/><figcaption>burp设置上游代理201808</figcaption></figure></p>
 
 <p>1、在浏览器中设置burp代理以保证可以抓包<br/>
 2、开启上游代理<br/>
@@ -809,10 +996,10 @@ root用户添加命令则把脚本放在 /usr/bin 即可。<br/>
     <id>http://www.lonelyor.org/lonelyorWiki/15483045491124.html</id>
     <content type="html"><![CDATA[
 <p>题目：<a href="https://ctflearn.com/problems/96">https://ctflearn.com/problems/96</a><br/>
-<img src="http://images.lonelyor.org/ctflearn-96-1.png" alt="ctflearn-96-1"/><br/>
+<figure><img src="http://images.lonelyor.org/ctflearn-96-1.png" alt="ctflearn-96-1"/><figcaption>ctflearn-96-</figcaption></figure><br/>
 访问域名，然后会下载一张图片。<br/>
 接下来我们使用十六进制编码器打开这张图片，会发现：<br/>
-<img src="http://images.lonelyor.org/ctflearn-96-2.png" alt="ctflearn-96-2"/><br/>
+<figure><img src="http://images.lonelyor.org/ctflearn-96-2.png" alt="ctflearn-96-2"/><figcaption>ctflearn-96-</figcaption></figure><br/>
 标红部分即是flag。</p>
 
 ]]></content>
@@ -960,430 +1147,6 @@ function makeInviteCode() {
 </code></pre>
 
 <p>将code进行base64解码，就得到了邀请码。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Web安全工程师求职清单]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15483045490948.html"/>
-    <updated>2019-01-24T12:35:49+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15483045490948.html</id>
-    <content type="html"><![CDATA[
-<blockquote>
-<p>一年前写的一点玩意，没什么卵用</p>
-</blockquote>
-
-<h2 id="toc_0">安全资讯</h2>
-
-<p><a href="http://www.freebuf.com/">freebuf</a></p>
-
-<p><a href="https://www.t00ls.net/">tools</a></p>
-
-<p><a href="https://www.secpulse.com/">安全脉搏</a></p>
-
-<p><a href="https://packetstormsecurity.com/">数据包风暴</a></p>
-
-<p><a href="http://www.4hou.com/">嘶吼</a></p>
-
-<p><a href="https://www.aqniu.com/">安全牛</a></p>
-
-<p><a href="https://www.anquanke.com/">安全客</a></p>
-
-<p><a href="https://www.sec-wiki.com/">sec-wiki</a></p>
-
-<p><a href="http://www.secdoctor.com/">中国信息安全博士网</a></p>
-
-<h2 id="toc_1">威胁情报</h2>
-
-<p>暂略</p>
-
-<h2 id="toc_2">安全工具</h2>
-
-<p><a href="https://www.ctftools.com/down/">最强安全工具集</a></p>
-
-<ul>
-<li>burpsuite(抓包)</li>
-<li>sqlmap(sql注入)</li>
-<li>whireshark(网络抓包)</li>
-<li>中国菜刀(webshell、一句话后门)</li>
-<li>HxD(十六进制编辑器和磁盘编辑器)</li>
-<li>nmap(扫描)</li>
-<li>hydra(爆破)</li>
-<li>cain(爆破)</li>
-<li>metasploit(漏洞利用)</li>
-<li>mitmproxy(http/https代理)</li>
-<li>commix(命令注入)</li>
-<li>httrack(网站克隆)</li>
-<li>netcat(瑞士军刀-网络调试和探测工具)</li>
-<li>scapy(python的交互式数据包操作程序和库)</li>
-<li>empire(域渗透)</li>
-</ul>
-
-<h2 id="toc_3">靶机环境</h2>
-
-<h2 id="toc_4">安全知识库</h2>
-
-<p><a href="https://www.anquanquan.info/">安全圈</a></p>
-
-<p><a href="http://wiki.open.qq.com/wiki/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8%E8%A7%84%E8%8C%83">腾讯安全开发规范</a></p>
-
-<p><a href="https://highon.coffee/blog/cheat-sheet/">安全研究备忘单</a></p>
-
-<p><a href="https://portswigger.net/kb/issues">Burp漏洞定义</a></p>
-
-<p><a href="https://www.offensive-security.com/metasploit-unleashed/">MSF框架终极指南</a></p>
-
-<p><a href="https://www.owasp.org/index.php/Main_Page">OWASP</a></p>
-
-<p><a href="http://vipread.com/index">vipread知识库</a></p>
-
-<p><a href="https://kb.help.rapid7.com/docs/">Rapid7知识库</a></p>
-
-<p><a href="https://kernelnewbies.org/">linux内核研究</a></p>
-
-<p><a href="http://www.loner.fm/bugs/">乌云漏洞</a></p>
-
-<p><a href="https://wooyun.js.org/">乌云文章</a></p>
-
-<p><a href="http://www.office-cn.net/t/api/index.html?web.htm">WindowsAPI参考手册</a></p>
-
-<p><a href="https://support.portswigger.net/customer/portal/articles/2326039-the-burp-methodology">Burp方法论</a></p>
-
-<p><a href="https://ctf-wiki.github.io/ctf-wiki/">CTF-Wiki</a></p>
-
-<p><a href="https://github.com/ctfs/">CTFs</a></p>
-
-<p><a href="https://ctftime.org">ctftime</a></p>
-
-<p><a href="https://www.codesec.net/">代码安全</a></p>
-
-<p><a href="https://silic.wiki/doku.php">习科小黑板</a></p>
-
-<p><a href="https://bbs.safewiki.org/portal.php">安全文库</a></p>
-
-<p><a href="http://webscan.360.cn/vul">360网站常见漏洞</a></p>
-
-<h2 id="toc_5">漏洞平台</h2>
-
-<p><a href="https://butian.360.cn/">补天</a></p>
-
-<p><a href="https://www.vulbox.com/">漏洞盒子</a></p>
-
-<p><a href="https://www.bugbank.cn/">漏洞银行</a></p>
-
-<p><a href="http://www.cnvd.org.cn/">CNVD国家信息安全漏洞共享平台</a></p>
-
-<p><a href="https://src.edu-info.edu.cn/">教育行业漏洞报告平台</a></p>
-
-<p><a href="https://www.seebug.org">Seebug</a></p>
-
-<p><a href="http://0xsafe.org/vuldb.html">Vuldbs漏洞平台</a></p>
-
-<h2 id="toc_6">技能要求</h2>
-
-<ul>
-<li>不同场景下的渗透测试流程、方法</li>
-<li>常见漏洞的攻击方法和防御方法</li>
-<li>代码级白盒测试能力</li>
-<li>owasp_top10概念、原理、测试方法、防御方法</li>
-<li>主流防火墙、IDS、IPS、漏洞扫描工具的安装、使用方法</li>
-<li>熟悉python、php、javascript、c、c++等语言的一种或多种</li>
-<li>cissp之类的证书或ctf解题能力是加分项</li>
-<li>各种靶机环境搭建</li>
-<li>安全分析报告的编写</li>
-<li>对业务快速熟悉的能力（业务安全重点、应用范围划分、业务安全基线）</li>
-<li>spring、struts、hibernate框架安全相关</li>
-<li>web组件加固、服务器加固、数据库加固</li>
-<li>域渗透、dns、arp等内网渗透知识</li>
-<li>各类提权如系统提权、数据库提权等</li>
-<li>风险评估、等级保护、安全体系规划、安全体系建设。包括信息资产管理、安全威胁和风险评估、安全解决方案制定、信息安全体系实施</li>
-<li>Nginx、Apache、Tomcat等安全配置基线</li>
-<li>各类安全测试标准(ISSAF、OSSTMM、OWASP、微软SDLC、OPENSAMM、BSIMM、SSECMM)</li>
-<li>网络日志分析、攻击流量检测</li>
-<li>hadoop、openstack、sdn云安全</li>
-<li>mongodb、redis、HBASE等nosql安全</li>
-<li>burpsuite插件编写</li>
-<li>python脚本开发能力、shell脚本开发能力</li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[burpsuite插件编写之官方代码示例解读]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15483045490884.html"/>
-    <updated>2019-01-24T12:35:49+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15483045490884.html</id>
-    <content type="html"><![CDATA[
-<blockquote>
-<p>description: 分析burpsuite官方提供的示例代码，以此来学习插件编写。</p>
-</blockquote>
-
-<h2 id="toc_0">HelloWorld</h2>
-
-<p>废话不多说，直接上代码！</p>
-
-<pre class="line-numbers"><code class="language-python">from burp import IBurpExtender
-from java.io import PrintWriter
-from java.lang import RuntimeException
-
-# 上面import的第一句是所有burp插件都必须有的
-# 下面开始创建一个burp插件的类来实现插件
-class BurpExtender(IBurpExtender):
-    def registerExtenderCallbacks(self, callbacks):
-        # 创建插件名
-        callbacks.setExtensionName(&quot;HelloWorld extension&quot;)
-        # 获取输出和错误流
-        stdout = PrintWriter(callbacks.getStdout(), True)
-        stderr = PrintWriter(callbacks.getStderr(), True)
-        # 在输出流和错误流中插入消息
-        stdout.println(&quot;Hello output&quot;)
-        stderr.println(&quot;Hello errors&quot;)
-        # 将消息插入burp的alert警报标签中
-        callbacks.issueAlert(&quot;Hello alerts&quot;)
-        # 抛出将出现在错误流中的异常
-        raise RuntimeException(&quot;Hello exception&quot;)
-</code></pre>
-
-<p>现在开始来说几个坑：<br/>
-1、插件最好尽量放在英文路径，不然可能会报错<br/>
-2、编写代码前指定编码(如：# -<em>- coding:utf8 -</em>-)<br/>
-3、raise RuntimeException(&quot;Hello exception&quot;) 这行代码我没看懂是要干嘛的，反正写了之后Errors就报错，不想看的话就注释掉好了。</p>
-
-<h2 id="toc_1">event_listeners 事件监听器</h2>
-
-<pre class="line-numbers"><code class="language-python">#!/usr/bin/python3
-# -*- coding:utf-8 -*-
-
-from burp import IBurpExtender
-from burp import IHttpListener
-from burp import IProxyListener
-from burp import IScannerListener
-from burp import IExtensionStateListener
-from java.io import PrintWriter
-
-class BurpExtender(IBurpExtender, IHttpListener, IProxyListener, IScannerListener, IExtensionStateListener):
-    def registerExtenderCallbacks(self, callbacks):
-        # 保持对回调对象的引用
-        self._callbacks = callbacks
-        # 创建插件名
-        callbacks.setExtensionName(&quot;Event Listeners&quot;)
-        # 获取输出流
-        self._stdout = PrintWriter(callbacks.getStdout(), True)
-        # 注册为http监听器
-        callbacks.registerHttpListener(self)
-        # 注册为proxy监听器
-        callbacks.registerProxyListener(self)
-        # 注册为scanner监听器
-        callbacks.registerScannerListener(self)
-        # 注册为扩展插件状态监听器
-        callbacks.registerExtensionStateListener(self)
-    # 下面几个函数各自实现监听
-    def processHttpMessage(self, toolFlag, messageIsRequest, messageInfo):
-        self._stdout.println(
-            (&quot;HTTP request to &quot; if messageIsRequest else &quot;HTTP response from&quot;) +
-            messageInfo.getHttpService().toString() +
-            &quot;[&quot; + self._callbacks.getToolName(toolFlag) + &quot;]&quot;
-        )
-
-    def processProxyMessage(self, messageIsRequest, message):
-        self._stdout.println(
-            (&quot;Proxy request to &quot; if messageIsRequest else &quot;Proxy response from&quot;) +
-            message.getMessageInfo.getHTTPService().toString()
-        )
-
-    def newScanIssue(self, issue):
-        self._stdout.prinln(&quot;New scan issue &quot; + issue.getIssueName())
-
-    def extensionUnloaded(self):
-        self._stdout.println(&quot;Extension was unloaded&quot;)
-</code></pre>
-
-<p>我是没搞懂这个插件做了什么，诶无所谓，也就是多敲敲代码，熟悉熟悉感觉。</p>
-
-<h2 id="toc_2">traffic_redirector 流量重定向</h2>
-
-<pre class="line-numbers"><code class="language-python">#!/usr/bin/python3
-# -*- coding:utf-8 -*-
-
-from burp import IBurpExtender
-from burp import IHttpListener
-
-HOST_FROM = &quot;www.baidu.com&quot;
-HOST_TO = &quot;www.zhihu.com&quot;
-
-class BurpExtender(IBurpExtender, IHttpListener):
-    def registerExtenderCallbacks(self, callbacks):
-        # 获取扩展helpers对象
-        self._helpers = callbacks.getHelpers()
-        # 设置扩展名
-        callbacks.setExtensionName(&quot;Traffic redirector&quot;)
-        # 将自己注册为HTTP侦听器
-        callbacks.registerHttpListener(self)
-
-    def processHttpMessage(self, toolsFlag, messageIsRequest, messageInfo):
-        # 只获取请求
-        if not messageIsRequest:
-            return
-        # 获取http服务的请求
-        httpService = messageInfo.getHttpService()
-        # 如果主机是HOST_FROM则将它改成HOST_TO
-        if (HOST_FROM == httpService.getHost()):
-            messageInfo.setHttpService(self._helpers.buildHttpService(HOST_TO,
-                httpService.getPort(), httpService.getProtocol()))
-</code></pre>
-
-<p>这个插件简单来说就是，把请求中的host部分修改掉。比如上述代码会监听所有host为百度的请求，一旦出现，就会把host改成知乎。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[HttpOnly]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15483045490848.html"/>
-    <updated>2019-01-24T12:35:49+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15483045490848.html</id>
-    <content type="html"><![CDATA[
-<p>HttpOnly是 Set-Cookie HTTP响应头中包含的附加标志。生成cookie时使用httponly标志有助于降低客户端脚本访问受保护cookie的风险。</p>
-
-<p>如果HTTP响应头中包含HttpOnly标志，则无法通过客户端脚本访问cookie。因此即使存在xss跨站脚本漏洞，并且用户意外访问到恶意链接，浏览器也不会向第三方透露cookie（前提是浏览器支持HttpOnly）。</p>
-
-<p>参考链接：</p>
-
-<blockquote>
-<p><a href="https://www.owasp.org/index.php/HttpOnly">https://www.owasp.org/index.php/HttpOnly</a></p>
-</blockquote>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[xssing.org跨站的艺术]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15483045490829.html"/>
-    <updated>2019-01-24T12:35:49+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15483045490829.html</id>
-    <content type="html"><![CDATA[
-<blockquote>
-<p>这个网站太棒了，强烈推荐阅读<br/>
-<a href="https://xssing.org/%E9%A6%96%E9%A1%B5">xssing.org跨站的艺术</a>若不能直接访问请使用科学上网工具。</p>
-</blockquote>
-
-<h1 id="toc_0">什么是XSS？</h1>
-
-<h1 id="toc_1">概述</h1>
-
-<p>XSS全称跨站脚本(Cross Site Scripting)，为不和层叠样式表(Cascading Style Sheets, CSS)的缩写混淆，故缩写为XSS，比较合适的方式应该叫做跨站脚本攻击。跨站点脚本（XSS）攻击是一种注射型攻击，攻击者在可信的网页中嵌入恶意代码，用户访问可信网页时触发XSS而被攻击.</p>
-
-<p>攻击者通过Web应用程序发送恶意代码，一般以浏览器脚本的形式发送给不同的终端用户。当一个Web程序的用户输入点没有进行校验和编码，将很容易的导致XSS。</p>
-
-<p>攻击者可以使用XSS发送恶意脚本给没有任何防备的用户。终端用户浏览器无法知道不应该信任叫嗯,而是执行了该脚本。因为它认为脚本来自可信的源,恶意脚本可以访问任何Cookies,会话令牌,或其浏览器和网站保留使用的他敏感信息。这些脚本甚至可以重写HTML页面的内容。更多的内容可以阅读本站其他内容。</p>
-
-<h1 id="toc_2">详细介绍</h1>
-
-<p>跨站脚本攻击在以下情况出现:</p>
-
-<ol>
-<li>Web应用程序通过不可信的来源进行数据输入，最常见是的Web请求(输入，比如如GET访问某Web应用的url，通过参数提交数据,比如提交input=<script>alert(0);&lt;/ script&gt;)。</li>
-<li>恶意数据包含在动态内容内在没有进行校验的情况下发送给用户(输出，比如提交的input的值在没有校验的情况下，用户访问页面，浏览器直接渲染了input的值执行了JS，导致弹窗)。</li>
-</ol>
-
-<p>发送到Web浏览器的恶意内容通常是以JavaScript代码的形式，当然也可以包括HTML，Flash或任何浏览器可以执行的其他类型的代码。基于XSS的攻击种类几乎是无限的，但它们通常包括发送隐私数据给攻击者，如cookies或其他会话信息；重定向受害者访问攻击者控制的页面；或者利用网站漏洞在用户机器上执行其他恶意操作。</p>
-
-<h2 id="toc_3">存储型和反射型XSS攻击</h2>
-
-<p>XSS攻击通常可以分为两类：存储型和反射型（也称持久性和非持久性）。还有第三种相对少为认知的XSS攻击类型，叫做DOM XSS ,具体可以点击这里阅读。</p>
-
-<p>同时最近还有一种XSS攻击类型被提出来，突变XSS，不过个人觉得突变XSS不合适作为第四种XSS攻击类型，因为这种突变XSS可以出现在以上三种类型的XSS里，不过比较特殊，我们同样也在这里进行单独介绍（Fooying注）。</p>
-
-<h2 id="toc_4">存储型XSS攻击</h2>
-
-<p>存储型攻击是指那些被注入脚本将被永久保存在目标服务器上，比如在数据库中，在消息板块，访客日志，注释字段等。受害人请求存储信息时，将再次检索到恶意脚本(比如，在留言板提交XSS攻击代码，会存储到数据库，当再次访问留言板会请求数据库中的留言信息，就会连同XSS攻击代码一起检索出来在页面展示，使得受害者再次被攻击)。存储型XSS有时也被称为持久性或Type-I XSS。</p>
-
-<h2 id="toc_5">反射型XSS攻击</h2>
-
-<p>反射型攻击是指那些被注入脚本反射出Web服务器，比如在一个错误信息、搜索结果，或者其他任何的包括一些或所有的输入作为请求的一部分发送到服务器的响应。反射型攻击是通过其他途径送达到受害者，比如一封邮件的内容，或者一些其他的网站。当用户被诱骗点击一个恶意链接，提交一个特制的表单，甚至只是浏览到恶意网站，被注入的脚本行进到有漏洞的网站，将攻击反射回用户浏览器。然后浏览器执行代码，因为它来自于一个“可信”的服务器。反射型XSS有时也被称为非持久性或Type-II XSS.</p>
-
-<h2 id="toc_6">其他类型的XSS漏洞的</h2>
-
-<p>除了反射型和存储型XSS,其他类型的XSS，Amit Klein在2005年发现DOM XSS。除此之外，推荐关于XSS分类描述的文章：XSS分类，它涵盖了所有这些方面的XSS，组成了矩阵，存储vs反射型XSS，以及服务端和客户端XSS，DOM XSS是客户端XSS。</p>
-
-<h2 id="toc_7">XSS攻击结果</h2>
-
-<p>无论是存储型还是反射型（或DOM XSS）的攻击结果都是相同的。不同的是Payload如何有效的到达服务器。不要错误的认为，一个“read only”或“brochureware”网站不容易受到严重的反射型XSS攻击。XSS可以引起终端用户的各种问题，包括不同的严重成都。最严重的XSS攻击涉及用户的会话cookie的披露，使攻击者劫持用户的会话和接管帐户。其他破坏性攻击包括终端用户的文件披露，特洛伊木马程序的安装，将用户重定向到其他网页或网站，或修改内容介绍。XSS漏洞允许攻击者修改新闻稿或新闻项目可以影响一个公司的股票价格或减少消费者的信心。一个药品网站XSS漏洞可能允许攻击者修改剂量信息导致过量。更多关于这些类型的攻击请看内容欺骗。</p>
-
-<h2 id="toc_8">如何确定存在漏洞</h2>
-
-<p>XSS漏洞比较难以识别和从Web应用程序中删除。发现漏洞的最佳方法是进行的代码的安全审计，搜索一个HTTP请求中可能进入HTML输出的所有输入点。值得注意的是，各种不同的HTML标签可以用来发送一个恶意的JavaScript。Nessus, Nikto以及其他的一些扫描器，可以用来扫描检测XSS，不过效果有限。如果一个网站的某部分存在漏洞，那么很有可能还有其他的问题。</p>
-
-<h2 id="toc_9">如何防范XSS</h2>
-
-<p>XSS防御的相关内容位于OWASP XSS防范备忘录 .</p>
-
-<p>另外，最主要的是关闭掉你所有Web服务对HTTP回调的支持。攻击者可以窃取cookie数据通过JavaScript，即使document.cookie被禁用或不支持客户端。用户可以在论坛发布一个恶意脚本，当其他人点击链接，异步回调请求就会被触发，用来收集来自服务器的用户的cookie信息，然后发送到另一个接收地址，这样攻击者就可以进行一个会话劫持攻击。关闭掉你所有Web服务对HTTP回调的支持是很容易的。</p>
-
-<p>OWASP ESAPI project已经开发了一套可重用的安全组件。包含多种编程语言，包括验证和转义来防止参数篡改和XSS攻击注射。此外，OWASP WebGoat Project训练应用，有跨站点脚本和数据编码的训练经验。</p>
-
-<h2 id="toc_10">XSS语句</h2>
-
-<p><strong>属性中使用脚本的XSS</strong><br/>
-XSS攻击可能在非<script></script> 标签中发生. 其他标签也可以做同样事，比如:</p>
-
-<p><code>&lt;body onload=alert(&#39;test1&#39;)&gt;</code><br/>
-或其他属性，如:onmouseover,onerror.onmouseover</p>
-
-<p><code>&lt;b onmouseover=alert(&#39;Wufff!&#39;)&gt;click me!&lt;/b&gt;</code><br/>
-onerror</p>
-
-<p><code>&lt;img src=&quot;http://url.to.file.which/not.exist&quot; onerror=alert(document.cookie);&gt;</code></p>
-
-<p><strong>利用XSS脚本通过编码的URI方案</strong><br/>
-如果我们需要绕过Web应用过滤器，我们可以尝试编码字符串，比如：a=A (UTF-8),在img标签中使用：</p>
-
-<p><code>&lt;IMG SRC=jAvascript:alert(&#39;test2&#39;)&gt;</code><br/>
-有许多不同的UTF-8编码符号可以给我们更多的可能性。</p>
-
-<p><strong>XSS利用代码的编码</strong><br/>
-在META标签，我们可以对我们的脚本进行base64编码，这样就不用输入alert()字符。这个方法的更多信息参考RFC 2397</p>
-
-<p><code>&lt;META HTTP-EQUIV=&quot;refresh&quot; <br/>
-CONTENT=&quot;0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgndGVzdDMnKTwvc2NyaXB0Pg&quot;&gt;</code></p>
-
-<p>这些以及其他的例子可以在OWASP XSS Filter Evasion Cheat Sheet查看。这是一个真正的备用XSS攻击代码的百科</p>
-
-<h1 id="toc_11">例子</h1>
-
-<p>跨站点脚本攻击可能发生在任何地方，可能是恶意用户被允许发送非规范内容到一个可信的网站给其他合法用户。最常见的例子发生在网站公告板，提供基于Web的邮件列表的功能</p>
-
-<h2 id="toc_12">例子 1</h2>
-
-<p>The following JSP code segment reads an employee ID, eid, from an HTTP request and displays it to the user. 下面的JSP代码块从一个HTTP请求读取employee ID, eid，并展示给用户。</p>
-
-<pre class="line-numbers"><code class="language-text">    &lt;% String eid = request.getParameter(&quot;eid&quot;); %&gt; 
-    ... 
-    Employee ID: &lt;%= eid %&gt;
-</code></pre>
-
-<p>如果eid仅包含标准字母数字文本，则此示例中的代码可正常运行。如果eid具有包含元字符或源代码的值，则代码将在Web浏览器显示HTTP响应时执行。</p>
-
-<p>最初，这似乎不是一个漏洞。毕竟，为什么有人会输入导致恶意代码在自己的计算机上运行的URL？真正的危险是攻击者会创建恶意URL，然后使用电子邮件或社交工程技巧诱使受害者访问URL的链接。当受害者点击该链接时，他们会无意中通过易受攻击的Web应用程序将恶意内容反映回自己的计算机。这种利用易受攻击的Web应用程序的机制称为反射型XSS。</p>
-
-<h2 id="toc_13">例子 2</h2>
-
-<p>The following JSP code segment queries a database for an employee with a given ID and prints the corresponding employee&#39;s name.</p>
-
-<pre class="line-numbers"><code class="language-jsp">    &lt;%...
-     Statement stmt = conn.createStatement(); 
-     ResultSet rs = stmt.executeQuery(&quot;select * from emp where id=&quot;+eid); 
-     if (rs != null) { 
-      rs.next(); 
-      String name = rs.getString(&quot;name&quot;); 
-    %&gt; 
-    Employee Name: &lt;%= name %&gt;
-```
-
-以上，是首页的部分内容，首页还有很多的参考链接，这些链接都非常有价值，可是不好copy，所以请读者自行前往原网站欣赏。
-</code></pre>
 
 ]]></content>
   </entry>

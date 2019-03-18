@@ -134,6 +134,133 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15483045490077.html">
+                
+                  <h1>fsarchiver备份文件介绍</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>多年以前的笔记</p>
+</blockquote>
+
+<p>fsarchiver安装<br/>
+<code>apt-get install fsarchiver</code></p>
+
+<pre class="line-numbers"><code class="language-text"># 对于备份操作，我们需要以只读形式重新挂载文件系统或者有条件的话直接卸载。也可以-A忽略
+[peter@test88 ~]$ sudo /home/peter/fsarchiver savefs backup.fsa /dev/sdb1
+oper_save.c#938,filesystem_mount_partition(): partition [/dev/sdb1] is mounted read/write. please mount it read-only
+and then try again. you can do &quot;mount -o remount,ro /dev/sdb1&quot;. you can
+also run fsarchiver with option &#39;-A&#39; if you know what you are doing.
+removed backup.fsa
+ 
+# 对于恢复操作，我们必须先卸载文件系统。
+[peter@test88 ~]$ sudo /home/peter/fsarchiver restfs backup2.fsa id=0,dest=/dev/sdb2
+oper_restore.c#1230,extractar_filesystem_extract(): partition [/dev/sdb2] is mounted on [/home/peter/sder].
+cannot restore an archive to a partition which is mounted, unmount it first: umount /home/peter/sder
+ 
+# 创建文件系统备份
+# 可以将多个文件系统备份在一个文件中
+[peter@test88 ~]$ sudo /home/peter/fsarchiver savefs backup.fsa /dev/sdb1 /dev/sdb2
+ 
+# 恢复文件系统
+# id=0表明从归档中提取第一个文件系统的内容
+[peter@test88 ~]$ sudo /home/peter/fsarchiver restfs backup.fsa id=0,dest=/dev/sdc1 id=1,dest=/dev/sdc2
+
+
+
+# 软件说明文档
+====&gt; fsarchiver version 0.8.1 (2017-01-10) - http://www.fsarchiver.org &lt;====           
+Distributed under the GPL v2 license (GNU General Public License v2).                   
+ * usage: fsarchiver [&lt;options&gt;] &lt;command&gt; &lt;archive&gt; [&lt;dev1&gt; [&lt;dev2&gt; [...]]]            
+&lt;commands&gt;                                                                              
+ * savefs: save filesystems to an archive file (backup a device to a file)              
+ * restfs: restore filesystems from an archive (overwrites the existing data)           
+ * savedir: save directories to the archive (similar to a compressed tarball)           
+ * restdir: restore data from an archive which is not based on a filesystem             
+ * archinfo: show information about an existing archive file and its contents           
+ * probe [detailed]: show list of filesystems detected on the disks                     
+&lt;options&gt;                                                                               
+ -o: overwrite the archive if it already exists instead of failing                      
+ -v: verbose mode (can be used several times to increase the level of details)          
+ -d: debug mode (can be used several times to increase the level of details)            
+ -A: allow to save a filesystem which is mounted in read-write (live backup)            
+ -a: allow to save a filesystem when acls and xattrs are not supported                  
+ -x: enable support for experimental features (they are disabled by default)            
+ -e &lt;pattern&gt;: exclude files and directories that match that pattern                    
+ -L &lt;label&gt;: set the label of the archive (comment about the contents)                  
+ -z &lt;level&gt;: compression level from 1 (very fast) to 9 (very good) default=3            
+ -s &lt;mbsize&gt;: split the archive into several files of &lt;mbsize&gt; megabytes each           
+ -j &lt;count&gt;: create more than one (de)compression thread. useful on multi-core cpu      
+ -c &lt;password&gt;: encrypt/decrypt data in archive, &quot;-c -&quot; for interactive password        
+ -h: show help and information about how to use fsarchiver with examples                
+ -V: show program version and exit                                                      
+&lt;information&gt;                                                                           
+ * Support included for: lzo=yes, lzma=yes                                              
+ * Support for ntfs filesystems is unstable: don&#39;t use it for production.               
+&lt;examples&gt;                                                                              
+ * save only one filesystem (/dev/sda1) to an archive:                                  
+   fsarchiver savefs /data/myarchive1.fsa /dev/sda1                                     
+ * save two filesystems (/dev/sda1 and /dev/sdb1) to an archive:
+   fsarchiver savefs /data/myarchive2.fsa /dev/sda1 /dev/sdb1
+ * restore the first filesystem from an archive (first = number 0):
+   fsarchiver restfs /data/myarchive2.fsa id=0,dest=/dev/sda1
+ * restore the second filesystem from an archive (second = number 1):
+   fsarchiver restfs /data/myarchive2.fsa id=1,dest=/dev/sdb1
+ * restore two filesystems from an archive (number 0 and 1):
+   fsarchiver restfs /data/arch2.fsa id=0,dest=/dev/sda1 id=1,dest=/dev/sdb1
+ * restore a filesystem from an archive and convert it to reiserfs:
+   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,mkfs=reiserfs
+ * restore a filesystem from an archive and specify extra mkfs options:
+   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,mkfs=ext4,mkfsopt=&quot;-I 256&quot;
+ * restore a filesystem from an archive and specify a new label and a new UUID:
+   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,label=root,uuid=5f6e5f4f-dc2a-4dbd-a6ea-9ca997cde75e
+ * save the contents of /usr/src/linux to an archive (similar to tar):
+   fsarchiver savedir /data/linux-sources.fsa /usr/src/linux
+ * save a filesystem (/dev/sda1) to an archive split into volumes of 680MB:
+   fsarchiver savefs -s 680 /data/myarchive1.fsa /dev/sda1
+ * save a filesystem and exclude all files/dirs called &#39;pagefile.*&#39;:
+   fsarchiver savefs /data/myarchive.fsa /dev/sda1 --exclude=&#39;pagefile.*&#39;
+ * generic exclude for &#39;share&#39; such as &#39;/usr/share&#39; and &#39;/usr/local/share&#39;:
+   fsarchiver savefs /data/myarchive.fsa --exclude=share
+ * absolute exclude valid for &#39;/usr/share&#39; but not for &#39;/usr/local/share&#39;:
+   fsarchiver savefs /data/myarchive.fsa --exclude=/usr/share
+ * save a filesystem (/dev/sda1) to an encrypted archive:
+   fsarchiver savefs -c mypassword /data/myarchive1.fsa /dev/sda1
+ * same as before but prompt for password in the terminal:
+   fsarchiver savefs -c - /data/myarchive1.fsa /dev/sda1
+ * extract an archive made of simple files to /tmp/extract:
+   fsarchiver restdir /data/linux-sources.fsa /tmp/extract
+ * show information about an archive and its filesystems:
+   fsarchiver archinfo /data/myarchive2.fsa
+   ```
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15483045490036.html">
                 
                   <h1>msf安装与维护</h1>
@@ -181,41 +308,6 @@
                       <div class="a-content-text">
                         
                         	<p>CMD + L 即可显示</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15483045488856.html">
-                
-                  <h1>Mac大小写切换</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>无论中文还是英文状态下,按住 shift 输入即是大写</p>
-
-<p>长按 caps lock 2s 灯亮后输入即是大写</p>
 
                         
                       </div>
@@ -321,6 +413,12 @@
 	      
 		      
 			      <li class="post">
+			        <a href="15523826250881.html">excel 工作表插入当前时间和日期</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15520392147631.html">GTD 管理法</a>
 			      </li>
 		     
@@ -340,12 +438,6 @@
 		      
 			      <li class="post">
 			        <a href="15515375536566.html">rclone挂载 onedrive 教程</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15512579928868.html">excel for Mac 如何点击单元格高亮整行</a>
 			      </li>
 		     
 		  

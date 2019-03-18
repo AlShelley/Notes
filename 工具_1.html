@@ -134,6 +134,56 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15512579928868.html">
+                
+                  <h1>excel for Mac 如何点击单元格高亮整行</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>参考答案：<a href="https://zhidao.baidu.com/question/488433413549944532.html">https://zhidao.baidu.com/question/488433413549944532.html</a> 中的 ZouJiLiangRJ 的答案</p>
+</blockquote>
+
+<p>1、复制以下代码</p>
+
+<pre class="line-numbers"><code class="language-excel">Private Sub Worksheet_SelectionChange(ByVal T As Range)
+Cells.Interior.ColorIndex = 0
+T.EntireRow.Interior.ColorIndex = 8
+T.Interior.ColorIndex = 2
+End Sub
+</code></pre>
+
+<p>2、右键单击工作表标签（如：sheet1），点击查看代码<br/>
+3、在代码框中粘贴上述代码。然后关闭代码框。<br/>
+4、回到 excel 表格然后随意点击一个单元格试试看效果如何。</p>
+
+<p><em>还有一种方法就是使用 wps 的阅读模式。</em></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/2/27 16:59 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15484074464554.html">
                 
                   <h1>Snipaste 无法在 Mac 上截图的解决办法</h1>
@@ -253,69 +303,6 @@ date: 2018-09-06 17:42:40
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15483045491180.html">
-                
-                  <h1>windows右键添加管理员获得所有权</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>右键添加获得管理员所有权是个比较方便的功能。</p>
-</blockquote>
-
-<p>打开记事本或者别的文本编辑器，然后写入如下内容:</p>
-
-<pre class="line-numbers"><code class="language-cmd">Windows Registry Editor Version 5.00
-
-[HKEY_CLASSES_ROOT\*\shell\runas]
-@=&quot;管理员取得所有权&quot;
-&quot;NoWorkingDirectory&quot;=&quot;&quot;
-[HKEY_CLASSES_ROOT\*\shell\runas\command]
-@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
-&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
-[HKEY_CLASSES_ROOT\exefile\shell\runas2]
-@=&quot;管理员取得所有权&quot;
-&quot;NoWorkingDirectory&quot;=&quot;&quot;
-[HKEY_CLASSES_ROOT\exefile\shell\runas2\command]
-@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
-&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
-[HKEY_CLASSES_ROOT\Directory\shell\runas]
-@=&quot;管理员取得所有权&quot;
-&quot;NoWorkingDirectory&quot;=&quot;&quot;
-[HKEY_CLASSES_ROOT\Directory\shell\runas\command]
-@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; /r /d y &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F /t&quot;
-&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; /r /d y &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F /t&quot;
-</code></pre>
-
-<p>然后另存为：管理员获得所有权.reg<br/>
-文件名可以随便写，但是后缀记得写成reg（改成这个后缀后文件图标就会变成一个破碎蓝色魔方）。<br/>
-然后右键以管理员身份运行，若弹框注册表xxx的，同意就行了。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -397,6 +384,12 @@ date: 2018-09-06 17:42:40
 	      
 		      
 			      <li class="post">
+			        <a href="15523826250881.html">excel 工作表插入当前时间和日期</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15520392147631.html">GTD 管理法</a>
 			      </li>
 		     
@@ -416,12 +409,6 @@ date: 2018-09-06 17:42:40
 		      
 			      <li class="post">
 			        <a href="15515375536566.html">rclone挂载 onedrive 教程</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15512579928868.html">excel for Mac 如何点击单元格高亮整行</a>
 			      </li>
 		     
 		  

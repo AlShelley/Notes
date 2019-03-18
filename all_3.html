@@ -134,6 +134,45 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15489296290618.html">
+                
+                  <h1>Mediakit报告设备商的空间不足以执行此操作</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>网上大部分都写的去 windows 中使用DiskGenius重新分区，这搞麻烦了，不用这么麻烦的。</p>
+
+<p>1、打开终端，输入<code>diskutil list</code>列出磁盘内容，这里我们可以找到要格式化的磁盘，我是 disk2<br/>
+2、卸载要格式化的磁盘<code>diskutil unmountDisk force disk2</code><br/>
+3、写入启动扇区<code>sudo dd if=/dev/zero of=/dev/disk2 bs=1024 count=1024</code><br/>
+4、对磁盘进行分区<code>diskutil partitionDisk disk2 GPT JHFS+ &quot;AWESOME DISK&quot; 0g</code><br/>
+5、打完收工，写博客发出来。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/31 18:13 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15488284836388.html">
                 
                   <h1>90后空巢青年生活指南</h1>
@@ -261,49 +300,6 @@
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15484074464554.html">
-                
-                  <h1>Snipaste 无法在 Mac 上截图的解决办法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>MacOSX 版本：Mojave 10.14.2<br/>
-Snipaste 版本：1.16.2</p>
-
-<p>以下列出遇到部分问题：<br/>
-1、使用截图功能，手动画矩形框，但是选定框画完后松开触摸板，选定框自动消失，导致无法截图。（手动选定截图区域占截图使用时间99%）<br/>
-2、使用截图功能，程序自动识别截图区域，双击可以得到截图并且有箭头等选项，画一个箭头后，选定框自动消失，截图会带着箭头自动保存到图片目录。（这导致没法多画几个箭头，也没法另存为图片）</p>
-
-<h1 id="toc_0">解决办法</h1>
-
-<p>我后来在 <a href="https://github.com/Snipaste/feedback/issues/1012">https://github.com/Snipaste/feedback/issues/1012</a> 这里找到了答案。<br/>
-关闭欧路词典的划词翻译功能，即可正常使用截图。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/25 17:10 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -385,6 +381,12 @@ Snipaste 版本：1.16.2</p>
 	      
 		      
 			      <li class="post">
+			        <a href="15523826250881.html">excel 工作表插入当前时间和日期</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15520392147631.html">GTD 管理法</a>
 			      </li>
 		     
@@ -404,12 +406,6 @@ Snipaste 版本：1.16.2</p>
 		      
 			      <li class="post">
 			        <a href="15515375536566.html">rclone挂载 onedrive 教程</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15512579928868.html">excel for Mac 如何点击单元格高亮整行</a>
 			      </li>
 		     
 		  

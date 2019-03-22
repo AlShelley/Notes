@@ -136,143 +136,19 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15447676167973.html">
+                <a class="clearlink" href="15433912730163.html">
                 
-                  <h1>我是如何从Google窃取你的照片的-我的3个Google漏洞赏金报告分享</h1>
+                  <h1>FOEENSICS 101</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>文章转载自：<a href="https://nosec.org/home/detail/2063.html">https://nosec.org/home/detail/2063.html</a></p>
-</blockquote>
-
-<p>安全是一个非常宏大的主题，在找到第一个漏洞之前，您不能确定您拥有安全人员所需的知识、运气和耐心。作为一个新手，加入漏洞赏金猎人俱乐部是件很困难的事，在这里，让我和你分享我的故事。</p>
-
-<h2 id="toc_0">邀请欺诈</h2>
-
-<p>我的第一个漏洞是意外发现的，就在我试图和老师共享一个Google电子表格程序时。当时，我发送共享邀请到他的非Gmail电子邮件地址，然后用e-mail将链接发给他。当然，他无法访问它……幸运的是，Google非常强大，在这种情况下（当您试图打开一个不与您共享的文档时），曝出的错误消息下面有一个Request access 按钮，其功能是向共享文件所有者发送电子邮件，其中包含的链接如下：</p>
-
-<p><code>https://docs.google.com/spreadsheets/d/cmFuZG9t_c3ByZWFkc2hlZXQ_aWQ/edit?usp=sharing_erp&amp;userstoinvite=billgates@microsoft.com</code></p>
-
-<p>如果共享文件所有者打开上面的链接，则会加载文档，并弹出一个“与其他人共享”模式，该模式自填充了一个来自URL的电子邮件地址：</p>
-
-<p><figure><img src="media/15447676167973/15447677231852.png" alt=""/></figure></p>
-
-<p>我的第一个想法是“嗯……用户的输入反映在DOM中——我应该尝试XSS吗？但我的第二个念头立刻涌现：“我决不是第一个发现这点的人。”这是谷歌，世界上有很多比我更聪明的人一直在尝试攻击它。我不会把时间浪费在XSS上…”</p>
-
-<p>你可以称我为悲观主义者，但是我最近读过一些关于Google XSS漏洞的文章，我知道找到XSS的难度有多大。但是，这个url的其他一些东西引起了我的注意……参数的名称是userStoinvite，而不是usertoinvite，这意味着这个url可以用来同时邀请更多的用户，对吧？</p>
-
-<p>我开始测试这个参数，并且很快发现，如果我用逗号分隔多个电子邮件地址并添加到url中，那它们将都出现在表单中。就像你想给多个收件人发邮件一样……现在，让我看看如果我指定一个名字而不是电子邮件地址时会发生什么：</p>
-
-<p><code>https://docs.google.com/spreadsheets/d/cmFuZG9t_c3ByZWFkc2hlZXQ_aWQ/edit?usp=sharing_erp&amp;userstoinvite=Bill Gates&lt;billgates@microsoft.com&gt;</code></p>
-
-<p>它正如我所预期的那样——表单中显示的是名字而不是地址，只有当您将鼠标移到名称时才会显示真正的电子邮件地址。</p>
-
-<p><figure><img src="media/15447676167973/15447678384880.png" alt=""/></figure></p>
-
-<h2 id="toc_1">这会带来什么问题？</h2>
-
-<p>如果使用伪造的电子邮件地址代替你的姓名，则可以设计一个分享邀请欺诈，欺骗没有防范经验的用户允许你访问他的文件。攻击场景：</p>
-
-<p>您不再为公司工作，对重要电子表格的访问权限被撤销，但是您仍然知道访问的URL（例如，在浏览器历史中）</p>
-
-<p>用老板的电子邮件地址给秘书/会计发送一个虚假的共享邀请链接</p>
-
-<p>等待直到他们打开链接并允许您访问文件</p>
-
-<p>时间线：<br/>
-2017.10.03-漏洞报告<br/>
-2017.10.03-漏洞由安全工程师验证（P4-&gt;P3）<br/>
-2017.10.10-500美元奖金<br/>
-2018.01.16-漏洞修复</p>
-
-<h2 id="toc_2">从你的谷歌驱动中获取照片</h2>
-
-<p>在我发现第一个漏洞后，我的感觉好坏参半。一方面，我感到非常自豪和高兴，因为我在谷歌发现了一个安全问题，我也真的很感激这笔奖金。另一方面，我对自己并不满意，因为任何人只要运气好发过这样一封邮件，就会发现这个漏洞——我觉得我可以做得更好。但是从哪里开始呢？我敢肯定使用自动化工具会浪费时间，因为我认为其他人已经做过很多次，我想尝试一些不同的东西。我想我对web的基本概念（如SOP和CORS）有很好的理解，因为我真的爱上了Chrome Dev工具，所以我决定开始在JS文件中寻找不安全的API接口或敏感数据。我的代码如下：</p>
-
-<pre class="line-numbers"><code class="language-text">for webapp in literally_every_online_google_product_I_have_found:
-    devtools.open()
-    devtools.select_tab(&#39;network&#39;)
-    for button in webapp:
-        button.click()
-    for request, response in devtools.requests:
-        request.analyze_manually()
-        response.analyze_manually()
-</code></pre>
-
-<p>整个过程又长又无聊。我花了下午和晚上阅读发起的网络请求和回复，但没有成功。我甚至不记得我尝试过多少不同的测试：</p>
-
-<p>“也许这个CSS存在一些漏洞……那些字体如何？”<br/>
-“好的，如果我用另一个帐户的cookie回放这个请求会咋样？”“<br/>
-“嗯，我可以在这里上传SVG。是时候测试一些XSS了”。</p>
-
-<p>最后我关注了Drive和Google Docs系列应用，因为它们是相互连接的（Docs可以访问您的文件），很流行（因此出现安全缺陷就意味着严重安全威胁），并且它们有很多特性和设置。我首先注意到的是，Slides确实类似于文档和表格，但是它在不同的情况下了使用了不同的（遗留？）API接口。例如，当从我的驱动器插入一张图像时会触发这两个请求：</p>
-
-<pre class="line-numbers"><code class="language-text">curl &#39;https://docs.google.com/presentation/d/pReS3nTaT10N_1D/copyimages?id=bG9s_Y2hlY2tvdXR0aGlz_dDY4UkV1MEh3Qnc&#39; --data &#39;photo=bG9s_Y2hlY2tvdXR0aGlz_dDY4UkV1MEh3Qnc&#39;
-
-{&quot;bG9s_Y2hlY2tvdXR0aGlz_dDY4UkV1MEh3Qnc&quot;:&quot;MDRjYWVhO-QtYjc0Ny00NDdkLWJlODctZ-VmNzVkOTI1YTkw&quot;}
-
----
-
-curl &#39;https://docs.google.com/presentation/d/pReS3nTaT10N_1D/renderdata?id=bG9s_Y2hlY2tvdXR0aGlz_dDY4UkV1MEh3Qnc&#39; --data &#39;cosmoId=MDRjYWVhO-QtYjc0Ny00NDdkLWJlODctZ-VmNzVkOTI1YTkw&#39;
-
-{&quot;r0&quot;:&quot;https://lh6.googleusercontent.com/dmVyeXZlcnl2ZXJ5dmVyeXZlcnl2ZXJ5dmVyeXZlcnl2ZXJ5dmVyeXZlcnl2ZXJ5dmVyeXZlcnl2ZXJ5dmVyeXZlcnl2ZXJ5dmVyeXZlcnl2ZXJ5bG9uZ3N0cmluZw&quot;}
-</code></pre>
-
-<p>你应该也注意到，第一个响应包含有&quot;ID_OF_THE_IMAGE&quot;:&quot;SOME_RANDOM_ID&quot;, 而“SOME_RANDOM_ID”出现在第二个倾请求的cosmoId参数的值中。而且，第二个响应也包含图片链接。</p>
-
-<p>我真的不明白使用两个API接口处理图像的原因，感觉有点过于复杂——这就是为什么我认为Slides有一些值得关注的遗留问题。接下来，我用不同的cookie回放了上面的这些请求。</p>
-
-<p>幸运的是，这些接口缺乏权限控制，所以只要添加一个有效的谷歌会话cookie，我可以从任何驱动器得到任何图片的URL（如果我有文件的ID）！</p>
-
-<p>这听起来很酷，但事实是这些图像ID是很长的，并且包含大小写字符。这就是为什么我想不出什么可怕的攻击场景，这也是这个漏洞奖励相对较低的原因。</p>
-
-<p>时间线：<br/>
-2017.11.27-漏洞报告<br/>
-2017.12.09-漏洞由安全工程师验证（P3-&gt;P1）<br/>
-2018.01.09-500美元奖金<br/>
-2018.01.16-漏洞修复</p>
-
-<p>在模拟环境中，您可以看到这个漏洞是如何工作的（<a href="https://platform.avatao.com/challenges/630fa4fc-3138-4805-bd78-ea85e492c2e2%EF%BC%89%E3%80%82">https://platform.avatao.com/challenges/630fa4fc-3138-4805-bd78-ea85e492c2e2）。</a></p>
-
-<h2 id="toc_3">请登录后给我你的照片</h2>
-
-<p>在这两次漏洞之后，我休息了一段时间，因为我觉得我已经用尽了所有的运气，需要一些时间来恢复。在五月，我决定再尝试试一次，在3个小时内，我发现了一个可怕的漏洞。我认为这个漏洞太强了以至于不可能是真的，所以我在报告它之前检查了三四次。</p>
-
-<p>在我第一次安全测试时，不知何故我跳过了Google Photos，所以这次我用我的老方法开始集中精力寻找它的漏洞。</p>
-
-<p>“网络”选项卡上没有什么值得注意的地方，但“共享库（自动与伙伴共享照片）特性”看起来很有希望。如果你想建立合伙人账户，你必须先输入合伙人的电子邮件地址。提交之后，会出现一个带有Google帐户登录页面的弹出窗口。最后，您需要输入您的登入凭证，然后您的照片将被共享，并且您将被重定向到仅包含“成功消息”以及一个“关闭窗口”按钮的页面。弹出窗口的过小使我无法看到整个URL，所以我把它复制到记事本以便进一步研究：</p>
-
-<pre class="line-numbers"><code class="language-text">// URL before login
-https://accounts.google.com/signin/v2/sl/pwd?passive=801337085&amp;osid=1&amp;continue=https%3A%2F%2Fphotos.google.com%2Finitps%3Frequest%3DW1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGwsImUtbWFpbEBleGFtcGxlLmNvbSIsbnVsbCxbMixudWxsLCJXVzkxSUhKbFlXeHNlU0JzYVd0bElfR1JsWTI5a2FXNW5JSEpoYm1SdmJTQmlZWE5sTmpRZ2MzX1J5YVc1bmN5QXRJR1J2YmlkMElIbHZkVDgiXV0.
-
-// URL after login
-https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGwsImUtbWFpbEBleGFtcGxlLmNvbSIsbnVsbCxbMixudWxsLCJXVzkxSUhKbFlXeHNlU0JzYVd0bElfR1JsWTI5a2FXNW5JSEpoYm1SdmJTQmlZWE5sTmpRZ2MzX1J5YVc1bmN5QXRJR1J2YmlkMElIbHZkVDgiXV0.
-</code></pre>
-
-<p>显然，在continue参数被编码包含在第二个URL中，乍一看，request的值只是一组随机字符，末尾跟有一个点。这个点好像没有任何意义——为什么它只出现在最后，像填充物一样？如果它是一个等号，那么‘request’的值很可能就是一个经过ba se64编码的字符串……所以我修改了它，并将修改后的字符串粘贴到一个ba se64解码器中，看看这段字符串的明文是啥：</p>
-
-<pre class="line-numbers"><code class="language-text">[[null,&quot;12587427591239&quot;],null,&quot;e-mail@example.com&quot;,null,[2,null,&quot;WW91IHJlYWxseSBsaWtlI_GRlY29kaW5nIHJhbmRvbSBiYXNlNjQgc3_RyaW5ncyAtIGRvbid0IHlvdT8&quot;]]
-</code></pre>
-
-<p>我把其中的电子邮件改成了我自己的（不修改其他值），然后重新编码，并用点替换了最后的等号。并在我登录我的第二个帐户之后打开这个精心编制的URL，照片立刻被和第一个帐户共享。最棒的是，我甚至没有收到任何警告/通知/电子邮件。我迫不及待的想进一步分析漏洞。并且测试如果你直接访问第二个URL会发生什么——您甚至不需要登录就可以与攻击者共享您的图片，因为只要向发送第二个URL的GET请求就足够了。</p>
-
-<p>时间线：<br/>
-2018.05.12-漏洞报告<br/>
-2018.05.14-漏洞由安全工程师验证（P4-&gt;P2，P2-&gt;P1）<br/>
-2018.05.22-3133.70美元奖金<br/>
-2018.08.22-漏洞修复</p>
-
-<p>尝试使用我们的模拟环境，可以更好地理解这种漏洞。（<a href="https://platform.avatao.com/challenges/e069a6c1-8265-4115-9126-f8e188c62765%EF%BC%89">https://platform.avatao.com/challenges/e069a6c1-8265-4115-9126-f8e188c62765）</a></p>
-
-<p>最难的部分是不知道我们的目标是啥，这在大多数其他的漏洞悬赏项目中也一样。我从这些情况中得到的启发是，不要把自己局限于特定的漏洞，比如XSS或SQLi。要睁大眼睛，富有创造力。</p>
-
-<h2 id="toc_4">关于作者</h2>
-
-<p>Gergő是Avatao团队的第一批成员之一，现在他是我们最好的软件工程师之一。在大学，他对网络安全开始感兴趣并延续至今。他在Avatao平台上开发漏洞环境，同时还负责指导其他开发者。当然，空闲时他也会寻找漏洞。</p>
-
-<p>原文：<a href="https://blog.avatao.com/How-I-could-steal-your-photos-from-Google/">https://blog.avatao.com/How-I-could-steal-your-photos-from-Google/</a></p>
+                        	<p>题目：<a href="https://ctflearn.com/problems/96">https://ctflearn.com/problems/96</a><br/>
+<figure><img src="http://images.lonelyor.org/ctflearn-96-1.png" alt="ctflearn-96-1"/><figcaption>ctflearn-96-</figcaption></figure><br/>
+访问域名，然后会下载一张图片。<br/>
+接下来我们使用十六进制编码器打开这张图片，会发现：<br/>
+<figure><img src="http://images.lonelyor.org/ctflearn-96-2.png" alt="ctflearn-96-2"/><figcaption>ctflearn-96-</figcaption></figure><br/>
+标红部分即是flag。</p>
 
                         
                       </div>
@@ -281,7 +157,7 @@ https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGw
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/14 14:6 下午</span>
+                    <span class="date">2018/11/28 15:47 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
@@ -298,17 +174,107 @@ https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGw
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15446978130922.html">
+                <a class="clearlink" href="15428712896668.html">
                 
-                  <h1>enigmagroup入门挑战-基础1</h1>
+                  <h1>CRLF注入</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="http://challenges.enigmagroup.org/basics/pre/1/">基础1题目地址</a><br/>
-1、右键查看源码<br/>
-2、ctrl+f查找passw<br/>
-3、注释里面说了：<code>&lt;!-- the first levels are easy, the password is 39f13b --&gt;</code></p>
+                        	<blockquote>
+<p>文章翻译自OWASP的<a href="https://www.owasp.org/index.php/CRLF_Injection">CRLF_Injection</a></p>
+</blockquote>
+
+<p>CRLF即回车Carriage Return (ASCII 13, \r) 和 换行 Line Feed (ASCII 10, \n)。他们被用于注释掉一行的终止。不过不同系统的处理方式有点不同。windows中，CR和LF都被用于注释掉一行的结尾，而linux/unix中只需要一个LF。在HTTP协议中，CRLF序列始终用于一行的终止。<br/>
+当用户设法将CRLF提交到应用程序时，可能发生CRLF注入攻击，这通常是通过修改HTTP参数或URL来完成。</p>
+
+<p>CRLF注入可能产生这样的问题：</p>
+
+<ul>
+<li>HTTP响应拆分</li>
+<li>日志注入<br/>
+## HTTP响应拆分<br/>
+通常，当出现以下情况时会发生HTTP响应拆分</li>
+<li>数据通过不受信任的来源进入Web应用程序，如HTTP请求。</li>
+<li>数据包含在发送给Web用户的HTTP响应标头中，而不会对恶意字符进行验证。<br/>
+HTTP响应拆分是达到目的的手段而不是目的本身。<br/>
+攻击方式如下：攻击者将恶意数据传递给易受攻击的应用程序，应用程序将数据包含在HTTP响应中。<br/>
+要成功利用漏洞，应用程序必须允许<strong>包含有 CR（回车，即 %0d 或者 \r\n）和 LF（换行符，%0a 或者 \n）的输入在header中</strong>和<strong>底层平台必须容易注入这样的字符</strong>。</li>
+</ul>
+
+<p><em>大多数现代应用程序服务器(无论用什么语言编写的代码)，都已经不存在HTTP响应拆分漏洞。</em></p>
+
+<p>下面上一段java代码来举例说明：</p>
+
+<pre class="line-numbers"><code class="language-java">String author = request.getParameter(AUTHOR_PARAM);
+...
+Cookie cookie = new Cookie(&quot;author&quot;, author);
+      cookie.setMaxAge(cookieExpiration);
+      response.addCookie(cookie);
+</code></pre>
+
+<p>上述代码的意思是：从客户端HTTP请求中接受参数（author），并将其设置在HTTP响应的cookie头中。<br/>
+如果我们正常提交数据(author=lonelyor)，HTTP响应应该是这样：</p>
+
+<pre class="line-numbers"><code class="language-java">HTTP/1.1 200 OK
+...
+Set-Cookie: author=Jane Smith
+...
+</code></pre>
+
+<p>但是，由于源代码中的cookie是由未经验证的用户输入组成的，因此如果我们提交恶意代码<code>Hacker By xxx\r\nContent-Length:45\r\n\r\n...</code>则HTTP响应将被拆分为原始响应和伪造响应。</p>
+
+<pre class="line-numbers"><code class="language-java">HTTP/1.1 200 OK
+    ...
+    Set-Cookie: author=Hacker By xxx
+    Content-Length: 999
+    
+    &lt;html&gt;恶意内容...&lt;/html&gt; (这个例子中为第999个字符)
+    原始内容以1000开头, 现在被浏览器忽略了...
+</code></pre>
+
+<h3 id="toc_0">危害</h3>
+
+<p>攻击者构建任意HTTP响应的能力可能导致以下攻击：<br/>
+跨用户污染（Cross-User_Defacement）——利用条件很苛刻<br/>
+缓存中毒（Cache_Poisoning）——利用条件很苛刻<br/>
+XSS跨站脚本攻击<br/>
+页面劫持</p>
+
+<h2 id="toc_1">日志注入</h2>
+
+<p>将未经验证的用户输入写入日志文件可能导致攻击者伪造日志或者将恶意内容注入日志。<br/>
+以下情况可能导致日志伪造漏洞：</p>
+
+<ul>
+<li>数据从不受信任的来源进入应用程序</li>
+<li>数据将写入应用程序或者系统日志文件</li>
+</ul>
+
+<p>下面上一段java代码来举例说明：</p>
+
+<pre class="line-numbers"><code class="language-java">...
+String val = request.getParameter(&quot;val&quot;);
+try {
+  int value = Integer.parseInt(val);
+}
+catch (NumberFormatException) {
+  log.info(&quot;Failed to parse val = &quot; + val);
+}
+...
+</code></pre>
+
+<p>上述代码的功能是，从请求对象中读取整数值，如果该值无法解析为整数，则会记录输入，并显示一条错误信息。<br/>
+如果用户提交字符串“one”，则会记录以下条目<br/>
+<code>INFO: Failed to parse val=one</code><br/>
+然而，如果攻击者提交字符串<code>one%0a%0aINFO:+User+logged+out%3dbadguy</code>则会在日志中显示：</p>
+
+<pre class="line-numbers"><code class="language-text">    INFO: Failed to parse val=one
+
+    INFO: User logged out=badguy
+</code></pre>
+
+<p>显然攻击者可以使用相同机制插入任意日志条目。</p>
 
                         
                       </div>
@@ -317,7 +283,7 @@ https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGw
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/13 18:43 下午</span>
+                    <span class="date">2018/11/22 15:21 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
@@ -334,132 +300,19 @@ https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGw
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15446897185202.html">
+                <a class="clearlink" href="15433875205785.html">
                 
-                  <h1>从零开始的DVWA之环境搭建</h1>
+                  <h1>BASIC INJECTION 基本注入</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>文章写于2017年7月6日，很久之前的东西了。</p>
-</blockquote>
-
-<h2 id="toc_0">0X01 主机配置</h2>
-
-<p>　　操作系统：Ubuntu-Kylin-16.04-LTS_x64（VritualBox虚拟机）<br/><br/>
-　　相关组件：XAMPP+DVWA    </p>
-
-<h2 id="toc_1">0X02 DVWA简介</h2>
-
-<p>　　DVWA是一个用来进行安全脆弱性鉴定（练习挖洞）的PHP/MySQL应用。旨在帮助安全爱好者（黑客白客红客白帽子黑帽子绿帽子等）测试自己的专业技能和工具提供合法的环境（不要瞎搞别人网站，这样不好...），提升技术能力的同时更好的维护比特世界的和平。       </p>
-
-<h2 id="toc_2">0X03 XAMPP简介</h2>
-
-<p>　　XAMPP（Apache+MySQL+PHP+PERL）是一个功能强大的建站集成软件包。这个软件包原来的名字是 LAMPP，但是为了避免误解，最新的几个版本就改名为 XAMPP 了。由于DWVA需要PHP环境，嗯，就由XAMMP来守护了。    </p>
-
-<h2 id="toc_3">0X04 XAMPP和DVWA安装</h2>
-
-<p>　　首先访问官网 <a href="https://www.apachefriends.org/zh_cn/download.html">https://www.apachefriends.org/zh_cn/download.html</a> 然后点击下载：<br/><br/>
-<figure><img src="media/15446897185202/1.png" alt="1"/></figure></p>
-
-<p>接着就会弹个框：<br/><br/>
-<figure><img src="media/15446897185202/2.png" alt="2"/></figure></p>
-
-<p>去一趟茅房回来就下完了，你要是嫌弃7下的太慢，可以去下5.6，速度会快些，接着就是安装。　　　　<br/>
-　　安装过程如下（记得加权限，然后）：　　　　<br/>
-<figure><img src="media/15446897185202/3.png" alt="3"/></figure><br/>
-　　　　<br/>
-<figure><img src="media/15446897185202/4.png" alt="4"/></figure><br/>
-　<br/>
-一直点击next就行了……　　　　<br/>
-<figure><img src="media/15446897185202/5.png" alt="5"/></figure><br/>
-　　　<br/>
-　　这里告诉我们XAMPP被安装在/opt/lampp文件（linux一切皆文件）里面。最后点击Finish就完成了安装。<br/><br/>
-启动XAMPP    </p>
-
-<pre class="line-numbers"><code class="language-shell">#cd /opt/lampp
-#./manager-linxu-x64.run
-或者
-#/opt/lamp/./manage-linux-x64.run  
-</code></pre>
-
-<p><figure><img src="media/15446897185202/6.png" alt="6"/></figure></p>
-
-<p>下面我们开始安装DWVA：<br/><br/>
-　　首先我们登录官网 <a href="http://www.dvwa.co.uk/">http://www.dvwa.co.uk/</a> 点击DOWNLOAD下载最新版的DWVA，是一个zip文件。<br/><br/>
-<figure><img src="media/15446897185202/7.png" alt="7"/></figure></p>
-
-<p>然后将文件解压（提取）到/opt/lamp/htdocs/目录下<br/><br/>
-<figure><img src="media/15446897185202/8.png" alt="8"/></figure></p>
-
-<p><figure><img src="media/15446897185202/9.png" alt="9"/></figure></p>
-
-<p>接着我们打开XAMPP的MySQL（默认只开了Apache）<br/><br/>
-<figure><img src="media/15446897185202/10.png" alt="10"/></figure></p>
-
-<p>然后访问 http://localhost/DVWA-master/index.php 诶!?报错<br/><br/>
-<figure><img src="media/15446897185202/11.png" alt="11"/></figure></p>
-
-<p>　　嗯，根据报错信息可知是配置文件有问题（废话啰），同样的根据提示我们知道要将文件名config.inc.php.dist改为config.inc.php（这里其实涉及到一个linux命令copy的用法，具体可自行百度： <a href="http://www.linuxdiyf.com/viewarticle.php?id=38590">http://www.linuxdiyf.com/viewarticle.php?id=38590</a> ）。改完名字之后就可以访问了，页面会自动跳转到： http://localhost/DVWA-master/setup.php 。然后我们用gedit打开这个文件config.inc.php看看是个什么东西，(⊙o⊙)哦原来是配置文件（废话连篇有木有），我们修改两个地方（1、数据库密码，我知道玩lol的你输入这个密码肯定飞快，不过我是玩dota的。2、安全等级设置为low，简单点容易玩，默认是难的。）     　<br/><br/>
-<figure><img src="media/15446897185202/12.png" alt="12"/></figure></p>
-
-<p>打开之后长这样：<br/><br/>
-<figure><img src="media/15446897185202/13.png" alt="13"/></figure></p>
-
-<p>怎么玩呢？我不知道啊，于是我瞎点了几下，<br/><br/>
-<figure><img src="media/15446897185202/14.png" alt="14"/></figure></p>
-
-<p>MMP又报错了，根据提示我们知道问题出在red部分,嗯，我们去修改一下所有带红色的地方的配置。<br/><br/>
-1、搞定PHP function allow_url_include：Disabled<br/><br/>
-找到php的配置文件，修改allow_url_include=Off 为allow_url_include=on（参考<a href="http://php.net/manual/zh/filesystem.configuration.php#ini.allow-url-include%EF%BC%89">http://php.net/manual/zh/filesystem.configuration.php#ini.allow-url-include）</a><br/><br/>
-<figure><img src="media/15446897185202/15.png" alt="15"/></figure></p>
-
-<p>然后修改/opt/lamp/etc/php.ini<br/><br/>
-<figure><img src="media/15446897185202/16.png" alt="16"/></figure></p>
-
-<p>2、解决reCAPTCHA key，配置文件里面有个谷歌连接，点进去剩下的估计你也看得懂应该知道该怎么做额。<br/><br/>
-<figure><img src="media/15446897185202/17.png" alt="17"/></figure></p>
-
-<p><figure><img src="media/15446897185202/18.png" alt="18"/></figure></p>
-
-<p>3、解决最后的两个NO<br/><br/>
-<figure><img src="media/15446897185202/19.png" alt="19"/></figure></p>
-
-<p>我们给这两个文件加权，运行命令：<br/><br/>
-<figure><img src="media/15446897185202/20.png" alt="20"/></figure></p>
-
-<p>然后点击<br/><br/>
-<figure><img src="media/15446897185202/21.png" alt="21"/></figure></p>
-
-<p>纳尼!?<br/><br/>
-<figure><img src="media/15446897185202/22.png" alt="22"/></figure></p>
-
-<p>只好回头再看看XAMPP的数据库配置文件，你会发现他的password默认是被注释了，我们取消注释。<br/><br/>
-<figure><img src="media/15446897185202/23.png" alt="23"/></figure></p>
-
-<p>最后你会发现不管怎么搞还是报错……这就尴尬了……<br/>
-经过尝试，我发现以下配置可以进入登录界面。<br/>
-XAMPP配置如下：<br/><br/>
-<figure><img src="media/15446897185202/24.png" alt="24"/></figure></p>
-
-<p>密码还是按照默认的注释掉<br/><br/>
-<figure><img src="media/15446897185202/25.png" alt="25"/></figure></p>
-
-<p>DVWA配置如下：<br/><br/>
-<figure><img src="media/15446897185202/26.png" alt="26"/></figure></p>
-
-<p>接着你就能进入登录界面了。恭喜！<br/>
-http://localhost/DVWA-master/login.php<br/><br/>
-<figure><img src="media/15446897185202/27.png" alt="27"/></figure></p>
-
-<p>输入账号密码然后登录就能愉快的玩耍了。<br/><br/>
-<figure><img src="media/15446897185202/28.png" alt="28"/></figure></p>
-
-<p>什么？你进不去？账号密码是什么？预知后事如何，请听下回分解。    </p>
-
-<p>下集预告：<br/><br/>
-　　欢迎来到DVWA的世界，这是你的第一关，登录破解…… </p>
+                        	<p>题目：<a href="https://ctflearn.com/problems/88">https://ctflearn.com/problems/88</a><br/>
+解：<br/>
+访问题目中提到的：<a href="https://web.ctflearn.com/web4/">域名</a><br/>
+<figure><img src="http://images.lonelyor.org/ctflearn-basic-injection-1.png" alt="ctflearn-basic-injection-1"/><figcaption>ctflearn-basic-injection-</figcaption></figure><br/>
+然后输入payload，得到以下数据，方框中的即为flag。<br/>
+<figure><img src="http://images.lonelyor.org/ctflearn-basic-injection-2.png" alt="ctflearn-basic-injection-2"/><figcaption>ctflearn-basic-injection-</figcaption></figure></p>
 
                         
                       </div>
@@ -468,7 +321,7 @@ http://localhost/DVWA-master/login.php<br/><br/>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/13 16:28 下午</span>
+                    <span class="date">2018/11/28 14:45 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
@@ -495,7 +348,7 @@ http://localhost/DVWA-master/login.php<br/><br/>
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			 <a href="渗透测试_10.html">&raquo; Next Page</a> 
+			
 			</p>
 			  </div>
 			</div>
@@ -567,31 +420,31 @@ http://localhost/DVWA-master/login.php<br/><br/>
 	      
 		      
 			      <li class="post">
-			        <a href="15532149133328.html">古语</a>
+			        <a href="15480046120109.html">降低cpu使用率</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15523826250881.html">excel 工作表插入当前时间和日期</a>
+			        <a href="15473464131197.html">读 Monyer 文章有感</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15520392147631.html">GTD 管理法</a>
+			        <a href="15446969783198.html">解决windows右键新建消失问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15520390232741.html">用四象限管理任务</a>
+			        <a href="15446973583267.html">解决npm更新或安装软件时下载较慢等问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15520320136368.html">bundle install 无法使用的解决办法</a>
+			        <a href="15456175398128.html">自建kms服务器激活windows</a>
 			      </li>
 		     
 		  

@@ -136,15 +136,46 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045488797.html">
+                <a class="clearlink" href="15453704835251.html">
                 
-                  <h1>校验文件md5</h1>
+                  <h1>fluxgui安装与卸载</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>打开终端<br/>
-使用命令 md5 或 shawun 即可查看。</p>
+                        	<blockquote>
+<p>很久以前的笔记了</p>
+</blockquote>
+
+<pre class="line-numbers"><code class="language-text">Ubuntu/Debian Manual Install
+# Install dependencies
+sudo apt-get install git python-appindicator python-xdg python-pexpect python-gconf python-gtk2 python-glade2 libxxf86vm1
+
+# Download fluxgui
+cd /tmp
+git clone &quot;https://github.com/xflux-gui/fluxgui.git&quot;
+cd fluxgui
+python download-xflux.py
+
+# EITHER install globally
+sudo python setup.py install
+# EXCLUSIVE OR, install in your home directory. The binary installs
+# into ~/.local/bin, so be sure to add that to your PATH if installing locally.
+python setup.py install --user
+
+# Run flux
+fluxgui
+Ubuntu/Debian Manual Uninstall
+If you manually installed instead of using the PPA, you can uninstall by making setup.py tell you where it installed files and then removing the installed files.
+
+# EITHER uninstall globally
+sudo python setup.py install --record installed.txt
+sudo xargs rm -vr &lt; installed.txt
+
+# EXCLUSIVE OR uinstall in your home directory
+python setup.py install --user --record installed.txt
+xargs rm -vr &lt; installed.txt
+</code></pre>
 
                         
                       </div>
@@ -153,7 +184,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span class="date">2018/12/21 13:34 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
@@ -170,15 +201,21 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045488778.html">
+                <a class="clearlink" href="15523826250881.html">
                 
-                  <h1>无法安装docker</h1>
+                  <h1>excel 工作表插入当前时间和日期</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>请检查是否开启防火墙，防火墙是否屏蔽了docker的传入链接。<br/>
-通常连不上docker是因为防火墙的原因</p>
+                        	<blockquote>
+<p>参考链接：<a href="https://jingyan.baidu.com/article/75ab0bcbb03035d6864db203.html">https://jingyan.baidu.com/article/75ab0bcbb03035d6864db203.html</a></p>
+</blockquote>
+
+<p>1、选定单元格然后同时按<code>CTRL+;</code>可以快速设置日期。<br/>
+2、在单元格中输入函数<code>=TODAY()</code>然后回车也可以快速设置日期。<br/>
+3、选定单元格然后同时按下<code>Ctrl+Shift+；</code>可以快速设置当前时刻的时间。<br/>
+4、在单元格中输入函数<code>=NOW()</code>然后回车可以显示当前时刻的时间。</p>
 
                         
                       </div>
@@ -187,7 +224,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span class="date">2019/3/12 17:23 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
@@ -204,14 +241,31 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045488759.html">
+                <a class="clearlink" href="15512579928868.html">
                 
-                  <h1>批量删除当前目录及其子目录下指定后缀名文件</h1>
+                  <h1>excel for Mac 如何点击单元格高亮整行</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>find . -name &quot;*.tmp&quot; -type f -print -exec rm -rf {} \;</p>
+                        	<blockquote>
+<p>参考答案：<a href="https://zhidao.baidu.com/question/488433413549944532.html">https://zhidao.baidu.com/question/488433413549944532.html</a> 中的 ZouJiLiangRJ 的答案</p>
+</blockquote>
+
+<p>1、复制以下代码</p>
+
+<pre class="line-numbers"><code class="language-excel">Private Sub Worksheet_SelectionChange(ByVal T As Range)
+Cells.Interior.ColorIndex = 0
+T.EntireRow.Interior.ColorIndex = 8
+T.Interior.ColorIndex = 2
+End Sub
+</code></pre>
+
+<p>2、右键单击工作表标签（如：sheet1），点击查看代码<br/>
+3、在代码框中粘贴上述代码。然后关闭代码框。<br/>
+4、回到 excel 表格然后随意点击一个单元格试试看效果如何。</p>
+
+<p><em>还有一种方法就是使用 wps 的阅读模式。</em></p>
 
                         
                       </div>
@@ -220,7 +274,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span class="date">2019/2/27 16:59 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
@@ -319,31 +373,31 @@
 	      
 		      
 			      <li class="post">
-			        <a href="15532149133328.html">古语</a>
+			        <a href="15480046120109.html">降低cpu使用率</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15523826250881.html">excel 工作表插入当前时间和日期</a>
+			        <a href="15473464131197.html">读 Monyer 文章有感</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15520392147631.html">GTD 管理法</a>
+			        <a href="15446969783198.html">解决windows右键新建消失问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15520390232741.html">用四象限管理任务</a>
+			        <a href="15446973583267.html">解决npm更新或安装软件时下载较慢等问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15520320136368.html">bundle install 无法使用的解决办法</a>
+			        <a href="15456175398128.html">自建kms服务器激活windows</a>
 			      </li>
 		     
 		  

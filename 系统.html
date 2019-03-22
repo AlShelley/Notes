@@ -136,20 +136,15 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15489296290618.html">
+                <a class="clearlink" href="15480046120109.html">
                 
-                  <h1>Mediakit报告设备商的空间不足以执行此操作</h1>
+                  <h1>降低cpu使用率</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>网上大部分都写的去 windows 中使用DiskGenius重新分区，这搞麻烦了，不用这么麻烦的。</p>
-
-<p>1、打开终端，输入<code>diskutil list</code>列出磁盘内容，这里我们可以找到要格式化的磁盘，我是 disk2<br/>
-2、卸载要格式化的磁盘<code>diskutil unmountDisk force disk2</code><br/>
-3、写入启动扇区<code>sudo dd if=/dev/zero of=/dev/disk2 bs=1024 count=1024</code><br/>
-4、对磁盘进行分区<code>diskutil partitionDisk disk2 GPT JHFS+ &quot;AWESOME DISK&quot; 0g</code><br/>
-5、打完收工，写博客发出来。</p>
+                        	<p>pulimit -l 50 -p 1234<br/>
+-l后面是使用百分比，-p后面是进城PID，可以使用htop查看进程pid</p>
 
                         
                       </div>
@@ -158,7 +153,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/31 18:13 下午</span>
+                    <span class="date">2019/1/21 1:16 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
@@ -175,48 +170,7 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045491201.html">
-                
-                  <h1>linux将shell脚本添加到系统命令的方法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>可以自定义一些shell脚本，用来提高执行常用组合命令的效率。还有一种方式是使用alias命令。</p>
-</blockquote>
-
-<p>两种方法：<br/>
-1、直接把shell脚本放到/usr/local/bin ，然后添加权限 <code>sudo chmod +x xxx.sh</code> 就ok了。这样是在本地用户添加命令。<br/>
-root用户添加命令则把脚本放在 /usr/bin 即可。<br/>
-2、使用软连接的方式<code>ln -s 【源文件或目录】【目标文件或目录】</code><br/>
-注意要使用绝对路径。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15483045490538.html">
+                <a class="clearlink" href="15446969783198.html">
                 
                   <h1>解决windows右键新建消失问题</h1>
                   <div class="a-content">
@@ -242,7 +196,42 @@ root用户添加命令则把脚本放在 /usr/bin 即可。<br/>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span class="date">2018/12/13 18:29 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15446973583267.html">
+                
+                  <h1>解决npm更新或安装软件时下载较慢等问题</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>更换淘宝源即可，<br/>
+在终端执行命令：<br/>
+<code>npm config set registry https://registry.npm.taobao.org</code></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13 18:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
@@ -341,31 +330,31 @@ root用户添加命令则把脚本放在 /usr/bin 即可。<br/>
 	      
 		      
 			      <li class="post">
-			        <a href="15532149133328.html">古语</a>
+			        <a href="15480046120109.html">降低cpu使用率</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15523826250881.html">excel 工作表插入当前时间和日期</a>
+			        <a href="15473464131197.html">读 Monyer 文章有感</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15520392147631.html">GTD 管理法</a>
+			        <a href="15446969783198.html">解决windows右键新建消失问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15520390232741.html">用四象限管理任务</a>
+			        <a href="15446973583267.html">解决npm更新或安装软件时下载较慢等问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15520320136368.html">bundle install 无法使用的解决办法</a>
+			        <a href="15456175398128.html">自建kms服务器激活windows</a>
 			      </li>
 		     
 		  

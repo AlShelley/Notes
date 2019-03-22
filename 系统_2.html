@@ -136,22 +136,18 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045488313.html">
+                <a class="clearlink" href="15453706658952.html">
                 
-                  <h1>修改Mac主机名、计算机名</h1>
+                  <h1>查看端口占用</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><code>$sudo scutil --set ComputerName 你想要的计算机名称</code><br/>
-<code>$sudo scutil --set HostName 你想要的主机名称</code></p>
-
-<p>举例：<br/>
-<code>$sudo scutil --set HostName lonelyor</code></p>
-
-<p>使用以下命令查看主机名或计算机名<br/>
-<code>$ scutil --get ComputerName</code><br/>
-<code>$ scutil --get HostName</code></p>
+                        	<p>使用命令：<br/>
+<code>lsof -i:8000</code><br/>
+或<br/>
+<code>netstat -tunlp|grep 8000</code><br/>
+均可。</p>
 
                         
                       </div>
@@ -160,7 +156,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span class="date">2018/12/21 13:37 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
@@ -177,20 +173,15 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045487900.html">
+                <a class="clearlink" href="15480046337420.html">
                 
-                  <h1>linux下搜狗输入法不能用的解决办法</h1>
+                  <h1>无法安装docker</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>删除<br/>
-<code>～/config</code><br/>
-下的<br/>
-<code>sogou-qimpanel</code><br/>
-<code>SogouPY</code><br/>
-<code>SogouPY.users</code><br/>
-这三个文件夹，然后重启。</p>
+                        	<p>请检查是否开启防火墙，防火墙是否屏蔽了docker的传入链接。<br/>
+通常连不上docker是因为防火墙的原因</p>
 
                         
                       </div>
@@ -199,7 +190,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span class="date">2019/1/21 1:17 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
@@ -216,20 +207,14 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045487681.html">
+                <a class="clearlink" href="15480046242082.html">
                 
-                  <h1>linux查看磁盘空间占用情况</h1>
+                  <h1>批量删除当前目录及其子目录下指定后缀名文件</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>主要是使用 df 命令，使用 df --help 可以查看更多选项。</p>
-
-<p>举例：<br/>
-df -k 以KB为单位显示磁盘使用量和占用率。<br/>
-df -k 以M×××</p>
-
-<p>使用“du -ck /home”命令，列出home目录下所有文件或目录占用的大小，以KB作为计量单位。以及统计出当前home目录占用的总大小。</p>
+                        	<p>find . -name &quot;*.tmp&quot; -type f -print -exec rm -rf {} \;</p>
 
                         
                       </div>
@@ -238,7 +223,7 @@ df -k 以M×××</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span class="date">2019/1/21 1:17 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
@@ -337,31 +322,31 @@ df -k 以M×××</p>
 	      
 		      
 			      <li class="post">
-			        <a href="15532149133328.html">古语</a>
+			        <a href="15480046120109.html">降低cpu使用率</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15523826250881.html">excel 工作表插入当前时间和日期</a>
+			        <a href="15473464131197.html">读 Monyer 文章有感</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15520392147631.html">GTD 管理法</a>
+			        <a href="15446969783198.html">解决windows右键新建消失问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15520390232741.html">用四象限管理任务</a>
+			        <a href="15446973583267.html">解决npm更新或安装软件时下载较慢等问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15520320136368.html">bundle install 无法使用的解决办法</a>
+			        <a href="15456175398128.html">自建kms服务器激活windows</a>
 			      </li>
 		     
 		  

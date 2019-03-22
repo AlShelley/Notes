@@ -136,14 +136,16 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15532149133328.html">
+                <a class="clearlink" href="15480046120109.html">
                 
-                  <h1>古语</h1>
+                  <h1>降低cpu使用率</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	
+                        	<p>pulimit -l 50 -p 1234<br/>
+-l后面是使用百分比，-p后面是进城PID，可以使用htop查看进程pid</p>
+
                         
                       </div>
                   </div>
@@ -151,7 +153,45 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/3/22 10:19 上午</span>
+                    <span class="date">2019/1/21 1:16 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15473464131197.html">
+                
+                  <h1>读 Monyer 文章有感</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>1、黑客是一种兴趣爱好<br/>
+2、选行需谨慎，选前需要调研<br/>
+3、技术分化，很难再&quot;全栈&quot;，知识面扩宽的同时，需要抓重点精深。<br/>
+4、技术人员发展路线：技术输出阶段、经验输出阶段、思路输出阶段和决策输出阶段。<br/>
+5、学习永不停歇<br/>
+6、小游戏地址：<a href="http://monyer.com/game/game1/">http://monyer.com/game/game1/</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/13 10:26 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html'>风花雪月</a></span>
@@ -168,21 +208,24 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15523826250881.html">
+                <a class="clearlink" href="15446969783198.html">
                 
-                  <h1>excel 工作表插入当前时间和日期</h1>
+                  <h1>解决windows右键新建消失问题</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>参考链接：<a href="https://jingyan.baidu.com/article/75ab0bcbb03035d6864db203.html">https://jingyan.baidu.com/article/75ab0bcbb03035d6864db203.html</a></p>
-</blockquote>
+                        	<p>新建一个文件后缀名写为reg（注册表文件格式）的文件。<br/>
+然后用记事本或文本编辑器打开，写入文件内容：</p>
 
-<p>1、选定单元格然后同时按<code>CTRL+;</code>可以快速设置日期。<br/>
-2、在单元格中输入函数<code>=TODAY()</code>然后回车也可以快速设置日期。<br/>
-3、选定单元格然后同时按下<code>Ctrl+Shift+；</code>可以快速设置当前时刻的时间。<br/>
-4、在单元格中输入函数<code>=NOW()</code>然后回车可以显示当前时刻的时间。</p>
+<pre class="line-numbers"><code class="language-text">Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\New]
+
+@=&quot;{D969A300-E7FF-11d0-A93B-00A0C90F2719}&quot;
+</code></pre>
+
+<p>保存，然后双击该文件，即可。</p>
 
                         
                       </div>
@@ -191,64 +234,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/3/12 17:23 下午</span>
+                    <span class="date">2018/12/13 18:29 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15520392147631.html">
-                
-                  <h1>GTD 管理法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>GTD 分为5个步骤</p>
-
-<ul>
-<li>收集</li>
-<li>理清</li>
-<li>组织</li>
-<li>执行</li>
-<li>回顾</li>
-</ul>
-
-<p>每一步都很重要，但是我觉得比较难的还是执行。</p>
-
-<p>执行的精髓是一定要去做</p>
-
-<p>不去做的原因可能是因为目标困难，难以去实现，此时要降低困难度（举个例子：每天都要读书，然后规定自己每天读2页而不是每天读50页，这样每天就能至少读2页，时间充足的话还能多读48页，主动去坚持才是最棒的）</p>
-
-<p>科学的养成一个习惯，在前期我们尽量做到：</p>
-
-<ul>
-<li>这个习惯划分到每天的目标量足够小，这样易获得成就感，也没有放弃的理由。</li>
-<li>不间断，不管这一天发生了什么，哪怕是你削减目标量，也要每天都去做。</li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/3/8 18:0 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html'>星火流萤</a></span>
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -344,31 +333,31 @@
 	      
 		      
 			      <li class="post">
-			        <a href="15532149133328.html">古语</a>
+			        <a href="15480046120109.html">降低cpu使用率</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15523826250881.html">excel 工作表插入当前时间和日期</a>
+			        <a href="15473464131197.html">读 Monyer 文章有感</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15520392147631.html">GTD 管理法</a>
+			        <a href="15446969783198.html">解决windows右键新建消失问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15520390232741.html">用四象限管理任务</a>
+			        <a href="15446973583267.html">解决npm更新或安装软件时下载较慢等问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15520320136368.html">bundle install 无法使用的解决办法</a>
+			        <a href="15456175398128.html">自建kms服务器激活windows</a>
 			      </li>
 		     
 		  

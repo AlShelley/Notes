@@ -136,16 +136,188 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045488060.html">
+                <a class="clearlink" href="15428591301433.html">
                 
-                  <h1>将网页保存为PDF</h1>
+                  <h1>Web安全检测checklist</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>如果使用 google chrome 则不需要任何辅助工具即可做到。<br/>
-Mac用户使用cmd+p即可；<br/>
-Windows用户使用ctrl+p即可。</p>
+                        	<h2 id="toc_0">x01 爆破</h2>
+
+<h3 id="toc_1">弱口令</h3>
+
+<p>HTTP登录<br/>
+SSH<br/>
+MySQL<br/>
+Telnet</p>
+
+<h3 id="toc_2">遍历</h3>
+
+<p>网站敏感文件<br/>
+    源码<br/>
+    配置文件<br/>
+    备份文件<br/>
+    探针类文件<br/>
+网站敏感目录<br/>
+    物理路径<br/>
+    网站管理后台<br/>
+    上传目录<br/>
+    数据库Web管理入口<br/>
+    现成的Webshell<br/>
+端口扫描<br/>
+0day扫描<br/>
+子域名</p>
+
+<h2 id="toc_3">x02 不安全配置</h2>
+
+<h3 id="toc_4">Web服务器</h3>
+
+<p>Nginx<br/>
+Apache<br/>
+IIS</p>
+
+<h3 id="toc_5">Web应用服务器</h3>
+
+<p>Tomcat<br/>
+JBoss<br/>
+Weblogic</p>
+
+<h3 id="toc_6">HTTP安全特性</h3>
+
+<p>HTTP Headers<br/>
+HTTP Options<br/>
+rebots.txt<br/>
+flash跨域策略</p>
+
+<h2 id="toc_7">x03 敏感信息泄露</h2>
+
+<h3 id="toc_8">用户敏感信息</h3>
+
+<p>手机号<br/>
+身份证号<br/>
+社保<br/>
+银行卡号<br/>
+家庭住址</p>
+
+<h3 id="toc_9">应用敏感信息</h3>
+
+<p>debug信息<br/>
+堆栈报错</p>
+
+<h3 id="toc_10">站点敏感信息</h3>
+
+<p>测试页面<br/>
+备份文件</p>
+
+<h3 id="toc_11">本地敏感信息</h3>
+
+<p>前端保存用户密码<br/>
+前端保存验证码</p>
+
+<h2 id="toc_12">x04 xss跨站脚本</h2>
+
+<p>反射型xss<br/>
+存储型xss<br/>
+DOM型xss</p>
+
+<h2 id="toc_13">x05 请求伪造</h2>
+
+<p>csrf跨站请求伪造<br/>
+ssrf服务器请求伪造</p>
+
+<h2 id="toc_14">x06 注入</h2>
+
+<p>LDAP注入<br/>
+ORM注入<br/>
+XML注入<br/>
+XPath注入<br/>
+IMAP/SMTP注入<br/>
+SQL注入<br/>
+代码注入<br/>
+客户端模板注入（CSTI）<br/>
+服务端模板注入（SSTI）<br/>
+服务器端包含注入（SSI）</p>
+
+<h2 id="toc_15">x07 已知漏洞组件</h2>
+
+<p>库文件（某些库会导致远程命令执行）<br/>
+框架（如wordpress、thinkphp、django等）<br/>
+模块（python的某些模块会导致代码注入）</p>
+
+<h2 id="toc_16">x08 文件类漏洞</h2>
+
+<p>文件包含漏洞<br/>
+任意文件创建<br/>
+任意文件读取<br/>
+任意文件上传<br/>
+任意文件下载<br/>
+任意文件删除</p>
+
+<h2 id="toc_17">x09 解析漏洞</h2>
+
+<p>IIS解析漏洞<br/>
+Nginx解析漏洞<br/>
+Apache解析漏洞<br/>
+PHP CGI解析漏洞</p>
+
+<h2 id="toc_18">x10 劫持类漏洞</h2>
+
+<p>点击劫持<br/>
+Jsonp劫持<br/>
+WebSocket劫持<br/>
+DNS劫持<br/>
+二维码劫持<br/>
+子域名劫持</p>
+
+<h2 id="toc_19">x11 业务逻辑漏洞</h2>
+
+<h3 id="toc_20">认证</h3>
+
+<p>使用默认凭证<br/>
+冻结账户策略不当<br/>
+弱用户名和密码<br/>
+“记住我”功能<br/>
+自动登录<br/>
+单点登录<br/>
+弱口令<br/>
+弱安全问题/答案<br/>
+第三方登录风险<br/>
+Oauth2.0安全<br/>
+JWT安全<br/>
+注册覆盖<br/>
+未验证的重定向和转发<br/>
+双因素认证不当</p>
+
+<h3 id="toc_21">授权</h3>
+
+<p>测试角色定义<br/>
+权限管理缺失<br/>
+匿名访问（备用接口——常见于兼容老的不安全的接口时产生）<br/>
+水平越权<br/>
+垂直越权<br/>
+超级账户<br/>
+实名认证不严格</p>
+
+<h3 id="toc_22">会话管理</h3>
+
+<p>cookie安全属性<br/>
+cookie可猜解<br/>
+cookie溢出<br/>
+会话固定<br/>
+用户凭证不安全传输（弱加密或明文传输）<br/>
+用户凭证未一次失效<br/>
+用户凭证可猜解<br/>
+注销与会话超时<br/>
+敏感数据不安全传输</p>
+
+<h3 id="toc_23">流程绕过</h3>
+
+<p>找回密码流程绕过</p>
+
+<h2 id="toc_24">x12 API安全</h2>
+
+<p>整理中</p>
 
                         
                       </div>
@@ -154,10 +326,10 @@ Windows用户使用ctrl+p即可。</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span class="date">2018/11/22 11:58 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -171,129 +343,185 @@ Windows用户使用ctrl+p即可。</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045488036.html">
+                <a class="clearlink" href="15483045489194.html">
                 
-                  <h1>自建kms服务器激活windows</h1>
+                  <h1>Web安全核心</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>核心是攻防</p>
+
+<p>测试备忘录和利用备忘录——攻击<br/>
+防御备忘录和危害备忘录——防御</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15446864537652.html">
+                
+                  <h1>Web安全工程师求职清单</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>kms的脚本来自：<a href="https://github.com/SystemRage/py-kms">https://github.com/SystemRage/py-kms</a><br/>
-密钥来自：<br/>
-<a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj612867(v%3dws.11)">https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj612867(v%3dws.11)</a><br/>
-<a href="https://github.com/SystemRage/py-kms/wiki/Office-GVLK-Keys">https://github.com/SystemRage/py-kms/wiki/Office-GVLK-Keys</a><br/>
-<a href="https://github.com/SystemRage/py-kms/wiki/Windows-GVLK-Keys">https://github.com/SystemRage/py-kms/wiki/Windows-GVLK-Keys</a></p>
+<p>一年前写的一点玩意，没什么卵用</p>
 </blockquote>
 
-<h2 id="toc_0">下载kms服务端和客户端程序</h2>
+<h2 id="toc_0">安全资讯</h2>
 
-<p>分别在服务器和客户端下载py-kms<br/>
-<code>git clone https://github.com/SystemRage/py-kms.git</code></p>
+<p><a href="http://www.freebuf.com/">freebuf</a></p>
 
-<h2 id="toc_1">服务器设置</h2>
+<p><a href="https://www.t00ls.net/">tools</a></p>
 
-<p>使用python3</p>
+<p><a href="https://www.secpulse.com/">安全脉搏</a></p>
 
-<pre class="line-numbers"><code class="language-text">python3 -m pip install argparse
-python3 -m pip install tzlocal
-python3 -m pip install pysqlite3
-python3 server
-</code></pre>
+<p><a href="https://packetstormsecurity.com/">数据包风暴</a></p>
 
-<p>在一台服务器上运行server，默认运行在 0.0.0.0 1688。<br/>
-这里的服务器可以是你的本地Mac主机，或者本地or远程Linux主机，Windows没试过不清楚。</p>
+<p><a href="http://www.4hou.com/">嘶吼</a></p>
 
-<h2 id="toc_2">客户端设置(不需要)</h2>
+<p><a href="https://www.aqniu.com/">安全牛</a></p>
 
-<p><code>python client.py 0.0.0.0（使用服务端ip） 1688</code>我运行了上述指令发现并没有什么卵用，也对，密钥都没导入，能有用才怪了。<br/>
-现在我们创建一个activate.bat脚本：</p>
+<p><a href="https://www.anquanke.com/">安全客</a></p>
 
-<pre class="line-numbers"><code class="language-bat">cscript //nologo slmgr.vbs /upk
-cscript //nologo slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GXc
-cscript //nologo slmgr.vbs /ipk MH37W-N47XK-V7XM9-C7227-GCQG9
-cscript //nologo slmgr.vbs /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43
-cscript //nologo slmgr.vbs /ipk DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4
-cscript //nologo slmgr.vbs /ipk NW6C2-QMPVW-D7KKK-3GKT6-VCFB2
-cscript //nologo slmgr.vbs /ipk DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ
-cscript //nologo slmgr.vbs /ipk D2N9P-3P6X9-2R39C-7RTCD-MDVJX
-cscript //nologo slmgr.vbs /ipk W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9
-cscript //nologo slmgr.vbs /ipk KNC87-3J2TX-XB4WP-VCPJV-M4FWM
-cscript //nologo slmgr.vbs /ipk FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4
-cscript //nologo slmgr.vbs /ipk MRPKT-YTG23-K7D7T-X2JMM-QY7MG
-cscript //nologo slmgr.vbs /ipk W82YF-2Q76Y-63HXB-FGJG9-GF7QX
-cscript //nologo slmgr.vbs /ipk 33PXH-7Y6KF-2VJC9-XBBR8-HVTHH
-cscript //nologo slmgr.vbs /ipk YDRBP-3D83W-TY26F-D46B2-XCKRJ
-cscript //nologo slmgr.vbs /ipk CB7KF-BWN84-R7R2Y-793K2-8XDDG
-cscript //nologo slmgr.vbs /ipk WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY
-cscript //nologo slmgr.vbs /ipk JCKRF-N37P4-C2D82-9YXRT-4M63B
-cscript //nologo slmgr.vbs /ipk YC7DK-G2NP3-2QQC3-J6H88-GVGXT
-cscript //nologo slmgr.vbs /ipk KBKQT-2NMXY-JJWGP-M62JB-92CD4
-cscript //nologo slmgr.vbs /ipk XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99
-cscript //nologo slmgr.vbs /ipk JNRGM-WHDWX-FJJG3-K47QV-DRTFM
-cscript //nologo slmgr.vbs /ipk YC7DK-G2NP3-2QQC3-J6H88-GVGXT
-cscript //nologo slmgr.vbs /ipk KBKQT-2NMXY-JJWGP-M62JB-92CD4
-cscript //nologo slmgr.vbs /ipk FN8TT-7WMH6-2D4X9-M337T-2342K
-cscript //nologo slmgr.vbs /ipk 6NTH3-CW976-3G3Y2-JK3TX-8QHTT
-cscript //nologo slmgr.vbs /ipk C2FG9-N6J68-H8BTJ-BW3QX-RM3B3
-cscript //nologo slmgr.vbs /ipk J484Y-4NKBF-W2HMG-DBMJC-PGWR7
-cscript //nologo slmgr.vbs /ipk VGPNG-Y7HQW-9RHP7-TKPV3-BG7GB
-cscript //nologo slmgr.vbs /ipk TGN6P-8MMBC-37P2F-XHXXK-P34VW
-cscript //nologo slmgr.vbs /ipk 4NT99-8RJFH-Q2VDH-KYG2C-4RD4F
-cscript //nologo slmgr.vbs /ipk 6Q7VD-NX8JD-WJ2VH-88V73-4GBJ7
-cscript //nologo slmgr.vbs /ipk XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99
-cscript //nologo slmgr.vbs /ipk JNRGM-WHDWX-FJJG3-K47QV-DRTFM
-cscript //nologo slmgr.vbs /ipk YG9NW-3K39V-2T3HJ-93F3Q-G83KT
-cscript //nologo slmgr.vbs /ipk WGT24-HCNMF-FQ7XH-6M8K7-DRTW9
-cscript //nologo slmgr.vbs /ipk GNFHQ-F6YQM-KQDGJ-327XX-KQBVC
-cscript //nologo slmgr.vbs /ipk D8NRQ-JTYM3-7J2DX-646CT-6836M
-cscript //nologo slmgr.vbs /ipk PD3PC-RHNGV-FXJ29-8JK7D-RJRJK
-cscript //nologo slmgr.vbs /ipk 69WXN-MBYV6-22PQG-3WGHK-RM6XC
-cscript //nologo slmgr.vbs /ipk 7WHWN-4T7MP-G96JF-G33KR-W8GF4
-cscript //nologo slmgr.vbs /ipk NY48V-PPYYH-3F4PX-XJRKJ-W4423
-cscript //nologo slmgr.vbs /ipk 9C2PK-NWTVB-JMPW8-BFT28-7FTBF
-cscript //nologo slmgr.vbs /ipk DR92N-9HTF2-97XKM-XW2WJ-XW3J6
-cscript //nologo slmgr.vbs /ipk R69KK-NTPKF-7M3Q4-QYBHW-6MT9B
-cscript //nologo slmgr.vbs /ipk WXY84-JN2Q9-RBCCQ-3Q3J3-3PFJ6
-cscript //nologo slmgr.vbs /ipk J7MQP-HNJ4Y-WJ7YM-PFYGF-BY6C6
-cscript //nologo slmgr.vbs /ipk VQ9DP-NVHPH-T9HJC-J9PDT-KTQRG
-cscript //nologo slmgr.vbs /ipk NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP
-cscript //nologo slmgr.vbs /ipk XM2V9-DN9HH-QB449-XDGKC-W2RMW
-cscript //nologo slmgr.vbs /ipk B4NPR-3FKK7-T2MBV-FRQ4W-PKD2B
-cscript //nologo slmgr.vbs /ipk C4F7P-NCP8C-6CQPT-MQHV9-JXD2M
-cscript //nologo slmgr.vbs /ipk TMJWT-YYNMB-3BKTF-644FC-RVXBD
-cscript //nologo slmgr.vbs /ipk 7HD7K-N4PVK-BHBCQ-YWQRW-XW4VK
-cscript //nologo slmgr.vbs /ipk RRNCX-C64HY-W2MM7-MCH9G-TJHMQ
-cscript //nologo slmgr.vbs /ipk PBX3G-NWMT6-Q7XBW-PYJGG-WXD33
-cscript //nologo slmgr.vbs /ipk N2CG9-YD3YK-936X4-3WR82-Q3X4H
-cscript //nologo slmgr.vbs /ipk 9BGNQ-K37YR-RQHF2-38RQ3-7VCBB
-cscript //nologo slmgr.vbs /ipk 7TQNQ-K3YQQ-3PFH7-CCPPM-X4VQ2c
-cscript //nologo slmgr.vbs /skms 192.168.220.187:1688
-cscript //nologo slmgr.vbs /ato
-cscript //nologo slmgr.vbs /ato
-cscript //nologo slmgr.vbs /dlv
-cmd /k
-</code></pre>
+<p><a href="https://www.sec-wiki.com/">sec-wiki</a></p>
 
-<p>上面的脚本包含了win10、win7、office2019、office2016、office2013的大部分密钥（主要是专业版），基本满足需求，不过其实也没必要搞那么多，但是懒得筛选了。</p>
+<p><a href="http://www.secdoctor.com/">中国信息安全博士网</a></p>
 
-<h2 id="toc_3">激活win和office</h2>
+<h2 id="toc_1">威胁情报</h2>
 
-<p>首先在服务器上运行 kms server。</p>
+<p>暂略</p>
+
+<h2 id="toc_2">安全工具</h2>
+
+<p><a href="https://www.ctftools.com/down/">最强安全工具集</a></p>
 
 <ul>
-<li>打开终端然后进入py-kms的py3-kms目录</li>
-<li>然后输入<code>python3 server</code>并回车</li>
-<li>右键点击以管理员身份运行 activate.bat 即可。</li>
+<li>burpsuite(抓包)</li>
+<li>sqlmap(sql注入)</li>
+<li>whireshark(网络抓包)</li>
+<li>中国菜刀(webshell、一句话后门)</li>
+<li>HxD(十六进制编辑器和磁盘编辑器)</li>
+<li>nmap(扫描)</li>
+<li>hydra(爆破)</li>
+<li>cain(爆破)</li>
+<li>metasploit(漏洞利用)</li>
+<li>mitmproxy(http/https代理)</li>
+<li>commix(命令注入)</li>
+<li>httrack(网站克隆)</li>
+<li>netcat(瑞士军刀-网络调试和探测工具)</li>
+<li>scapy(python的交互式数据包操作程序和库)</li>
+<li>empire(域渗透)</li>
 </ul>
 
-<p>显示如下信息表示激活成功：</p>
+<h2 id="toc_3">靶机环境</h2>
 
-<p><figure><img src="media/15483045488036/win%E6%BF%80%E6%B4%BB2018-12-24%2011-12-38.png" alt="win激活2018-12-24 11-12-38"/><figcaption>win激活2018-12-24 11-12-</figcaption></figure></p>
+<h2 id="toc_4">安全知识库</h2>
 
-<h2 id="toc_4">其他</h2>
+<p><a href="https://www.anquanquan.info/">安全圈</a></p>
 
-<p>kms每次只激活180天也就是3个月，这样每三个月就要重新激活一次，你可以每次提醒的时候再打开server然后运行activate.bat脚本。也可以把server部署在远程服务器上，然后在client添加一个计时任务周期性的运行bat脚本。</p>
+<p><a href="http://wiki.open.qq.com/wiki/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8%E8%A7%84%E8%8C%83">腾讯安全开发规范</a></p>
+
+<p><a href="https://highon.coffee/blog/cheat-sheet/">安全研究备忘单</a></p>
+
+<p><a href="https://portswigger.net/kb/issues">Burp漏洞定义</a></p>
+
+<p><a href="https://www.offensive-security.com/metasploit-unleashed/">MSF框架终极指南</a></p>
+
+<p><a href="https://www.owasp.org/index.php/Main_Page">OWASP</a></p>
+
+<p><a href="http://vipread.com/index">vipread知识库</a></p>
+
+<p><a href="https://kb.help.rapid7.com/docs/">Rapid7知识库</a></p>
+
+<p><a href="https://kernelnewbies.org/">linux内核研究</a></p>
+
+<p><a href="http://www.loner.fm/bugs/">乌云漏洞</a></p>
+
+<p><a href="https://wooyun.js.org/">乌云文章</a></p>
+
+<p><a href="http://www.office-cn.net/t/api/index.html?web.htm">WindowsAPI参考手册</a></p>
+
+<p><a href="https://support.portswigger.net/customer/portal/articles/2326039-the-burp-methodology">Burp方法论</a></p>
+
+<p><a href="https://ctf-wiki.github.io/ctf-wiki/">CTF-Wiki</a></p>
+
+<p><a href="https://github.com/ctfs/">CTFs</a></p>
+
+<p><a href="https://ctftime.org">ctftime</a></p>
+
+<p><a href="https://www.codesec.net/">代码安全</a></p>
+
+<p><a href="https://silic.wiki/doku.php">习科小黑板</a></p>
+
+<p><a href="https://bbs.safewiki.org/portal.php">安全文库</a></p>
+
+<p><a href="http://webscan.360.cn/vul">360网站常见漏洞</a></p>
+
+<h2 id="toc_5">漏洞平台</h2>
+
+<p><a href="https://butian.360.cn/">补天</a></p>
+
+<p><a href="https://www.vulbox.com/">漏洞盒子</a></p>
+
+<p><a href="https://www.bugbank.cn/">漏洞银行</a></p>
+
+<p><a href="http://www.cnvd.org.cn/">CNVD国家信息安全漏洞共享平台</a></p>
+
+<p><a href="https://src.edu-info.edu.cn/">教育行业漏洞报告平台</a></p>
+
+<p><a href="https://www.seebug.org">Seebug</a></p>
+
+<p><a href="http://0xsafe.org/vuldb.html">Vuldbs漏洞平台</a></p>
+
+<h2 id="toc_6">技能要求</h2>
+
+<ul>
+<li>不同场景下的渗透测试流程、方法</li>
+<li>常见漏洞的攻击方法和防御方法</li>
+<li>代码级白盒测试能力</li>
+<li>owasp_top10概念、原理、测试方法、防御方法</li>
+<li>主流防火墙、IDS、IPS、漏洞扫描工具的安装、使用方法</li>
+<li>熟悉python、php、javascript、c、c++等语言的一种或多种</li>
+<li>cissp之类的证书或ctf解题能力是加分项</li>
+<li>各种靶机环境搭建</li>
+<li>安全分析报告的编写</li>
+<li>对业务快速熟悉的能力（业务安全重点、应用范围划分、业务安全基线）</li>
+<li>spring、struts、hibernate框架安全相关</li>
+<li>web组件加固、服务器加固、数据库加固</li>
+<li>域渗透、dns、arp等内网渗透知识</li>
+<li>各类提权如系统提权、数据库提权等</li>
+<li>风险评估、等级保护、安全体系规划、安全体系建设。包括信息资产管理、安全威胁和风险评估、安全解决方案制定、信息安全体系实施</li>
+<li>Nginx、Apache、Tomcat等安全配置基线</li>
+<li>各类安全测试标准(ISSAF、OSSTMM、OWASP、微软SDLC、OPENSAMM、BSIMM、SSECMM)</li>
+<li>网络日志分析、攻击流量检测</li>
+<li>hadoop、openstack、sdn云安全</li>
+<li>mongodb、redis、HBASE等nosql安全</li>
+<li>burpsuite插件编写</li>
+<li>python脚本开发能力、shell脚本开发能力</li>
+</ul>
 
                         
                       </div>
@@ -302,48 +530,7 @@ cmd /k
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15483045488017.html">
-                
-                  <h1>python弱口令脚本的一点备注</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>很久以前写的</p>
-</blockquote>
-
-<p>跑弱口令的脚本<br/>
-不要使用字典这种操作，这不利于跑大量数据的场景。<br/>
-应该制定规则去跑，比如：<br/>
-取出一个用户名，然后根据规则生成弱口令，然后再去匹配用户名对应的密码，匹配则是弱口令，不匹配则不是弱口令。<br/>
-这样可以后续变成一个服务，用户输入密码，触发了规则则告诉他密码是弱口令。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span class="date">2018/12/13 15:34 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
@@ -442,31 +629,31 @@ cmd /k
 	      
 		      
 			      <li class="post">
-			        <a href="15532149133328.html">古语</a>
+			        <a href="15480046120109.html">降低cpu使用率</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15523826250881.html">excel 工作表插入当前时间和日期</a>
+			        <a href="15473464131197.html">读 Monyer 文章有感</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15520392147631.html">GTD 管理法</a>
+			        <a href="15446969783198.html">解决windows右键新建消失问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15520390232741.html">用四象限管理任务</a>
+			        <a href="15446973583267.html">解决npm更新或安装软件时下载较慢等问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15520320136368.html">bundle install 无法使用的解决办法</a>
+			        <a href="15456175398128.html">自建kms服务器激活windows</a>
 			      </li>
 		     
 		  

@@ -3,15 +3,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="bookmark" href="https://raw.githubusercontent.com/AlShelley/lonelyorWiki/master/asset/img/favicon.ico" type="images/x-icon"/>
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/AlShelley/lonelyorWiki/master/asset/img/favicon.ico" type="images/x-icon"/>
+
     <title>
     
-  lonelyorのblog
+  lonelyorWiki
   
   </title>
   
   
-  
-  <link href="atom.xml" rel="alternate" title="lonelyorのblog" type="application/atom+xml">
+  <link href="atom.xml" rel="alternate" title="lonelyorWiki" type="application/atom+xml">
     <link rel="stylesheet" href="asset/css/foundation.min.css" />
     <link rel="stylesheet" href="asset/css/docs.css" />
     <script src="asset/js/vendor/modernizr.js"></script>
@@ -21,7 +24,7 @@
   <script>hljs.initHighlightingOnLoad();</script>
 <script type="text/javascript">
   function before_search(){
-    var searchVal = 'site:www.lonelyor.org/lonelyorNotes ' + document.getElementById('search_input').value;
+    var searchVal = 'site:www.lonelyor.org/lonelyorWiki ' + document.getElementById('search_input').value;
     document.getElementById('search_q').value = searchVal;
     return true;
   }
@@ -41,11 +44,17 @@
       <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
         <ul id="main-menu" class="left">
         
-        <li id=""><a target="_self" href="index.html">主页</a></li>
+        <li id=""><a target="_self" href="index.html">首页</a></li>
         
         <li id=""><a target="_self" href="archives.html">归档</a></li>
         
-        <li id=""><a target="_self" href="lost.html">失乐园</a></li>
+        <li id=""><a target="_self" href="beautiful.html">惊鸿</a></li>
+        
+        <li id=""><a target="_self" href="ruby.html">流光</a></li>
+        
+        <li id=""><a target="_self" href="search.html">北斗</a></li>
+        
+        <li id=""><a target="_self" href="lose.html">失乐园</a></li>
         
         <li id=""><a target="_self" href="about.html">关于</a></li>
         
@@ -67,18 +76,24 @@
 
         <nav class="tab-bar show-for-small">
   <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-    <span> &nbsp; lonelyorのblog</span>
+    <span> &nbsp; lonelyorWiki</span>
   </a>
 </nav>
 
 <aside class="left-off-canvas-menu">
       <ul class="off-canvas-list">
         
-        <li><a target="_self" href="index.html">主页</a></li>
+        <li><a target="_self" href="index.html">首页</a></li>
         
         <li><a target="_self" href="archives.html">归档</a></li>
         
-        <li><a target="_self" href="lost.html">失乐园</a></li>
+        <li><a target="_self" href="beautiful.html">惊鸿</a></li>
+        
+        <li><a target="_self" href="ruby.html">流光</a></li>
+        
+        <li><a target="_self" href="search.html">北斗</a></li>
+        
+        <li><a target="_self" href="lose.html">失乐园</a></li>
         
         <li><a target="_self" href="about.html">关于</a></li>
         
@@ -86,19 +101,19 @@
     <li><label>Categories</label></li>
 
         
-            <li><a href="Web%E6%94%BB%E9%98%B2.html">Web攻防</a></li>
+            <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
         
-            <li><a href="%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html">操作系统</a></li>
-        
-            <li><a href="%E8%99%9A%E6%8B%9F%E5%AE%9E%E9%AA%8C%E5%AE%A4.html">虚拟实验室</a></li>
-        
-            <li><a href="CTF.html">CTF</a></li>
+            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
         
             <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
         
-            <li><a href="%E6%B5%8F%E8%A7%88%E5%99%A8.html">浏览器</a></li>
+            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
-            <li><a href="%E5%A5%87%E6%B7%AB%E5%B7%A7%E6%8A%80.html">奇淫巧技</a></li>
+            <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
+        
+            <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
+        
+            <li><a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html">星火流萤</a></li>
          
 
       </ul>
@@ -121,18 +136,22 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15446875268619.html">
+                <a class="clearlink" href="15433756568203.html">
                 
-                  <h1>异常登录检测</h1>
+                  <h1>HttpOnly</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>异常登录功能用来检测服务器上的登录行为。<br/>
-非常用地的登录行为告警（这个常用登陆地可以作为个人信息的一部分来由用户设置；或者收集第一次成功登录时的公网ip，然后将此ip地址设置位常用登陆地，从该时间往后顺延24小时内的所有公网登录地也会被记为常用登陆地，当超过24小时候，所有不在常用登陆地的登录行为均视为异地登录警告。当某个ip被判定为异地登录时，仅第一次登录行为进行告警，如果成功登录6次或以上，则默认将此ip的地点记录为常用登录地。）<br/>
-非常用登录ip告警<br/>
-非常用登录时间告警<br/>
-非常用登录账号告警（同一时间段内超多次登录同一账号、同一时间段内不同地理位置登录账号、同一时间段内多个ip登录同一账号、不同设备登录同一账号、同一设备不同ip登录同一账号）</p>
+                        	<p>HttpOnly是 Set-Cookie HTTP响应头中包含的附加标志。生成cookie时使用httponly标志有助于降低客户端脚本访问受保护cookie的风险。</p>
+
+<p>如果HTTP响应头中包含HttpOnly标志，则无法通过客户端脚本访问cookie。因此即使存在xss跨站脚本漏洞，并且用户意外访问到恶意链接，浏览器也不会向第三方透露cookie（前提是浏览器支持HttpOnly）。</p>
+
+<p>参考链接：</p>
+
+<blockquote>
+<p><a href="https://www.owasp.org/index.php/HttpOnly">https://www.owasp.org/index.php/HttpOnly</a></p>
+</blockquote>
 
                         
                       </div>
@@ -141,10 +160,114 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/13 15:52 下午</span>
+                    <span class="date">2018/11/28 11:27 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E4%B8%9A%E5%8A%A1%E5%AE%89%E5%85%A8.html'>业务安全</a></span>
+          					    <span class="posted-in"><a href='%E7%BD%91%E7%BB%9C.html'>网络</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15428715286450.html">
+                
+                  <h1>windows右键添加管理员获得所有权</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>右键添加获得管理员所有权是个比较方便的功能。</p>
+</blockquote>
+
+<p>打开记事本或者别的文本编辑器，然后写入如下内容:</p>
+
+<pre class="line-numbers"><code class="language-cmd">Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\runas]
+@=&quot;管理员取得所有权&quot;
+&quot;NoWorkingDirectory&quot;=&quot;&quot;
+[HKEY_CLASSES_ROOT\*\shell\runas\command]
+@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
+&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
+[HKEY_CLASSES_ROOT\exefile\shell\runas2]
+@=&quot;管理员取得所有权&quot;
+&quot;NoWorkingDirectory&quot;=&quot;&quot;
+[HKEY_CLASSES_ROOT\exefile\shell\runas2\command]
+@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
+&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
+[HKEY_CLASSES_ROOT\Directory\shell\runas]
+@=&quot;管理员取得所有权&quot;
+&quot;NoWorkingDirectory&quot;=&quot;&quot;
+[HKEY_CLASSES_ROOT\Directory\shell\runas\command]
+@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; /r /d y &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F /t&quot;
+&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; /r /d y &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F /t&quot;
+</code></pre>
+
+<p>然后另存为：管理员获得所有权.reg<br/>
+文件名可以随便写，但是后缀记得写成reg（改成这个后缀后文件图标就会变成一个破碎蓝色魔方）。<br/>
+然后右键以管理员身份运行，若弹框注册表xxx的，同意就行了。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/22 15:25 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15428714021434.html">
+                
+                  <h1>linux将shell脚本添加到系统命令的方法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>可以自定义一些shell脚本，用来提高执行常用组合命令的效率。还有一种方式是使用alias命令。</p>
+</blockquote>
+
+<p>两种方法：<br/>
+1、直接把shell脚本放到/usr/local/bin ，然后添加权限 <code>sudo chmod +x xxx.sh</code> 就ok了。这样是在本地用户添加命令。<br/>
+root用户添加命令则把脚本放在 /usr/bin 即可。<br/>
+2、使用软连接的方式<code>ln -s 【源文件或目录】【目标文件或目录】</code><br/>
+注意要使用绝对路径。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/22 15:23 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -180,11 +303,10 @@
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-              <div class="site-a-logo"><img src="http://images.lonelyor.org/lonelyornotesico.jpeg" /></div>
+                <div class="site-a-logo"><img src="http://images.lonelyor.org/favicon.jpg" /></div>
             
-          </br>
-                <h1>lonelyorのblog</h1>
-                <div class="site-des">一个用来记录学习笔记的网站</div>
+                <h1>lonelyorWiki</h1>
+                <div class="site-des">一个用来记录知识的网站</div>
                 <div class="social">
 
 
@@ -195,7 +317,7 @@
 
 
 
-<a target="_blank" class="github" target="_blank" href="https://github.com/AlShelley/lonelyorNotes" title="GitHub">GitHub</a>
+<a target="_blank" class="github" target="_blank" href="https://github.com/AlShelley/lonelyorWiki" title="GitHub">GitHub</a>
 <a target="_blank" class="email" href="mailto:lonelyor.org@gmail.com" title="Email">Email</a>
   <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 
@@ -206,25 +328,25 @@
 
               <div id="site-categories" class="side-item ">
                 <div class="side-header">
-                  <h2>分类</h2>
+                  <h2>Categories</h2>
                 </div>
                 <div class="side-content">
 
       	<p class="cat-list">
         
-            <a href="Web%E6%94%BB%E9%98%B2.html"><strong>Web攻防</strong></a>
+            <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
         
-            <a href="%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html"><strong>操作系统</strong></a>
-        
-            <a href="%E8%99%9A%E6%8B%9F%E5%AE%9E%E9%AA%8C%E5%AE%A4.html"><strong>虚拟实验室</strong></a>
-        
-            <a href="CTF.html"><strong>CTF</strong></a>
+            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
         
             <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
         
-            <a href="%E6%B5%8F%E8%A7%88%E5%99%A8.html"><strong>浏览器</strong></a>
+            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
-            <a href="%E5%A5%87%E6%B7%AB%E5%B7%A7%E6%8A%80.html"><strong>奇淫巧技</strong></a>
+            <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
+        
+            <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
+        
+            <a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html"><strong>星火流萤</strong></a>
          
         </p>
 
@@ -234,38 +356,38 @@
 
               <div id="site-categories" class="side-item">
                 <div class="side-header">
-                  <h2>最新文章</h2>
+                  <h2>Recent Posts</h2>
                 </div>
                 <div class="side-content">
                 <ul class="posts-list">
 	      
 		      
 			      <li class="post">
-			        <a href="15453757934453.html">css美化文章标题</a>
+			        <a href="15532149133328.html">古语</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15453720146052.html">Pycharm编程遇到的技巧</a>
+			        <a href="15523826250881.html">excel 工作表插入当前时间和日期</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15453717965995.html">npm Cannot find module 'semver' --解决方案</a>
+			        <a href="15520392147631.html">GTD 管理法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15453716917526.html">mongodb安装配置（arch）</a>
+			        <a href="15520390232741.html">用四象限管理任务</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15453714645346.html">linux安装配置aria2及其Web图形界面（debian为例）</a>
+			        <a href="15520320136368.html">bundle install 无法使用的解决办法</a>
 			      </li>
 		     
 		  
@@ -312,9 +434,7 @@
   <div class="row">
    <p class="copyright">Copyright &copy; 2018
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
-Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>,&nbsp; 
-Author is <a target="_blank" href="http://lonelyor.org">lonelyor</a>
-</p>
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
   </div>
 </div>
 
@@ -344,8 +464,7 @@ Author is <a target="_blank" href="http://lonelyor.org">lonelyor</a>
 
     
 
-<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more">分享到：</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook">Facebook</a></div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"来自：http://www.lonelyor.org/","bdMini":"1","bdMiniList":["sqq","weixin","fbook","twi","qzone","tsina","tqq","tieba","douban","tsohu","linkedin","mshare","copy"],"bdPic":"http://images.lonelyor.org/lonelyornotesico.jpeg","bdStyle":"1","bdSize":"16"},"share":{"bdSize":16},"image":{"viewList":["qzone","weixin","tsina","tqq","fbook"],"viewText":"分享到：","viewSize":"24"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","weixin","tsina","tqq","fbook"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
 
   </body>
 </html>

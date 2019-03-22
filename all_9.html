@@ -111,6 +111,8 @@
         
             <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
+            <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
+        
             <li><a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html">星火流萤</a></li>
          
 
@@ -133,6 +135,292 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15483045490779.html">
+                
+                  <h1>xss基础</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>description: 这里包含了xss的基本定义，原理、及防御方案代码示例。</p>
+</blockquote>
+
+<h2 id="toc_0">简介</h2>
+
+<p>跨站脚本XSS是一种注入类型攻击，攻击者注入恶意代码到web应用程序并发送给不同的最终用户时，就会发生xss攻击，并且可能发生在web应用程序<u>在其生成的输出中使用来之用户的输入</u>并且无需验证或编码它的任何地方。</p>
+
+<p>跨站脚本发生在：</p>
+
+<ul>
+<li>任何可以插入数据，并且数据包会未经恶意内容验证就发送给Web用户的地方。</li>
+</ul>
+
+<p>跨站脚本分为两类：</p>
+
+<ul>
+<li>反射型(又称非持久性xss): 反射性xss通常出现在错误消息、搜索结果、或者服务器实时响应部分或全部请求的地方。可以通过电子邮件、恶意链接、等途径进行攻击。</li>
+<li>存储型(又称持久性xss): 存储型xss通常将恶意代码永久存储在目标服务器上，如数据库、消息论坛、访问日志、注释字段等。</li>
+<li>DOM型: dom型xss我觉得也属于存储型，只不过是存储在客户端。有效载荷修改了客户端浏览器中的DOM环境并执行恶意代码，也就是说HTTP响应是不变的，恶意代码被存储在客户端响应页面中。因此很难在服务器端做安全检测。</li>
+</ul>
+
+<h2 id="toc_1">危害</h2>
+
+<p>xss可以窃取用户的会话cookie，允许攻击者劫持用户的会话并接管账号，其他攻击包括最终用户文件的泄露、木马程序安装、将用户重定向到其他页面或站点、修改内容的呈现等。</p>
+
+<p>具体危害如：允许攻击者修改新闻稿或新闻项目的XSS漏洞可能会影响公司的股价或降低消费者信心。制药网站上的XSS漏洞可能允许攻击者修改剂量信息，从而导致过量服用。</p>
+
+<h2 id="toc_2">防御</h2>
+
+<p>1、在<strong>输出时</strong>将不可信数据（用户可控的数据：包括主体、属性、JavaScript、CSS或URL）使用 htmlEscape（）进行转义；将html、js中涉及到的关键字符进行html编码处理后再输出到页面上。</p>
+
+<p>2、如果存在用户需要编写文章等功能的时候，类似用户可以自定义页面样式的功能，则需要限制用户的输入，采用严格的<strong>白名单</strong>机制来过滤用户的输入，即非用户允许的功能标签都应该被完全过滤，这种过滤应依赖于后端应用来实现。</p>
+
+<p>3、应注意很多开源的第三方富文本编辑器，部分编辑器仅在JS端进行过滤，而不在后端进行关键字过滤。</p>
+
+<h3 id="toc_3">代码示例</h3>
+
+<p>1.Java<br/>
+<strong>Portal 或 Spring 框架修复方案：</strong></p>
+
+<pre class="line-numbers"><code class="language-java">import org.springframework.web.util.HtmlUtils;
+target = HtmlUtils.htmlEscape(target);
+</code></pre>
+
+<p>// target 参数为需要进行转义的参数，建议在该参数输出前进行转义</p>
+
+<p><strong>通用型修复方案</strong>：</p>
+
+<pre class="line-numbers"><code class="language-java">StringEscapeUtils from Apache Commons Lang:
+
+import static org.apache.commons.lang.StringEscapeUtils.escapeHtml;
+// ...
+String source = &quot;The less than sign (&lt;) and ampersand (&amp;) must be escaped before using them in HTML&quot;;
+String escaped = escapeHtml(source);
+
+
+For version 3:
+
+import static org.apache.commons.lang3.StringEscapeUtils.escapeHtml4;
+// ...
+String escaped = escapeHtml4(source);
+</code></pre>
+
+<p>2.<strong>PHP</strong><br/>
+htmlspecialchars() 在输出时使用该函数转义用户输入的值，尤其注意第二个 flag 参数要使用 ENT_QUOTES</p>
+
+<pre class="line-numbers"><code class="language-php">&lt;?php 
+    $name = $_GET[&quot;name&quot;];
+    $name = htmlspecialchars($name, ENT_QUOTES);
+?&gt;
+</code></pre>
+
+<p>htmlentities() 在输出时使用该函数转义用户输入的值</p>
+
+<p>针对富文本，使用以下过滤类进行处理：</p>
+
+<pre class="line-numbers"><code class="language-php">&lt;?php
+/**
+ * PHP 富文本XSS过滤类
+ *
+ * @package XssHtml
+ * @version 1.0.0 
+ * @link http://phith0n.github.io/XssHtml
+ * @since 20140621
+ * @copyright (c) Phithon All Rights Reserved
+ *
+ */
+
+#
+# Usage: 
+# &lt;?php
+# require(&#39;Xss.php&#39;);
+# $html = &#39;&lt;html code&gt;&#39;;
+# $xss = new XssHtml($html);
+# $html = $xss-&gt;getHtml();
+# ?\&gt;
+# 
+# 需求：
+# PHP Version &gt; 5.0
+# 浏览器版本：IE7+ 或其他浏览器，无法防御IE6及以下版本浏览器中的XSS
+# 更多使用选项见 http://phith0n.github.io/XssHtml
+
+class Xss {
+    private $m_dom;
+    private $m_xss;
+    private $m_ok;
+    private $m_AllowAttr = array(&#39;title&#39;, &#39;src&#39;, &#39;href&#39;, &#39;id&#39;, &#39;class&#39;, &#39;style&#39;, &#39;width&#39;, &#39;height&#39;, &#39;alt&#39;, &#39;target&#39;, &#39;align&#39;);
+    private $m_AllowTag = array(&#39;img&#39;, &#39;br&#39;, &#39;strong&#39;, &#39;b&#39;, &#39;code&#39;, &#39;p&#39;, &#39;div&#39;, &#39;em&#39;, &#39;span&#39;, &#39;h1&#39;, &#39;h2&#39;, &#39;h3&#39;, &#39;h4&#39;, &#39;h5&#39;, &#39;h6&#39;, &#39;table&#39;, &#39;ul&#39;, &#39;ol&#39;, &#39;tr&#39;, &#39;th&#39;, &#39;td&#39;, &#39;hr&#39;, &#39;li&#39;, &#39;u&#39;);
+
+    /**
+     * 构造函数
+     *
+     * @param string $html 待过滤的文本
+     * @param string $charset 文本编码，默认utf-8
+     * @param array $AllowTag 允许的标签，如果不清楚请保持默认，默认已涵盖大部分功能，不要增加危险标签
+     */
+    public function __construct($html, $charset = &#39;utf-8&#39;, $AllowTag = array()){
+        $this-&gt;m_AllowTag = empty($AllowTag) ? $this-&gt;m_AllowTag : $AllowTag;
+        $this-&gt;m_xss = strip_tags($html, &#39;&lt;&#39; . implode(&#39;&gt;&lt;&#39;, $this-&gt;m_AllowTag) . &#39;&gt;&#39;);
+        if (empty($this-&gt;m_xss)) {
+            $this-&gt;m_ok = FALSE;
+            return ;
+        }
+        $this-&gt;m_xss = &quot;&lt;meta http-equiv=\&quot;Content-Type\&quot; content=\&quot;text/html;charset={$charset}\&quot;&gt;&lt;nouse&gt;&quot; . $this-&gt;m_xss . &quot;&lt;/nouse&gt;&quot;;
+        $this-&gt;m_dom = new DOMDocument();
+        $this-&gt;m_dom-&gt;strictErrorChecking = FALSE;
+        $this-&gt;m_ok = @$this-&gt;m_dom-&gt;loadHTML($this-&gt;m_xss);
+    }
+
+    /**
+     * 获得过滤后的内容
+     */
+    public  function getHtml()
+    {
+        if (!$this-&gt;m_ok) {
+            return &#39;&#39;;
+        }
+        $nodeList = $this-&gt;m_dom-&gt;getElementsByTagName(&#39;*&#39;);
+        for ($i = 0; $i &lt; $nodeList-&gt;length; $i++){
+            $node = $nodeList-&gt;item($i);
+            if (in_array($node-&gt;nodeName, $this-&gt;m_AllowTag)) {
+                if (method_exists($this, &quot;__node_{$node-&gt;nodeName}&quot;)) {
+                    call_user_func(array($this, &quot;__node_{$node-&gt;nodeName}&quot;), $node);
+                }else{
+                    call_user_func(array($this, &#39;__node_default&#39;), $node);
+                }
+            }
+        }
+        $html = strip_tags($this-&gt;m_dom-&gt;saveHTML(), &#39;&lt;&#39; . implode(&#39;&gt;&lt;&#39;, $this-&gt;m_AllowTag) . &#39;&gt;&#39;);
+        $html = preg_replace(&#39;/^\n(.*)\n$/s&#39;, &#39;$1&#39;, $html);
+        return $html;
+    }
+
+    private function __true_url($url){
+        if (preg_match(&#39;#^https?://.+#is&#39;, $url)) {
+            return $url;
+        }else{
+            return &#39;http://&#39; . $url;
+        }
+    }
+
+    private function __get_style($node){
+        if ($node-&gt;attributes-&gt;getNamedItem(&#39;style&#39;)) {
+            $style = $node-&gt;attributes-&gt;getNamedItem(&#39;style&#39;)-&gt;nodeValue;
+            $style = str_replace(&#39;\\&#39;, &#39; &#39;, $style);
+            $style = str_replace(array(&#39;&amp;#&#39;, &#39;/*&#39;, &#39;*/&#39;), &#39; &#39;, $style);
+            $style = preg_replace(&#39;#e.*x.*p.*r.*e.*s.*s.*i.*o.*n#Uis&#39;, &#39; &#39;, $style);
+            return $style;
+        }else{
+            return &#39;&#39;;
+        }
+    }
+
+    private function __get_link($node, $att){
+        $link = $node-&gt;attributes-&gt;getNamedItem($att);
+        if ($link) {
+            return $this-&gt;__true_url($link-&gt;nodeValue);
+        }else{
+            return &#39;&#39;;
+        }
+    }
+
+    private function __setAttr($dom, $attr, $val){
+        if (!empty($val)) {
+            $dom-&gt;setAttribute($attr, $val);
+        }
+    }
+
+    private function __set_default_attr($node, $attr, $default = &#39;&#39;)
+    {
+        $o = $node-&gt;attributes-&gt;getNamedItem($attr);
+        if ($o) {
+            $this-&gt;__setAttr($node, $attr, $o-&gt;nodeValue);
+        }else{
+            $this-&gt;__setAttr($node, $attr, $default);
+        }
+    }
+
+    private function __common_attr($node)
+    {
+        $list = array();
+        foreach ($node-&gt;attributes as $attr) {
+            if (!in_array($attr-&gt;nodeName, 
+                $this-&gt;m_AllowAttr)) {
+                $list[] = $attr-&gt;nodeName;
+            }
+        }
+        foreach ($list as $attr) {
+            $node-&gt;removeAttribute($attr);
+        }
+        $style = $this-&gt;__get_style($node);
+        $this-&gt;__setAttr($node, &#39;style&#39;, $style);
+        $this-&gt;__set_default_attr($node, &#39;title&#39;);
+        $this-&gt;__set_default_attr($node, &#39;id&#39;);
+        $this-&gt;__set_default_attr($node, &#39;class&#39;);
+    }
+
+    private function __node_img($node){
+        $this-&gt;__common_attr($node);
+
+        $this-&gt;__set_default_attr($node, &#39;src&#39;);
+        $this-&gt;__set_default_attr($node, &#39;width&#39;);
+        $this-&gt;__set_default_attr($node, &#39;height&#39;);
+        $this-&gt;__set_default_attr($node, &#39;alt&#39;);
+        $this-&gt;__set_default_attr($node, &#39;align&#39;);
+
+    }
+
+    private function __node_a($node){
+        $this-&gt;__common_attr($node);
+        $href = $this-&gt;__get_link($node, &#39;href&#39;);
+
+        $this-&gt;__setAttr($node, &#39;href&#39;, $href);
+        $this-&gt;__set_default_attr($node, &#39;target&#39;, &#39;_blank&#39;);
+    }
+
+    private function __node_embed($node){
+        $this-&gt;__common_attr($node);
+        $link = $this-&gt;__get_link($node, &#39;src&#39;);
+
+        $this-&gt;__setAttr($node, &#39;src&#39;, $link);
+        $this-&gt;__setAttr($node, &#39;allowscriptaccess&#39;, &#39;never&#39;);
+        $this-&gt;__set_default_attr($node, &#39;width&#39;);
+        $this-&gt;__set_default_attr($node, &#39;height&#39;);
+    }
+
+    private function __node_default($node){
+        $this-&gt;__common_attr($node);
+    }
+}
+
+?&gt;
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15483045490756.html">
                 
@@ -840,42 +1128,6 @@ http://localhost/DVWA-master/login.php<br/><br/>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15483045490562.html">
-                
-                  <h1>OneDrive映射到本地（像访问本地磁盘一样访问网盘）</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>参考以下链接即可：<br/>
-<a href="http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc">http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc</a></p>
-
-<p>举一反三，webdav、nfs、samba等都可以使用这种方式挂载，来方便访问。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -940,6 +1192,8 @@ http://localhost/DVWA-master/login.php<br/><br/>
         
             <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
+            <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
+        
             <a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html"><strong>星火流萤</strong></a>
          
         </p>
@@ -955,6 +1209,12 @@ http://localhost/DVWA-master/login.php<br/><br/>
                 <div class="side-content">
                 <ul class="posts-list">
 	      
+		      
+			      <li class="post">
+			        <a href="15532149133328.html">古语</a>
+			      </li>
+		     
+		  
 		      
 			      <li class="post">
 			        <a href="15523826250881.html">excel 工作表插入当前时间和日期</a>
@@ -976,12 +1236,6 @@ http://localhost/DVWA-master/login.php<br/><br/>
 		      
 			      <li class="post">
 			        <a href="15520320136368.html">bundle install 无法使用的解决办法</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15515375536566.html">rclone挂载 onedrive 教程</a>
 			      </li>
 		     
 		  

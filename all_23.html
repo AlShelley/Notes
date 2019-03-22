@@ -111,6 +111,8 @@
         
             <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
+            <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
+        
             <li><a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html">星火流萤</a></li>
          
 
@@ -133,6 +135,45 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15483045487999.html">
+                
+                  <h1>使用ssh科学上网</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>打开终端输入：<br/>
+ <code>ssh -D 1085 -p 6754 root@xx.xx.xx.xx</code><br/>
+ 然后输入密码即可。xx即远程服务器ip。<br/>
+ 这意味着本地1085端口被转发到了远程服务器的6754上，然后在浏览器配置socks5代理：127.0.0.1 1085<br/>
+ 就可以科学上网了。</p>
+
+<p>如果不稳定，可以考虑使用autossh。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15483045487979.html">
                 
@@ -251,56 +292,6 @@ git clone --recursive git://github.com/isaacs/npm.git`
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15483045487940.html">
-                
-                  <h1>mongodb安装配置（arch）</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>参考文档：<a href="https://wiki.archlinux.org/index.php/MongoDB_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E4.BD.BF.E7.94.A8">https://wiki.archlinux.org/index.php/MongoDB_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E4.BD.BF.E7.94.A8</a></p>
-</blockquote>
-
-<p><code>pacman -S mongo</code><br/>
-<code>/usr/bin/.mongo --help</code><br/>
-<code>systemctl start mongodb.service</code><br/>
-这样就启动了mongo，启动的配置文件是：<code>cat /etc/mongodb.conf</code><br/>
-然后退出到用户目录，运行mongo<br/>
-<code>~ ❯❯❯ mongo</code><br/>
-<code>/var/lib/mongodb/ 是Arch Linux 的 ** 默认dbpath**</code><br/>
-但是无法访问<br/>
-修改mongodb的用户组为自己的<br/>
-<code>chown mongodb:lonelyor mongodb</code></p>
-
-<p><code>mkdir /home/lonelyor/工作/mongodb</code><br/>
-<code>touch /home/lonelyor/工作/mongodb/data</code><br/>
-<code>touch /home/lonelyor/工作/mongodb/logs</code></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -365,6 +356,8 @@ git clone --recursive git://github.com/isaacs/npm.git`
         
             <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
+            <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
+        
             <a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html"><strong>星火流萤</strong></a>
          
         </p>
@@ -380,6 +373,12 @@ git clone --recursive git://github.com/isaacs/npm.git`
                 <div class="side-content">
                 <ul class="posts-list">
 	      
+		      
+			      <li class="post">
+			        <a href="15532149133328.html">古语</a>
+			      </li>
+		     
+		  
 		      
 			      <li class="post">
 			        <a href="15523826250881.html">excel 工作表插入当前时间和日期</a>
@@ -401,12 +400,6 @@ git clone --recursive git://github.com/isaacs/npm.git`
 		      
 			      <li class="post">
 			        <a href="15520320136368.html">bundle install 无法使用的解决办法</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15515375536566.html">rclone挂载 onedrive 教程</a>
 			      </li>
 		     
 		  

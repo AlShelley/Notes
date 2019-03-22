@@ -4,13 +4,23 @@
   <title><![CDATA[lonelyorWiki]]></title>
   <link href="http://www.lonelyor.org/lonelyorWiki/atom.xml" rel="self"/>
   <link href="http://www.lonelyor.org/lonelyorWiki/"/>
-  <updated>2019-03-18T18:34:28+08:00</updated>
+  <updated>2019-03-22T11:07:30+08:00</updated>
   <id>http://www.lonelyor.org/lonelyorWiki/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[古语]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15532149133328.html"/>
+    <updated>2019-03-22T08:35:13+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15532149133328.html</id>
+    <content type="html"><![CDATA[
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[excel 工作表插入当前时间和日期]]></title>
@@ -1019,89 +1029,6 @@ root用户添加命令则把脚本放在 /usr/bin 即可。<br/>
 接下来我们使用十六进制编码器打开这张图片，会发现：<br/>
 <figure><img src="http://images.lonelyor.org/ctflearn-96-2.png" alt="ctflearn-96-2"/><figcaption>ctflearn-96-</figcaption></figure><br/>
 标红部分即是flag。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[JavaScript基础]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15483045491003.html"/>
-    <updated>2019-01-24T12:35:49+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15483045491003.html</id>
-    <content type="html"><![CDATA[
-<p>JavaScript是一种脚本编程语言。<br/>
-JavaScript运行顺序是从上往下，因此要注意代码的顺序。</p>
-
-<h2 id="toc_0">如何使用JavaScript</h2>
-
-<p>内部JavaScript：在html页面中嵌入<code>&lt;script&gt;这里写js代码&lt;/script&gt;</code>即可插入js代码。<br/>
-外部JavaScript：<code>&lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;</code>可以调用html文件同级目录下的script.js文件。</p>
-
-<h2 id="toc_1">注释</h2>
-
-<p><code>// 这是单行注释</code><br/>
-<code>/* 这是多行注释 */</code></p>
-
-<h2 id="toc_2">变量</h2>
-
-<p>var用来定义变量</p>
-
-<h2 id="toc_3">函数</h2>
-
-<p>function funName(){<br/>
-    js代码<br/>
-}<br/>
-函数是可复用的代码块，可以一次编写反复使用。</p>
-
-<h2 id="toc_4">运算符</h2>
-
-<p><code>+</code>、<code>-</code>、<code>*</code>、<code>/</code> 分别是加减乘除<br/>
-<code>===</code>、<code>!==</code>、<code>&lt;</code>、<code>&gt;</code> 分别是等于、不等于、小于、大于<br/>
-<code>&amp;&amp;</code>、<code>||</code>、<code>!</code> 分别表示与、或、非</p>
-
-<h2 id="toc_5">条件语句</h2>
-
-<p>if(条件){<br/>
-    js代码<br/>
-} else {<br/>
-    js代码<br/>
-}</p>
-
-<h2 id="toc_6">事件</h2>
-
-<p>事件相关函数分为：事件监听器和事件处理器 </p>
-
-<h2 id="toc_7">循环</h2>
-
-<p>for(起式值；退出条件；增加器){<br/>
-    js代码<br/>
-}</p>
-
-<h2 id="toc_8">switch语句</h2>
-
-<p>switch - 他们以单个表达式/值作为输入，然后查看多个选项，直到找到与该值相匹配的选项，执行与之相关的代码。</p>
-
-<pre class="line-numbers"><code class="language-javascript">switch (expression) {
-  case choice1:
-    run this code
-    break;
-
-  case choice2:
-    run this code instead
-    break;
-    
-  // include as many cases as you like
-
-  default:
-    actually, just run this code
-}
-</code></pre>
-
-<h2 id="toc_9">写一个猜数字的小游戏</h2>
-
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/First_steps/A_first_splash#%E7%8C%9C%E6%95%B0%E5%AD%97%E6%B8%B8%E6%88%8F">猜数字游戏</a></p>
-
-<p>未完待续...</p>
 
 ]]></content>
   </entry>

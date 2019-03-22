@@ -111,6 +111,8 @@
         
             <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
+            <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
+        
             <li><a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html">星火流萤</a></li>
          
 
@@ -133,6 +135,73 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15483045487663.html">
+                
+                  <h1>crontab设置定时任务</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>文章参考自：<a href="http://blog.csdn.net/xiaochuige/article/details/49252741">http://blog.csdn.net/xiaochuige/article/details/49252741</a> 感谢作者。</p>
+</blockquote>
+
+<p>crontab的基本格式：</p>
+
+<pre class="line-numbers"><code class="language-text">* * * * * command
+几个星号分别为：分 时 日 月 周，最后是要执行的命令。
+分：0~59
+时：0~23
+日：1~31
+月：1~12
+周：0～6（0表示星期天）
+除了数字还有几个个特殊的符号就是* / - ：
+* 代表所有的取值范围内的数字
+/ 代表每的意思
+*/5 表示每5个单位
+- 代表从某个数字到某个数字
+, 分开几个离散的数字
+</code></pre>
+
+<p>配置文件的一些例子：</p>
+
+<pre class="line-numbers"><code class="language-text">0 3 * * * /root/test.sh 每天凌晨3点执行test.sh文件
+* 23-7/1 * * * /root/lnmp restart 晚上11点到早上7点之间，每隔一小时重启lnmp套件
+*/30 * * * * /usr/sbin/ntpdate 每半小时同步一下时间
+0 23 * * 6 /lnmp restart 每星期六的11 : 00 pm重启重启lnmp套件。
+*/1 * * * * echo &quot;i am running.&quot;&gt;&gt;/tmp/running.txt 每隔1分钟向/tmp/running.txt写一个&quot;i am running.&quot;字符串。
+</code></pre>
+
+<p>运行<br/>
+我以为编辑crontab保存后会自动执行，其实不然，必须通过重启cron才可以，命令如下：<br/>
+启动/etc/init.d/cron start<br/>
+关闭/etc/init.d/cron stop<br/>
+重启/etc/init.d/cron restart</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15483045487644.html">
                 
@@ -395,43 +464,6 @@ cookie溢出<br/>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15483045487101.html">
-                
-                  <h1>异常登录检测</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>异常登录功能用来检测服务器上的登录行为。<br/>
-非常用地的登录行为告警（这个常用登陆地可以作为个人信息的一部分来由用户设置；或者收集第一次成功登录时的公网ip，然后将此ip地址设置位常用登陆地，从该时间往后顺延24小时内的所有公网登录地也会被记为常用登陆地，当超过24小时候，所有不在常用登陆地的登录行为均视为异地登录警告。当某个ip被判定为异地登录时，仅第一次登录行为进行告警，如果成功登录6次或以上，则默认将此ip的地点记录为常用登录地。）<br/>
-非常用登录ip告警<br/>
-非常用登录时间告警<br/>
-非常用登录账号告警（同一时间段内超多次登录同一账号、同一时间段内不同地理位置登录账号、同一时间段内多个ip登录同一账号、不同设备登录同一账号、同一设备不同ip登录同一账号）</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -496,6 +528,8 @@ cookie溢出<br/>
         
             <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
+            <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
+        
             <a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html"><strong>星火流萤</strong></a>
          
         </p>
@@ -511,6 +545,12 @@ cookie溢出<br/>
                 <div class="side-content">
                 <ul class="posts-list">
 	      
+		      
+			      <li class="post">
+			        <a href="15532149133328.html">古语</a>
+			      </li>
+		     
+		  
 		      
 			      <li class="post">
 			        <a href="15523826250881.html">excel 工作表插入当前时间和日期</a>
@@ -532,12 +572,6 @@ cookie溢出<br/>
 		      
 			      <li class="post">
 			        <a href="15520320136368.html">bundle install 无法使用的解决办法</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15515375536566.html">rclone挂载 onedrive 教程</a>
 			      </li>
 		     
 		  

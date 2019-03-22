@@ -3,15 +3,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="bookmark" href="https://raw.githubusercontent.com/AlShelley/lonelyorWiki/master/asset/img/favicon.ico" type="images/x-icon"/>
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/AlShelley/lonelyorWiki/master/asset/img/favicon.ico" type="images/x-icon"/>
+
     <title>
     
-  lonelyorのblog
+  lonelyorWiki
   
   </title>
   
   
-  
-  <link href="atom.xml" rel="alternate" title="lonelyorのblog" type="application/atom+xml">
+  <link href="atom.xml" rel="alternate" title="lonelyorWiki" type="application/atom+xml">
     <link rel="stylesheet" href="asset/css/foundation.min.css" />
     <link rel="stylesheet" href="asset/css/docs.css" />
     <script src="asset/js/vendor/modernizr.js"></script>
@@ -21,7 +24,7 @@
   <script>hljs.initHighlightingOnLoad();</script>
 <script type="text/javascript">
   function before_search(){
-    var searchVal = 'site:www.lonelyor.org/lonelyorNotes ' + document.getElementById('search_input').value;
+    var searchVal = 'site:www.lonelyor.org/lonelyorWiki ' + document.getElementById('search_input').value;
     document.getElementById('search_q').value = searchVal;
     return true;
   }
@@ -41,11 +44,17 @@
       <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
         <ul id="main-menu" class="left">
         
-        <li id=""><a target="_self" href="index.html">主页</a></li>
+        <li id=""><a target="_self" href="index.html">首页</a></li>
         
         <li id=""><a target="_self" href="archives.html">归档</a></li>
         
-        <li id=""><a target="_self" href="lost.html">失乐园</a></li>
+        <li id=""><a target="_self" href="beautiful.html">惊鸿</a></li>
+        
+        <li id=""><a target="_self" href="ruby.html">流光</a></li>
+        
+        <li id=""><a target="_self" href="search.html">北斗</a></li>
+        
+        <li id=""><a target="_self" href="lose.html">失乐园</a></li>
         
         <li id=""><a target="_self" href="about.html">关于</a></li>
         
@@ -67,18 +76,24 @@
 
         <nav class="tab-bar show-for-small">
   <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-    <span> &nbsp; lonelyorのblog</span>
+    <span> &nbsp; lonelyorWiki</span>
   </a>
 </nav>
 
 <aside class="left-off-canvas-menu">
       <ul class="off-canvas-list">
         
-        <li><a target="_self" href="index.html">主页</a></li>
+        <li><a target="_self" href="index.html">首页</a></li>
         
         <li><a target="_self" href="archives.html">归档</a></li>
         
-        <li><a target="_self" href="lost.html">失乐园</a></li>
+        <li><a target="_self" href="beautiful.html">惊鸿</a></li>
+        
+        <li><a target="_self" href="ruby.html">流光</a></li>
+        
+        <li><a target="_self" href="search.html">北斗</a></li>
+        
+        <li><a target="_self" href="lose.html">失乐园</a></li>
         
         <li><a target="_self" href="about.html">关于</a></li>
         
@@ -86,19 +101,19 @@
     <li><label>Categories</label></li>
 
         
-            <li><a href="Web%E6%94%BB%E9%98%B2.html">Web攻防</a></li>
+            <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
         
-            <li><a href="%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html">操作系统</a></li>
-        
-            <li><a href="%E8%99%9A%E6%8B%9F%E5%AE%9E%E9%AA%8C%E5%AE%A4.html">虚拟实验室</a></li>
-        
-            <li><a href="CTF.html">CTF</a></li>
+            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
         
             <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
         
-            <li><a href="%E6%B5%8F%E8%A7%88%E5%99%A8.html">浏览器</a></li>
+            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
-            <li><a href="%E5%A5%87%E6%B7%AB%E5%B7%A7%E6%8A%80.html">奇淫巧技</a></li>
+            <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
+        
+            <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
+        
+            <li><a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html">星火流萤</a></li>
          
 
       </ul>
@@ -121,195 +136,15 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15446866501207.html">
+                <a class="clearlink" href="15480046337420.html">
                 
-                  <h1>IIS短文件名漏洞</h1>
+                  <h1>无法安装docker</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">漏洞原理</h2>
-
-<hr/>
-
-<p>windows在创建一个新文件时，操作系统还会生成 8.3 格式的兼容 MS-DOS 的（短）文件名，以允许基于 MS-DOS 或16位 windows 的程序访问这些文件。    </p>
-
-<h2 id="toc_1">利用场景</h2>
-
-<hr/>
-
-<p>1、用于猜解文件/文件名<br/><br/>
-2、.Net Framework 的拒绝服务攻击（不常见）</p>
-
-<h2 id="toc_2">检测方法</h2>
-
-<hr/>
-
-<p><strong>黑盒测试</strong><br/><br/>
-使用<a href="https://github.com/lijiejie/IIS_shortname_Scanner">IIS短文件名扫描器</a><br/><br/>
-<strong>白盒测试</strong><br/>
-几乎所有的 windows 操作系统，在 cmd 中使用命令：</p>
-
-<pre class="line-numbers"><code class="language-bat">dir /x
-</code></pre>
-
-<p>如图：<br/>
-<img src="media/15446866501207/%E7%9F%AD%E6%96%87%E4%BB%B6%E5%90%8D%E6%98%BE%E7%A4%BA.png" alt="短文件名显示"/></p>
-
-<h2 id="toc_3">修复方案</h2>
-
-<hr/>
-
-<p>1、升级 .net framework 至 4.0 版本或以上<br/><br/>
-2、修改注册表键值<br/><br/>
-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem 修改NtfsDisable8dot3NameCreation为1。（此项默认为0）<br/><br/>
-此设置用于禁用短文件名功能，重启后生效。<br/><br/>
-或者通过 CMD 命令：    </p>
-
-<pre class="line-numbers"><code class="language-txt">Windows Server 2008 R2
-查询是否开启短文件名功能：fsutil 8dot3name query
-关闭该功能：fsutil 8dot3name set 1
-
-Windows Server 2003
-关闭该功能：fsutil behavior set disable8dot3 1
-</code></pre>
-
-<p>以上操作只能防止新创建的文件/文件名不会出现短文件名，而当前文件/文件名依然保持短文件名。完整解决方案还需要如下操作：<br/><br/>
-3、<br/><br/>
-　　a、从当前目录中创建一个副本,并将其重命名为 tempNew；<br/><br/>
-　　b、将当前目录重命名为“tempOld”；<br/><br/>
-　　c、将“tempNew”重命名为原来的目录名。<br/><br/>
-4、禁止 url 中使用 “~” 或它的 Unicode 编码。（IIS7.0的请求阻塞不能完全阻止“~”波浪号。）</p>
-
-<hr/>
-
-<hr/>
-
-<hr/>
-
-<h2 id="toc_4">背景知识</h2>
-
-<hr/>
-
-<p>windows 支持的长文件名最多为 255 个字符。windows 还以 8.3 格式生成与 MS-DOS 兼容的（短）文件名，以允许基于 MS-DOS 或 16 位 windows 的程序访问这些文件。<br/><br/>
-8.3格式短文件名规范中：<br/><br/>
-‘8’是指文件名或目录名的主体部分小于等于 8 个字节；‘3’是指文件名的扩展名部分小于等于 3 个字节。<br/><br/>
-windows 会按以下方式从长文件名生成短文件名：<br/><br/>
-windows 首先会删除文件名中的任何无效字符和空格。无效字符包括：</p>
-
-<pre class="line-numbers"><code class="language-txt">.&quot;/\[]:;=,
-</code></pre>
-
-<p>由于短文件名只能包含一个英文句点（.），因此 windows 将删除文件名中的其他英文句点，即使文件名中最后一个英文句点后面是有效的非空格字符也是如此。例如：windows 从长文件名 This is a really long filename.123.456.789.txt 生成短文件名 Thisis~1.txt 否则，windows 将忽略最后一个英文句点，而使用倒数第二个英文句点。例如：windows从长文件名 This is a really long filename.123.456.789. 生成短文件名 Thisis~1.789。<br/><br/>
-生成短文件名若需要复制的话，windows 将文件名截断为 6 个字符，并在后边附加一个波形符号（~）和一个数字（创建的每一个以 ~1 结尾的唯一文件名，复制文件以 ~2、~3等结尾。）    </p>
-
-<h2 id="toc_5">影响范围</h2>
-
-<hr/>
-
-<p>Windows 10 Pro released in July 2015Windows 10 Enterprise released in July 2015Microsoft Windows Server 2003 Standard EditionMicrosoft Windows Server 2003 Enterprise EditionMicrosoft Windows Server 2003 Datacenter EditionMicrosoft Windows Server 2003 Web EditionMicrosoft Windows Server 2003, Enterprise x64 EditionMicrosoft Windows Small Business Server 2003 Standard EditionMicrosoft Windows Small Business Server 2003 Premium EditionMicrosoft Windows XP Home EditionMicrosoft Windows XP Professional EditionMicrosoft Windows Datacenter Server Limited EditionMicrosoft Windows Advanced Server, Limited EditionMicrosoft Windows 2000 ServerMicrosoft Windows 2000 Advanced ServerMicrosoft Windows 2000 Professional EditionMicrosoft Windows NT Workstation 3.5Microsoft Windows NT Workstation 3.51Microsoft Windows NT Workstation 4.0 开发员版Microsoft Windows NT Server 3.51Microsoft Windows NT Server 4.0 Standard EditionWindows Vista Service Pack 2Windows Vista BusinessWindows Vista EnterpriseWindows Vista Home PremiumWindows Vista UltimateWindows Server 2008 Service Pack 2Windows Server 2008 StandardWindows Server 2008 EnterpriseWindows Server 2008 DatacenterWindows Server 2008 for Itanium-Based SystemsWindows 7 Service Pack 1Windows 7 Home PremiumWindows 7 ProfessionalWindows 7 EnterpriseWindows 7 UltimateWindows Server 2008 R2 Service Pack 1Windows Server 2008 R2 StandardWindows Server 2008 R2 EnterpriseWindows Server 2008 R2 DatacenterWindows Server 2008 R2 for Itanium-Based SystemsWindows 8 EnterpriseWindows 8 ProWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 DatacenterWindows Server 2012 DatacenterWindows Server 2012 DatacenterWindows Server 2012 Datacenter<br/>
-列表内所有操作系统均受影响（数据来源日期：20171213）<br/><br/>
-该漏洞有其局限性：<br/><br/>
-1、只能猜解文件/文件夹名前六位，以及扩展名前三位<br/><br/>
-2、名称较短的文件是没有响应的短文件名的<br/><br/>
-3、需要 IIS 和 .net 同时满足。  </p>
-
-<h2 id="toc_6">漏洞详情</h2>
-
-<hr/>
-
-<p>在 windows 上的 Apache（Apache支持短文件名）上运行的 web 应用程序正在创建一个长文件名文件（如sql备份文件或会话文件，假设文件名是 backup-082119f75623eb7abd7bf357698ff66c.sql，windows 将创建短文件名 BACKUP〜1.SQL）。这种情况下，如果我们用短文件名访问这个文件，那么就有可能获取这个包含sql数据库备份的文件。<br/><br/>
-比较著名的一个例子：<br/><br/>
-wordpress 有一个备份博客的插件，该插件会为备份创建一个自定义目录（backup-88456）。备份完成后，该目录包含一个名为 wordpress_wp_20120702_576.sql 的文件  ，即 WordPress 数据库备份。这本应该难以猜测的，因为我们的目录名称中有5个数字加上日期和另外3个数字，即使忽略日期也至少有 100,000,000 个组合。然而由于短文件名的原因，目录名会变成 BACKUP~1 而文件名会变成 WORDPR~1.SQL。100,000,000 个组合被缩减为一个组合。    </p>
-
-<h2 id="toc_7">漏洞利用</h2>
-
-<hr/>
-
-<p><strong>短文件名漏洞</strong><br/>
-漏洞利用需要使用到通配符。在 windows 中，* 可以匹配n个字符（n可以为0,一个星号和n个星号的意义一样）。判断某站点是否存在 IIS 短文件名爆破，构造如下payload：    </p>
-
-<pre class="line-numbers"><code class="language-http">1. http://www.xxx.com/*~1*/.aspx
-2. http://www.xxx.com/l1j1e*~1*/.aspx
-</code></pre>
-
-<p>若1返回404而2返回400，则可以判断目标站点存在漏洞。<br/><br/>
-判断漏洞存在后，继续猜解目录下是否存在a开头的文件或文件夹，访问：    </p>
-
-<pre class="line-numbers"><code class="language-http">http://www.xxx.com/a*~1*/.aspx
-</code></pre>
-
-<p>若存在将返回404，不存在则返回400。以此类推，不断向下猜解所有的6个字符。<br/><br/>
-到此要考虑两种情况，若abcdef开头的是一个文件夹则    </p>
-
-<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*/~1/.aspx
-</code></pre>
-
-<p>返回404。若abcdef开头的是一个文件，则    </p>
-
-<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*~1/.aspx
-</code></pre>
-
-<p>返回404（注意！返回404表示存在）同理我们可以猜出文件后缀名：    </p>
-
-<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*~1*h*/.aspx
-</code></pre>
-
-<p>若返回404则代表扩展名中肯定存在h字符。<br/><br/>
-利用此漏洞可以猜解后台地址、敏感文件/文件名（如备份的rar、bak、sql等）；某些情况下，可以通过短文件名漏洞直接下载对应的文件（如备份sql文件）。<br/><br/>
-<br><br/>
-<strong>.Net Framework 拒绝服务攻击</strong><br/><br/>
-当请求文件夹名称包含 ~1 的请求，会导致不存在该文件的 .Net Framework 去递归查询所有根目录。如果只有一个“~1”是无效的，当“~1”大于一个，比如像这样：        </p>
-
-<pre class="line-numbers"><code class="language-http">\wwwtest\fuck~1\~1\~1\~1.aspx
-</code></pre>
-
-<p>此时文件系统会这样调用：    </p>
-
-<pre class="line-numbers"><code class="language-txt">\wwwtest                           SUCCESS
-\wwwtest\fuck~1\~1\~1\~1           PATH NOT FOUND
-\wwwtest\fuck~1                    NAME NOT FOUND
-\wwwtest\fuck~1\~1\                PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1\             PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1              PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1              PATH NOT FOUND
-\wwwtest\fuck~1\~1                 PATH NOT FOUND
-\wwwtest\fuck~1                    NAME NOT FOUND
-\wwwtest                           SUCCESS
-\wwwtest                           SUCCESS
-</code></pre>
-
-<p>如果我们请求的文件/文件夹名同时存在大小写时，这个请求会被请求两次，一次是原封不动的请求，一次是全部使用小写的请求。<br/><br/>
-下表显示了每个请求的FS调用的数量（Windows 2008 R2, IIS 7.5(latest patch – June 2012), and .Net framework 4.0.30319 (在别的系统下可能会不同)）<br/><br/>
-<img src="media/15446866501207/F5%E8%B0%83%E7%94%A8.png" alt="F5调用"/></p>
-
-<p>这个问题适用于当时的 .Net framework 的所有版本(<br/><br/>
-    IIS 1.0, Windows NT 3.51<br/><br/>
-    IIS 2.0, Windows NT 4.0<br/><br/>
-    IIS 3.0, Windows NT 4.0 Service Pack 2<br/><br/>
-    IIS 4.0, Windows NT 4.0 Option Pack<br/><br/>
-    IIS 5.0, Windows 2000<br/><br/>
-    IIS 5.1, Windows XP Professional and Windows XP Media Center Edition<br/><br/>
-    IIS 6.0, Windows Server 2003 and Windows XP Professional x64 Edition<br/><br/>
-    IIS 7.0, Windows Server 2008 and Windows Vista<br/><br/>
-    IIS 7.5, Windows 7 (error remotely enabled or no web.config)<br/><br/>
-    IIS 7.5, Windows 2008 (classic pipeline mode))<br/><br/>
-只是 F5 的调用次数会有不同。    </p>
-
-<h2 id="toc_8">参考链接</h2>
-
-<hr/>
-
-<ul>
-<li><a href="http://www.lijiejie.com/iis-win8-3-shortname-brute/">http://www.lijiejie.com/iis-win8-3-shortname-brute/</a><br/></li>
-<li><a href="https://www.acunetix.com/blog/articles/windows-short-8-3-filenames-web-security-problem/">https://www.acunetix.com/blog/articles/windows-short-8-3-filenames-web-security-problem/</a><br/></li>
-<li><a href="http://www.freebuf.com/articles/4908.html">http://www.freebuf.com/articles/4908.html</a><br/></li>
-<li><a href="https://support.microsoft.com/zh-cn/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions">https://support.microsoft.com/zh-cn/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions</a><br/></li>
-<li><a href="https://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf">https://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf</a><br/></li>
-</ul>
+                        	<p>请检查是否开启防火墙，防火墙是否屏蔽了docker的传入链接。<br/>
+通常连不上docker是因为防火墙的原因</p>
 
                         
                       </div>
@@ -318,10 +153,77 @@ wordpress 有一个备份博客的插件，该插件会为备份创建一个自�
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/13 15:37 下午</span>
+                    <span class="date">2019/1/21 1:17 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E4%B8%AD%E9%97%B4%E4%BB%B6.html'>中间件</a></span>
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15480046242082.html">
+                
+                  <h1>批量删除当前目录及其子目录下指定后缀名文件</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>find . -name &quot;*.tmp&quot; -type f -print -exec rm -rf {} \;</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/21 1:17 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15480046120109.html">
+                
+                  <h1>降低cpu使用率</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>pulimit -l 50 -p 1234<br/>
+-l后面是使用百分比，-p后面是进城PID，可以使用htop查看进程pid</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/21 1:16 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -357,11 +259,10 @@ wordpress 有一个备份博客的插件，该插件会为备份创建一个自�
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-              <div class="site-a-logo"><img src="http://images.lonelyor.org/lonelyornotesico.jpeg" /></div>
+                <div class="site-a-logo"><img src="http://images.lonelyor.org/favicon.jpg" /></div>
             
-          </br>
-                <h1>lonelyorのblog</h1>
-                <div class="site-des">一个用来记录学习笔记的网站</div>
+                <h1>lonelyorWiki</h1>
+                <div class="site-des">一个用来记录知识的网站</div>
                 <div class="social">
 
 
@@ -372,7 +273,7 @@ wordpress 有一个备份博客的插件，该插件会为备份创建一个自�
 
 
 
-<a target="_blank" class="github" target="_blank" href="https://github.com/AlShelley/lonelyorNotes" title="GitHub">GitHub</a>
+<a target="_blank" class="github" target="_blank" href="https://github.com/AlShelley/lonelyorWiki" title="GitHub">GitHub</a>
 <a target="_blank" class="email" href="mailto:lonelyor.org@gmail.com" title="Email">Email</a>
   <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 
@@ -383,25 +284,25 @@ wordpress 有一个备份博客的插件，该插件会为备份创建一个自�
 
               <div id="site-categories" class="side-item ">
                 <div class="side-header">
-                  <h2>分类</h2>
+                  <h2>Categories</h2>
                 </div>
                 <div class="side-content">
 
       	<p class="cat-list">
         
-            <a href="Web%E6%94%BB%E9%98%B2.html"><strong>Web攻防</strong></a>
+            <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
         
-            <a href="%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html"><strong>操作系统</strong></a>
-        
-            <a href="%E8%99%9A%E6%8B%9F%E5%AE%9E%E9%AA%8C%E5%AE%A4.html"><strong>虚拟实验室</strong></a>
-        
-            <a href="CTF.html"><strong>CTF</strong></a>
+            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
         
             <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
         
-            <a href="%E6%B5%8F%E8%A7%88%E5%99%A8.html"><strong>浏览器</strong></a>
+            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
-            <a href="%E5%A5%87%E6%B7%AB%E5%B7%A7%E6%8A%80.html"><strong>奇淫巧技</strong></a>
+            <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
+        
+            <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
+        
+            <a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html"><strong>星火流萤</strong></a>
          
         </p>
 
@@ -411,38 +312,38 @@ wordpress 有一个备份博客的插件，该插件会为备份创建一个自�
 
               <div id="site-categories" class="side-item">
                 <div class="side-header">
-                  <h2>最新文章</h2>
+                  <h2>Recent Posts</h2>
                 </div>
                 <div class="side-content">
                 <ul class="posts-list">
 	      
 		      
 			      <li class="post">
-			        <a href="15453757934453.html">css美化文章标题</a>
+			        <a href="15532149133328.html">古语</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15453720146052.html">Pycharm编程遇到的技巧</a>
+			        <a href="15523826250881.html">excel 工作表插入当前时间和日期</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15453717965995.html">npm Cannot find module 'semver' --解决方案</a>
+			        <a href="15520392147631.html">GTD 管理法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15453716917526.html">mongodb安装配置（arch）</a>
+			        <a href="15520390232741.html">用四象限管理任务</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15453714645346.html">linux安装配置aria2及其Web图形界面（debian为例）</a>
+			        <a href="15520320136368.html">bundle install 无法使用的解决办法</a>
 			      </li>
 		     
 		  
@@ -489,9 +390,7 @@ wordpress 有一个备份博客的插件，该插件会为备份创建一个自�
   <div class="row">
    <p class="copyright">Copyright &copy; 2018
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
-Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>,&nbsp; 
-Author is <a target="_blank" href="http://lonelyor.org">lonelyor</a>
-</p>
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
   </div>
 </div>
 
@@ -521,8 +420,7 @@ Author is <a target="_blank" href="http://lonelyor.org">lonelyor</a>
 
     
 
-<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more">分享到：</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook">Facebook</a></div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"来自：http://www.lonelyor.org/","bdMini":"1","bdMiniList":["sqq","weixin","fbook","twi","qzone","tsina","tqq","tieba","douban","tsohu","linkedin","mshare","copy"],"bdPic":"http://images.lonelyor.org/lonelyornotesico.jpeg","bdStyle":"1","bdSize":"16"},"share":{"bdSize":16},"image":{"viewList":["qzone","weixin","tsina","tqq","fbook"],"viewText":"分享到：","viewSize":"24"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","weixin","tsina","tqq","fbook"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
 
   </body>
 </html>

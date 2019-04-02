@@ -109,6 +109,8 @@
         
             <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
+            <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
+        
             <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
             <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
@@ -136,19 +138,24 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15453702115650.html">
+                <a class="clearlink" href="15446969783198.html">
                 
-                  <h1>VMware14秘钥</h1>
+                  <h1>解决windows右键新建消失问题</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>CG54H-D8D0H-H8DHY-C6X7X-N2KG6<br/>
-ZC3WK-AFXEK-488JP-A7MQX-XL8YF<br/>
-AC5XK-0ZD4H-088HP-9NQZV-ZG2R4<br/>
-ZC5XK-A6E0M-080XQ-04ZZG-YF08D<br/>
-ZY5H0-D3Y8K-M89EZ-AYPEG-MYUA8<br/>
-FF590-2DX83-M81LZ-XDM7E-MKUT4</p>
+                        	<p>新建一个文件后缀名写为reg（注册表文件格式）的文件。<br/>
+然后用记事本或文本编辑器打开，写入文件内容：</p>
+
+<pre class="line-numbers"><code class="language-text">Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\New]
+
+@=&quot;{D969A300-E7FF-11d0-A93B-00A0C90F2719}&quot;
+</code></pre>
+
+<p>保存，然后双击该文件，即可。</p>
 
                         
                       </div>
@@ -157,10 +164,10 @@ FF590-2DX83-M81LZ-XDM7E-MKUT4</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 13:30 下午</span>
+                    <span class="date">2018/12/13 18:29 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -174,24 +181,17 @@ FF590-2DX83-M81LZ-XDM7E-MKUT4</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15484074464554.html">
+                <a class="clearlink" href="15446968262703.html">
                 
-                  <h1>Snipaste 无法在 Mac 上截图的解决办法</h1>
+                  <h1>OneDrive映射到本地（像访问本地磁盘一样访问网盘）</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>MacOSX 版本：Mojave 10.14.2<br/>
-Snipaste 版本：1.16.2</p>
+                        	<p>参考以下链接即可：<br/>
+<a href="http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc">http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc</a></p>
 
-<p>以下列出遇到部分问题：<br/>
-1、使用截图功能，手动画矩形框，但是选定框画完后松开触摸板，选定框自动消失，导致无法截图。（手动选定截图区域占截图使用时间99%）<br/>
-2、使用截图功能，程序自动识别截图区域，双击可以得到截图并且有箭头等选项，画一个箭头后，选定框自动消失，截图会带着箭头自动保存到图片目录。（这导致没法多画几个箭头，也没法另存为图片）</p>
-
-<h1 id="toc_0">解决办法</h1>
-
-<p>我后来在 <a href="https://github.com/Snipaste/feedback/issues/1012">https://github.com/Snipaste/feedback/issues/1012</a> 这里找到了答案。<br/>
-关闭欧路词典的划词翻译功能，即可正常使用截图。</p>
+<p>举一反三，webdav、nfs、samba等都可以使用这种方式挂载，来方便访问。</p>
 
                         
                       </div>
@@ -200,10 +200,10 @@ Snipaste 版本：1.16.2</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/25 17:10 下午</span>
+                    <span class="date">2018/12/13 18:27 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -217,25 +217,132 @@ Snipaste 版本：1.16.2</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15453720146052.html">
+                <a class="clearlink" href="15446897185202.html">
                 
-                  <h1>Pycharm编程遇到的技巧</h1>
+                  <h1>从零开始的DVWA之环境搭建</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">pycharm技巧</h2>
+                        	<blockquote>
+<p>文章写于2017年7月6日，很久之前的东西了。</p>
+</blockquote>
 
-<p>ctrl+z 撤回<br/>
-全部选中然后tab是全部缩进<br/>
-全部选中然后shift+tab是全部反缩进</p>
+<h2 id="toc_0">0X01 主机配置</h2>
 
-<h2 id="toc_1">编程技巧</h2>
+<p>　　操作系统：Ubuntu-Kylin-16.04-LTS_x64（VritualBox虚拟机）<br/><br/>
+　　相关组件：XAMPP+DVWA    </p>
 
-<p>dir()    #输出函数包含的方法<br/>
-type() #输出类型</p>
+<h2 id="toc_1">0X02 DVWA简介</h2>
 
-<p>更多技巧可以查阅官方文档的使用帮助。</p>
+<p>　　DVWA是一个用来进行安全脆弱性鉴定（练习挖洞）的PHP/MySQL应用。旨在帮助安全爱好者（黑客白客红客白帽子黑帽子绿帽子等）测试自己的专业技能和工具提供合法的环境（不要瞎搞别人网站，这样不好...），提升技术能力的同时更好的维护比特世界的和平。       </p>
+
+<h2 id="toc_2">0X03 XAMPP简介</h2>
+
+<p>　　XAMPP（Apache+MySQL+PHP+PERL）是一个功能强大的建站集成软件包。这个软件包原来的名字是 LAMPP，但是为了避免误解，最新的几个版本就改名为 XAMPP 了。由于DWVA需要PHP环境，嗯，就由XAMMP来守护了。    </p>
+
+<h2 id="toc_3">0X04 XAMPP和DVWA安装</h2>
+
+<p>　　首先访问官网 <a href="https://www.apachefriends.org/zh_cn/download.html">https://www.apachefriends.org/zh_cn/download.html</a> 然后点击下载：<br/><br/>
+<figure><img src="media/15446897185202/1.png" alt="1"/></figure></p>
+
+<p>接着就会弹个框：<br/><br/>
+<figure><img src="media/15446897185202/2.png" alt="2"/></figure></p>
+
+<p>去一趟茅房回来就下完了，你要是嫌弃7下的太慢，可以去下5.6，速度会快些，接着就是安装。　　　　<br/>
+　　安装过程如下（记得加权限，然后）：　　　　<br/>
+<figure><img src="media/15446897185202/3.png" alt="3"/></figure><br/>
+　　　　<br/>
+<figure><img src="media/15446897185202/4.png" alt="4"/></figure><br/>
+　<br/>
+一直点击next就行了……　　　　<br/>
+<figure><img src="media/15446897185202/5.png" alt="5"/></figure><br/>
+　　　<br/>
+　　这里告诉我们XAMPP被安装在/opt/lampp文件（linux一切皆文件）里面。最后点击Finish就完成了安装。<br/><br/>
+启动XAMPP    </p>
+
+<pre class="line-numbers"><code class="language-shell">#cd /opt/lampp
+#./manager-linxu-x64.run
+或者
+#/opt/lamp/./manage-linux-x64.run  
+</code></pre>
+
+<p><figure><img src="media/15446897185202/6.png" alt="6"/></figure></p>
+
+<p>下面我们开始安装DWVA：<br/><br/>
+　　首先我们登录官网 <a href="http://www.dvwa.co.uk/">http://www.dvwa.co.uk/</a> 点击DOWNLOAD下载最新版的DWVA，是一个zip文件。<br/><br/>
+<figure><img src="media/15446897185202/7.png" alt="7"/></figure></p>
+
+<p>然后将文件解压（提取）到/opt/lamp/htdocs/目录下<br/><br/>
+<figure><img src="media/15446897185202/8.png" alt="8"/></figure></p>
+
+<p><figure><img src="media/15446897185202/9.png" alt="9"/></figure></p>
+
+<p>接着我们打开XAMPP的MySQL（默认只开了Apache）<br/><br/>
+<figure><img src="media/15446897185202/10.png" alt="10"/></figure></p>
+
+<p>然后访问 http://localhost/DVWA-master/index.php 诶!?报错<br/><br/>
+<figure><img src="media/15446897185202/11.png" alt="11"/></figure></p>
+
+<p>　　嗯，根据报错信息可知是配置文件有问题（废话啰），同样的根据提示我们知道要将文件名config.inc.php.dist改为config.inc.php（这里其实涉及到一个linux命令copy的用法，具体可自行百度： <a href="http://www.linuxdiyf.com/viewarticle.php?id=38590">http://www.linuxdiyf.com/viewarticle.php?id=38590</a> ）。改完名字之后就可以访问了，页面会自动跳转到： http://localhost/DVWA-master/setup.php 。然后我们用gedit打开这个文件config.inc.php看看是个什么东西，(⊙o⊙)哦原来是配置文件（废话连篇有木有），我们修改两个地方（1、数据库密码，我知道玩lol的你输入这个密码肯定飞快，不过我是玩dota的。2、安全等级设置为low，简单点容易玩，默认是难的。）     　<br/><br/>
+<figure><img src="media/15446897185202/12.png" alt="12"/></figure></p>
+
+<p>打开之后长这样：<br/><br/>
+<figure><img src="media/15446897185202/13.png" alt="13"/></figure></p>
+
+<p>怎么玩呢？我不知道啊，于是我瞎点了几下，<br/><br/>
+<figure><img src="media/15446897185202/14.png" alt="14"/></figure></p>
+
+<p>MMP又报错了，根据提示我们知道问题出在red部分,嗯，我们去修改一下所有带红色的地方的配置。<br/><br/>
+1、搞定PHP function allow_url_include：Disabled<br/><br/>
+找到php的配置文件，修改allow_url_include=Off 为allow_url_include=on（参考<a href="http://php.net/manual/zh/filesystem.configuration.php#ini.allow-url-include%EF%BC%89">http://php.net/manual/zh/filesystem.configuration.php#ini.allow-url-include）</a><br/><br/>
+<figure><img src="media/15446897185202/15.png" alt="15"/></figure></p>
+
+<p>然后修改/opt/lamp/etc/php.ini<br/><br/>
+<figure><img src="media/15446897185202/16.png" alt="16"/></figure></p>
+
+<p>2、解决reCAPTCHA key，配置文件里面有个谷歌连接，点进去剩下的估计你也看得懂应该知道该怎么做额。<br/><br/>
+<figure><img src="media/15446897185202/17.png" alt="17"/></figure></p>
+
+<p><figure><img src="media/15446897185202/18.png" alt="18"/></figure></p>
+
+<p>3、解决最后的两个NO<br/><br/>
+<figure><img src="media/15446897185202/19.png" alt="19"/></figure></p>
+
+<p>我们给这两个文件加权，运行命令：<br/><br/>
+<figure><img src="media/15446897185202/20.png" alt="20"/></figure></p>
+
+<p>然后点击<br/><br/>
+<figure><img src="media/15446897185202/21.png" alt="21"/></figure></p>
+
+<p>纳尼!?<br/><br/>
+<figure><img src="media/15446897185202/22.png" alt="22"/></figure></p>
+
+<p>只好回头再看看XAMPP的数据库配置文件，你会发现他的password默认是被注释了，我们取消注释。<br/><br/>
+<figure><img src="media/15446897185202/23.png" alt="23"/></figure></p>
+
+<p>最后你会发现不管怎么搞还是报错……这就尴尬了……<br/>
+经过尝试，我发现以下配置可以进入登录界面。<br/>
+XAMPP配置如下：<br/><br/>
+<figure><img src="media/15446897185202/24.png" alt="24"/></figure></p>
+
+<p>密码还是按照默认的注释掉<br/><br/>
+<figure><img src="media/15446897185202/25.png" alt="25"/></figure></p>
+
+<p>DVWA配置如下：<br/><br/>
+<figure><img src="media/15446897185202/26.png" alt="26"/></figure></p>
+
+<p>接着你就能进入登录界面了。恭喜！<br/>
+http://localhost/DVWA-master/login.php<br/><br/>
+<figure><img src="media/15446897185202/27.png" alt="27"/></figure></p>
+
+<p>输入账号密码然后登录就能愉快的玩耍了。<br/><br/>
+<figure><img src="media/15446897185202/28.png" alt="28"/></figure></p>
+
+<p>什么？你进不去？账号密码是什么？预知后事如何，请听下回分解。    </p>
+
+<p>下集预告：<br/><br/>
+　　欢迎来到DVWA的世界，这是你的第一关，登录破解…… </p>
 
                         
                       </div>
@@ -244,10 +351,10 @@ type() #输出类型</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 14:0 下午</span>
+                    <span class="date">2018/12/13 16:28 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -322,6 +429,8 @@ type() #输出类型</p>
         
             <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
+        
             <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
             <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
@@ -343,31 +452,31 @@ type() #输出类型</p>
 	      
 		      
 			      <li class="post">
-			        <a href="15480046120109.html">降低cpu使用率</a>
+			        <a href="15542044701566.html">debian or ubuntu 修改终端欢迎语</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15473464131197.html">读 Monyer 文章有感</a>
+			        <a href="15542027955936.html">mysql登录提示ERROR 1524 (HY000): Plugin 'unix_socket' is not loaded解决方法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15446969783198.html">解决windows右键新建消失问题</a>
+			        <a href="15538461504138.html">vmware三种网络模式详解</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15446973583267.html">解决npm更新或安装软件时下载较慢等问题</a>
+			        <a href="15538425408524.html">虚拟机安装win10操作系统</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15456175398128.html">自建kms服务器激活windows</a>
+			        <a href="15532282104799.html">Mac 终端设置欢迎页</a>
 			      </li>
 		     
 		  

@@ -109,6 +109,8 @@
         
             <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
+            <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
+        
             <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
             <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
@@ -136,21 +138,19 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045490492.html">
+                <a class="clearlink" href="15538461504138.html">
                 
-                  <h1>汉化firefox火狐浏览器</h1>
+                  <h1>vmware三种网络模式详解</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>1、点击 help——about 查看火狐版本<br/><br/>
-2、在火狐浏览器输入:<a href="http://ftp.mozilla.org,%E6%8C%89%E7%85%A7%E6%88%91%E4%B8%8B%E9%9D%A2%E7%BB%99%E7%9A%84%E7%BD%91%E5%9D%80%E4%BE%9D%E6%AC%A1%E9%80%89%E6%8B%A9%E7%9B%AE%E5%BD%95%EF%BC%8C%E8%AF%AD%E8%A8%80%E5%8C%85%E5%9C%A8xpi%E7%9B%AE%E5%BD%95%E4%B8%8B%EF%BC%8C%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%EF%BC%88zh-CN.xpi%EF%BC%89/%E7%B9%81%E4%BD%93%EF%BC%88zh-TW.xpi%EF%BC%89%E3%80%82">http://ftp.mozilla.org,按照我下面给的网址依次选择目录，语言包在xpi目录下，简体中文（zh-CN.xpi）/繁体（zh-TW.xpi）。</a><br/><br/>
-为了方便也可以直接拷贝下列链接到浏览器地址栏，安装。<br/><br/>
-32位系统目录：<a href="http://ftp.mozilla.org/pub/firefox/releases/50.1.0/linux-i686/xpi/zh-CN.xpi">http://ftp.mozilla.org/pub/firefox/releases/50.1.0/linux-i686/xpi/zh-CN.xpi</a><br/><br/>
-64位系统目录：<a href="http://ftp.mozilla.org/pub/firefox/releases/50.1.0/linux-x86_64/xpi/zh-CN.xpi">http://ftp.mozilla.org/pub/firefox/releases/50.1.0/linux-x86_64/xpi/zh-CN.xpi</a><br/><br/>
-记得把版本号修改成浏览器当前版本号。</p>
+                        	<p>文章详情请参阅：<br/>
+<a href="https://note.youdao.com/ynoteshare1/index.html?id=236896997b6ffbaa8e0d92eacd13abbf&amp;type=note">https://note.youdao.com/ynoteshare1/index.html?id=236896997b6ffbaa8e0d92eacd13abbf&amp;type=note</a><br/>
+或<br/>
+<a href="https://www.cnblogs.com/linjiaxin/p/6476480.html">https://www.cnblogs.com/linjiaxin/p/6476480.html</a></p>
 
-<p>另一种方法是打开扩展商店，输入chinese，然后添加即可。</p>
+<p>感谢作者的付出。</p>
 
                         
                       </div>
@@ -159,7 +159,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span class="date">2019/3/29 15:55 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
@@ -176,58 +176,21 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15428708110510.html">
+                <a class="clearlink" href="15523826250881.html">
                 
-                  <h1>更优雅的使用Hexo写博客</h1>
+                  <h1>excel 工作表插入当前时间和日期</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>曾经的博客是使用 Hexo 写的，我觉得Hexo这种在文章前面写上元信息的方式很棒。然而，每此写markdown文档都要输入这些元信息，这很麻烦，所以就写了个shell脚本来自动化输入文件元信息的过程。<br/>
-代码如下：</p>
+<p>参考链接：<a href="https://jingyan.baidu.com/article/75ab0bcbb03035d6864db203.html">https://jingyan.baidu.com/article/75ab0bcbb03035d6864db203.html</a></p>
 </blockquote>
 
-<pre class="line-numbers"><code class="language-bash">#!/bin/bash
-
-printf &quot;请输入文件名(example.md)，记得写后缀!\n&quot;
-read -p &quot;文件名是: &quot; filename
-# 这里的title取文件名不取后缀
-echo &quot;title: &quot;${filename%.*} &gt;&gt; $filename
-echo &quot;author: lonelyor&quot; &gt;&gt; $filename
-echo &quot;language: zh-CN&quot; &gt;&gt; $filename
-echo &quot;tags:&quot; &gt;&gt; $filename
-echo &quot;  - 标签&quot; &gt;&gt; $filename
-echo &quot;categories:&quot; &gt;&gt; $filename
-echo &quot;  - 分类&quot; &gt;&gt; $filename
-time=$(date &quot;+%Y-%m-%d %H:%M:%S&quot;)
-echo &quot;date: ${time}&quot;&gt;&gt; $filename
-echo &quot;---&quot; &gt;&gt; $filename
-echo &quot;&gt; description: &quot; &gt;&gt; $filename
-# printf和echo都是输出，&gt;&gt;表示追加，&gt;会覆盖文件
-# shell中使用变量需要先定义变量，然后使用时加 $
-# read 用来创建文件，文件名从终端获取
-</code></pre>
-
-<p>展示效果如下:</p>
-
-<pre class="line-numbers"><code class="language-md">title: 如何优雅的创建markdown文件
-author: lonelyor
-language: zh-CN
-tags:
-  - Hexo
-  - markdown
-categories:
-  - 技术杂文
-date: 2018-09-06 17:42:40
----
-&gt; description: 若爱请深爱，若不爱请离开。
-</code></pre>
-
-<p>接下来说说如何使用(仅限linux、macos，或者说可以执行bash的环境，win用户请自行转换成bat)：<br/>
-首先，创建一个名叫 md.sh 的文件（名字你爱咋咋地），把代码copy进去。<br/>
-然后，<code>ln -s /md文件绝对路径 /usr/local/bin/md</code> ,这条语句的意思就是创建一个软连接，把 md.sh 连接到当前用户的 md 命令上。<br/>
-最后，打开终端输入 md ，然后输入要创建的markdown文件名（如：test.md），即可在当前目录下创建带有元信息的markdown文件。</p>
+<p>1、选定单元格然后同时按<code>CTRL+;</code>可以快速设置日期。<br/>
+2、在单元格中输入函数<code>=TODAY()</code>然后回车也可以快速设置日期。<br/>
+3、选定单元格然后同时按下<code>Ctrl+Shift+；</code>可以快速设置当前时刻的时间。<br/>
+4、在单元格中输入函数<code>=NOW()</code>然后回车可以显示当前时刻的时间。</p>
 
                         
                       </div>
@@ -236,7 +199,7 @@ date: 2018-09-06 17:42:40
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/11/22 15:13 下午</span>
+                    <span class="date">2019/3/12 17:23 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
@@ -253,16 +216,19 @@ date: 2018-09-06 17:42:40
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15457897865747.html">
+                <a class="clearlink" href="15520320136368.html">
                 
-                  <h1>将网页保存为PDF</h1>
+                  <h1>bundle install 无法使用的解决办法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>如果使用 google chrome 则不需要任何辅助工具即可做到。<br/>
-Mac用户使用cmd+p即可；<br/>
-Windows用户使用ctrl+p即可。</p>
+                        	<p>在学习 hack101 课程的时候，发现无法使用bundle install 安装所需库，考虑到可能是墙的问题。</p>
+
+<p>解决办法如下：<br/>
+更换源<br/>
+访问网站 <a href="https://gems.ruby-china.com/">Ruby China</a>，然后按照如下操作即可。<br/>
+<figure><img src="media/15520320136368/15520321533528.jpg" alt=""/></figure></p>
 
                         
                       </div>
@@ -271,7 +237,7 @@ Windows用户使用ctrl+p即可。</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/26 10:3 上午</span>
+                    <span class="date">2019/3/8 16:0 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
@@ -349,6 +315,8 @@ Windows用户使用ctrl+p即可。</p>
         
             <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
+        
             <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
             <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
@@ -370,31 +338,31 @@ Windows用户使用ctrl+p即可。</p>
 	      
 		      
 			      <li class="post">
-			        <a href="15480046120109.html">降低cpu使用率</a>
+			        <a href="15542044701566.html">debian or ubuntu 修改终端欢迎语</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15473464131197.html">读 Monyer 文章有感</a>
+			        <a href="15542027955936.html">mysql登录提示ERROR 1524 (HY000): Plugin 'unix_socket' is not loaded解决方法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15446969783198.html">解决windows右键新建消失问题</a>
+			        <a href="15538461504138.html">vmware三种网络模式详解</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15446973583267.html">解决npm更新或安装软件时下载较慢等问题</a>
+			        <a href="15538425408524.html">虚拟机安装win10操作系统</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15456175398128.html">自建kms服务器激活windows</a>
+			        <a href="15532282104799.html">Mac 终端设置欢迎页</a>
 			      </li>
 		     
 		  

@@ -109,6 +109,8 @@
         
             <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
+            <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
+        
             <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
             <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
@@ -200,41 +202,86 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15473910152747.html">
+                <a class="clearlink" href="15483045491003.html">
                 
-                  <h1>给网站嵌入百度搜索框</h1>
+                  <h1>JavaScript基础</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>只需要在 htm 页面中嵌入以下代码即可：</p>
+                        	<p>JavaScript是一种脚本编程语言。<br/>
+JavaScript运行顺序是从上往下，因此要注意代码的顺序。</p>
 
-<pre class="line-numbers"><code class="language-markup"> &lt;div style=&#39;overflow:hidden&#39;&gt;
-        &lt;form onsubmit=&quot;return baiduWithHttps(this)&quot; action=&quot;http://www.baidu.com/s&quot; target=&quot;_blank&quot;&gt;
-        &lt;input class=&#39;bdtext&#39; type=&quot;text&quot;  onfocus=&quot;checkHttps&quot; name=&quot;wd&quot;  size=&quot;30&quot;&gt;
-        &lt;input class=&#39;bdbtn&#39; type=&quot;submit&quot;value=&quot;百度搜索&quot;&gt;
-        &lt;/form&gt;
-        &lt;script&gt;
-            function checkHttps () {
-                BaiduHttps.useHttps();    
-            };
-            function baiduWithHttps (formname) {
-                var data = BaiduHttps.useHttps();
-                if (data.s === 0) {
-                    return true;
-                }
-                else {
-                    formname.action = &#39;https://www.baidu.com/s&#39; + &#39;?wd&#39; + data.ssl_code;
-                    return true;
-                }
-            };
-        &lt;/script&gt; 
-    &lt;/div&gt;
+<h2 id="toc_0">如何使用JavaScript</h2>
+
+<p>内部JavaScript：在html页面中嵌入<code>&lt;script&gt;这里写js代码&lt;/script&gt;</code>即可插入js代码。<br/>
+外部JavaScript：<code>&lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;</code>可以调用html文件同级目录下的script.js文件。</p>
+
+<h2 id="toc_1">注释</h2>
+
+<p><code>// 这是单行注释</code><br/>
+<code>/* 这是多行注释 */</code></p>
+
+<h2 id="toc_2">变量</h2>
+
+<p>var用来定义变量</p>
+
+<h2 id="toc_3">函数</h2>
+
+<p>function funName(){<br/>
+    js代码<br/>
+}<br/>
+函数是可复用的代码块，可以一次编写反复使用。</p>
+
+<h2 id="toc_4">运算符</h2>
+
+<p><code>+</code>、<code>-</code>、<code>*</code>、<code>/</code> 分别是加减乘除<br/>
+<code>===</code>、<code>!==</code>、<code>&lt;</code>、<code>&gt;</code> 分别是等于、不等于、小于、大于<br/>
+<code>&amp;&amp;</code>、<code>||</code>、<code>!</code> 分别表示与、或、非</p>
+
+<h2 id="toc_5">条件语句</h2>
+
+<p>if(条件){<br/>
+    js代码<br/>
+} else {<br/>
+    js代码<br/>
+}</p>
+
+<h2 id="toc_6">事件</h2>
+
+<p>事件相关函数分为：事件监听器和事件处理器 </p>
+
+<h2 id="toc_7">循环</h2>
+
+<p>for(起式值；退出条件；增加器){<br/>
+    js代码<br/>
+}</p>
+
+<h2 id="toc_8">switch语句</h2>
+
+<p>switch - 他们以单个表达式/值作为输入，然后查看多个选项，直到找到与该值相匹配的选项，执行与之相关的代码。</p>
+
+<pre class="line-numbers"><code class="language-javascript">switch (expression) {
+  case choice1:
+    run this code
+    break;
+
+  case choice2:
+    run this code instead
+    break;
+    
+  // include as many cases as you like
+
+  default:
+    actually, just run this code
+}
 </code></pre>
 
-<p>效果如下：<br/>
-<figure><img src="media/15473910152747/%E5%B5%8C%E5%85%A5%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2.png" alt="嵌入百度搜索"/><figcaption>嵌入百度搜索</figcaption></figure><br/>
-觉得不好看的可以自行加入 css 改变样式，我觉得就这样还蛮好看的。</p>
+<h2 id="toc_9">写一个猜数字的小游戏</h2>
+
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/First_steps/A_first_splash#%E7%8C%9C%E6%95%B0%E5%AD%97%E6%B8%B8%E6%88%8F">猜数字游戏</a></p>
+
+<p>未完待续...</p>
 
                         
                       </div>
@@ -243,7 +290,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/13 22:50 下午</span>
+                    <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
@@ -846,6 +893,8 @@ function radixSort(arr, maxDigit) {
         
             <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
+        
             <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
             <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
@@ -867,31 +916,31 @@ function radixSort(arr, maxDigit) {
 	      
 		      
 			      <li class="post">
-			        <a href="15480046120109.html">降低cpu使用率</a>
+			        <a href="15542044701566.html">debian or ubuntu 修改终端欢迎语</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15473464131197.html">读 Monyer 文章有感</a>
+			        <a href="15542027955936.html">mysql登录提示ERROR 1524 (HY000): Plugin 'unix_socket' is not loaded解决方法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15446969783198.html">解决windows右键新建消失问题</a>
+			        <a href="15538461504138.html">vmware三种网络模式详解</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15446973583267.html">解决npm更新或安装软件时下载较慢等问题</a>
+			        <a href="15538425408524.html">虚拟机安装win10操作系统</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15456175398128.html">自建kms服务器激活windows</a>
+			        <a href="15532282104799.html">Mac 终端设置欢迎页</a>
 			      </li>
 		     
 		  

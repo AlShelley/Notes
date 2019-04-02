@@ -109,6 +109,8 @@
         
             <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
+            <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
+        
             <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
             <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
@@ -136,58 +138,84 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15428708110510.html">
+                <a class="clearlink" href="15489296290618.html">
                 
-                  <h1>更优雅的使用Hexo写博客</h1>
+                  <h1>Mediakit报告设备商的空间不足以执行此操作</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>网上大部分都写的去 windows 中使用DiskGenius重新分区，这搞麻烦了，不用这么麻烦的。</p>
+
+<p>1、打开终端，输入<code>diskutil list</code>列出磁盘内容，这里我们可以找到要格式化的磁盘，我是 disk2<br/>
+2、卸载要格式化的磁盘<code>diskutil unmountDisk force disk2</code><br/>
+3、写入启动扇区<code>sudo dd if=/dev/zero of=/dev/disk2 bs=1024 count=1024</code><br/>
+4、对磁盘进行分区<code>diskutil partitionDisk disk2 GPT JHFS+ &quot;AWESOME DISK&quot; 0g</code><br/>
+5、打完收工，写博客发出来。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/31 18:13 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15488284836388.html">
+                
+                  <h1>90后空巢青年生活指南</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>曾经的博客是使用 Hexo 写的，我觉得Hexo这种在文章前面写上元信息的方式很棒。然而，每此写markdown文档都要输入这些元信息，这很麻烦，所以就写了个shell脚本来自动化输入文件元信息的过程。<br/>
-代码如下：</p>
+<p>你永远不知道下一秒会发生什么，所以赶紧珍惜现在吧。</p>
 </blockquote>
 
-<pre class="line-numbers"><code class="language-bash">#!/bin/bash
+<h1 id="toc_0">生活习惯篇</h1>
 
-printf &quot;请输入文件名(example.md)，记得写后缀!\n&quot;
-read -p &quot;文件名是: &quot; filename
-# 这里的title取文件名不取后缀
-echo &quot;title: &quot;${filename%.*} &gt;&gt; $filename
-echo &quot;author: lonelyor&quot; &gt;&gt; $filename
-echo &quot;language: zh-CN&quot; &gt;&gt; $filename
-echo &quot;tags:&quot; &gt;&gt; $filename
-echo &quot;  - 标签&quot; &gt;&gt; $filename
-echo &quot;categories:&quot; &gt;&gt; $filename
-echo &quot;  - 分类&quot; &gt;&gt; $filename
-time=$(date &quot;+%Y-%m-%d %H:%M:%S&quot;)
-echo &quot;date: ${time}&quot;&gt;&gt; $filename
-echo &quot;---&quot; &gt;&gt; $filename
-echo &quot;&gt; description: &quot; &gt;&gt; $filename
-# printf和echo都是输出，&gt;&gt;表示追加，&gt;会覆盖文件
-# shell中使用变量需要先定义变量，然后使用时加 $
-# read 用来创建文件，文件名从终端获取
-</code></pre>
+<h2 id="toc_1">多喝热水</h2>
 
-<p>展示效果如下:</p>
+<p>不止&quot;女人是水做的&quot;，男人也是。人体70%是的成分是水。<br/>
+多喝水可以减肥、缓解皮肤干燥、排毒除痘、缓解眼睛疲劳等。多喝水还能治疗肾结石。</p>
 
-<pre class="line-numbers"><code class="language-md">title: 如何优雅的创建markdown文件
-author: lonelyor
-language: zh-CN
-tags:
-  - Hexo
-  - markdown
-categories:
-  - 技术杂文
-date: 2018-09-06 17:42:40
----
-&gt; description: 若爱请深爱，若不爱请离开。
-</code></pre>
+<h2 id="toc_2">不要久坐</h2>
 
-<p>接下来说说如何使用(仅限linux、macos，或者说可以执行bash的环境，win用户请自行转换成bat)：<br/>
-首先，创建一个名叫 md.sh 的文件（名字你爱咋咋地），把代码copy进去。<br/>
-然后，<code>ln -s /md文件绝对路径 /usr/local/bin/md</code> ,这条语句的意思就是创建一个软连接，把 md.sh 连接到当前用户的 md 命令上。<br/>
-最后，打开终端输入 md ，然后输入要创建的markdown文件名（如：test.md），即可在当前目录下创建带有元信息的markdown文件。</p>
+<p>久坐和喝水少一样危害巨大，因此不可久坐。每坐一个小时就起来走动顺便喝点水吧。</p>
+
+<h2 id="toc_3">给物品定位</h2>
+
+<p>将各类常用物品找一个固定的位置，每次取用后将其放回原处，同时记录每一件物品。掌握自己的生活从掌握自己有多少物品开始。</p>
+
+<h2 id="toc_4">常清洁</h2>
+
+<p>拒绝&quot;仓鼠症&quot;，不要囤积物品。制定房屋打扫计划，经常打扫、整理房间。<br/>
+学习&quot;断舍离&quot;</p>
+
+<h2 id="toc_5">注意个人护理</h2>
+
+<p>包括美容养颜、强身健体、预防疾病、个人卫生等。</p>
+
+<h2 id="toc_6">迈开腿管住嘴</h2>
+
+<p>吃饭只吃八分饱，不可贪食吃十分。<br/>
+经常出门走走，有利身心健康。看看展馆、游玩山水。工作修炼的是技术、出门修的是身心。</p>
 
                         
                       </div>
@@ -196,10 +224,10 @@ date: 2018-09-06 17:42:40
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/11/22 15:13 下午</span>
+                    <span class="date">2019/1/30 14:8 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          					    <span class="posted-in"><a href='%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html'>星火流萤</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -213,15 +241,45 @@ date: 2018-09-06 17:42:40
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15480046337420.html">
+                <a class="clearlink" href="15487463359475.html">
                 
-                  <h1>无法安装docker</h1>
+                  <h1>给网站添加百度、谷歌搜索框</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>请检查是否开启防火墙，防火墙是否屏蔽了docker的传入链接。<br/>
-通常连不上docker是因为防火墙的原因</p>
+                        	<p>以下是我北斗页面的搜索框代码：</p>
+
+<pre class="line-numbers"><code class="language-markup"> &lt;div style=&#39;overflow:auto&#39;&gt;&lt;form onsubmit=&quot;return baiduWithHttps(this)&quot; action=&quot;http://www.baidu.com/s&quot; target=&quot;_blank&quot;&gt;
+        &lt;input class=&#39;bdtext&#39; type=&quot;text&quot;  onfocus=&quot;checkHttps&quot; name=&quot;wd&quot;  size=&quot;30&quot;&gt;&lt;input class=&#39;bdbtn&#39; type=&quot;submit&quot;value=&quot;百度搜索&quot;&gt;
+        &lt;/form&gt;&lt;script&gt;function checkHttps () {
+                BaiduHttps.useHttps();    
+            };
+            function baiduWithHttps (formname) {
+                var data = BaiduHttps.useHttps();
+                if (data.s === 0) {
+                    return true;
+                }
+                else {
+                    formname.action = &#39;https://www.baidu.com/s&#39; + &#39;?wd&#39; + data.ssl_code;
+                    return true;
+                }
+            };&lt;/script&gt;&lt;/div&gt;&lt;div style=&#39;overflow:auto&#39;&gt;&lt;form onsubmit=&quot;return googleWithHttps(this)&quot; action=&quot;http://www.google.com/search&quot; target=&quot;_blank&quot;&gt;
+    &lt;input class=&#39;bdtext&#39; type=&quot;text&quot;  onfocus=&quot;checkHttps&quot; name=&quot;q&quot;  size=&quot;30&quot;&gt;&lt;input class=&#39;bdbtn&#39; type=&quot;submit&quot;value=&quot;谷歌搜索&quot;&gt;
+    &lt;/form&gt;&lt;script&gt;function checkHttps () {
+            googleHttps.useHttps();    
+        };
+        function googleWithHttps (formname) {
+            var data = googleHttps.useHttps();
+            if (data.s === 0) {
+                return true;
+            }
+            else {
+                formname.action = &#39;https://www.google.com/search&#39; + &#39;?q&#39; + data.ssl_code;
+                return true;
+            }
+        };&lt;/script&gt;&lt;/div&gt;
+</code></pre>
 
                         
                       </div>
@@ -230,43 +288,10 @@ date: 2018-09-06 17:42:40
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/21 1:17 上午</span>
+                    <span class="date">2019/1/29 15:18 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15480046242082.html">
-                
-                  <h1>批量删除当前目录及其子目录下指定后缀名文件</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>find . -name &quot;*.tmp&quot; -type f -print -exec rm -rf {} \;</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/21 1:17 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -341,6 +366,8 @@ date: 2018-09-06 17:42:40
         
             <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
+        
             <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
             <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
@@ -362,31 +389,31 @@ date: 2018-09-06 17:42:40
 	      
 		      
 			      <li class="post">
-			        <a href="15480046120109.html">降低cpu使用率</a>
+			        <a href="15542044701566.html">debian or ubuntu 修改终端欢迎语</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15473464131197.html">读 Monyer 文章有感</a>
+			        <a href="15542027955936.html">mysql登录提示ERROR 1524 (HY000): Plugin 'unix_socket' is not loaded解决方法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15446969783198.html">解决windows右键新建消失问题</a>
+			        <a href="15538461504138.html">vmware三种网络模式详解</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15446973583267.html">解决npm更新或安装软件时下载较慢等问题</a>
+			        <a href="15538425408524.html">虚拟机安装win10操作系统</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15456175398128.html">自建kms服务器激活windows</a>
+			        <a href="15532282104799.html">Mac 终端设置欢迎页</a>
 			      </li>
 		     
 		  

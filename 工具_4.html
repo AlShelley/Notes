@@ -109,6 +109,8 @@
         
             <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
+            <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
+        
             <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
             <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
@@ -136,71 +138,55 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15523826250881.html">
+                <a class="clearlink" href="15453717965995.html">
                 
-                  <h1>excel 工作表插入当前时间和日期</h1>
+                  <h1>npm Cannot find module 'semver' --解决方案</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>参考链接：<a href="https://jingyan.baidu.com/article/75ab0bcbb03035d6864db203.html">https://jingyan.baidu.com/article/75ab0bcbb03035d6864db203.html</a></p>
+<p><a href="https://blog.csdn.net/hanshuonb/article/details/77969080">https://blog.csdn.net/hanshuonb/article/details/77969080</a></p>
 </blockquote>
 
-<p>1、选定单元格然后同时按<code>CTRL+;</code>可以快速设置日期。<br/>
-2、在单元格中输入函数<code>=TODAY()</code>然后回车也可以快速设置日期。<br/>
-3、选定单元格然后同时按下<code>Ctrl+Shift+；</code>可以快速设置当前时刻的时间。<br/>
-4、在单元格中输入函数<code>=NOW()</code>然后回车可以显示当前时刻的时间。</p>
+<p>度娘上面我没有找到相关的解决方法所以只能去Stack Overflow上寻找答案，找到的结果是这样的：</p>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/3/12 17:23 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15512579928868.html">
-                
-                  <h1>excel for Mac 如何点击单元格高亮整行</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>参考答案：<a href="https://zhidao.baidu.com/question/488433413549944532.html">https://zhidao.baidu.com/question/488433413549944532.html</a> 中的 ZouJiLiangRJ 的答案</p>
-</blockquote>
-
-<p>1、复制以下代码</p>
-
-<pre class="line-numbers"><code class="language-excel">Private Sub Worksheet_SelectionChange(ByVal T As Range)
-Cells.Interior.ColorIndex = 0
-T.EntireRow.Interior.ColorIndex = 8
-T.Interior.ColorIndex = 2
-End Sub
+<pre class="line-numbers"><code class="language-text">sudo rm -rf /usr/local/lib/node_modules
+sudo rm -rf ~/.npm
+brew uninstall --force node
+brew install node
 </code></pre>
 
-<p>2、右键单击工作表标签（如：sheet1），点击查看代码<br/>
-3、在代码框中粘贴上述代码。然后关闭代码框。<br/>
-4、回到 excel 表格然后随意点击一个单元格试试看效果如何。</p>
+<p>上面命令的意思删除所有全局包和.npm文件夹，重新安装node。 <br/>
+这种方法我没试过，因为肯定有很多小伙伴安装了除npm之外的全局包比如express、webpack等等，如果不考虑清楚直接全删了的话。。。后果惨不忍睹。。。(ps:因为本人英语实在不好，所以经常直接傻瓜式粘命令，提醒小伙伴们最好粘命令之前去查查是什么意思，否则出了问题有可能都没法回退。。。)</p>
 
-<p><em>还有一种方法就是使用 wps 的阅读模式。</em></p>
+<p>说了这么多，下面切入正题 <br/>
+首先需要知道为啥有报这个错，可以到全局的npm包看一下，路径是</p>
+
+<p><code>/usr/local/lib/node_modules/npm</code><br/>
+进入npm的node_modules中的semver文件夹可以看到里面变成空的了！具体的原因不好意思我没有深究，但是我觉得一定和yarn是有关系的。不仅如此，你会看到其他的文件夹也基本都是变成空的了，这下咱们就知道为啥报semver这个module找不到了吧！</p>
+
+<p>网上还有解决方法是说用 <code>npm unintall npm -g</code> 删除npm包，实测不好使。。。npm所有的命令都不行了 uninstall肯定也不行了啊！！！</p>
+
+<h2 id="toc_0">我的解决方法：</h2>
+
+<p>1.先删除全局的npm包：也就是把刚才提到的<code>/usr/local/lib/node_modules/npm</code>，这个npm文件夹删除掉 <br/>
+2.回到<code>/usr/local/lib/node_modules</code>这个目录，从GitHub上重新clone下git包 <br/>
+终端:<br/>
+<code>git clone --recursive git://github.com/isaacs/npm.git</code><br/>
+这样新的npm包就回到了全局node_modules中 <br/>
+3.打开终端输入<br/>
+<code>npm -v</code><br/>
+看一下npm是否可以打印出版本号，如果可以，npm就可以正常使用啦！</p>
+
+<p>说白了就是：</p>
+
+<pre class="line-numbers"><code class="language-text">rm -rf /usr/local/lib/node_modules/npm
+cd /usr/local/lib/node_modules
+git clone --recursive git://github.com/isaacs/npm.git`
+</code></pre>
+
+<p>搞定</p>
 
                         
                       </div>
@@ -209,7 +195,7 @@ End Sub
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/2/27 16:59 下午</span>
+                    <span class="date">2018/12/21 13:56 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
@@ -226,19 +212,108 @@ End Sub
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15520320136368.html">
+                <a class="clearlink" href="15453705663839.html">
                 
-                  <h1>bundle install 无法使用的解决办法</h1>
+                  <h1>fsarchiver备份文件介绍</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>在学习 hack101 课程的时候，发现无法使用bundle install 安装所需库，考虑到可能是墙的问题。</p>
+                        	<blockquote>
+<p>多年以前的笔记</p>
+</blockquote>
 
-<p>解决办法如下：<br/>
-更换源<br/>
-访问网站 <a href="https://gems.ruby-china.com/">Ruby China</a>，然后按照如下操作即可。<br/>
-<figure><img src="media/15520320136368/15520321533528.jpg" alt=""/></figure></p>
+<p>fsarchiver安装<br/>
+<code>apt-get install fsarchiver</code></p>
+
+<pre class="line-numbers"><code class="language-text"># 对于备份操作，我们需要以只读形式重新挂载文件系统或者有条件的话直接卸载。也可以-A忽略
+[peter@test88 ~]$ sudo /home/peter/fsarchiver savefs backup.fsa /dev/sdb1
+oper_save.c#938,filesystem_mount_partition(): partition [/dev/sdb1] is mounted read/write. please mount it read-only
+and then try again. you can do &quot;mount -o remount,ro /dev/sdb1&quot;. you can
+also run fsarchiver with option &#39;-A&#39; if you know what you are doing.
+removed backup.fsa
+ 
+# 对于恢复操作，我们必须先卸载文件系统。
+[peter@test88 ~]$ sudo /home/peter/fsarchiver restfs backup2.fsa id=0,dest=/dev/sdb2
+oper_restore.c#1230,extractar_filesystem_extract(): partition [/dev/sdb2] is mounted on [/home/peter/sder].
+cannot restore an archive to a partition which is mounted, unmount it first: umount /home/peter/sder
+ 
+# 创建文件系统备份
+# 可以将多个文件系统备份在一个文件中
+[peter@test88 ~]$ sudo /home/peter/fsarchiver savefs backup.fsa /dev/sdb1 /dev/sdb2
+ 
+# 恢复文件系统
+# id=0表明从归档中提取第一个文件系统的内容
+[peter@test88 ~]$ sudo /home/peter/fsarchiver restfs backup.fsa id=0,dest=/dev/sdc1 id=1,dest=/dev/sdc2
+
+
+
+# 软件说明文档
+====&gt; fsarchiver version 0.8.1 (2017-01-10) - http://www.fsarchiver.org &lt;====           
+Distributed under the GPL v2 license (GNU General Public License v2).                   
+ * usage: fsarchiver [&lt;options&gt;] &lt;command&gt; &lt;archive&gt; [&lt;dev1&gt; [&lt;dev2&gt; [...]]]            
+&lt;commands&gt;                                                                              
+ * savefs: save filesystems to an archive file (backup a device to a file)              
+ * restfs: restore filesystems from an archive (overwrites the existing data)           
+ * savedir: save directories to the archive (similar to a compressed tarball)           
+ * restdir: restore data from an archive which is not based on a filesystem             
+ * archinfo: show information about an existing archive file and its contents           
+ * probe [detailed]: show list of filesystems detected on the disks                     
+&lt;options&gt;                                                                               
+ -o: overwrite the archive if it already exists instead of failing                      
+ -v: verbose mode (can be used several times to increase the level of details)          
+ -d: debug mode (can be used several times to increase the level of details)            
+ -A: allow to save a filesystem which is mounted in read-write (live backup)            
+ -a: allow to save a filesystem when acls and xattrs are not supported                  
+ -x: enable support for experimental features (they are disabled by default)            
+ -e &lt;pattern&gt;: exclude files and directories that match that pattern                    
+ -L &lt;label&gt;: set the label of the archive (comment about the contents)                  
+ -z &lt;level&gt;: compression level from 1 (very fast) to 9 (very good) default=3            
+ -s &lt;mbsize&gt;: split the archive into several files of &lt;mbsize&gt; megabytes each           
+ -j &lt;count&gt;: create more than one (de)compression thread. useful on multi-core cpu      
+ -c &lt;password&gt;: encrypt/decrypt data in archive, &quot;-c -&quot; for interactive password        
+ -h: show help and information about how to use fsarchiver with examples                
+ -V: show program version and exit                                                      
+&lt;information&gt;                                                                           
+ * Support included for: lzo=yes, lzma=yes                                              
+ * Support for ntfs filesystems is unstable: don&#39;t use it for production.               
+&lt;examples&gt;                                                                              
+ * save only one filesystem (/dev/sda1) to an archive:                                  
+   fsarchiver savefs /data/myarchive1.fsa /dev/sda1                                     
+ * save two filesystems (/dev/sda1 and /dev/sdb1) to an archive:
+   fsarchiver savefs /data/myarchive2.fsa /dev/sda1 /dev/sdb1
+ * restore the first filesystem from an archive (first = number 0):
+   fsarchiver restfs /data/myarchive2.fsa id=0,dest=/dev/sda1
+ * restore the second filesystem from an archive (second = number 1):
+   fsarchiver restfs /data/myarchive2.fsa id=1,dest=/dev/sdb1
+ * restore two filesystems from an archive (number 0 and 1):
+   fsarchiver restfs /data/arch2.fsa id=0,dest=/dev/sda1 id=1,dest=/dev/sdb1
+ * restore a filesystem from an archive and convert it to reiserfs:
+   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,mkfs=reiserfs
+ * restore a filesystem from an archive and specify extra mkfs options:
+   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,mkfs=ext4,mkfsopt=&quot;-I 256&quot;
+ * restore a filesystem from an archive and specify a new label and a new UUID:
+   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,label=root,uuid=5f6e5f4f-dc2a-4dbd-a6ea-9ca997cde75e
+ * save the contents of /usr/src/linux to an archive (similar to tar):
+   fsarchiver savedir /data/linux-sources.fsa /usr/src/linux
+ * save a filesystem (/dev/sda1) to an archive split into volumes of 680MB:
+   fsarchiver savefs -s 680 /data/myarchive1.fsa /dev/sda1
+ * save a filesystem and exclude all files/dirs called &#39;pagefile.*&#39;:
+   fsarchiver savefs /data/myarchive.fsa /dev/sda1 --exclude=&#39;pagefile.*&#39;
+ * generic exclude for &#39;share&#39; such as &#39;/usr/share&#39; and &#39;/usr/local/share&#39;:
+   fsarchiver savefs /data/myarchive.fsa --exclude=share
+ * absolute exclude valid for &#39;/usr/share&#39; but not for &#39;/usr/local/share&#39;:
+   fsarchiver savefs /data/myarchive.fsa --exclude=/usr/share
+ * save a filesystem (/dev/sda1) to an encrypted archive:
+   fsarchiver savefs -c mypassword /data/myarchive1.fsa /dev/sda1
+ * same as before but prompt for password in the terminal:
+   fsarchiver savefs -c - /data/myarchive1.fsa /dev/sda1
+ * extract an archive made of simple files to /tmp/extract:
+   fsarchiver restdir /data/linux-sources.fsa /tmp/extract
+ * show information about an archive and its filesystems:
+   fsarchiver archinfo /data/myarchive2.fsa
+   ```
+</code></pre>
 
                         
                       </div>
@@ -247,7 +322,72 @@ End Sub
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/3/8 16:0 下午</span>
+                    <span class="date">2018/12/21 13:36 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15453704835251.html">
+                
+                  <h1>fluxgui安装与卸载</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>很久以前的笔记了</p>
+</blockquote>
+
+<pre class="line-numbers"><code class="language-text">Ubuntu/Debian Manual Install
+# Install dependencies
+sudo apt-get install git python-appindicator python-xdg python-pexpect python-gconf python-gtk2 python-glade2 libxxf86vm1
+
+# Download fluxgui
+cd /tmp
+git clone &quot;https://github.com/xflux-gui/fluxgui.git&quot;
+cd fluxgui
+python download-xflux.py
+
+# EITHER install globally
+sudo python setup.py install
+# EXCLUSIVE OR, install in your home directory. The binary installs
+# into ~/.local/bin, so be sure to add that to your PATH if installing locally.
+python setup.py install --user
+
+# Run flux
+fluxgui
+Ubuntu/Debian Manual Uninstall
+If you manually installed instead of using the PPA, you can uninstall by making setup.py tell you where it installed files and then removing the installed files.
+
+# EITHER uninstall globally
+sudo python setup.py install --record installed.txt
+sudo xargs rm -vr &lt; installed.txt
+
+# EXCLUSIVE OR uinstall in your home directory
+python setup.py install --user --record installed.txt
+xargs rm -vr &lt; installed.txt
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21 13:34 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
@@ -325,6 +465,8 @@ End Sub
         
             <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
+        
             <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
             <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
@@ -346,31 +488,31 @@ End Sub
 	      
 		      
 			      <li class="post">
-			        <a href="15480046120109.html">降低cpu使用率</a>
+			        <a href="15542044701566.html">debian or ubuntu 修改终端欢迎语</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15473464131197.html">读 Monyer 文章有感</a>
+			        <a href="15542027955936.html">mysql登录提示ERROR 1524 (HY000): Plugin 'unix_socket' is not loaded解决方法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15446969783198.html">解决windows右键新建消失问题</a>
+			        <a href="15538461504138.html">vmware三种网络模式详解</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15446973583267.html">解决npm更新或安装软件时下载较慢等问题</a>
+			        <a href="15538425408524.html">虚拟机安装win10操作系统</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15456175398128.html">自建kms服务器激活windows</a>
+			        <a href="15532282104799.html">Mac 终端设置欢迎页</a>
 			      </li>
 		     
 		  

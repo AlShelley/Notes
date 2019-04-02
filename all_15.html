@@ -109,6 +109,8 @@
         
             <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
+            <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
+        
             <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
             <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
@@ -136,20 +138,55 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15453707290429.html">
+                <a class="clearlink" href="15453717965995.html">
                 
-                  <h1>msf安装与维护</h1>
+                  <h1>npm Cannot find module 'semver' --解决方案</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><code>curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb &gt; msfinstall &amp;&amp; \<br/>
-  chmod 755 msfinstall &amp;&amp; \<br/>
-  ./msfinstall</code></p>
+                        	<blockquote>
+<p><a href="https://blog.csdn.net/hanshuonb/article/details/77969080">https://blog.csdn.net/hanshuonb/article/details/77969080</a></p>
+</blockquote>
 
-<p>上面是官方提供的一键安装脚本</p>
+<p>度娘上面我没有找到相关的解决方法所以只能去Stack Overflow上寻找答案，找到的结果是这样的：</p>
 
-<p>使用msfupdate可以进行更新</p>
+<pre class="line-numbers"><code class="language-text">sudo rm -rf /usr/local/lib/node_modules
+sudo rm -rf ~/.npm
+brew uninstall --force node
+brew install node
+</code></pre>
+
+<p>上面命令的意思删除所有全局包和.npm文件夹，重新安装node。 <br/>
+这种方法我没试过，因为肯定有很多小伙伴安装了除npm之外的全局包比如express、webpack等等，如果不考虑清楚直接全删了的话。。。后果惨不忍睹。。。(ps:因为本人英语实在不好，所以经常直接傻瓜式粘命令，提醒小伙伴们最好粘命令之前去查查是什么意思，否则出了问题有可能都没法回退。。。)</p>
+
+<p>说了这么多，下面切入正题 <br/>
+首先需要知道为啥有报这个错，可以到全局的npm包看一下，路径是</p>
+
+<p><code>/usr/local/lib/node_modules/npm</code><br/>
+进入npm的node_modules中的semver文件夹可以看到里面变成空的了！具体的原因不好意思我没有深究，但是我觉得一定和yarn是有关系的。不仅如此，你会看到其他的文件夹也基本都是变成空的了，这下咱们就知道为啥报semver这个module找不到了吧！</p>
+
+<p>网上还有解决方法是说用 <code>npm unintall npm -g</code> 删除npm包，实测不好使。。。npm所有的命令都不行了 uninstall肯定也不行了啊！！！</p>
+
+<h2 id="toc_0">我的解决方法：</h2>
+
+<p>1.先删除全局的npm包：也就是把刚才提到的<code>/usr/local/lib/node_modules/npm</code>，这个npm文件夹删除掉 <br/>
+2.回到<code>/usr/local/lib/node_modules</code>这个目录，从GitHub上重新clone下git包 <br/>
+终端:<br/>
+<code>git clone --recursive git://github.com/isaacs/npm.git</code><br/>
+这样新的npm包就回到了全局node_modules中 <br/>
+3.打开终端输入<br/>
+<code>npm -v</code><br/>
+看一下npm是否可以打印出版本号，如果可以，npm就可以正常使用啦！</p>
+
+<p>说白了就是：</p>
+
+<pre class="line-numbers"><code class="language-text">rm -rf /usr/local/lib/node_modules/npm
+cd /usr/local/lib/node_modules
+git clone --recursive git://github.com/isaacs/npm.git`
+</code></pre>
+
+<p>搞定</p>
 
                         
                       </div>
@@ -158,10 +195,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 13:38 下午</span>
+                    <span class="date">2018/12/21 13:56 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -225,20 +262,20 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15453576869884.html">
+                <a class="clearlink" href="15453713553710.html">
                 
-                  <h1>linux查看磁盘空间占用情况</h1>
+                  <h1>linux下搜狗输入法不能用的解决办法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>主要是使用 df 命令，使用 df --help 可以查看更多选项。</p>
-
-<p>举例：<br/>
-df -k 以KB为单位显示磁盘使用量和占用率。<br/>
-df -k 以M×××</p>
-
-<p>使用“du -ck /home”命令，列出home目录下所有文件或目录占用的大小，以KB作为计量单位。以及统计出当前home目录占用的总大小。</p>
+                        	<p>删除<br/>
+<code>～/config</code><br/>
+下的<br/>
+<code>sogou-qimpanel</code><br/>
+<code>SogouPY</code><br/>
+<code>SogouPY.users</code><br/>
+这三个文件夹，然后重启。</p>
 
                         
                       </div>
@@ -247,7 +284,7 @@ df -k 以M×××</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 10:1 上午</span>
+                    <span class="date">2018/12/21 13:49 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
@@ -325,6 +362,8 @@ df -k 以M×××</p>
         
             <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
+        
             <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
             <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
@@ -346,31 +385,31 @@ df -k 以M×××</p>
 	      
 		      
 			      <li class="post">
-			        <a href="15480046120109.html">降低cpu使用率</a>
+			        <a href="15542044701566.html">debian or ubuntu 修改终端欢迎语</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15473464131197.html">读 Monyer 文章有感</a>
+			        <a href="15542027955936.html">mysql登录提示ERROR 1524 (HY000): Plugin 'unix_socket' is not loaded解决方法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15446969783198.html">解决windows右键新建消失问题</a>
+			        <a href="15538461504138.html">vmware三种网络模式详解</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15446973583267.html">解决npm更新或安装软件时下载较慢等问题</a>
+			        <a href="15538425408524.html">虚拟机安装win10操作系统</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15456175398128.html">自建kms服务器激活windows</a>
+			        <a href="15532282104799.html">Mac 终端设置欢迎页</a>
 			      </li>
 		     
 		  

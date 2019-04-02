@@ -109,6 +109,8 @@
         
             <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
+            <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
+        
             <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
             <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
@@ -136,25 +138,20 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15453720146052.html">
+                <a class="clearlink" href="15453699439742.html">
                 
-                  <h1>Pycharm编程遇到的技巧</h1>
+                  <h1>使用ssh科学上网</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">pycharm技巧</h2>
+                        	<p>打开终端输入：<br/>
+ <code>ssh -D 1085 -p 6754 root@xx.xx.xx.xx</code><br/>
+ 然后输入密码即可。xx即远程服务器ip。<br/>
+ 这意味着本地1085端口被转发到了远程服务器的6754上，然后在浏览器配置socks5代理：127.0.0.1 1085<br/>
+ 就可以科学上网了。</p>
 
-<p>ctrl+z 撤回<br/>
-全部选中然后tab是全部缩进<br/>
-全部选中然后shift+tab是全部反缩进</p>
-
-<h2 id="toc_1">编程技巧</h2>
-
-<p>dir()    #输出函数包含的方法<br/>
-type() #输出类型</p>
-
-<p>更多技巧可以查阅官方文档的使用帮助。</p>
+<p>如果不稳定，可以考虑使用autossh。</p>
 
                         
                       </div>
@@ -163,7 +160,62 @@ type() #输出类型</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 14:0 下午</span>
+                    <span class="date">2018/12/21 13:25 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15453572892743.html">
+                
+                  <h1>Atom设置和取消代理</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">设置本地上游代理</h2>
+
+<p>apm config set http-proxy socks5:127.0.0.1:1080<br/>
+apm config set https-proxy socks5:127.0.0.1:1080</p>
+
+<h2 id="toc_1">取消SSL</h2>
+
+<p>apm config set strict-ssl false</p>
+
+<h2 id="toc_2">取消代理</h2>
+
+<p>apm config set http-proxy null<br/>
+apm config set https-proxy null</p>
+
+<h2 id="toc_3">查看代理设置</h2>
+
+<p>apm config get http-proxy<br/>
+apm config get https-proxy</p>
+
+<p>编辑～/.atom/.apmrc文件，配置为：<br/>
+strict-ssl=false<br/>
+http_proxy = socks5: 127.0.0.1:1080<br/>
+https_proxy = socks5: 127.0.0.1:1080</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21 9:54 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
@@ -197,39 +249,6 @@ type() #输出类型</p>
                   <div class="more-left left">
                   
                     <span class="date">2018/12/16 17:38 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15480046935972.html">
-                
-                  <h1>MWeb打开文档库快捷键</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>CMD + L 即可显示</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/21 1:18 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
@@ -307,6 +326,8 @@ type() #输出类型</p>
         
             <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
+        
             <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
             <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
@@ -328,31 +349,31 @@ type() #输出类型</p>
 	      
 		      
 			      <li class="post">
-			        <a href="15480046120109.html">降低cpu使用率</a>
+			        <a href="15542044701566.html">debian or ubuntu 修改终端欢迎语</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15473464131197.html">读 Monyer 文章有感</a>
+			        <a href="15542027955936.html">mysql登录提示ERROR 1524 (HY000): Plugin 'unix_socket' is not loaded解决方法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15446969783198.html">解决windows右键新建消失问题</a>
+			        <a href="15538461504138.html">vmware三种网络模式详解</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15446973583267.html">解决npm更新或安装软件时下载较慢等问题</a>
+			        <a href="15538425408524.html">虚拟机安装win10操作系统</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15456175398128.html">自建kms服务器激活windows</a>
+			        <a href="15532282104799.html">Mac 终端设置欢迎页</a>
 			      </li>
 		     
 		  

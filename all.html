@@ -109,6 +109,8 @@
         
             <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
+            <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
+        
             <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
             <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
@@ -136,15 +138,20 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15480046120109.html">
+                <a class="clearlink" href="15542044701566.html">
                 
-                  <h1>降低cpu使用率</h1>
+                  <h1>debian or ubuntu 修改终端欢迎语</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>pulimit -l 50 -p 1234<br/>
--l后面是使用百分比，-p后面是进城PID，可以使用htop查看进程pid</p>
+                        	<p>与其他 linux 不太一样哦。Debian 系直接修改/etc/motd文件重登录后是无效的。</p>
+
+<p>因为这里/etc/motd是一个符号链接，指向/var/run/motd，应该 是一个启动后在生成的文件。在版本12.04中，找到生成的脚本在目录/etc/update-motd.d/中<br/>
+<code>sudo nano /etc/update-motd.d/10-uname</code><br/>
+在 10-uname 中可以添加命令，比如：<code>cat /home/test.txt</code>。即可展示出 test.txt 中的内容。</p>
+
+<p>修改后用：sudo run-parts /etc/update-motd.d 去执行就会立即见到效果，而不用反复注销登录。</p>
 
                         
                       </div>
@@ -153,7 +160,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/21 1:16 上午</span>
+                    <span class="date">2019/4/2 19:27 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
@@ -170,19 +177,21 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15473464131197.html">
+                <a class="clearlink" href="15542027955936.html">
                 
-                  <h1>读 Monyer 文章有感</h1>
+                  <h1>mysql登录提示ERROR 1524 (HY000): Plugin 'unix_socket' is not loaded解决方法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>1、黑客是一种兴趣爱好<br/>
-2、选行需谨慎，选前需要调研<br/>
-3、技术分化，很难再&quot;全栈&quot;，知识面扩宽的同时，需要抓重点精深。<br/>
-4、技术人员发展路线：技术输出阶段、经验输出阶段、思路输出阶段和决策输出阶段。<br/>
-5、学习永不停歇<br/>
-6、小游戏地址：<a href="http://monyer.com/game/game1/">http://monyer.com/game/game1/</a></p>
+                        	<blockquote>
+<p>参考文章：<a href="https://blog.csdn.net/u012804180/article/details/80801351">https://blog.csdn.net/u012804180/article/details/80801351</a></p>
+</blockquote>
+
+<p><figure><img src="media/15542027955936/15542028794210.jpg" alt=""/></figure></p>
+
+<p>上面这篇才是正解，别的文章仿佛在放狗屁。<br/>
+最烦那些转载文章时照抄照搬，自己完全不验证的人；也很烦那些写文章写得不清不楚的人。</p>
 
                         
                       </div>
@@ -191,10 +200,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/13 10:26 上午</span>
+                    <span class="date">2019/4/2 18:59 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html'>风花雪月</a></span>
+          					    <span class="posted-in"><a href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -208,24 +217,19 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15446969783198.html">
+                <a class="clearlink" href="15538461504138.html">
                 
-                  <h1>解决windows右键新建消失问题</h1>
+                  <h1>vmware三种网络模式详解</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>新建一个文件后缀名写为reg（注册表文件格式）的文件。<br/>
-然后用记事本或文本编辑器打开，写入文件内容：</p>
+                        	<p>文章详情请参阅：<br/>
+<a href="https://note.youdao.com/ynoteshare1/index.html?id=236896997b6ffbaa8e0d92eacd13abbf&amp;type=note">https://note.youdao.com/ynoteshare1/index.html?id=236896997b6ffbaa8e0d92eacd13abbf&amp;type=note</a><br/>
+或<br/>
+<a href="https://www.cnblogs.com/linjiaxin/p/6476480.html">https://www.cnblogs.com/linjiaxin/p/6476480.html</a></p>
 
-<pre class="line-numbers"><code class="language-text">Windows Registry Editor Version 5.00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\New]
-
-@=&quot;{D969A300-E7FF-11d0-A93B-00A0C90F2719}&quot;
-</code></pre>
-
-<p>保存，然后双击该文件，即可。</p>
+<p>感谢作者的付出。</p>
 
                         
                       </div>
@@ -234,10 +238,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/13 18:29 下午</span>
+                    <span class="date">2019/3/29 15:55 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -312,6 +316,8 @@
         
             <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
+        
             <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
             <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
@@ -333,31 +339,31 @@
 	      
 		      
 			      <li class="post">
-			        <a href="15480046120109.html">降低cpu使用率</a>
+			        <a href="15542044701566.html">debian or ubuntu 修改终端欢迎语</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15473464131197.html">读 Monyer 文章有感</a>
+			        <a href="15542027955936.html">mysql登录提示ERROR 1524 (HY000): Plugin 'unix_socket' is not loaded解决方法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15446969783198.html">解决windows右键新建消失问题</a>
+			        <a href="15538461504138.html">vmware三种网络模式详解</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15446973583267.html">解决npm更新或安装软件时下载较慢等问题</a>
+			        <a href="15538425408524.html">虚拟机安装win10操作系统</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15456175398128.html">自建kms服务器激活windows</a>
+			        <a href="15532282104799.html">Mac 终端设置欢迎页</a>
 			      </li>
 		     
 		  

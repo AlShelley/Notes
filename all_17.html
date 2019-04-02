@@ -109,6 +109,8 @@
         
             <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
+            <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
+        
             <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
             <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
@@ -136,30 +138,18 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045489079.html">
+                <a class="clearlink" href="15453706658952.html">
                 
-                  <h1>iterm2 常用技巧</h1>
+                  <h1>查看端口占用</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>按住 com 键</p>
-
-<ul>
-<li>可以拖拽选中字符串</li>
-<li>点击url能直接打开</li>
-<li>点击文件：调用默认程序打开文件</li>
-<li>点击文件夹：在finder中打开文件夹</li>
-<li>同时按住option键，可以矩形选中</li>
-</ul>
-
-<p>新建windows：cmd+N<br/>
-新建tab：cmd+T<br/>
-切分屏幕：cmd+D水平切分<br/>
-智能查找，支持正则：cmd+F</p>
-
-<p>智能补全：cmd+；<br/>
-调用历史记录：cmd+shift+h</p>
+                        	<p>使用命令：<br/>
+<code>lsof -i:8000</code><br/>
+或<br/>
+<code>netstat -tunlp|grep 8000</code><br/>
+均可。</p>
 
                         
                       </div>
@@ -168,95 +158,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span class="date">2018/12/21 13:37 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15446861280668.html">
-                
-                  <h1>hackthebox邀请码</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>不打算好好玩的麻烦不要瞎注册，大量的垃圾账号只会污染整个生态环境。</p>
-</blockquote>
-
-<p>进入注册页面，观察页面js文件会找到以下内容：</p>
-
-<pre class="line-numbers"><code class="language-javascript">eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!&#39;&#39;.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return&#39;\\w+&#39;};c=1};while(c--){if(k[c]){p=p.replace(new RegExp(&#39;\\b&#39;+e(c)+&#39;\\b&#39;,&#39;g&#39;),k[c])}}return p}(&#39;1 i(4){h 8={&quot;4&quot;:4};$.9({a:&quot;7&quot;,5:&quot;6&quot;,g:8,b:\&#39;/d/e/n\&#39;,c:1(0){3.2(0)},f:1(0){3.2(0)}})}1 j(){$.9({a:&quot;7&quot;,5:&quot;6&quot;,b:\&#39;/d/e/k/l/m\&#39;,c:1(0){3.2(0)},f:1(0){3.2(0)}})}&#39;,24,24,&#39;response|function|log|console|code|dataType|json|POST|formData|ajax|type|url|success|api|invite|error|data|var|verifyInviteCode|makeInviteCode|how|to|generate|verify&#39;.split(&#39;|&#39;),0,{}))
-</code></pre>
-
-<p>1、然后把这段代码放到 <a href="http://jsbeautifier.org/">http://jsbeautifier.org/</a> 进行美化，得出：<br/>
-2、</p>
-
-<pre class="line-numbers"><code class="language-javascript">function verifyInviteCode(code) {
-    var formData = {
-        &quot;code&quot;: code
-    };
-    $.ajax({
-        type: &quot;POST&quot;,
-        dataType: &quot;json&quot;,
-        data: formData,
-        url: &#39;/api/invite/verify&#39;,
-        success: function(response) {
-            console.log(response)
-        },
-        error: function(response) {
-            console.log(response)
-        }
-    })
-}
-
-function makeInviteCode() {
-    $.ajax({
-        type: &quot;POST&quot;,
-        dataType: &quot;json&quot;,
-        url: &#39;/api/invite/how/to/generate&#39;,
-        success: function(response) {
-            console.log(response)
-        },
-        error: function(response) {
-            console.log(response)
-        }
-    })
-}
-</code></pre>
-
-<p>可以看出上述代码是让我们访问：<a href="https://www.hackthebox.eu/api/invite/generate">https://www.hackthebox.eu/api/invite/generate</a><br/>
-然后修改请求方式为post<br/>
-于是就得到了：</p>
-
-<pre class="line-numbers"><code class="language-javascript">{&quot;success&quot;:1,&quot;data&quot;:{&quot;code&quot;:&quot;VlJQS1QtQUNXRUstT0tYREwtQ0lZQVUtS0NZSlU=&quot;,&quot;format&quot;:&quot;encoded&quot;},&quot;0&quot;:200}
-</code></pre>
-
-<p>将code进行base64解码，就得到了邀请码。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/13 15:28 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -396,6 +301,71 @@ Distributed under the GPL v2 license (GNU General Public License v2).
                 </div>
               </div><!-- article -->
         
+			<div class="article">
+                <a class="clearlink" href="15453704835251.html">
+                
+                  <h1>fluxgui安装与卸载</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>很久以前的笔记了</p>
+</blockquote>
+
+<pre class="line-numbers"><code class="language-text">Ubuntu/Debian Manual Install
+# Install dependencies
+sudo apt-get install git python-appindicator python-xdg python-pexpect python-gconf python-gtk2 python-glade2 libxxf86vm1
+
+# Download fluxgui
+cd /tmp
+git clone &quot;https://github.com/xflux-gui/fluxgui.git&quot;
+cd fluxgui
+python download-xflux.py
+
+# EITHER install globally
+sudo python setup.py install
+# EXCLUSIVE OR, install in your home directory. The binary installs
+# into ~/.local/bin, so be sure to add that to your PATH if installing locally.
+python setup.py install --user
+
+# Run flux
+fluxgui
+Ubuntu/Debian Manual Uninstall
+If you manually installed instead of using the PPA, you can uninstall by making setup.py tell you where it installed files and then removing the installed files.
+
+# EITHER uninstall globally
+sudo python setup.py install --record installed.txt
+sudo xargs rm -vr &lt; installed.txt
+
+# EXCLUSIVE OR uinstall in your home directory
+python setup.py install --user --record installed.txt
+xargs rm -vr &lt; installed.txt
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21 13:34 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
               
 
 
@@ -458,6 +428,8 @@ Distributed under the GPL v2 license (GNU General Public License v2).
         
             <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
+        
             <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
             <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
@@ -479,31 +451,31 @@ Distributed under the GPL v2 license (GNU General Public License v2).
 	      
 		      
 			      <li class="post">
-			        <a href="15480046120109.html">降低cpu使用率</a>
+			        <a href="15542044701566.html">debian or ubuntu 修改终端欢迎语</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15473464131197.html">读 Monyer 文章有感</a>
+			        <a href="15542027955936.html">mysql登录提示ERROR 1524 (HY000): Plugin 'unix_socket' is not loaded解决方法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15446969783198.html">解决windows右键新建消失问题</a>
+			        <a href="15538461504138.html">vmware三种网络模式详解</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15446973583267.html">解决npm更新或安装软件时下载较慢等问题</a>
+			        <a href="15538425408524.html">虚拟机安装win10操作系统</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15456175398128.html">自建kms服务器激活windows</a>
+			        <a href="15532282104799.html">Mac 终端设置欢迎页</a>
 			      </li>
 		     
 		  

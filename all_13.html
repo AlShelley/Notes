@@ -109,6 +109,8 @@
         
             <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
+            <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
+        
             <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
             <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
@@ -136,22 +138,22 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15453701535252.html">
+                <a class="clearlink" href="15470312265923.html">
                 
-                  <h1>v2ray使用方法</h1>
+                  <h1>修改Mac主机名、计算机名</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>编辑 /etc/v2ray/config.json 文件来配置你需要的代理方式；</p>
+                        	<p><code>$sudo scutil --set ComputerName 你想要的计算机名称</code><br/>
+<code>$sudo scutil --set HostName 你想要的主机名称</code></p>
 
-<p>运行 service v2ray start 来启动 V2Ray 进程；<br/>
-之后可以使用 service v2ray start|stop|status|reload|restart|force-reload 控制 V2Ray 的运行。</p>
+<p>举例：<br/>
+<code>$sudo scutil --set HostName lonelyor</code></p>
 
-<p>v2ray官网：<br/>
-<a href="https://www.v2ray.com/chapter_00/install.html">https://www.v2ray.com/chapter_00/install.html</a><br/>
-v2ray一键安装：<br/>
-bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.direct/go.sh</a>)</p>
+<p>使用以下命令查看主机名或计算机名<br/>
+<code>$ scutil --get ComputerName</code><br/>
+<code>$ scutil --get HostName</code></p>
 
                         
                       </div>
@@ -160,10 +162,10 @@ bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.dire
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 13:29 下午</span>
+                    <span class="date">2019/1/9 18:53 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -177,27 +179,21 @@ bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.dire
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15515375536566.html">
+                <a class="clearlink" href="15468702076334.html">
                 
-                  <h1>rclone挂载 onedrive 教程</h1>
+                  <h1>使用python快速搭建ftp服务器</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>1、rclone config选 n<br/>
-2、给网盘起个名字如 xlz<br/>
-3、选择要挂载的网盘类型，输入数字即可，如 onedrive 则输入18<br/>
-4、按回车直到<code>Edit advanced config</code>选 y 来编辑配置<br/>
-5、<code>chunk-size</code>我选了200M,这个随便写。<br/>
-6、连续回车直到<code>expose_onenote_files&gt; true</code>，这里默认为 false，选 true 是为了在 finder 中显示。<br/>
-7、<code>Use auto config</code>，我选的是，然后浏览器自动弹出来进行认证<br/>
-8、认证结束后，<code>Your choice&gt; 1</code><br/>
-9、<code>Chose drive to use:&gt;</code>选你要用的（数字）然后选y<br/>
-10、<code>y/e/d&gt; y</code>选 y 然后就添加好了<br/>
-11、新开一个终端，然后新建一个目录（待会儿网盘就会挂载到这个目录下，比如我新建 xlz）<br/>
-12、rclone mount xlz:/ /Users/lonelyor/NBonedrive/xlz<br/>
-13、如果要在后台运行就<code>nohup rclone mount xlz:/ /Users/lonelyor/NBonedrive/xlz &amp;</code><br/>
-14、终端输入 <code>df -h</code> 查看</p>
+                        	<p>使用第三方库：pyftpdlib<br/>
+安装库：pip3 install pyftpdlib<br/>
+其他依赖项：<br/>
+<code>pip3 install PyOpenSSL</code> 用来支持ftps。<br/>
+<code>pip3 install pysendfile</code> 用来在unix上加速上传（服务器到客户端）。<br/>
+安装python库的时候要注意大小写。</p>
+
+<p>后面的事情就是看官方示例，然后copy了。</p>
 
                         
                       </div>
@@ -206,10 +202,10 @@ bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.dire
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/3/2 22:39 下午</span>
+                    <span class="date">2019/1/7 22:10 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -223,22 +219,16 @@ bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.dire
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15453709108643.html">
+                <a class="clearlink" href="15457897865747.html">
                 
-                  <h1>python弱口令脚本的一点备注</h1>
+                  <h1>将网页保存为PDF</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>很久以前写的</p>
-</blockquote>
-
-<p>跑弱口令的脚本<br/>
-不要使用字典这种操作，这不利于跑大量数据的场景。<br/>
-应该制定规则去跑，比如：<br/>
-取出一个用户名，然后根据规则生成弱口令，然后再去匹配用户名对应的密码，匹配则是弱口令，不匹配则不是弱口令。<br/>
-这样可以后续变成一个服务，用户输入密码，触发了规则则告诉他密码是弱口令。</p>
+                        	<p>如果使用 google chrome 则不需要任何辅助工具即可做到。<br/>
+Mac用户使用cmd+p即可；<br/>
+Windows用户使用ctrl+p即可。</p>
 
                         
                       </div>
@@ -247,10 +237,10 @@ bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.dire
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 13:41 下午</span>
+                    <span class="date">2018/12/26 10:3 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -325,6 +315,8 @@ bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.dire
         
             <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
+        
             <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
             <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
@@ -346,31 +338,31 @@ bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.dire
 	      
 		      
 			      <li class="post">
-			        <a href="15480046120109.html">降低cpu使用率</a>
+			        <a href="15542044701566.html">debian or ubuntu 修改终端欢迎语</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15473464131197.html">读 Monyer 文章有感</a>
+			        <a href="15542027955936.html">mysql登录提示ERROR 1524 (HY000): Plugin 'unix_socket' is not loaded解决方法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15446969783198.html">解决windows右键新建消失问题</a>
+			        <a href="15538461504138.html">vmware三种网络模式详解</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15446973583267.html">解决npm更新或安装软件时下载较慢等问题</a>
+			        <a href="15538425408524.html">虚拟机安装win10操作系统</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15456175398128.html">自建kms服务器激活windows</a>
+			        <a href="15532282104799.html">Mac 终端设置欢迎页</a>
 			      </li>
 		     
 		  

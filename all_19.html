@@ -109,6 +109,8 @@
         
             <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
+            <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
+        
             <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
             <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
@@ -136,17 +138,20 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15446978130922.html">
+                <a class="clearlink" href="15453699439742.html">
                 
-                  <h1>enigmagroup入门挑战-基础1</h1>
+                  <h1>使用ssh科学上网</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="http://challenges.enigmagroup.org/basics/pre/1/">基础1题目地址</a><br/>
-1、右键查看源码<br/>
-2、ctrl+f查找passw<br/>
-3、注释里面说了：<code>&lt;!-- the first levels are easy, the password is 39f13b --&gt;</code></p>
+                        	<p>打开终端输入：<br/>
+ <code>ssh -D 1085 -p 6754 root@xx.xx.xx.xx</code><br/>
+ 然后输入密码即可。xx即远程服务器ip。<br/>
+ 这意味着本地1085端口被转发到了远程服务器的6754上，然后在浏览器配置socks5代理：127.0.0.1 1085<br/>
+ 就可以科学上网了。</p>
+
+<p>如果不稳定，可以考虑使用autossh。</p>
 
                         
                       </div>
@@ -155,7 +160,43 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/13 18:43 下午</span>
+                    <span class="date">2018/12/21 13:25 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15453600721143.html">
+                
+                  <h1>扫描网站备份文件思路</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>sk15大佬提供一个思路，使用备份文件名list+域名list2扫描，这样每次循环都是一个备份文件名扫描list2次。<br/>
+如果使用域名list2+备份文件名list1则每次循环都是一个域名就会扫描list1次（这样由于请求频次高容易导致服务器宕机）</p>
+
+<p>大佬还提供了一个更有意思的方法，将list1和list2做成一个list，然后将其打乱，再扫描。（骚思路就像好算法，是编程的精髓。）</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21 10:41 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
@@ -172,41 +213,47 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15453757934453.html">
+                <a class="clearlink" href="15453579778110.html">
                 
-                  <h1>css美化文章标题</h1>
+                  <h1>nano常见设置，如语法高亮、启用行号、启用鼠标等</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>MWeb自带的标题不好看，特别是首页展示的文章多的时候，没有区分度，看的眼花缭乱的。<br/>
-参考自：<a href="http://www.fly63.com/article/detial/642">http://www.fly63.com/article/detial/642</a></p>
-</blockquote>
+                        	<p>下载nano<br/>
+linux根据包管理不同，使用不通的命令。<br/>
+macosx使用brew安装。</p>
 
-<h2 id="toc_0">彩虹字</h2>
+<p>编辑（没有就创建）配置文件<br/>
+nano ～/.nanorc<br/>
+然后添加以下内容</p>
 
-<p>下面是我添加的css代码，用来稍微美化一下文章标题。</p>
-
-<pre class="line-numbers"><code class="language-css3">.markdown-body h1 {
-  font-size: 2rem;
-  margin: 0.67rem 0;
-  background: linear-gradient(to right, red, orange, green, blue, indigo, violet);
-  -webkit-background-clip: text; 
-  color: transparent;   
-}
+<pre class="line-numbers"><code class="language-text"># 语法高亮
+include &quot;/usr/share/nano/*.nanorc&quot;
 </code></pre>
 
-<h2 id="toc_1">虚化标题</h2>
+<p>或者</p>
 
-<pre class="line-numbers"><code class="language-text">.markdown-body h1 {
-  font-size: 30px;
-  color:  #00cccc;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-  overflow-y: scroll;
-  margin: 0px;
-}
+<pre class="line-numbers"><code class="language-text"># 语法高亮
+include &quot;/usr/local/share/nano/*.nanorc&quot;
 </code></pre>
+
+<p>这里include哪一个主要取决于nanorc的具体位置。通常linux在share，macosx在local/share。<br/>
+其他内容如：</p>
+
+<pre class="line-numbers"><code class="language-text"># 启用行号
+set linenumbers
+# 平滑滚动
+set smooth
+# 自动缩进
+set autoindent
+# tab为空格
+set tabstospaces
+# 启用鼠标
+set mouse
+</code></pre>
+
+<p>然后保存，重新打开终端，即可发现设置生效，以上方法适用于linux和macosx。</p>
 
                         
                       </div>
@@ -215,74 +262,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 15:3 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15453574952135.html">
-                
-                  <h1>crontab设置定时任务</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>文章参考自：<a href="http://blog.csdn.net/xiaochuige/article/details/49252741">http://blog.csdn.net/xiaochuige/article/details/49252741</a> 感谢作者。</p>
-</blockquote>
-
-<p>crontab的基本格式：</p>
-
-<pre class="line-numbers"><code class="language-text">* * * * * command
-几个星号分别为：分 时 日 月 周，最后是要执行的命令。
-分：0~59
-时：0~23
-日：1~31
-月：1~12
-周：0～6（0表示星期天）
-除了数字还有几个个特殊的符号就是* / - ：
-* 代表所有的取值范围内的数字
-/ 代表每的意思
-*/5 表示每5个单位
-- 代表从某个数字到某个数字
-, 分开几个离散的数字
-</code></pre>
-
-<p>配置文件的一些例子：</p>
-
-<pre class="line-numbers"><code class="language-text">0 3 * * * /root/test.sh 每天凌晨3点执行test.sh文件
-* 23-7/1 * * * /root/lnmp restart 晚上11点到早上7点之间，每隔一小时重启lnmp套件
-*/30 * * * * /usr/sbin/ntpdate 每半小时同步一下时间
-0 23 * * 6 /lnmp restart 每星期六的11 : 00 pm重启重启lnmp套件。
-*/1 * * * * echo &quot;i am running.&quot;&gt;&gt;/tmp/running.txt 每隔1分钟向/tmp/running.txt写一个&quot;i am running.&quot;字符串。
-</code></pre>
-
-<p>运行<br/>
-我以为编辑crontab保存后会自动执行，其实不然，必须通过重启cron才可以，命令如下：<br/>
-启动/etc/init.d/cron start<br/>
-关闭/etc/init.d/cron stop<br/>
-重启/etc/init.d/cron restart</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/21 9:58 上午</span>
+                    <span class="date">2018/12/21 10:6 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
@@ -360,6 +340,8 @@
         
             <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
+        
             <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
             <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
@@ -381,31 +363,31 @@
 	      
 		      
 			      <li class="post">
-			        <a href="15480046120109.html">降低cpu使用率</a>
+			        <a href="15542044701566.html">debian or ubuntu 修改终端欢迎语</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15473464131197.html">读 Monyer 文章有感</a>
+			        <a href="15542027955936.html">mysql登录提示ERROR 1524 (HY000): Plugin 'unix_socket' is not loaded解决方法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15446969783198.html">解决windows右键新建消失问题</a>
+			        <a href="15538461504138.html">vmware三种网络模式详解</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15446973583267.html">解决npm更新或安装软件时下载较慢等问题</a>
+			        <a href="15538425408524.html">虚拟机安装win10操作系统</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15456175398128.html">自建kms服务器激活windows</a>
+			        <a href="15532282104799.html">Mac 终端设置欢迎页</a>
 			      </li>
 		     
 		  

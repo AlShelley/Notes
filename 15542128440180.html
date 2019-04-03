@@ -9,7 +9,7 @@
 
     <title>
     
-  msf更新 - lonelyorWiki
+  VMware Fusion 端口映射 - lonelyorWiki
   
   </title>
   
@@ -138,14 +138,14 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>msf更新</h1>
+          <h1>VMware Fusion 端口映射</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2019/1/13 12:8 下午</span>
+          <span class="date">2019/4/2 21:47 下午</span>
 
           <span>发表于&nbsp;</span> 
           
-              <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+              <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
            
          
           <span class="comments">
@@ -158,8 +158,28 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <p>1、打开终端输入 msf 进入msfconsole<br/>
-2、在 msfconsole 中输入 msfupdate 即可自动更新</p>
+      <blockquote>
+<p>文章转载自：<a href="https://blog.csdn.net/weixin_43302757/article/details/82911332">https://blog.csdn.net/weixin_43302757/article/details/82911332</a></p>
+</blockquote>
+
+<p>Windows版本VM进行端口映射有相关的设置界面，但是Mac系统的VM（VMware Fusion）没有。Google 以下找到相关方法。具体步骤如下</p>
+
+<p>打开配置文件<br/>
+<code>sudo vi  /Library/Preferences/VMware\ Fusion/vmnet8/nat.conf</code><br/>
+找到如下配置</p>
+
+<pre class="line-numbers"><code class="language-text">[incomingtcp]
+# Use these with care - anyone can enter into your VM through these...
+# The format and example are as follows:
+#&lt;external port number&gt; = &lt;VM&#39;s IP address&gt;:&lt;VM&#39;s port number&gt;
+23 = 172.16.161.129:22 #将IP172.16.161.129虚拟机的22 端口映射到主机23端口
+</code></pre>
+
+<p>重启VM的网络服务</p>
+
+<pre class="line-numbers"><code class="language-text">sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --stop
+sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --start
+</code></pre>
 
 
     
@@ -170,16 +190,13 @@
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15473910152747.html" 
-          title="Previous Post: 给网站嵌入百度搜索框">&laquo; 给网站嵌入百度搜索框</a>
-      
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15473464131197.html" 
-          title="Next Post: 读 Monyer 文章有感">读 Monyer 文章有感 &raquo;</a>
+          <a  href="15542101741047.html" 
+          title="Next Post: linux sudo配置免密及排除部分命令">linux sudo配置免密及排除部分命令 &raquo;</a>
       
       </p>
         </div>

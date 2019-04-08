@@ -138,6 +138,70 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15487463359475.html">
+                
+                  <h1>给网站添加百度、谷歌搜索框</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>以下是我北斗页面的搜索框代码：</p>
+
+<pre class="line-numbers"><code class="language-markup"> &lt;div style=&#39;overflow:auto&#39;&gt;&lt;form onsubmit=&quot;return baiduWithHttps(this)&quot; action=&quot;http://www.baidu.com/s&quot; target=&quot;_blank&quot;&gt;
+        &lt;input class=&#39;bdtext&#39; type=&quot;text&quot;  onfocus=&quot;checkHttps&quot; name=&quot;wd&quot;  size=&quot;30&quot;&gt;&lt;input class=&#39;bdbtn&#39; type=&quot;submit&quot;value=&quot;百度搜索&quot;&gt;
+        &lt;/form&gt;&lt;script&gt;function checkHttps () {
+                BaiduHttps.useHttps();    
+            };
+            function baiduWithHttps (formname) {
+                var data = BaiduHttps.useHttps();
+                if (data.s === 0) {
+                    return true;
+                }
+                else {
+                    formname.action = &#39;https://www.baidu.com/s&#39; + &#39;?wd&#39; + data.ssl_code;
+                    return true;
+                }
+            };&lt;/script&gt;&lt;/div&gt;&lt;div style=&#39;overflow:auto&#39;&gt;&lt;form onsubmit=&quot;return googleWithHttps(this)&quot; action=&quot;http://www.google.com/search&quot; target=&quot;_blank&quot;&gt;
+    &lt;input class=&#39;bdtext&#39; type=&quot;text&quot;  onfocus=&quot;checkHttps&quot; name=&quot;q&quot;  size=&quot;30&quot;&gt;&lt;input class=&#39;bdbtn&#39; type=&quot;submit&quot;value=&quot;谷歌搜索&quot;&gt;
+    &lt;/form&gt;&lt;script&gt;function checkHttps () {
+            googleHttps.useHttps();    
+        };
+        function googleWithHttps (formname) {
+            var data = googleHttps.useHttps();
+            if (data.s === 0) {
+                return true;
+            }
+            else {
+                formname.action = &#39;https://www.google.com/search&#39; + &#39;?q&#39; + data.ssl_code;
+                return true;
+            }
+        };&lt;/script&gt;&lt;/div&gt;
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/29 15:18 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15484074464554.html">
                 
                   <h1>Snipaste 无法在 Mac 上截图的解决办法</h1>
@@ -208,47 +272,6 @@ Snipaste 版本：1.16.2</p>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15483045490848.html">
-                
-                  <h1>HttpOnly</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>HttpOnly是 Set-Cookie HTTP响应头中包含的附加标志。生成cookie时使用httponly标志有助于降低客户端脚本访问受保护cookie的风险。</p>
-
-<p>如果HTTP响应头中包含HttpOnly标志，则无法通过客户端脚本访问cookie。因此即使存在xss跨站脚本漏洞，并且用户意外访问到恶意链接，浏览器也不会向第三方透露cookie（前提是浏览器支持HttpOnly）。</p>
-
-<p>参考链接：</p>
-
-<blockquote>
-<p><a href="https://www.owasp.org/index.php/HttpOnly">https://www.owasp.org/index.php/HttpOnly</a></p>
-</blockquote>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -346,6 +369,12 @@ Snipaste 版本：1.16.2</p>
 	      
 		      
 			      <li class="post">
+			        <a href="15547243035014.html">相见欢·林花谢了春红</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15547237158216.html">怎么解决"该虚拟机似乎正在使用中"问题</a>
 			      </li>
 		     
@@ -365,12 +394,6 @@ Snipaste 版本：1.16.2</p>
 		      
 			      <li class="post">
 			        <a href="15543568335321.html">python 计算代码运行时间的方法</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15543511984993.html">python程序退出的几种方式</a>
 			      </li>
 		     
 		  

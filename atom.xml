@@ -4,13 +4,34 @@
   <title><![CDATA[lonelyorWiki]]></title>
   <link href="http://www.lonelyor.org/lonelyorWiki/atom.xml" rel="self"/>
   <link href="http://www.lonelyor.org/lonelyorWiki/"/>
-  <updated>2019-04-03T14:58:05+08:00</updated>
+  <updated>2019-04-08T19:43:09+08:00</updated>
   <id>http://www.lonelyor.org/lonelyorWiki/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[相见欢·林花谢了春红]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15547243035014.html"/>
+    <updated>2019-04-08T19:51:43+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15547243035014.html</id>
+    <content type="html"><![CDATA[
+<p>【作者】李煜 <br/>
+【朝代】五代</p>
+
+<p>林花谢了春红，太匆匆。无奈朝来寒雨，晚来风。<br/>
+胭脂泪，相留醉，几时重。自是人生长恨，水长东。</p>
+
+<blockquote>
+<p>五代是指后梁、后唐、后晋、后汉和后周。<br/>
+前蜀、后蜀、南吴、南唐、吴越、闽、楚、南汉、南平（荆南）、北汉等十余个割据政权被《新五代史》及后世史学家统称十国。<br/>
+五代十国（907年—979年）是中国历史上的一段大分裂时期。这一称谓出自《新五代史》，是对五代（907年—960年）与十国（902年—979年）的合称。</p>
+</blockquote>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[怎么解决"该虚拟机似乎正在使用中"问题]]></title>
@@ -1111,30 +1132,6 @@ sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --start
 更换源<br/>
 访问网站 <a href="https://gems.ruby-china.com/">Ruby China</a>，然后按照如下操作即可。<br/>
 <figure><img src="media/15520320136368/15520321533528.jpg" alt=""/></figure></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[rclone挂载 onedrive 教程]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15515375536566.html"/>
-    <updated>2019-03-02T22:39:13+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15515375536566.html</id>
-    <content type="html"><![CDATA[
-<p>1、rclone config选 n<br/>
-2、给网盘起个名字如 xlz<br/>
-3、选择要挂载的网盘类型，输入数字即可，如 onedrive 则输入18<br/>
-4、按回车直到<code>Edit advanced config</code>选 y 来编辑配置<br/>
-5、<code>chunk-size</code>我选了200M,这个随便写。<br/>
-6、连续回车直到<code>expose_onenote_files&gt; true</code>，这里默认为 false，选 true 是为了在 finder 中显示。<br/>
-7、<code>Use auto config</code>，我选的是，然后浏览器自动弹出来进行认证<br/>
-8、认证结束后，<code>Your choice&gt; 1</code><br/>
-9、<code>Chose drive to use:&gt;</code>选你要用的（数字）然后选y<br/>
-10、<code>y/e/d&gt; y</code>选 y 然后就添加好了<br/>
-11、新开一个终端，然后新建一个目录（待会儿网盘就会挂载到这个目录下，比如我新建 xlz）<br/>
-12、rclone mount xlz:/ /Users/lonelyor/NBonedrive/xlz<br/>
-13、如果要在后台运行就<code>nohup rclone mount xlz:/ /Users/lonelyor/NBonedrive/xlz &amp;</code><br/>
-14、终端输入 <code>df -h</code> 查看</p>
 
 ]]></content>
   </entry>

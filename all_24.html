@@ -138,211 +138,48 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15446969783198.html">
+                <a class="clearlink" href="15453574952135.html">
                 
-                  <h1>解决windows右键新建消失问题</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>新建一个文件后缀名写为reg（注册表文件格式）的文件。<br/>
-然后用记事本或文本编辑器打开，写入文件内容：</p>
-
-<pre class="line-numbers"><code class="language-text">Windows Registry Editor Version 5.00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\New]
-
-@=&quot;{D969A300-E7FF-11d0-A93B-00A0C90F2719}&quot;
-</code></pre>
-
-<p>保存，然后双击该文件，即可。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/13 18:29 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15446968262703.html">
-                
-                  <h1>OneDrive映射到本地（像访问本地磁盘一样访问网盘）</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>参考以下链接即可：<br/>
-<a href="http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc">http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc</a></p>
-
-<p>举一反三，webdav、nfs、samba等都可以使用这种方式挂载，来方便访问。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/13 18:27 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15446897185202.html">
-                
-                  <h1>从零开始的DVWA之环境搭建</h1>
+                  <h1>crontab设置定时任务</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>文章写于2017年7月6日，很久之前的东西了。</p>
+<p>文章参考自：<a href="http://blog.csdn.net/xiaochuige/article/details/49252741">http://blog.csdn.net/xiaochuige/article/details/49252741</a> 感谢作者。</p>
 </blockquote>
 
-<h2 id="toc_0">0X01 主机配置</h2>
+<p>crontab的基本格式：</p>
 
-<p>　　操作系统：Ubuntu-Kylin-16.04-LTS_x64（VritualBox虚拟机）<br/><br/>
-　　相关组件：XAMPP+DVWA    </p>
-
-<h2 id="toc_1">0X02 DVWA简介</h2>
-
-<p>　　DVWA是一个用来进行安全脆弱性鉴定（练习挖洞）的PHP/MySQL应用。旨在帮助安全爱好者（黑客白客红客白帽子黑帽子绿帽子等）测试自己的专业技能和工具提供合法的环境（不要瞎搞别人网站，这样不好...），提升技术能力的同时更好的维护比特世界的和平。       </p>
-
-<h2 id="toc_2">0X03 XAMPP简介</h2>
-
-<p>　　XAMPP（Apache+MySQL+PHP+PERL）是一个功能强大的建站集成软件包。这个软件包原来的名字是 LAMPP，但是为了避免误解，最新的几个版本就改名为 XAMPP 了。由于DWVA需要PHP环境，嗯，就由XAMMP来守护了。    </p>
-
-<h2 id="toc_3">0X04 XAMPP和DVWA安装</h2>
-
-<p>　　首先访问官网 <a href="https://www.apachefriends.org/zh_cn/download.html">https://www.apachefriends.org/zh_cn/download.html</a> 然后点击下载：<br/><br/>
-<figure><img src="media/15446897185202/1.png" alt="1"/></figure></p>
-
-<p>接着就会弹个框：<br/><br/>
-<figure><img src="media/15446897185202/2.png" alt="2"/></figure></p>
-
-<p>去一趟茅房回来就下完了，你要是嫌弃7下的太慢，可以去下5.6，速度会快些，接着就是安装。　　　　<br/>
-　　安装过程如下（记得加权限，然后）：　　　　<br/>
-<figure><img src="media/15446897185202/3.png" alt="3"/></figure><br/>
-　　　　<br/>
-<figure><img src="media/15446897185202/4.png" alt="4"/></figure><br/>
-　<br/>
-一直点击next就行了……　　　　<br/>
-<figure><img src="media/15446897185202/5.png" alt="5"/></figure><br/>
-　　　<br/>
-　　这里告诉我们XAMPP被安装在/opt/lampp文件（linux一切皆文件）里面。最后点击Finish就完成了安装。<br/><br/>
-启动XAMPP    </p>
-
-<pre class="line-numbers"><code class="language-shell">#cd /opt/lampp
-#./manager-linxu-x64.run
-或者
-#/opt/lamp/./manage-linux-x64.run  
+<pre class="line-numbers"><code class="language-text">* * * * * command
+几个星号分别为：分 时 日 月 周，最后是要执行的命令。
+分：0~59
+时：0~23
+日：1~31
+月：1~12
+周：0～6（0表示星期天）
+除了数字还有几个个特殊的符号就是* / - ：
+* 代表所有的取值范围内的数字
+/ 代表每的意思
+*/5 表示每5个单位
+- 代表从某个数字到某个数字
+, 分开几个离散的数字
 </code></pre>
 
-<p><figure><img src="media/15446897185202/6.png" alt="6"/></figure></p>
+<p>配置文件的一些例子：</p>
 
-<p>下面我们开始安装DWVA：<br/><br/>
-　　首先我们登录官网 <a href="http://www.dvwa.co.uk/">http://www.dvwa.co.uk/</a> 点击DOWNLOAD下载最新版的DWVA，是一个zip文件。<br/><br/>
-<figure><img src="media/15446897185202/7.png" alt="7"/></figure></p>
+<pre class="line-numbers"><code class="language-text">0 3 * * * /root/test.sh 每天凌晨3点执行test.sh文件
+* 23-7/1 * * * /root/lnmp restart 晚上11点到早上7点之间，每隔一小时重启lnmp套件
+*/30 * * * * /usr/sbin/ntpdate 每半小时同步一下时间
+0 23 * * 6 /lnmp restart 每星期六的11 : 00 pm重启重启lnmp套件。
+*/1 * * * * echo &quot;i am running.&quot;&gt;&gt;/tmp/running.txt 每隔1分钟向/tmp/running.txt写一个&quot;i am running.&quot;字符串。
+</code></pre>
 
-<p>然后将文件解压（提取）到/opt/lamp/htdocs/目录下<br/><br/>
-<figure><img src="media/15446897185202/8.png" alt="8"/></figure></p>
-
-<p><figure><img src="media/15446897185202/9.png" alt="9"/></figure></p>
-
-<p>接着我们打开XAMPP的MySQL（默认只开了Apache）<br/><br/>
-<figure><img src="media/15446897185202/10.png" alt="10"/></figure></p>
-
-<p>然后访问 http://localhost/DVWA-master/index.php 诶!?报错<br/><br/>
-<figure><img src="media/15446897185202/11.png" alt="11"/></figure></p>
-
-<p>　　嗯，根据报错信息可知是配置文件有问题（废话啰），同样的根据提示我们知道要将文件名config.inc.php.dist改为config.inc.php（这里其实涉及到一个linux命令copy的用法，具体可自行百度： <a href="http://www.linuxdiyf.com/viewarticle.php?id=38590">http://www.linuxdiyf.com/viewarticle.php?id=38590</a> ）。改完名字之后就可以访问了，页面会自动跳转到： http://localhost/DVWA-master/setup.php 。然后我们用gedit打开这个文件config.inc.php看看是个什么东西，(⊙o⊙)哦原来是配置文件（废话连篇有木有），我们修改两个地方（1、数据库密码，我知道玩lol的你输入这个密码肯定飞快，不过我是玩dota的。2、安全等级设置为low，简单点容易玩，默认是难的。）     　<br/><br/>
-<figure><img src="media/15446897185202/12.png" alt="12"/></figure></p>
-
-<p>打开之后长这样：<br/><br/>
-<figure><img src="media/15446897185202/13.png" alt="13"/></figure></p>
-
-<p>怎么玩呢？我不知道啊，于是我瞎点了几下，<br/><br/>
-<figure><img src="media/15446897185202/14.png" alt="14"/></figure></p>
-
-<p>MMP又报错了，根据提示我们知道问题出在red部分,嗯，我们去修改一下所有带红色的地方的配置。<br/><br/>
-1、搞定PHP function allow_url_include：Disabled<br/><br/>
-找到php的配置文件，修改allow_url_include=Off 为allow_url_include=on（参考<a href="http://php.net/manual/zh/filesystem.configuration.php#ini.allow-url-include%EF%BC%89">http://php.net/manual/zh/filesystem.configuration.php#ini.allow-url-include）</a><br/><br/>
-<figure><img src="media/15446897185202/15.png" alt="15"/></figure></p>
-
-<p>然后修改/opt/lamp/etc/php.ini<br/><br/>
-<figure><img src="media/15446897185202/16.png" alt="16"/></figure></p>
-
-<p>2、解决reCAPTCHA key，配置文件里面有个谷歌连接，点进去剩下的估计你也看得懂应该知道该怎么做额。<br/><br/>
-<figure><img src="media/15446897185202/17.png" alt="17"/></figure></p>
-
-<p><figure><img src="media/15446897185202/18.png" alt="18"/></figure></p>
-
-<p>3、解决最后的两个NO<br/><br/>
-<figure><img src="media/15446897185202/19.png" alt="19"/></figure></p>
-
-<p>我们给这两个文件加权，运行命令：<br/><br/>
-<figure><img src="media/15446897185202/20.png" alt="20"/></figure></p>
-
-<p>然后点击<br/><br/>
-<figure><img src="media/15446897185202/21.png" alt="21"/></figure></p>
-
-<p>纳尼!?<br/><br/>
-<figure><img src="media/15446897185202/22.png" alt="22"/></figure></p>
-
-<p>只好回头再看看XAMPP的数据库配置文件，你会发现他的password默认是被注释了，我们取消注释。<br/><br/>
-<figure><img src="media/15446897185202/23.png" alt="23"/></figure></p>
-
-<p>最后你会发现不管怎么搞还是报错……这就尴尬了……<br/>
-经过尝试，我发现以下配置可以进入登录界面。<br/>
-XAMPP配置如下：<br/><br/>
-<figure><img src="media/15446897185202/24.png" alt="24"/></figure></p>
-
-<p>密码还是按照默认的注释掉<br/><br/>
-<figure><img src="media/15446897185202/25.png" alt="25"/></figure></p>
-
-<p>DVWA配置如下：<br/><br/>
-<figure><img src="media/15446897185202/26.png" alt="26"/></figure></p>
-
-<p>接着你就能进入登录界面了。恭喜！<br/>
-http://localhost/DVWA-master/login.php<br/><br/>
-<figure><img src="media/15446897185202/27.png" alt="27"/></figure></p>
-
-<p>输入账号密码然后登录就能愉快的玩耍了。<br/><br/>
-<figure><img src="media/15446897185202/28.png" alt="28"/></figure></p>
-
-<p>什么？你进不去？账号密码是什么？预知后事如何，请听下回分解。    </p>
-
-<p>下集预告：<br/><br/>
-　　欢迎来到DVWA的世界，这是你的第一关，登录破解…… </p>
+<p>运行<br/>
+我以为编辑crontab保存后会自动执行，其实不然，必须通过重启cron才可以，命令如下：<br/>
+启动/etc/init.d/cron start<br/>
+关闭/etc/init.d/cron stop<br/>
+重启/etc/init.d/cron restart</p>
 
                         
                       </div>
@@ -351,10 +188,98 @@ http://localhost/DVWA-master/login.php<br/><br/>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/13 16:28 下午</span>
+                    <span class="date">2018/12/21 9:58 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15453572892743.html">
+                
+                  <h1>Atom设置和取消代理</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">设置本地上游代理</h2>
+
+<p>apm config set http-proxy socks5:127.0.0.1:1080<br/>
+apm config set https-proxy socks5:127.0.0.1:1080</p>
+
+<h2 id="toc_1">取消SSL</h2>
+
+<p>apm config set strict-ssl false</p>
+
+<h2 id="toc_2">取消代理</h2>
+
+<p>apm config set http-proxy null<br/>
+apm config set https-proxy null</p>
+
+<h2 id="toc_3">查看代理设置</h2>
+
+<p>apm config get http-proxy<br/>
+apm config get https-proxy</p>
+
+<p>编辑～/.atom/.apmrc文件，配置为：<br/>
+strict-ssl=false<br/>
+http_proxy = socks5: 127.0.0.1:1080<br/>
+https_proxy = socks5: 127.0.0.1:1080</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21 9:54 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15449531124166.html">
+                
+                  <h1>Markdown基础语法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>占坑，内容以后写</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/16 17:38 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -452,31 +377,31 @@ http://localhost/DVWA-master/login.php<br/><br/>
 	      
 		      
 			      <li class="post">
-			        <a href="15542128440180.html">VMware Fusion 端口映射</a>
+			        <a href="15547237158216.html">怎么解决"该虚拟机似乎正在使用中"问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15542101741047.html">linux sudo配置免密及排除部分命令</a>
+			        <a href="15547068970077.html">arch 安装配置指南带图版</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15542098568070.html">linux sudo:/etc/sudoers 可被任何人写 解决方案</a>
+			        <a href="15547067485409.html">arch 安装配置指南</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15542044701566.html">debian or ubuntu 修改终端欢迎语</a>
+			        <a href="15543568335321.html">python 计算代码运行时间的方法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15542027955936.html">mysql登录提示ERROR 1524 (HY000): Plugin 'unix_socket' is not loaded解决方法</a>
+			        <a href="15543511984993.html">python程序退出的几种方式</a>
 			      </li>
 		     
 		  

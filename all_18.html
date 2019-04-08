@@ -138,18 +138,41 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15453706658952.html">
+                <a class="clearlink" href="15453757934453.html">
                 
-                  <h1>查看端口占用</h1>
+                  <h1>css美化文章标题</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>使用命令：<br/>
-<code>lsof -i:8000</code><br/>
-或<br/>
-<code>netstat -tunlp|grep 8000</code><br/>
-均可。</p>
+                        	<blockquote>
+<p>MWeb自带的标题不好看，特别是首页展示的文章多的时候，没有区分度，看的眼花缭乱的。<br/>
+参考自：<a href="http://www.fly63.com/article/detial/642">http://www.fly63.com/article/detial/642</a></p>
+</blockquote>
+
+<h2 id="toc_0">彩虹字</h2>
+
+<p>下面是我添加的css代码，用来稍微美化一下文章标题。</p>
+
+<pre class="line-numbers"><code class="language-css3">.markdown-body h1 {
+  font-size: 2rem;
+  margin: 0.67rem 0;
+  background: linear-gradient(to right, red, orange, green, blue, indigo, violet);
+  -webkit-background-clip: text; 
+  color: transparent;   
+}
+</code></pre>
+
+<h2 id="toc_1">虚化标题</h2>
+
+<pre class="line-numbers"><code class="language-text">.markdown-body h1 {
+  font-size: 30px;
+  color:  #00cccc;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  overflow-y: scroll;
+  margin: 0px;
+}
+</code></pre>
 
                         
                       </div>
@@ -158,10 +181,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 13:37 下午</span>
+                    <span class="date">2018/12/21 15:3 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -175,108 +198,25 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15453705663839.html">
+                <a class="clearlink" href="15453720146052.html">
                 
-                  <h1>fsarchiver备份文件介绍</h1>
+                  <h1>Pycharm编程遇到的技巧</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>多年以前的笔记</p>
-</blockquote>
+                        	<h2 id="toc_0">pycharm技巧</h2>
 
-<p>fsarchiver安装<br/>
-<code>apt-get install fsarchiver</code></p>
+<p>ctrl+z 撤回<br/>
+全部选中然后tab是全部缩进<br/>
+全部选中然后shift+tab是全部反缩进</p>
 
-<pre class="line-numbers"><code class="language-text"># 对于备份操作，我们需要以只读形式重新挂载文件系统或者有条件的话直接卸载。也可以-A忽略
-[peter@test88 ~]$ sudo /home/peter/fsarchiver savefs backup.fsa /dev/sdb1
-oper_save.c#938,filesystem_mount_partition(): partition [/dev/sdb1] is mounted read/write. please mount it read-only
-and then try again. you can do &quot;mount -o remount,ro /dev/sdb1&quot;. you can
-also run fsarchiver with option &#39;-A&#39; if you know what you are doing.
-removed backup.fsa
- 
-# 对于恢复操作，我们必须先卸载文件系统。
-[peter@test88 ~]$ sudo /home/peter/fsarchiver restfs backup2.fsa id=0,dest=/dev/sdb2
-oper_restore.c#1230,extractar_filesystem_extract(): partition [/dev/sdb2] is mounted on [/home/peter/sder].
-cannot restore an archive to a partition which is mounted, unmount it first: umount /home/peter/sder
- 
-# 创建文件系统备份
-# 可以将多个文件系统备份在一个文件中
-[peter@test88 ~]$ sudo /home/peter/fsarchiver savefs backup.fsa /dev/sdb1 /dev/sdb2
- 
-# 恢复文件系统
-# id=0表明从归档中提取第一个文件系统的内容
-[peter@test88 ~]$ sudo /home/peter/fsarchiver restfs backup.fsa id=0,dest=/dev/sdc1 id=1,dest=/dev/sdc2
+<h2 id="toc_1">编程技巧</h2>
 
+<p>dir()    #输出函数包含的方法<br/>
+type() #输出类型</p>
 
-
-# 软件说明文档
-====&gt; fsarchiver version 0.8.1 (2017-01-10) - http://www.fsarchiver.org &lt;====           
-Distributed under the GPL v2 license (GNU General Public License v2).                   
- * usage: fsarchiver [&lt;options&gt;] &lt;command&gt; &lt;archive&gt; [&lt;dev1&gt; [&lt;dev2&gt; [...]]]            
-&lt;commands&gt;                                                                              
- * savefs: save filesystems to an archive file (backup a device to a file)              
- * restfs: restore filesystems from an archive (overwrites the existing data)           
- * savedir: save directories to the archive (similar to a compressed tarball)           
- * restdir: restore data from an archive which is not based on a filesystem             
- * archinfo: show information about an existing archive file and its contents           
- * probe [detailed]: show list of filesystems detected on the disks                     
-&lt;options&gt;                                                                               
- -o: overwrite the archive if it already exists instead of failing                      
- -v: verbose mode (can be used several times to increase the level of details)          
- -d: debug mode (can be used several times to increase the level of details)            
- -A: allow to save a filesystem which is mounted in read-write (live backup)            
- -a: allow to save a filesystem when acls and xattrs are not supported                  
- -x: enable support for experimental features (they are disabled by default)            
- -e &lt;pattern&gt;: exclude files and directories that match that pattern                    
- -L &lt;label&gt;: set the label of the archive (comment about the contents)                  
- -z &lt;level&gt;: compression level from 1 (very fast) to 9 (very good) default=3            
- -s &lt;mbsize&gt;: split the archive into several files of &lt;mbsize&gt; megabytes each           
- -j &lt;count&gt;: create more than one (de)compression thread. useful on multi-core cpu      
- -c &lt;password&gt;: encrypt/decrypt data in archive, &quot;-c -&quot; for interactive password        
- -h: show help and information about how to use fsarchiver with examples                
- -V: show program version and exit                                                      
-&lt;information&gt;                                                                           
- * Support included for: lzo=yes, lzma=yes                                              
- * Support for ntfs filesystems is unstable: don&#39;t use it for production.               
-&lt;examples&gt;                                                                              
- * save only one filesystem (/dev/sda1) to an archive:                                  
-   fsarchiver savefs /data/myarchive1.fsa /dev/sda1                                     
- * save two filesystems (/dev/sda1 and /dev/sdb1) to an archive:
-   fsarchiver savefs /data/myarchive2.fsa /dev/sda1 /dev/sdb1
- * restore the first filesystem from an archive (first = number 0):
-   fsarchiver restfs /data/myarchive2.fsa id=0,dest=/dev/sda1
- * restore the second filesystem from an archive (second = number 1):
-   fsarchiver restfs /data/myarchive2.fsa id=1,dest=/dev/sdb1
- * restore two filesystems from an archive (number 0 and 1):
-   fsarchiver restfs /data/arch2.fsa id=0,dest=/dev/sda1 id=1,dest=/dev/sdb1
- * restore a filesystem from an archive and convert it to reiserfs:
-   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,mkfs=reiserfs
- * restore a filesystem from an archive and specify extra mkfs options:
-   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,mkfs=ext4,mkfsopt=&quot;-I 256&quot;
- * restore a filesystem from an archive and specify a new label and a new UUID:
-   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,label=root,uuid=5f6e5f4f-dc2a-4dbd-a6ea-9ca997cde75e
- * save the contents of /usr/src/linux to an archive (similar to tar):
-   fsarchiver savedir /data/linux-sources.fsa /usr/src/linux
- * save a filesystem (/dev/sda1) to an archive split into volumes of 680MB:
-   fsarchiver savefs -s 680 /data/myarchive1.fsa /dev/sda1
- * save a filesystem and exclude all files/dirs called &#39;pagefile.*&#39;:
-   fsarchiver savefs /data/myarchive.fsa /dev/sda1 --exclude=&#39;pagefile.*&#39;
- * generic exclude for &#39;share&#39; such as &#39;/usr/share&#39; and &#39;/usr/local/share&#39;:
-   fsarchiver savefs /data/myarchive.fsa --exclude=share
- * absolute exclude valid for &#39;/usr/share&#39; but not for &#39;/usr/local/share&#39;:
-   fsarchiver savefs /data/myarchive.fsa --exclude=/usr/share
- * save a filesystem (/dev/sda1) to an encrypted archive:
-   fsarchiver savefs -c mypassword /data/myarchive1.fsa /dev/sda1
- * same as before but prompt for password in the terminal:
-   fsarchiver savefs -c - /data/myarchive1.fsa /dev/sda1
- * extract an archive made of simple files to /tmp/extract:
-   fsarchiver restdir /data/linux-sources.fsa /tmp/extract
- * show information about an archive and its filesystems:
-   fsarchiver archinfo /data/myarchive2.fsa
-   ```
-</code></pre>
+<p>更多技巧可以查阅官方文档的使用帮助。</p>
 
                         
                       </div>
@@ -285,7 +225,7 @@ Distributed under the GPL v2 license (GNU General Public License v2).
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 13:36 下午</span>
+                    <span class="date">2018/12/21 14:0 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
@@ -302,46 +242,55 @@ Distributed under the GPL v2 license (GNU General Public License v2).
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15453704835251.html">
+                <a class="clearlink" href="15453717965995.html">
                 
-                  <h1>fluxgui安装与卸载</h1>
+                  <h1>npm Cannot find module 'semver' --解决方案</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>很久以前的笔记了</p>
+<p><a href="https://blog.csdn.net/hanshuonb/article/details/77969080">https://blog.csdn.net/hanshuonb/article/details/77969080</a></p>
 </blockquote>
 
-<pre class="line-numbers"><code class="language-text">Ubuntu/Debian Manual Install
-# Install dependencies
-sudo apt-get install git python-appindicator python-xdg python-pexpect python-gconf python-gtk2 python-glade2 libxxf86vm1
+<p>度娘上面我没有找到相关的解决方法所以只能去Stack Overflow上寻找答案，找到的结果是这样的：</p>
 
-# Download fluxgui
-cd /tmp
-git clone &quot;https://github.com/xflux-gui/fluxgui.git&quot;
-cd fluxgui
-python download-xflux.py
-
-# EITHER install globally
-sudo python setup.py install
-# EXCLUSIVE OR, install in your home directory. The binary installs
-# into ~/.local/bin, so be sure to add that to your PATH if installing locally.
-python setup.py install --user
-
-# Run flux
-fluxgui
-Ubuntu/Debian Manual Uninstall
-If you manually installed instead of using the PPA, you can uninstall by making setup.py tell you where it installed files and then removing the installed files.
-
-# EITHER uninstall globally
-sudo python setup.py install --record installed.txt
-sudo xargs rm -vr &lt; installed.txt
-
-# EXCLUSIVE OR uinstall in your home directory
-python setup.py install --user --record installed.txt
-xargs rm -vr &lt; installed.txt
+<pre class="line-numbers"><code class="language-text">sudo rm -rf /usr/local/lib/node_modules
+sudo rm -rf ~/.npm
+brew uninstall --force node
+brew install node
 </code></pre>
+
+<p>上面命令的意思删除所有全局包和.npm文件夹，重新安装node。 <br/>
+这种方法我没试过，因为肯定有很多小伙伴安装了除npm之外的全局包比如express、webpack等等，如果不考虑清楚直接全删了的话。。。后果惨不忍睹。。。(ps:因为本人英语实在不好，所以经常直接傻瓜式粘命令，提醒小伙伴们最好粘命令之前去查查是什么意思，否则出了问题有可能都没法回退。。。)</p>
+
+<p>说了这么多，下面切入正题 <br/>
+首先需要知道为啥有报这个错，可以到全局的npm包看一下，路径是</p>
+
+<p><code>/usr/local/lib/node_modules/npm</code><br/>
+进入npm的node_modules中的semver文件夹可以看到里面变成空的了！具体的原因不好意思我没有深究，但是我觉得一定和yarn是有关系的。不仅如此，你会看到其他的文件夹也基本都是变成空的了，这下咱们就知道为啥报semver这个module找不到了吧！</p>
+
+<p>网上还有解决方法是说用 <code>npm unintall npm -g</code> 删除npm包，实测不好使。。。npm所有的命令都不行了 uninstall肯定也不行了啊！！！</p>
+
+<h2 id="toc_0">我的解决方法：</h2>
+
+<p>1.先删除全局的npm包：也就是把刚才提到的<code>/usr/local/lib/node_modules/npm</code>，这个npm文件夹删除掉 <br/>
+2.回到<code>/usr/local/lib/node_modules</code>这个目录，从GitHub上重新clone下git包 <br/>
+终端:<br/>
+<code>git clone --recursive git://github.com/isaacs/npm.git</code><br/>
+这样新的npm包就回到了全局node_modules中 <br/>
+3.打开终端输入<br/>
+<code>npm -v</code><br/>
+看一下npm是否可以打印出版本号，如果可以，npm就可以正常使用啦！</p>
+
+<p>说白了就是：</p>
+
+<pre class="line-numbers"><code class="language-text">rm -rf /usr/local/lib/node_modules/npm
+cd /usr/local/lib/node_modules
+git clone --recursive git://github.com/isaacs/npm.git`
+</code></pre>
+
+<p>搞定</p>
 
                         
                       </div>
@@ -350,7 +299,7 @@ xargs rm -vr &lt; installed.txt
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 13:34 下午</span>
+                    <span class="date">2018/12/21 13:56 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
@@ -451,31 +400,31 @@ xargs rm -vr &lt; installed.txt
 	      
 		      
 			      <li class="post">
-			        <a href="15542128440180.html">VMware Fusion 端口映射</a>
+			        <a href="15547237158216.html">怎么解决"该虚拟机似乎正在使用中"问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15542101741047.html">linux sudo配置免密及排除部分命令</a>
+			        <a href="15547068970077.html">arch 安装配置指南带图版</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15542098568070.html">linux sudo:/etc/sudoers 可被任何人写 解决方案</a>
+			        <a href="15547067485409.html">arch 安装配置指南</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15542044701566.html">debian or ubuntu 修改终端欢迎语</a>
+			        <a href="15543568335321.html">python 计算代码运行时间的方法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15542027955936.html">mysql登录提示ERROR 1524 (HY000): Plugin 'unix_socket' is not loaded解决方法</a>
+			        <a href="15543511984993.html">python程序退出的几种方式</a>
 			      </li>
 		     
 		  

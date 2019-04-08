@@ -138,41 +138,16 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15473910152747.html">
+                <a class="clearlink" href="15480046831000.html">
                 
-                  <h1>给网站嵌入百度搜索框</h1>
+                  <h1>Mac大小写切换</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>只需要在 htm 页面中嵌入以下代码即可：</p>
+                        	<p>无论中文还是英文状态下,按住 shift 输入即是大写</p>
 
-<pre class="line-numbers"><code class="language-markup"> &lt;div style=&#39;overflow:hidden&#39;&gt;
-        &lt;form onsubmit=&quot;return baiduWithHttps(this)&quot; action=&quot;http://www.baidu.com/s&quot; target=&quot;_blank&quot;&gt;
-        &lt;input class=&#39;bdtext&#39; type=&quot;text&quot;  onfocus=&quot;checkHttps&quot; name=&quot;wd&quot;  size=&quot;30&quot;&gt;
-        &lt;input class=&#39;bdbtn&#39; type=&quot;submit&quot;value=&quot;百度搜索&quot;&gt;
-        &lt;/form&gt;
-        &lt;script&gt;
-            function checkHttps () {
-                BaiduHttps.useHttps();    
-            };
-            function baiduWithHttps (formname) {
-                var data = BaiduHttps.useHttps();
-                if (data.s === 0) {
-                    return true;
-                }
-                else {
-                    formname.action = &#39;https://www.baidu.com/s&#39; + &#39;?wd&#39; + data.ssl_code;
-                    return true;
-                }
-            };
-        &lt;/script&gt; 
-    &lt;/div&gt;
-</code></pre>
-
-<p>效果如下：<br/>
-<figure><img src="media/15473910152747/%E5%B5%8C%E5%85%A5%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2.png" alt="嵌入百度搜索"/><figcaption>嵌入百度搜索</figcaption></figure><br/>
-觉得不好看的可以自行加入 css 改变样式，我觉得就这样还蛮好看的。</p>
+<p>长按 caps lock 2s 灯亮后输入即是大写</p>
 
                         
                       </div>
@@ -181,10 +156,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/13 22:50 下午</span>
+                    <span class="date">2019/1/21 1:18 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -198,15 +173,30 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15473524859484.html">
+                <a class="clearlink" href="15480046606912.html">
                 
-                  <h1>msf更新</h1>
+                  <h1>iterm2 常用技巧</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>1、打开终端输入 msf 进入msfconsole<br/>
-2、在 msfconsole 中输入 msfupdate 即可自动更新</p>
+                        	<p>按住 com 键</p>
+
+<ul>
+<li>可以拖拽选中字符串</li>
+<li>点击url能直接打开</li>
+<li>点击文件：调用默认程序打开文件</li>
+<li>点击文件夹：在finder中打开文件夹</li>
+<li>同时按住option键，可以矩形选中</li>
+</ul>
+
+<p>新建windows：cmd+N<br/>
+新建tab：cmd+T<br/>
+切分屏幕：cmd+D水平切分<br/>
+智能查找，支持正则：cmd+F</p>
+
+<p>智能补全：cmd+；<br/>
+调用历史记录：cmd+shift+h</p>
 
                         
                       </div>
@@ -215,10 +205,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/13 12:8 下午</span>
+                    <span class="date">2019/1/21 1:17 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -232,19 +222,14 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15473464131197.html">
+                <a class="clearlink" href="15480046527974.html">
                 
-                  <h1>读 Monyer 文章有感</h1>
+                  <h1>终端配置本地代理</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>1、黑客是一种兴趣爱好<br/>
-2、选行需谨慎，选前需要调研<br/>
-3、技术分化，很难再&quot;全栈&quot;，知识面扩宽的同时，需要抓重点精深。<br/>
-4、技术人员发展路线：技术输出阶段、经验输出阶段、思路输出阶段和决策输出阶段。<br/>
-5、学习永不停歇<br/>
-6、小游戏地址：<a href="http://monyer.com/game/game1/">http://monyer.com/game/game1/</a></p>
+                        	<p>export ALL_PROXY=socks5://127.0.0.1:1080</p>
 
                         
                       </div>
@@ -253,10 +238,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/13 10:26 上午</span>
+                    <span class="date">2019/1/21 1:17 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html'>风花雪月</a></span>
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -354,31 +339,31 @@
 	      
 		      
 			      <li class="post">
-			        <a href="15542128440180.html">VMware Fusion 端口映射</a>
+			        <a href="15547237158216.html">怎么解决"该虚拟机似乎正在使用中"问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15542101741047.html">linux sudo配置免密及排除部分命令</a>
+			        <a href="15547068970077.html">arch 安装配置指南带图版</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15542098568070.html">linux sudo:/etc/sudoers 可被任何人写 解决方案</a>
+			        <a href="15547067485409.html">arch 安装配置指南</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15542044701566.html">debian or ubuntu 修改终端欢迎语</a>
+			        <a href="15543568335321.html">python 计算代码运行时间的方法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15542027955936.html">mysql登录提示ERROR 1524 (HY000): Plugin 'unix_socket' is not loaded解决方法</a>
+			        <a href="15543511984993.html">python程序退出的几种方式</a>
 			      </li>
 		     
 		  

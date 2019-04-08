@@ -1,0 +1,703 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="bookmark" href="https://raw.githubusercontent.com/AlShelley/lonelyorWiki/master/asset/img/favicon.ico" type="images/x-icon"/>
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/AlShelley/lonelyorWiki/master/asset/img/favicon.ico" type="images/x-icon"/>
+
+    <title>
+    
+  arch 安装配置指南 - lonelyorWiki
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="lonelyorWiki" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:www.lonelyor.org/lonelyorWiki ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">首页</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">归档</a></li>
+        
+        <li id=""><a target="_self" href="beautiful.html">惊鸿</a></li>
+        
+        <li id=""><a target="_self" href="ruby.html">流光</a></li>
+        
+        <li id=""><a target="_self" href="search.html">北斗</a></li>
+        
+        <li id=""><a target="_self" href="lose.html">失乐园</a></li>
+        
+        <li id=""><a target="_self" href="about.html">关于</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; lonelyorWiki</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">首页</a></li>
+        
+        <li><a target="_self" href="archives.html">归档</a></li>
+        
+        <li><a target="_self" href="beautiful.html">惊鸿</a></li>
+        
+        <li><a target="_self" href="ruby.html">流光</a></li>
+        
+        <li><a target="_self" href="search.html">北斗</a></li>
+        
+        <li><a target="_self" href="lose.html">失乐园</a></li>
+        
+        <li><a target="_self" href="about.html">关于</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
+        
+            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
+        
+            <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
+        
+            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
+        
+            <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
+        
+            <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
+        
+            <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
+        
+            <li><a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html">星火流萤</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>arch 安装配置指南</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/4/8 14:59 下午</span>
+
+          <span>发表于&nbsp;</span> 
+          
+              <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <pre class="line-numbers"><code class="language-shell"># parted
+# mklabel
+# msdos
+(parted)#mkpart primary ext4 1M 200M
+(parted)#set 1 boot on
+(parted)#mkpart primary linux-swap 200M 8.5G
+(parted)#mkpart primary ext4 8.5G -1
+#q
+
+# mkfs.etx4 /dev/sda1
+# mkfs.etx4 /dev/sda3
+# mkswap /dev/sda2
+# swapon /dev/sda2
+# mount /dev/sda3 /mnt
+# cd /mnt
+# mkdir boot
+# mount /dev/sda1 /mnt/boot
+换源成China nano /etc/pacman.d/mirrorlist
+nano基本操作：
+按Ctrl+6（或者Alt+A）做标记；复制一整行：Alt+6；剪切一整行：Ctrl+K；粘贴：Ctrl+U；用Ctrl+Y到上一页，Ctrl+V到下一页。“^”表示Ctrl键，“M”表示 Alt键。
+# pacstrap /mnt base base-devel
+# genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+# nano /mnt/etc/fstab
+
+# arch-chroot /mnt /bin/bash
+# pacman -S grub
+双系统的话，还需要安装os-prober
+如果使用Intel CPU的话，则需要安装 intel-ucode 并启用因特尔微码更新
+# grub-install --recheck /dev/sda
+# grub-mkconfig -o /boot/grub/grub.cfg
+# exit
+# pacman -Syu
+# reboot
+</code></pre>
+
+<h1 id="toc_0">基本配置</h1>
+
+<ul>
+<li>修改主机名
+<code>nano /etc/hostname</code>
+<code>lonelyor</code></li>
+<li>修改host
+<code>nano /etc/hosts</code>
+<code>127.0.0.1  localhost</code>
+<code>::1        localhost</code>
+<code>127.0.1.1  myhostname.localdomain  myhostname</code></li>
+<li>启动dhcp
+<code># vi /etc/rc.conf</code>
+添加 interface = eth0 
+<code># dhcpcd</code></li>
+<li>配置编码<br/>
+首先释放en_US.UTF-8,保证系统正常工作<br/>
+然后 Ctrl+_，Ctrl+v 进入最后一行释放zh_CN.UTF-8保证中文<br/>
+保存退出<br/>
+然后生成编码并使用，配置系统优先语言环境为英文
+<code>shell
+# nano /etc/locale.gen<br/>
+取消utf-8的注释，然后<br/>
+# locale-gen<br/>
+# echo LANG=en_US.UTF-8 &gt; /etc/locale.conf<br/>
+# locale<br/>
+在~/.xinitrc中添加<br/>
+export LANG=zh_CN.UTF-8<br/>
+export LANGUAGE=zh_CN:en_US<br/>
+export LC_CTYPE=en_US.UTF-8<br/>
+~/.xprofile添加<br/>
+export LANG=zh_CN.UTF-8<br/>
+export LC_ALL=&quot;zh_CN.UTF-8&quot;<br/>
+export LANG=zh_CN.UTF-8<br/>
+export LANGUAGE=zh_CN:en_US<br/>
+export LC_CTYPE=en_US.UTF-8<br/>
+# pacman -S kde-l10n-zh_cn firefox-i18n-zh-cn libreoffice-still-zh-cn
+</code>
+安装输入法前端
+<code># pacman -S kimtoy</code></li>
+<li>配置archlinuxcn源
+<code>shell
+修改`/etc/pacman.conf`文件<br/>
+在文件后添加如下语句<br/>
+[archlinuxcn]<br/>
+SigLevel = Optional TrustedOnly<br/>
+Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+</code>
+<code>shell
+导入GPG Key<br/>
+sudo pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring
+</code></li>
+<li>设置root密码
+<code>#passwd</code></li>
+<li>添加用户和sudo
+<code>shell
+useradd -m -g users -G wheel -s /bin/bash lonelyor<br/>
+passwd lonelyor<br/>
+pacman -S sudo</code><br/>
+打开 <code>/etc/sudoers</code> 文件，找到 <code>root ALL=(ALL) ALL</code> 并依葫芦画瓢添加 <code>lonelyor ALL=(ALL) ALL</code> 即可。<br/>
+* watchdog did not stop<br/>
+编辑<code>/etc/systemd/system.conf</code>文件：<br/>
+将<br/>
+DefaultTimeoutStopSec=90s<br/>
+更改为<br/>
+DefaultTimeoutStopSec=10s<br/>
+将终止服务的等待时间更改为10秒，从而解决关机缓慢的问题。<br/>
+我顺手将其他时间长的都改短了。<br/>
+* 安装桌面环境kde
+<code>shell
+pacman -S xorg xorg-server xorg-xinit<br/>
+pacman -S plasma<br/>
+pacman -S sddm<br/>
+systemctl enable sddm
+</code>
+* 安装触摸板驱动
+<code>pacman -S xf86-input-synaptics</code>
+* 小工具合集
+<code>konsole net-tools p7zip wget cmake curl</code>
+* 安装字体<br/>
+noto-fonts-sc(aur)<br/>
+ttf-ms-win10-zh_cn(aur)<br/>
+wqy-zenhei<br/>
+wqy-bitmapfont<br/>
+noto-fonts-emoji<br/>
+号称最好看的编程字体<br/>
+ttf-inconsolata<br/>
+ttf-monaco<br/>
+# 软件安装<br/>
+* 安装搜狗输入法
+<code>shell
+# sudo pacman -S fcitx-sogoupinyin<br/>
+# sudo pacman -S fcitx-im<br/>
+# sudo pacman -S fcitx-configtool # 图形化的配置工具<br/>
+需要修改配置文件`~/.xprofile`<br/>
+添加如下语句<br/>
+export GTK_IM_MODULE=fcitx<br/>
+export QT_IM_MODULE=fcitx<br/>
+export XMODIFIERS=&quot;@im=fcitx&quot;<br/>
+重新登录之后就可以使用中文输入法啦
+</code>
+* 安装字体
+<code>pacman -S ttf-dejavu wqy-zenhei wqy-microhei</code></li>
+</ul>
+
+<ul>
+<li>安装文件系统支持
+<code>sudo pacman -S ntfs-3g dosfstools</code></li>
+<li>安装chrome
+<code>yaourt -S google-chrome</code></li>
+<li>安装网易云音乐
+<code>pacman -S netease-cloud-music</code></li>
+<li>安装v2ray
+<code>shell
+wget https://install.direct/go.sh<br/>
+sudo bash go.sh<br/>
+sudo systemctl start v2ray<br/>
+编辑 /etc/v2ray/config.json 文件来配置客户端
+</code></li>
+<li>安装host修改工具
+<code>yaourt -S switchhosts-bin</code></li>
+<li>安装fish
+<code>pacman -S fish</code></li>
+<li>更改默认shell为fish
+<code>sudo -u lonelyor chsh -s /usr/bin/fish</code></li>
+<li>安装wps
+<code>yaourt wps</code></li>
+<li>安装vscode
+<code>yaourt vscode</code>
+<code>3</code></li>
+<li>安装数据库管理工具
+<code>pacman -S dbeaver</code></li>
+<li>安装pycharm
+<code>pacman -S pycharm</code></li>
+<li>xmind思维导图
+<code>yaourt xmind</code></li>
+<li>安装备份工具
+<code>yaourt fsarchiver</code></li>
+<li>待办事项
+<code>yaourt -S go-for-it-git</code></li>
+<li>视频录制软件
+<code>yaourt simplescreenrecorder</code></li>
+<li>屏幕录像工具
+<code>yaourt green-recorder</code>
+选择qt那个</li>
+<li>markdown编辑工具
+<code>pacman -S typora</code></li>
+<li>跨所有设备进行连接的工具
+<code>kdeconnect</code></li>
+<li>分层记录应用程序，具有丰富的文本和语法突出显示功能，可将数据存储在单个xml或sqlite文件中
+<code>pacman -S cherrytree</code></li>
+<li>深度截图工具
+<code>pacman -S deepin-screenshot</code></li>
+<li>适合写markdown的工具Haroopad
+<code>yaourt -S haroopad</code></li>
+<li>sakura终端、支持修改背景图</li>
+<li>文件管理器
+<code>pacman -S krusader</code></li>
+<li>文件管理器
+<code>pacman -S dolphin</code></li>
+<li>压缩解压缩
+<code>pacman -S ark</code></li>
+<li>文本编辑器
+<code>pacman -S kate</code></li>
+<li>终端
+<code>pacman -S konsole</code></li>
+<li>文档查看器
+<code>okular</code></li>
+<li>查看系统信息
+<code>pacman -S screenfetch</code>
+打开终端自动显示<br/>
+nano ~/.bashrc 加入 screenfetch</li>
+<li>翻墙
+<code>pacman -S v2ray</code></li>
+<li>密码相关
+<code>pacman -S keepass</code></li>
+<li>hosts文件相关
+<code>yaourt -S switchhosts-bin</code></li>
+<li>备份工具
+<code>yaourt -S qt4-fsarchiver</code></li>
+<li>安装pdf管理工具buka
+<code>yaourt -S buka</code></li>
+<li>安装sshfs
+<code>pacman -S sshfs</code></li>
+<li>webdav服务wsgidav
+<code>pip install wsgidav</code></li>
+<li>系统工具
+<code>iftop\htop\atop</code></li>
+<li>chm阅读器
+<code>kchmviewer</code></li>
+<li>下载
+<code>aria2\uget</code>
+<code>pip install youtube-dl</code>
+<code>yaourt persepolis</code></li>
+<li>web相关
+<code>nginx、nodejs</code></li>
+<li>火狐汉化
+<code>http://releases.mozilla.org/pub/firefox/releases/59.0/linux-x86_64/xpi/（注意版本）</code></li>
+<li>grub修改
+<code>yaourt -S grub-customizer</code></li>
+<li>webdav文件共享
+<code>pacman -S phodav</code></li>
+<li>网盘同步
+<code>yaourt -S cloudcross</code></li>
+<li>日志查看工具
+<code>pacman -S ksystemlog</code></li>
+<li>二进制编辑器
+<code>pacman -S okteta</code></li>
+<li>ssh爆破防护
+<code>pacman -S sshguard</code></li>
+<li>smb共享工具
+<code>pacman -S smb4k</code></li>
+<li>文档编辑工具
+<code>marktext</code></li>
+<li>命令补全工具
+<code>pacman -S bash-completion</code></li>
+<li>文件共享、webdav、ftp等
+<code>pacman -S filezilla</code></li>
+<li>文件同步
+<code>syncthing</code></li>
+<li>使用ftp
+<code>sudo pacman -S vsftpd</code>
+详细设置 /etc/vsftpd.conf<br/>
+允许本地用户登录 local_enable=YES<br/>
+可以进行写的操作 write_enable=YES<br/>
+设定最大连接传输时间 data_connection_timeout=3600<br/>
+设定支持异步传输的功能 async_abor_enable=YES</li>
+<li>剪贴板增强工具
+<code>pacman -S copyq</code></li>
+<li>局域网共享工具dukto
+<code>yaourt -S dukto</code></li>
+</ul>
+
+<h1 id="toc_1">安装 vmtools</h1>
+
+<pre class="line-numbers"><code class="language-shell">pacman -S open-vm-tools
+pacman -S linux-headers
+yaourt -S open-vm-tools-dkms
+open-vm-tools-desktop
+gtkmm
+gtkmm3
+systemctl enable vmware-vmblock-fuse
+systemctl enable vmtoolsd
+</code></pre>
+
+<h1 id="toc_2">详细设置</h1>
+
+<ul>
+<li>fish_config打开fish的web设置界面</li>
+<li>终端设置颜色和背景透明</li>
+<li>kate设置行号和代码高亮</li>
+<li>关闭钱包
+<code>sudo pacman -S kwalletmanager</code></li>
+<li>区域设置</li>
+<li>输入法问题可以输入 fcitx-diagnose 来查看日志，通常就有答案了。</li>
+<li>git下载太慢，配置git代理：nano ~/.gitconfig<br/>
+[https]<br/>
+    proxy = socks5://127.0.0.1:1080<br/>
+[http]<br/>
+    proxy = socks5://127.0.0.1:1080<br/>
+然后修改hosts：nano /etc/hosts<br/>
+151.101.72.249 <a href="http://global-ssl.fastly.Net">http://global-ssl.fastly.Net</a><br/>
+192.30.253.112 <a href="http://github.com">http://github.com</a></li>
+<li>typora段错误的解决方法：<a href="https://aur.archlinux.org/packages/typora/">https://aur.archlinux.org/packages/typora/</a></li>
+<li>使用nfs共享文件：pacman -S nfs-utils，参考：<a href="https://wiki.archlinux.org/index.php/NFS#Installation">https://wiki.archlinux.org/index.php/NFS#Installation</a><br/>
+1、配置 /etc/exports
+<code>
+/home 192.168.48.142(rw,sync,no_root_squash)   这里可以写客户端ip<br/>
+exportfs -rav<br/>
+exportfs -v<br/>
+systemctl start nfs-server.service<br/>
+修改 /etc/nfs.conf 来增加安全性<br/>
+[nfsd]<br/>
+host=192.168.48.142<br/>
+# Alternatively, you can use your hostname.<br/>
+# host=myhostname
+</code>
+如果上面的启动nfs报错，重启电脑<br/>
+showmount -e 192.168.48.136(服务器端IP)<br/>
+若出现：Export list for 192.168.48.142:<br/>
+/home 192.168.1.120字眼则证明通过<br/>
+下面贴出我敲的：<br/>
+╰─&gt;\( showmount -e 192.168.48.136<br/>
+Export list for 192.168.48.136:<br/>
+/home 192.168.48.142<br/>
+┬─[lonelyor@lonelyor:~]─[16时00分18秒]<br/>
+╰─&gt;\) mount -t nfs 192.168.48.136<br/>
+mount: 只有 root 用户能使用“--types”选项<br/>
+┬─[lonelyor@lonelyor:~]─[16时03分14秒]<br/>
+╰─&gt;\( sudo mount -t nfs 192.168.48.136<br/>
+mount: 192.168.48.136: can&#39;t find in /etc/fstab.<br/>
+┬─[lonelyor@lonelyor:~]─[16时03分18秒]<br/>
+╰─&gt;\) sudo mount -t nfs 192.168.48.136:/home /mnt/tmp/<br/>
+然后就ok了。<br/>
+解除挂载用umount</li>
+</ul>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15547068970077.html" 
+          title="Previous Post: arch 安装配置指南带图版">&laquo; arch 安装配置指南带图版</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15543568335321.html" 
+          title="Next Post: python 计算代码运行时间的方法">python 计算代码运行时间的方法 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"内容来自 lonelyor 的Wiki","bdMini":"1","bdMiniList":["sqq","weixin","copy"],"bdPic":"http://images.lonelyor.org/favicon.jpg","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["weixin","sqq","copy"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["weixin","sqq","copy"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <div class="site-a-logo"><img src="http://images.lonelyor.org/favicon.jpg" /></div>
+            
+                <h1>lonelyorWiki</h1>
+                <div class="site-des">一个用来记录知识的网站</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="https://github.com/AlShelley/lonelyorWiki" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:lonelyor.org@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
+        
+            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
+        
+            <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
+        
+            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
+        
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
+        
+            <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
+        
+            <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
+        
+            <a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html"><strong>星火流萤</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15547237158216.html">怎么解决"该虚拟机似乎正在使用中"问题</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15547068970077.html">arch 安装配置指南带图版</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15547067485409.html">arch 安装配置指南</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15543568335321.html">python 计算代码运行时间的方法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15543511984993.html">python程序退出的几种方式</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2018
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

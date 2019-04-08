@@ -138,45 +138,79 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15487463359475.html">
+                <a class="clearlink" href="15543568335321.html">
                 
-                  <h1>给网站添加百度、谷歌搜索框</h1>
+                  <h1>python 计算代码运行时间的方法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>以下是我北斗页面的搜索框代码：</p>
+                        	<p>话不多说，直接上代码：<br/>
+方法一：</p>
 
-<pre class="line-numbers"><code class="language-markup"> &lt;div style=&#39;overflow:auto&#39;&gt;&lt;form onsubmit=&quot;return baiduWithHttps(this)&quot; action=&quot;http://www.baidu.com/s&quot; target=&quot;_blank&quot;&gt;
-        &lt;input class=&#39;bdtext&#39; type=&quot;text&quot;  onfocus=&quot;checkHttps&quot; name=&quot;wd&quot;  size=&quot;30&quot;&gt;&lt;input class=&#39;bdbtn&#39; type=&quot;submit&quot;value=&quot;百度搜索&quot;&gt;
-        &lt;/form&gt;&lt;script&gt;function checkHttps () {
-                BaiduHttps.useHttps();    
-            };
-            function baiduWithHttps (formname) {
-                var data = BaiduHttps.useHttps();
-                if (data.s === 0) {
-                    return true;
-                }
-                else {
-                    formname.action = &#39;https://www.baidu.com/s&#39; + &#39;?wd&#39; + data.ssl_code;
-                    return true;
-                }
-            };&lt;/script&gt;&lt;/div&gt;&lt;div style=&#39;overflow:auto&#39;&gt;&lt;form onsubmit=&quot;return googleWithHttps(this)&quot; action=&quot;http://www.google.com/search&quot; target=&quot;_blank&quot;&gt;
-    &lt;input class=&#39;bdtext&#39; type=&quot;text&quot;  onfocus=&quot;checkHttps&quot; name=&quot;q&quot;  size=&quot;30&quot;&gt;&lt;input class=&#39;bdbtn&#39; type=&quot;submit&quot;value=&quot;谷歌搜索&quot;&gt;
-    &lt;/form&gt;&lt;script&gt;function checkHttps () {
-            googleHttps.useHttps();    
-        };
-        function googleWithHttps (formname) {
-            var data = googleHttps.useHttps();
-            if (data.s === 0) {
-                return true;
-            }
-            else {
-                formname.action = &#39;https://www.google.com/search&#39; + &#39;?q&#39; + data.ssl_code;
-                return true;
-            }
-        };&lt;/script&gt;&lt;/div&gt;
+<pre class="line-numbers"><code class="language-text">import time
+start = time.time()
+run_function()
+end = time.time()
+print(end)
 </code></pre>
+
+<p>方法二：</p>
+
+<pre class="line-numbers"><code class="language-text">import time
+start = time.clock()
+run_function()
+end = time.clock()
+print(end-start)
+</code></pre>
+
+<h2 id="toc_0">秒级计算</h2>
+
+<p>上述方法 print 的结果是原始时间数据，可以对其进行加减运算，但是结果不太直观，通常我们统计时间是以秒为单位。<br/>
+下面给出秒级计算的代码:</p>
+
+<pre class="line-numbers"><code class="language-text">import time
+start = time.time()
+run_function()
+end = time.time()
+print(int(end))
+</code></pre>
+
+<h2 id="toc_1">扩展</h2>
+
+<pre class="line-numbers"><code class="language-text">import time
+import datetime
+
+t = time.time()
+
+print (t)                       #原始时间数据
+print (int(t))                  #秒级时间戳
+print (int(round(t * 1000)))    #毫秒级时间戳
+
+nowTime = lambda:int(round(t * 1000))
+print (nowTime());              #毫秒级时间戳，基于lambda
+
+print (datetime.datetime.now().strftime(&#39;%Y-%m-%d %H:%M:%S&#39;))   #日期格式化
+</code></pre>
+
+<p>返回为：    </p>
+
+<pre class="line-numbers"><code class="language-text">1554358917.381631
+1554358917
+1554358917382
+1554358917382
+2019-04-04 14:21:57
+</code></pre>
+
+<p>将秒级时间戳转为日期     </p>
+
+<pre class="line-numbers"><code class="language-text">ts = 1515774430
+dt = time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, time.localtime(ts))
+print(dt)
+</code></pre>
+
+<p>返回<br/><br/>
+<code>2018-01-13 00:27:10</code></p>
 
                         
                       </div>
@@ -185,7 +219,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/29 15:18 下午</span>
+                    <span class="date">2019/4/4 13:47 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
@@ -202,86 +236,30 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045491003.html">
+                <a class="clearlink" href="15543511984993.html">
                 
-                  <h1>JavaScript基础</h1>
+                  <h1>python程序退出的几种方式</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>JavaScript是一种脚本编程语言。<br/>
-JavaScript运行顺序是从上往下，因此要注意代码的顺序。</p>
+                        	<p>最常见的方式是使用 sys 库中的 sys.exit() 方法。不需要考虑平台等因素的影响，一般是退出Python程序的首选方法。</p>
 
-<h2 id="toc_0">如何使用JavaScript</h2>
+<p>该方法中包含一个参数status，默认为0，表示正常退出，也可以为1，表示异常退出。</p>
 
-<p>内部JavaScript：在html页面中嵌入<code>&lt;script&gt;这里写js代码&lt;/script&gt;</code>即可插入js代码。<br/>
-外部JavaScript：<code>&lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;</code>可以调用html文件同级目录下的script.js文件。</p>
-
-<h2 id="toc_1">注释</h2>
-
-<p><code>// 这是单行注释</code><br/>
-<code>/* 这是多行注释 */</code></p>
-
-<h2 id="toc_2">变量</h2>
-
-<p>var用来定义变量</p>
-
-<h2 id="toc_3">函数</h2>
-
-<p>function funName(){<br/>
-    js代码<br/>
-}<br/>
-函数是可复用的代码块，可以一次编写反复使用。</p>
-
-<h2 id="toc_4">运算符</h2>
-
-<p><code>+</code>、<code>-</code>、<code>*</code>、<code>/</code> 分别是加减乘除<br/>
-<code>===</code>、<code>!==</code>、<code>&lt;</code>、<code>&gt;</code> 分别是等于、不等于、小于、大于<br/>
-<code>&amp;&amp;</code>、<code>||</code>、<code>!</code> 分别表示与、或、非</p>
-
-<h2 id="toc_5">条件语句</h2>
-
-<p>if(条件){<br/>
-    js代码<br/>
-} else {<br/>
-    js代码<br/>
-}</p>
-
-<h2 id="toc_6">事件</h2>
-
-<p>事件相关函数分为：事件监听器和事件处理器 </p>
-
-<h2 id="toc_7">循环</h2>
-
-<p>for(起式值；退出条件；增加器){<br/>
-    js代码<br/>
-}</p>
-
-<h2 id="toc_8">switch语句</h2>
-
-<p>switch - 他们以单个表达式/值作为输入，然后查看多个选项，直到找到与该值相匹配的选项，执行与之相关的代码。</p>
-
-<pre class="line-numbers"><code class="language-javascript">switch (expression) {
-  case choice1:
-    run this code
-    break;
-
-  case choice2:
-    run this code instead
-    break;
-    
-  // include as many cases as you like
-
-  default:
-    actually, just run this code
-}
+<pre class="line-numbers"><code class="language-text">sys.exit()
+sys.exit(0)
+sys.exit(1)
 </code></pre>
 
-<h2 id="toc_9">写一个猜数字的小游戏</h2>
+<p>该方法引发的是一个SystemExit异常(这是唯一一个不会被认为是错误的异常)，当没有设置捕获这个异常将会直接退出程序执行，当然也可以捕获这个异常进行一些其他操作。</p>
 
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/First_steps/A_first_splash#%E7%8C%9C%E6%95%B0%E5%AD%97%E6%B8%B8%E6%88%8F">猜数字游戏</a></p>
+<p>其他方法非首选因此不详细介绍，这里简单提一下，具体信息自行百度。</p>
 
-<p>未完待续...</p>
+<p>其他方法有：<br/>
+os._exit()<br/>
+os.kill() 仅用于 unix 平台<br/>
+os.popen() 仅用于 windows 平台</p>
 
                         
                       </div>
@@ -290,7 +268,7 @@ JavaScript运行顺序是从上往下，因此要注意代码的顺序。</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span class="date">2019/4/4 12:13 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
@@ -307,506 +285,28 @@ JavaScript运行顺序是从上往下，因此要注意代码的顺序。</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15474694746707.html">
+                <a class="clearlink" href="15543484192219.html">
                 
-                  <h1>十大经典排序算法（动图演示）</h1>
+                  <h1>python 安装 hashlib 库报错</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>转载自：<a href="https://www.cnblogs.com/onepixel/articles/7674659.html">https://www.cnblogs.com/onepixel/articles/7674659.html</a></p>
-</blockquote>
+                        	<p>报错信息如下：</p>
 
-<h2 id="toc_0">0、算法概述</h2>
-
-<h3 id="toc_1">0.1 算法分类</h3>
-
-<p>十种常见排序算法可以分为两大类：</p>
-
-<blockquote>
-<p>非线性时间比较类排序：通过比较来决定元素间的相对次序，由于其时间复杂度不能突破O(nlogn)，因此称为非线性时间比较类排序。</p>
-
-<p>线性时间非比较类排序：不通过比较来决定元素间的相对次序，它可以突破基于比较排序的时间下界，以线性时间运行，因此称为线性时间非比较类排序。 </p>
-</blockquote>
-
-<p><figure><img src="media/15474694746707/15474696026744.jpg" alt=""/></figure></p>
-
-<h3 id="toc_2">0.2 算法复杂度</h3>
-
-<p><figure><img src="media/15474694746707/15474696174505.jpg" alt=""/></figure></p>
-
-<h3 id="toc_3">0.3 相关概念</h3>
-
-<blockquote>
-<p>稳定：如果a原本在b前面，而a=b，排序之后a仍然在b的前面。</p>
-
-<p>不稳定：如果a原本在b的前面，而a=b，排序之后 a 可能会出现在 b 的后面。</p>
-
-<p>时间复杂度：对排序数据的总的操作次数。反映当n变化时，操作次数呈现什么规律。</p>
-
-<p>空间复杂度：是指算法在计算机内执行时所需存储空间的度量，它也是数据规模n的函数。 </p>
-</blockquote>
-
-<h2 id="toc_4">1、冒泡排序（Bubble Sort）</h2>
-
-<p>冒泡排序是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果它们的顺序错误就把它们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端。 </p>
-
-<h3 id="toc_5">1.1 算法描述</h3>
-
-<p>比较相邻的元素。如果第一个比第二个大，就交换它们两个；<br/>
-对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对，这样在最后的元素应该会是最大的数；<br/>
-针对所有的元素重复以上的步骤，除了最后一个；<br/>
-重复步骤1~3，直到排序完成。</p>
-
-<h3 id="toc_6">1.2 动图演示</h3>
-<img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015223238449-2146169197.gif" alt="" width="681" height="212">
-<h3 id="toc_7">1.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">function bubbleSort(arr) {
-    var len = arr.length;
-    for (var i = 0; i &lt; len - 1; i++) {
-        for (var j = 0; j &lt; len - 1 - i; j++) {
-            if (arr[j] &gt; arr[j+1]) {        // 相邻元素两两对比
-                var temp = arr[j+1];        // 元素交换
-                arr[j+1] = arr[j];
-                arr[j] = temp;
-            }
-        }
-    }
-    return arr;
-}
+<pre class="line-numbers"><code class="language-text">      File &quot;/private/var/folders/zx/znk609rs7lvfy1s28xzb2gdm0000gn/T/pip-install-gryu60jd/hashlib/hashlib.py&quot;, line 80
+        raise ValueError, &quot;unsupported hash type&quot;
+                        ^
+    SyntaxError: invalid syntax
 </code></pre>
 
-<h2 id="toc_8">2、选择排序（Selection Sort）</h2>
+<p>此时需要安装 openssh</p>
 
-<p>选择排序(Selection-sort)是一种简单直观的排序算法。它的工作原理：首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。 </p>
+<p>Mac 上使用：<code>brew install openssh</code> 然后重装 python，然后<code>pip install hashlib</code>，mmp，还是装不上报错。</p>
 
-<h3 id="toc_9">2.1 算法描述</h3>
+<p>然后问了一下开发，发现不需要装，直接 import 就能用，试了一下发现果然如此。</p>
 
-<p>n个记录的直接选择排序可经过n-1趟直接选择排序得到有序结果。具体算法描述如下：</p>
-
-<p>初始状态：无序区为R[1..n]，有序区为空；<br/>
-第i趟排序(i=1,2,3…n-1)开始时，当前有序区和无序区分别为R[1..i-1]和R(i..n）。该趟排序从当前无序区中-选出关键字最小的记录 R[k]，将它与无序区的第1个记录R交换，使R[1..i]和R[i+1..n)分别变为记录个数增加1个的新有序区和记录个数减少1个的新无序区；<br/>
-n-1趟结束，数组有序化了。<br/>
-2.2 动图演示<br/>
-　　<br/>
-<img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015224719590-1433219824.gif" alt="" width="684" height="209"></p>
-
-<h3 id="toc_10">2.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">function selectionSort(arr) {
-    var len = arr.length;
-    var minIndex, temp;
-    for (var i = 0; i &lt; len - 1; i++) {
-        minIndex = i;
-        for (var j = i + 1; j &lt; len; j++) {
-            if (arr[j] &lt; arr[minIndex]) {     // 寻找最小的数
-                minIndex = j;                 // 将最小数的索引保存
-            }
-        }
-        temp = arr[i];
-        arr[i] = arr[minIndex];
-        arr[minIndex] = temp;
-    }
-    return arr;
-} 
-</code></pre>
-
-<h3 id="toc_11">2.4 算法分析</h3>
-
-<p>表现最稳定的排序算法之一，因为无论什么数据进去都是O(n2)的时间复杂度，所以用到它的时候，数据规模越小越好。唯一的好处可能就是不占用额外的内存空间了吧。理论上讲，选择排序可能也是平时排序一般人想到的最多的排序方法了吧。</p>
-
-<h2 id="toc_12">3、插入排序（Insertion Sort）</h2>
-
-<p>插入排序（Insertion-Sort）的算法描述是一种简单直观的排序算法。它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。</p>
-
-<h3 id="toc_13">3.1 算法描述</h3>
-
-<p>一般来说，插入排序都采用in-place在数组上实现。具体算法描述如下：</p>
-
-<p>从第一个元素开始，该元素可以认为已经被排序；<br/>
-取出下一个元素，在已经排序的元素序列中从后向前扫描；<br/>
-如果该元素（已排序）大于新元素，将该元素移到下一位置；<br/>
-重复步骤3，直到找到已排序的元素小于或者等于新元素的位置；<br/>
-将新元素插入到该位置后；<br/>
-重复步骤2~5。</p>
-
-<h3 id="toc_14">3.2 动图演示</h3>
-<img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015225645277-1151100000.gif" alt="" width="671" height="418">
-<h3 id="toc_15">3.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">function insertionSort(arr) {
-    var len = arr.length;
-    var preIndex, current;
-    for (var i = 1; i &lt; len; i++) {
-        preIndex = i - 1;
-        current = arr[i];
-        while (preIndex &gt;= 0 &amp;&amp; arr[preIndex] &gt; current) {
-            arr[preIndex + 1] = arr[preIndex];
-            preIndex--;
-        }
-        arr[preIndex + 1] = current;
-    }
-    return arr;
-}
-</code></pre>
-
-<h3 id="toc_16">3.4 算法分析</h3>
-
-<p>插入排序在实现上，通常采用in-place排序（即只需用到O(1)的额外空间的排序），因而在从后向前扫描过程中，需要反复把已排序元素逐步向后挪位，为最新元素提供插入空间。</p>
-
-<h2 id="toc_17">4、希尔排序（Shell Sort）</h2>
-
-<p>1959年Shell发明，第一个突破O(n2)的排序算法，是简单插入排序的改进版。它与插入排序的不同之处在于，它会优先比较距离较远的元素。希尔排序又叫缩小增量排序。</p>
-
-<h3 id="toc_18">4.1 算法描述</h3>
-
-<p>先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，具体算法描述：</p>
-
-<p>选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1；<br/>
-按增量序列个数k，对序列进行k 趟排序；<br/>
-每趟排序，根据对应的增量ti，将待排序列分割成若干长度为m 的子序列，分别对各子表进行直接插入排序。仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。</p>
-
-<h3 id="toc_19">4.2 动图演示</h3>
-<img src="https://images2018.cnblogs.com/blog/849589/201803/849589-20180331170017421-364506073.gif" alt="">
-<h3 id="toc_20">4.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">function shellSort(arr) {
-    var len = arr.length,
-        temp,
-        gap = 1;
-    while (gap &lt; len / 3) {          // 动态定义间隔序列
-        gap = gap * 3 + 1;
-    }
-    for (gap; gap &gt; 0; gap = Math.floor(gap / 3)) {
-        for (var i = gap; i &lt; len; i++) {
-            temp = arr[i];
-            for (var j = i-gap; j &gt; 0 &amp;&amp; arr[j]&gt; temp; j-=gap) {
-                arr[j + gap] = arr[j];
-            }
-            arr[j + gap] = temp;
-        }
-    }
-    return arr;
-}
-</code></pre>
-
-<h3 id="toc_21">4.4 算法分析</h3>
-
-<p>希尔排序的核心在于间隔序列的设定。既可以提前设定好间隔序列，也可以动态的定义间隔序列。动态定义间隔序列的算法是《算法（第4版）》的合著者Robert Sedgewick提出的。　</p>
-
-<h2 id="toc_22">5、归并排序（Merge Sort）</h2>
-
-<p>归并排序是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为2-路归并。 </p>
-
-<h3 id="toc_23">5.1 算法描述</h3>
-
-<p>把长度为n的输入序列分成两个长度为n/2的子序列；<br/>
-对这两个子序列分别采用归并排序；<br/>
-将两个排序好的子序列合并成一个最终的排序序列。</p>
-
-<h3 id="toc_24">5.2 动图演示</h3>
-<img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015230557043-37375010.gif" alt="" width="678" height="422">
-<h2 id="toc_25">5.3 代码实现</h2>
-
-<pre class="line-numbers"><code class="language-text">function mergeSort(arr) {  // 采用自上而下的递归方法
-    var len = arr.length;
-    if (len &lt; 2) {
-        return arr;
-    }
-    var middle = Math.floor(len / 2),
-        left = arr.slice(0, middle),
-        right = arr.slice(middle);
-    return merge(mergeSort(left), mergeSort(right));
-}
- 
-function merge(left, right) {
-    var result = [];
- 
-    while (left.length&gt;0 &amp;&amp; right.length&gt;0) {
-        if (left[0] &lt;= right[0]) {
-            result.push(left.shift());
-        } else {
-            result.push(right.shift());
-        }
-    }
- 
-    while (left.length)
-        result.push(left.shift());
- 
-    while (right.length)
-        result.push(right.shift());
- 
-    return result;
-}
-</code></pre>
-
-<h3 id="toc_26">5.4 算法分析</h3>
-
-<p>归并排序是一种稳定的排序方法。和选择排序一样，归并排序的性能不受输入数据的影响，但表现比选择排序好的多，因为始终都是O(nlogn）的时间复杂度。代价是需要额外的内存空间。</p>
-
-<h2 id="toc_27">6、快速排序（Quick Sort）</h2>
-
-<p>快速排序的基本思想：通过一趟排序将待排记录分隔成独立的两部分，其中一部分记录的关键字均比另一部分的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序。</p>
-
-<h3 id="toc_28">6.1 算法描述</h3>
-
-<p>快速排序使用分治法来把一个串（list）分为两个子串（sub-lists）。具体算法描述如下：</p>
-
-<p>从数列中挑出一个元素，称为 “基准”（pivot）；<br/>
-重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；<br/>
-递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。</p>
-
-<h3 id="toc_29">6.2 动图演示</h3>
-<img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015230936371-1413523412.gif" alt="" width="682" height="212">
-<h3 id="toc_30">6.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">function quickSort(arr, left, right) {
-    var len = arr.length,
-        partitionIndex,
-        left = typeof left != &#39;number&#39; ? 0 : left,
-        right = typeof right != &#39;number&#39; ? len - 1 : right;
- 
-    if (left &lt; right) {
-        partitionIndex = partition(arr, left, right);
-        quickSort(arr, left, partitionIndex-1);
-        quickSort(arr, partitionIndex+1, right);
-    }
-    return arr;
-}
- 
-function partition(arr, left ,right) {     // 分区操作
-    var pivot = left,                      // 设定基准值（pivot）
-        index = pivot + 1;
-    for (var i = index; i &lt;= right; i++) {
-        if (arr[i] &lt; arr[pivot]) {
-            swap(arr, i, index);
-            index++;
-        }       
-    }
-    swap(arr, pivot, index - 1);
-    return index-1;
-}
- 
-function swap(arr, i, j) {
-    var temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
-}
-</code></pre>
-
-<h2 id="toc_31">7、堆排序（Heap Sort）</h2>
-
-<p>堆排序（Heapsort）是指利用堆这种数据结构所设计的一种排序算法。堆积是一个近似完全二叉树的结构，并同时满足堆积的性质：即子结点的键值或索引总是小于（或者大于）它的父节点。</p>
-
-<h3 id="toc_32">7.1 算法描述</h3>
-
-<p>将初始待排序关键字序列(R1,R2….Rn)构建成大顶堆，此堆为初始的无序区；<br/>
-将堆顶元素R[1]与最后一个元素R[n]交换，此时得到新的无序区(R1,R2,……Rn-1)和新的有序区(Rn),且满足R[1,2…n-1]&lt;=R[n]；<br/>
-由于交换后新的堆顶R[1]可能违反堆的性质，因此需要对当前无序区(R1,R2,……Rn-1)调整为新堆，然后再次将R[1]与无序区最后一个元素交换，得到新的无序区(R1,R2….Rn-2)和新的有序区(Rn-1,Rn)。不断重复此过程直到有序区的元素个数为n-1，则整个排序过程完成。</p>
-
-<h3 id="toc_33">7.2 动图演示</h3>
-<img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015231308699-356134237.gif" alt="">
-<h3 id="toc_34">7.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">var len;    // 因为声明的多个函数都需要数据长度，所以把len设置成为全局变量
- 
-function buildMaxHeap(arr) {   // 建立大顶堆
-    len = arr.length;
-    for (var i = Math.floor(len/2); i &gt;= 0; i--) {
-        heapify(arr, i);
-    }
-}
- 
-function heapify(arr, i) {     // 堆调整
-    var left = 2 * i + 1,
-        right = 2 * i + 2,
-        largest = i;
- 
-    if (left &lt; len &amp;&amp; arr[left] &gt; arr[largest]) {
-        largest = left;
-    }
- 
-    if (right &lt; len &amp;&amp; arr[right] &gt; arr[largest]) {
-        largest = right;
-    }
- 
-    if (largest != i) {
-        swap(arr, i, largest);
-        heapify(arr, largest);
-    }
-}
- 
-function swap(arr, i, j) {
-    var temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
-}
- 
-function heapSort(arr) {
-    buildMaxHeap(arr);
- 
-    for (var i = arr.length - 1; i &gt; 0; i--) {
-        swap(arr, 0, i);
-        len--;
-        heapify(arr, 0);
-    }
-    return arr;
-}
-</code></pre>
-
-<h2 id="toc_35">8、计数排序（Counting Sort）</h2>
-
-<p>计数排序不是基于比较的排序算法，其核心在于将输入的数据值转化为键存储在额外开辟的数组空间中。 作为一种线性时间复杂度的排序，计数排序要求输入的数据必须是有确定范围的整数。</p>
-
-<h3 id="toc_36">8.1 算法描述</h3>
-
-<p>找出待排序的数组中最大和最小的元素；<br/>
-统计数组中每个值为i的元素出现的次数，存入数组C的第i项；<br/>
-对所有的计数累加（从C中的第一个元素开始，每一项和前一项相加）；<br/>
-反向填充目标数组：将每个元素i放在新数组的第C(i)项，每放一个元素就将C(i)减去1。</p>
-
-<h3 id="toc_37">8.2 动图演示</h3>
-<img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015231740840-6968181.gif" alt="" width="690" height="380">
-<h3 id="toc_38">8.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">function countingSort(arr, maxValue) {
-    var bucket = new Array(maxValue + 1),
-        sortedIndex = 0;
-        arrLen = arr.length,
-        bucketLen = maxValue + 1;
- 
-    for (var i = 0; i &lt; arrLen; i++) {
-        if (!bucket[arr[i]]) {
-            bucket[arr[i]] = 0;
-        }
-        bucket[arr[i]]++;
-    }
- 
-    for (var j = 0; j &lt; bucketLen; j++) {
-        while(bucket[j] &gt; 0) {
-            arr[sortedIndex++] = j;
-            bucket[j]--;
-        }
-    }
- 
-    return arr;
-}
-</code></pre>
-
-<h3 id="toc_39">8.4 算法分析</h3>
-
-<p>计数排序是一个稳定的排序算法。当输入的元素是 n 个 0到 k 之间的整数时，时间复杂度是O(n+k)，空间复杂度也是O(n+k)，其排序速度快于任何比较排序算法。当k不是很大并且序列比较集中时，计数排序是一个很有效的排序算法。</p>
-
-<h2 id="toc_40">9、桶排序（Bucket Sort）</h2>
-
-<p>桶排序是计数排序的升级版。它利用了函数的映射关系，高效与否的关键就在于这个映射函数的确定。桶排序 (Bucket sort)的工作的原理：假设输入数据服从均匀分布，将数据分到有限数量的桶里，每个桶再分别排序（有可能再使用别的排序算法或是以递归方式继续使用桶排序进行排）。</p>
-
-<h3 id="toc_41">9.1 算法描述</h3>
-
-<p>设置一个定量的数组当作空桶；<br/>
-遍历输入数据，并且把数据一个一个放到对应的桶里去；<br/>
-对每个不是空的桶进行排序；<br/>
-从不是空的桶里把排好序的数据拼接起来。 </p>
-
-<h3 id="toc_42">9.2 图片演示</h3>
-
-<p><figure><img src="media/15474694746707/15474703458460.jpg" alt=""/></figure></p>
-
-<h3 id="toc_43">9.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">function bucketSort(arr, bucketSize) {
-    if (arr.length === 0) {
-      return arr;
-    }
- 
-    var i;
-    var minValue = arr[0];
-    var maxValue = arr[0];
-    for (i = 1; i &lt; arr.length; i++) {
-      if (arr[i] &lt; minValue) {
-          minValue = arr[i];                // 输入数据的最小值
-      } else if (arr[i] &gt; maxValue) {
-          maxValue = arr[i];                // 输入数据的最大值
-      }
-    }
- 
-    // 桶的初始化
-    var DEFAULT_BUCKET_SIZE = 5;            // 设置桶的默认数量为5
-    bucketSize = bucketSize || DEFAULT_BUCKET_SIZE;
-    var bucketCount = Math.floor((maxValue - minValue) / bucketSize) + 1;  
-    var buckets = new Array(bucketCount);
-    for (i = 0; i &lt; buckets.length; i++) {
-        buckets[i] = [];
-    }
- 
-    // 利用映射函数将数据分配到各个桶中
-    for (i = 0; i &lt; arr.length; i++) {
-        buckets[Math.floor((arr[i] - minValue) / bucketSize)].push(arr[i]);
-    }
- 
-    arr.length = 0;
-    for (i = 0; i &lt; buckets.length; i++) {
-        insertionSort(buckets[i]);                      // 对每个桶进行排序，这里使用了插入排序
-        for (var j = 0; j &lt; buckets[i].length; j++) {
-            arr.push(buckets[i][j]);                     
-        }
-    }
- 
-    return arr;
-}
-</code></pre>
-
-<h3 id="toc_44">9.4 算法分析</h3>
-
-<p>桶排序最好情况下使用线性时间O(n)，桶排序的时间复杂度，取决与对各个桶之间数据进行排序的时间复杂度，因为其它部分的时间复杂度都为O(n)。很显然，桶划分的越小，各个桶之间的数据越少，排序所用的时间也会越少。但相应的空间消耗就会增大。 </p>
-
-<h2 id="toc_45">10、基数排序（Radix Sort）</h2>
-
-<p>基数排序是按照低位先排序，然后收集；再按照高位排序，然后再收集；依次类推，直到最高位。有时候有些属性是有优先级顺序的，先按低优先级排序，再按高优先级排序。最后的次序就是高优先级高的在前，高优先级相同的低优先级高的在前。</p>
-
-<h3 id="toc_46">10.1 算法描述</h3>
-
-<p>取得数组中的最大数，并取得位数；<br/>
-arr为原始数组，从最低位开始取每个位组成radix数组；<br/>
-对radix进行计数排序（利用计数排序适用于小范围数的特点）；<br/>
-10.2 动图演示</p>
-<img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015232453668-1397662527.gif" alt="" width="686" height="389">
-<h3 id="toc_47">10.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">// LSD Radix Sort
-var counter = [];
-function radixSort(arr, maxDigit) {
-    var mod = 10;
-    var dev = 1;
-    for (var i = 0; i &lt; maxDigit; i++, dev *= 10, mod *= 10) {
-        for(var j = 0; j &lt; arr.length; j++) {
-            var bucket = parseInt((arr[j] % mod) / dev);
-            if(counter[bucket]==null) {
-                counter[bucket] = [];
-            }
-            counter[bucket].push(arr[j]);
-        }
-        var pos = 0;
-        for(var j = 0; j &lt; counter.length; j++) {
-            var value = null;
-            if(counter[j]!=null) {
-                while ((value = counter[j].shift()) != null) {
-                      arr[pos++] = value;
-                }
-          }
-        }
-    }
-    return arr;
-}
-</code></pre>
-
-<h3 id="toc_48">10.4 算法分析</h3>
-
-<p>基数排序基于分别排序，分别收集，所以是稳定的。但基数排序的性能比桶排序要略差，每一次关键字的桶分配都需要O(n)的时间复杂度，而且分配之后得到新的关键字序列又需要O(n)的时间复杂度。假如待排数据可以分为d个关键字，则基数排序的时间复杂度将是O(d*2n) ，当然d要远远小于n，因此基本上还是线性级别的。</p>
-
-<p>基数排序的空间复杂度为O(n+k)，其中k为桶的数量。一般来说n&gt;&gt;k，因此额外空间需要大概n个左右。</p>
+<p>好了，能用 hashlib 库就行，别的不管。</p>
 
                         
                       </div>
@@ -815,7 +315,7 @@ function radixSort(arr, maxDigit) {
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/14 20:37 下午</span>
+                    <span class="date">2019/4/4 11:26 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
@@ -916,31 +416,31 @@ function radixSort(arr, maxDigit) {
 	      
 		      
 			      <li class="post">
-			        <a href="15542128440180.html">VMware Fusion 端口映射</a>
+			        <a href="15547237158216.html">怎么解决"该虚拟机似乎正在使用中"问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15542101741047.html">linux sudo配置免密及排除部分命令</a>
+			        <a href="15547068970077.html">arch 安装配置指南带图版</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15542098568070.html">linux sudo:/etc/sudoers 可被任何人写 解决方案</a>
+			        <a href="15547067485409.html">arch 安装配置指南</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15542044701566.html">debian or ubuntu 修改终端欢迎语</a>
+			        <a href="15543568335321.html">python 计算代码运行时间的方法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15542027955936.html">mysql登录提示ERROR 1524 (HY000): Plugin 'unix_socket' is not loaded解决方法</a>
+			        <a href="15543511984993.html">python程序退出的几种方式</a>
 			      </li>
 		     
 		  

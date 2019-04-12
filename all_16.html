@@ -138,41 +138,149 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15473910152747.html">
+                <a class="clearlink" href="15446864537652.html">
                 
-                  <h1>给网站嵌入百度搜索框</h1>
+                  <h1>Web安全工程师求职清单</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>只需要在 htm 页面中嵌入以下代码即可：</p>
+                        	<blockquote>
+<p>一年前写的一点玩意，没什么卵用</p>
+</blockquote>
 
-<pre class="line-numbers"><code class="language-markup"> &lt;div style=&#39;overflow:hidden&#39;&gt;
-        &lt;form onsubmit=&quot;return baiduWithHttps(this)&quot; action=&quot;http://www.baidu.com/s&quot; target=&quot;_blank&quot;&gt;
-        &lt;input class=&#39;bdtext&#39; type=&quot;text&quot;  onfocus=&quot;checkHttps&quot; name=&quot;wd&quot;  size=&quot;30&quot;&gt;
-        &lt;input class=&#39;bdbtn&#39; type=&quot;submit&quot;value=&quot;百度搜索&quot;&gt;
-        &lt;/form&gt;
-        &lt;script&gt;
-            function checkHttps () {
-                BaiduHttps.useHttps();    
-            };
-            function baiduWithHttps (formname) {
-                var data = BaiduHttps.useHttps();
-                if (data.s === 0) {
-                    return true;
-                }
-                else {
-                    formname.action = &#39;https://www.baidu.com/s&#39; + &#39;?wd&#39; + data.ssl_code;
-                    return true;
-                }
-            };
-        &lt;/script&gt; 
-    &lt;/div&gt;
-</code></pre>
+<h2 id="toc_0">安全资讯</h2>
 
-<p>效果如下：<br/>
-<figure><img src="media/15473910152747/%E5%B5%8C%E5%85%A5%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2.png" alt="嵌入百度搜索"/><figcaption>嵌入百度搜索</figcaption></figure><br/>
-觉得不好看的可以自行加入 css 改变样式，我觉得就这样还蛮好看的。</p>
+<p><a href="http://www.freebuf.com/">freebuf</a></p>
+
+<p><a href="https://www.t00ls.net/">tools</a></p>
+
+<p><a href="https://www.secpulse.com/">安全脉搏</a></p>
+
+<p><a href="https://packetstormsecurity.com/">数据包风暴</a></p>
+
+<p><a href="http://www.4hou.com/">嘶吼</a></p>
+
+<p><a href="https://www.aqniu.com/">安全牛</a></p>
+
+<p><a href="https://www.anquanke.com/">安全客</a></p>
+
+<p><a href="https://www.sec-wiki.com/">sec-wiki</a></p>
+
+<p><a href="http://www.secdoctor.com/">中国信息安全博士网</a></p>
+
+<h2 id="toc_1">威胁情报</h2>
+
+<p>暂略</p>
+
+<h2 id="toc_2">安全工具</h2>
+
+<p><a href="https://www.ctftools.com/down/">最强安全工具集</a></p>
+
+<ul>
+<li>burpsuite(抓包)</li>
+<li>sqlmap(sql注入)</li>
+<li>whireshark(网络抓包)</li>
+<li>中国菜刀(webshell、一句话后门)</li>
+<li>HxD(十六进制编辑器和磁盘编辑器)</li>
+<li>nmap(扫描)</li>
+<li>hydra(爆破)</li>
+<li>cain(爆破)</li>
+<li>metasploit(漏洞利用)</li>
+<li>mitmproxy(http/https代理)</li>
+<li>commix(命令注入)</li>
+<li>httrack(网站克隆)</li>
+<li>netcat(瑞士军刀-网络调试和探测工具)</li>
+<li>scapy(python的交互式数据包操作程序和库)</li>
+<li>empire(域渗透)</li>
+</ul>
+
+<h2 id="toc_3">靶机环境</h2>
+
+<h2 id="toc_4">安全知识库</h2>
+
+<p><a href="https://www.anquanquan.info/">安全圈</a></p>
+
+<p><a href="http://wiki.open.qq.com/wiki/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8%E8%A7%84%E8%8C%83">腾讯安全开发规范</a></p>
+
+<p><a href="https://highon.coffee/blog/cheat-sheet/">安全研究备忘单</a></p>
+
+<p><a href="https://portswigger.net/kb/issues">Burp漏洞定义</a></p>
+
+<p><a href="https://www.offensive-security.com/metasploit-unleashed/">MSF框架终极指南</a></p>
+
+<p><a href="https://www.owasp.org/index.php/Main_Page">OWASP</a></p>
+
+<p><a href="http://vipread.com/index">vipread知识库</a></p>
+
+<p><a href="https://kb.help.rapid7.com/docs/">Rapid7知识库</a></p>
+
+<p><a href="https://kernelnewbies.org/">linux内核研究</a></p>
+
+<p><a href="http://www.loner.fm/bugs/">乌云漏洞</a></p>
+
+<p><a href="https://wooyun.js.org/">乌云文章</a></p>
+
+<p><a href="http://www.office-cn.net/t/api/index.html?web.htm">WindowsAPI参考手册</a></p>
+
+<p><a href="https://support.portswigger.net/customer/portal/articles/2326039-the-burp-methodology">Burp方法论</a></p>
+
+<p><a href="https://ctf-wiki.github.io/ctf-wiki/">CTF-Wiki</a></p>
+
+<p><a href="https://github.com/ctfs/">CTFs</a></p>
+
+<p><a href="https://ctftime.org">ctftime</a></p>
+
+<p><a href="https://www.codesec.net/">代码安全</a></p>
+
+<p><a href="https://silic.wiki/doku.php">习科小黑板</a></p>
+
+<p><a href="https://bbs.safewiki.org/portal.php">安全文库</a></p>
+
+<p><a href="http://webscan.360.cn/vul">360网站常见漏洞</a></p>
+
+<h2 id="toc_5">漏洞平台</h2>
+
+<p><a href="https://butian.360.cn/">补天</a></p>
+
+<p><a href="https://www.vulbox.com/">漏洞盒子</a></p>
+
+<p><a href="https://www.bugbank.cn/">漏洞银行</a></p>
+
+<p><a href="http://www.cnvd.org.cn/">CNVD国家信息安全漏洞共享平台</a></p>
+
+<p><a href="https://src.edu-info.edu.cn/">教育行业漏洞报告平台</a></p>
+
+<p><a href="https://www.seebug.org">Seebug</a></p>
+
+<p><a href="http://0xsafe.org/vuldb.html">Vuldbs漏洞平台</a></p>
+
+<h2 id="toc_6">技能要求</h2>
+
+<ul>
+<li>不同场景下的渗透测试流程、方法</li>
+<li>常见漏洞的攻击方法和防御方法</li>
+<li>代码级白盒测试能力</li>
+<li>owasp_top10概念、原理、测试方法、防御方法</li>
+<li>主流防火墙、IDS、IPS、漏洞扫描工具的安装、使用方法</li>
+<li>熟悉python、php、javascript、c、c++等语言的一种或多种</li>
+<li>cissp之类的证书或ctf解题能力是加分项</li>
+<li>各种靶机环境搭建</li>
+<li>安全分析报告的编写</li>
+<li>对业务快速熟悉的能力（业务安全重点、应用范围划分、业务安全基线）</li>
+<li>spring、struts、hibernate框架安全相关</li>
+<li>web组件加固、服务器加固、数据库加固</li>
+<li>域渗透、dns、arp等内网渗透知识</li>
+<li>各类提权如系统提权、数据库提权等</li>
+<li>风险评估、等级保护、安全体系规划、安全体系建设。包括信息资产管理、安全威胁和风险评估、安全解决方案制定、信息安全体系实施</li>
+<li>Nginx、Apache、Tomcat等安全配置基线</li>
+<li>各类安全测试标准(ISSAF、OSSTMM、OWASP、微软SDLC、OPENSAMM、BSIMM、SSECMM)</li>
+<li>网络日志分析、攻击流量检测</li>
+<li>hadoop、openstack、sdn云安全</li>
+<li>mongodb、redis、HBASE等nosql安全</li>
+<li>burpsuite插件编写</li>
+<li>python脚本开发能力、shell脚本开发能力</li>
+</ul>
 
                         
                       </div>
@@ -181,41 +289,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/13 22:50 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15473524859484.html">
-                
-                  <h1>msf更新</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>1、打开终端输入 msf 进入msfconsole<br/>
-2、在 msfconsole 中输入 msfupdate 即可自动更新</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/13 12:8 下午</span>
+                    <span class="date">2018/12/13 15:34 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
@@ -232,19 +306,66 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15473464131197.html">
+                <a class="clearlink" href="15446861280668.html">
                 
-                  <h1>读 Monyer 文章有感</h1>
+                  <h1>hackthebox邀请码</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>1、黑客是一种兴趣爱好<br/>
-2、选行需谨慎，选前需要调研<br/>
-3、技术分化，很难再&quot;全栈&quot;，知识面扩宽的同时，需要抓重点精深。<br/>
-4、技术人员发展路线：技术输出阶段、经验输出阶段、思路输出阶段和决策输出阶段。<br/>
-5、学习永不停歇<br/>
-6、小游戏地址：<a href="http://monyer.com/game/game1/">http://monyer.com/game/game1/</a></p>
+                        	<blockquote>
+<p>不打算好好玩的麻烦不要瞎注册，大量的垃圾账号只会污染整个生态环境。</p>
+</blockquote>
+
+<p>进入注册页面，观察页面js文件会找到以下内容：</p>
+
+<pre class="line-numbers"><code class="language-javascript">eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!&#39;&#39;.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return&#39;\\w+&#39;};c=1};while(c--){if(k[c]){p=p.replace(new RegExp(&#39;\\b&#39;+e(c)+&#39;\\b&#39;,&#39;g&#39;),k[c])}}return p}(&#39;1 i(4){h 8={&quot;4&quot;:4};$.9({a:&quot;7&quot;,5:&quot;6&quot;,g:8,b:\&#39;/d/e/n\&#39;,c:1(0){3.2(0)},f:1(0){3.2(0)}})}1 j(){$.9({a:&quot;7&quot;,5:&quot;6&quot;,b:\&#39;/d/e/k/l/m\&#39;,c:1(0){3.2(0)},f:1(0){3.2(0)}})}&#39;,24,24,&#39;response|function|log|console|code|dataType|json|POST|formData|ajax|type|url|success|api|invite|error|data|var|verifyInviteCode|makeInviteCode|how|to|generate|verify&#39;.split(&#39;|&#39;),0,{}))
+</code></pre>
+
+<p>1、然后把这段代码放到 <a href="http://jsbeautifier.org/">http://jsbeautifier.org/</a> 进行美化，得出：<br/>
+2、</p>
+
+<pre class="line-numbers"><code class="language-javascript">function verifyInviteCode(code) {
+    var formData = {
+        &quot;code&quot;: code
+    };
+    $.ajax({
+        type: &quot;POST&quot;,
+        dataType: &quot;json&quot;,
+        data: formData,
+        url: &#39;/api/invite/verify&#39;,
+        success: function(response) {
+            console.log(response)
+        },
+        error: function(response) {
+            console.log(response)
+        }
+    })
+}
+
+function makeInviteCode() {
+    $.ajax({
+        type: &quot;POST&quot;,
+        dataType: &quot;json&quot;,
+        url: &#39;/api/invite/how/to/generate&#39;,
+        success: function(response) {
+            console.log(response)
+        },
+        error: function(response) {
+            console.log(response)
+        }
+    })
+}
+</code></pre>
+
+<p>可以看出上述代码是让我们访问：<a href="https://www.hackthebox.eu/api/invite/generate">https://www.hackthebox.eu/api/invite/generate</a><br/>
+然后修改请求方式为post<br/>
+于是就得到了：</p>
+
+<pre class="line-numbers"><code class="language-javascript">{&quot;success&quot;:1,&quot;data&quot;:{&quot;code&quot;:&quot;VlJQS1QtQUNXRUstT0tYREwtQ0lZQVUtS0NZSlU=&quot;,&quot;format&quot;:&quot;encoded&quot;},&quot;0&quot;:200}
+</code></pre>
+
+<p>将code进行base64解码，就得到了邀请码。</p>
 
                         
                       </div>
@@ -253,10 +374,190 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/13 10:26 上午</span>
+                    <span class="date">2018/12/13 15:28 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html'>风花雪月</a></span>
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15433912730163.html">
+                
+                  <h1>FOEENSICS 101</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>题目：<a href="https://ctflearn.com/problems/96">https://ctflearn.com/problems/96</a><br/>
+<figure><img src="http://images.lonelyor.org/ctflearn-96-1.png" alt="ctflearn-96-1"/><figcaption>ctflearn-96-</figcaption></figure><br/>
+访问域名，然后会下载一张图片。<br/>
+接下来我们使用十六进制编码器打开这张图片，会发现：<br/>
+<figure><img src="http://images.lonelyor.org/ctflearn-96-2.png" alt="ctflearn-96-2"/><figcaption>ctflearn-96-</figcaption></figure><br/>
+标红部分即是flag。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/28 15:47 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15433875205785.html">
+                
+                  <h1>BASIC INJECTION 基本注入</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>题目：<a href="https://ctflearn.com/problems/88">https://ctflearn.com/problems/88</a><br/>
+解：<br/>
+访问题目中提到的：<a href="https://web.ctflearn.com/web4/">域名</a><br/>
+<figure><img src="http://images.lonelyor.org/ctflearn-basic-injection-1.png" alt="ctflearn-basic-injection-1"/><figcaption>ctflearn-basic-injection-</figcaption></figure><br/>
+然后输入payload，得到以下数据，方框中的即为flag。<br/>
+<figure><img src="http://images.lonelyor.org/ctflearn-basic-injection-2.png" alt="ctflearn-basic-injection-2"/><figcaption>ctflearn-basic-injection-</figcaption></figure></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/28 14:45 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15428715286450.html">
+                
+                  <h1>windows右键添加管理员获得所有权</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>右键添加获得管理员所有权是个比较方便的功能。</p>
+</blockquote>
+
+<p>打开记事本或者别的文本编辑器，然后写入如下内容:</p>
+
+<pre class="line-numbers"><code class="language-cmd">Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\runas]
+@=&quot;管理员取得所有权&quot;
+&quot;NoWorkingDirectory&quot;=&quot;&quot;
+[HKEY_CLASSES_ROOT\*\shell\runas\command]
+@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
+&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
+[HKEY_CLASSES_ROOT\exefile\shell\runas2]
+@=&quot;管理员取得所有权&quot;
+&quot;NoWorkingDirectory&quot;=&quot;&quot;
+[HKEY_CLASSES_ROOT\exefile\shell\runas2\command]
+@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
+&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
+[HKEY_CLASSES_ROOT\Directory\shell\runas]
+@=&quot;管理员取得所有权&quot;
+&quot;NoWorkingDirectory&quot;=&quot;&quot;
+[HKEY_CLASSES_ROOT\Directory\shell\runas\command]
+@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; /r /d y &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F /t&quot;
+&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; /r /d y &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F /t&quot;
+</code></pre>
+
+<p>然后另存为：管理员获得所有权.reg<br/>
+文件名可以随便写，但是后缀记得写成reg（改成这个后缀后文件图标就会变成一个破碎蓝色魔方）。<br/>
+然后右键以管理员身份运行，若弹框注册表xxx的，同意就行了。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/22 15:25 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15428714021434.html">
+                
+                  <h1>linux将shell脚本添加到系统命令的方法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>可以自定义一些shell脚本，用来提高执行常用组合命令的效率。还有一种方式是使用alias命令。</p>
+</blockquote>
+
+<p>两种方法：<br/>
+1、直接把shell脚本放到/usr/local/bin ，然后添加权限 <code>sudo chmod +x xxx.sh</code> 就ok了。这样是在本地用户添加命令。<br/>
+root用户添加命令则把脚本放在 /usr/bin 即可。<br/>
+2、使用软连接的方式<code>ln -s 【源文件或目录】【目标文件或目录】</code><br/>
+注意要使用绝对路径。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/11/22 15:23 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
           				   
                   </div>
                   <div class="more-right right">

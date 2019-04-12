@@ -847,6 +847,116 @@ sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --start
                 </div>
               </div><!-- article -->
         
+			<div class="article">
+                <a class="clearlink" href="15542101741047.html">
+                
+                  <h1>linux sudo配置免密及排除部分命令</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><code>lonelyor ALL=(ALL) NOPASSWD:ALL, !/usr/bin/reboot, !/sbin/reboot, !/sbin/ifconfig, !/sbin/shutdown, !/sbin/route, !/sbin/ip</code></p>
+
+<p>即lonelyor可以免密码执行除reboot、ifconfig、shutdown、route、ip之外的指令。</p>
+
+<p><strong>注意，/etc/sudoers的命令是顺序执行，添加在错误的位置（比如 %sudo ALL=(ALL:ALL) ALL 之前）是无效的。</strong></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/4/2 21:2 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15542098568070.html">
+                
+                  <h1>linux sudo:/etc/sudoers 可被任何人写 解决方案</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>只需要使用<code>su -</code>进入 root<br/>
+然后<code>cd /etc</code>，使用<code>chmod 0440 sudoers</code>将权限改回来即可。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/4/2 20:57 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15542044701566.html">
+                
+                  <h1>debian or ubuntu 修改终端欢迎语</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>与其他 linux 不太一样哦。Debian 系直接修改/etc/motd文件重登录后是无效的。</p>
+
+<p>因为这里/etc/motd是一个符号链接，指向/var/run/motd，应该 是一个启动后在生成的文件。在版本12.04中，找到生成的脚本在目录/etc/update-motd.d/中<br/>
+<code>sudo nano /etc/update-motd.d/10-uname</code><br/>
+在 10-uname 中可以添加命令，比如：<code>cat /home/test.txt</code>。即可展示出 test.txt 中的内容。</p>
+
+<p>修改后用：sudo run-parts /etc/update-motd.d 去执行就会立即见到效果，而不用反复注销登录。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/4/2 19:27 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
               
 
 

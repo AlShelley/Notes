@@ -138,30 +138,170 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045489079.html">
+                <a class="clearlink" href="15470312265923.html">
                 
-                  <h1>iterm2 常用技巧</h1>
+                  <h1>修改Mac主机名、计算机名</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>按住 com 键</p>
+                        	<p><code>$sudo scutil --set ComputerName 你想要的计算机名称</code><br/>
+<code>$sudo scutil --set HostName 你想要的主机名称</code></p>
+
+<p>举例：<br/>
+<code>$sudo scutil --set HostName lonelyor</code></p>
+
+<p>使用以下命令查看主机名或计算机名<br/>
+<code>$ scutil --get ComputerName</code><br/>
+<code>$ scutil --get HostName</code></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/9 18:53 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15456175398128.html">
+                
+                  <h1>自建kms服务器激活windows</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>kms的脚本来自：<a href="https://github.com/SystemRage/py-kms">https://github.com/SystemRage/py-kms</a><br/>
+密钥来自：<br/>
+<a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj612867(v%3dws.11)">https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj612867(v%3dws.11)</a><br/>
+<a href="https://github.com/SystemRage/py-kms/wiki/Office-GVLK-Keys">https://github.com/SystemRage/py-kms/wiki/Office-GVLK-Keys</a><br/>
+<a href="https://github.com/SystemRage/py-kms/wiki/Windows-GVLK-Keys">https://github.com/SystemRage/py-kms/wiki/Windows-GVLK-Keys</a></p>
+</blockquote>
+
+<h2 id="toc_0">下载kms服务端和客户端程序</h2>
+
+<p>分别在服务器和客户端下载py-kms<br/>
+<code>git clone https://github.com/SystemRage/py-kms.git</code></p>
+
+<h2 id="toc_1">服务器设置</h2>
+
+<p>使用python3</p>
+
+<pre class="line-numbers"><code class="language-text">python3 -m pip install argparse
+python3 -m pip install tzlocal
+python3 -m pip install pysqlite3
+python3 server
+</code></pre>
+
+<p>在一台服务器上运行server，默认运行在 0.0.0.0 1688。<br/>
+这里的服务器可以是你的本地Mac主机，或者本地or远程Linux主机，Windows没试过不清楚。</p>
+
+<h2 id="toc_2">客户端设置(不需要)</h2>
+
+<p><code>python client.py 0.0.0.0（使用服务端ip） 1688</code>我运行了上述指令发现并没有什么卵用，也对，密钥都没导入，能有用才怪了。<br/>
+现在我们创建一个activate.bat脚本：</p>
+
+<pre class="line-numbers"><code class="language-bat">cscript //nologo slmgr.vbs /upk
+cscript //nologo slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GXc
+cscript //nologo slmgr.vbs /ipk MH37W-N47XK-V7XM9-C7227-GCQG9
+cscript //nologo slmgr.vbs /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43
+cscript //nologo slmgr.vbs /ipk DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4
+cscript //nologo slmgr.vbs /ipk NW6C2-QMPVW-D7KKK-3GKT6-VCFB2
+cscript //nologo slmgr.vbs /ipk DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ
+cscript //nologo slmgr.vbs /ipk D2N9P-3P6X9-2R39C-7RTCD-MDVJX
+cscript //nologo slmgr.vbs /ipk W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9
+cscript //nologo slmgr.vbs /ipk KNC87-3J2TX-XB4WP-VCPJV-M4FWM
+cscript //nologo slmgr.vbs /ipk FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4
+cscript //nologo slmgr.vbs /ipk MRPKT-YTG23-K7D7T-X2JMM-QY7MG
+cscript //nologo slmgr.vbs /ipk W82YF-2Q76Y-63HXB-FGJG9-GF7QX
+cscript //nologo slmgr.vbs /ipk 33PXH-7Y6KF-2VJC9-XBBR8-HVTHH
+cscript //nologo slmgr.vbs /ipk YDRBP-3D83W-TY26F-D46B2-XCKRJ
+cscript //nologo slmgr.vbs /ipk CB7KF-BWN84-R7R2Y-793K2-8XDDG
+cscript //nologo slmgr.vbs /ipk WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY
+cscript //nologo slmgr.vbs /ipk JCKRF-N37P4-C2D82-9YXRT-4M63B
+cscript //nologo slmgr.vbs /ipk YC7DK-G2NP3-2QQC3-J6H88-GVGXT
+cscript //nologo slmgr.vbs /ipk KBKQT-2NMXY-JJWGP-M62JB-92CD4
+cscript //nologo slmgr.vbs /ipk XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99
+cscript //nologo slmgr.vbs /ipk JNRGM-WHDWX-FJJG3-K47QV-DRTFM
+cscript //nologo slmgr.vbs /ipk YC7DK-G2NP3-2QQC3-J6H88-GVGXT
+cscript //nologo slmgr.vbs /ipk KBKQT-2NMXY-JJWGP-M62JB-92CD4
+cscript //nologo slmgr.vbs /ipk FN8TT-7WMH6-2D4X9-M337T-2342K
+cscript //nologo slmgr.vbs /ipk 6NTH3-CW976-3G3Y2-JK3TX-8QHTT
+cscript //nologo slmgr.vbs /ipk C2FG9-N6J68-H8BTJ-BW3QX-RM3B3
+cscript //nologo slmgr.vbs /ipk J484Y-4NKBF-W2HMG-DBMJC-PGWR7
+cscript //nologo slmgr.vbs /ipk VGPNG-Y7HQW-9RHP7-TKPV3-BG7GB
+cscript //nologo slmgr.vbs /ipk TGN6P-8MMBC-37P2F-XHXXK-P34VW
+cscript //nologo slmgr.vbs /ipk 4NT99-8RJFH-Q2VDH-KYG2C-4RD4F
+cscript //nologo slmgr.vbs /ipk 6Q7VD-NX8JD-WJ2VH-88V73-4GBJ7
+cscript //nologo slmgr.vbs /ipk XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99
+cscript //nologo slmgr.vbs /ipk JNRGM-WHDWX-FJJG3-K47QV-DRTFM
+cscript //nologo slmgr.vbs /ipk YG9NW-3K39V-2T3HJ-93F3Q-G83KT
+cscript //nologo slmgr.vbs /ipk WGT24-HCNMF-FQ7XH-6M8K7-DRTW9
+cscript //nologo slmgr.vbs /ipk GNFHQ-F6YQM-KQDGJ-327XX-KQBVC
+cscript //nologo slmgr.vbs /ipk D8NRQ-JTYM3-7J2DX-646CT-6836M
+cscript //nologo slmgr.vbs /ipk PD3PC-RHNGV-FXJ29-8JK7D-RJRJK
+cscript //nologo slmgr.vbs /ipk 69WXN-MBYV6-22PQG-3WGHK-RM6XC
+cscript //nologo slmgr.vbs /ipk 7WHWN-4T7MP-G96JF-G33KR-W8GF4
+cscript //nologo slmgr.vbs /ipk NY48V-PPYYH-3F4PX-XJRKJ-W4423
+cscript //nologo slmgr.vbs /ipk 9C2PK-NWTVB-JMPW8-BFT28-7FTBF
+cscript //nologo slmgr.vbs /ipk DR92N-9HTF2-97XKM-XW2WJ-XW3J6
+cscript //nologo slmgr.vbs /ipk R69KK-NTPKF-7M3Q4-QYBHW-6MT9B
+cscript //nologo slmgr.vbs /ipk WXY84-JN2Q9-RBCCQ-3Q3J3-3PFJ6
+cscript //nologo slmgr.vbs /ipk J7MQP-HNJ4Y-WJ7YM-PFYGF-BY6C6
+cscript //nologo slmgr.vbs /ipk VQ9DP-NVHPH-T9HJC-J9PDT-KTQRG
+cscript //nologo slmgr.vbs /ipk NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP
+cscript //nologo slmgr.vbs /ipk XM2V9-DN9HH-QB449-XDGKC-W2RMW
+cscript //nologo slmgr.vbs /ipk B4NPR-3FKK7-T2MBV-FRQ4W-PKD2B
+cscript //nologo slmgr.vbs /ipk C4F7P-NCP8C-6CQPT-MQHV9-JXD2M
+cscript //nologo slmgr.vbs /ipk TMJWT-YYNMB-3BKTF-644FC-RVXBD
+cscript //nologo slmgr.vbs /ipk 7HD7K-N4PVK-BHBCQ-YWQRW-XW4VK
+cscript //nologo slmgr.vbs /ipk RRNCX-C64HY-W2MM7-MCH9G-TJHMQ
+cscript //nologo slmgr.vbs /ipk PBX3G-NWMT6-Q7XBW-PYJGG-WXD33
+cscript //nologo slmgr.vbs /ipk N2CG9-YD3YK-936X4-3WR82-Q3X4H
+cscript //nologo slmgr.vbs /ipk 9BGNQ-K37YR-RQHF2-38RQ3-7VCBB
+cscript //nologo slmgr.vbs /ipk 7TQNQ-K3YQQ-3PFH7-CCPPM-X4VQ2c
+cscript //nologo slmgr.vbs /skms 192.168.220.187:1688
+cscript //nologo slmgr.vbs /ato
+cscript //nologo slmgr.vbs /ato
+cscript //nologo slmgr.vbs /dlv
+cmd /k
+</code></pre>
+
+<p>上面的脚本包含了win10、win7、office2019、office2016、office2013的大部分密钥（主要是专业版），基本满足需求，不过其实也没必要搞那么多，但是懒得筛选了。</p>
+
+<h2 id="toc_3">激活win和office</h2>
+
+<p>首先在服务器上运行 kms server。</p>
 
 <ul>
-<li>可以拖拽选中字符串</li>
-<li>点击url能直接打开</li>
-<li>点击文件：调用默认程序打开文件</li>
-<li>点击文件夹：在finder中打开文件夹</li>
-<li>同时按住option键，可以矩形选中</li>
+<li>打开终端然后进入py-kms的py3-kms目录</li>
+<li>然后输入<code>python3 server</code>并回车</li>
+<li>右键点击以管理员身份运行 activate.bat 即可。</li>
 </ul>
 
-<p>新建windows：cmd+N<br/>
-新建tab：cmd+T<br/>
-切分屏幕：cmd+D水平切分<br/>
-智能查找，支持正则：cmd+F</p>
+<p>显示如下信息表示激活成功：</p>
 
-<p>智能补全：cmd+；<br/>
-调用历史记录：cmd+shift+h</p>
+<p><figure><img src="media/15456175398128/win%E6%BF%80%E6%B4%BB2018-12-24%2011-12-38.png" alt="win激活2018-12-24 11-12-38"/><figcaption>win激活2018-12-24 11-12-</figcaption></figure></p>
+
+<h2 id="toc_4">其他</h2>
+
+<p>kms每次只激活180天也就是3个月，这样每三个月就要重新激活一次，你可以每次提醒的时候再打开server然后运行activate.bat脚本。也可以把server部署在远程服务器上，然后在client添加一个计时任务周期性的运行bat脚本。</p>
 
                         
                       </div>
@@ -170,7 +310,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span class="date">2018/12/24 10:12 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
@@ -187,14 +327,31 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045489099.html">
+                <a class="clearlink" href="15453716917526.html">
                 
-                  <h1>终端配置代理</h1>
+                  <h1>mongodb安装配置（arch）</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>export ALL_PROXY=socks5://127.0.0.1:1080</p>
+                        	<blockquote>
+<p>参考文档：<a href="https://wiki.archlinux.org/index.php/MongoDB_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E4.BD.BF.E7.94.A8">https://wiki.archlinux.org/index.php/MongoDB_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E4.BD.BF.E7.94.A8</a></p>
+</blockquote>
+
+<p><code>pacman -S mongo</code><br/>
+<code>/usr/bin/.mongo --help</code><br/>
+<code>systemctl start mongodb.service</code><br/>
+这样就启动了mongo，启动的配置文件是：<code>cat /etc/mongodb.conf</code><br/>
+然后退出到用户目录，运行mongo<br/>
+<code>~ ❯❯❯ mongo</code><br/>
+<code>/var/lib/mongodb/ 是Arch Linux 的 ** 默认dbpath**</code><br/>
+但是无法访问<br/>
+修改mongodb的用户组为自己的<br/>
+<code>chown mongodb:lonelyor mongodb</code></p>
+
+<p><code>mkdir /home/lonelyor/工作/mongodb</code><br/>
+<code>touch /home/lonelyor/工作/mongodb/data</code><br/>
+<code>touch /home/lonelyor/工作/mongodb/logs</code></p>
 
                         
                       </div>
@@ -203,7 +360,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span class="date">2018/12/21 13:54 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
@@ -220,16 +377,20 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15480046831000.html">
+                <a class="clearlink" href="15453713553710.html">
                 
-                  <h1>Mac大小写切换</h1>
+                  <h1>linux下搜狗输入法不能用的解决办法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>无论中文还是英文状态下,按住 shift 输入即是大写</p>
-
-<p>长按 caps lock 2s 灯亮后输入即是大写</p>
+                        	<p>删除<br/>
+<code>～/config</code><br/>
+下的<br/>
+<code>sogou-qimpanel</code><br/>
+<code>SogouPY</code><br/>
+<code>SogouPY.users</code><br/>
+这三个文件夹，然后重启。</p>
 
                         
                       </div>
@@ -238,7 +399,103 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/21 1:18 上午</span>
+                    <span class="date">2018/12/21 13:49 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15453712257423.html">
+                
+                  <h1>arch设置屏幕分辨率</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p><a href="https://wiki.archlinux.org/index.php/Xrandr_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">https://wiki.archlinux.org/index.php/Xrandr_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)</a></p>
+</blockquote>
+
+<p>1、先使用xrandr查看屏幕相关信息<br/>
+2、编辑/e/X/xorg.conf.d ❯❯❯ sudo nano 11-lonelyorx.conf (自己新建)<br/>
+结果我不怎么会写配置文件，导致写了都没法启动图形界面了，于是又删了，打算手动更改。<br/>
+3、<br/>
+xrandr查看当前设置 <br/>
+<code>cvt 1920 1080</code><br/>
+<code>cvt 2560 1440</code><br/>
+找到正确的参数 <br/>
+<code>xrandr --newmode &quot;1920x1080_60.00&quot;  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync</code><br/>
+<code>xrandr --newmode &quot;2560x1440_60.00&quot;  312.25  2560 2752 3024 3488  1440 1443 1448 1493 -hsync +vsync</code><br/>
+然后设置 <br/>
+<code>xrandr --addmode eDP1 1920x1080_60.00</code><br/>
+<code>xrandr --addmode HDMI1 2560x1440_60.00</code><br/>
+如果一且顺利的话，此时再查看xrandr命令，将发现最佳分辨率设置成功。 <br/>
+4、修改分辨率<br/>
+<code>xrandr --output eDP1 --mode 1920x1080_60.00</code><br/>
+<code>xrandr --output HDMI1 --mode 2560x1440_60.00</code></p>
+
+<p><code>xrandr --newmode &quot;1920x1080_60.00&quot;  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync</code><br/>
+<code>xrandr --addmode eDP1 1920x1080_60.00</code><br/>
+<code>xrandr --output eDP1 --mode 1920x1080_60.00</code></p>
+
+<p>这样屏幕分辨率就变成1080p了。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21 13:47 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15453706658952.html">
+                
+                  <h1>查看端口占用</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>使用命令：<br/>
+<code>lsof -i:8000</code><br/>
+或<br/>
+<code>netstat -tunlp|grep 8000</code><br/>
+均可。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21 13:37 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>

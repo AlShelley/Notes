@@ -138,19 +138,24 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15520320136368.html">
+                <a class="clearlink" href="15484074464554.html">
                 
-                  <h1>bundle install 无法使用的解决办法</h1>
+                  <h1>Snipaste 无法在 Mac 上截图的解决办法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>在学习 hack101 课程的时候，发现无法使用bundle install 安装所需库，考虑到可能是墙的问题。</p>
+                        	<p>MacOSX 版本：Mojave 10.14.2<br/>
+Snipaste 版本：1.16.2</p>
 
-<p>解决办法如下：<br/>
-更换源<br/>
-访问网站 <a href="https://gems.ruby-china.com/">Ruby China</a>，然后按照如下操作即可。<br/>
-<figure><img src="media/15520320136368/15520321533528.jpg" alt=""/></figure></p>
+<p>以下列出遇到部分问题：<br/>
+1、使用截图功能，手动画矩形框，但是选定框画完后松开触摸板，选定框自动消失，导致无法截图。（手动选定截图区域占截图使用时间99%）<br/>
+2、使用截图功能，程序自动识别截图区域，双击可以得到截图并且有箭头等选项，画一个箭头后，选定框自动消失，截图会带着箭头自动保存到图片目录。（这导致没法多画几个箭头，也没法另存为图片）</p>
+
+<h1 id="toc_0">解决办法</h1>
+
+<p>我后来在 <a href="https://github.com/Snipaste/feedback/issues/1012">https://github.com/Snipaste/feedback/issues/1012</a> 这里找到了答案。<br/>
+关闭欧路词典的划词翻译功能，即可正常使用截图。</p>
 
                         
                       </div>
@@ -159,7 +164,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/3/8 16:0 下午</span>
+                    <span class="date">2019/1/25 17:10 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
@@ -176,27 +181,21 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15515375536566.html">
+                <a class="clearlink" href="15483045490492.html">
                 
-                  <h1>rclone挂载 onedrive 教程</h1>
+                  <h1>汉化firefox火狐浏览器</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>1、rclone config选 n<br/>
-2、给网盘起个名字如 xlz<br/>
-3、选择要挂载的网盘类型，输入数字即可，如 onedrive 则输入18<br/>
-4、按回车直到<code>Edit advanced config</code>选 y 来编辑配置<br/>
-5、<code>chunk-size</code>我选了200M,这个随便写。<br/>
-6、连续回车直到<code>expose_onenote_files&gt; true</code>，这里默认为 false，选 true 是为了在 finder 中显示。<br/>
-7、<code>Use auto config</code>，我选的是，然后浏览器自动弹出来进行认证<br/>
-8、认证结束后，<code>Your choice&gt; 1</code><br/>
-9、<code>Chose drive to use:&gt;</code>选你要用的（数字）然后选y<br/>
-10、<code>y/e/d&gt; y</code>选 y 然后就添加好了<br/>
-11、新开一个终端，然后新建一个目录（待会儿网盘就会挂载到这个目录下，比如我新建 xlz）<br/>
-12、rclone mount xlz:/ /Users/lonelyor/NBonedrive/xlz<br/>
-13、如果要在后台运行就<code>nohup rclone mount xlz:/ /Users/lonelyor/NBonedrive/xlz &amp;</code><br/>
-14、终端输入 <code>df -h</code> 查看</p>
+                        	<p>1、点击 help——about 查看火狐版本<br/><br/>
+2、在火狐浏览器输入:<a href="http://ftp.mozilla.org,%E6%8C%89%E7%85%A7%E6%88%91%E4%B8%8B%E9%9D%A2%E7%BB%99%E7%9A%84%E7%BD%91%E5%9D%80%E4%BE%9D%E6%AC%A1%E9%80%89%E6%8B%A9%E7%9B%AE%E5%BD%95%EF%BC%8C%E8%AF%AD%E8%A8%80%E5%8C%85%E5%9C%A8xpi%E7%9B%AE%E5%BD%95%E4%B8%8B%EF%BC%8C%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%EF%BC%88zh-CN.xpi%EF%BC%89/%E7%B9%81%E4%BD%93%EF%BC%88zh-TW.xpi%EF%BC%89%E3%80%82">http://ftp.mozilla.org,按照我下面给的网址依次选择目录，语言包在xpi目录下，简体中文（zh-CN.xpi）/繁体（zh-TW.xpi）。</a><br/><br/>
+为了方便也可以直接拷贝下列链接到浏览器地址栏，安装。<br/><br/>
+32位系统目录：<a href="http://ftp.mozilla.org/pub/firefox/releases/50.1.0/linux-i686/xpi/zh-CN.xpi">http://ftp.mozilla.org/pub/firefox/releases/50.1.0/linux-i686/xpi/zh-CN.xpi</a><br/><br/>
+64位系统目录：<a href="http://ftp.mozilla.org/pub/firefox/releases/50.1.0/linux-x86_64/xpi/zh-CN.xpi">http://ftp.mozilla.org/pub/firefox/releases/50.1.0/linux-x86_64/xpi/zh-CN.xpi</a><br/><br/>
+记得把版本号修改成浏览器当前版本号。</p>
+
+<p>另一种方法是打开扩展商店，输入chinese，然后添加即可。</p>
 
                         
                       </div>
@@ -205,7 +204,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/3/2 22:39 下午</span>
+                    <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
@@ -222,31 +221,214 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15512579928868.html">
+                <a class="clearlink" href="15483045487920.html">
                 
-                  <h1>excel for Mac 如何点击单元格高亮整行</h1>
+                  <h1>linux安装配置aria2及其Web图形界面（debian为例）</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>下载aria2：apt-get install aria2<br/>
+创建配置文件：mkdir /etc/aria2_conf/aria2.conf<br/>
+编辑配置文件：nano /etc/aria2_conf/aria2.conf</p>
+
+<p>aria2.conf配置：</p>
+
+<pre class="line-numbers"><code class="language-text">#用户名
+#rpc-user=user
+#密码
+#rpc-passwd=passwd
+#上面的认证方式不建议使用,建议使用下面的token方式
+#设置加密的密钥
+rpc-secret=token
+#允许rpc
+enable-rpc=true
+#允许所有来源, web界面跨域权限需要
+rpc-allow-origin-all=true
+#允许外部访问，false的话只监听本地端口
+rpc-listen-all=true
+#RPC端口, 仅当默认端口被占用时修改
+rpc-listen-port=6800
+#最大同时下载数(任务数), 路由建议值: 3
+max-concurrent-downloads=5
+#断点续传
+continue=true
+#同服务器连接数
+max-connection-per-server=5
+#最小文件分片大小, 下载线程数上限取决于能分出多少片, 对于小文件重要
+min-split-size=10M
+#单文件最大线程数, 路由建议值: 5
+split=10
+#下载速度限制
+max-overall-download-limit=0
+#单文件速度限制
+max-download-limit=0
+#上传速度限制
+max-overall-upload-limit=0
+#单文件速度限制
+max-upload-limit=0
+#断开速度过慢的连接
+#lowest-speed-limit=0
+#验证用，需要1.16.1之后的release版本
+#referer=*
+#文件保存路径, 默认为当前启动位置
+dir=/root/downloads
+#文件缓存, 使用内置的文件缓存, 如果你不相信Linux内核文件缓存和磁盘内置缓存时使用, 需要1.16及以上版本
+#disk-cache=0
+#另一种Linux文件缓存方式, 使用前确保您使用的内核支持此选项, 需要1.15及以上版本(?)
+#enable-mmap=true
+#文件预分配, 能有效降低文件碎片, 提高磁盘性能. 缺点是预分配时间较长
+#所需时间 none &lt; falloc ? trunc &lt;&lt; prealloc, falloc和trunc需要文件系统和内核支持
+file-allocation=prealloc
+</code></pre>
+
+<p>然后配置开机启动：<br/>
+<code>nano /etc/init.d/aria2</code></p>
+
+<pre class="line-numbers"><code class="language-text">#!/bin/bash
+#
+# aria2 - this script starts and stops the aria2 daemon
+#
+# chkconfig:   - 85 15
+# description: Aria2 - Download Manager
+# processname: aria2c
+# config:      /etc/aria2/aria2.conf
+# pidfile:
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+# Check that networking is up.
+[ &quot;$NETWORKING&quot; = &quot;no&quot; ] &amp;&amp; exit 0
+
+aria2c=&quot;/usr/bin/aria2c&quot;
+ARIA2C_CONF_FILE=&quot;/etc/aria2/aria2.conf&quot;
+options=&quot; --conf-path=$ARIA2C_CONF_FILE -D &quot;
+
+RETVAL=0
+
+start() {
+    # code here to start the program
+    echo -n &quot;Starting aria2c daemon.&quot;
+    ${aria2c} ${options}
+    RETVAL=$?
+    echo
+}
+
+stop() {
+    echo -n &quot;Shutting down aria2c daemon.&quot;
+    /usr/bin/killall aria2c
+    RETVAL=$?
+    echo
+}
+
+status() {
+    ID=$(/bin/ps -ef | grep &#39;aria2c&#39; | grep -v &#39;grep&#39; | awk &#39;{print $2}&#39;)
+    if [[ &quot;x$ID&quot; != &quot;x&quot; ]]; then
+            echo &quot;Aria2 is running.&quot;
+    else
+            echo &quot;Aria2 is not running.&quot;
+    fi
+}
+
+restart() {
+    stop
+    sleep 3
+    start
+}
+
+case &quot;$1&quot; in
+    start)
+            start
+            ;;
+    stop)
+            stop
+            ;;
+    status)
+            status
+            ;;
+    restart)
+            restart
+            ;;
+    *)
+            echo &quot;Usage: service aria2c {start|stop|restart}&quot;
+            RETVAL=1
+esac
+
+exit $RETVAL
+</code></pre>
+
+<p>使用以下命令来立即启动 Aria2：</p>
+
+<p><code>/usr/bin/aria2c --conf-path=/etc/aria2_conf/aria2.conf -D</code></p>
+
+<p>保存之后配置 WebUI，首先开启 Web 服务，然后安装 WebUI 到指定目录，比如我的目录是/opt/aria2webUI/<br/>
+<code>git clone https://github.com/ziahamza/webui-aria2.git</code><br/>
+这样就下载了 WebUI，然后用 nginx 反代这个文件就ok了。</p>
+
+<p>nginx(/etc/nginx/conf.d/aria2.conf)配置文件如下：</p>
+
+<pre class="line-numbers"><code class="language-text">aria2.conf
+
+server
+{
+listen 80;
+server_name aria2.lonelyor.org;
+location / {
+    root /opt/aria2webUI/;
+}
+access_log logs/aria2_access.log;
+}
+</code></pre>
+
+<p>然后打开浏览器访问 aria2.lonelyor.org 就可以了。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045488462.html">
+                
+                  <h1>vscode 快速生成 html 代码</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>参考答案：<a href="https://zhidao.baidu.com/question/488433413549944532.html">https://zhidao.baidu.com/question/488433413549944532.html</a> 中的 ZouJiLiangRJ 的答案</p>
+<p>参考的博客如下：<br/>
+<a href="https://blog.csdn.net/weixin_42659625/article/details/82941394">https://blog.csdn.net/weixin_42659625/article/details/82941394</a><br/>
+图是直接复制的别人博客的图</p>
 </blockquote>
 
-<p>1、复制以下代码</p>
-
-<pre class="line-numbers"><code class="language-excel">Private Sub Worksheet_SelectionChange(ByVal T As Range)
-Cells.Interior.ColorIndex = 0
-T.EntireRow.Interior.ColorIndex = 8
-T.Interior.ColorIndex = 2
-End Sub
-</code></pre>
-
-<p>2、右键单击工作表标签（如：sheet1），点击查看代码<br/>
-3、在代码框中粘贴上述代码。然后关闭代码框。<br/>
-4、回到 excel 表格然后随意点击一个单元格试试看效果如何。</p>
-
-<p><em>还有一种方法就是使用 wps 的阅读模式。</em></p>
+<p>1、首先创建一个 html 文件如：index.html<br/>
+2、在编辑器中输入感叹号（！）<br/>
+3、此时会弹出下拉项，直接在感叹号❗️上回车即可。<br/>
+<figure><img src="media/15483045488462/15473904287496.jpg" alt=""/></figure><br/>
+4、自动生成的html 代码如下：<br/>
+<figure><img src="media/15483045488462/15473904546232.jpg" alt=""/></figure></p>
 
                         
                       </div>
@@ -255,7 +437,75 @@ End Sub
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/2/27 16:59 下午</span>
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15480046935972.html">
+                
+                  <h1>MWeb打开文档库快捷键</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>CMD + L 即可显示</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/21 1:18 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15457897865747.html">
+                
+                  <h1>将网页保存为PDF</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>如果使用 google chrome 则不需要任何辅助工具即可做到。<br/>
+Mac用户使用cmd+p即可；<br/>
+Windows用户使用ctrl+p即可。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/26 10:3 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>

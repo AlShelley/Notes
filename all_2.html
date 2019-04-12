@@ -138,28 +138,19 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15543484192219.html">
+                <a class="clearlink" href="15538461504138.html">
                 
-                  <h1>python 安装 hashlib 库报错</h1>
+                  <h1>vmware三种网络模式详解</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>报错信息如下：</p>
+                        	<p>文章详情请参阅：<br/>
+<a href="https://note.youdao.com/ynoteshare1/index.html?id=236896997b6ffbaa8e0d92eacd13abbf&amp;type=note">https://note.youdao.com/ynoteshare1/index.html?id=236896997b6ffbaa8e0d92eacd13abbf&amp;type=note</a><br/>
+或<br/>
+<a href="https://www.cnblogs.com/linjiaxin/p/6476480.html">https://www.cnblogs.com/linjiaxin/p/6476480.html</a></p>
 
-<pre class="line-numbers"><code class="language-text">      File &quot;/private/var/folders/zx/znk609rs7lvfy1s28xzb2gdm0000gn/T/pip-install-gryu60jd/hashlib/hashlib.py&quot;, line 80
-        raise ValueError, &quot;unsupported hash type&quot;
-                        ^
-    SyntaxError: invalid syntax
-</code></pre>
-
-<p>此时需要安装 openssh</p>
-
-<p>Mac 上使用：<code>brew install openssh</code> 然后重装 python，然后<code>pip install hashlib</code>，mmp，还是装不上报错。</p>
-
-<p>然后问了一下开发，发现不需要装，直接 import 就能用，试了一下发现果然如此。</p>
-
-<p>好了，能用 hashlib 库就行，别的不管。</p>
+<p>感谢作者的付出。</p>
 
                         
                       </div>
@@ -168,10 +159,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/4/4 11:26 上午</span>
+                    <span class="date">2019/3/29 15:55 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -185,35 +176,21 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15542128440180.html">
+                <a class="clearlink" href="15538425408524.html">
                 
-                  <h1>VMware Fusion 端口映射</h1>
+                  <h1>虚拟机安装win10操作系统</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>文章转载自：<a href="https://blog.csdn.net/weixin_43302757/article/details/82911332">https://blog.csdn.net/weixin_43302757/article/details/82911332</a></p>
+<p>本片文章是为新手准备的</p>
 </blockquote>
 
-<p>Windows版本VM进行端口映射有相关的设置界面，但是Mac系统的VM（VMware Fusion）没有。Google 以下找到相关方法。具体步骤如下</p>
+<p>虚拟机安装win10可以查看以下教程：<br/>
+<a href="http://baijiahao.baidu.com/s?id=1597148758310739517&amp;wfr=spider&amp;for=pc">http://baijiahao.baidu.com/s?id=1597148758310739517&amp;wfr=spider&amp;for=pc</a></p>
 
-<p>打开配置文件<br/>
-<code>sudo vi  /Library/Preferences/VMware\ Fusion/vmnet8/nat.conf</code><br/>
-找到如下配置</p>
-
-<pre class="line-numbers"><code class="language-text">[incomingtcp]
-# Use these with care - anyone can enter into your VM through these...
-# The format and example are as follows:
-#&lt;external port number&gt; = &lt;VM&#39;s IP address&gt;:&lt;VM&#39;s port number&gt;
-23 = 172.16.161.129:22 #将IP172.16.161.129虚拟机的22 端口映射到主机23端口
-</code></pre>
-
-<p>重启VM的网络服务</p>
-
-<pre class="line-numbers"><code class="language-text">sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --stop
-sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --start
-</code></pre>
+<p>若原文链接失效，则可以百度搜索“虚拟机安装win10操作系统”</p>
 
                         
                       </div>
@@ -222,7 +199,7 @@ sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --start
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/4/2 21:47 下午</span>
+                    <span class="date">2019/3/29 14:55 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
@@ -239,18 +216,22 @@ sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --start
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15542101741047.html">
+                <a class="clearlink" href="15532282104799.html">
                 
-                  <h1>linux sudo配置免密及排除部分命令</h1>
+                  <h1>Mac 终端设置欢迎页</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><code>lonelyor ALL=(ALL) NOPASSWD:ALL, !/usr/bin/reboot, !/sbin/reboot, !/sbin/ifconfig, !/sbin/shutdown, !/sbin/route, !/sbin/ip</code></p>
+                        	<p><code>cd /etc</code><br/>
+<code>sudo pico motd</code><br/>
+输入密码后会打开nano，然后在里面输入图案或者文字。然后保存后退出，之后打开终端就能看到欢迎页了。</p>
 
-<p>即lonelyor可以免密码执行除reboot、ifconfig、shutdown、route、ip之外的指令。</p>
+<p>其实本质就是在/etc目录下创建文件 motd，然后往里面写内容即可。</p>
 
-<p><strong>注意，/etc/sudoers的命令是顺序执行，添加在错误的位置（比如 %sudo ALL=(ALL:ALL) ALL 之前）是无效的。</strong></p>
+<p>我只是添加了一段文字，结果如下：</p>
+
+<p><figure><img src="media/15532282104799/15532284069773.jpg" alt=""/></figure></p>
 
                         
                       </div>
@@ -259,10 +240,136 @@ sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --start
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/4/2 21:2 下午</span>
+                    <span class="date">2019/3/22 12:16 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15532149133328.html">
+                
+                  <h1>古语</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/3/22 10:19 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html'>风花雪月</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15523826250881.html">
+                
+                  <h1>excel 工作表插入当前时间和日期</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>参考链接：<a href="https://jingyan.baidu.com/article/75ab0bcbb03035d6864db203.html">https://jingyan.baidu.com/article/75ab0bcbb03035d6864db203.html</a></p>
+</blockquote>
+
+<p>1、选定单元格然后同时按<code>CTRL+;</code>可以快速设置日期。<br/>
+2、在单元格中输入函数<code>=TODAY()</code>然后回车也可以快速设置日期。<br/>
+3、选定单元格然后同时按下<code>Ctrl+Shift+；</code>可以快速设置当前时刻的时间。<br/>
+4、在单元格中输入函数<code>=NOW()</code>然后回车可以显示当前时刻的时间。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/3/12 17:23 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15520392147631.html">
+                
+                  <h1>GTD 管理法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>GTD 分为5个步骤</p>
+
+<ul>
+<li>收集</li>
+<li>理清</li>
+<li>组织</li>
+<li>执行</li>
+<li>回顾</li>
+</ul>
+
+<p>每一步都很重要，但是我觉得比较难的还是执行。</p>
+
+<p>执行的精髓是一定要去做</p>
+
+<p>不去做的原因可能是因为目标困难，难以去实现，此时要降低困难度（举个例子：每天都要读书，然后规定自己每天读2页而不是每天读50页，这样每天就能至少读2页，时间充足的话还能多读48页，主动去坚持才是最棒的）</p>
+
+<p>科学的养成一个习惯，在前期我们尽量做到：</p>
+
+<ul>
+<li>这个习惯划分到每天的目标量足够小，这样易获得成就感，也没有放弃的理由。</li>
+<li>不间断，不管这一天发生了什么，哪怕是你削减目标量，也要每天都去做。</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/3/8 18:0 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html'>星火流萤</a></span>
           				   
                   </div>
                   <div class="more-right right">

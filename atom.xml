@@ -4,13 +4,30 @@
   <title><![CDATA[lonelyorWiki]]></title>
   <link href="http://www.lonelyor.org/lonelyorWiki/atom.xml" rel="self"/>
   <link href="http://www.lonelyor.org/lonelyorWiki/"/>
-  <updated>2019-04-11T19:53:12+08:00</updated>
+  <updated>2019-04-12T11:20:18+08:00</updated>
   <id>http://www.lonelyor.org/lonelyorWiki/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[lonelyor个人技能清单]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15550532565333.html"/>
+    <updated>2019-04-12T15:14:16+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15550532565333.html</id>
+    <content type="html"><![CDATA[
+<blockquote>
+<p>这里记录我已经知道的和计划知道的知识。每个人的路都是不一样的，但结果殊途同归。<br/>
+知识有三个阶段：不知道自己不知道、知道自己知道、知道自己不知道。<br/>
+智慧是：大智若愚、勤能补拙。</p>
+</blockquote>
+
+<p><figure><img src="media/15550532565333/lonelyor%20%E4%B8%AA%E4%BA%BA%E6%8A%80%E8%83%BD%E6%A0%91.png" alt="lonelyor 个人技能树"/><figcaption>lonelyor 个人技能树</figcaption></figure></p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[相见欢·林花谢了春红]]></title>
@@ -1116,22 +1133,6 @@ sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --start
 <p>并且，你不用手动去调整任务的状态，如果一个重要不紧急的任务没有被及时处理，它会自动从重要不紧急转移到重要且紧急。不过，你应该不希望这事儿发生吧:)</p>
 
 <p>以上两种方法都能帮助你在滴答里实践四象限系统，快来试试吧。别忘记四象限的核心：去做对你真正重要的事儿，合理分配你的时间。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[bundle install 无法使用的解决办法]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15520320136368.html"/>
-    <updated>2019-03-08T16:00:13+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15520320136368.html</id>
-    <content type="html"><![CDATA[
-<p>在学习 hack101 课程的时候，发现无法使用bundle install 安装所需库，考虑到可能是墙的问题。</p>
-
-<p>解决办法如下：<br/>
-更换源<br/>
-访问网站 <a href="https://gems.ruby-china.com/">Ruby China</a>，然后按照如下操作即可。<br/>
-<figure><img src="media/15520320136368/15520321533528.jpg" alt=""/></figure></p>
 
 ]]></content>
   </entry>

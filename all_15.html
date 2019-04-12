@@ -138,6 +138,292 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15446890453437.html">
+                
+                  <h1>xss基础</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>description: 这里包含了xss的基本定义，原理、及防御方案代码示例。</p>
+</blockquote>
+
+<h2 id="toc_0">简介</h2>
+
+<p>跨站脚本XSS是一种注入类型攻击，攻击者注入恶意代码到web应用程序并发送给不同的最终用户时，就会发生xss攻击，并且可能发生在web应用程序<u>在其生成的输出中使用来之用户的输入</u>并且无需验证或编码它的任何地方。</p>
+
+<p>跨站脚本发生在：</p>
+
+<ul>
+<li>任何可以插入数据，并且数据包会未经恶意内容验证就发送给Web用户的地方。</li>
+</ul>
+
+<p>跨站脚本分为两类：</p>
+
+<ul>
+<li>反射型(又称非持久性xss): 反射性xss通常出现在错误消息、搜索结果、或者服务器实时响应部分或全部请求的地方。可以通过电子邮件、恶意链接、等途径进行攻击。</li>
+<li>存储型(又称持久性xss): 存储型xss通常将恶意代码永久存储在目标服务器上，如数据库、消息论坛、访问日志、注释字段等。</li>
+<li>DOM型: dom型xss我觉得也属于存储型，只不过是存储在客户端。有效载荷修改了客户端浏览器中的DOM环境并执行恶意代码，也就是说HTTP响应是不变的，恶意代码被存储在客户端响应页面中。因此很难在服务器端做安全检测。</li>
+</ul>
+
+<h2 id="toc_1">危害</h2>
+
+<p>xss可以窃取用户的会话cookie，允许攻击者劫持用户的会话并接管账号，其他攻击包括最终用户文件的泄露、木马程序安装、将用户重定向到其他页面或站点、修改内容的呈现等。</p>
+
+<p>具体危害如：允许攻击者修改新闻稿或新闻项目的XSS漏洞可能会影响公司的股价或降低消费者信心。制药网站上的XSS漏洞可能允许攻击者修改剂量信息，从而导致过量服用。</p>
+
+<h2 id="toc_2">防御</h2>
+
+<p>1、在<strong>输出时</strong>将不可信数据（用户可控的数据：包括主体、属性、JavaScript、CSS或URL）使用 htmlEscape（）进行转义；将html、js中涉及到的关键字符进行html编码处理后再输出到页面上。</p>
+
+<p>2、如果存在用户需要编写文章等功能的时候，类似用户可以自定义页面样式的功能，则需要限制用户的输入，采用严格的<strong>白名单</strong>机制来过滤用户的输入，即非用户允许的功能标签都应该被完全过滤，这种过滤应依赖于后端应用来实现。</p>
+
+<p>3、应注意很多开源的第三方富文本编辑器，部分编辑器仅在JS端进行过滤，而不在后端进行关键字过滤。</p>
+
+<h3 id="toc_3">代码示例</h3>
+
+<p>1.Java<br/>
+<strong>Portal 或 Spring 框架修复方案：</strong></p>
+
+<pre class="line-numbers"><code class="language-java">import org.springframework.web.util.HtmlUtils;
+target = HtmlUtils.htmlEscape(target);
+</code></pre>
+
+<p>// target 参数为需要进行转义的参数，建议在该参数输出前进行转义</p>
+
+<p><strong>通用型修复方案</strong>：</p>
+
+<pre class="line-numbers"><code class="language-java">StringEscapeUtils from Apache Commons Lang:
+
+import static org.apache.commons.lang.StringEscapeUtils.escapeHtml;
+// ...
+String source = &quot;The less than sign (&lt;) and ampersand (&amp;) must be escaped before using them in HTML&quot;;
+String escaped = escapeHtml(source);
+
+
+For version 3:
+
+import static org.apache.commons.lang3.StringEscapeUtils.escapeHtml4;
+// ...
+String escaped = escapeHtml4(source);
+</code></pre>
+
+<p>2.<strong>PHP</strong><br/>
+htmlspecialchars() 在输出时使用该函数转义用户输入的值，尤其注意第二个 flag 参数要使用 ENT_QUOTES</p>
+
+<pre class="line-numbers"><code class="language-php">&lt;?php 
+    $name = $_GET[&quot;name&quot;];
+    $name = htmlspecialchars($name, ENT_QUOTES);
+?&gt;
+</code></pre>
+
+<p>htmlentities() 在输出时使用该函数转义用户输入的值</p>
+
+<p>针对富文本，使用以下过滤类进行处理：</p>
+
+<pre class="line-numbers"><code class="language-php">&lt;?php
+/**
+ * PHP 富文本XSS过滤类
+ *
+ * @package XssHtml
+ * @version 1.0.0 
+ * @link http://phith0n.github.io/XssHtml
+ * @since 20140621
+ * @copyright (c) Phithon All Rights Reserved
+ *
+ */
+
+#
+# Usage: 
+# &lt;?php
+# require(&#39;Xss.php&#39;);
+# $html = &#39;&lt;html code&gt;&#39;;
+# $xss = new XssHtml($html);
+# $html = $xss-&gt;getHtml();
+# ?\&gt;
+# 
+# 需求：
+# PHP Version &gt; 5.0
+# 浏览器版本：IE7+ 或其他浏览器，无法防御IE6及以下版本浏览器中的XSS
+# 更多使用选项见 http://phith0n.github.io/XssHtml
+
+class Xss {
+    private $m_dom;
+    private $m_xss;
+    private $m_ok;
+    private $m_AllowAttr = array(&#39;title&#39;, &#39;src&#39;, &#39;href&#39;, &#39;id&#39;, &#39;class&#39;, &#39;style&#39;, &#39;width&#39;, &#39;height&#39;, &#39;alt&#39;, &#39;target&#39;, &#39;align&#39;);
+    private $m_AllowTag = array(&#39;img&#39;, &#39;br&#39;, &#39;strong&#39;, &#39;b&#39;, &#39;code&#39;, &#39;p&#39;, &#39;div&#39;, &#39;em&#39;, &#39;span&#39;, &#39;h1&#39;, &#39;h2&#39;, &#39;h3&#39;, &#39;h4&#39;, &#39;h5&#39;, &#39;h6&#39;, &#39;table&#39;, &#39;ul&#39;, &#39;ol&#39;, &#39;tr&#39;, &#39;th&#39;, &#39;td&#39;, &#39;hr&#39;, &#39;li&#39;, &#39;u&#39;);
+
+    /**
+     * 构造函数
+     *
+     * @param string $html 待过滤的文本
+     * @param string $charset 文本编码，默认utf-8
+     * @param array $AllowTag 允许的标签，如果不清楚请保持默认，默认已涵盖大部分功能，不要增加危险标签
+     */
+    public function __construct($html, $charset = &#39;utf-8&#39;, $AllowTag = array()){
+        $this-&gt;m_AllowTag = empty($AllowTag) ? $this-&gt;m_AllowTag : $AllowTag;
+        $this-&gt;m_xss = strip_tags($html, &#39;&lt;&#39; . implode(&#39;&gt;&lt;&#39;, $this-&gt;m_AllowTag) . &#39;&gt;&#39;);
+        if (empty($this-&gt;m_xss)) {
+            $this-&gt;m_ok = FALSE;
+            return ;
+        }
+        $this-&gt;m_xss = &quot;&lt;meta http-equiv=\&quot;Content-Type\&quot; content=\&quot;text/html;charset={$charset}\&quot;&gt;&lt;nouse&gt;&quot; . $this-&gt;m_xss . &quot;&lt;/nouse&gt;&quot;;
+        $this-&gt;m_dom = new DOMDocument();
+        $this-&gt;m_dom-&gt;strictErrorChecking = FALSE;
+        $this-&gt;m_ok = @$this-&gt;m_dom-&gt;loadHTML($this-&gt;m_xss);
+    }
+
+    /**
+     * 获得过滤后的内容
+     */
+    public  function getHtml()
+    {
+        if (!$this-&gt;m_ok) {
+            return &#39;&#39;;
+        }
+        $nodeList = $this-&gt;m_dom-&gt;getElementsByTagName(&#39;*&#39;);
+        for ($i = 0; $i &lt; $nodeList-&gt;length; $i++){
+            $node = $nodeList-&gt;item($i);
+            if (in_array($node-&gt;nodeName, $this-&gt;m_AllowTag)) {
+                if (method_exists($this, &quot;__node_{$node-&gt;nodeName}&quot;)) {
+                    call_user_func(array($this, &quot;__node_{$node-&gt;nodeName}&quot;), $node);
+                }else{
+                    call_user_func(array($this, &#39;__node_default&#39;), $node);
+                }
+            }
+        }
+        $html = strip_tags($this-&gt;m_dom-&gt;saveHTML(), &#39;&lt;&#39; . implode(&#39;&gt;&lt;&#39;, $this-&gt;m_AllowTag) . &#39;&gt;&#39;);
+        $html = preg_replace(&#39;/^\n(.*)\n$/s&#39;, &#39;$1&#39;, $html);
+        return $html;
+    }
+
+    private function __true_url($url){
+        if (preg_match(&#39;#^https?://.+#is&#39;, $url)) {
+            return $url;
+        }else{
+            return &#39;http://&#39; . $url;
+        }
+    }
+
+    private function __get_style($node){
+        if ($node-&gt;attributes-&gt;getNamedItem(&#39;style&#39;)) {
+            $style = $node-&gt;attributes-&gt;getNamedItem(&#39;style&#39;)-&gt;nodeValue;
+            $style = str_replace(&#39;\\&#39;, &#39; &#39;, $style);
+            $style = str_replace(array(&#39;&amp;#&#39;, &#39;/*&#39;, &#39;*/&#39;), &#39; &#39;, $style);
+            $style = preg_replace(&#39;#e.*x.*p.*r.*e.*s.*s.*i.*o.*n#Uis&#39;, &#39; &#39;, $style);
+            return $style;
+        }else{
+            return &#39;&#39;;
+        }
+    }
+
+    private function __get_link($node, $att){
+        $link = $node-&gt;attributes-&gt;getNamedItem($att);
+        if ($link) {
+            return $this-&gt;__true_url($link-&gt;nodeValue);
+        }else{
+            return &#39;&#39;;
+        }
+    }
+
+    private function __setAttr($dom, $attr, $val){
+        if (!empty($val)) {
+            $dom-&gt;setAttribute($attr, $val);
+        }
+    }
+
+    private function __set_default_attr($node, $attr, $default = &#39;&#39;)
+    {
+        $o = $node-&gt;attributes-&gt;getNamedItem($attr);
+        if ($o) {
+            $this-&gt;__setAttr($node, $attr, $o-&gt;nodeValue);
+        }else{
+            $this-&gt;__setAttr($node, $attr, $default);
+        }
+    }
+
+    private function __common_attr($node)
+    {
+        $list = array();
+        foreach ($node-&gt;attributes as $attr) {
+            if (!in_array($attr-&gt;nodeName, 
+                $this-&gt;m_AllowAttr)) {
+                $list[] = $attr-&gt;nodeName;
+            }
+        }
+        foreach ($list as $attr) {
+            $node-&gt;removeAttribute($attr);
+        }
+        $style = $this-&gt;__get_style($node);
+        $this-&gt;__setAttr($node, &#39;style&#39;, $style);
+        $this-&gt;__set_default_attr($node, &#39;title&#39;);
+        $this-&gt;__set_default_attr($node, &#39;id&#39;);
+        $this-&gt;__set_default_attr($node, &#39;class&#39;);
+    }
+
+    private function __node_img($node){
+        $this-&gt;__common_attr($node);
+
+        $this-&gt;__set_default_attr($node, &#39;src&#39;);
+        $this-&gt;__set_default_attr($node, &#39;width&#39;);
+        $this-&gt;__set_default_attr($node, &#39;height&#39;);
+        $this-&gt;__set_default_attr($node, &#39;alt&#39;);
+        $this-&gt;__set_default_attr($node, &#39;align&#39;);
+
+    }
+
+    private function __node_a($node){
+        $this-&gt;__common_attr($node);
+        $href = $this-&gt;__get_link($node, &#39;href&#39;);
+
+        $this-&gt;__setAttr($node, &#39;href&#39;, $href);
+        $this-&gt;__set_default_attr($node, &#39;target&#39;, &#39;_blank&#39;);
+    }
+
+    private function __node_embed($node){
+        $this-&gt;__common_attr($node);
+        $link = $this-&gt;__get_link($node, &#39;src&#39;);
+
+        $this-&gt;__setAttr($node, &#39;src&#39;, $link);
+        $this-&gt;__setAttr($node, &#39;allowscriptaccess&#39;, &#39;never&#39;);
+        $this-&gt;__set_default_attr($node, &#39;width&#39;);
+        $this-&gt;__set_default_attr($node, &#39;height&#39;);
+    }
+
+    private function __node_default($node){
+        $this-&gt;__common_attr($node);
+    }
+}
+
+?&gt;
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13 16:17 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15446888524769.html">
                 
                   <h1>xss检测</h1>
@@ -918,220 +1204,6 @@ sqlmap -u “ http://xxxxxx.com:80/x/xx?x_id=1507 ” --method = “GET”-- coo
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15446866501207.html">
-                
-                  <h1>IIS短文件名漏洞</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">漏洞原理</h2>
-
-<hr/>
-
-<p>windows在创建一个新文件时，操作系统还会生成 8.3 格式的兼容 MS-DOS 的（短）文件名，以允许基于 MS-DOS 或16位 windows 的程序访问这些文件。    </p>
-
-<h2 id="toc_1">利用场景</h2>
-
-<hr/>
-
-<p>1、用于猜解文件/文件名<br/><br/>
-2、.Net Framework 的拒绝服务攻击（不常见）</p>
-
-<h2 id="toc_2">检测方法</h2>
-
-<hr/>
-
-<p><strong>黑盒测试</strong><br/><br/>
-使用<a href="https://github.com/lijiejie/IIS_shortname_Scanner">IIS短文件名扫描器</a><br/><br/>
-<strong>白盒测试</strong><br/>
-几乎所有的 windows 操作系统，在 cmd 中使用命令：</p>
-
-<pre class="line-numbers"><code class="language-bat">dir /x
-</code></pre>
-
-<p>如图：<br/>
-<figure><img src="media/15446866501207/%E7%9F%AD%E6%96%87%E4%BB%B6%E5%90%8D%E6%98%BE%E7%A4%BA.png" alt="短文件名显示"/><figcaption>短文件名显示</figcaption></figure></p>
-
-<h2 id="toc_3">修复方案</h2>
-
-<hr/>
-
-<p>1、升级 .net framework 至 4.0 版本或以上<br/><br/>
-2、修改注册表键值<br/><br/>
-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem 修改NtfsDisable8dot3NameCreation为1。（此项默认为0）<br/><br/>
-此设置用于禁用短文件名功能，重启后生效。<br/><br/>
-或者通过 CMD 命令：    </p>
-
-<pre class="line-numbers"><code class="language-txt">Windows Server 2008 R2
-查询是否开启短文件名功能：fsutil 8dot3name query
-关闭该功能：fsutil 8dot3name set 1
-
-Windows Server 2003
-关闭该功能：fsutil behavior set disable8dot3 1
-</code></pre>
-
-<p>以上操作只能防止新创建的文件/文件名不会出现短文件名，而当前文件/文件名依然保持短文件名。完整解决方案还需要如下操作：<br/><br/>
-3、<br/><br/>
-　　a、从当前目录中创建一个副本,并将其重命名为 tempNew；<br/><br/>
-　　b、将当前目录重命名为“tempOld”；<br/><br/>
-　　c、将“tempNew”重命名为原来的目录名。<br/><br/>
-4、禁止 url 中使用 “~” 或它的 Unicode 编码。（IIS7.0的请求阻塞不能完全阻止“~”波浪号。）</p>
-
-<hr/>
-
-<hr/>
-
-<hr/>
-
-<h2 id="toc_4">背景知识</h2>
-
-<hr/>
-
-<p>windows 支持的长文件名最多为 255 个字符。windows 还以 8.3 格式生成与 MS-DOS 兼容的（短）文件名，以允许基于 MS-DOS 或 16 位 windows 的程序访问这些文件。<br/><br/>
-8.3格式短文件名规范中：<br/><br/>
-‘8’是指文件名或目录名的主体部分小于等于 8 个字节；‘3’是指文件名的扩展名部分小于等于 3 个字节。<br/><br/>
-windows 会按以下方式从长文件名生成短文件名：<br/><br/>
-windows 首先会删除文件名中的任何无效字符和空格。无效字符包括：</p>
-
-<pre class="line-numbers"><code class="language-txt">.&quot;/\[]:;=,
-</code></pre>
-
-<p>由于短文件名只能包含一个英文句点（.），因此 windows 将删除文件名中的其他英文句点，即使文件名中最后一个英文句点后面是有效的非空格字符也是如此。例如：windows 从长文件名 This is a really long filename.123.456.789.txt 生成短文件名 Thisis~1.txt 否则，windows 将忽略最后一个英文句点，而使用倒数第二个英文句点。例如：windows从长文件名 This is a really long filename.123.456.789. 生成短文件名 Thisis~1.789。<br/><br/>
-生成短文件名若需要复制的话，windows 将文件名截断为 6 个字符，并在后边附加一个波形符号（~）和一个数字（创建的每一个以 ~1 结尾的唯一文件名，复制文件以 ~2、~3等结尾。）    </p>
-
-<h2 id="toc_5">影响范围</h2>
-
-<hr/>
-
-<p>Windows 10 Pro released in July 2015Windows 10 Enterprise released in July 2015Microsoft Windows Server 2003 Standard EditionMicrosoft Windows Server 2003 Enterprise EditionMicrosoft Windows Server 2003 Datacenter EditionMicrosoft Windows Server 2003 Web EditionMicrosoft Windows Server 2003, Enterprise x64 EditionMicrosoft Windows Small Business Server 2003 Standard EditionMicrosoft Windows Small Business Server 2003 Premium EditionMicrosoft Windows XP Home EditionMicrosoft Windows XP Professional EditionMicrosoft Windows Datacenter Server Limited EditionMicrosoft Windows Advanced Server, Limited EditionMicrosoft Windows 2000 ServerMicrosoft Windows 2000 Advanced ServerMicrosoft Windows 2000 Professional EditionMicrosoft Windows NT Workstation 3.5Microsoft Windows NT Workstation 3.51Microsoft Windows NT Workstation 4.0 开发员版Microsoft Windows NT Server 3.51Microsoft Windows NT Server 4.0 Standard EditionWindows Vista Service Pack 2Windows Vista BusinessWindows Vista EnterpriseWindows Vista Home PremiumWindows Vista UltimateWindows Server 2008 Service Pack 2Windows Server 2008 StandardWindows Server 2008 EnterpriseWindows Server 2008 DatacenterWindows Server 2008 for Itanium-Based SystemsWindows 7 Service Pack 1Windows 7 Home PremiumWindows 7 ProfessionalWindows 7 EnterpriseWindows 7 UltimateWindows Server 2008 R2 Service Pack 1Windows Server 2008 R2 StandardWindows Server 2008 R2 EnterpriseWindows Server 2008 R2 DatacenterWindows Server 2008 R2 for Itanium-Based SystemsWindows 8 EnterpriseWindows 8 ProWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 DatacenterWindows Server 2012 DatacenterWindows Server 2012 DatacenterWindows Server 2012 Datacenter<br/>
-列表内所有操作系统均受影响（数据来源日期：20171213）<br/><br/>
-该漏洞有其局限性：<br/><br/>
-1、只能猜解文件/文件夹名前六位，以及扩展名前三位<br/><br/>
-2、名称较短的文件是没有响应的短文件名的<br/><br/>
-3、需要 IIS 和 .net 同时满足。  </p>
-
-<h2 id="toc_6">漏洞详情</h2>
-
-<hr/>
-
-<p>在 windows 上的 Apache（Apache支持短文件名）上运行的 web 应用程序正在创建一个长文件名文件（如sql备份文件或会话文件，假设文件名是 backup-082119f75623eb7abd7bf357698ff66c.sql，windows 将创建短文件名 BACKUP〜1.SQL）。这种情况下，如果我们用短文件名访问这个文件，那么就有可能获取这个包含sql数据库备份的文件。<br/><br/>
-比较著名的一个例子：<br/><br/>
-wordpress 有一个备份博客的插件，该插件会为备份创建一个自定义目录（backup-88456）。备份完成后，该目录包含一个名为 wordpress_wp_20120702_576.sql 的文件  ，即 WordPress 数据库备份。这本应该难以猜测的，因为我们的目录名称中有5个数字加上日期和另外3个数字，即使忽略日期也至少有 100,000,000 个组合。然而由于短文件名的原因，目录名会变成 BACKUP~1 而文件名会变成 WORDPR~1.SQL。100,000,000 个组合被缩减为一个组合。    </p>
-
-<h2 id="toc_7">漏洞利用</h2>
-
-<hr/>
-
-<p><strong>短文件名漏洞</strong><br/>
-漏洞利用需要使用到通配符。在 windows 中，* 可以匹配n个字符（n可以为0,一个星号和n个星号的意义一样）。判断某站点是否存在 IIS 短文件名爆破，构造如下payload：    </p>
-
-<pre class="line-numbers"><code class="language-http">1. http://www.xxx.com/*~1*/.aspx
-2. http://www.xxx.com/l1j1e*~1*/.aspx
-</code></pre>
-
-<p>若1返回404而2返回400，则可以判断目标站点存在漏洞。<br/><br/>
-判断漏洞存在后，继续猜解目录下是否存在a开头的文件或文件夹，访问：    </p>
-
-<pre class="line-numbers"><code class="language-http">http://www.xxx.com/a*~1*/.aspx
-</code></pre>
-
-<p>若存在将返回404，不存在则返回400。以此类推，不断向下猜解所有的6个字符。<br/><br/>
-到此要考虑两种情况，若abcdef开头的是一个文件夹则    </p>
-
-<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*/~1/.aspx
-</code></pre>
-
-<p>返回404。若abcdef开头的是一个文件，则    </p>
-
-<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*~1/.aspx
-</code></pre>
-
-<p>返回404（注意！返回404表示存在）同理我们可以猜出文件后缀名：    </p>
-
-<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*~1*h*/.aspx
-</code></pre>
-
-<p>若返回404则代表扩展名中肯定存在h字符。<br/><br/>
-利用此漏洞可以猜解后台地址、敏感文件/文件名（如备份的rar、bak、sql等）；某些情况下，可以通过短文件名漏洞直接下载对应的文件（如备份sql文件）。<br/><br/>
-<br><br/>
-<strong>.Net Framework 拒绝服务攻击</strong><br/><br/>
-当请求文件夹名称包含 ~1 的请求，会导致不存在该文件的 .Net Framework 去递归查询所有根目录。如果只有一个“~1”是无效的，当“~1”大于一个，比如像这样：        </p>
-
-<pre class="line-numbers"><code class="language-http">\wwwtest\fuck~1\~1\~1\~1.aspx
-</code></pre>
-
-<p>此时文件系统会这样调用：    </p>
-
-<pre class="line-numbers"><code class="language-txt">\wwwtest                           SUCCESS
-\wwwtest\fuck~1\~1\~1\~1           PATH NOT FOUND
-\wwwtest\fuck~1                    NAME NOT FOUND
-\wwwtest\fuck~1\~1\                PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1\             PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1              PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1              PATH NOT FOUND
-\wwwtest\fuck~1\~1                 PATH NOT FOUND
-\wwwtest\fuck~1                    NAME NOT FOUND
-\wwwtest                           SUCCESS
-\wwwtest                           SUCCESS
-</code></pre>
-
-<p>如果我们请求的文件/文件夹名同时存在大小写时，这个请求会被请求两次，一次是原封不动的请求，一次是全部使用小写的请求。<br/><br/>
-下表显示了每个请求的FS调用的数量（Windows 2008 R2, IIS 7.5(latest patch – June 2012), and .Net framework 4.0.30319 (在别的系统下可能会不同)）<br/><br/>
-<figure><img src="media/15446866501207/F5%E8%B0%83%E7%94%A8.png" alt="F5调用"/><figcaption>F5调用</figcaption></figure></p>
-
-<p>这个问题适用于当时的 .Net framework 的所有版本(<br/><br/>
-    IIS 1.0, Windows NT 3.51<br/><br/>
-    IIS 2.0, Windows NT 4.0<br/><br/>
-    IIS 3.0, Windows NT 4.0 Service Pack 2<br/><br/>
-    IIS 4.0, Windows NT 4.0 Option Pack<br/><br/>
-    IIS 5.0, Windows 2000<br/><br/>
-    IIS 5.1, Windows XP Professional and Windows XP Media Center Edition<br/><br/>
-    IIS 6.0, Windows Server 2003 and Windows XP Professional x64 Edition<br/><br/>
-    IIS 7.0, Windows Server 2008 and Windows Vista<br/><br/>
-    IIS 7.5, Windows 7 (error remotely enabled or no web.config)<br/><br/>
-    IIS 7.5, Windows 2008 (classic pipeline mode))<br/><br/>
-只是 F5 的调用次数会有不同。    </p>
-
-<h2 id="toc_8">参考链接</h2>
-
-<hr/>
-
-<ul>
-<li><a href="http://www.lijiejie.com/iis-win8-3-shortname-brute/">http://www.lijiejie.com/iis-win8-3-shortname-brute/</a><br/></li>
-<li><a href="https://www.acunetix.com/blog/articles/windows-short-8-3-filenames-web-security-problem/">https://www.acunetix.com/blog/articles/windows-short-8-3-filenames-web-security-problem/</a><br/></li>
-<li><a href="http://www.freebuf.com/articles/4908.html">http://www.freebuf.com/articles/4908.html</a><br/></li>
-<li><a href="https://support.microsoft.com/zh-cn/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions">https://support.microsoft.com/zh-cn/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions</a><br/></li>
-<li><a href="https://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf">https://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf</a><br/></li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/13 15:37 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -1217,6 +1289,12 @@ wordpress 有一个备份博客的插件，该插件会为备份创建一个自�
 	      
 		      
 			      <li class="post">
+			        <a href="15550532565333.html">lonelyor个人技能清单</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15547243035014.html">相见欢·林花谢了春红</a>
 			      </li>
 		     
@@ -1236,12 +1314,6 @@ wordpress 有一个备份博客的插件，该插件会为备份创建一个自�
 		      
 			      <li class="post">
 			        <a href="15547067485409.html">arch 安装配置指南</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15543568335321.html">python 计算代码运行时间的方法</a>
 			      </li>
 		     
 		  

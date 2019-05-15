@@ -138,21 +138,79 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15542027955936.html">
+                <a class="clearlink" href="15543568335321.html">
                 
-                  <h1>mysql登录提示ERROR 1524 (HY000): Plugin 'unix_socket' is not loaded解决方法</h1>
+                  <h1>python 计算代码运行时间的方法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>参考文章：<a href="https://blog.csdn.net/u012804180/article/details/80801351">https://blog.csdn.net/u012804180/article/details/80801351</a></p>
-</blockquote>
+                        	<p>话不多说，直接上代码：<br/>
+方法一：</p>
 
-<p><figure><img src="media/15542027955936/15542028794210.jpg" alt=""/></figure></p>
+<pre class="line-numbers"><code class="language-text">import time
+start = time.time()
+run_function()
+end = time.time()
+print(end)
+</code></pre>
 
-<p>上面这篇才是正解，别的文章仿佛在放狗屁。<br/>
-最烦那些转载文章时照抄照搬，自己完全不验证的人；也很烦那些写文章写得不清不楚的人。</p>
+<p>方法二：</p>
+
+<pre class="line-numbers"><code class="language-text">import time
+start = time.clock()
+run_function()
+end = time.clock()
+print(end-start)
+</code></pre>
+
+<h2 id="toc_0">秒级计算</h2>
+
+<p>上述方法 print 的结果是原始时间数据，可以对其进行加减运算，但是结果不太直观，通常我们统计时间是以秒为单位。<br/>
+下面给出秒级计算的代码:</p>
+
+<pre class="line-numbers"><code class="language-text">import time
+start = time.time()
+run_function()
+end = time.time()
+print(int(end))
+</code></pre>
+
+<h2 id="toc_1">扩展</h2>
+
+<pre class="line-numbers"><code class="language-text">import time
+import datetime
+
+t = time.time()
+
+print (t)                       #原始时间数据
+print (int(t))                  #秒级时间戳
+print (int(round(t * 1000)))    #毫秒级时间戳
+
+nowTime = lambda:int(round(t * 1000))
+print (nowTime());              #毫秒级时间戳，基于lambda
+
+print (datetime.datetime.now().strftime(&#39;%Y-%m-%d %H:%M:%S&#39;))   #日期格式化
+</code></pre>
+
+<p>返回为：    </p>
+
+<pre class="line-numbers"><code class="language-text">1554358917.381631
+1554358917
+1554358917382
+1554358917382
+2019-04-04 14:21:57
+</code></pre>
+
+<p>将秒级时间戳转为日期     </p>
+
+<pre class="line-numbers"><code class="language-text">ts = 1515774430
+dt = time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, time.localtime(ts))
+print(dt)
+</code></pre>
+
+<p>返回<br/><br/>
+<code>2018-01-13 00:27:10</code></p>
 
                         
                       </div>
@@ -161,10 +219,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/4/2 18:59 下午</span>
+                    <span class="date">2019/4/4 13:47 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a></span>
+          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -178,19 +236,30 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15538461504138.html">
+                <a class="clearlink" href="15543511984993.html">
                 
-                  <h1>vmware三种网络模式详解</h1>
+                  <h1>python程序退出的几种方式</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>文章详情请参阅：<br/>
-<a href="https://note.youdao.com/ynoteshare1/index.html?id=236896997b6ffbaa8e0d92eacd13abbf&amp;type=note">https://note.youdao.com/ynoteshare1/index.html?id=236896997b6ffbaa8e0d92eacd13abbf&amp;type=note</a><br/>
-或<br/>
-<a href="https://www.cnblogs.com/linjiaxin/p/6476480.html">https://www.cnblogs.com/linjiaxin/p/6476480.html</a></p>
+                        	<p>最常见的方式是使用 sys 库中的 sys.exit() 方法。不需要考虑平台等因素的影响，一般是退出Python程序的首选方法。</p>
 
-<p>感谢作者的付出。</p>
+<p>该方法中包含一个参数status，默认为0，表示正常退出，也可以为1，表示异常退出。</p>
+
+<pre class="line-numbers"><code class="language-text">sys.exit()
+sys.exit(0)
+sys.exit(1)
+</code></pre>
+
+<p>该方法引发的是一个SystemExit异常(这是唯一一个不会被认为是错误的异常)，当没有设置捕获这个异常将会直接退出程序执行，当然也可以捕获这个异常进行一些其他操作。</p>
+
+<p>其他方法非首选因此不详细介绍，这里简单提一下，具体信息自行百度。</p>
+
+<p>其他方法有：<br/>
+os._exit()<br/>
+os.kill() 仅用于 unix 平台<br/>
+os.popen() 仅用于 windows 平台</p>
 
                         
                       </div>
@@ -199,10 +268,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/3/29 15:55 下午</span>
+                    <span class="date">2019/4/4 12:13 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -216,21 +285,28 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15538425408524.html">
+                <a class="clearlink" href="15543484192219.html">
                 
-                  <h1>虚拟机安装win10操作系统</h1>
+                  <h1>python 安装 hashlib 库报错</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>本片文章是为新手准备的</p>
-</blockquote>
+                        	<p>报错信息如下：</p>
 
-<p>虚拟机安装win10可以查看以下教程：<br/>
-<a href="http://baijiahao.baidu.com/s?id=1597148758310739517&amp;wfr=spider&amp;for=pc">http://baijiahao.baidu.com/s?id=1597148758310739517&amp;wfr=spider&amp;for=pc</a></p>
+<pre class="line-numbers"><code class="language-text">      File &quot;/private/var/folders/zx/znk609rs7lvfy1s28xzb2gdm0000gn/T/pip-install-gryu60jd/hashlib/hashlib.py&quot;, line 80
+        raise ValueError, &quot;unsupported hash type&quot;
+                        ^
+    SyntaxError: invalid syntax
+</code></pre>
 
-<p>若原文链接失效，则可以百度搜索“虚拟机安装win10操作系统”</p>
+<p>此时需要安装 openssh</p>
+
+<p>Mac 上使用：<code>brew install openssh</code> 然后重装 python，然后<code>pip install hashlib</code>，mmp，还是装不上报错。</p>
+
+<p>然后问了一下开发，发现不需要装，直接 import 就能用，试了一下发现果然如此。</p>
+
+<p>好了，能用 hashlib 库就行，别的不管。</p>
 
                         
                       </div>
@@ -239,7 +315,61 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/3/29 14:55 下午</span>
+                    <span class="date">2019/4/4 11:26 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15542128440180.html">
+                
+                  <h1>VMware Fusion 端口映射</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>文章转载自：<a href="https://blog.csdn.net/weixin_43302757/article/details/82911332">https://blog.csdn.net/weixin_43302757/article/details/82911332</a></p>
+</blockquote>
+
+<p>Windows版本VM进行端口映射有相关的设置界面，但是Mac系统的VM（VMware Fusion）没有。Google 以下找到相关方法。具体步骤如下</p>
+
+<p>打开配置文件<br/>
+<code>sudo vi  /Library/Preferences/VMware\ Fusion/vmnet8/nat.conf</code><br/>
+找到如下配置</p>
+
+<pre class="line-numbers"><code class="language-text">[incomingtcp]
+# Use these with care - anyone can enter into your VM through these...
+# The format and example are as follows:
+#&lt;external port number&gt; = &lt;VM&#39;s IP address&gt;:&lt;VM&#39;s port number&gt;
+23 = 172.16.161.129:22 #将IP172.16.161.129虚拟机的22 端口映射到主机23端口
+</code></pre>
+
+<p>重启VM的网络服务</p>
+
+<pre class="line-numbers"><code class="language-text">sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --stop
+sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --start
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/4/2 21:47 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
@@ -256,22 +386,18 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15532282104799.html">
+                <a class="clearlink" href="15542101741047.html">
                 
-                  <h1>Mac 终端设置欢迎页</h1>
+                  <h1>linux sudo配置免密及排除部分命令</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><code>cd /etc</code><br/>
-<code>sudo pico motd</code><br/>
-输入密码后会打开nano，然后在里面输入图案或者文字。然后保存后退出，之后打开终端就能看到欢迎页了。</p>
+                        	<p><code>lonelyor ALL=(ALL) NOPASSWD:ALL, !/usr/bin/reboot, !/sbin/reboot, !/sbin/ifconfig, !/sbin/shutdown, !/sbin/route, !/sbin/ip</code></p>
 
-<p>其实本质就是在/etc目录下创建文件 motd，然后往里面写内容即可。</p>
+<p>即lonelyor可以免密码执行除reboot、ifconfig、shutdown、route、ip之外的指令。</p>
 
-<p>我只是添加了一段文字，结果如下：</p>
-
-<p><figure><img src="media/15532282104799/15532284069773.jpg" alt=""/></figure></p>
+<p><strong>注意，/etc/sudoers的命令是顺序执行，添加在错误的位置（比如 %sudo ALL=(ALL:ALL) ALL 之前）是无效的。</strong></p>
 
                         
                       </div>
@@ -280,7 +406,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/3/22 12:16 下午</span>
+                    <span class="date">2019/4/2 21:2 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
@@ -297,53 +423,15 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15532149133328.html">
+                <a class="clearlink" href="15542098568070.html">
                 
-                  <h1>古语</h1>
+                  <h1>linux sudo:/etc/sudoers 可被任何人写 解决方案</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/3/22 10:19 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html'>风花雪月</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15523826250881.html">
-                
-                  <h1>excel 工作表插入当前时间和日期</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>参考链接：<a href="https://jingyan.baidu.com/article/75ab0bcbb03035d6864db203.html">https://jingyan.baidu.com/article/75ab0bcbb03035d6864db203.html</a></p>
-</blockquote>
-
-<p>1、选定单元格然后同时按<code>CTRL+;</code>可以快速设置日期。<br/>
-2、在单元格中输入函数<code>=TODAY()</code>然后回车也可以快速设置日期。<br/>
-3、选定单元格然后同时按下<code>Ctrl+Shift+；</code>可以快速设置当前时刻的时间。<br/>
-4、在单元格中输入函数<code>=NOW()</code>然后回车可以显示当前时刻的时间。</p>
+                        	<p>只需要使用<code>su -</code>进入 root<br/>
+然后<code>cd /etc</code>，使用<code>chmod 0440 sudoers</code>将权限改回来即可。</p>
 
                         
                       </div>
@@ -352,10 +440,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/3/12 17:23 下午</span>
+                    <span class="date">2019/4/2 20:57 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -453,31 +541,31 @@
 	      
 		      
 			      <li class="post">
-			        <a href="15550532565333.html">lonelyor个人技能清单</a>
+			        <a href="15578813198735.html">家思</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15547243035014.html">相见欢·林花谢了春红</a>
+			        <a href="15577346001597.html">linux 敏感目录</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15547237158216.html">怎么解决"该虚拟机似乎正在使用中"问题</a>
+			        <a href="15573021402615.html">Mac 上的 svnGUI 工具：smartsvn 安装、激活和使用</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15547068970077.html">arch 安装配置指南带图版</a>
+			        <a href="15572001451538.html">c 语言中变量前面加`*`表示什么？如`*`p</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15547067485409.html">arch 安装配置指南</a>
+			        <a href="15554899648347.html">CEO、COO、CFO、CIO、CTO、CMO的中文是什么?</a>
 			      </li>
 		     
 		  

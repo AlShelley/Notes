@@ -9,7 +9,7 @@
 
     <title>
     
-  最强渗透测试教程 - lonelyorWiki
+  验证码安全 - lonelyorWiki
   
   </title>
   
@@ -138,10 +138,10 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>最强渗透测试教程</h1>
+          <h1>验证码安全</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2019/2/21 14:12 下午</span>
+          <span class="date">2019/5/24 9:15 上午</span>
 
           <span>发表于&nbsp;</span> 
           
@@ -158,16 +158,50 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <p>作者：Micropoor 侯总<br/>
-作者简介：十多年一线渗透测试大牛，目前在职于360.<br/>
-侯总博客：<br/>
-<a href="https://blog.csdn.net/micropoor">https://blog.csdn.net/micropoor</a><br/>
-<a href="https://micropoor.blogspot.com/%EF%BC%88%E9%9C%80%E8%A6%81%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%EF%BC%89">https://micropoor.blogspot.com/（需要科学上网）</a><br/>
-侯总教程地址：<br/>
-<a href="https://github.com/Micropoor/Micro8">https://github.com/Micropoor/Micro8</a></p>
+      <p>由于业务迭代频繁，产品线众多...好了不废话了。简单来说就是很多网站的登录界面没有验证码，只有账号密码输入框，这样不安全。</p>
 
-<p>经典语录：<br/>
-渗透的本质是信息搜集。</p>
+<h2 id="toc_0">什么是验证码</h2>
+
+<p>全自动区分计算机和人类的图灵测试（Completely Automated Public Turing test to tell Computers and Humans Apart，简称CAPTCHA），俗称验证码，是一种区分用户是计算机或人的全自动化程序。</p>
+
+<h2 id="toc_1">验证码种类</h2>
+
+<p>1、图形验证码<br/>
+2、滑动验证码（比如极验）<br/>
+3、答题验证码<br/>
+4、手机短信/邮箱验证码<br/>
+5、动态口令</p>
+
+<h2 id="toc_2">验证码的作用</h2>
+
+<p>人机识别：识别使用对应功能的是人还是机器。<br/>
+防止机器暴力攻击：防止攻击者在短时间内用机器进行批量操作（常见功能场景如：登录）。</p>
+
+<h2 id="toc_3">验证码工作原理</h2>
+
+<p><figure><img src="media/15586605529996/15586616406956.jpg" alt=""/></figure></p>
+
+<h2 id="toc_4">验证码常用场景与作用</h2>
+
+<p>登录接口常使用验证码来防御攻击者的撞库攻击<br/>
+注册接口常用验证码来防御批量恶意注册<br/>
+身份认证<br/>
+重要表单提交<br/>
+修改密码<br/>
+支付等功能</p>
+
+<h2 id="toc_5">验证码使用</h2>
+
+<p>重要接口要加验证码<br/>
+常见的如登录、注册等接口推荐使用滑动验证码；重要的如改密、支付等功能推荐使用手机短信验证码；vpn登录、身份认证等推荐使用动态口令。</p>
+
+<h2 id="toc_6">验证码对抗技术</h2>
+
+<p>1、OCR 识别图形验证码<br/>
+2、机器识别验证码（常见流程：去噪处理-图像二值化-切片处理-文件图片标准化-字符模板识别）<br/>
+3、LTE／4G 伪基站＋GSM 中间人攻击实现手机短信验证码攻击（相关安全事件可见&quot;这下一无所有了&quot;：<a href="http://netsecurity.51cto.com/art/201808/580812.htm%EF%BC%89">http://netsecurity.51cto.com/art/201808/580812.htm）</a><br/>
+4、验证码流程绕过（空验证码、返回包含验证码、验证码固定、验证码前端校验、验证流程有误）<br/>
+5、人工打码平台</p>
 
 
     
@@ -178,16 +212,16 @@
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15512579928868.html" 
-          title="Previous Post: excel for Mac 如何点击单元格高亮整行">&laquo; excel for Mac 如何点击单元格高亮整行</a>
+          <a href="15586660103989.html" 
+          title="Previous Post: 使用GET方法传输用户账号密码的危害">&laquo; 使用GET方法传输用户账号密码的危害</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15506293038772.html" 
-          title="Next Post: 使用浏览器进行Web应用安全测试">使用浏览器进行Web应用安全测试 &raquo;</a>
+          <a  href="15585815946395.html" 
+          title="Next Post: 万能密码">万能密码 &raquo;</a>
       
       </p>
         </div>

@@ -138,6 +138,70 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15453702906439.html">
+                
+                  <h1>backup系统备份工具介绍</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>backup是一款强大的备份软件，用于系统备份、增量备份、远程备份，企业级。<br/>
+我还是当年使用debian时用过...这是以前的笔记，留一份在这好了。</p>
+</blockquote>
+
+<p>软件安装（debian 9）<br/>
+<code>apt-get install backuppc</code><br/>
+然后会弹窗：<br/>
+backuppc设定<br/>
+管理web地址：<br/>
+<code>http://lonelyor/backuppc</code><br/>
+<code>user：backuppc</code><br/>
+<code>passwd：u6oN2KE1</code><br/>
+可以通过运行<code>htpasswd /etc/backuppc/htpasswd</code>来修改密码<br/>
+这些信息要记住！</p>
+
+<p>安装后：<br/>
+<code>Creating config file /etc/backuppc/config.pl with new version（可以暂时忽略）</code></p>
+
+<p>然后运行：<br/>
+<code>systemctl restart apache2</code><br/>
+<code>/etc/init.d/backuppc restart</code></p>
+
+<p>接着就打开浏览器访问：<br/>
+<code>http://lonelyor/backuppc</code><br/>
+就能看到web管理界面了。<br/>
+如果进不去可以打开隐身模式或者清除cookie再试。</p>
+
+<p>官方安装文档：<code>http://backuppc.sourceforge.net/BackupPC-4.1.3.html#Installing-BackupPC</code></p>
+
+<p>参考文档：<br/>
+<code>http://server.zol.com.cn/513/5130348.html</code></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21 13:31 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15453702115650.html">
                 
                   <h1>VMware14秘钥</h1>
@@ -357,45 +421,6 @@ set mouse
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15453576869884.html">
-                
-                  <h1>linux查看磁盘空间占用情况</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>主要是使用 df 命令，使用 df --help 可以查看更多选项。</p>
-
-<p>举例：<br/>
-df -k 以KB为单位显示磁盘使用量和占用率。<br/>
-df -k 以M×××</p>
-
-<p>使用“du -ck /home”命令，列出home目录下所有文件或目录占用的大小，以KB作为计量单位。以及统计出当前home目录占用的总大小。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/21 10:1 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -481,6 +506,12 @@ df -k 以M×××</p>
 	      
 		      
 			      <li class="post">
+			        <a href="15589173721679.html">svn 报错：“svn: E155015: Commit failed (details follow):svn: E155015: Aborting commit: '/Users/lonelyor/xxx.xls' remains in conflict” 解决方法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15586769387988.html">Markdown XSS Payloads</a>
 			      </li>
 		     
@@ -500,12 +531,6 @@ df -k 以M×××</p>
 		      
 			      <li class="post">
 			        <a href="15585815946395.html">万能密码</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15578813198735.html">家思</a>
 			      </li>
 		     
 		  

@@ -138,6 +138,52 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15515375536566.html">
+                
+                  <h1>rclone挂载 onedrive 教程</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>1、rclone config选 n<br/>
+2、给网盘起个名字如 xlz<br/>
+3、选择要挂载的网盘类型，输入数字即可，如 onedrive 则输入18<br/>
+4、按回车直到<code>Edit advanced config</code>选 y 来编辑配置<br/>
+5、<code>chunk-size</code>我选了200M,这个随便写。<br/>
+6、连续回车直到<code>expose_onenote_files&gt; true</code>，这里默认为 false，选 true 是为了在 finder 中显示。<br/>
+7、<code>Use auto config</code>，我选的是，然后浏览器自动弹出来进行认证<br/>
+8、认证结束后，<code>Your choice&gt; 1</code><br/>
+9、<code>Chose drive to use:&gt;</code>选你要用的（数字）然后选y<br/>
+10、<code>y/e/d&gt; y</code>选 y 然后就添加好了<br/>
+11、新开一个终端，然后新建一个目录（待会儿网盘就会挂载到这个目录下，比如我新建 xlz）<br/>
+12、rclone mount xlz:/ /Users/lonelyor/NBonedrive/xlz<br/>
+13、如果要在后台运行就<code>nohup rclone mount xlz:/ /Users/lonelyor/NBonedrive/xlz &amp;</code><br/>
+14、终端输入 <code>df -h</code> 查看</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/3/2 22:39 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15512579928868.html">
                 
                   <h1>excel for Mac 如何点击单元格高亮整行</h1>
@@ -503,39 +549,6 @@ access_log logs/aria2_access.log;
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15480046935972.html">
-                
-                  <h1>MWeb打开文档库快捷键</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>CMD + L 即可显示</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/21 1:18 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -621,6 +634,12 @@ access_log logs/aria2_access.log;
 	      
 		      
 			      <li class="post">
+			        <a href="15589173721679.html">svn 报错：“svn: E155015: Commit failed (details follow):svn: E155015: Aborting commit: '/Users/lonelyor/xxx.xls' remains in conflict” 解决方法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15586769387988.html">Markdown XSS Payloads</a>
 			      </li>
 		     
@@ -640,12 +659,6 @@ access_log logs/aria2_access.log;
 		      
 			      <li class="post">
 			        <a href="15585815946395.html">万能密码</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15578813198735.html">家思</a>
 			      </li>
 		     
 		  

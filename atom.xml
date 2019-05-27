@@ -4,13 +4,38 @@
   <title><![CDATA[lonelyorWiki]]></title>
   <link href="http://www.lonelyor.org/lonelyorWiki/atom.xml" rel="self"/>
   <link href="http://www.lonelyor.org/lonelyorWiki/"/>
-  <updated>2019-05-15T09:00:55+08:00</updated>
+  <updated>2019-05-24T14:04:58+08:00</updated>
   <id>http://www.lonelyor.org/lonelyorWiki/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[svn 报错：“svn: E155015: Commit failed (details follow):svn: E155015: Aborting commit: '/Users/lonelyor/xxx.xls' remains in conflict” 解决方法]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15589173721679.html"/>
+    <updated>2019-05-27T08:36:12+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15589173721679.html</id>
+    <content type="html"><![CDATA[
+<blockquote>
+<p>解决方案来自：<a href="https://stackoverflow.com/questions/2406469/svn-remains-in-conflict">https://stackoverflow.com/questions/2406469/svn-remains-in-conflict</a></p>
+</blockquote>
+
+<p>1、执行 svn resolved /Users/lonelyor/xxx.xlsx<br/>
+2、svn update<br/>
+3、svn commit -m &quot;xxxxxx&quot;</p>
+
+<p>搞定，可以正常执行 commit 操作。</p>
+
+<pre class="line-numbers"><code class="language-text">Sending        xxx.xlsx
+Transmitting file data .done
+Committing transaction...
+Committed revision 1135.
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Markdown XSS Payloads]]></title>
@@ -1409,38 +1434,6 @@ os.popen() 仅用于 windows 平台</p>
 <p>然后问了一下开发，发现不需要装，直接 import 就能用，试了一下发现果然如此。</p>
 
 <p>好了，能用 hashlib 库就行，别的不管。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[VMware Fusion 端口映射]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15542128440180.html"/>
-    <updated>2019-04-02T21:47:24+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15542128440180.html</id>
-    <content type="html"><![CDATA[
-<blockquote>
-<p>文章转载自：<a href="https://blog.csdn.net/weixin_43302757/article/details/82911332">https://blog.csdn.net/weixin_43302757/article/details/82911332</a></p>
-</blockquote>
-
-<p>Windows版本VM进行端口映射有相关的设置界面，但是Mac系统的VM（VMware Fusion）没有。Google 以下找到相关方法。具体步骤如下</p>
-
-<p>打开配置文件<br/>
-<code>sudo vi  /Library/Preferences/VMware\ Fusion/vmnet8/nat.conf</code><br/>
-找到如下配置</p>
-
-<pre class="line-numbers"><code class="language-text">[incomingtcp]
-# Use these with care - anyone can enter into your VM through these...
-# The format and example are as follows:
-#&lt;external port number&gt; = &lt;VM&#39;s IP address&gt;:&lt;VM&#39;s port number&gt;
-23 = 172.16.161.129:22 #将IP172.16.161.129虚拟机的22 端口映射到主机23端口
-</code></pre>
-
-<p>重启VM的网络服务</p>
-
-<pre class="line-numbers"><code class="language-text">sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --stop
-sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --start
-</code></pre>
 
 ]]></content>
   </entry>

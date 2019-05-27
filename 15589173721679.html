@@ -9,7 +9,7 @@
 
     <title>
     
-  windows右键添加管理员获得所有权 - lonelyorWiki
+  svn 报错：“svn: E155015: Commit failed (details follow):svn: E155015: Aborting commit: '/Users/lonelyor/xxx.xls' remains in conflict” 解决方法 - lonelyorWiki
   
   </title>
   
@@ -138,14 +138,14 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>windows右键添加管理员获得所有权</h1>
+          <h1>svn 报错：“svn: E155015: Commit failed (details follow):svn: E155015: Aborting commit: '/Users/lonelyor/xxx.xls' remains in conflict” 解决方法</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2018/11/22 15:25 下午</span>
+          <span class="date">2019/5/27 8:36 上午</span>
 
           <span>发表于&nbsp;</span> 
           
-              <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+              <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
            
          
           <span class="comments">
@@ -159,36 +159,20 @@
 
       <div class="article-content">
       <blockquote>
-<p>右键添加获得管理员所有权是个比较方便的功能。</p>
+<p>解决方案来自：<a href="https://stackoverflow.com/questions/2406469/svn-remains-in-conflict">https://stackoverflow.com/questions/2406469/svn-remains-in-conflict</a></p>
 </blockquote>
 
-<p>打开记事本或者别的文本编辑器，然后写入如下内容:</p>
+<p>1、执行 svn resolved /Users/lonelyor/xxx.xlsx<br/>
+2、svn update<br/>
+3、svn commit -m &quot;xxxxxx&quot;</p>
 
-<pre class="line-numbers"><code class="language-cmd">Windows Registry Editor Version 5.00
+<p>搞定，可以正常执行 commit 操作。</p>
 
-[HKEY_CLASSES_ROOT\*\shell\runas]
-@=&quot;管理员取得所有权&quot;
-&quot;NoWorkingDirectory&quot;=&quot;&quot;
-[HKEY_CLASSES_ROOT\*\shell\runas\command]
-@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
-&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
-[HKEY_CLASSES_ROOT\exefile\shell\runas2]
-@=&quot;管理员取得所有权&quot;
-&quot;NoWorkingDirectory&quot;=&quot;&quot;
-[HKEY_CLASSES_ROOT\exefile\shell\runas2\command]
-@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
-&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
-[HKEY_CLASSES_ROOT\Directory\shell\runas]
-@=&quot;管理员取得所有权&quot;
-&quot;NoWorkingDirectory&quot;=&quot;&quot;
-[HKEY_CLASSES_ROOT\Directory\shell\runas\command]
-@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; /r /d y &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F /t&quot;
-&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; /r /d y &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F /t&quot;
+<pre class="line-numbers"><code class="language-text">Sending        xxx.xlsx
+Transmitting file data .done
+Committing transaction...
+Committed revision 1135.
 </code></pre>
-
-<p>然后另存为：管理员获得所有权.reg<br/>
-文件名可以随便写，但是后缀记得写成reg（改成这个后缀后文件图标就会变成一个破碎蓝色魔方）。<br/>
-然后右键以管理员身份运行，若弹框注册表xxx的，同意就行了。</p>
 
 
     
@@ -199,16 +183,13 @@
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15433875205785.html" 
-          title="Previous Post: BASIC INJECTION 基本注入">&laquo; BASIC INJECTION 基本注入</a>
-      
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15428714021434.html" 
-          title="Next Post: linux将shell脚本添加到系统命令的方法">linux将shell脚本添加到系统命令的方法 &raquo;</a>
+          <a  href="15586769387988.html" 
+          title="Next Post: Markdown XSS Payloads">Markdown XSS Payloads &raquo;</a>
       
       </p>
         </div>

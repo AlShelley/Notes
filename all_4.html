@@ -138,6 +138,79 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15542098568070.html">
+                
+                  <h1>linux sudo:/etc/sudoers 可被任何人写 解决方案</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>只需要使用<code>su -</code>进入 root<br/>
+然后<code>cd /etc</code>，使用<code>chmod 0440 sudoers</code>将权限改回来即可。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/4/2 20:57 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15542044701566.html">
+                
+                  <h1>debian or ubuntu 修改终端欢迎语</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>与其他 linux 不太一样哦。Debian 系直接修改/etc/motd文件重登录后是无效的。</p>
+
+<p>因为这里/etc/motd是一个符号链接，指向/var/run/motd，应该 是一个启动后在生成的文件。在版本12.04中，找到生成的脚本在目录/etc/update-motd.d/中<br/>
+<code>sudo nano /etc/update-motd.d/10-uname</code><br/>
+在 10-uname 中可以添加命令，比如：<code>cat /home/test.txt</code>。即可展示出 test.txt 中的内容。</p>
+
+<p>修改后用：sudo run-parts /etc/update-motd.d 去执行就会立即见到效果，而不用反复注销登录。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/4/2 19:27 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15542027955936.html">
                 
                   <h1>mysql登录提示ERROR 1524 (HY000): Plugin 'unix_socket' is not loaded解决方法</h1>
@@ -296,100 +369,6 @@
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15523826250881.html">
-                
-                  <h1>excel 工作表插入当前时间和日期</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>参考链接：<a href="https://jingyan.baidu.com/article/75ab0bcbb03035d6864db203.html">https://jingyan.baidu.com/article/75ab0bcbb03035d6864db203.html</a></p>
-</blockquote>
-
-<p>1、选定单元格然后同时按<code>CTRL+;</code>可以快速设置日期。<br/>
-2、在单元格中输入函数<code>=TODAY()</code>然后回车也可以快速设置日期。<br/>
-3、选定单元格然后同时按下<code>Ctrl+Shift+；</code>可以快速设置当前时刻的时间。<br/>
-4、在单元格中输入函数<code>=NOW()</code>然后回车可以显示当前时刻的时间。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/3/12 17:23 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15520392147631.html">
-                
-                  <h1>GTD 管理法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>GTD 分为5个步骤</p>
-
-<ul>
-<li>收集</li>
-<li>理清</li>
-<li>组织</li>
-<li>执行</li>
-<li>回顾</li>
-</ul>
-
-<p>每一步都很重要，但是我觉得比较难的还是执行。</p>
-
-<p>执行的精髓是一定要去做</p>
-
-<p>不去做的原因可能是因为目标困难，难以去实现，此时要降低困难度（举个例子：每天都要读书，然后规定自己每天读2页而不是每天读50页，这样每天就能至少读2页，时间充足的话还能多读48页，主动去坚持才是最棒的）</p>
-
-<p>科学的养成一个习惯，在前期我们尽量做到：</p>
-
-<ul>
-<li>这个习惯划分到每天的目标量足够小，这样易获得成就感，也没有放弃的理由。</li>
-<li>不间断，不管这一天发生了什么，哪怕是你削减目标量，也要每天都去做。</li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/3/8 18:0 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html'>星火流萤</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -475,6 +454,18 @@
 	      
 		      
 			      <li class="post">
+			        <a href="15590908841596.html">学习的深度和广度</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15590262822391.html">洞察-宜信集应用系统资产管理、漏洞全生命周期管理、安全知识库管理三位一体的平台的安装与使用</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15589173721679.html">svn 报错：“svn: E155015: Commit failed (details follow):svn: E155015: Aborting commit: '/Users/lonelyor/xxx.xls' remains in conflict” 解决方法</a>
 			      </li>
 		     
@@ -488,18 +479,6 @@
 		      
 			      <li class="post">
 			        <a href="15586660103989.html">使用GET方法传输用户账号密码的危害</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15586605529996.html">验证码安全</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15585815946395.html">万能密码</a>
 			      </li>
 		     
 		  

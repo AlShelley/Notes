@@ -9,7 +9,7 @@
 
     <title>
     
-  python 安装 hashlib 库报错 - lonelyorWiki
+  洞察-宜信集应用系统资产管理、漏洞全生命周期管理、安全知识库管理三位一体的平台的安装与使用 - lonelyorWiki
   
   </title>
   
@@ -138,14 +138,14 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>python 安装 hashlib 库报错</h1>
+          <h1>洞察-宜信集应用系统资产管理、漏洞全生命周期管理、安全知识库管理三位一体的平台的安装与使用</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2019/4/4 11:26 上午</span>
+          <span class="date">2019/5/28 14:51 下午</span>
 
           <span>发表于&nbsp;</span> 
           
-              <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
+              <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
            
          
           <span class="comments">
@@ -158,21 +158,167 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <p>报错信息如下：</p>
+      <blockquote>
+<p><a href="https://github.com/creditease-sec/insight">https://github.com/creditease-sec/insight</a> 感谢作者！</p>
+</blockquote>
 
-<pre class="line-numbers"><code class="language-text">      File &quot;/private/var/folders/zx/znk609rs7lvfy1s28xzb2gdm0000gn/T/pip-install-gryu60jd/hashlib/hashlib.py&quot;, line 80
-        raise ValueError, &quot;unsupported hash type&quot;
-                        ^
-    SyntaxError: invalid syntax
+<h2 id="toc_0">部署和启动 mysql in docker</h2>
+
+<p>1、首先安装 docker，这里略过</p>
+
+<p>2、安装 mysql 的 docker 镜像<code>docker pull mysql:5.7.13</code></p>
+
+<p>3、启动 mysql，这里的 name 可以自行指定。</p>
+
+<pre class="line-numbers"><code class="language-text">docker run -d -p 127.0.0.1:6606:3306 \
+--name open_source_mysqldb \
+-e MYSQL_ROOT_PASSWORD=root \
+mysql:5.7.13
 </code></pre>
 
-<p>此时需要安装 openssh</p>
+<p>4、查看已经启动的 docker 镜像，这里注意 name 后面要用到。<code>docker ps -a</code><br/>
+<figure><img src="media/15590262822391/15590264712809.jpg" alt=""/></figure></p>
 
-<p>Mac 上使用：<code>brew install openssh</code> 然后重装 python，然后<code>pip install hashlib</code>，mmp，还是装不上报错。</p>
+<p>5、进入容器bash<code>docker exec -it open_source_mysqldb bash</code></p>
 
-<p>然后问了一下开发，发现不需要装，直接 import 就能用，试了一下发现果然如此。</p>
+<p>6、进入 mysql 并创建数据库和账号权限配置<br/>
+<code>mysql -h localhost -P 6606 -u root -p</code><br/>
+<figure><img src="media/15590262822391/15590267094981.jpg" alt=""/></figure></p>
 
-<p>好了，能用 hashlib 库就行，别的不管。</p>
+<pre class="line-numbers"><code class="language-text">mysql&gt; CREATE DATABASE IF NOT EXISTS vuldb DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+mysql&gt; grant all on vuldb.* to vuluser@&#39;%&#39; identified by &#39;vulpassword&#39;;
+mysql&gt; flush privileges;
+mysql&gt; quit
+</code></pre>
+
+<p><figure><img src="media/15590262822391/15590267827107.jpg" alt=""/></figure></p>
+
+<p>7、退出容器 bash<code>exit</code></p>
+
+<h2 id="toc_1">部署和启动 APP</h2>
+
+<p>1、下载源码<br/>
+<code>$ git clone https://github.com/creditease-sec/insight.git</code></p>
+
+<p>2、修改srcpm/config.py 配置文件</p>
+
+<ul>
+<li><p>修改公司邮箱后缀    </p>
+<pre class="line-numbers"><code class="language-text">#公司邮箱后缀限制，只能使用公司邮箱注册账号。
+CORP_MAIL = &#39;@qq.com&#39;
+</code></pre></li>
+<li><p>修改邮件CC抄送列表    </p>
+<pre class="line-numbers"><code class="language-text">#平台发送的每封邮件的邮件抄送列表，可以设置发送给安全部邮箱列表，可自行修改，也可以保持不变为空
+&#39;&#39;&#39;<br/>
+示例：<br/>
+CC_EMAIL = [&#39;xxx1@creditease.cn&#39;,<br/>
+            &#39;xxx2@creditease.cn&#39;,<br/>
+        ]<br/>
+&#39;&#39;&#39;<br/>
+CC_EMAIL = [<br/>
+        ]<br/>
+        ```
+</code></pre></li>
+</ul>
+
+<ul>
+<li><p>修改开发模式的邮箱服务器和发件邮箱配置    </p>
+<pre class="line-numbers"><code class="language-text"># 以开发模式的配置运行，使用测试邮件服务器，并开启debug模式
+# 平台发邮件账号设置<br/>
+SRCPM_MAIL_SENDER = &#39;安全部 &lt;sec_creditease@sina.com&gt;&#39;<br/>
+# 发送邮件的服务器设置，邮箱密码由系统变量中读取<br/>
+MAIL_SERVER = &#39;smtp.sina.com&#39;<br/>
+MAIL_PORT = 587<br/>
+MAIL_USE_TLS = True<br/>
+MAIL_USERNAME = os.environ.get(<br/>
+    &#39;MAIL_USERNAME&#39;) or &#39;sec_creditease@sina.com&#39;<br/>
+MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
+</code></pre></li>
+<li><p>修改生产模式的邮箱服务器和发件邮箱配置</p>
+<pre class="line-numbers"><code class="language-text"># 以生产模式的配置运行，使用生产邮件服务器，并关闭debug模式
+# 平台发邮件账号设置<br/>
+SRCPM_MAIL_SENDER = &#39;安全部 &lt;xxx@creditease.cn&gt;&#39;<br/>
+# 发送邮件的服务器设置，账号密码由系统变量中读取<br/>
+MAIL_SERVER = &#39;x.x.x.x&#39;<br/>
+MAIL_PORT = 25<br/>
+MAIL_USE_TLS = False<br/>
+MAIL_USERNAME = os.environ.get(<br/>
+    &#39;MAIL_USERNAME&#39;) or &#39;xxx@creditease.cn&#39;<br/>
+MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
+</code></pre></li>
+</ul>
+
+<p>3、修改定时周期邮件 mail_sender.py 的配置    </p>
+
+<pre class="line-numbers"><code class="language-text">    #平台发送的每封邮件的邮件抄送列表，可以设置发送给安全部邮箱列表，可自行修改，也可以保持不变为空
+    &#39;&#39;&#39;
+    示例：
+    CC_EMAIL = [&#39;xxx1@creditease.cn&#39;,
+                &#39;xxx2@creditease.cn&#39;,
+            ]
+    &#39;&#39;&#39;
+    CC_EMAIL = [
+            ]
+    #主机名设置
+    SERVER_NAME = &#39;xxx.creditease.corp&#39;
+    # 平台发邮件账号设置
+    SRCPM_MAIL_SENDER = &#39;安全部 &lt;xxx@creditease.cn&gt;&#39;
+    # 发送邮件的服务器设置，账号密码由系统变量中读取
+    MAIL_SERVER = &#39;x.x.x.x&#39;
+    MAIL_PORT = 25
+    MAIL_USE_TLS = False
+    MAIL_USERNAME = os.environ.get(
+        &#39;MAIL_USERNAME&#39;) or &#39;xxx@creditease.cn&#39;
+    MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
+</code></pre>
+
+<p>4、修改srcpm/app/src/forms.py 漏洞来源下拉列表    </p>
+
+<pre class="line-numbers"><code class="language-text">    &#39;&#39;&#39; 下拉选项 &#39;&#39;&#39;
+    source_choices = [(&#39;&#39;,&#39;&#39;), (u&#39;安全部&#39;, u&#39;安全部&#39;), (u&#39;YISRC&#39;, u&#39;YISRC&#39;), (u&#39;公众平台&#39;, u&#39;公众平台&#39;), (u&#39;合作伙伴&#39;, u&#39;合作伙伴&#39;)]
+</code></pre>
+
+<p>5、在项目根目录下部署和启动APP    </p>
+
+<pre class="line-numbers"><code class="language-text"># 拉取镜像
+docker pull daocloud.io/liusheng/vulpm_docker:latest
+或
+自己构建镜像
+docker build -t=&#39;vulpm_docker&#39; .
+# 在项目目录下启动容器，确保当前目录下存在srcpm文件夹，MAIL_PASSOWRD替换为自己邮箱服务器的密码。
+$ docker run -d -p 127.0.0.1:9000:5000 \
+--link open_source_mysqldb:db \
+--name open_source_srcpm \
+-v $PWD/srcpm:/opt/webapp/srcpm \
+-e DEV_DATABASE_URL=&#39;mysql://vuluser:vulpassword@db/vuldb&#39; \
+-e SrcPM_CONFIG=development \
+-e MAIL_PASSWORD=&#39;xxxxxx&#39; \
+daocloud.io/liusheng/vulpm_docker:latest \
+sh -c &#39;supervisord -c srcpm/supervisor.conf &amp;&amp; supervisorctl -c srcpm/supervisor.conf start all &amp;&amp; tail -f srcpm/log/gunicorn.err &amp;&amp; tail -f srcpm/log/mail_sender.err&#39;
+</code></pre>
+
+<h1 id="toc_2">初始化数据库</h1>
+
+<p>参考作者写的就可以了。</p>
+
+<p><a href="https://github.com/creditease-sec/insight/blob/open-source/docs/db_init.md">数据库初始化详细配置指南</a></p>
+
+<p>或者</p>
+
+<p>直接导入初始化的sql</p>
+
+<p>导入sql</p>
+
+<pre class="line-numbers"><code class="language-text">$ mysql -h127.0.0.1 -P6606 -uroot -p vuldb &lt; srcpm/vuldb_init.sql
+</code></pre>
+
+<p>Enter password:root</p>
+
+<h2 id="toc_3">搭建完成</h2>
+
+<p>访问域名：<a href="http://127.0.0.1:9000/srcpm/">http://127.0.0.1:9000/srcpm/</a> 即可<br/>
+账号：<a href="mailto:admin@admin.com">admin@admin.com</a><br/>
+密码：11</p>
 
 
     
@@ -183,16 +329,16 @@
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15543511984993.html" 
-          title="Previous Post: python程序退出的几种方式">&laquo; python程序退出的几种方式</a>
+          <a href="15590908841596.html" 
+          title="Previous Post: 学习的深度和广度">&laquo; 学习的深度和广度</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15542128440180.html" 
-          title="Next Post: VMware Fusion 端口映射">VMware Fusion 端口映射 &raquo;</a>
+          <a  href="15589173721679.html" 
+          title="Next Post: svn 报错：“svn: E155015: Commit failed (details follow):svn: E155015: Aborting commit: '/Users/lonelyor/xxx.xls' remains in conflict” 解决方法">svn 报错：“svn: E155015: Commit failed (details follow):svn: E155015: Aborting commit: '/Users/lonelyor/xxx.xls' remains in conflict” 解决方法 &raquo;</a>
       
       </p>
         </div>

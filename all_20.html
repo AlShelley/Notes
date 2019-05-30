@@ -111,7 +111,7 @@
         
             <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
         
-            <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
+            <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
         
             <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
         
@@ -138,40 +138,188 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15453712257423.html">
+                <a class="clearlink" href="15428591301433.html">
                 
-                  <h1>arch设置屏幕分辨率</h1>
+                  <h1>Web安全检测checklist</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p><a href="https://wiki.archlinux.org/index.php/Xrandr_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">https://wiki.archlinux.org/index.php/Xrandr_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)</a></p>
-</blockquote>
+                        	<h2 id="toc_0">x01 爆破</h2>
 
-<p>1、先使用xrandr查看屏幕相关信息<br/>
-2、编辑/e/X/xorg.conf.d ❯❯❯ sudo nano 11-lonelyorx.conf (自己新建)<br/>
-结果我不怎么会写配置文件，导致写了都没法启动图形界面了，于是又删了，打算手动更改。<br/>
-3、<br/>
-xrandr查看当前设置 <br/>
-<code>cvt 1920 1080</code><br/>
-<code>cvt 2560 1440</code><br/>
-找到正确的参数 <br/>
-<code>xrandr --newmode &quot;1920x1080_60.00&quot;  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync</code><br/>
-<code>xrandr --newmode &quot;2560x1440_60.00&quot;  312.25  2560 2752 3024 3488  1440 1443 1448 1493 -hsync +vsync</code><br/>
-然后设置 <br/>
-<code>xrandr --addmode eDP1 1920x1080_60.00</code><br/>
-<code>xrandr --addmode HDMI1 2560x1440_60.00</code><br/>
-如果一且顺利的话，此时再查看xrandr命令，将发现最佳分辨率设置成功。 <br/>
-4、修改分辨率<br/>
-<code>xrandr --output eDP1 --mode 1920x1080_60.00</code><br/>
-<code>xrandr --output HDMI1 --mode 2560x1440_60.00</code></p>
+<h3 id="toc_1">弱口令</h3>
 
-<p><code>xrandr --newmode &quot;1920x1080_60.00&quot;  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync</code><br/>
-<code>xrandr --addmode eDP1 1920x1080_60.00</code><br/>
-<code>xrandr --output eDP1 --mode 1920x1080_60.00</code></p>
+<p>HTTP登录<br/>
+SSH<br/>
+MySQL<br/>
+Telnet</p>
 
-<p>这样屏幕分辨率就变成1080p了。</p>
+<h3 id="toc_2">遍历</h3>
+
+<p>网站敏感文件<br/>
+    源码<br/>
+    配置文件<br/>
+    备份文件<br/>
+    探针类文件<br/>
+网站敏感目录<br/>
+    物理路径<br/>
+    网站管理后台<br/>
+    上传目录<br/>
+    数据库Web管理入口<br/>
+    现成的Webshell<br/>
+端口扫描<br/>
+0day扫描<br/>
+子域名</p>
+
+<h2 id="toc_3">x02 不安全配置</h2>
+
+<h3 id="toc_4">Web服务器</h3>
+
+<p>Nginx<br/>
+Apache<br/>
+IIS</p>
+
+<h3 id="toc_5">Web应用服务器</h3>
+
+<p>Tomcat<br/>
+JBoss<br/>
+Weblogic</p>
+
+<h3 id="toc_6">HTTP安全特性</h3>
+
+<p>HTTP Headers<br/>
+HTTP Options<br/>
+rebots.txt<br/>
+flash跨域策略</p>
+
+<h2 id="toc_7">x03 敏感信息泄露</h2>
+
+<h3 id="toc_8">用户敏感信息</h3>
+
+<p>手机号<br/>
+身份证号<br/>
+社保<br/>
+银行卡号<br/>
+家庭住址</p>
+
+<h3 id="toc_9">应用敏感信息</h3>
+
+<p>debug信息<br/>
+堆栈报错</p>
+
+<h3 id="toc_10">站点敏感信息</h3>
+
+<p>测试页面<br/>
+备份文件</p>
+
+<h3 id="toc_11">本地敏感信息</h3>
+
+<p>前端保存用户密码<br/>
+前端保存验证码</p>
+
+<h2 id="toc_12">x04 xss跨站脚本</h2>
+
+<p>反射型xss<br/>
+存储型xss<br/>
+DOM型xss</p>
+
+<h2 id="toc_13">x05 请求伪造</h2>
+
+<p>csrf跨站请求伪造<br/>
+ssrf服务器请求伪造</p>
+
+<h2 id="toc_14">x06 注入</h2>
+
+<p>LDAP注入<br/>
+ORM注入<br/>
+XML注入<br/>
+XPath注入<br/>
+IMAP/SMTP注入<br/>
+SQL注入<br/>
+代码注入<br/>
+客户端模板注入（CSTI）<br/>
+服务端模板注入（SSTI）<br/>
+服务器端包含注入（SSI）</p>
+
+<h2 id="toc_15">x07 已知漏洞组件</h2>
+
+<p>库文件（某些库会导致远程命令执行）<br/>
+框架（如wordpress、thinkphp、django等）<br/>
+模块（python的某些模块会导致代码注入）</p>
+
+<h2 id="toc_16">x08 文件类漏洞</h2>
+
+<p>文件包含漏洞<br/>
+任意文件创建<br/>
+任意文件读取<br/>
+任意文件上传<br/>
+任意文件下载<br/>
+任意文件删除</p>
+
+<h2 id="toc_17">x09 解析漏洞</h2>
+
+<p>IIS解析漏洞<br/>
+Nginx解析漏洞<br/>
+Apache解析漏洞<br/>
+PHP CGI解析漏洞</p>
+
+<h2 id="toc_18">x10 劫持类漏洞</h2>
+
+<p>点击劫持<br/>
+Jsonp劫持<br/>
+WebSocket劫持<br/>
+DNS劫持<br/>
+二维码劫持<br/>
+子域名劫持</p>
+
+<h2 id="toc_19">x11 业务逻辑漏洞</h2>
+
+<h3 id="toc_20">认证</h3>
+
+<p>使用默认凭证<br/>
+冻结账户策略不当<br/>
+弱用户名和密码<br/>
+“记住我”功能<br/>
+自动登录<br/>
+单点登录<br/>
+弱口令<br/>
+弱安全问题/答案<br/>
+第三方登录风险<br/>
+Oauth2.0安全<br/>
+JWT安全<br/>
+注册覆盖<br/>
+未验证的重定向和转发<br/>
+双因素认证不当</p>
+
+<h3 id="toc_21">授权</h3>
+
+<p>测试角色定义<br/>
+权限管理缺失<br/>
+匿名访问（备用接口——常见于兼容老的不安全的接口时产生）<br/>
+水平越权<br/>
+垂直越权<br/>
+超级账户<br/>
+实名认证不严格</p>
+
+<h3 id="toc_22">会话管理</h3>
+
+<p>cookie安全属性<br/>
+cookie可猜解<br/>
+cookie溢出<br/>
+会话固定<br/>
+用户凭证不安全传输（弱加密或明文传输）<br/>
+用户凭证未一次失效<br/>
+用户凭证可猜解<br/>
+注销与会话超时<br/>
+敏感数据不安全传输</p>
+
+<h3 id="toc_23">流程绕过</h3>
+
+<p>找回密码流程绕过</p>
+
+<h2 id="toc_24">x12 API安全</h2>
+
+<p>整理中</p>
 
                         
                       </div>
@@ -180,90 +328,10 @@ xrandr查看当前设置 <br/>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 13:47 下午</span>
+                    <span class="date">2018/11/22 11:58 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15453709108643.html">
-                
-                  <h1>python弱口令脚本的一点备注</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>很久以前写的</p>
-</blockquote>
-
-<p>跑弱口令的脚本<br/>
-不要使用字典这种操作，这不利于跑大量数据的场景。<br/>
-应该制定规则去跑，比如：<br/>
-取出一个用户名，然后根据规则生成弱口令，然后再去匹配用户名对应的密码，匹配则是弱口令，不匹配则不是弱口令。<br/>
-这样可以后续变成一个服务，用户输入密码，触发了规则则告诉他密码是弱口令。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/21 13:41 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15453707290429.html">
-                
-                  <h1>msf安装与维护</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><code>curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb &gt; msfinstall &amp;&amp; \<br/>
-  chmod 755 msfinstall &amp;&amp; \<br/>
-  ./msfinstall</code></p>
-
-<p>上面是官方提供的一键安装脚本</p>
-
-<p>使用msfupdate可以进行更新</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/21 13:38 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -287,7 +355,7 @@ xrandr查看当前设置 <br/>
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			 <a href="all_21.html">&raquo; Next Page</a> 
+			
 			</p>
 			  </div>
 			</div>
@@ -340,7 +408,7 @@ xrandr查看当前设置 <br/>
         
             <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
         
-            <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
+            <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
         
             <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
         
@@ -361,31 +429,31 @@ xrandr查看当前设置 <br/>
 	      
 		      
 			      <li class="post">
-			        <a href="15547243035014.html">相见欢·林花谢了春红</a>
+			        <a href="15591786403220.html">双因素覆盖不全</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15547237158216.html">怎么解决"该虚拟机似乎正在使用中"问题</a>
+			        <a href="15591049197350.html">今日相思</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15547068970077.html">arch 安装配置指南带图版</a>
+			        <a href="15590908841596.html">学习的深度和广度</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15547067485409.html">arch 安装配置指南</a>
+			        <a href="15590262822391.html">洞察-宜信集应用系统资产管理、漏洞全生命周期管理、安全知识库管理三位一体的平台的安装与使用</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15543568335321.html">python 计算代码运行时间的方法</a>
+			        <a href="15589173721679.html">svn 报错：“svn: E155015: Commit failed (details follow):svn: E155015: Aborting commit: '/Users/lonelyor/xxx.xls' remains in conflict” 解决方法</a>
 			      </li>
 		     
 		  

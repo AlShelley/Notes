@@ -9,7 +9,7 @@
 
     <title>
     
-  Mac 启动 apache - lonelyorWiki
+  双因素覆盖不全 - lonelyorWiki
   
   </title>
   
@@ -138,14 +138,14 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>Mac 启动 apache</h1>
+          <h1>双因素覆盖不全</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2018/12/14 17:21 下午</span>
+          <span class="date">2019/5/30 9:10 上午</span>
 
           <span>发表于&nbsp;</span> 
           
-              <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+              <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
            
          
           <span class="comments">
@@ -158,7 +158,32 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <p>apachectl start</p>
+      <blockquote>
+<p>这篇文章引用自【呆子不开口】在SDCC上的关于账号通行证安全相关的PPT。膜拜大佬</p>
+</blockquote>
+
+<h2 id="toc_0">漏洞原理</h2>
+
+<p>双因素后获取的凭证，在无需双因素处可以获得。</p>
+
+<h2 id="toc_1">常见的场景有：</h2>
+
+<p>1、web版登陆需要双因素认证，但app端却没跟上仍然可以用账号密码登陆<br/>
+2、在登陆处需要，在某些特殊功能处却可以通过特殊白名单参数绕过<br/>
+3、某些双因素认证后才能获得的凭证，可以在普通权限下通过某接口中获得</p>
+
+<p>案例：</p>
+
+<ul>
+<li>淘宝异地登录短信认证绕过</li>
+<li>某微博的双因素认证绕过</li>
+<li>某app移动端登录获取pc端双因素后的cookie</li>
+</ul>
+
+<h2 id="toc_2">修复方案</h2>
+
+<p>双因素认证后需要额外设置新的凭证<br/>
+并保证此凭证不在其他接口输出</p>
 
 
     
@@ -169,16 +194,13 @@
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15449531124166.html" 
-          title="Previous Post: Markdown基础语法">&laquo; Markdown基础语法</a>
-      
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15447786718296.html" 
-          title="Next Post: Mac 启动 tomcat">Mac 启动 tomcat &raquo;</a>
+          <a  href="15591049197350.html" 
+          title="Next Post: 今日相思">今日相思 &raquo;</a>
       
       </p>
         </div>

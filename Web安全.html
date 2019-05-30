@@ -138,6 +138,64 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15591786403220.html">
+                
+                  <h1>双因素覆盖不全</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>这篇文章引用自【呆子不开口】在SDCC上的关于账号通行证安全相关的PPT。膜拜大佬</p>
+</blockquote>
+
+<h2 id="toc_0">漏洞原理</h2>
+
+<p>双因素后获取的凭证，在无需双因素处可以获得。</p>
+
+<h2 id="toc_1">常见的场景有：</h2>
+
+<p>1、web版登陆需要双因素认证，但app端却没跟上仍然可以用账号密码登陆<br/>
+2、在登陆处需要，在某些特殊功能处却可以通过特殊白名单参数绕过<br/>
+3、某些双因素认证后才能获得的凭证，可以在普通权限下通过某接口中获得</p>
+
+<p>案例：</p>
+
+<ul>
+<li>淘宝异地登录短信认证绕过</li>
+<li>某微博的双因素认证绕过</li>
+<li>某app移动端登录获取pc端双因素后的cookie</li>
+</ul>
+
+<h2 id="toc_2">修复方案</h2>
+
+<p>双因素认证后需要额外设置新的凭证<br/>
+并保证此凭证不在其他接口输出</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/5/30 9:10 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15586769387988.html">
                 
                   <h1>Markdown XSS Payloads</h1>
@@ -453,84 +511,6 @@
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15550584590400.html">
-                
-                  <h1>HTTP.sys远程代码执行漏洞</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>转载自：<a href="http://www.cnvd.org.cn/webinfo/show/3614">http://www.cnvd.org.cn/webinfo/show/3614</a></p>
-</blockquote>
-
-<p>4月14日，微软月度例行安全公告披露一个HTTP.sys远程代码执行漏洞（CNVD-2015-02422，对应CVE-2015-1635）,主要威胁到IIS服务器的安全。该漏洞存在于 HTTP 协议堆栈 (HTTP.sys) 中，攻击者可以在系统帐户的上下文中执行任意代码或提升权限。目前，互联网已经出现了可以使服务器蓝屏的利用代码，不过可导致控制服务器主机的攻击代码还未出现。</p>
-
-<h2 id="toc_0">这漏洞能干啥</h2>
-
-<p>IIS 是 windows 主机上的 Web 服务程序，支持 asp、jsp 脚本，应用广泛漏洞众多。IIS服务进程依赖HTTP.sys内核驱动程序文件。漏洞产生的原因是HTTP.sys未能正确分析经特殊设计的HTTP请求所致，通过发送特定构造的HTTP请求包（如：在请求包中相关字段包含类似0xFFFFFFFFFFFFFFFF的大整数值参数），导致整数溢出。成功利用后，攻击者有可能在系统帐户的上下文中执行任意代码，导致拒绝服务或提取权限。目前相关分析表明，漏洞的溢出只限于整数型参数，直接构造可执行系统指令的攻击代码还有一定的难度。</p>
-
-<p>漏洞评级“高危”，因为被攻击会导致服务器蓝屏死机呀。</p>
-
-<h2 id="toc_1">影响范围</h2>
-
-<p>受影响操作系统的IIS服务器版本如下所示：<br/>
-WindowsServer 2012<br/>
-WindowsServer 2012 R2<br/>
-用于基于32位系统：<br/>
-Windows7 SP1<br/>
-Windows8<br/>
-用于基于x64位系统：<br/>
-Windows7 SP1<br/>
-Windows8<br/>
-Windows8.1<br/>
-WindowsServer 2008 R2 SP1<br/>
-用于基于 Itanium 的系统:<br/>
-WindowsServer 2008 R2 SP1</p>
-
-<h2 id="toc_2">漏洞修复建议</h2>
-
-<p>补丁：<a href="https://support.microsoft.com/zh-cn/kb/3042553">https://support.microsoft.com/zh-cn/kb/3042553</a><br/>
-装完后要重启才会生效</p>
-
-<p>一些系统管理员在部署微软的Server系统时可能不作为Web服务器使用，但有可能在默认安装了IIS，请相关单位用户注意排查。</p>
-
-<h2 id="toc_3">验证该漏洞注意事项</h2>
-
-<p>网络流传的poc可能导致服务器蓝屏死机，请谨慎验证......别把线上业务搞挂了。</p>
-
-<h2 id="toc_4">参考链接</h2>
-
-<p><a href="https://technet.microsoft.com/zh-CN/library/security/ms15-034.aspx">https://technet.microsoft.com/zh-CN/library/security/ms15-034.aspx</a></p>
-
-<p><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1635">https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1635</a></p>
-
-<p><a href="http://bobao.360.cn/news/detail/1435.html?from=groupmessage&amp;isappinstalled=0">http://bobao.360.cn/news/detail/1435.html?from=groupmessage&amp;isappinstalled=0</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/4/12 16:40 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -616,6 +596,12 @@ WindowsServer 2008 R2 SP1</p>
 	      
 		      
 			      <li class="post">
+			        <a href="15591786403220.html">双因素覆盖不全</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15591049197350.html">今日相思</a>
 			      </li>
 		     
@@ -635,12 +621,6 @@ WindowsServer 2008 R2 SP1</p>
 		      
 			      <li class="post">
 			        <a href="15589173721679.html">svn 报错：“svn: E155015: Commit failed (details follow):svn: E155015: Aborting commit: '/Users/lonelyor/xxx.xls' remains in conflict” 解决方法</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15586769387988.html">Markdown XSS Payloads</a>
 			      </li>
 		     
 		  

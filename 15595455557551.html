@@ -9,7 +9,7 @@
 
     <title>
     
-  90后空巢青年生活指南 - lonelyorWiki
+  使用 msf 检测 cve-2019-0708 WindowsRDP 远程代码执行漏洞 - lonelyorWiki
   
   </title>
   
@@ -138,14 +138,14 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>90后空巢青年生活指南</h1>
+          <h1>使用 msf 检测 cve-2019-0708 WindowsRDP 远程代码执行漏洞</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2019/1/30 14:8 下午</span>
+          <span class="date">2019/6/3 15:5 下午</span>
 
           <span>发表于&nbsp;</span> 
           
-              <span class="posted-in"><a href='%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html'>星火流萤</a></span>
+              <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
            
          
           <span class="comments">
@@ -158,38 +158,17 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <blockquote>
-<p>你永远不知道下一秒会发生什么，所以赶紧珍惜现在吧。</p>
-</blockquote>
+      <p>MSF模块：<a href="https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/rdp/cve_2019_0708_bluekeep.rb">https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/rdp/cve_2019_0708_bluekeep.rb</a></p>
 
-<h1 id="toc_0">生活习惯篇</h1>
+<p>前提：先在终端中更新 msf，使用命令<code>msfupdate</code>；如果没法更新，而 msf 版本又低就去 github 下载 msf 模块。</p>
 
-<h2 id="toc_1">多喝热水</h2>
+<p>现在开始验证：<br/>
+1、终端输入<code>msf</code>启动 msf<br/>
+2、使用 cve_2019_0708_bluekeep 模块：<code>use auxiliary/scanner/rdp/cve_2019_0708_bluekeep</code><br/>
+3、设置目标计算机 ip：<code>set RHOSTS 192.168.1.1</code>，如果是域名，可以先 ping 得出 ip 地址。<br/>
+4、输入<code>exploit</code>开始检测，如果出现方框中的内容，则表示漏洞存在（相关 ip 已打码）。</p>
 
-<p>不止&quot;女人是水做的&quot;，男人也是。人体70%是的成分是水。<br/>
-多喝水可以减肥、缓解皮肤干燥、排毒除痘、缓解眼睛疲劳等。多喝水还能治疗肾结石。</p>
-
-<h2 id="toc_2">不要久坐</h2>
-
-<p>久坐和喝水少一样危害巨大，因此不可久坐。每坐一个小时就起来走动顺便喝点水吧。</p>
-
-<h2 id="toc_3">给物品定位</h2>
-
-<p>将各类常用物品找一个固定的位置，每次取用后将其放回原处，同时记录每一件物品。掌握自己的生活从掌握自己有多少物品开始。</p>
-
-<h2 id="toc_4">常清洁</h2>
-
-<p>拒绝&quot;仓鼠症&quot;，不要囤积物品。制定房屋打扫计划，经常打扫、整理房间。<br/>
-学习&quot;断舍离&quot;</p>
-
-<h2 id="toc_5">注意个人护理</h2>
-
-<p>包括美容养颜、强身健体、预防疾病、个人卫生等。</p>
-
-<h2 id="toc_6">迈开腿管住嘴</h2>
-
-<p>吃饭只吃八分饱，不可贪食吃十分。<br/>
-经常出门走走，有利身心健康。看看展馆、游玩山水。工作修炼的是技术、出门修的是身心。</p>
+<p><figure><img src="media/15595455557551/15595462320619.jpg" alt=""/></figure></p>
 
 
     
@@ -200,16 +179,13 @@
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15489296290618.html" 
-          title="Previous Post: Mediakit报告设备商的空间不足以执行此操作">&laquo; Mediakit报告设备商的空间不足以执行此操作</a>
-      
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15487463359475.html" 
-          title="Next Post: 给网站添加百度、谷歌搜索框">给网站添加百度、谷歌搜索框 &raquo;</a>
+          <a  href="15591786403220.html" 
+          title="Next Post: 双因素覆盖不全">双因素覆盖不全 &raquo;</a>
       
       </p>
         </div>

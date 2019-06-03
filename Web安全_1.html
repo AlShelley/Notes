@@ -138,6 +138,46 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15554000328653.html">
+                
+                  <h1>最近遇到的一个靶机</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>1、查看 http 流量，后台扫描等进行信息收集，得出其用的是 xxxxcms，然后百度进一步进行信息收集，得出该 cms 存在过 sql 注入、文件包含等漏洞。<br/>
+2、全站测试 sql 注入，发现确实存在注入点<br/>
+3、上 sqlmap 进行扫描，得出管理员账号密码，得出 mysql 为普通用户权限。<br/>
+4、登录网站后台，利用文件包含漏洞获取部分.php 文件信息，对其进行编辑写入小马。（这块之前没怎么玩过，因此稍微花费了一点时间，目的达到了，不过不优雅）<br/>
+5、通过小马传入大马，然后连接大马。<br/>
+6、提权拿 linux 的 root，这里我不太懂，因此正在找资料，希望今晚能搞定提权这事。</p>
+
+<p>提权这块研究一下，搞出来了再写。目前的思路是通过 shell 查看操作系统版本和内核版本，查看已安装的包和程序，看看有没有一直漏洞可以利用。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/4/16 15:33 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15550584590400.html">
                 
                   <h1>HTTP.sys远程代码执行漏洞</h1>
@@ -718,53 +758,6 @@ Dnspionage<br/>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15483045491162.html">
-                
-                  <h1>burpsuite设置上游代理</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>burpsuite的使用技巧之一，设置上游代理。比如测试境外网站时可能需要[fanqiang]才能访问，此时这个技巧就能用得上了。</p>
-</blockquote>
-
-<p><figure><img src="http://images.lonelyor.org/burp%E8%AE%BE%E7%BD%AE%E4%B8%8A%E6%B8%B8%E4%BB%A3%E7%90%8620180823161146.png" alt="burp设置上游代理20180823161146"/><figcaption>burp设置上游代理201808</figcaption></figure></p>
-
-<p>1、在浏览器中设置burp代理以保证可以抓包<br/>
-2、开启上游代理<br/>
-3、在burp的图中所示位置设置上游代理</p>
-
-<p>打完收工</p>
-
-<h2 id="toc_0">参考链接</h2>
-
-<p><a href="http://www.360zhijia.com/360anquanke/191737.html">http://www.360zhijia.com/360anquanke/191737.html</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -850,6 +843,12 @@ Dnspionage<br/>
 	      
 		      
 			      <li class="post">
+			        <a href="15595455557551.html">使用 msf 检测 cve-2019-0708 WindowsRDP 远程代码执行漏洞</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15591786403220.html">双因素覆盖不全</a>
 			      </li>
 		     
@@ -869,12 +868,6 @@ Dnspionage<br/>
 		      
 			      <li class="post">
 			        <a href="15590262822391.html">洞察-宜信集应用系统资产管理、漏洞全生命周期管理、安全知识库管理三位一体的平台的安装与使用</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15589173721679.html">svn 报错：“svn: E155015: Commit failed (details follow):svn: E155015: Aborting commit: '/Users/lonelyor/xxx.xls' remains in conflict” 解决方法</a>
 			      </li>
 		     
 		  

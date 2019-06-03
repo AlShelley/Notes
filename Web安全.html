@@ -138,6 +138,49 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15595455557551.html">
+                
+                  <h1>使用 msf 检测 cve-2019-0708 WindowsRDP 远程代码执行漏洞</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>MSF模块：<a href="https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/rdp/cve_2019_0708_bluekeep.rb">https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/rdp/cve_2019_0708_bluekeep.rb</a></p>
+
+<p>前提：先在终端中更新 msf，使用命令<code>msfupdate</code>；如果没法更新，而 msf 版本又低就去 github 下载 msf 模块。</p>
+
+<p>现在开始验证：<br/>
+1、终端输入<code>msf</code>启动 msf<br/>
+2、使用 cve_2019_0708_bluekeep 模块：<code>use auxiliary/scanner/rdp/cve_2019_0708_bluekeep</code><br/>
+3、设置目标计算机 ip：<code>set RHOSTS 192.168.1.1</code>，如果是域名，可以先 ping 得出 ip 地址。<br/>
+4、输入<code>exploit</code>开始检测，如果出现方框中的内容，则表示漏洞存在（相关 ip 已打码）。</p>
+
+<p><figure><img src="media/15595455557551/15595462320619.jpg" alt=""/></figure></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/6/3 15:5 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15591786403220.html">
                 
                   <h1>双因素覆盖不全</h1>
@@ -471,46 +514,6 @@
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15554000328653.html">
-                
-                  <h1>最近遇到的一个靶机</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>1、查看 http 流量，后台扫描等进行信息收集，得出其用的是 xxxxcms，然后百度进一步进行信息收集，得出该 cms 存在过 sql 注入、文件包含等漏洞。<br/>
-2、全站测试 sql 注入，发现确实存在注入点<br/>
-3、上 sqlmap 进行扫描，得出管理员账号密码，得出 mysql 为普通用户权限。<br/>
-4、登录网站后台，利用文件包含漏洞获取部分.php 文件信息，对其进行编辑写入小马。（这块之前没怎么玩过，因此稍微花费了一点时间，目的达到了，不过不优雅）<br/>
-5、通过小马传入大马，然后连接大马。<br/>
-6、提权拿 linux 的 root，这里我不太懂，因此正在找资料，希望今晚能搞定提权这事。</p>
-
-<p>提权这块研究一下，搞出来了再写。目前的思路是通过 shell 查看操作系统版本和内核版本，查看已安装的包和程序，看看有没有一直漏洞可以利用。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/4/16 15:33 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -596,6 +599,12 @@
 	      
 		      
 			      <li class="post">
+			        <a href="15595455557551.html">使用 msf 检测 cve-2019-0708 WindowsRDP 远程代码执行漏洞</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15591786403220.html">双因素覆盖不全</a>
 			      </li>
 		     
@@ -615,12 +624,6 @@
 		      
 			      <li class="post">
 			        <a href="15590262822391.html">洞察-宜信集应用系统资产管理、漏洞全生命周期管理、安全知识库管理三位一体的平台的安装与使用</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15589173721679.html">svn 报错：“svn: E155015: Commit failed (details follow):svn: E155015: Aborting commit: '/Users/lonelyor/xxx.xls' remains in conflict” 解决方法</a>
 			      </li>
 		     
 		  

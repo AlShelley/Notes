@@ -138,6 +138,91 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15446861280668.html">
+                
+                  <h1>hackthebox邀请码</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>不打算好好玩的麻烦不要瞎注册，大量的垃圾账号只会污染整个生态环境。</p>
+</blockquote>
+
+<p>进入注册页面，观察页面js文件会找到以下内容：</p>
+
+<pre class="line-numbers"><code class="language-javascript">eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!&#39;&#39;.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return&#39;\\w+&#39;};c=1};while(c--){if(k[c]){p=p.replace(new RegExp(&#39;\\b&#39;+e(c)+&#39;\\b&#39;,&#39;g&#39;),k[c])}}return p}(&#39;1 i(4){h 8={&quot;4&quot;:4};$.9({a:&quot;7&quot;,5:&quot;6&quot;,g:8,b:\&#39;/d/e/n\&#39;,c:1(0){3.2(0)},f:1(0){3.2(0)}})}1 j(){$.9({a:&quot;7&quot;,5:&quot;6&quot;,b:\&#39;/d/e/k/l/m\&#39;,c:1(0){3.2(0)},f:1(0){3.2(0)}})}&#39;,24,24,&#39;response|function|log|console|code|dataType|json|POST|formData|ajax|type|url|success|api|invite|error|data|var|verifyInviteCode|makeInviteCode|how|to|generate|verify&#39;.split(&#39;|&#39;),0,{}))
+</code></pre>
+
+<p>1、然后把这段代码放到 <a href="http://jsbeautifier.org/">http://jsbeautifier.org/</a> 进行美化，得出：<br/>
+2、</p>
+
+<pre class="line-numbers"><code class="language-javascript">function verifyInviteCode(code) {
+    var formData = {
+        &quot;code&quot;: code
+    };
+    $.ajax({
+        type: &quot;POST&quot;,
+        dataType: &quot;json&quot;,
+        data: formData,
+        url: &#39;/api/invite/verify&#39;,
+        success: function(response) {
+            console.log(response)
+        },
+        error: function(response) {
+            console.log(response)
+        }
+    })
+}
+
+function makeInviteCode() {
+    $.ajax({
+        type: &quot;POST&quot;,
+        dataType: &quot;json&quot;,
+        url: &#39;/api/invite/how/to/generate&#39;,
+        success: function(response) {
+            console.log(response)
+        },
+        error: function(response) {
+            console.log(response)
+        }
+    })
+}
+</code></pre>
+
+<p>可以看出上述代码是让我们访问：<a href="https://www.hackthebox.eu/api/invite/generate">https://www.hackthebox.eu/api/invite/generate</a><br/>
+然后修改请求方式为post<br/>
+于是就得到了：</p>
+
+<pre class="line-numbers"><code class="language-javascript">{&quot;success&quot;:1,&quot;data&quot;:{&quot;code&quot;:&quot;VlJQS1QtQUNXRUstT0tYREwtQ0lZQVUtS0NZSlU=&quot;,&quot;format&quot;:&quot;encoded&quot;},&quot;0&quot;:200}
+</code></pre>
+
+<p>将code进行base64解码，就得到了邀请码。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13 15:28 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15433912730163.html">
                 
                   <h1>FOEENSICS 101</h1>
@@ -443,83 +528,6 @@ catch (NumberFormatException) {
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15428708110510.html">
-                
-                  <h1>更优雅的使用Hexo写博客</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>曾经的博客是使用 Hexo 写的，我觉得Hexo这种在文章前面写上元信息的方式很棒。然而，每此写markdown文档都要输入这些元信息，这很麻烦，所以就写了个shell脚本来自动化输入文件元信息的过程。<br/>
-代码如下：</p>
-</blockquote>
-
-<pre class="line-numbers"><code class="language-bash">#!/bin/bash
-
-printf &quot;请输入文件名(example.md)，记得写后缀!\n&quot;
-read -p &quot;文件名是: &quot; filename
-# 这里的title取文件名不取后缀
-echo &quot;title: &quot;${filename%.*} &gt;&gt; $filename
-echo &quot;author: lonelyor&quot; &gt;&gt; $filename
-echo &quot;language: zh-CN&quot; &gt;&gt; $filename
-echo &quot;tags:&quot; &gt;&gt; $filename
-echo &quot;  - 标签&quot; &gt;&gt; $filename
-echo &quot;categories:&quot; &gt;&gt; $filename
-echo &quot;  - 分类&quot; &gt;&gt; $filename
-time=$(date &quot;+%Y-%m-%d %H:%M:%S&quot;)
-echo &quot;date: ${time}&quot;&gt;&gt; $filename
-echo &quot;---&quot; &gt;&gt; $filename
-echo &quot;&gt; description: &quot; &gt;&gt; $filename
-# printf和echo都是输出，&gt;&gt;表示追加，&gt;会覆盖文件
-# shell中使用变量需要先定义变量，然后使用时加 $
-# read 用来创建文件，文件名从终端获取
-</code></pre>
-
-<p>展示效果如下:</p>
-
-<pre class="line-numbers"><code class="language-md">title: 如何优雅的创建markdown文件
-author: lonelyor
-language: zh-CN
-tags:
-  - Hexo
-  - markdown
-categories:
-  - 技术杂文
-date: 2018-09-06 17:42:40
----
-&gt; description: 若爱请深爱，若不爱请离开。
-</code></pre>
-
-<p>接下来说说如何使用(仅限linux、macos，或者说可以执行bash的环境，win用户请自行转换成bat)：<br/>
-首先，创建一个名叫 md.sh 的文件（名字你爱咋咋地），把代码copy进去。<br/>
-然后，<code>ln -s /md文件绝对路径 /usr/local/bin/md</code> ,这条语句的意思就是创建一个软连接，把 md.sh 连接到当前用户的 md 命令上。<br/>
-最后，打开终端输入 md ，然后输入要创建的markdown文件名（如：test.md），即可在当前目录下创建带有元信息的markdown文件。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/22 15:13 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -605,6 +613,12 @@ date: 2018-09-06 17:42:40
 	      
 		      
 			      <li class="post">
+			        <a href="15595455557551.html">使用 msf 检测 cve-2019-0708 WindowsRDP 远程代码执行漏洞</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15591786403220.html">双因素覆盖不全</a>
 			      </li>
 		     
@@ -624,12 +638,6 @@ date: 2018-09-06 17:42:40
 		      
 			      <li class="post">
 			        <a href="15590262822391.html">洞察-宜信集应用系统资产管理、漏洞全生命周期管理、安全知识库管理三位一体的平台的安装与使用</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15589173721679.html">svn 报错：“svn: E155015: Commit failed (details follow):svn: E155015: Aborting commit: '/Users/lonelyor/xxx.xls' remains in conflict” 解决方法</a>
 			      </li>
 		     
 		  

@@ -9,7 +9,7 @@
 
     <title>
     
-  css美化文章标题 - lonelyorWiki
+  业务逻辑漏洞安全检查checklist - lonelyorWiki
   
   </title>
   
@@ -138,14 +138,14 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>css美化文章标题</h1>
+          <h1>业务逻辑漏洞安全检查checklist</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2018/12/21 15:3 下午</span>
+          <span class="date">2019/6/4 11:10 上午</span>
 
           <span>发表于&nbsp;</span> 
           
-              <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
+              <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
            
          
           <span class="comments">
@@ -159,33 +159,73 @@
 
       <div class="article-content">
       <blockquote>
-<p>MWeb自带的标题不好看，特别是首页展示的文章多的时候，没有区分度，看的眼花缭乱的。<br/>
-参考自：<a href="http://www.fly63.com/article/detial/642">http://www.fly63.com/article/detial/642</a></p>
+<p>未公开整理好的 checklist 全部内容，也不打算全部公开。</p>
 </blockquote>
 
-<h2 id="toc_0">彩虹字</h2>
+<h2 id="toc_0">认证</h2>
 
-<p>下面是我添加的css代码，用来稍微美化一下文章标题。</p>
+<p>图形验证码问题（验证码缺失、验证码回显、验证码绕过、验证流程不正确、重放攻击）<br/>
+手机验证码（短信轰炸、验证码劫持）<br/>
+会话固定<br/>
+cookie 伪造/爆破<br/>
+使用默认凭证（管理后台、数据库密码）<br/>
+冻结账户策略不当<br/>
+弱用户名和密码<br/>
+“记住我”功能缺陷（前端记住/发送密码）<br/>
+自动登录<br/>
+单点登录劫持<br/>
+第三方登录劫持<br/>
+二维码登录劫持<br/>
+弱口令<br/>
+弱安全问题/答案<br/>
+弱的密码恢复机制<br/>
+Oauth2.0授权漏洞<br/>
+JWT安全<br/>
+注册覆盖<br/>
+未验证的重定向和转发<br/>
+双因素认证不当（双因素后获取的凭证，在无需双因素处可以获得）<br/>
+恶意注册</p>
 
-<pre class="line-numbers"><code class="language-css3">.markdown-body h1 {
-  font-size: 2rem;
-  margin: 0.67rem 0;
-  background: linear-gradient(to right, red, orange, green, blue, indigo, violet);
-  -webkit-background-clip: text; 
-  color: transparent;   
-}
-</code></pre>
+<h2 id="toc_1">授权</h2>
 
-<h2 id="toc_1">虚化标题</h2>
+<p>测试角色定义（授权不当）<br/>
+权限管理缺失（无权限设计）<br/>
+匿名访问（备用接口——常见于兼容老的不安全的接口时产生）<br/>
+水平越权<br/>
+垂直越权<br/>
+超级账户<br/>
+实名认证不严格</p>
 
-<pre class="line-numbers"><code class="language-text">.markdown-body h1 {
-  font-size: 30px;
-  color:  #00cccc;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-  overflow-y: scroll;
-  margin: 0px;
-}
-</code></pre>
+<h2 id="toc_2">会话管理</h2>
+
+<p>cookie安全属性<br/>
+cookie可猜解/伪造<br/>
+cookie溢出<br/>
+会话固定漏洞<br/>
+用户凭证不安全传输（弱加密或明文传输）<br/>
+用户凭证未一次失效<br/>
+用户凭证可猜解<br/>
+注销与会话超时<br/>
+敏感数据不安全传输（get 方法传输 session）</p>
+
+<h2 id="toc_3">内容安全</h2>
+
+<p>敏感信息过度显示<br/>
+违法违规信息</p>
+
+<h2 id="toc_4">设计缺陷</h2>
+
+<p>业务一致性（篡改类）漏洞（订单 id、邮箱或用户名、手机号、商品编号、用户 id、支付金额、优惠券金额、商品数量、最大数限制、前端限制绕过）<br/>
+刷赞、刷关注、刷票、刷奖品<br/>
+流程绕过（密码找回、支付、登录验证）</p>
+
+<h2 id="toc_5">典型场景</h2>
+
+<p>个人信息<br/>
+密码找回/修改<br/>
+支付流程<br/>
+注册流程<br/>
+需要手机/邮箱验证的业务</p>
 
 
     
@@ -196,16 +236,13 @@
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15456175398128.html" 
-          title="Previous Post: 自建kms服务器激活windows">&laquo; 自建kms服务器激活windows</a>
-      
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15453720146052.html" 
-          title="Next Post: Pycharm编程遇到的技巧">Pycharm编程遇到的技巧 &raquo;</a>
+          <a  href="15596171974228.html" 
+          title="Next Post: 最近做了个 fuzzing 字典精简版">最近做了个 fuzzing 字典精简版 &raquo;</a>
       
       </p>
         </div>

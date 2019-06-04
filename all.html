@@ -138,6 +138,106 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15596178265897.html">
+                
+                  <h1>业务逻辑漏洞安全检查checklist</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>未公开整理好的 checklist 全部内容，也不打算全部公开。</p>
+</blockquote>
+
+<h2 id="toc_0">认证</h2>
+
+<p>图形验证码问题（验证码缺失、验证码回显、验证码绕过、验证流程不正确、重放攻击）<br/>
+手机验证码（短信轰炸、验证码劫持）<br/>
+会话固定<br/>
+cookie 伪造/爆破<br/>
+使用默认凭证（管理后台、数据库密码）<br/>
+冻结账户策略不当<br/>
+弱用户名和密码<br/>
+“记住我”功能缺陷（前端记住/发送密码）<br/>
+自动登录<br/>
+单点登录劫持<br/>
+第三方登录劫持<br/>
+二维码登录劫持<br/>
+弱口令<br/>
+弱安全问题/答案<br/>
+弱的密码恢复机制<br/>
+Oauth2.0授权漏洞<br/>
+JWT安全<br/>
+注册覆盖<br/>
+未验证的重定向和转发<br/>
+双因素认证不当（双因素后获取的凭证，在无需双因素处可以获得）<br/>
+恶意注册</p>
+
+<h2 id="toc_1">授权</h2>
+
+<p>测试角色定义（授权不当）<br/>
+权限管理缺失（无权限设计）<br/>
+匿名访问（备用接口——常见于兼容老的不安全的接口时产生）<br/>
+水平越权<br/>
+垂直越权<br/>
+超级账户<br/>
+实名认证不严格</p>
+
+<h2 id="toc_2">会话管理</h2>
+
+<p>cookie安全属性<br/>
+cookie可猜解/伪造<br/>
+cookie溢出<br/>
+会话固定漏洞<br/>
+用户凭证不安全传输（弱加密或明文传输）<br/>
+用户凭证未一次失效<br/>
+用户凭证可猜解<br/>
+注销与会话超时<br/>
+敏感数据不安全传输（get 方法传输 session）</p>
+
+<h2 id="toc_3">内容安全</h2>
+
+<p>敏感信息过度显示<br/>
+违法违规信息</p>
+
+<h2 id="toc_4">设计缺陷</h2>
+
+<p>业务一致性（篡改类）漏洞（订单 id、邮箱或用户名、手机号、商品编号、用户 id、支付金额、优惠券金额、商品数量、最大数限制、前端限制绕过）<br/>
+刷赞、刷关注、刷票、刷奖品<br/>
+流程绕过（密码找回、支付、登录验证）</p>
+
+<h2 id="toc_5">典型场景</h2>
+
+<p>个人信息<br/>
+密码找回/修改<br/>
+支付流程<br/>
+注册流程<br/>
+需要手机/邮箱验证的业务</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/6/4 11:10 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15596171974228.html">
                 
                   <h1>最近做了个 fuzzing 字典精简版</h1>
@@ -475,199 +575,6 @@ a*~1*/.aspx
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15590262822391.html">
-                
-                  <h1>洞察-宜信集应用系统资产管理、漏洞全生命周期管理、安全知识库管理三位一体的平台的安装与使用</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p><a href="https://github.com/creditease-sec/insight">https://github.com/creditease-sec/insight</a> 感谢作者！</p>
-</blockquote>
-
-<h2 id="toc_0">部署和启动 mysql in docker</h2>
-
-<p>1、首先安装 docker，这里略过</p>
-
-<p>2、安装 mysql 的 docker 镜像<code>docker pull mysql:5.7.13</code></p>
-
-<p>3、启动 mysql，这里的 name 可以自行指定。</p>
-
-<pre class="line-numbers"><code class="language-text">docker run -d -p 127.0.0.1:6606:3306 \
---name open_source_mysqldb \
--e MYSQL_ROOT_PASSWORD=root \
-mysql:5.7.13
-</code></pre>
-
-<p>4、查看已经启动的 docker 镜像，这里注意 name 后面要用到。<code>docker ps -a</code><br/>
-<figure><img src="media/15590262822391/15590264712809.jpg" alt=""/></figure></p>
-
-<p>5、进入容器bash<code>docker exec -it open_source_mysqldb bash</code></p>
-
-<p>6、进入 mysql 并创建数据库和账号权限配置<br/>
-<code>mysql -h localhost -P 6606 -u root -p</code><br/>
-<figure><img src="media/15590262822391/15590267094981.jpg" alt=""/></figure></p>
-
-<pre class="line-numbers"><code class="language-text">mysql&gt; CREATE DATABASE IF NOT EXISTS vuldb DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
-mysql&gt; grant all on vuldb.* to vuluser@&#39;%&#39; identified by &#39;vulpassword&#39;;
-mysql&gt; flush privileges;
-mysql&gt; quit
-</code></pre>
-
-<p><figure><img src="media/15590262822391/15590267827107.jpg" alt=""/></figure></p>
-
-<p>7、退出容器 bash<code>exit</code></p>
-
-<h2 id="toc_1">部署和启动 APP</h2>
-
-<p>1、下载源码<br/>
-<code>$ git clone https://github.com/creditease-sec/insight.git</code></p>
-
-<p>2、修改srcpm/config.py 配置文件</p>
-
-<ul>
-<li><p>修改公司邮箱后缀    </p>
-<pre class="line-numbers"><code class="language-text">#公司邮箱后缀限制，只能使用公司邮箱注册账号。
-CORP_MAIL = &#39;@qq.com&#39;
-</code></pre></li>
-<li><p>修改邮件CC抄送列表    </p>
-<pre class="line-numbers"><code class="language-text">#平台发送的每封邮件的邮件抄送列表，可以设置发送给安全部邮箱列表，可自行修改，也可以保持不变为空
-&#39;&#39;&#39;<br/>
-示例：<br/>
-CC_EMAIL = [&#39;xxx1@creditease.cn&#39;,<br/>
-            &#39;xxx2@creditease.cn&#39;,<br/>
-        ]<br/>
-&#39;&#39;&#39;<br/>
-CC_EMAIL = [<br/>
-        ]<br/>
-        ```
-</code></pre></li>
-</ul>
-
-<ul>
-<li><p>修改开发模式的邮箱服务器和发件邮箱配置    </p>
-<pre class="line-numbers"><code class="language-text"># 以开发模式的配置运行，使用测试邮件服务器，并开启debug模式
-# 平台发邮件账号设置<br/>
-SRCPM_MAIL_SENDER = &#39;安全部 &lt;sec_creditease@sina.com&gt;&#39;<br/>
-# 发送邮件的服务器设置，邮箱密码由系统变量中读取<br/>
-MAIL_SERVER = &#39;smtp.sina.com&#39;<br/>
-MAIL_PORT = 587<br/>
-MAIL_USE_TLS = True<br/>
-MAIL_USERNAME = os.environ.get(<br/>
-    &#39;MAIL_USERNAME&#39;) or &#39;sec_creditease@sina.com&#39;<br/>
-MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
-</code></pre></li>
-<li><p>修改生产模式的邮箱服务器和发件邮箱配置</p>
-<pre class="line-numbers"><code class="language-text"># 以生产模式的配置运行，使用生产邮件服务器，并关闭debug模式
-# 平台发邮件账号设置<br/>
-SRCPM_MAIL_SENDER = &#39;安全部 &lt;xxx@creditease.cn&gt;&#39;<br/>
-# 发送邮件的服务器设置，账号密码由系统变量中读取<br/>
-MAIL_SERVER = &#39;x.x.x.x&#39;<br/>
-MAIL_PORT = 25<br/>
-MAIL_USE_TLS = False<br/>
-MAIL_USERNAME = os.environ.get(<br/>
-    &#39;MAIL_USERNAME&#39;) or &#39;xxx@creditease.cn&#39;<br/>
-MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
-</code></pre></li>
-</ul>
-
-<p>3、修改定时周期邮件 mail_sender.py 的配置    </p>
-
-<pre class="line-numbers"><code class="language-text">    #平台发送的每封邮件的邮件抄送列表，可以设置发送给安全部邮箱列表，可自行修改，也可以保持不变为空
-    &#39;&#39;&#39;
-    示例：
-    CC_EMAIL = [&#39;xxx1@creditease.cn&#39;,
-                &#39;xxx2@creditease.cn&#39;,
-            ]
-    &#39;&#39;&#39;
-    CC_EMAIL = [
-            ]
-    #主机名设置
-    SERVER_NAME = &#39;xxx.creditease.corp&#39;
-    # 平台发邮件账号设置
-    SRCPM_MAIL_SENDER = &#39;安全部 &lt;xxx@creditease.cn&gt;&#39;
-    # 发送邮件的服务器设置，账号密码由系统变量中读取
-    MAIL_SERVER = &#39;x.x.x.x&#39;
-    MAIL_PORT = 25
-    MAIL_USE_TLS = False
-    MAIL_USERNAME = os.environ.get(
-        &#39;MAIL_USERNAME&#39;) or &#39;xxx@creditease.cn&#39;
-    MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
-</code></pre>
-
-<p>4、修改srcpm/app/src/forms.py 漏洞来源下拉列表    </p>
-
-<pre class="line-numbers"><code class="language-text">    &#39;&#39;&#39; 下拉选项 &#39;&#39;&#39;
-    source_choices = [(&#39;&#39;,&#39;&#39;), (u&#39;安全部&#39;, u&#39;安全部&#39;), (u&#39;YISRC&#39;, u&#39;YISRC&#39;), (u&#39;公众平台&#39;, u&#39;公众平台&#39;), (u&#39;合作伙伴&#39;, u&#39;合作伙伴&#39;)]
-</code></pre>
-
-<p>5、在项目根目录下部署和启动APP    </p>
-
-<pre class="line-numbers"><code class="language-text"># 拉取镜像
-docker pull daocloud.io/liusheng/vulpm_docker:latest
-或
-自己构建镜像
-docker build -t=&#39;vulpm_docker&#39; .
-# 在项目目录下启动容器，确保当前目录下存在srcpm文件夹，MAIL_PASSOWRD替换为自己邮箱服务器的密码。
-$ docker run -d -p 127.0.0.1:9000:5000 \
---link open_source_mysqldb:db \
---name open_source_srcpm \
--v $PWD/srcpm:/opt/webapp/srcpm \
--e DEV_DATABASE_URL=&#39;mysql://vuluser:vulpassword@db/vuldb&#39; \
--e SrcPM_CONFIG=development \
--e MAIL_PASSWORD=&#39;xxxxxx&#39; \
-daocloud.io/liusheng/vulpm_docker:latest \
-sh -c &#39;supervisord -c srcpm/supervisor.conf &amp;&amp; supervisorctl -c srcpm/supervisor.conf start all &amp;&amp; tail -f srcpm/log/gunicorn.err &amp;&amp; tail -f srcpm/log/mail_sender.err&#39;
-</code></pre>
-
-<h1 id="toc_2">初始化数据库</h1>
-
-<p>参考作者写的就可以了。</p>
-
-<p><a href="https://github.com/creditease-sec/insight/blob/open-source/docs/db_init.md">数据库初始化详细配置指南</a></p>
-
-<p>或者</p>
-
-<p>直接导入初始化的sql</p>
-
-<p>导入sql</p>
-
-<pre class="line-numbers"><code class="language-text">$ mysql -h127.0.0.1 -P6606 -uroot -p vuldb &lt; srcpm/vuldb_init.sql
-</code></pre>
-
-<p>Enter password:root</p>
-
-<h2 id="toc_3">搭建完成</h2>
-
-<p>访问域名：<a href="http://127.0.0.1:9000/srcpm/">http://127.0.0.1:9000/srcpm/</a> 即可<br/>
-账号：<a href="mailto:admin@admin.com">admin@admin.com</a><br/>
-密码：11</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/5/28 14:51 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -753,6 +660,12 @@ sh -c &#39;supervisord -c srcpm/supervisor.conf &amp;&amp; supervisorctl -c srcp
 	      
 		      
 			      <li class="post">
+			        <a href="15596178265897.html">业务逻辑漏洞安全检查checklist</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15596171974228.html">最近做了个 fuzzing 字典精简版</a>
 			      </li>
 		     
@@ -772,12 +685,6 @@ sh -c &#39;supervisord -c srcpm/supervisor.conf &amp;&amp; supervisorctl -c srcp
 		      
 			      <li class="post">
 			        <a href="15591049197350.html">今日相思</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15590908841596.html">学习的深度和广度</a>
 			      </li>
 		     
 		  

@@ -138,6 +138,106 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15596178265897.html">
+                
+                  <h1>业务逻辑漏洞安全检查checklist</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>未公开整理好的 checklist 全部内容，也不打算全部公开。</p>
+</blockquote>
+
+<h2 id="toc_0">认证</h2>
+
+<p>图形验证码问题（验证码缺失、验证码回显、验证码绕过、验证流程不正确、重放攻击）<br/>
+手机验证码（短信轰炸、验证码劫持）<br/>
+会话固定<br/>
+cookie 伪造/爆破<br/>
+使用默认凭证（管理后台、数据库密码）<br/>
+冻结账户策略不当<br/>
+弱用户名和密码<br/>
+“记住我”功能缺陷（前端记住/发送密码）<br/>
+自动登录<br/>
+单点登录劫持<br/>
+第三方登录劫持<br/>
+二维码登录劫持<br/>
+弱口令<br/>
+弱安全问题/答案<br/>
+弱的密码恢复机制<br/>
+Oauth2.0授权漏洞<br/>
+JWT安全<br/>
+注册覆盖<br/>
+未验证的重定向和转发<br/>
+双因素认证不当（双因素后获取的凭证，在无需双因素处可以获得）<br/>
+恶意注册</p>
+
+<h2 id="toc_1">授权</h2>
+
+<p>测试角色定义（授权不当）<br/>
+权限管理缺失（无权限设计）<br/>
+匿名访问（备用接口——常见于兼容老的不安全的接口时产生）<br/>
+水平越权<br/>
+垂直越权<br/>
+超级账户<br/>
+实名认证不严格</p>
+
+<h2 id="toc_2">会话管理</h2>
+
+<p>cookie安全属性<br/>
+cookie可猜解/伪造<br/>
+cookie溢出<br/>
+会话固定漏洞<br/>
+用户凭证不安全传输（弱加密或明文传输）<br/>
+用户凭证未一次失效<br/>
+用户凭证可猜解<br/>
+注销与会话超时<br/>
+敏感数据不安全传输（get 方法传输 session）</p>
+
+<h2 id="toc_3">内容安全</h2>
+
+<p>敏感信息过度显示<br/>
+违法违规信息</p>
+
+<h2 id="toc_4">设计缺陷</h2>
+
+<p>业务一致性（篡改类）漏洞（订单 id、邮箱或用户名、手机号、商品编号、用户 id、支付金额、优惠券金额、商品数量、最大数限制、前端限制绕过）<br/>
+刷赞、刷关注、刷票、刷奖品<br/>
+流程绕过（密码找回、支付、登录验证）</p>
+
+<h2 id="toc_5">典型场景</h2>
+
+<p>个人信息<br/>
+密码找回/修改<br/>
+支付流程<br/>
+注册流程<br/>
+需要手机/邮箱验证的业务</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/6/4 11:10 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15596171974228.html">
                 
                   <h1>最近做了个 fuzzing 字典精简版</h1>
@@ -511,82 +611,6 @@ a*~1*/.aspx
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15586605529996.html">
-                
-                  <h1>验证码安全</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>由于业务迭代频繁，产品线众多...好了不废话了。简单来说就是很多网站的登录界面没有验证码，只有账号密码输入框，这样不安全。</p>
-
-<h2 id="toc_0">什么是验证码</h2>
-
-<p>全自动区分计算机和人类的图灵测试（Completely Automated Public Turing test to tell Computers and Humans Apart，简称CAPTCHA），俗称验证码，是一种区分用户是计算机或人的全自动化程序。</p>
-
-<h2 id="toc_1">验证码种类</h2>
-
-<p>1、图形验证码<br/>
-2、滑动验证码（比如极验）<br/>
-3、答题验证码<br/>
-4、手机短信/邮箱验证码<br/>
-5、动态口令</p>
-
-<h2 id="toc_2">验证码的作用</h2>
-
-<p>人机识别：识别使用对应功能的是人还是机器。<br/>
-防止机器暴力攻击：防止攻击者在短时间内用机器进行批量操作（常见功能场景如：登录）。</p>
-
-<h2 id="toc_3">验证码工作原理</h2>
-
-<p><figure><img src="media/15586605529996/15586616406956.jpg" alt=""/></figure></p>
-
-<h2 id="toc_4">验证码常用场景与作用</h2>
-
-<p>登录接口常使用验证码来防御攻击者的撞库攻击<br/>
-注册接口常用验证码来防御批量恶意注册<br/>
-身份认证<br/>
-重要表单提交<br/>
-修改密码<br/>
-支付等功能</p>
-
-<h2 id="toc_5">验证码使用</h2>
-
-<p>重要接口要加验证码<br/>
-常见的如登录、注册等接口推荐使用滑动验证码；重要的如改密、支付等功能推荐使用手机短信验证码；vpn登录、身份认证等推荐使用动态口令。</p>
-
-<h2 id="toc_6">验证码对抗技术</h2>
-
-<p>1、OCR 识别图形验证码<br/>
-2、机器识别验证码（常见流程：去噪处理-图像二值化-切片处理-文件图片标准化-字符模板识别）<br/>
-3、LTE／4G 伪基站＋GSM 中间人攻击实现手机短信验证码攻击（相关安全事件可见&quot;这下一无所有了&quot;：<a href="http://netsecurity.51cto.com/art/201808/580812.htm%EF%BC%89">http://netsecurity.51cto.com/art/201808/580812.htm）</a><br/>
-4、验证码流程绕过（空验证码、返回包含验证码、验证码固定、验证码前端校验、验证流程有误）<br/>
-5、人工打码平台</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/5/24 9:15 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -672,6 +696,12 @@ a*~1*/.aspx
 	      
 		      
 			      <li class="post">
+			        <a href="15596178265897.html">业务逻辑漏洞安全检查checklist</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15596171974228.html">最近做了个 fuzzing 字典精简版</a>
 			      </li>
 		     
@@ -691,12 +721,6 @@ a*~1*/.aspx
 		      
 			      <li class="post">
 			        <a href="15591049197350.html">今日相思</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15590908841596.html">学习的深度和广度</a>
 			      </li>
 		     
 		  

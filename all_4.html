@@ -138,6 +138,104 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15543568335321.html">
+                
+                  <h1>python 计算代码运行时间的方法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>话不多说，直接上代码：<br/>
+方法一：</p>
+
+<pre class="line-numbers"><code class="language-text">import time
+start = time.time()
+run_function()
+end = time.time()
+print(end)
+</code></pre>
+
+<p>方法二：</p>
+
+<pre class="line-numbers"><code class="language-text">import time
+start = time.clock()
+run_function()
+end = time.clock()
+print(end-start)
+</code></pre>
+
+<h2 id="toc_0">秒级计算</h2>
+
+<p>上述方法 print 的结果是原始时间数据，可以对其进行加减运算，但是结果不太直观，通常我们统计时间是以秒为单位。<br/>
+下面给出秒级计算的代码:</p>
+
+<pre class="line-numbers"><code class="language-text">import time
+start = time.time()
+run_function()
+end = time.time()
+print(int(end))
+</code></pre>
+
+<h2 id="toc_1">扩展</h2>
+
+<pre class="line-numbers"><code class="language-text">import time
+import datetime
+
+t = time.time()
+
+print (t)                       #原始时间数据
+print (int(t))                  #秒级时间戳
+print (int(round(t * 1000)))    #毫秒级时间戳
+
+nowTime = lambda:int(round(t * 1000))
+print (nowTime());              #毫秒级时间戳，基于lambda
+
+print (datetime.datetime.now().strftime(&#39;%Y-%m-%d %H:%M:%S&#39;))   #日期格式化
+</code></pre>
+
+<p>返回为：    </p>
+
+<pre class="line-numbers"><code class="language-text">1554358917.381631
+1554358917
+1554358917382
+1554358917382
+2019-04-04 14:21:57
+</code></pre>
+
+<p>将秒级时间戳转为日期     </p>
+
+<pre class="line-numbers"><code class="language-text">ts = 1515774430
+dt = time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, time.localtime(ts))
+print(dt)
+</code></pre>
+
+<p>返回<br/><br/>
+<code>2018-01-13 00:27:10</code></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/4/4 13:47 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15543511984993.html">
                 
                   <h1>python程序退出的几种方式</h1>
@@ -358,45 +456,6 @@ sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --start
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15542044701566.html">
-                
-                  <h1>debian or ubuntu 修改终端欢迎语</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>与其他 linux 不太一样哦。Debian 系直接修改/etc/motd文件重登录后是无效的。</p>
-
-<p>因为这里/etc/motd是一个符号链接，指向/var/run/motd，应该 是一个启动后在生成的文件。在版本12.04中，找到生成的脚本在目录/etc/update-motd.d/中<br/>
-<code>sudo nano /etc/update-motd.d/10-uname</code><br/>
-在 10-uname 中可以添加命令，比如：<code>cat /home/test.txt</code>。即可展示出 test.txt 中的内容。</p>
-
-<p>修改后用：sudo run-parts /etc/update-motd.d 去执行就会立即见到效果，而不用反复注销登录。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/4/2 19:27 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -482,6 +541,12 @@ sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --start
 	      
 		      
 			      <li class="post">
+			        <a href="15596178265897.html">业务逻辑漏洞安全检查checklist</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15596171974228.html">最近做了个 fuzzing 字典精简版</a>
 			      </li>
 		     
@@ -501,12 +566,6 @@ sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --start
 		      
 			      <li class="post">
 			        <a href="15591049197350.html">今日相思</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15590908841596.html">学习的深度和广度</a>
 			      </li>
 		     
 		  

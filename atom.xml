@@ -4,13 +4,91 @@
   <title><![CDATA[lonelyorWiki]]></title>
   <link href="http://www.lonelyor.org/lonelyorWiki/atom.xml" rel="self"/>
   <link href="http://www.lonelyor.org/lonelyorWiki/"/>
-  <updated>2019-06-04T11:05:24+08:00</updated>
+  <updated>2019-06-04T11:09:21+08:00</updated>
   <id>http://www.lonelyor.org/lonelyorWiki/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[业务逻辑漏洞安全检查checklist]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15596178265897.html"/>
+    <updated>2019-06-04T11:10:26+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15596178265897.html</id>
+    <content type="html"><![CDATA[
+<blockquote>
+<p>未公开整理好的 checklist 全部内容，也不打算全部公开。</p>
+</blockquote>
+
+<h2 id="toc_0">认证</h2>
+
+<p>图形验证码问题（验证码缺失、验证码回显、验证码绕过、验证流程不正确、重放攻击）<br/>
+手机验证码（短信轰炸、验证码劫持）<br/>
+会话固定<br/>
+cookie 伪造/爆破<br/>
+使用默认凭证（管理后台、数据库密码）<br/>
+冻结账户策略不当<br/>
+弱用户名和密码<br/>
+“记住我”功能缺陷（前端记住/发送密码）<br/>
+自动登录<br/>
+单点登录劫持<br/>
+第三方登录劫持<br/>
+二维码登录劫持<br/>
+弱口令<br/>
+弱安全问题/答案<br/>
+弱的密码恢复机制<br/>
+Oauth2.0授权漏洞<br/>
+JWT安全<br/>
+注册覆盖<br/>
+未验证的重定向和转发<br/>
+双因素认证不当（双因素后获取的凭证，在无需双因素处可以获得）<br/>
+恶意注册</p>
+
+<h2 id="toc_1">授权</h2>
+
+<p>测试角色定义（授权不当）<br/>
+权限管理缺失（无权限设计）<br/>
+匿名访问（备用接口——常见于兼容老的不安全的接口时产生）<br/>
+水平越权<br/>
+垂直越权<br/>
+超级账户<br/>
+实名认证不严格</p>
+
+<h2 id="toc_2">会话管理</h2>
+
+<p>cookie安全属性<br/>
+cookie可猜解/伪造<br/>
+cookie溢出<br/>
+会话固定漏洞<br/>
+用户凭证不安全传输（弱加密或明文传输）<br/>
+用户凭证未一次失效<br/>
+用户凭证可猜解<br/>
+注销与会话超时<br/>
+敏感数据不安全传输（get 方法传输 session）</p>
+
+<h2 id="toc_3">内容安全</h2>
+
+<p>敏感信息过度显示<br/>
+违法违规信息</p>
+
+<h2 id="toc_4">设计缺陷</h2>
+
+<p>业务一致性（篡改类）漏洞（订单 id、邮箱或用户名、手机号、商品编号、用户 id、支付金额、优惠券金额、商品数量、最大数限制、前端限制绕过）<br/>
+刷赞、刷关注、刷票、刷奖品<br/>
+流程绕过（密码找回、支付、登录验证）</p>
+
+<h2 id="toc_5">典型场景</h2>
+
+<p>个人信息<br/>
+密码找回/修改<br/>
+支付流程<br/>
+注册流程<br/>
+需要手机/邮箱验证的业务</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[最近做了个 fuzzing 字典精简版]]></title>
@@ -1047,27 +1125,6 @@ WindowsServer 2008 R2 SP1</p>
 </blockquote>
 
 <p><figure><img src="media/15550532565333/lonelyor%20%E4%B8%AA%E4%BA%BA%E6%8A%80%E8%83%BD%E6%A0%91.png" alt="lonelyor 个人技能树"/><figcaption>lonelyor 个人技能树</figcaption></figure></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[相见欢·林花谢了春红]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15547243035014.html"/>
-    <updated>2019-04-08T19:51:43+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15547243035014.html</id>
-    <content type="html"><![CDATA[
-<p>【作者】李煜 <br/>
-【朝代】五代</p>
-
-<p>林花谢了春红，太匆匆。无奈朝来寒雨，晚来风。<br/>
-胭脂泪，相留醉，几时重。自是人生长恨，水长东。</p>
-
-<blockquote>
-<p>五代是指后梁、后唐、后晋、后汉和后周。<br/>
-前蜀、后蜀、南吴、南唐、吴越、闽、楚、南汉、南平（荆南）、北汉等十余个割据政权被《新五代史》及后世史学家统称十国。<br/>
-五代十国（907年—979年）是中国历史上的一段大分裂时期。这一称谓出自《新五代史》，是对五代（907年—960年）与十国（902年—979年）的合称。</p>
-</blockquote>
 
 ]]></content>
   </entry>

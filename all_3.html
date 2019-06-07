@@ -138,6 +138,46 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15554000328653.html">
+                
+                  <h1>最近遇到的一个靶机</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>1、查看 http 流量，后台扫描等进行信息收集，得出其用的是 xxxxcms，然后百度进一步进行信息收集，得出该 cms 存在过 sql 注入、文件包含等漏洞。<br/>
+2、全站测试 sql 注入，发现确实存在注入点<br/>
+3、上 sqlmap 进行扫描，得出管理员账号密码，得出 mysql 为普通用户权限。<br/>
+4、登录网站后台，利用文件包含漏洞获取部分.php 文件信息，对其进行编辑写入小马。（这块之前没怎么玩过，因此稍微花费了一点时间，目的达到了，不过不优雅）<br/>
+5、通过小马传入大马，然后连接大马。<br/>
+6、提权拿 linux 的 root，这里我不太懂，因此正在找资料，希望今晚能搞定提权这事。</p>
+
+<p>提权这块研究一下，搞出来了再写。目前的思路是通过 shell 查看操作系统版本和内核版本，查看已安装的包和程序，看看有没有一直漏洞可以利用。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/4/16 15:33 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15550584590400.html">
                 
                   <h1>HTTP.sys远程代码执行漏洞</h1>
@@ -639,369 +679,6 @@ export LC_CTYPE=en_US.UTF-8
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15547067485409.html">
-                
-                  <h1>arch 安装配置指南</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<pre class="line-numbers"><code class="language-shell"># parted
-# mklabel
-# msdos
-(parted)#mkpart primary ext4 1M 200M
-(parted)#set 1 boot on
-(parted)#mkpart primary linux-swap 200M 8.5G
-(parted)#mkpart primary ext4 8.5G -1
-#q
-
-# mkfs.etx4 /dev/sda1
-# mkfs.etx4 /dev/sda3
-# mkswap /dev/sda2
-# swapon /dev/sda2
-# mount /dev/sda3 /mnt
-# cd /mnt
-# mkdir boot
-# mount /dev/sda1 /mnt/boot
-换源成China nano /etc/pacman.d/mirrorlist
-nano基本操作：
-按Ctrl+6（或者Alt+A）做标记；复制一整行：Alt+6；剪切一整行：Ctrl+K；粘贴：Ctrl+U；用Ctrl+Y到上一页，Ctrl+V到下一页。“^”表示Ctrl键，“M”表示 Alt键。
-# pacstrap /mnt base base-devel
-# genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
-# nano /mnt/etc/fstab
-
-# arch-chroot /mnt /bin/bash
-# pacman -S grub
-双系统的话，还需要安装os-prober
-如果使用Intel CPU的话，则需要安装 intel-ucode 并启用因特尔微码更新
-# grub-install --recheck /dev/sda
-# grub-mkconfig -o /boot/grub/grub.cfg
-# exit
-# pacman -Syu
-# reboot
-</code></pre>
-
-<h1 id="toc_0">基本配置</h1>
-
-<ul>
-<li>修改主机名
-<code>nano /etc/hostname</code>
-<code>lonelyor</code></li>
-<li>修改host
-<code>nano /etc/hosts</code>
-<code>127.0.0.1  localhost</code>
-<code>::1        localhost</code>
-<code>127.0.1.1  myhostname.localdomain  myhostname</code></li>
-<li>启动dhcp
-<code># vi /etc/rc.conf</code>
-添加 interface = eth0 
-<code># dhcpcd</code></li>
-<li>配置编码<br/>
-首先释放en_US.UTF-8,保证系统正常工作<br/>
-然后 Ctrl+_，Ctrl+v 进入最后一行释放zh_CN.UTF-8保证中文<br/>
-保存退出<br/>
-然后生成编码并使用，配置系统优先语言环境为英文
-<code>shell
-# nano /etc/locale.gen<br/>
-取消utf-8的注释，然后<br/>
-# locale-gen<br/>
-# echo LANG=en_US.UTF-8 &gt; /etc/locale.conf<br/>
-# locale<br/>
-在~/.xinitrc中添加<br/>
-export LANG=zh_CN.UTF-8<br/>
-export LANGUAGE=zh_CN:en_US<br/>
-export LC_CTYPE=en_US.UTF-8<br/>
-~/.xprofile添加<br/>
-export LANG=zh_CN.UTF-8<br/>
-export LC_ALL=&quot;zh_CN.UTF-8&quot;<br/>
-export LANG=zh_CN.UTF-8<br/>
-export LANGUAGE=zh_CN:en_US<br/>
-export LC_CTYPE=en_US.UTF-8<br/>
-# pacman -S kde-l10n-zh_cn firefox-i18n-zh-cn libreoffice-still-zh-cn
-</code>
-安装输入法前端
-<code># pacman -S kimtoy</code></li>
-<li>配置archlinuxcn源
-<code>shell
-修改`/etc/pacman.conf`文件<br/>
-在文件后添加如下语句<br/>
-[archlinuxcn]<br/>
-SigLevel = Optional TrustedOnly<br/>
-Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
-</code>
-<code>shell
-导入GPG Key<br/>
-sudo pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring
-</code></li>
-<li>设置root密码
-<code>#passwd</code></li>
-<li>添加用户和sudo
-<code>shell
-useradd -m -g users -G wheel -s /bin/bash lonelyor<br/>
-passwd lonelyor<br/>
-pacman -S sudo</code><br/>
-打开 <code>/etc/sudoers</code> 文件，找到 <code>root ALL=(ALL) ALL</code> 并依葫芦画瓢添加 <code>lonelyor ALL=(ALL) ALL</code> 即可。<br/>
-* watchdog did not stop<br/>
-编辑<code>/etc/systemd/system.conf</code>文件：<br/>
-将<br/>
-DefaultTimeoutStopSec=90s<br/>
-更改为<br/>
-DefaultTimeoutStopSec=10s<br/>
-将终止服务的等待时间更改为10秒，从而解决关机缓慢的问题。<br/>
-我顺手将其他时间长的都改短了。<br/>
-* 安装桌面环境kde
-<code>shell
-pacman -S xorg xorg-server xorg-xinit<br/>
-pacman -S plasma<br/>
-pacman -S sddm<br/>
-systemctl enable sddm
-</code>
-* 安装触摸板驱动
-<code>pacman -S xf86-input-synaptics</code>
-* 小工具合集
-<code>konsole net-tools p7zip wget cmake curl</code>
-* 安装字体<br/>
-noto-fonts-sc(aur)<br/>
-ttf-ms-win10-zh_cn(aur)<br/>
-wqy-zenhei<br/>
-wqy-bitmapfont<br/>
-noto-fonts-emoji<br/>
-号称最好看的编程字体<br/>
-ttf-inconsolata<br/>
-ttf-monaco<br/>
-# 软件安装<br/>
-* 安装搜狗输入法
-<code>shell
-# sudo pacman -S fcitx-sogoupinyin<br/>
-# sudo pacman -S fcitx-im<br/>
-# sudo pacman -S fcitx-configtool # 图形化的配置工具<br/>
-需要修改配置文件`~/.xprofile`<br/>
-添加如下语句<br/>
-export GTK_IM_MODULE=fcitx<br/>
-export QT_IM_MODULE=fcitx<br/>
-export XMODIFIERS=&quot;@im=fcitx&quot;<br/>
-重新登录之后就可以使用中文输入法啦
-</code>
-* 安装字体
-<code>pacman -S ttf-dejavu wqy-zenhei wqy-microhei</code></li>
-</ul>
-
-<ul>
-<li>安装文件系统支持
-<code>sudo pacman -S ntfs-3g dosfstools</code></li>
-<li>安装chrome
-<code>yaourt -S google-chrome</code></li>
-<li>安装网易云音乐
-<code>pacman -S netease-cloud-music</code></li>
-<li>安装v2ray
-<code>shell
-wget https://install.direct/go.sh<br/>
-sudo bash go.sh<br/>
-sudo systemctl start v2ray<br/>
-编辑 /etc/v2ray/config.json 文件来配置客户端
-</code></li>
-<li>安装host修改工具
-<code>yaourt -S switchhosts-bin</code></li>
-<li>安装fish
-<code>pacman -S fish</code></li>
-<li>更改默认shell为fish
-<code>sudo -u lonelyor chsh -s /usr/bin/fish</code></li>
-<li>安装wps
-<code>yaourt wps</code></li>
-<li>安装vscode
-<code>yaourt vscode</code>
-<code>3</code></li>
-<li>安装数据库管理工具
-<code>pacman -S dbeaver</code></li>
-<li>安装pycharm
-<code>pacman -S pycharm</code></li>
-<li>xmind思维导图
-<code>yaourt xmind</code></li>
-<li>安装备份工具
-<code>yaourt fsarchiver</code></li>
-<li>待办事项
-<code>yaourt -S go-for-it-git</code></li>
-<li>视频录制软件
-<code>yaourt simplescreenrecorder</code></li>
-<li>屏幕录像工具
-<code>yaourt green-recorder</code>
-选择qt那个</li>
-<li>markdown编辑工具
-<code>pacman -S typora</code></li>
-<li>跨所有设备进行连接的工具
-<code>kdeconnect</code></li>
-<li>分层记录应用程序，具有丰富的文本和语法突出显示功能，可将数据存储在单个xml或sqlite文件中
-<code>pacman -S cherrytree</code></li>
-<li>深度截图工具
-<code>pacman -S deepin-screenshot</code></li>
-<li>适合写markdown的工具Haroopad
-<code>yaourt -S haroopad</code></li>
-<li>sakura终端、支持修改背景图</li>
-<li>文件管理器
-<code>pacman -S krusader</code></li>
-<li>文件管理器
-<code>pacman -S dolphin</code></li>
-<li>压缩解压缩
-<code>pacman -S ark</code></li>
-<li>文本编辑器
-<code>pacman -S kate</code></li>
-<li>终端
-<code>pacman -S konsole</code></li>
-<li>文档查看器
-<code>okular</code></li>
-<li>查看系统信息
-<code>pacman -S screenfetch</code>
-打开终端自动显示<br/>
-nano ~/.bashrc 加入 screenfetch</li>
-<li>翻墙
-<code>pacman -S v2ray</code></li>
-<li>密码相关
-<code>pacman -S keepass</code></li>
-<li>hosts文件相关
-<code>yaourt -S switchhosts-bin</code></li>
-<li>备份工具
-<code>yaourt -S qt4-fsarchiver</code></li>
-<li>安装pdf管理工具buka
-<code>yaourt -S buka</code></li>
-<li>安装sshfs
-<code>pacman -S sshfs</code></li>
-<li>webdav服务wsgidav
-<code>pip install wsgidav</code></li>
-<li>系统工具
-<code>iftop\htop\atop</code></li>
-<li>chm阅读器
-<code>kchmviewer</code></li>
-<li>下载
-<code>aria2\uget</code>
-<code>pip install youtube-dl</code>
-<code>yaourt persepolis</code></li>
-<li>web相关
-<code>nginx、nodejs</code></li>
-<li>火狐汉化
-<code>http://releases.mozilla.org/pub/firefox/releases/59.0/linux-x86_64/xpi/（注意版本）</code></li>
-<li>grub修改
-<code>yaourt -S grub-customizer</code></li>
-<li>webdav文件共享
-<code>pacman -S phodav</code></li>
-<li>网盘同步
-<code>yaourt -S cloudcross</code></li>
-<li>日志查看工具
-<code>pacman -S ksystemlog</code></li>
-<li>二进制编辑器
-<code>pacman -S okteta</code></li>
-<li>ssh爆破防护
-<code>pacman -S sshguard</code></li>
-<li>smb共享工具
-<code>pacman -S smb4k</code></li>
-<li>文档编辑工具
-<code>marktext</code></li>
-<li>命令补全工具
-<code>pacman -S bash-completion</code></li>
-<li>文件共享、webdav、ftp等
-<code>pacman -S filezilla</code></li>
-<li>文件同步
-<code>syncthing</code></li>
-<li>使用ftp
-<code>sudo pacman -S vsftpd</code>
-详细设置 /etc/vsftpd.conf<br/>
-允许本地用户登录 local_enable=YES<br/>
-可以进行写的操作 write_enable=YES<br/>
-设定最大连接传输时间 data_connection_timeout=3600<br/>
-设定支持异步传输的功能 async_abor_enable=YES</li>
-<li>剪贴板增强工具
-<code>pacman -S copyq</code></li>
-<li>局域网共享工具dukto
-<code>yaourt -S dukto</code></li>
-</ul>
-
-<h1 id="toc_1">安装 vmtools</h1>
-
-<pre class="line-numbers"><code class="language-shell">pacman -S open-vm-tools
-pacman -S linux-headers
-yaourt -S open-vm-tools-dkms
-open-vm-tools-desktop
-gtkmm
-gtkmm3
-systemctl enable vmware-vmblock-fuse
-systemctl enable vmtoolsd
-</code></pre>
-
-<h1 id="toc_2">详细设置</h1>
-
-<ul>
-<li>fish_config打开fish的web设置界面</li>
-<li>终端设置颜色和背景透明</li>
-<li>kate设置行号和代码高亮</li>
-<li>关闭钱包
-<code>sudo pacman -S kwalletmanager</code></li>
-<li>区域设置</li>
-<li>输入法问题可以输入 fcitx-diagnose 来查看日志，通常就有答案了。</li>
-<li>git下载太慢，配置git代理：nano ~/.gitconfig<br/>
-[https]<br/>
-    proxy = socks5://127.0.0.1:1080<br/>
-[http]<br/>
-    proxy = socks5://127.0.0.1:1080<br/>
-然后修改hosts：nano /etc/hosts<br/>
-151.101.72.249 <a href="http://global-ssl.fastly.Net">http://global-ssl.fastly.Net</a><br/>
-192.30.253.112 <a href="http://github.com">http://github.com</a></li>
-<li>typora段错误的解决方法：<a href="https://aur.archlinux.org/packages/typora/">https://aur.archlinux.org/packages/typora/</a></li>
-<li>使用nfs共享文件：pacman -S nfs-utils，参考：<a href="https://wiki.archlinux.org/index.php/NFS#Installation">https://wiki.archlinux.org/index.php/NFS#Installation</a><br/>
-1、配置 /etc/exports
-<code>
-/home 192.168.48.142(rw,sync,no_root_squash)   这里可以写客户端ip<br/>
-exportfs -rav<br/>
-exportfs -v<br/>
-systemctl start nfs-server.service<br/>
-修改 /etc/nfs.conf 来增加安全性<br/>
-[nfsd]<br/>
-host=192.168.48.142<br/>
-# Alternatively, you can use your hostname.<br/>
-# host=myhostname
-</code>
-如果上面的启动nfs报错，重启电脑<br/>
-showmount -e 192.168.48.136(服务器端IP)<br/>
-若出现：Export list for 192.168.48.142:<br/>
-/home 192.168.1.120字眼则证明通过<br/>
-下面贴出我敲的：<br/>
-╰─&gt;\( showmount -e 192.168.48.136<br/>
-Export list for 192.168.48.136:<br/>
-/home 192.168.48.142<br/>
-┬─[lonelyor@lonelyor:~]─[16时00分18秒]<br/>
-╰─&gt;\) mount -t nfs 192.168.48.136<br/>
-mount: 只有 root 用户能使用“--types”选项<br/>
-┬─[lonelyor@lonelyor:~]─[16时03分14秒]<br/>
-╰─&gt;\( sudo mount -t nfs 192.168.48.136<br/>
-mount: 192.168.48.136: can&#39;t find in /etc/fstab.<br/>
-┬─[lonelyor@lonelyor:~]─[16时03分18秒]<br/>
-╰─&gt;\) sudo mount -t nfs 192.168.48.136:/home /mnt/tmp/<br/>
-然后就ok了。<br/>
-解除挂载用umount</li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/4/8 14:59 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -1087,6 +764,12 @@ mount: 192.168.48.136: can&#39;t find in /etc/fstab.<br/>
 	      
 		      
 			      <li class="post">
+			        <a href="15597856399146.html">黑盒测试中的信息收集</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15596178265897.html">业务逻辑漏洞安全检查checklist</a>
 			      </li>
 		     
@@ -1106,12 +789,6 @@ mount: 192.168.48.136: can&#39;t find in /etc/fstab.<br/>
 		      
 			      <li class="post">
 			        <a href="15591786403220.html">双因素覆盖不全</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15591049197350.html">今日相思</a>
 			      </li>
 		     
 		  

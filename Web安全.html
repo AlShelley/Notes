@@ -138,6 +138,68 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15597856399146.html">
+                
+                  <h1>黑盒测试中的信息收集</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>信息搜集分为主动搜集和被动搜集，主动搜集会惊动资产方因此需要有所针对，动静越小越好；而被动搜集不会惊动资产方因此更为隐蔽。</p>
+
+<h2 id="toc_0">第一阶段：资产（域名及子域名）搜集</h2>
+
+<p>1、确认目标性质：了解网站所在行业，他是一个黑产赌博色情站、还是政府学校官方站、亦或是金融游戏商业站。了解这类网站通常的安全关注点在哪，那么避开其关注点，就是它的薄弱点。</p>
+
+<p>2、收集目标资产 1：使用搜索引擎搜索关键词（公司名、域名等），找出搜索引擎搜录的相关域名，这里可以用一些现成的工具或者自写爬虫</p>
+
+<p>3、收集目标资产 2：使用子域名扫描器，根据 2 中搜集来的域名进一步进行资产收集。</p>
+
+<p>4、收集目标资产 4：使用爬虫在 3 所在的页面中爬取隐藏页面或引用的 url。</p>
+
+<p>信息搜集是层层递进的，根据上一次收集的信息来进行扩展，尽可能多的收集目标资产、扩大打击面。</p>
+
+<h2 id="toc_1">第二阶段：资产属性收集</h2>
+
+<p>5、得到域名和 ip 相关信息后，对资产进行端口扫描、敏感目录（包括后台、备份文件、隐藏接口、邮箱系统、运维自带后门、github 或网盘泄露等）扫描、GoogleHacking（快照信息、已知后门、代码泄露、已知安全事件）、操作系统版本（win、linux）、web 应用服务器版本（nginx、apache、tomcat 等）、后端框架（spring、flask、thinkphp 等）、网络拓扑（多少主机、路由、交换、网段等）、防御软硬件信息（防火墙、waf、网闸等）等。并一一记录资产对应的信息。这里还有些值得注意的信息就是：邮箱、手机号、身份证号等个人敏感信息。</p>
+
+<p>6、分析信息并对有效信息进行提取和记录。</p>
+
+<p>比如你可以这样来记录（这只是个例子，信息收集自然是越详细越好）：<br/>
+<figure><img src="media/15597856399146/15598028215198.jpg" alt=""/></figure></p>
+
+<h2 id="toc_2">第三阶段：资产攻击面分析</h2>
+
+<p>7、收集了各种信息后，就是分析各个资产可能存在的防御薄弱点、分析攻击面。可以从软硬件漏洞、业务、人三个方向来进行分析。</p>
+
+<p>8、收集攻击相关工具、字典等，针对可入侵性高的攻击面进行攻击，此时会获得攻击工具的部分反馈。根据反馈我们可以更好地了解对方的防御措施和脆弱点。根据不同的攻击行为，系统会有不同的反应，分析这些信息对后续展开更深层次的攻击也是有积极意义的。</p>
+
+<p>基本上，到这里，我们就可以开始展开针对性的攻击了。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/6/6 9:47 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15596178265897.html">
                 
                   <h1>业务逻辑漏洞安全检查checklist</h1>
@@ -578,39 +640,6 @@ a*~1*/.aspx
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15586660103989.html">
-                
-                  <h1>使用GET方法传输用户账号密码的危害</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>通过 Get 方式提交数据时，用户名和密码将出现在 URL 上，如果页面可以被缓存（浏览器缓存、cdn 缓存、服务器缓存、中间件日志缓存等）或者其他人可以访问客户这台机器，就可以从历史记录获得该用户的帐号和密码，所以表单提交建议使用 Post 方法。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/5/24 10:46 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -696,6 +725,12 @@ a*~1*/.aspx
 	      
 		      
 			      <li class="post">
+			        <a href="15597856399146.html">黑盒测试中的信息收集</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15596178265897.html">业务逻辑漏洞安全检查checklist</a>
 			      </li>
 		     
@@ -715,12 +750,6 @@ a*~1*/.aspx
 		      
 			      <li class="post">
 			        <a href="15591786403220.html">双因素覆盖不全</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15591049197350.html">今日相思</a>
 			      </li>
 		     
 		  

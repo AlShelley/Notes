@@ -138,6 +138,47 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15470312265923.html">
+                
+                  <h1>修改Mac主机名、计算机名</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><code>$sudo scutil --set ComputerName 你想要的计算机名称</code><br/>
+<code>$sudo scutil --set HostName 你想要的主机名称</code></p>
+
+<p>举例：<br/>
+<code>$sudo scutil --set HostName lonelyor</code></p>
+
+<p>使用以下命令查看主机名或计算机名<br/>
+<code>$ scutil --get ComputerName</code><br/>
+<code>$ scutil --get HostName</code></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/9 18:53 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15468702076334.html">
                 
                   <h1>使用python快速搭建ftp服务器</h1>
@@ -464,80 +505,6 @@ type() #输出类型</p>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15453717965995.html">
-                
-                  <h1>npm Cannot find module 'semver' --解决方案</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p><a href="https://blog.csdn.net/hanshuonb/article/details/77969080">https://blog.csdn.net/hanshuonb/article/details/77969080</a></p>
-</blockquote>
-
-<p>度娘上面我没有找到相关的解决方法所以只能去Stack Overflow上寻找答案，找到的结果是这样的：</p>
-
-<pre class="line-numbers"><code class="language-text">sudo rm -rf /usr/local/lib/node_modules
-sudo rm -rf ~/.npm
-brew uninstall --force node
-brew install node
-</code></pre>
-
-<p>上面命令的意思删除所有全局包和.npm文件夹，重新安装node。 <br/>
-这种方法我没试过，因为肯定有很多小伙伴安装了除npm之外的全局包比如express、webpack等等，如果不考虑清楚直接全删了的话。。。后果惨不忍睹。。。(ps:因为本人英语实在不好，所以经常直接傻瓜式粘命令，提醒小伙伴们最好粘命令之前去查查是什么意思，否则出了问题有可能都没法回退。。。)</p>
-
-<p>说了这么多，下面切入正题 <br/>
-首先需要知道为啥有报这个错，可以到全局的npm包看一下，路径是</p>
-
-<p><code>/usr/local/lib/node_modules/npm</code><br/>
-进入npm的node_modules中的semver文件夹可以看到里面变成空的了！具体的原因不好意思我没有深究，但是我觉得一定和yarn是有关系的。不仅如此，你会看到其他的文件夹也基本都是变成空的了，这下咱们就知道为啥报semver这个module找不到了吧！</p>
-
-<p>网上还有解决方法是说用 <code>npm unintall npm -g</code> 删除npm包，实测不好使。。。npm所有的命令都不行了 uninstall肯定也不行了啊！！！</p>
-
-<h2 id="toc_0">我的解决方法：</h2>
-
-<p>1.先删除全局的npm包：也就是把刚才提到的<code>/usr/local/lib/node_modules/npm</code>，这个npm文件夹删除掉 <br/>
-2.回到<code>/usr/local/lib/node_modules</code>这个目录，从GitHub上重新clone下git包 <br/>
-终端:<br/>
-<code>git clone --recursive git://github.com/isaacs/npm.git</code><br/>
-这样新的npm包就回到了全局node_modules中 <br/>
-3.打开终端输入<br/>
-<code>npm -v</code><br/>
-看一下npm是否可以打印出版本号，如果可以，npm就可以正常使用啦！</p>
-
-<p>说白了就是：</p>
-
-<pre class="line-numbers"><code class="language-text">rm -rf /usr/local/lib/node_modules/npm
-cd /usr/local/lib/node_modules
-git clone --recursive git://github.com/isaacs/npm.git`
-</code></pre>
-
-<p>搞定</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/21 13:56 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -623,6 +590,12 @@ git clone --recursive git://github.com/isaacs/npm.git`
 	      
 		      
 			      <li class="post">
+			        <a href="15602308144902.html">Metasploit 完全使用教程</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15597856399146.html">黑盒测试中的信息收集</a>
 			      </li>
 		     
@@ -642,12 +615,6 @@ git clone --recursive git://github.com/isaacs/npm.git`
 		      
 			      <li class="post">
 			        <a href="15595455557551.html">使用 msf 检测 cve-2019-0708 WindowsRDP 远程代码执行漏洞</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15591786403220.html">双因素覆盖不全</a>
 			      </li>
 		     
 		  

@@ -4,13 +4,56 @@
   <title><![CDATA[lonelyorWiki]]></title>
   <link href="http://www.lonelyor.org/lonelyorWiki/atom.xml" rel="self"/>
   <link href="http://www.lonelyor.org/lonelyorWiki/"/>
-  <updated>2019-06-07T15:12:12+08:00</updated>
+  <updated>2019-06-12T11:11:08+08:00</updated>
   <id>http://www.lonelyor.org/lonelyorWiki/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[Metasploit 完全使用教程]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15602308144902.html"/>
+    <updated>2019-06-11T13:26:54+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15602308144902.html</id>
+    <content type="html"><![CDATA[
+<blockquote>
+<p>计划写一个 msf 从安装到使用到编写 exploit 的教程，在这里留个坑。本文不适合新手，很多地方不会说的太细致。但是会说清楚。</p>
+</blockquote>
+
+<h2 id="toc_0">环境搭建</h2>
+
+<p>1、安装 Postgresql<br/>
+2、安装 metasploit</p>
+
+<p>关于 metasploit，linux 的话可以使用软件管理器安装；macosx 的话可以使用 brew 安装；windows 别装了，去学 linux 吧。</p>
+
+<p>如果用包管理器安装有问题，则去官网下载二进制文件安装或者 github 下载源码下来，然后给 install 可执行权限，再执行安装。</p>
+
+<p>安装完成之后，使用 alias 命令将<code>/opt/metasploit-framework/bin ./msfconsole</code>（具体路径根据自己安装的实际情况选定）指定成<code>msf</code>，这样以后要用只需要在终端输入 msf 即可立即开始使用。</p>
+
+<h2 id="toc_1">使用入门</h2>
+
+<p>打开终端然后输入 msf 即可启动，如下图所示：<br/>
+<figure><img src="media/15602308144902/15602325257924.jpg" alt=""/></figure></p>
+
+<p><figure><img src="media/15602308144902/15602325455212.jpg" alt=""/></figure></p>
+
+<p>上图黄字部分表示当前 msf 版本，如果版本过低，请使用<code>msfupdate</code>进行升级（注意执行此命令时终端所在的目录）。</p>
+
+<h2 id="toc_2">使用 msf 进行信息收集</h2>
+
+<p>主动信息收集的第一步通常都是端口扫描</p>
+
+<p><figure><img src="media/15602308144902/15602328461015.jpg" alt=""/></figure></p>
+
+<p>首先查找端口扫描模块，命令<code>search portscan</code>，search 是个非常重要的命令，当我们需要扫描或者利用某个漏洞时，可以使用 search 命令来查找 msf 是否有相关模块。</p>
+
+<p>（未完待续）</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[黑盒测试中的信息收集]]></title>
@@ -28,13 +71,13 @@
 
 <p>3、收集目标资产 2：使用子域名扫描器，根据 2 中搜集来的域名进一步进行资产收集。</p>
 
-<p>4、收集目标资产 4：使用爬虫在 3 所在的页面中爬取隐藏页面或引用的 url。</p>
+<p>4、收集目标资产 3：使用爬虫在 3 所在的页面中爬取隐藏页面或引用的 url。</p>
 
 <p>信息搜集是层层递进的，根据上一次收集的信息来进行扩展，尽可能多的收集目标资产、扩大打击面。</p>
 
 <h2 id="toc_1">第二阶段：资产属性收集</h2>
 
-<p>5、得到域名和 ip 相关信息后，对资产进行端口扫描、敏感目录（包括后台、备份文件、隐藏接口、邮箱系统、运维自带后门、github 或网盘泄露等）扫描、GoogleHacking（快照信息、已知后门、代码泄露、已知安全事件）、操作系统版本（win、linux）、web 应用服务器版本（nginx、apache、tomcat 等）、后端框架（spring、flask、thinkphp 等）、网络拓扑（多少主机、路由、交换、网段等）、防御软硬件信息（防火墙、waf、网闸等）等。并一一记录资产对应的信息。这里还有些值得注意的信息就是：邮箱、手机号、身份证号等个人敏感信息。</p>
+<p>5、得到域名和 ip 相关信息后，对资产进行端口扫描、敏感目录（包括后台、备份文件、隐藏接口、邮箱系统、运维自带后门、github 或网盘泄露等）扫描、GoogleHacking（快照信息、已知后门、代码泄露、已知安全事件）、操作系统版本（win、linux）、web 应用服务器版本（nginx、apache、tomcat 等）、后端框架（spring、flask、thinkphp 等）、网络拓扑（多少主机、路由、交换、网段、DNS服务器等）、防御软硬件信息（防火墙、waf、网闸等）等。并一一记录资产对应的信息。这里还有些值得注意的信息就是：邮箱、手机号、身份证号等个人敏感信息。</p>
 
 <p>6、分析信息并对有效信息进行提取和记录。</p>
 
@@ -1090,62 +1133,6 @@ Officer）是企业治理结构发展到一个新阶段的必然产物。没有�
 6、提权拿 linux 的 root，这里我不太懂，因此正在找资料，希望今晚能搞定提权这事。</p>
 
 <p>提权这块研究一下，搞出来了再写。目前的思路是通过 shell 查看操作系统版本和内核版本，查看已安装的包和程序，看看有没有一直漏洞可以利用。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[HTTP.sys远程代码执行漏洞]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15550584590400.html"/>
-    <updated>2019-04-12T16:40:59+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15550584590400.html</id>
-    <content type="html"><![CDATA[
-<blockquote>
-<p>转载自：<a href="http://www.cnvd.org.cn/webinfo/show/3614">http://www.cnvd.org.cn/webinfo/show/3614</a></p>
-</blockquote>
-
-<p>4月14日，微软月度例行安全公告披露一个HTTP.sys远程代码执行漏洞（CNVD-2015-02422，对应CVE-2015-1635）,主要威胁到IIS服务器的安全。该漏洞存在于 HTTP 协议堆栈 (HTTP.sys) 中，攻击者可以在系统帐户的上下文中执行任意代码或提升权限。目前，互联网已经出现了可以使服务器蓝屏的利用代码，不过可导致控制服务器主机的攻击代码还未出现。</p>
-
-<h2 id="toc_0">这漏洞能干啥</h2>
-
-<p>IIS 是 windows 主机上的 Web 服务程序，支持 asp、jsp 脚本，应用广泛漏洞众多。IIS服务进程依赖HTTP.sys内核驱动程序文件。漏洞产生的原因是HTTP.sys未能正确分析经特殊设计的HTTP请求所致，通过发送特定构造的HTTP请求包（如：在请求包中相关字段包含类似0xFFFFFFFFFFFFFFFF的大整数值参数），导致整数溢出。成功利用后，攻击者有可能在系统帐户的上下文中执行任意代码，导致拒绝服务或提取权限。目前相关分析表明，漏洞的溢出只限于整数型参数，直接构造可执行系统指令的攻击代码还有一定的难度。</p>
-
-<p>漏洞评级“高危”，因为被攻击会导致服务器蓝屏死机呀。</p>
-
-<h2 id="toc_1">影响范围</h2>
-
-<p>受影响操作系统的IIS服务器版本如下所示：<br/>
-WindowsServer 2012<br/>
-WindowsServer 2012 R2<br/>
-用于基于32位系统：<br/>
-Windows7 SP1<br/>
-Windows8<br/>
-用于基于x64位系统：<br/>
-Windows7 SP1<br/>
-Windows8<br/>
-Windows8.1<br/>
-WindowsServer 2008 R2 SP1<br/>
-用于基于 Itanium 的系统:<br/>
-WindowsServer 2008 R2 SP1</p>
-
-<h2 id="toc_2">漏洞修复建议</h2>
-
-<p>补丁：<a href="https://support.microsoft.com/zh-cn/kb/3042553">https://support.microsoft.com/zh-cn/kb/3042553</a><br/>
-装完后要重启才会生效</p>
-
-<p>一些系统管理员在部署微软的Server系统时可能不作为Web服务器使用，但有可能在默认安装了IIS，请相关单位用户注意排查。</p>
-
-<h2 id="toc_3">验证该漏洞注意事项</h2>
-
-<p>网络流传的poc可能导致服务器蓝屏死机，请谨慎验证......别把线上业务搞挂了。</p>
-
-<h2 id="toc_4">参考链接</h2>
-
-<p><a href="https://technet.microsoft.com/zh-CN/library/security/ms15-034.aspx">https://technet.microsoft.com/zh-CN/library/security/ms15-034.aspx</a></p>
-
-<p><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1635">https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1635</a></p>
-
-<p><a href="http://bobao.360.cn/news/detail/1435.html?from=groupmessage&amp;isappinstalled=0">http://bobao.360.cn/news/detail/1435.html?from=groupmessage&amp;isappinstalled=0</a></p>
 
 ]]></content>
   </entry>

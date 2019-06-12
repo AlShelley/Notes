@@ -9,7 +9,7 @@
 
     <title>
     
-  enigmagroup入门挑战-基础1 - lonelyorWiki
+  Metasploit 完全使用教程 - lonelyorWiki
   
   </title>
   
@@ -138,10 +138,10 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>enigmagroup入门挑战-基础1</h1>
+          <h1>Metasploit 完全使用教程</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2018/12/13 18:43 下午</span>
+          <span class="date">2019/6/11 13:26 下午</span>
 
           <span>发表于&nbsp;</span> 
           
@@ -158,10 +158,39 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <p><a href="http://challenges.enigmagroup.org/basics/pre/1/">基础1题目地址</a><br/>
-1、右键查看源码<br/>
-2、ctrl+f查找passw<br/>
-3、注释里面说了：<code>&lt;!-- the first levels are easy, the password is 39f13b --&gt;</code></p>
+      <blockquote>
+<p>计划写一个 msf 从安装到使用到编写 exploit 的教程，在这里留个坑。本文不适合新手，很多地方不会说的太细致。但是会说清楚。</p>
+</blockquote>
+
+<h2 id="toc_0">环境搭建</h2>
+
+<p>1、安装 Postgresql<br/>
+2、安装 metasploit</p>
+
+<p>关于 metasploit，linux 的话可以使用软件管理器安装；macosx 的话可以使用 brew 安装；windows 别装了，去学 linux 吧。</p>
+
+<p>如果用包管理器安装有问题，则去官网下载二进制文件安装或者 github 下载源码下来，然后给 install 可执行权限，再执行安装。</p>
+
+<p>安装完成之后，使用 alias 命令将<code>/opt/metasploit-framework/bin ./msfconsole</code>（具体路径根据自己安装的实际情况选定）指定成<code>msf</code>，这样以后要用只需要在终端输入 msf 即可立即开始使用。</p>
+
+<h2 id="toc_1">使用入门</h2>
+
+<p>打开终端然后输入 msf 即可启动，如下图所示：<br/>
+<figure><img src="media/15602308144902/15602325257924.jpg" alt=""/></figure></p>
+
+<p><figure><img src="media/15602308144902/15602325455212.jpg" alt=""/></figure></p>
+
+<p>上图黄字部分表示当前 msf 版本，如果版本过低，请使用<code>msfupdate</code>进行升级（注意执行此命令时终端所在的目录）。</p>
+
+<h2 id="toc_2">使用 msf 进行信息收集</h2>
+
+<p>主动信息收集的第一步通常都是端口扫描</p>
+
+<p><figure><img src="media/15602308144902/15602328461015.jpg" alt=""/></figure></p>
+
+<p>首先查找端口扫描模块，命令<code>search portscan</code>，search 是个非常重要的命令，当我们需要扫描或者利用某个漏洞时，可以使用 search 命令来查找 msf 是否有相关模块。</p>
+
+<p>（未完待续）</p>
 
 
     
@@ -172,16 +201,13 @@
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15447676167973.html" 
-          title="Previous Post: 我是如何从Google窃取你的照片的-我的3个Google漏洞赏金报告分享">&laquo; 我是如何从Google窃取你的照片的-我的3个Google漏洞赏金报告分享</a>
-      
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15446974404003.html" 
-          title="Next Post: wsgidav独立服务器使用手册">wsgidav独立服务器使用手册 &raquo;</a>
+          <a  href="15597856399146.html" 
+          title="Next Post: 黑盒测试中的信息收集">黑盒测试中的信息收集 &raquo;</a>
       
       </p>
         </div>

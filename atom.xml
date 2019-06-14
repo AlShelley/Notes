@@ -4,13 +4,34 @@
   <title><![CDATA[lonelyorWiki]]></title>
   <link href="http://www.lonelyor.org/lonelyorWiki/atom.xml" rel="self"/>
   <link href="http://www.lonelyor.org/lonelyorWiki/"/>
-  <updated>2019-06-12T11:11:08+08:00</updated>
+  <updated>2019-06-12T11:11:15+08:00</updated>
   <id>http://www.lonelyor.org/lonelyorWiki/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[Docker for Mac 卡在 "is starting"]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15604965103558.html"/>
+    <updated>2019-06-14T15:15:10+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15604965103558.html</id>
+    <content type="html"><![CDATA[
+<blockquote>
+<p>解决方案来自：<a href="https://github.com/docker/for-mac/issues/2420">https://github.com/docker/for-mac/issues/2420</a> 中的sagidM的回复</p>
+</blockquote>
+
+<p>本机环境：<br/>
+macOS 10.14.4<br/>
+Docker Engine: 18.09.2</p>
+
+<p><figure><img src="media/15604965103558/15604966419596.jpg" alt=""/></figure></p>
+
+<p>大意是，打开终端然后输入<code>screen ~/Library/Containers/com.docker.docker/Data/vms/0/tty</code>，接着回车几次，就 ok 了。事实证明这个方法确实能解决问题。如果你输入一次没什么反应，就多开几个终端标签多试几次就可以了。</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Metasploit 完全使用教程]]></title>
@@ -1115,24 +1136,6 @@ Officer）是企业治理结构发展到一个新阶段的必然产物。没有�
 </ol>
 
 <p>首席营销官（Chief Marketing Officer）是指企业中负责市场运营工作的高级管理人员，又称作市场部经理、营销总监。主要负责在企业中对营销思想进行定位；把握市场机会，制定市场营销战略和实施计划，完成企业的营销目标；协调企业内外部关系，对企业市场营销战略计划的执行进行监督和控制；负责企业营销组织建设与激励工作。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[最近遇到的一个靶机]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15554000328653.html"/>
-    <updated>2019-04-16T15:33:52+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15554000328653.html</id>
-    <content type="html"><![CDATA[
-<p>1、查看 http 流量，后台扫描等进行信息收集，得出其用的是 xxxxcms，然后百度进一步进行信息收集，得出该 cms 存在过 sql 注入、文件包含等漏洞。<br/>
-2、全站测试 sql 注入，发现确实存在注入点<br/>
-3、上 sqlmap 进行扫描，得出管理员账号密码，得出 mysql 为普通用户权限。<br/>
-4、登录网站后台，利用文件包含漏洞获取部分.php 文件信息，对其进行编辑写入小马。（这块之前没怎么玩过，因此稍微花费了一点时间，目的达到了，不过不优雅）<br/>
-5、通过小马传入大马，然后连接大马。<br/>
-6、提权拿 linux 的 root，这里我不太懂，因此正在找资料，希望今晚能搞定提权这事。</p>
-
-<p>提权这块研究一下，搞出来了再写。目前的思路是通过 shell 查看操作系统版本和内核版本，查看已安装的包和程序，看看有没有一直漏洞可以利用。</p>
 
 ]]></content>
   </entry>

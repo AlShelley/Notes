@@ -138,6 +138,60 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15542128440180.html">
+                
+                  <h1>VMware Fusion 端口映射</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>文章转载自：<a href="https://blog.csdn.net/weixin_43302757/article/details/82911332">https://blog.csdn.net/weixin_43302757/article/details/82911332</a></p>
+</blockquote>
+
+<p>Windows版本VM进行端口映射有相关的设置界面，但是Mac系统的VM（VMware Fusion）没有。Google 以下找到相关方法。具体步骤如下</p>
+
+<p>打开配置文件<br/>
+<code>sudo vi  /Library/Preferences/VMware\ Fusion/vmnet8/nat.conf</code><br/>
+找到如下配置</p>
+
+<pre class="line-numbers"><code class="language-text">[incomingtcp]
+# Use these with care - anyone can enter into your VM through these...
+# The format and example are as follows:
+#&lt;external port number&gt; = &lt;VM&#39;s IP address&gt;:&lt;VM&#39;s port number&gt;
+23 = 172.16.161.129:22 #将IP172.16.161.129虚拟机的22 端口映射到主机23端口
+</code></pre>
+
+<p>重启VM的网络服务</p>
+
+<pre class="line-numbers"><code class="language-text">sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --stop
+sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --start
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/4/2 21:47 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15542101741047.html">
                 
                   <h1>linux sudo配置免密及排除部分命令</h1>
@@ -325,46 +379,6 @@
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15538425408524.html">
-                
-                  <h1>虚拟机安装win10操作系统</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>本片文章是为新手准备的</p>
-</blockquote>
-
-<p>虚拟机安装win10可以查看以下教程：<br/>
-<a href="http://baijiahao.baidu.com/s?id=1597148758310739517&amp;wfr=spider&amp;for=pc">http://baijiahao.baidu.com/s?id=1597148758310739517&amp;wfr=spider&amp;for=pc</a></p>
-
-<p>若原文链接失效，则可以百度搜索“虚拟机安装win10操作系统”</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/3/29 14:55 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -450,6 +464,12 @@
 	      
 		      
 			      <li class="post">
+			        <a href="15604965103558.html">Docker for Mac 卡在 "is starting"</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15602308144902.html">Metasploit 完全使用教程</a>
 			      </li>
 		     
@@ -469,12 +489,6 @@
 		      
 			      <li class="post">
 			        <a href="15596171974228.html">最近做了个 fuzzing 字典精简版</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15595455557551.html">使用 msf 检测 cve-2019-0708 WindowsRDP 远程代码执行漏洞</a>
 			      </li>
 		     
 		  

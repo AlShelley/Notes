@@ -138,6 +138,49 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15604965103558.html">
+                
+                  <h1>Docker for Mac 卡在 "is starting"</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>解决方案来自：<a href="https://github.com/docker/for-mac/issues/2420">https://github.com/docker/for-mac/issues/2420</a> 中的sagidM的回复</p>
+</blockquote>
+
+<p>本机环境：<br/>
+macOS 10.14.4<br/>
+Docker Engine: 18.09.2</p>
+
+<p><figure><img src="media/15604965103558/15604966419596.jpg" alt=""/></figure></p>
+
+<p>大意是，打开终端然后输入<code>screen ~/Library/Containers/com.docker.docker/Data/vms/0/tty</code>，接着回车几次，就 ok 了。事实证明这个方法确实能解决问题。如果你输入一次没什么反应，就多开几个终端标签多试几次就可以了。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/6/14 15:15 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15602308144902.html">
                 
                   <h1>Metasploit 完全使用教程</h1>
@@ -567,64 +610,6 @@ a*~1*/.aspx
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15591786403220.html">
-                
-                  <h1>双因素覆盖不全</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>这篇文章引用自【呆子不开口】在SDCC上的关于账号通行证安全相关的PPT。膜拜大佬</p>
-</blockquote>
-
-<h2 id="toc_0">漏洞原理</h2>
-
-<p>双因素后获取的凭证，在无需双因素处可以获得。</p>
-
-<h2 id="toc_1">常见的场景有：</h2>
-
-<p>1、web版登陆需要双因素认证，但app端却没跟上仍然可以用账号密码登陆<br/>
-2、在登陆处需要，在某些特殊功能处却可以通过特殊白名单参数绕过<br/>
-3、某些双因素认证后才能获得的凭证，可以在普通权限下通过某接口中获得</p>
-
-<p>案例：</p>
-
-<ul>
-<li>淘宝异地登录短信认证绕过</li>
-<li>某微博的双因素认证绕过</li>
-<li>某app移动端登录获取pc端双因素后的cookie</li>
-</ul>
-
-<h2 id="toc_2">修复方案</h2>
-
-<p>双因素认证后需要额外设置新的凭证<br/>
-并保证此凭证不在其他接口输出</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/5/30 9:10 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -710,6 +695,12 @@ a*~1*/.aspx
 	      
 		      
 			      <li class="post">
+			        <a href="15604965103558.html">Docker for Mac 卡在 "is starting"</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15602308144902.html">Metasploit 完全使用教程</a>
 			      </li>
 		     
@@ -729,12 +720,6 @@ a*~1*/.aspx
 		      
 			      <li class="post">
 			        <a href="15596171974228.html">最近做了个 fuzzing 字典精简版</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15595455557551.html">使用 msf 检测 cve-2019-0708 WindowsRDP 远程代码执行漏洞</a>
 			      </li>
 		     
 		  

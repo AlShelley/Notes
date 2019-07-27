@@ -111,7 +111,7 @@
         
             <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
         
-            <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
+            <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
             <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
         
@@ -138,17 +138,28 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045489194.html">
+                <a class="clearlink" href="15483045491162.html">
                 
-                  <h1>Web安全核心</h1>
+                  <h1>burpsuite设置上游代理</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>核心是攻防</p>
+                        	<blockquote>
+<p>burpsuite的使用技巧之一，设置上游代理。比如测试境外网站时可能需要[fanqiang]才能访问，此时这个技巧就能用得上了。</p>
+</blockquote>
 
-<p>测试备忘录和利用备忘录——攻击<br/>
-防御备忘录和危害备忘录——防御</p>
+<p><figure><img src="http://images.lonelyor.org/burp%E8%AE%BE%E7%BD%AE%E4%B8%8A%E6%B8%B8%E4%BB%A3%E7%90%8620180823161146.png" alt="burp设置上游代理20180823161146"/><figcaption>burp设置上游代理201808</figcaption></figure></p>
+
+<p>1、在浏览器中设置burp代理以保证可以抓包<br/>
+2、开启上游代理<br/>
+3、在burp的图中所示位置设置上游代理</p>
+
+<p>打完收工</p>
+
+<h2 id="toc_0">参考链接</h2>
+
+<p><a href="http://www.360zhijia.com/360anquanke/191737.html">http://www.360zhijia.com/360anquanke/191737.html</a></p>
 
                         
                       </div>
@@ -160,7 +171,7 @@
                     <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -174,14 +185,170 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15480046935972.html">
+                <a class="clearlink" href="15483045487920.html">
                 
-                  <h1>MWeb打开文档库快捷键</h1>
+                  <h1>linux安装配置aria2及其Web图形界面（debian为例）</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>CMD + L 即可显示</p>
+                        	<p>下载aria2：apt-get install aria2<br/>
+创建配置文件：mkdir /etc/aria2_conf/aria2.conf<br/>
+编辑配置文件：nano /etc/aria2_conf/aria2.conf</p>
+
+<p>aria2.conf配置：</p>
+
+<pre class="line-numbers"><code class="language-text">#用户名
+#rpc-user=user
+#密码
+#rpc-passwd=passwd
+#上面的认证方式不建议使用,建议使用下面的token方式
+#设置加密的密钥
+rpc-secret=token
+#允许rpc
+enable-rpc=true
+#允许所有来源, web界面跨域权限需要
+rpc-allow-origin-all=true
+#允许外部访问，false的话只监听本地端口
+rpc-listen-all=true
+#RPC端口, 仅当默认端口被占用时修改
+rpc-listen-port=6800
+#最大同时下载数(任务数), 路由建议值: 3
+max-concurrent-downloads=5
+#断点续传
+continue=true
+#同服务器连接数
+max-connection-per-server=5
+#最小文件分片大小, 下载线程数上限取决于能分出多少片, 对于小文件重要
+min-split-size=10M
+#单文件最大线程数, 路由建议值: 5
+split=10
+#下载速度限制
+max-overall-download-limit=0
+#单文件速度限制
+max-download-limit=0
+#上传速度限制
+max-overall-upload-limit=0
+#单文件速度限制
+max-upload-limit=0
+#断开速度过慢的连接
+#lowest-speed-limit=0
+#验证用，需要1.16.1之后的release版本
+#referer=*
+#文件保存路径, 默认为当前启动位置
+dir=/root/downloads
+#文件缓存, 使用内置的文件缓存, 如果你不相信Linux内核文件缓存和磁盘内置缓存时使用, 需要1.16及以上版本
+#disk-cache=0
+#另一种Linux文件缓存方式, 使用前确保您使用的内核支持此选项, 需要1.15及以上版本(?)
+#enable-mmap=true
+#文件预分配, 能有效降低文件碎片, 提高磁盘性能. 缺点是预分配时间较长
+#所需时间 none &lt; falloc ? trunc &lt;&lt; prealloc, falloc和trunc需要文件系统和内核支持
+file-allocation=prealloc
+</code></pre>
+
+<p>然后配置开机启动：<br/>
+<code>nano /etc/init.d/aria2</code></p>
+
+<pre class="line-numbers"><code class="language-text">#!/bin/bash
+#
+# aria2 - this script starts and stops the aria2 daemon
+#
+# chkconfig:   - 85 15
+# description: Aria2 - Download Manager
+# processname: aria2c
+# config:      /etc/aria2/aria2.conf
+# pidfile:
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+# Check that networking is up.
+[ &quot;$NETWORKING&quot; = &quot;no&quot; ] &amp;&amp; exit 0
+
+aria2c=&quot;/usr/bin/aria2c&quot;
+ARIA2C_CONF_FILE=&quot;/etc/aria2/aria2.conf&quot;
+options=&quot; --conf-path=$ARIA2C_CONF_FILE -D &quot;
+
+RETVAL=0
+
+start() {
+    # code here to start the program
+    echo -n &quot;Starting aria2c daemon.&quot;
+    ${aria2c} ${options}
+    RETVAL=$?
+    echo
+}
+
+stop() {
+    echo -n &quot;Shutting down aria2c daemon.&quot;
+    /usr/bin/killall aria2c
+    RETVAL=$?
+    echo
+}
+
+status() {
+    ID=$(/bin/ps -ef | grep &#39;aria2c&#39; | grep -v &#39;grep&#39; | awk &#39;{print $2}&#39;)
+    if [[ &quot;x$ID&quot; != &quot;x&quot; ]]; then
+            echo &quot;Aria2 is running.&quot;
+    else
+            echo &quot;Aria2 is not running.&quot;
+    fi
+}
+
+restart() {
+    stop
+    sleep 3
+    start
+}
+
+case &quot;$1&quot; in
+    start)
+            start
+            ;;
+    stop)
+            stop
+            ;;
+    status)
+            status
+            ;;
+    restart)
+            restart
+            ;;
+    *)
+            echo &quot;Usage: service aria2c {start|stop|restart}&quot;
+            RETVAL=1
+esac
+
+exit $RETVAL
+</code></pre>
+
+<p>使用以下命令来立即启动 Aria2：</p>
+
+<p><code>/usr/bin/aria2c --conf-path=/etc/aria2_conf/aria2.conf -D</code></p>
+
+<p>保存之后配置 WebUI，首先开启 Web 服务，然后安装 WebUI 到指定目录，比如我的目录是/opt/aria2webUI/<br/>
+<code>git clone https://github.com/ziahamza/webui-aria2.git</code><br/>
+这样就下载了 WebUI，然后用 nginx 反代这个文件就ok了。</p>
+
+<p>nginx(/etc/nginx/conf.d/aria2.conf)配置文件如下：</p>
+
+<pre class="line-numbers"><code class="language-text">aria2.conf
+
+server
+{
+listen 80;
+server_name aria2.lonelyor.org;
+location / {
+    root /opt/aria2webUI/;
+}
+access_log logs/aria2_access.log;
+}
+</code></pre>
+
+<p>然后打开浏览器访问 aria2.lonelyor.org 就可以了。</p>
 
                         
                       </div>
@@ -190,7 +357,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/21 1:18 上午</span>
+                    <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
@@ -207,16 +374,25 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15480046831000.html">
+                <a class="clearlink" href="15483045488462.html">
                 
-                  <h1>Mac大小写切换</h1>
+                  <h1>vscode 快速生成 html 代码</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>无论中文还是英文状态下,按住 shift 输入即是大写</p>
+                        	<blockquote>
+<p>参考的博客如下：<br/>
+<a href="https://blog.csdn.net/weixin_42659625/article/details/82941394">https://blog.csdn.net/weixin_42659625/article/details/82941394</a><br/>
+图是直接复制的别人博客的图</p>
+</blockquote>
 
-<p>长按 caps lock 2s 灯亮后输入即是大写</p>
+<p>1、首先创建一个 html 文件如：index.html<br/>
+2、在编辑器中输入感叹号（！）<br/>
+3、此时会弹出下拉项，直接在感叹号❗️上回车即可。<br/>
+<figure><img src="media/15483045488462/15473904287496.jpg" alt=""/></figure><br/>
+4、自动生成的html 代码如下：<br/>
+<figure><img src="media/15483045488462/15473904546232.jpg" alt=""/></figure></p>
 
                         
                       </div>
@@ -225,10 +401,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/21 1:18 上午</span>
+                    <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -242,7 +418,42 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15480046606912.html">
+                <a class="clearlink" href="15483045488670.html">
+                
+                  <h1>burpsuite如何给数据打标的</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>用特殊字符标记关键字即可</p>
+
+<p>类似的有sqlmap，它是使用参数指定要打标的关键词</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045489079.html">
                 
                   <h1>iterm2 常用技巧</h1>
                   <div class="a-content">
@@ -274,7 +485,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/21 1:17 上午</span>
+                    <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
@@ -291,9 +502,9 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15480046527974.html">
+                <a class="clearlink" href="15483045489099.html">
                 
-                  <h1>终端配置本地代理</h1>
+                  <h1>终端配置代理</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
@@ -307,41 +518,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/1/21 1:17 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15480046445603.html">
-                
-                  <h1>校验文件md5</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>打开终端<br/>
-使用命令 md5 或 shawun 即可查看。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/21 1:17 上午</span>
+                    <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
@@ -421,7 +598,7 @@
         
             <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
         
-            <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
+            <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
             <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
         
@@ -442,31 +619,31 @@
 	      
 		      
 			      <li class="post">
-			        <a href="15604965103558.html">Docker for Mac 卡在 "is starting"</a>
+			        <a href="15642124072307.html">Mutillidae 遇到的一个奇怪问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15602308144902.html">Metasploit 完全使用教程</a>
+			        <a href="15641083818915.html">manjaro更改国内源操作</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15597856399146.html">黑盒测试中的信息收集</a>
+			        <a href="15640473747565.html">kali 下更新软件时报错，说下列签名无效的解决办法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15596178265897.html">业务逻辑漏洞安全检查checklist</a>
+			        <a href="15638711886127.html">Archiso</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15596171974228.html">最近做了个 fuzzing 字典精简版</a>
+			        <a href="15611953556975.html">archlinux 安装 vmtools 遇到坑了怎么办</a>
 			      </li>
 		     
 		  

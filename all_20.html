@@ -111,7 +111,7 @@
         
             <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
         
-            <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
+            <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
             <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
         
@@ -138,19 +138,18 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15433912730163.html">
+                <a class="clearlink" href="15446875268619.html">
                 
-                  <h1>FOEENSICS 101</h1>
+                  <h1>异常登录检测</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>题目：<a href="https://ctflearn.com/problems/96">https://ctflearn.com/problems/96</a><br/>
-<figure><img src="http://images.lonelyor.org/ctflearn-96-1.png" alt="ctflearn-96-1"/><figcaption>ctflearn-96-</figcaption></figure><br/>
-访问域名，然后会下载一张图片。<br/>
-接下来我们使用十六进制编码器打开这张图片，会发现：<br/>
-<figure><img src="http://images.lonelyor.org/ctflearn-96-2.png" alt="ctflearn-96-2"/><figcaption>ctflearn-96-</figcaption></figure><br/>
-标红部分即是flag。</p>
+                        	<p>异常登录功能用来检测服务器上的登录行为。<br/>
+非常用地的登录行为告警（这个常用登陆地可以作为个人信息的一部分来由用户设置；或者收集第一次成功登录时的公网ip，然后将此ip地址设置位常用登陆地，从该时间往后顺延24小时内的所有公网登录地也会被记为常用登陆地，当超过24小时候，所有不在常用登陆地的登录行为均视为异地登录警告。当某个ip被判定为异地登录时，仅第一次登录行为进行告警，如果成功登录6次或以上，则默认将此ip的地点记录为常用登录地。）<br/>
+非常用登录ip告警<br/>
+非常用登录时间告警<br/>
+非常用登录账号告警（同一时间段内超多次登录同一账号、同一时间段内不同地理位置登录账号、同一时间段内多个ip登录同一账号、不同设备登录同一账号、同一设备不同ip登录同一账号）</p>
 
                         
                       </div>
@@ -159,10 +158,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/11/28 15:47 下午</span>
+                    <span class="date">2018/12/13 15:52 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -176,82 +175,132 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15433875205785.html">
+                <a class="clearlink" href="15446874145620.html">
                 
-                  <h1>BASIC INJECTION 基本注入</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>题目：<a href="https://ctflearn.com/problems/88">https://ctflearn.com/problems/88</a><br/>
-解：<br/>
-访问题目中提到的：<a href="https://web.ctflearn.com/web4/">域名</a><br/>
-<figure><img src="http://images.lonelyor.org/ctflearn-basic-injection-1.png" alt="ctflearn-basic-injection-1"/><figcaption>ctflearn-basic-injection-</figcaption></figure><br/>
-然后输入payload，得到以下数据，方框中的即为flag。<br/>
-<figure><img src="http://images.lonelyor.org/ctflearn-basic-injection-2.png" alt="ctflearn-basic-injection-2"/><figcaption>ctflearn-basic-injection-</figcaption></figure></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/28 14:45 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15428715286450.html">
-                
-                  <h1>windows右键添加管理员获得所有权</h1>
+                  <h1>burpsuite插件编写之官方代码示例解读</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>右键添加获得管理员所有权是个比较方便的功能。</p>
+<p>description: 分析burpsuite官方提供的示例代码，以此来学习插件编写。</p>
 </blockquote>
 
-<p>打开记事本或者别的文本编辑器，然后写入如下内容:</p>
+<h2 id="toc_0">HelloWorld</h2>
 
-<pre class="line-numbers"><code class="language-cmd">Windows Registry Editor Version 5.00
+<p>废话不多说，直接上代码！</p>
 
-[HKEY_CLASSES_ROOT\*\shell\runas]
-@=&quot;管理员取得所有权&quot;
-&quot;NoWorkingDirectory&quot;=&quot;&quot;
-[HKEY_CLASSES_ROOT\*\shell\runas\command]
-@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
-&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
-[HKEY_CLASSES_ROOT\exefile\shell\runas2]
-@=&quot;管理员取得所有权&quot;
-&quot;NoWorkingDirectory&quot;=&quot;&quot;
-[HKEY_CLASSES_ROOT\exefile\shell\runas2\command]
-@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
-&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
-[HKEY_CLASSES_ROOT\Directory\shell\runas]
-@=&quot;管理员取得所有权&quot;
-&quot;NoWorkingDirectory&quot;=&quot;&quot;
-[HKEY_CLASSES_ROOT\Directory\shell\runas\command]
-@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; /r /d y &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F /t&quot;
-&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; /r /d y &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F /t&quot;
+<pre class="line-numbers"><code class="language-python">from burp import IBurpExtender
+from java.io import PrintWriter
+from java.lang import RuntimeException
+
+# 上面import的第一句是所有burp插件都必须有的
+# 下面开始创建一个burp插件的类来实现插件
+class BurpExtender(IBurpExtender):
+    def registerExtenderCallbacks(self, callbacks):
+        # 创建插件名
+        callbacks.setExtensionName(&quot;HelloWorld extension&quot;)
+        # 获取输出和错误流
+        stdout = PrintWriter(callbacks.getStdout(), True)
+        stderr = PrintWriter(callbacks.getStderr(), True)
+        # 在输出流和错误流中插入消息
+        stdout.println(&quot;Hello output&quot;)
+        stderr.println(&quot;Hello errors&quot;)
+        # 将消息插入burp的alert警报标签中
+        callbacks.issueAlert(&quot;Hello alerts&quot;)
+        # 抛出将出现在错误流中的异常
+        raise RuntimeException(&quot;Hello exception&quot;)
 </code></pre>
 
-<p>然后另存为：管理员获得所有权.reg<br/>
-文件名可以随便写，但是后缀记得写成reg（改成这个后缀后文件图标就会变成一个破碎蓝色魔方）。<br/>
-然后右键以管理员身份运行，若弹框注册表xxx的，同意就行了。</p>
+<p>现在开始来说几个坑：<br/>
+1、插件最好尽量放在英文路径，不然可能会报错<br/>
+2、编写代码前指定编码(如：# -<em>- coding:utf8 -</em>-)<br/>
+3、raise RuntimeException(&quot;Hello exception&quot;) 这行代码我没看懂是要干嘛的，反正写了之后Errors就报错，不想看的话就注释掉好了。</p>
+
+<h2 id="toc_1">event_listeners 事件监听器</h2>
+
+<pre class="line-numbers"><code class="language-python">#!/usr/bin/python3
+# -*- coding:utf-8 -*-
+
+from burp import IBurpExtender
+from burp import IHttpListener
+from burp import IProxyListener
+from burp import IScannerListener
+from burp import IExtensionStateListener
+from java.io import PrintWriter
+
+class BurpExtender(IBurpExtender, IHttpListener, IProxyListener, IScannerListener, IExtensionStateListener):
+    def registerExtenderCallbacks(self, callbacks):
+        # 保持对回调对象的引用
+        self._callbacks = callbacks
+        # 创建插件名
+        callbacks.setExtensionName(&quot;Event Listeners&quot;)
+        # 获取输出流
+        self._stdout = PrintWriter(callbacks.getStdout(), True)
+        # 注册为http监听器
+        callbacks.registerHttpListener(self)
+        # 注册为proxy监听器
+        callbacks.registerProxyListener(self)
+        # 注册为scanner监听器
+        callbacks.registerScannerListener(self)
+        # 注册为扩展插件状态监听器
+        callbacks.registerExtensionStateListener(self)
+    # 下面几个函数各自实现监听
+    def processHttpMessage(self, toolFlag, messageIsRequest, messageInfo):
+        self._stdout.println(
+            (&quot;HTTP request to &quot; if messageIsRequest else &quot;HTTP response from&quot;) +
+            messageInfo.getHttpService().toString() +
+            &quot;[&quot; + self._callbacks.getToolName(toolFlag) + &quot;]&quot;
+        )
+
+    def processProxyMessage(self, messageIsRequest, message):
+        self._stdout.println(
+            (&quot;Proxy request to &quot; if messageIsRequest else &quot;Proxy response from&quot;) +
+            message.getMessageInfo.getHTTPService().toString()
+        )
+
+    def newScanIssue(self, issue):
+        self._stdout.prinln(&quot;New scan issue &quot; + issue.getIssueName())
+
+    def extensionUnloaded(self):
+        self._stdout.println(&quot;Extension was unloaded&quot;)
+</code></pre>
+
+<p>我是没搞懂这个插件做了什么，诶无所谓，也就是多敲敲代码，熟悉熟悉感觉。</p>
+
+<h2 id="toc_2">traffic_redirector 流量重定向</h2>
+
+<pre class="line-numbers"><code class="language-python">#!/usr/bin/python3
+# -*- coding:utf-8 -*-
+
+from burp import IBurpExtender
+from burp import IHttpListener
+
+HOST_FROM = &quot;www.baidu.com&quot;
+HOST_TO = &quot;www.zhihu.com&quot;
+
+class BurpExtender(IBurpExtender, IHttpListener):
+    def registerExtenderCallbacks(self, callbacks):
+        # 获取扩展helpers对象
+        self._helpers = callbacks.getHelpers()
+        # 设置扩展名
+        callbacks.setExtensionName(&quot;Traffic redirector&quot;)
+        # 将自己注册为HTTP侦听器
+        callbacks.registerHttpListener(self)
+
+    def processHttpMessage(self, toolsFlag, messageIsRequest, messageInfo):
+        # 只获取请求
+        if not messageIsRequest:
+            return
+        # 获取http服务的请求
+        httpService = messageInfo.getHttpService()
+        # 如果主机是HOST_FROM则将它改成HOST_TO
+        if (HOST_FROM == httpService.getHost()):
+            messageInfo.setHttpService(self._helpers.buildHttpService(HOST_TO,
+                httpService.getPort(), httpService.getProtocol()))
+</code></pre>
+
+<p>这个插件简单来说就是，把请求中的host部分修改掉。比如上述代码会监听所有host为百度的请求，一旦出现，就会把host改成知乎。</p>
 
                         
                       </div>
@@ -260,10 +309,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/11/22 15:25 下午</span>
+                    <span class="date">2018/12/13 15:50 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -277,148 +326,175 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15428714021434.html">
+                <a class="clearlink" href="15446869314706.html">
                 
-                  <h1>linux将shell脚本添加到系统命令的方法</h1>
+                  <h1>xss、csrf、sql注入快速检测方法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>可以自定义一些shell脚本，用来提高执行常用组合命令的效率。还有一种方式是使用alias命令。</p>
-</blockquote>
-
-<p>两种方法：<br/>
-1、直接把shell脚本放到/usr/local/bin ，然后添加权限 <code>sudo chmod +x xxx.sh</code> 就ok了。这样是在本地用户添加命令。<br/>
-root用户添加命令则把脚本放在 /usr/bin 即可。<br/>
-2、使用软连接的方式<code>ln -s 【源文件或目录】【目标文件或目录】</code><br/>
-注意要使用绝对路径。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/22 15:23 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15428712896668.html">
-                
-                  <h1>CRLF注入</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>文章翻译自OWASP的<a href="https://www.owasp.org/index.php/CRLF_Injection">CRLF_Injection</a></p>
-</blockquote>
-
-<p>CRLF即回车Carriage Return (ASCII 13, \r) 和 换行 Line Feed (ASCII 10, \n)。他们被用于注释掉一行的终止。不过不同系统的处理方式有点不同。windows中，CR和LF都被用于注释掉一行的结尾，而linux/unix中只需要一个LF。在HTTP协议中，CRLF序列始终用于一行的终止。<br/>
-当用户设法将CRLF提交到应用程序时，可能发生CRLF注入攻击，这通常是通过修改HTTP参数或URL来完成。</p>
-
-<p>CRLF注入可能产生这样的问题：</p>
+                        	<h2 id="toc_0">CSRF跨站请求伪造</h2>
 
 <ul>
-<li>HTTP响应拆分</li>
-<li>日志注入<br/>
-## HTTP响应拆分<br/>
-通常，当出现以下情况时会发生HTTP响应拆分</li>
-<li>数据通过不受信任的来源进入Web应用程序，如HTTP请求。</li>
-<li>数据包含在发送给Web用户的HTTP响应标头中，而不会对恶意字符进行验证。<br/>
-HTTP响应拆分是达到目的的手段而不是目的本身。<br/>
-攻击方式如下：攻击者将恶意数据传递给易受攻击的应用程序，应用程序将数据包含在HTTP响应中。<br/>
-要成功利用漏洞，应用程序必须允许<strong>包含有 CR（回车，即 %0d 或者 \r\n）和 LF（换行符，%0a 或者 \n）的输入在header中</strong>和<strong>底层平台必须容易注入这样的字符</strong>。</li>
+<li>原理<br/>
+攻击者在受害者不知情的情况下，以受害者的名义伪造请求发送给受攻击的站点，从而在未授权的情况下执行在权限保护之下的操作。<br/>
+CSRF攻击的对象是那些可以直接产生数据改变的服务，而对于读取数据的服务，则不需要进行 CSRF 的保护。<br/></li>
 </ul>
 
-<p><em>大多数现代应用程序服务器(无论用什么语言编写的代码)，都已经不存在HTTP响应拆分漏洞。</em></p>
-
-<p>下面上一段java代码来举例说明：</p>
-
-<pre class="line-numbers"><code class="language-java">String author = request.getParameter(AUTHOR_PARAM);
-...
-Cookie cookie = new Cookie(&quot;author&quot;, author);
-      cookie.setMaxAge(cookieExpiration);
-      response.addCookie(cookie);
-</code></pre>
-
-<p>上述代码的意思是：从客户端HTTP请求中接受参数（author），并将其设置在HTTP响应的cookie头中。<br/>
-如果我们正常提交数据(author=lonelyor)，HTTP响应应该是这样：</p>
-
-<pre class="line-numbers"><code class="language-java">HTTP/1.1 200 OK
-...
-Set-Cookie: author=Jane Smith
-...
-</code></pre>
-
-<p>但是，由于源代码中的cookie是由未经验证的用户输入组成的，因此如果我们提交恶意代码<code>Hacker By xxx\r\nContent-Length:45\r\n\r\n...</code>则HTTP响应将被拆分为原始响应和伪造响应。</p>
-
-<pre class="line-numbers"><code class="language-java">HTTP/1.1 200 OK
-    ...
-    Set-Cookie: author=Hacker By xxx
-    Content-Length: 999
-    
-    &lt;html&gt;恶意内容...&lt;/html&gt; (这个例子中为第999个字符)
-    原始内容以1000开头, 现在被浏览器忽略了...
-</code></pre>
-
-<h3 id="toc_0">危害</h3>
-
-<p>攻击者构建任意HTTP响应的能力可能导致以下攻击：<br/>
-跨用户污染（Cross-User_Defacement）——利用条件很苛刻<br/>
-缓存中毒（Cache_Poisoning）——利用条件很苛刻<br/>
-XSS跨站脚本攻击<br/>
-页面劫持</p>
-
-<h2 id="toc_1">日志注入</h2>
-
-<p>将未经验证的用户输入写入日志文件可能导致攻击者伪造日志或者将恶意内容注入日志。<br/>
-以下情况可能导致日志伪造漏洞：</p>
+<hr/>
 
 <ul>
-<li>数据从不受信任的来源进入应用程序</li>
-<li>数据将写入应用程序或者系统日志文件</li>
+<li>检测方法<br/>
+1.查看重要操作接口提交的请求中是否包含 csrf_token<br/>
+2.更改和删除 csrf_token 后提交表单，查看请求是否能被正确响应。<br/></li>
 </ul>
 
-<p>下面上一段java代码来举例说明：</p>
+<hr/>
 
-<pre class="line-numbers"><code class="language-java">...
-String val = request.getParameter(&quot;val&quot;);
-try {
-  int value = Integer.parseInt(val);
-}
-catch (NumberFormatException) {
-  log.info(&quot;Failed to parse val = &quot; + val);
-}
-...
-</code></pre>
+<ul>
+<li>修复方案<br/>
+1.对涉及数据<strong>增、删、改</strong>操作提交的表单中添加csrf_token，token 参数应校验一次后失效。<br/>
+2.最好是在容器或框架上<strong>全局</strong>启用 csrf_token。(很多框架自带的解决办法容易遗漏一次失效的问题)<br/>
+3.token 应有一定的<strong>时效性</strong>，建议为30分钟，过期需失效（即：单页面停留30分钟后，用户提交请求需提示“页面过期，请刷新页面后再次提交”）<br/></li>
+</ul>
 
-<p>上述代码的功能是，从请求对象中读取整数值，如果该值无法解析为整数，则会记录输入，并显示一条错误信息。<br/>
-如果用户提交字符串“one”，则会记录以下条目<br/>
-<code>INFO: Failed to parse val=one</code><br/>
-然而，如果攻击者提交字符串<code>one%0a%0aINFO:+User+logged+out%3dbadguy</code>则会在日志中显示：</p>
+<hr/>
 
-<pre class="line-numbers"><code class="language-text">    INFO: Failed to parse val=one
+<ul>
+<li>参考<br/>
+<a href="https://www.owasp.org/index.php/Testing_for_CSRF_(OTG-SESS-005)">CSRF测试</a><br/>
+<a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">跨站请求伪造（CSRF）</a><br/>
+<a href="https://www.ibm.com/developerworks/cn/web/1102_niugang_csrf/">CSRF 攻击的应对之道</a><br/>
+## XSS跨站脚本攻击<br/>
+### 反射型</li>
+<li>原理<br/></li>
+</ul>
 
-    INFO: User logged out=badguy
-</code></pre>
+<hr/>
 
-<p>显然攻击者可以使用相同机制插入任意日志条目。</p>
+<ul>
+<li>检测方法<br/>
+<strong>检测场景</strong>：任何有输入输出地方......<br/>
+1.使用通用的web扫描器一般的都能发掘潜在的反射型XSS漏洞。<br/>
+2.手工在一些输入框中或者post参数中加入拼凑过的JS代码，根据返回的页面源码中是否成功嵌入JS代码来判断XSS是否存在。<br/>
+3.如果注入的代码经过后端处理后，永久性的嵌入到了页面当中，则该XSS为存储型的，反射型的XSS一般依赖于该次请求，且同时只能被用户自己所看到。<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>修复方案<br/>
+1.输出时统一使用 htmlEscape（）转义用户输入的数据，将html、js中涉及到的关键字符进行html编码处理后再输出到页面上。<br/>
+2.如果存在用户编写文章等类似用户可以自定义页面样式的功能，则限制用户输入，采用严格的白名单来过滤用户的输入，这种过滤应在后端应实现。(很多开源的第三方富文本编辑器，部分编辑器仅在JS端进行过滤，而不在后端进行关键字过滤)。<br/></li>
+</ul>
+
+<hr/>
+
+<h3 id="toc_1">存储型</h3>
+
+<ul>
+<li>原理<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>检测方法<br/>
+<strong>检测场景</strong>：存在富文本编辑器的地方；用户的输入信息会作为固定的值回显到页面中；后台管理应用中维护用户输入的相关信息。<br/>
+1.手工在一些输入框中或者post参数中加入污染的JS代码，根据返回的页面源码中是否成功嵌入JS代码来判断XSS是否存在(注入前端转义的情况)。<br/>
+2.如果注入的代码经过后端处理后，永久性的嵌入到了页面当中，则该XSS为存储型的。<br/>
+3.如果尝试注入的代码在页面中均被html编码，则再考虑其数据的流转会不会在后台其他应用中处理这些输入数据，如果有，对应的后台应用是否也做了完善的过滤机制。<br/>
+4.可远程搭建XSS检测平台，如果有XSS测试代码被触发，则自动发起链接到该平台上，这样相对来说可以测试那些未知的数据流向是否造成问题。<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>修复方案<br/>
+1.输出时统一使用 htmlEscape（）转义用户输入的数据，将html、js中涉及到的关键字符进行html编码处理后再输出到页面上。<br/>
+2.如果存在用户编写文章等类似用户可以自定义页面样式的功能，则限制用户输入，采用严格的白名单来过滤用户的输入，这种过滤应在后端应实现。(很多开源的第三方富文本编辑器，部分编辑器仅在JS端进行过滤，而不在后端进行关键字过滤)。<br/></li>
+</ul>
+
+<hr/>
+
+<h3 id="toc_2">基于DOM型</h3>
+
+<ul>
+<li>原理<br/></li>
+</ul>
+
+<hr/>
+
+<p>没啥可说的，可以当成是特殊的反射型。</p>
+
+<ul>
+<li>检测方法<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>修复方案<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>参考<br/>
+<a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">XSS跨站脚本</a>
+## SQL_Inject<br/></li>
+<li>原理<br/></li>
+</ul>
+
+<hr/>
+
+<p>开发人员使用直接拼接 sql 的方法来访问数据库，导致攻击者能通过特殊构造的语句控制代码逻辑。典型的代码与数据没有分离导致的安全问题之一。</p>
+
+<ul>
+<li>检测方法<br/></li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>常规方法<br/>
+<code>
+1 ，新建一个1 .txt文件，burp抓包将包含关键参数的请求存入。<br/>
+2 ，使用sqlmap 进行扫描（python sqlmap [options] [file path]）<br/>
+3、等待结果输出
+</code></li>
+<li>另一种常规方法<br/>
+<code>
+使用burp插件SQLiPy<br/>
+方案一（通用）：将sqlapi地址配置成 192.168.2.22 2222<br/>
+方案二：使用sqlipy生成测试语句，然后添加 -p 参数，指定注入参数，然后在 shell 里面运行 sqlmap。<br/>
+一个指定参数的SqlMap示例语句：    <br/>
+sqlmap -u “ http://xxxxxx.com:80/x/xx?x_id=1507 ” --method = “GET”-- cookie = “SESSIONID = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;<br/>
+--user-agent= &quot;Mozilla / 5.0（X11; Linux_x86_64; RV：60.0）/ 20100101火狐/ 60.0&quot;  --delay=0 --timeout=30 --retries=0 --dbms=&quot;MySQL&quot;  --os=Linux   <br/>
+--level=3 --risk=3 --threads=2 --time-sec=10 -b --batch --answers=&quot;crack=N,dict = N&quot;  -p &quot;zone_id&quot; --tables           
+</code>
+我们在跑注入的时候需要重点设置的参数：<br/>
+-risk=3<br/>
+-level=3<br/>
+--threads=2<br/>
+--dbms和–os去问开发或者测试<br/>
+-p 指定阐述减少服务器压力</li>
+<li>不太常规的方法<br/>
+1、写一个web界面调用sqlmapapi<br/>
+2、直接找开发拉代码过来进行审计</li>
+<li>修复方案<br/></li>
+</ul>
+
+<hr/>
+
+<p>1、使用安全的API ，完全避免使用解释器，或提供参数化界面的接口，或迁移到ORM 或实体框架(通常开发框架里会自带访问sql的方法来预防注入)。<br/><br/>
+2、做参数绑定，预编译查询。PHP推荐使用PDO进行防注入<br/>
+3、若不具备开发条件，可以使用 waf 进行防御。</p>
+
+<ul>
+<li>参考<br/>
+<a href="https://www.owasp.org/index.php/SQL_Injection">SQL注入</a></li>
+</ul>
 
                         
                       </div>
@@ -427,10 +503,10 @@ catch (NumberFormatException) {
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/11/22 15:21 下午</span>
+                    <span class="date">2018/12/13 15:42 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -444,58 +520,195 @@ catch (NumberFormatException) {
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15428708110510.html">
+                <a class="clearlink" href="15446866501207.html">
                 
-                  <h1>更优雅的使用Hexo写博客</h1>
+                  <h1>IIS短文件名漏洞</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>曾经的博客是使用 Hexo 写的，我觉得Hexo这种在文章前面写上元信息的方式很棒。然而，每此写markdown文档都要输入这些元信息，这很麻烦，所以就写了个shell脚本来自动化输入文件元信息的过程。<br/>
-代码如下：</p>
-</blockquote>
+                        	<h2 id="toc_0">漏洞原理</h2>
 
-<pre class="line-numbers"><code class="language-bash">#!/bin/bash
+<hr/>
 
-printf &quot;请输入文件名(example.md)，记得写后缀!\n&quot;
-read -p &quot;文件名是: &quot; filename
-# 这里的title取文件名不取后缀
-echo &quot;title: &quot;${filename%.*} &gt;&gt; $filename
-echo &quot;author: lonelyor&quot; &gt;&gt; $filename
-echo &quot;language: zh-CN&quot; &gt;&gt; $filename
-echo &quot;tags:&quot; &gt;&gt; $filename
-echo &quot;  - 标签&quot; &gt;&gt; $filename
-echo &quot;categories:&quot; &gt;&gt; $filename
-echo &quot;  - 分类&quot; &gt;&gt; $filename
-time=$(date &quot;+%Y-%m-%d %H:%M:%S&quot;)
-echo &quot;date: ${time}&quot;&gt;&gt; $filename
-echo &quot;---&quot; &gt;&gt; $filename
-echo &quot;&gt; description: &quot; &gt;&gt; $filename
-# printf和echo都是输出，&gt;&gt;表示追加，&gt;会覆盖文件
-# shell中使用变量需要先定义变量，然后使用时加 $
-# read 用来创建文件，文件名从终端获取
+<p>windows在创建一个新文件时，操作系统还会生成 8.3 格式的兼容 MS-DOS 的（短）文件名，以允许基于 MS-DOS 或16位 windows 的程序访问这些文件。    </p>
+
+<h2 id="toc_1">利用场景</h2>
+
+<hr/>
+
+<p>1、用于猜解文件/文件名<br/><br/>
+2、.Net Framework 的拒绝服务攻击（不常见）</p>
+
+<h2 id="toc_2">检测方法</h2>
+
+<hr/>
+
+<p><strong>黑盒测试</strong><br/><br/>
+使用<a href="https://github.com/lijiejie/IIS_shortname_Scanner">IIS短文件名扫描器</a><br/><br/>
+<strong>白盒测试</strong><br/>
+几乎所有的 windows 操作系统，在 cmd 中使用命令：</p>
+
+<pre class="line-numbers"><code class="language-bat">dir /x
 </code></pre>
 
-<p>展示效果如下:</p>
+<p>如图：<br/>
+<figure><img src="media/15446866501207/%E7%9F%AD%E6%96%87%E4%BB%B6%E5%90%8D%E6%98%BE%E7%A4%BA.png" alt="短文件名显示"/><figcaption>短文件名显示</figcaption></figure></p>
 
-<pre class="line-numbers"><code class="language-md">title: 如何优雅的创建markdown文件
-author: lonelyor
-language: zh-CN
-tags:
-  - Hexo
-  - markdown
-categories:
-  - 技术杂文
-date: 2018-09-06 17:42:40
----
-&gt; description: 若爱请深爱，若不爱请离开。
+<h2 id="toc_3">修复方案</h2>
+
+<hr/>
+
+<p>1、升级 .net framework 至 4.0 版本或以上<br/><br/>
+2、修改注册表键值<br/><br/>
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem 修改NtfsDisable8dot3NameCreation为1。（此项默认为0）<br/><br/>
+此设置用于禁用短文件名功能，重启后生效。<br/><br/>
+或者通过 CMD 命令：    </p>
+
+<pre class="line-numbers"><code class="language-txt">Windows Server 2008 R2
+查询是否开启短文件名功能：fsutil 8dot3name query
+关闭该功能：fsutil 8dot3name set 1
+
+Windows Server 2003
+关闭该功能：fsutil behavior set disable8dot3 1
 </code></pre>
 
-<p>接下来说说如何使用(仅限linux、macos，或者说可以执行bash的环境，win用户请自行转换成bat)：<br/>
-首先，创建一个名叫 md.sh 的文件（名字你爱咋咋地），把代码copy进去。<br/>
-然后，<code>ln -s /md文件绝对路径 /usr/local/bin/md</code> ,这条语句的意思就是创建一个软连接，把 md.sh 连接到当前用户的 md 命令上。<br/>
-最后，打开终端输入 md ，然后输入要创建的markdown文件名（如：test.md），即可在当前目录下创建带有元信息的markdown文件。</p>
+<p>以上操作只能防止新创建的文件/文件名不会出现短文件名，而当前文件/文件名依然保持短文件名。完整解决方案还需要如下操作：<br/><br/>
+3、<br/><br/>
+　　a、从当前目录中创建一个副本,并将其重命名为 tempNew；<br/><br/>
+　　b、将当前目录重命名为“tempOld”；<br/><br/>
+　　c、将“tempNew”重命名为原来的目录名。<br/><br/>
+4、禁止 url 中使用 “~” 或它的 Unicode 编码。（IIS7.0的请求阻塞不能完全阻止“~”波浪号。）</p>
+
+<hr/>
+
+<hr/>
+
+<hr/>
+
+<h2 id="toc_4">背景知识</h2>
+
+<hr/>
+
+<p>windows 支持的长文件名最多为 255 个字符。windows 还以 8.3 格式生成与 MS-DOS 兼容的（短）文件名，以允许基于 MS-DOS 或 16 位 windows 的程序访问这些文件。<br/><br/>
+8.3格式短文件名规范中：<br/><br/>
+‘8’是指文件名或目录名的主体部分小于等于 8 个字节；‘3’是指文件名的扩展名部分小于等于 3 个字节。<br/><br/>
+windows 会按以下方式从长文件名生成短文件名：<br/><br/>
+windows 首先会删除文件名中的任何无效字符和空格。无效字符包括：</p>
+
+<pre class="line-numbers"><code class="language-txt">.&quot;/\[]:;=,
+</code></pre>
+
+<p>由于短文件名只能包含一个英文句点（.），因此 windows 将删除文件名中的其他英文句点，即使文件名中最后一个英文句点后面是有效的非空格字符也是如此。例如：windows 从长文件名 This is a really long filename.123.456.789.txt 生成短文件名 Thisis~1.txt 否则，windows 将忽略最后一个英文句点，而使用倒数第二个英文句点。例如：windows从长文件名 This is a really long filename.123.456.789. 生成短文件名 Thisis~1.789。<br/><br/>
+生成短文件名若需要复制的话，windows 将文件名截断为 6 个字符，并在后边附加一个波形符号（~）和一个数字（创建的每一个以 ~1 结尾的唯一文件名，复制文件以 ~2、~3等结尾。）    </p>
+
+<h2 id="toc_5">影响范围</h2>
+
+<hr/>
+
+<p>Windows 10 Pro released in July 2015Windows 10 Enterprise released in July 2015Microsoft Windows Server 2003 Standard EditionMicrosoft Windows Server 2003 Enterprise EditionMicrosoft Windows Server 2003 Datacenter EditionMicrosoft Windows Server 2003 Web EditionMicrosoft Windows Server 2003, Enterprise x64 EditionMicrosoft Windows Small Business Server 2003 Standard EditionMicrosoft Windows Small Business Server 2003 Premium EditionMicrosoft Windows XP Home EditionMicrosoft Windows XP Professional EditionMicrosoft Windows Datacenter Server Limited EditionMicrosoft Windows Advanced Server, Limited EditionMicrosoft Windows 2000 ServerMicrosoft Windows 2000 Advanced ServerMicrosoft Windows 2000 Professional EditionMicrosoft Windows NT Workstation 3.5Microsoft Windows NT Workstation 3.51Microsoft Windows NT Workstation 4.0 开发员版Microsoft Windows NT Server 3.51Microsoft Windows NT Server 4.0 Standard EditionWindows Vista Service Pack 2Windows Vista BusinessWindows Vista EnterpriseWindows Vista Home PremiumWindows Vista UltimateWindows Server 2008 Service Pack 2Windows Server 2008 StandardWindows Server 2008 EnterpriseWindows Server 2008 DatacenterWindows Server 2008 for Itanium-Based SystemsWindows 7 Service Pack 1Windows 7 Home PremiumWindows 7 ProfessionalWindows 7 EnterpriseWindows 7 UltimateWindows Server 2008 R2 Service Pack 1Windows Server 2008 R2 StandardWindows Server 2008 R2 EnterpriseWindows Server 2008 R2 DatacenterWindows Server 2008 R2 for Itanium-Based SystemsWindows 8 EnterpriseWindows 8 ProWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 DatacenterWindows Server 2012 DatacenterWindows Server 2012 DatacenterWindows Server 2012 Datacenter<br/>
+列表内所有操作系统均受影响（数据来源日期：20171213）<br/><br/>
+该漏洞有其局限性：<br/><br/>
+1、只能猜解文件/文件夹名前六位，以及扩展名前三位<br/><br/>
+2、名称较短的文件是没有响应的短文件名的<br/><br/>
+3、需要 IIS 和 .net 同时满足。  </p>
+
+<h2 id="toc_6">漏洞详情</h2>
+
+<hr/>
+
+<p>在 windows 上的 Apache（Apache支持短文件名）上运行的 web 应用程序正在创建一个长文件名文件（如sql备份文件或会话文件，假设文件名是 backup-082119f75623eb7abd7bf357698ff66c.sql，windows 将创建短文件名 BACKUP〜1.SQL）。这种情况下，如果我们用短文件名访问这个文件，那么就有可能获取这个包含sql数据库备份的文件。<br/><br/>
+比较著名的一个例子：<br/><br/>
+wordpress 有一个备份博客的插件，该插件会为备份创建一个自定义目录（backup-88456）。备份完成后，该目录包含一个名为 wordpress_wp_20120702_576.sql 的文件  ，即 WordPress 数据库备份。这本应该难以猜测的，因为我们的目录名称中有5个数字加上日期和另外3个数字，即使忽略日期也至少有 100,000,000 个组合。然而由于短文件名的原因，目录名会变成 BACKUP~1 而文件名会变成 WORDPR~1.SQL。100,000,000 个组合被缩减为一个组合。    </p>
+
+<h2 id="toc_7">漏洞利用</h2>
+
+<hr/>
+
+<p><strong>短文件名漏洞</strong><br/>
+漏洞利用需要使用到通配符。在 windows 中，* 可以匹配n个字符（n可以为0,一个星号和n个星号的意义一样）。判断某站点是否存在 IIS 短文件名爆破，构造如下payload：    </p>
+
+<pre class="line-numbers"><code class="language-http">1. http://www.xxx.com/*~1*/.aspx
+2. http://www.xxx.com/l1j1e*~1*/.aspx
+</code></pre>
+
+<p>若1返回404而2返回400，则可以判断目标站点存在漏洞。<br/><br/>
+判断漏洞存在后，继续猜解目录下是否存在a开头的文件或文件夹，访问：    </p>
+
+<pre class="line-numbers"><code class="language-http">http://www.xxx.com/a*~1*/.aspx
+</code></pre>
+
+<p>若存在将返回404，不存在则返回400。以此类推，不断向下猜解所有的6个字符。<br/><br/>
+到此要考虑两种情况，若abcdef开头的是一个文件夹则    </p>
+
+<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*/~1/.aspx
+</code></pre>
+
+<p>返回404。若abcdef开头的是一个文件，则    </p>
+
+<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*~1/.aspx
+</code></pre>
+
+<p>返回404（注意！返回404表示存在）同理我们可以猜出文件后缀名：    </p>
+
+<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*~1*h*/.aspx
+</code></pre>
+
+<p>若返回404则代表扩展名中肯定存在h字符。<br/><br/>
+利用此漏洞可以猜解后台地址、敏感文件/文件名（如备份的rar、bak、sql等）；某些情况下，可以通过短文件名漏洞直接下载对应的文件（如备份sql文件）。<br/><br/>
+<br><br/>
+<strong>.Net Framework 拒绝服务攻击</strong><br/><br/>
+当请求文件夹名称包含 ~1 的请求，会导致不存在该文件的 .Net Framework 去递归查询所有根目录。如果只有一个“~1”是无效的，当“~1”大于一个，比如像这样：        </p>
+
+<pre class="line-numbers"><code class="language-http">\wwwtest\fuck~1\~1\~1\~1.aspx
+</code></pre>
+
+<p>此时文件系统会这样调用：    </p>
+
+<pre class="line-numbers"><code class="language-txt">\wwwtest                           SUCCESS
+\wwwtest\fuck~1\~1\~1\~1           PATH NOT FOUND
+\wwwtest\fuck~1                    NAME NOT FOUND
+\wwwtest\fuck~1\~1\                PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1\             PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1              PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1              PATH NOT FOUND
+\wwwtest\fuck~1\~1                 PATH NOT FOUND
+\wwwtest\fuck~1                    NAME NOT FOUND
+\wwwtest                           SUCCESS
+\wwwtest                           SUCCESS
+</code></pre>
+
+<p>如果我们请求的文件/文件夹名同时存在大小写时，这个请求会被请求两次，一次是原封不动的请求，一次是全部使用小写的请求。<br/><br/>
+下表显示了每个请求的FS调用的数量（Windows 2008 R2, IIS 7.5(latest patch – June 2012), and .Net framework 4.0.30319 (在别的系统下可能会不同)）<br/><br/>
+<figure><img src="media/15446866501207/F5%E8%B0%83%E7%94%A8.png" alt="F5调用"/><figcaption>F5调用</figcaption></figure></p>
+
+<p>这个问题适用于当时的 .Net framework 的所有版本(<br/><br/>
+    IIS 1.0, Windows NT 3.51<br/><br/>
+    IIS 2.0, Windows NT 4.0<br/><br/>
+    IIS 3.0, Windows NT 4.0 Service Pack 2<br/><br/>
+    IIS 4.0, Windows NT 4.0 Option Pack<br/><br/>
+    IIS 5.0, Windows 2000<br/><br/>
+    IIS 5.1, Windows XP Professional and Windows XP Media Center Edition<br/><br/>
+    IIS 6.0, Windows Server 2003 and Windows XP Professional x64 Edition<br/><br/>
+    IIS 7.0, Windows Server 2008 and Windows Vista<br/><br/>
+    IIS 7.5, Windows 7 (error remotely enabled or no web.config)<br/><br/>
+    IIS 7.5, Windows 2008 (classic pipeline mode))<br/><br/>
+只是 F5 的调用次数会有不同。    </p>
+
+<h2 id="toc_8">参考链接</h2>
+
+<hr/>
+
+<ul>
+<li><a href="http://www.lijiejie.com/iis-win8-3-shortname-brute/">http://www.lijiejie.com/iis-win8-3-shortname-brute/</a><br/></li>
+<li><a href="https://www.acunetix.com/blog/articles/windows-short-8-3-filenames-web-security-problem/">https://www.acunetix.com/blog/articles/windows-short-8-3-filenames-web-security-problem/</a><br/></li>
+<li><a href="http://www.freebuf.com/articles/4908.html">http://www.freebuf.com/articles/4908.html</a><br/></li>
+<li><a href="https://support.microsoft.com/zh-cn/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions">https://support.microsoft.com/zh-cn/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions</a><br/></li>
+<li><a href="https://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf">https://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf</a><br/></li>
+</ul>
 
                         
                       </div>
@@ -504,10 +717,263 @@ date: 2018-09-06 17:42:40
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/11/22 15:13 下午</span>
+                    <span class="date">2018/12/13 15:37 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15446864537652.html">
+                
+                  <h1>Web安全工程师求职清单</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>一年前写的一点玩意，没什么卵用</p>
+</blockquote>
+
+<h2 id="toc_0">安全资讯</h2>
+
+<p><a href="http://www.freebuf.com/">freebuf</a></p>
+
+<p><a href="https://www.t00ls.net/">tools</a></p>
+
+<p><a href="https://www.secpulse.com/">安全脉搏</a></p>
+
+<p><a href="https://packetstormsecurity.com/">数据包风暴</a></p>
+
+<p><a href="http://www.4hou.com/">嘶吼</a></p>
+
+<p><a href="https://www.aqniu.com/">安全牛</a></p>
+
+<p><a href="https://www.anquanke.com/">安全客</a></p>
+
+<p><a href="https://www.sec-wiki.com/">sec-wiki</a></p>
+
+<p><a href="http://www.secdoctor.com/">中国信息安全博士网</a></p>
+
+<h2 id="toc_1">威胁情报</h2>
+
+<p>暂略</p>
+
+<h2 id="toc_2">安全工具</h2>
+
+<p><a href="https://www.ctftools.com/down/">最强安全工具集</a></p>
+
+<ul>
+<li>burpsuite(抓包)</li>
+<li>sqlmap(sql注入)</li>
+<li>whireshark(网络抓包)</li>
+<li>中国菜刀(webshell、一句话后门)</li>
+<li>HxD(十六进制编辑器和磁盘编辑器)</li>
+<li>nmap(扫描)</li>
+<li>hydra(爆破)</li>
+<li>cain(爆破)</li>
+<li>metasploit(漏洞利用)</li>
+<li>mitmproxy(http/https代理)</li>
+<li>commix(命令注入)</li>
+<li>httrack(网站克隆)</li>
+<li>netcat(瑞士军刀-网络调试和探测工具)</li>
+<li>scapy(python的交互式数据包操作程序和库)</li>
+<li>empire(域渗透)</li>
+</ul>
+
+<h2 id="toc_3">靶机环境</h2>
+
+<h2 id="toc_4">安全知识库</h2>
+
+<p><a href="https://www.anquanquan.info/">安全圈</a></p>
+
+<p><a href="http://wiki.open.qq.com/wiki/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8%E8%A7%84%E8%8C%83">腾讯安全开发规范</a></p>
+
+<p><a href="https://highon.coffee/blog/cheat-sheet/">安全研究备忘单</a></p>
+
+<p><a href="https://portswigger.net/kb/issues">Burp漏洞定义</a></p>
+
+<p><a href="https://www.offensive-security.com/metasploit-unleashed/">MSF框架终极指南</a></p>
+
+<p><a href="https://www.owasp.org/index.php/Main_Page">OWASP</a></p>
+
+<p><a href="http://vipread.com/index">vipread知识库</a></p>
+
+<p><a href="https://kb.help.rapid7.com/docs/">Rapid7知识库</a></p>
+
+<p><a href="https://kernelnewbies.org/">linux内核研究</a></p>
+
+<p><a href="http://www.loner.fm/bugs/">乌云漏洞</a></p>
+
+<p><a href="https://wooyun.js.org/">乌云文章</a></p>
+
+<p><a href="http://www.office-cn.net/t/api/index.html?web.htm">WindowsAPI参考手册</a></p>
+
+<p><a href="https://support.portswigger.net/customer/portal/articles/2326039-the-burp-methodology">Burp方法论</a></p>
+
+<p><a href="https://ctf-wiki.github.io/ctf-wiki/">CTF-Wiki</a></p>
+
+<p><a href="https://github.com/ctfs/">CTFs</a></p>
+
+<p><a href="https://ctftime.org">ctftime</a></p>
+
+<p><a href="https://www.codesec.net/">代码安全</a></p>
+
+<p><a href="https://silic.wiki/doku.php">习科小黑板</a></p>
+
+<p><a href="https://bbs.safewiki.org/portal.php">安全文库</a></p>
+
+<p><a href="http://webscan.360.cn/vul">360网站常见漏洞</a></p>
+
+<h2 id="toc_5">漏洞平台</h2>
+
+<p><a href="https://butian.360.cn/">补天</a></p>
+
+<p><a href="https://www.vulbox.com/">漏洞盒子</a></p>
+
+<p><a href="https://www.bugbank.cn/">漏洞银行</a></p>
+
+<p><a href="http://www.cnvd.org.cn/">CNVD国家信息安全漏洞共享平台</a></p>
+
+<p><a href="https://src.edu-info.edu.cn/">教育行业漏洞报告平台</a></p>
+
+<p><a href="https://www.seebug.org">Seebug</a></p>
+
+<p><a href="http://0xsafe.org/vuldb.html">Vuldbs漏洞平台</a></p>
+
+<h2 id="toc_6">技能要求</h2>
+
+<ul>
+<li>不同场景下的渗透测试流程、方法</li>
+<li>常见漏洞的攻击方法和防御方法</li>
+<li>代码级白盒测试能力</li>
+<li>owasp_top10概念、原理、测试方法、防御方法</li>
+<li>主流防火墙、IDS、IPS、漏洞扫描工具的安装、使用方法</li>
+<li>熟悉python、php、javascript、c、c++等语言的一种或多种</li>
+<li>cissp之类的证书或ctf解题能力是加分项</li>
+<li>各种靶机环境搭建</li>
+<li>安全分析报告的编写</li>
+<li>对业务快速熟悉的能力（业务安全重点、应用范围划分、业务安全基线）</li>
+<li>spring、struts、hibernate框架安全相关</li>
+<li>web组件加固、服务器加固、数据库加固</li>
+<li>域渗透、dns、arp等内网渗透知识</li>
+<li>各类提权如系统提权、数据库提权等</li>
+<li>风险评估、等级保护、安全体系规划、安全体系建设。包括信息资产管理、安全威胁和风险评估、安全解决方案制定、信息安全体系实施</li>
+<li>Nginx、Apache、Tomcat等安全配置基线</li>
+<li>各类安全测试标准(ISSAF、OSSTMM、OWASP、微软SDLC、OPENSAMM、BSIMM、SSECMM)</li>
+<li>网络日志分析、攻击流量检测</li>
+<li>hadoop、openstack、sdn云安全</li>
+<li>mongodb、redis、HBASE等nosql安全</li>
+<li>burpsuite插件编写</li>
+<li>python脚本开发能力、shell脚本开发能力</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13 15:34 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15446861280668.html">
+                
+                  <h1>hackthebox邀请码</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>不打算好好玩的麻烦不要瞎注册，大量的垃圾账号只会污染整个生态环境。</p>
+</blockquote>
+
+<p>进入注册页面，观察页面js文件会找到以下内容：</p>
+
+<pre class="line-numbers"><code class="language-javascript">eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!&#39;&#39;.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return&#39;\\w+&#39;};c=1};while(c--){if(k[c]){p=p.replace(new RegExp(&#39;\\b&#39;+e(c)+&#39;\\b&#39;,&#39;g&#39;),k[c])}}return p}(&#39;1 i(4){h 8={&quot;4&quot;:4};$.9({a:&quot;7&quot;,5:&quot;6&quot;,g:8,b:\&#39;/d/e/n\&#39;,c:1(0){3.2(0)},f:1(0){3.2(0)}})}1 j(){$.9({a:&quot;7&quot;,5:&quot;6&quot;,b:\&#39;/d/e/k/l/m\&#39;,c:1(0){3.2(0)},f:1(0){3.2(0)}})}&#39;,24,24,&#39;response|function|log|console|code|dataType|json|POST|formData|ajax|type|url|success|api|invite|error|data|var|verifyInviteCode|makeInviteCode|how|to|generate|verify&#39;.split(&#39;|&#39;),0,{}))
+</code></pre>
+
+<p>1、然后把这段代码放到 <a href="http://jsbeautifier.org/">http://jsbeautifier.org/</a> 进行美化，得出：<br/>
+2、</p>
+
+<pre class="line-numbers"><code class="language-javascript">function verifyInviteCode(code) {
+    var formData = {
+        &quot;code&quot;: code
+    };
+    $.ajax({
+        type: &quot;POST&quot;,
+        dataType: &quot;json&quot;,
+        data: formData,
+        url: &#39;/api/invite/verify&#39;,
+        success: function(response) {
+            console.log(response)
+        },
+        error: function(response) {
+            console.log(response)
+        }
+    })
+}
+
+function makeInviteCode() {
+    $.ajax({
+        type: &quot;POST&quot;,
+        dataType: &quot;json&quot;,
+        url: &#39;/api/invite/how/to/generate&#39;,
+        success: function(response) {
+            console.log(response)
+        },
+        error: function(response) {
+            console.log(response)
+        }
+    })
+}
+</code></pre>
+
+<p>可以看出上述代码是让我们访问：<a href="https://www.hackthebox.eu/api/invite/generate">https://www.hackthebox.eu/api/invite/generate</a><br/>
+然后修改请求方式为post<br/>
+于是就得到了：</p>
+
+<pre class="line-numbers"><code class="language-javascript">{&quot;success&quot;:1,&quot;data&quot;:{&quot;code&quot;:&quot;VlJQS1QtQUNXRUstT0tYREwtQ0lZQVUtS0NZSlU=&quot;,&quot;format&quot;:&quot;encoded&quot;},&quot;0&quot;:200}
+</code></pre>
+
+<p>将code进行base64解码，就得到了邀请码。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13 15:28 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -584,7 +1050,7 @@ date: 2018-09-06 17:42:40
         
             <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
         
-            <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
+            <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
             <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
         
@@ -605,31 +1071,31 @@ date: 2018-09-06 17:42:40
 	      
 		      
 			      <li class="post">
-			        <a href="15604965103558.html">Docker for Mac 卡在 "is starting"</a>
+			        <a href="15642124072307.html">Mutillidae 遇到的一个奇怪问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15602308144902.html">Metasploit 完全使用教程</a>
+			        <a href="15641083818915.html">manjaro更改国内源操作</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15597856399146.html">黑盒测试中的信息收集</a>
+			        <a href="15640473747565.html">kali 下更新软件时报错，说下列签名无效的解决办法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15596178265897.html">业务逻辑漏洞安全检查checklist</a>
+			        <a href="15638711886127.html">Archiso</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15596171974228.html">最近做了个 fuzzing 字典精简版</a>
+			        <a href="15611953556975.html">archlinux 安装 vmtools 遇到坑了怎么办</a>
 			      </li>
 		     
 		  

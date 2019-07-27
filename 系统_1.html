@@ -111,7 +111,7 @@
         
             <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
         
-            <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
+            <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
             <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
         
@@ -138,6 +138,989 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15577346001597.html">
+                
+                  <h1>linux 敏感目录</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>Linux敏感目录，网站存在包含漏洞、任意文件读取漏洞等，权限允许的条件下，放在burp里面批量跑。</p>
+
+<p>/apache/apache/conf/httpd.conf<br/>
+/apache/apache2/conf/httpd.conf<br/>
+/apache/php/php.ini<br/>
+/bin/php.ini<br/>
+/etc/anacrontab<br/>
+/etc/apache/apache.conf<br/>
+/etc/apache/httpd.conf<br/>
+/etc/apache2/apache.conf<br/>
+/etc/apache2/httpd.conf<br/>
+/etc/apache2/sites-available/default<br/>
+/etc/apache2/vhosts.d/00_default_vhost.conf<br/>
+/etc/at.allow<br/>
+/etc/at.deny<br/>
+/etc/cron.allow<br/>
+/etc/cron.deny<br/>
+/etc/crontab<br/>
+/etc/fstab<br/>
+/etc/host.conf<br/>
+/etc/httpd/conf.d/httpd.conf<br/>
+/etc/httpd/conf.d/php.conf<br/>
+/etc/httpd/conf/httpd.conf<br/>
+/etc/httpd/htdocs/index.html<br/>
+/etc/httpd/htdocs/index.php<br/>
+/etc/httpd/logs/access.log<br/>
+/etc/httpd/logs/access_log<br/>
+/etc/httpd/logs/error.log<br/>
+/etc/httpd/logs/error_log<br/>
+/etc/httpd/php.ini<br/>
+/etc/init.d/httpd<br/>
+/etc/init.d/mysql<br/>
+/etc/ld.so.conf<br/>
+/etc/motd<br/>
+/etc/my.cnf<br/>
+/etc/mysql/my.cnf<br/>
+/etc/mysql/my.cnf<br/>
+/etc/network/interfaces<br/>
+/etc/networks<br/>
+/etc/passwd<br/>
+/etc/php.ini<br/>
+/etc/php/apache/php.ini<br/>
+/etc/php/apache2/php.ini<br/>
+/etc/php/cgi/php.ini<br/>
+/etc/php/php.ini<br/>
+/etc/php/php4/php.ini<br/>
+/etc/php4.4/fcgi/php.ini<br/>
+/etc/php4/apache/php.ini<br/>
+/etc/php4/apache2/php.ini<br/>
+/etc/php4/cgi/php.ini<br/>
+/etc/php5/apache/php.ini<br/>
+/etc/php5/apache2/php.ini<br/>
+/etc/php5/cgi/php.ini<br/>
+/etc/phpmyadmin/config.inc.php<br/>
+/etc/resolv.conf<br/>
+/etc/shadow<br/>
+/etc/ssh/sshd_config<br/>
+/etc/ssh/sshd_config<br/>
+/etc/ssh/ssh_config<br/>
+/etc/ssh/ssh_config<br/>
+/etc/ssh/ssh_host_dsa_key<br/>
+/etc/ssh/ssh_host_dsa_key<br/>
+/etc/ssh/ssh_host_dsa_key.pub<br/>
+/etc/ssh/ssh_host_dsa_key.pub<br/>
+/etc/ssh/ssh_host_key<br/>
+/etc/ssh/ssh_host_key<br/>
+/etc/ssh/ssh_host_key.pub<br/>
+/etc/ssh/ssh_host_key.pub<br/>
+/etc/ssh/ssh_host_rsa_key<br/>
+/etc/ssh/ssh_host_rsa_key<br/>
+/etc/ssh/ssh_host_rsa_key.pub<br/>
+/etc/ssh/ssh_host_rsa_key.pub<br/>
+/etc/sysconfig/network<br/>
+/etc/sysconfig/network<br/>
+/home/apache/conf/httpd.conf<br/>
+/home/apache2/conf/httpd.conf<br/>
+/home/bin/stable/apache/php.ini<br/>
+/home2/bin/stable/apache/php.ini<br/>
+/NetServer/bin/stable/apache/php.ini<br/>
+/opt/www/conf/httpd.conf<br/>
+/opt/www/htdocs/index.html<br/>
+/opt/www/htdocs/index.php<br/>
+/opt/xampp/etc/php.ini<br/>
+/PHP/php.ini<br/>
+/php/php.ini<br/>
+/php4/php.ini<br/>
+/php5/php.ini<br/>
+/root/.atftp_history<br/>
+/root/.bashrc<br/>
+/root/.bash_history<br/>
+/root/.mysql_history<br/>
+/root/.nano_history<br/>
+/root/.php_history<br/>
+/root/.profile<br/>
+/root/.ssh/authorized_keys<br/>
+/root/.ssh/identity<br/>
+/root/.ssh/identity.pub<br/>
+/root/.ssh/id_dsa<br/>
+/root/.ssh/id_dsa.pub<br/>
+/root/.ssh/id_rsa<br/>
+/root/.ssh/id_rsa.pub<br/>
+/root/anaconda-ks.cfg<br/>
+/tmp/apache/htdocs/index.html<br/>
+/tmp/apache/htdocs/index.php<br/>
+/usr/lib/php.ini<br/>
+/usr/lib/php/php.ini<br/>
+/usr/local/apache/conf/httpd.conf<br/>
+/usr/local/apache/conf/php.ini<br/>
+/usr/local/apache/htdocs/index.html<br/>
+/usr/local/apache/htdocs/index.php<br/>
+/usr/local/apache/logs/access.log<br/>
+/usr/local/apache/logs/access_log<br/>
+/usr/local/apache/logs/access_logaccess_log.old<br/>
+/usr/local/apache/logs/error.log<br/>
+/usr/local/apache/logs/error_log<br/>
+/usr/local/apache/logs/error_logerror_log.old<br/>
+/usr/local/apache2/conf/httpd.conf<br/>
+/usr/local/apache2/conf/php.ini<br/>
+/usr/local/apache2/htdocs/index.html<br/>
+/usr/local/apache2/htdocs/index.php<br/>
+/usr/local/cpanel/logs<br/>
+/usr/local/cpanel/logs/access_log<br/>
+/usr/local/cpanel/logs/error_log<br/>
+/usr/local/cpanel/logs/license_log<br/>
+/usr/local/cpanel/logs/login_log<br/>
+/usr/local/cpanel/logs/stats_log<br/>
+/usr/local/cpanel/logs/stats_log<br/>
+/usr/local/etc/php.ini<br/>
+/usr/local/httpd/conf/httpd.conf<br/>
+/usr/local/httpd2.2/htdocs/index.html<br/>
+/usr/local/httpd2.2/htdocs/index.php<br/>
+/usr/local/lib/php.ini<br/>
+/usr/local/mysql/bin/mysql<br/>
+/usr/local/mysql/my.cnf<br/>
+/usr/local/php/lib/php.ini<br/>
+/usr/local/php4/lib/php.ini<br/>
+/usr/local/php4/lib/php.ini<br/>
+/usr/local/php4/php.ini<br/>
+/usr/local/php5/etc/php.ini<br/>
+/usr/local/php5/lib/php.ini<br/>
+/usr/local/php5/php5.ini<br/>
+/usr/local/share/examples/php/php.ini<br/>
+/usr/local/share/examples/php4/php.ini<br/>
+/usr/local/tomcat5527/bin/version.sh<br/>
+/usr/local/Zend/etc/php.ini<br/>
+/usr/share/tomcat6/bin/startup.sh<br/>
+/usr/tomcat6/bin/startup.sh<br/>
+/var/apache2/config.inc<br/>
+/var/httpd/conf/httpd.conf<br/>
+/var/httpd/conf/php.ini<br/>
+/var/httpd/conf/php.ini<br/>
+/var/httpd/htdocs/index.html<br/>
+/var/httpd/htdocs/index.php<br/>
+/var/lib/mysql/my.cnf<br/>
+/var/lib/mysql/mysql/user.MYD<br/>
+/var/local/www/conf/httpd.conf<br/>
+/var/local/www/conf/php.ini<br/>
+/var/log/access.log<br/>
+/var/log/access_log<br/>
+/var/log/apache/access.log<br/>
+/var/log/apache/access_log<br/>
+/var/log/apache/error.log<br/>
+/var/log/apache/error_log<br/>
+/var/log/apache2/access.log<br/>
+/var/log/apache2/access_log<br/>
+/var/log/apache2/error.log<br/>
+/var/log/apache2/error_log<br/>
+/var/log/error.log<br/>
+/var/log/error_log<br/>
+/var/log/mysql.log<br/>
+/var/log/mysql/mysql-bin.log<br/>
+/var/log/mysql/mysql-slow.log<br/>
+/var/log/mysql/mysql.log<br/>
+/var/log/mysqlderror.log<br/>
+/var/mail/root<br/>
+/var/mysql.log<br/>
+/var/spool/cron/crontabs/root<br/>
+/var/spool/mail/root<br/>
+/var/www/conf/httpd.conf<br/>
+/var/www/htdocs/index.html<br/>
+/var/www/htdocs/index.php<br/>
+/var/www/index.html<br/>
+/var/www/index.php<br/>
+/var/www/logs/access.log<br/>
+/var/www/logs/access_log<br/>
+/var/www/logs/error.log<br/>
+/var/www/logs/error_log<br/>
+/web/conf/php.ini<br/>
+/www/conf/httpd.conf<br/>
+/www/htdocs/index.html<br/>
+/www/htdocs/index.php<br/>
+/www/php/php.ini<br/>
+/www/php4/php.ini<br/>
+/www/php5/php.ini<br/>
+/xampp/apache/bin/php.ini<br/>
+/xampp/apache/conf/httpd.conf<br/>
+root/.ssh/authorized_keys<br/>
+root/.ssh/identity<br/>
+root/.ssh/identity.pub<br/>
+root/.ssh/id_dsa<br/>
+root/.ssh/id_dsa.pub<br/>
+root/.ssh/id_rsa<br/>
+root/.ssh/id_rsa.pub</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/5/13 16:3 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15547068970077.html">
+                
+                  <h1>arch 安装配置指南带图版</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">虚拟机准备</h2>
+
+<p><figure><img src="media/15547068970077/15547069447878.jpg" alt=""/></figure></p>
+
+<p><figure><img src="media/15547068970077/15547069791316.jpg" alt=""/></figure></p>
+
+<p><figure><img src="media/15547068970077/15547070232740.jpg" alt=""/></figure></p>
+
+<p><figure><img src="media/15547068970077/15547070491488.jpg" alt=""/></figure></p>
+
+<p><figure><img src="media/15547068970077/15547070734913.jpg" alt=""/></figure></p>
+
+<p><figure><img src="media/15547068970077/15547071198237.jpg" alt=""/></figure></p>
+
+<p><figure><img src="media/15547068970077/15547071592651.jpg" alt=""/></figure></p>
+
+<p><figure><img src="media/15547068970077/15547072404641.jpg" alt=""/></figure></p>
+
+<p><figure><img src="media/15547068970077/15547073247770.jpg" alt=""/></figure></p>
+
+<p><figure><img src="media/15547068970077/15547075090849.jpg" alt=""/></figure></p>
+
+<p><figure><img src="media/15547068970077/15547075838610.jpg" alt=""/></figure></p>
+
+<p>进入系统后首先检查系统是否联通<br/>
+<figure><img src="media/15547068970077/15547080621623.jpg" alt=""/></figure></p>
+
+<h2 id="toc_1">分区</h2>
+
+<p>进入 parted 命令进行分区操作<br/>
+<figure><img src="media/15547068970077/15547082391052.jpg" alt=""/></figure></p>
+
+<p>建立 gpt 分区表<br/>
+<figure><img src="media/15547068970077/15547083585597.jpg" alt=""/></figure></p>
+
+<p>建立 ESP 分区，用于挂载 efi 分区（uefi 模式必须要有 efi 分区）<br/>
+<figure><img src="media/15547068970077/15547084670126.jpg" alt=""/></figure></p>
+
+<p>创建交换分区，范围从550M 到8G<br/>
+<figure><img src="media/15547068970077/15547086682024.jpg" alt=""/></figure></p>
+
+<p>剩下的创建为主分区<br/>
+<figure><img src="media/15547068970077/15547087728757.jpg" alt=""/></figure></p>
+
+<p>设定ESP分区标志：boot<br/>
+<figure><img src="media/15547068970077/15547088810797.jpg" alt=""/></figure></p>
+
+<p>使用 p 查看分区情况，然后使用 q 退出 parted<br/>
+<figure><img src="media/15547068970077/15547089223456.jpg" alt=""/></figure></p>
+
+<p>查看硬盘分区状态，图中可以看到 sda1、sda2、sda3 分别为我们刚才创建的三个分区。<br/>
+<figure><img src="media/15547068970077/15547089844964.jpg" alt=""/></figure></p>
+
+<p>现在对三个分区分别进行格式化操作<br/>
+<figure><img src="media/15547068970077/15547092045028.jpg" alt=""/></figure></p>
+
+<p>挂载主分区/dev/sda3，创建 efi 目录并将 efi 分区 /dev/sda1 挂载到 efi 目录下，最后激活交换分区 /dev/sda2。<br/>
+<figure><img src="media/15547068970077/15547096145622.jpg" alt=""/></figure></p>
+
+<p>至此分区结束，下面开始系统安装过程</p>
+
+<h2 id="toc_2">安装系统</h2>
+
+<p>更改软件源为中国源<br/>
+首先打开源文件<br/>
+<figure><img src="media/15547068970077/15547097960961.jpg" alt=""/></figure></p>
+
+<p>ctrl+w 然后输入 china 搜索中国源<br/>
+<figure><img src="media/15547068970077/15547098842992.jpg" alt=""/></figure></p>
+
+<p>再次按 ctrl+w 并输入 china 可以搜索其他中国源，这里推荐使用 ustc 或163。<br/>
+找到指定的源之后，将光标调整到行首，然后按 ctrl+k 执行剪贴操作，然后移动光标到首行，按 ctrl+u 执行粘贴操作。使用上述方法将 ustc 和163源放在最上面，这样可以提高软件下载速度。<br/>
+<figure><img src="media/15547068970077/15547102886290.jpg" alt=""/></figure></p>
+
+<p>接下来按 ctrl+o 并回车保存修改，然后按 ctrl+x 退出编辑器。</p>
+
+<p>输入<code>head -n 15 文件名</code>显示指定文件的前15行内容。来查看是否修改成功。<br/>
+<figure><img src="media/15547068970077/15547104407258.jpg" alt=""/></figure></p>
+
+<p>安装基础包，这里会弹出几个提示，一路按回车确认即可。<br/>
+<figure><img src="media/15547068970077/15547106618484.jpg" alt=""/></figure></p>
+
+<p>生成 fstab 文件<br/>
+<code>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</code><br/>
+<figure><img src="media/15547068970077/15547111978314.jpg" alt=""/></figure></p>
+
+<p>进入 chroot 环境即进入到新安装的系统。然后：安装 gurb 启动程序。<br/>
+arch-chroot /mnt<br/>
+<figure><img src="media/15547068970077/15547115736898.jpg" alt=""/></figure></p>
+
+<p><figure><img src="media/15547068970077/15547116310713.jpg" alt=""/></figure></p>
+
+<p>把 grub 引导管理器安装到 efi 分区里<br/>
+<figure><img src="media/15547068970077/15547118108821.jpg" alt=""/></figure></p>
+
+<p>修改主机名为 lonelyor，使用<code>nano /etc/hostname</code>打开文件然后输入 lonelyor，再按 ctrl+o 保存文件，然后 ctrl+x 退出编辑器即可。查看修改是否成功。<br/>
+<figure><img src="media/15547068970077/15547121379520.jpg" alt=""/></figure></p>
+
+<p>修改 hosts 文件<br/>
+<figure><img src="media/15547068970077/15547123034205.jpg" alt=""/></figure></p>
+
+<p>设置 root 密码</p>
+
+<p><figure><img src="media/15547068970077/15547123951237.jpg" alt=""/></figure></p>
+
+<p>添加普通用户并为该用户设置密码<br/>
+<figure><img src="media/15547068970077/15547124838351.jpg" alt=""/></figure></p>
+
+<p>设置时区与编码，编辑 /etc/locale.gen 文件，去掉en_US.UTF-8,zh_CN.UTF-8,zh_CN.GBK前面的#符号。然后保存并退出编辑器。<br/>
+<figure><img src="media/15547068970077/15547126694587.jpg" alt=""/></figure></p>
+
+<p>输入 locale-gen 重建编码表<br/>
+<figure><img src="media/15547068970077/15547127405137.jpg" alt=""/></figure></p>
+
+<p>设置系统时区，然后同步本地时钟<br/>
+<figure><img src="media/15547068970077/15547128041918.jpg" alt=""/></figure></p>
+
+<p>基本系统安装完毕，现在输入 exit 退出 chroot，然后输入 reboot 重启系统。<br/>
+<figure><img src="media/15547068970077/15547129531734.jpg" alt=""/></figure><br/>
+至此，完成了基本系统的安装。</p>
+
+<h2 id="toc_3">配置系统</h2>
+
+<p>进入系统后输入刚才设置的账号和密码，即可登录系统，按照之前的设置，我拥有两个账号，一个是 root，另一个是 lonelyor。</p>
+
+<p>现在依次点击：虚拟机、快照、拍摄快照，来保存目前的进度，拍摄快照非常重要，在进行重要操作，如更新系统，对系统文件进行设置之前，一定要记得拍摄快照。并养成定期拍摄快照的习惯。</p>
+
+<p>重启后使用 ping 检查网络是否畅通。<br/>
+<figure><img src="media/15547068970077/15547133030679.jpg" alt=""/></figure></p>
+
+<p>这里发现网络不通，可能是 dhcp 的问题，设置 dhcp。由于 /etc 下的文件是系统文件，修改时需要 root 权限，因此这里输入 sudo 来临时获取 root 权限。<br/>
+<figure><img src="media/15547068970077/15547133860799.jpg" alt=""/></figure></p>
+
+<p>结果发现提示我们的账户不在 sudoers 中，这里需要单独设置，具体方法我们后续再介绍，这里我们使用 su 直接提升权限至 root。<br/>
+<figure><img src="media/15547068970077/15547135280940.jpg" alt=""/></figure></p>
+
+<p>然后<code>nano /etc/rc.conf</code>再次修改文件，修改后查看是否修改成功。<br/>
+<figure><img src="media/15547068970077/15547136346391.jpg" alt=""/></figure></p>
+
+<p>接着输入<code>dhcpcd</code>启动 dhcp 服务。<br/>
+<figure><img src="media/15547068970077/15547137236716.jpg" alt=""/></figure></p>
+
+<p>再次使用 ping 检查网络是否畅通<br/>
+<figure><img src="media/15547068970077/15547137679260.jpg" alt=""/></figure></p>
+
+<p>配置 archlinuxcn 源并安装 yaourt，就可以使用 aur 中的超量软件了。</p>
+
+<pre class="line-numbers"><code class="language-shell">修改`/etc/pacman.conf`文件
+在文件后添加如下语句
+[archlinuxcn]
+SigLevel = Optional TrustedOnly
+Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+</code></pre>
+
+<p><figure><img src="media/15547068970077/15547140679869.jpg" alt=""/></figure></p>
+
+<p>更新软件并导入 key</p>
+
+<pre class="line-numbers"><code class="language-shell">导入GPG Key
+sudo pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring
+</code></pre>
+
+<p><figure><img src="media/15547068970077/15547141254558.jpg" alt=""/></figure><br/>
+安装 yaourt<br/>
+<code>pacman -S yaourt</code></p>
+
+<p>添加sudo<br/>
+<code>pacman -S sudo</code><br/>
+打开 <code>/etc/sudoers</code> 文件，找到 <code>root ALL=(ALL) ALL</code> 并依葫芦画瓢添加 <code>lonelyor ALL=(ALL) ALL</code>，然后取消<code>%wheel ALL=(ALL) NOPASSWD: ALL</code>前的注释。<br/>
+<figure><img src="media/15547068970077/15547165486151.jpg" alt=""/></figure></p>
+
+<p>修改 watchdog did not stop，降低关键等待时间。<br/>
+编辑<code>/etc/systemd/system.conf</code>文件：<br/>
+将<br/>
+DefaultTimeoutStopSec=90s<br/>
+更改为<br/>
+DefaultTimeoutStopSec=9s<br/>
+将终止服务的等待时间更改为9秒，从而解决关机缓慢的问题。<br/>
+我顺手将其他时间长的都改短了。<br/>
+<figure><img src="media/15547068970077/15547145148991.jpg" alt=""/></figure></p>
+
+<p>安装图形界面，输入下列命令一路回车即可。</p>
+
+<pre class="line-numbers"><code class="language-shell">pacman -S xorg xorg-server xorg-xinit
+pacman -S plasma
+pacman -S sddm
+systemctl enable sddm
+</code></pre>
+
+<p>安装触摸板驱动<br/>
+<code>pacman -S xf86-input-synaptics</code></p>
+
+<p>安装字体<br/>
+<code>pacman -S ttf-dejavu wqy-zenhei ttf-inconsolata</code></p>
+
+<p>安装小工具合集<br/>
+<code>pacman -S konsole net-tools p7zip wget cmake curl</code></p>
+
+<p>安装搜狗输入法和图形化配置工具</p>
+
+<pre class="line-numbers"><code class="language-shell">sudo pacman -S fcitx-sogoupinyin
+sudo pacman -S fcitx-im
+sudo pacman -S fcitx-configtool 
+</code></pre>
+
+<p>需要修改配置文件<code>/home/lonelyor/.xprofile</code><br/>
+添加如下语句</p>
+
+<pre class="line-numbers"><code class="language-text">export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=&quot;@im=fcitx&quot;
+</code></pre>
+
+<p>安装 networkmanager 开机启动网络管理程序，你没看错，这两个字母确实是大写。<br/>
+<code>pacman -S networkmanager</code><br/>
+<code>systemctl enable NetworkManager.service</code> </p>
+
+<p>安装 ntfs 文件系统识别软件，这样linux 就能识别 windows 使用的 ntfs 文件系统了。<br/>
+<code>pacman -S ntfs-3g dosfstools</code></p>
+
+<p>安装chrome<br/>
+<code>yaourt -S google-chrome</code></p>
+
+<p>文件管理器<br/>
+<code>pacman -S dolphin</code></p>
+
+<p>安装看图工具<br/>
+<code>pacman -S gpicview</code></p>
+
+<p>安装host修改工具<br/>
+<code>yaourt -S switchhosts-bin</code><br/>
+由于 yaourt 不能使用 root 权限进行软件安装，因为我们要切换到 lonelyor 用户。使用命令<code>su lonelyor</code>即可。<br/>
+<figure><img src="media/15547068970077/15547172677600.jpg" alt=""/></figure><br/>
+然后一路回车即可安装软件。</p>
+
+<p>安装vscode编辑器<br/>
+<code>yaourt -S visual-studio-code-bin</code></p>
+
+<p>命令补全工具<br/>
+<code>pacman -S bash-completion</code></p>
+
+<p>安装 vmtools</p>
+
+<pre class="line-numbers"><code class="language-shell">pacman -S open-vm-tools
+pacman -S linux-headers
+yaourt -S open-vm-tools-dkms gtkmm gtkmm3
+systemctl enable vmware-vmblock-fuse
+systemctl enable vmtoolsd
+</code></pre>
+
+<p>编辑 ~/.xinitrc或~/.xprofile 在文件开头添加以下内容，来设置中文显示</p>
+
+<pre class="line-numbers"><code class="language-text">export LANG=zh_CN.UTF-8
+export LANGUAGE=zh_CN:en_US
+export LC_CTYPE=en_US.UTF-8
+</code></pre>
+
+<p>若要图形界面用户设置全面的中文显示<br/>
+添加如下内容到文件~/.xprofile文件中<br/>
+<code>export LC_ALL=&quot;zh_CN.UTF-8&quot;</code></p>
+
+<p>全部安全配置完成，输入<code>reboot</code>重启即可。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/4/8 15:1 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15547067485409.html">
+                
+                  <h1>arch 安装配置指南</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre class="line-numbers"><code class="language-shell"># parted
+# mklabel
+# msdos
+(parted)#mkpart primary ext4 1M 200M
+(parted)#set 1 boot on
+(parted)#mkpart primary linux-swap 200M 8.5G
+(parted)#mkpart primary ext4 8.5G -1
+#q
+
+# mkfs.etx4 /dev/sda1
+# mkfs.etx4 /dev/sda3
+# mkswap /dev/sda2
+# swapon /dev/sda2
+# mount /dev/sda3 /mnt
+# cd /mnt
+# mkdir boot
+# mount /dev/sda1 /mnt/boot
+换源成China nano /etc/pacman.d/mirrorlist
+nano基本操作：
+按Ctrl+6（或者Alt+A）做标记；复制一整行：Alt+6；剪切一整行：Ctrl+K；粘贴：Ctrl+U；用Ctrl+Y到上一页，Ctrl+V到下一页。“^”表示Ctrl键，“M”表示 Alt键。
+# pacstrap /mnt base base-devel
+# genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+# nano /mnt/etc/fstab
+
+# arch-chroot /mnt /bin/bash
+# pacman -S grub
+双系统的话，还需要安装os-prober
+如果使用Intel CPU的话，则需要安装 intel-ucode 并启用因特尔微码更新
+# grub-install --recheck /dev/sda
+# grub-mkconfig -o /boot/grub/grub.cfg
+# exit
+# pacman -Syu
+# reboot
+</code></pre>
+
+<h1 id="toc_0">基本配置</h1>
+
+<ul>
+<li>修改主机名
+<code>nano /etc/hostname</code>
+<code>lonelyor</code></li>
+<li>修改host
+<code>nano /etc/hosts</code>
+<code>127.0.0.1  localhost</code>
+<code>::1        localhost</code>
+<code>127.0.1.1  myhostname.localdomain  myhostname</code></li>
+<li>启动dhcp
+<code># vi /etc/rc.conf</code>
+添加 interface = eth0 
+<code># dhcpcd</code></li>
+<li>配置编码<br/>
+首先释放en_US.UTF-8,保证系统正常工作<br/>
+然后 Ctrl+_，Ctrl+v 进入最后一行释放zh_CN.UTF-8保证中文<br/>
+保存退出<br/>
+然后生成编码并使用，配置系统优先语言环境为英文
+<code>shell
+# nano /etc/locale.gen<br/>
+取消utf-8的注释，然后<br/>
+# locale-gen<br/>
+# echo LANG=en_US.UTF-8 &gt; /etc/locale.conf<br/>
+# locale<br/>
+在~/.xinitrc中添加<br/>
+export LANG=zh_CN.UTF-8<br/>
+export LANGUAGE=zh_CN:en_US<br/>
+export LC_CTYPE=en_US.UTF-8<br/>
+~/.xprofile添加<br/>
+export LANG=zh_CN.UTF-8<br/>
+export LC_ALL=&quot;zh_CN.UTF-8&quot;<br/>
+export LANG=zh_CN.UTF-8<br/>
+export LANGUAGE=zh_CN:en_US<br/>
+export LC_CTYPE=en_US.UTF-8<br/>
+# pacman -S kde-l10n-zh_cn firefox-i18n-zh-cn libreoffice-still-zh-cn
+</code>
+安装输入法前端
+<code># pacman -S kimtoy</code></li>
+<li>配置archlinuxcn源
+<code>shell
+修改`/etc/pacman.conf`文件<br/>
+在文件后添加如下语句<br/>
+[archlinuxcn]<br/>
+SigLevel = Optional TrustedOnly<br/>
+Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+</code>
+<code>shell
+导入GPG Key<br/>
+sudo pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring
+</code></li>
+<li>设置root密码
+<code>#passwd</code></li>
+<li>添加用户和sudo
+<code>shell
+useradd -m -g users -G wheel -s /bin/bash lonelyor<br/>
+passwd lonelyor<br/>
+pacman -S sudo</code><br/>
+打开 <code>/etc/sudoers</code> 文件，找到 <code>root ALL=(ALL) ALL</code> 并依葫芦画瓢添加 <code>lonelyor ALL=(ALL) ALL</code> 即可。<br/>
+* watchdog did not stop<br/>
+编辑<code>/etc/systemd/system.conf</code>文件：<br/>
+将<br/>
+DefaultTimeoutStopSec=90s<br/>
+更改为<br/>
+DefaultTimeoutStopSec=10s<br/>
+将终止服务的等待时间更改为10秒，从而解决关机缓慢的问题。<br/>
+我顺手将其他时间长的都改短了。<br/>
+* 安装桌面环境kde
+<code>shell
+pacman -S xorg xorg-server xorg-xinit<br/>
+pacman -S plasma<br/>
+pacman -S sddm<br/>
+systemctl enable sddm
+</code>
+* 安装触摸板驱动
+<code>pacman -S xf86-input-synaptics</code>
+* 小工具合集
+<code>konsole net-tools p7zip wget cmake curl</code>
+* 安装字体<br/>
+noto-fonts-sc(aur)<br/>
+ttf-ms-win10-zh_cn(aur)<br/>
+wqy-zenhei<br/>
+wqy-bitmapfont<br/>
+noto-fonts-emoji<br/>
+号称最好看的编程字体<br/>
+ttf-inconsolata<br/>
+ttf-monaco<br/>
+# 软件安装<br/>
+* 安装搜狗输入法
+<code>shell
+# yaourt -S fcitx-sogoupinyin<br/>
+# sudo pacman -S fcitx-im<br/>
+# sudo pacman -S fcitx-configtool # 图形化的配置工具<br/>
+需要修改配置文件`~/.xprofile`<br/>
+添加如下语句<br/>
+export GTK_IM_MODULE=fcitx<br/>
+export QT_IM_MODULE=fcitx<br/>
+export XMODIFIERS=&quot;@im=fcitx&quot;<br/>
+重新登录之后就可以使用中文输入法啦
+</code>
+* 安装字体
+<code>pacman -S ttf-dejavu wqy-zenhei wqy-microhei</code></li>
+</ul>
+
+<ul>
+<li>安装文件系统支持
+<code>sudo pacman -S ntfs-3g dosfstools</code></li>
+<li>安装chrome
+<code>yaourt -S google-chrome</code></li>
+<li>安装网易云音乐
+<code>pacman -S netease-cloud-music</code></li>
+<li>安装v2ray
+<code>shell
+wget https://install.direct/go.sh<br/>
+sudo bash go.sh<br/>
+sudo systemctl start v2ray<br/>
+编辑 /etc/v2ray/config.json 文件来配置客户端
+</code></li>
+<li>安装host修改工具
+<code>yaourt -S switchhosts-bin</code></li>
+<li>安装fish
+<code>pacman -S fish</code></li>
+<li>更改默认shell为fish
+<code>sudo -u lonelyor chsh -s /usr/bin/fish</code></li>
+<li>安装wps
+<code>yaourt wps</code></li>
+<li>安装vscode
+<code>yaourt visual-studio-code-bin</code>
+<code>3</code></li>
+<li>安装数据库管理工具
+<code>pacman -S dbeaver</code></li>
+<li>安装pycharm
+<code>pacman -S pycharm</code></li>
+<li>xmind思维导图
+<code>yaourt xmind</code></li>
+<li>安装备份工具
+<code>yaourt fsarchiver</code></li>
+<li>待办事项
+<code>yaourt -S go-for-it-git</code></li>
+<li>视频录制软件
+<code>yaourt simplescreenrecorder</code></li>
+<li>屏幕录像工具
+<code>yaourt green-recorder</code>
+选择qt那个</li>
+<li>markdown编辑工具
+<code>pacman -S typora</code></li>
+<li>跨所有设备进行连接的工具
+<code>kdeconnect</code></li>
+<li>分层记录应用程序，具有丰富的文本和语法突出显示功能，可将数据存储在单个xml或sqlite文件中
+<code>pacman -S cherrytree</code></li>
+<li>深度截图工具
+<code>pacman -S deepin-screenshot</code></li>
+<li>适合写markdown的工具Haroopad
+<code>yaourt -S haroopad</code></li>
+<li>sakura终端、支持修改背景图</li>
+<li>文件管理器
+<code>pacman -S krusader</code></li>
+<li>文件管理器
+<code>pacman -S dolphin</code></li>
+<li>压缩解压缩
+<code>pacman -S ark</code></li>
+<li>文本编辑器
+<code>pacman -S kate</code></li>
+<li>终端
+<code>pacman -S konsole</code></li>
+<li>文档查看器
+<code>okular</code></li>
+<li>查看系统信息
+<code>pacman -S screenfetch</code>
+打开终端自动显示<br/>
+nano ~/.bashrc 加入 screenfetch</li>
+<li>翻墙
+<code>pacman -S v2ray</code></li>
+<li>密码相关
+<code>pacman -S keepass</code></li>
+<li>hosts文件相关
+<code>yaourt -S switchhosts-bin</code></li>
+<li>备份工具
+<code>yaourt -S qt4-fsarchiver</code></li>
+<li>安装pdf管理工具buka
+<code>yaourt -S buka</code></li>
+<li>安装sshfs
+<code>pacman -S sshfs</code></li>
+<li>webdav服务wsgidav
+<code>pip install wsgidav</code></li>
+<li>系统工具
+<code>iftop\htop\atop</code></li>
+<li>chm阅读器
+<code>kchmviewer</code></li>
+<li>下载
+<code>aria2\uget</code>
+<code>pip install youtube-dl</code>
+<code>yaourt persepolis</code></li>
+<li>web相关
+<code>nginx、nodejs</code></li>
+<li>火狐汉化
+<code>http://releases.mozilla.org/pub/firefox/releases/59.0/linux-x86_64/xpi/（注意版本）</code></li>
+<li>grub修改
+<code>yaourt -S grub-customizer</code></li>
+<li>webdav文件共享
+<code>pacman -S phodav</code></li>
+<li>网盘同步
+<code>yaourt -S cloudcross</code></li>
+<li>日志查看工具
+<code>pacman -S ksystemlog</code></li>
+<li>二进制编辑器
+<code>pacman -S okteta</code></li>
+<li>ssh爆破防护
+<code>pacman -S sshguard</code></li>
+<li>smb共享工具
+<code>pacman -S smb4k</code></li>
+<li>文档编辑工具
+<code>marktext</code></li>
+<li>命令补全工具
+<code>pacman -S bash-completion</code></li>
+<li>文件共享、webdav、ftp等
+<code>pacman -S filezilla</code></li>
+<li>文件同步
+<code>syncthing</code></li>
+<li>使用ftp
+<code>sudo pacman -S vsftpd</code>
+详细设置 /etc/vsftpd.conf<br/>
+允许本地用户登录 local_enable=YES<br/>
+可以进行写的操作 write_enable=YES<br/>
+设定最大连接传输时间 data_connection_timeout=3600<br/>
+设定支持异步传输的功能 async_abor_enable=YES</li>
+<li>剪贴板增强工具
+<code>pacman -S copyq</code></li>
+<li>局域网共享工具dukto
+<code>yaourt -S dukto</code></li>
+</ul>
+
+<h1 id="toc_1">安装 vmtools</h1>
+
+<pre class="line-numbers"><code class="language-shell">pacman -S open-vm-tools
+pacman -S linux-headers
+yaourt -S open-vm-tools-dkms
+open-vm-tools-desktop
+gtkmm
+gtkmm3
+systemctl enable vmware-vmblock-fuse
+systemctl enable vmtoolsd
+</code></pre>
+
+<h1 id="toc_2">详细设置</h1>
+
+<ul>
+<li>fish_config打开fish的web设置界面</li>
+<li>终端设置颜色和背景透明</li>
+<li>kate设置行号和代码高亮</li>
+<li>关闭钱包
+<code>sudo pacman -S kwalletmanager</code></li>
+<li>区域设置</li>
+<li>输入法问题可以输入 fcitx-diagnose 来查看日志，通常就有答案了。</li>
+<li>git下载太慢，配置git代理：nano ~/.gitconfig<br/>
+[https]<br/>
+    proxy = socks5://127.0.0.1:1080<br/>
+[http]<br/>
+    proxy = socks5://127.0.0.1:1080<br/>
+然后修改hosts：nano /etc/hosts<br/>
+151.101.72.249 <a href="http://global-ssl.fastly.Net">http://global-ssl.fastly.Net</a><br/>
+192.30.253.112 <a href="http://github.com">http://github.com</a></li>
+<li>typora段错误的解决方法：<a href="https://aur.archlinux.org/packages/typora/">https://aur.archlinux.org/packages/typora/</a></li>
+<li>使用nfs共享文件：pacman -S nfs-utils，参考：<a href="https://wiki.archlinux.org/index.php/NFS#Installation">https://wiki.archlinux.org/index.php/NFS#Installation</a><br/>
+1、配置 /etc/exports
+<code>
+/home 192.168.48.142(rw,sync,no_root_squash)   这里可以写客户端ip<br/>
+exportfs -rav<br/>
+exportfs -v<br/>
+systemctl start nfs-server.service<br/>
+修改 /etc/nfs.conf 来增加安全性<br/>
+[nfsd]<br/>
+host=192.168.48.142<br/>
+# Alternatively, you can use your hostname.<br/>
+# host=myhostname
+</code>
+如果上面的启动nfs报错，重启电脑<br/>
+showmount -e 192.168.48.136(服务器端IP)<br/>
+若出现：Export list for 192.168.48.142:<br/>
+/home 192.168.1.120字眼则证明通过<br/>
+下面贴出我敲的：<br/>
+╰─&gt;\( showmount -e 192.168.48.136<br/>
+Export list for 192.168.48.136:<br/>
+/home 192.168.48.142<br/>
+┬─[lonelyor@lonelyor:~]─[16时00分18秒]<br/>
+╰─&gt;\) mount -t nfs 192.168.48.136<br/>
+mount: 只有 root 用户能使用“--types”选项<br/>
+┬─[lonelyor@lonelyor:~]─[16时03分14秒]<br/>
+╰─&gt;\( sudo mount -t nfs 192.168.48.136<br/>
+mount: 192.168.48.136: can&#39;t find in /etc/fstab.<br/>
+┬─[lonelyor@lonelyor:~]─[16时03分18秒]<br/>
+╰─&gt;\) sudo mount -t nfs 192.168.48.136:/home /mnt/tmp/<br/>
+然后就ok了。<br/>
+解除挂载用umount</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/4/8 14:59 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15542128440180.html">
+                
+                  <h1>VMware Fusion 端口映射</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>文章转载自：<a href="https://blog.csdn.net/weixin_43302757/article/details/82911332">https://blog.csdn.net/weixin_43302757/article/details/82911332</a></p>
+</blockquote>
+
+<p>Windows版本VM进行端口映射有相关的设置界面，但是Mac系统的VM（VMware Fusion）没有。Google 以下找到相关方法。具体步骤如下</p>
+
+<p>打开配置文件<br/>
+<code>sudo vi  /Library/Preferences/VMware\ Fusion/vmnet8/nat.conf</code><br/>
+找到如下配置</p>
+
+<pre class="line-numbers"><code class="language-text">[incomingtcp]
+# Use these with care - anyone can enter into your VM through these...
+# The format and example are as follows:
+#&lt;external port number&gt; = &lt;VM&#39;s IP address&gt;:&lt;VM&#39;s port number&gt;
+23 = 172.16.161.129:22 #将IP172.16.161.129虚拟机的22 端口映射到主机23端口
+</code></pre>
+
+<p>重启VM的网络服务</p>
+
+<pre class="line-numbers"><code class="language-text">sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --stop
+sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --start
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/4/2 21:47 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15542101741047.html">
+                
+                  <h1>linux sudo配置免密及排除部分命令</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><code>lonelyor ALL=(ALL) NOPASSWD:ALL, !/usr/bin/reboot, !/sbin/reboot, !/sbin/ifconfig, !/sbin/shutdown, !/sbin/route, !/sbin/ip</code></p>
+
+<p>即lonelyor可以免密码执行除reboot、ifconfig、shutdown、route、ip之外的指令。</p>
+
+<p><strong>注意，/etc/sudoers的命令是顺序执行，添加在错误的位置（比如 %sudo ALL=(ALL:ALL) ALL 之前）是无效的。</strong></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/4/2 21:2 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15542098568070.html">
                 
                   <h1>linux sudo:/etc/sudoers 可被任何人写 解决方案</h1>
@@ -156,214 +1139,6 @@
                   <div class="more-left left">
                   
                     <span class="date">2019/4/2 20:57 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15542044701566.html">
-                
-                  <h1>debian or ubuntu 修改终端欢迎语</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>与其他 linux 不太一样哦。Debian 系直接修改/etc/motd文件重登录后是无效的。</p>
-
-<p>因为这里/etc/motd是一个符号链接，指向/var/run/motd，应该 是一个启动后在生成的文件。在版本12.04中，找到生成的脚本在目录/etc/update-motd.d/中<br/>
-<code>sudo nano /etc/update-motd.d/10-uname</code><br/>
-在 10-uname 中可以添加命令，比如：<code>cat /home/test.txt</code>。即可展示出 test.txt 中的内容。</p>
-
-<p>修改后用：sudo run-parts /etc/update-motd.d 去执行就会立即见到效果，而不用反复注销登录。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/4/2 19:27 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15538425408524.html">
-                
-                  <h1>虚拟机安装win10操作系统</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>本片文章是为新手准备的</p>
-</blockquote>
-
-<p>虚拟机安装win10可以查看以下教程：<br/>
-<a href="http://baijiahao.baidu.com/s?id=1597148758310739517&amp;wfr=spider&amp;for=pc">http://baijiahao.baidu.com/s?id=1597148758310739517&amp;wfr=spider&amp;for=pc</a></p>
-
-<p>若原文链接失效，则可以百度搜索“虚拟机安装win10操作系统”</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/3/29 14:55 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15532282104799.html">
-                
-                  <h1>Mac 终端设置欢迎页</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><code>cd /etc</code><br/>
-<code>sudo pico motd</code><br/>
-输入密码后会打开nano，然后在里面输入图案或者文字。然后保存后退出，之后打开终端就能看到欢迎页了。</p>
-
-<p>其实本质就是在/etc目录下创建文件 motd，然后往里面写内容即可。</p>
-
-<p>我只是添加了一段文字，结果如下：</p>
-
-<p><figure><img src="media/15532282104799/15532284069773.jpg" alt=""/></figure></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/3/22 12:16 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15489296290618.html">
-                
-                  <h1>Mediakit报告设备商的空间不足以执行此操作</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>网上大部分都写的去 windows 中使用DiskGenius重新分区，这搞麻烦了，不用这么麻烦的。</p>
-
-<p>1、打开终端，输入<code>diskutil list</code>列出磁盘内容，这里我们可以找到要格式化的磁盘，我是 disk2<br/>
-2、卸载要格式化的磁盘<code>diskutil unmountDisk force disk2</code><br/>
-3、写入启动扇区<code>sudo dd if=/dev/zero of=/dev/disk2 bs=1024 count=1024</code><br/>
-4、对磁盘进行分区<code>diskutil partitionDisk disk2 GPT JHFS+ &quot;AWESOME DISK&quot; 0g</code><br/>
-5、打完收工，写博客发出来。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/31 18:13 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15483045489079.html">
-                
-                  <h1>iterm2 常用技巧</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>按住 com 键</p>
-
-<ul>
-<li>可以拖拽选中字符串</li>
-<li>点击url能直接打开</li>
-<li>点击文件：调用默认程序打开文件</li>
-<li>点击文件夹：在finder中打开文件夹</li>
-<li>同时按住option键，可以矩形选中</li>
-</ul>
-
-<p>新建windows：cmd+N<br/>
-新建tab：cmd+T<br/>
-切分屏幕：cmd+D水平切分<br/>
-智能查找，支持正则：cmd+F</p>
-
-<p>智能补全：cmd+；<br/>
-调用历史记录：cmd+shift+h</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
@@ -443,7 +1218,7 @@
         
             <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
         
-            <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
+            <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
             <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
         
@@ -464,31 +1239,31 @@
 	      
 		      
 			      <li class="post">
-			        <a href="15604965103558.html">Docker for Mac 卡在 "is starting"</a>
+			        <a href="15642124072307.html">Mutillidae 遇到的一个奇怪问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15602308144902.html">Metasploit 完全使用教程</a>
+			        <a href="15641083818915.html">manjaro更改国内源操作</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15597856399146.html">黑盒测试中的信息收集</a>
+			        <a href="15640473747565.html">kali 下更新软件时报错，说下列签名无效的解决办法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15596178265897.html">业务逻辑漏洞安全检查checklist</a>
+			        <a href="15638711886127.html">Archiso</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15596171974228.html">最近做了个 fuzzing 字典精简版</a>
+			        <a href="15611953556975.html">archlinux 安装 vmtools 遇到坑了怎么办</a>
 			      </li>
 		     
 		  

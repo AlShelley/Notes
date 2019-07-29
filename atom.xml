@@ -4,13 +4,53 @@
   <title><![CDATA[lonelyorWiki]]></title>
   <link href="http://www.lonelyor.org/lonelyorWiki/atom.xml" rel="self"/>
   <link href="http://www.lonelyor.org/lonelyorWiki/"/>
-  <updated>2019-07-27T18:28:31+08:00</updated>
+  <updated>2019-07-29T09:25:41+08:00</updated>
   <id>http://www.lonelyor.org/lonelyorWiki/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[manjaro 安装 vmtools]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15643634653227.html"/>
+    <updated>2019-07-29T09:24:25+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15643634653227.html</id>
+    <content type="html"><![CDATA[
+<p>下载vmwaretools补丁<br/>
+<code>git clone https://github.com/rasa/vmware-tools-patches.git</code></p>
+
+<p>进入vmware-tools-patches目录<br/>
+<code>cd vmware-tools-patches</code></p>
+
+<p>运行补丁<br/>
+中间一路回车<br/>
+sudo ./patched-open-vm-tools.sh</p>
+
+<p>经过漫长的等待不负众望迎来了第一个错误提示：<br/>
+找不到/lib/modules/4.19.28-1-MANJARO<br/>
+这里不慌，反手进入这个目录发现有三个文件：3.16.65-1-MANJARO、4.19.36-1-MANJARO、extramodules-4.19-MANJARO<br/>
+然后我把4.19.36-1-MANJARO重命名为他需要的4.19.28-1-MANJARO文件名，这样他脚本加载到运行4.19.28-1-MANJARO时可以正确找到该文件，就算这个文件原名不是这个，相当于是假装降级操作<br/>
+<code>sudo mv 4.19.36-1-MANJARO 4.19.28-1-MANJARO</code></p>
+
+<p>删除刚刚安装到一半就报错的安装目录<br/>
+<code>sudo rm -rf vmware-tools-patches</code></p>
+
+<p>重新安装补丁<br/>
+<code>sudo ./patched-open-vm-tools.sh</code></p>
+
+<p>完成</p>
+
+<h2 id="toc_0">Enjoy</h2>
+
+<p>作者：猴猴猴猴猴猴子 <br/>
+来源：CSDN <br/>
+原文：<a href="https://blog.csdn.net/weixin_43043603/article/details/89853916">https://blog.csdn.net/weixin_43043603/article/details/89853916</a> <br/>
+版权声明：本文为博主原创文章，转载请附上博文链接！</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mutillidae 遇到的一个奇怪问题]]></title>
@@ -796,60 +836,6 @@ Committed revision 1135.
     <id>http://www.lonelyor.org/lonelyorWiki/15586660103989.html</id>
     <content type="html"><![CDATA[
 <p>通过 Get 方式提交数据时，用户名和密码将出现在 URL 上，如果页面可以被缓存（浏览器缓存、cdn 缓存、服务器缓存、中间件日志缓存等）或者其他人可以访问客户这台机器，就可以从历史记录获得该用户的帐号和密码，所以表单提交建议使用 Post 方法。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[验证码安全]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15586605529996.html"/>
-    <updated>2019-05-24T09:15:52+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15586605529996.html</id>
-    <content type="html"><![CDATA[
-<p>由于业务迭代频繁，产品线众多...好了不废话了。简单来说就是很多网站的登录界面没有验证码，只有账号密码输入框，这样不安全。</p>
-
-<h2 id="toc_0">什么是验证码</h2>
-
-<p>全自动区分计算机和人类的图灵测试（Completely Automated Public Turing test to tell Computers and Humans Apart，简称CAPTCHA），俗称验证码，是一种区分用户是计算机或人的全自动化程序。</p>
-
-<h2 id="toc_1">验证码种类</h2>
-
-<p>1、图形验证码<br/>
-2、滑动验证码（比如极验）<br/>
-3、答题验证码<br/>
-4、手机短信/邮箱验证码<br/>
-5、动态口令</p>
-
-<h2 id="toc_2">验证码的作用</h2>
-
-<p>人机识别：识别使用对应功能的是人还是机器。<br/>
-防止机器暴力攻击：防止攻击者在短时间内用机器进行批量操作（常见功能场景如：登录）。</p>
-
-<h2 id="toc_3">验证码工作原理</h2>
-
-<p><figure><img src="media/15586605529996/15586616406956.jpg" alt=""/></figure></p>
-
-<h2 id="toc_4">验证码常用场景与作用</h2>
-
-<p>登录接口常使用验证码来防御攻击者的撞库攻击<br/>
-注册接口常用验证码来防御批量恶意注册<br/>
-身份认证<br/>
-重要表单提交<br/>
-修改密码<br/>
-支付等功能</p>
-
-<h2 id="toc_5">验证码使用</h2>
-
-<p>重要接口要加验证码<br/>
-常见的如登录、注册等接口推荐使用滑动验证码；重要的如改密、支付等功能推荐使用手机短信验证码；vpn登录、身份认证等推荐使用动态口令。</p>
-
-<h2 id="toc_6">验证码对抗技术</h2>
-
-<p>1、OCR 识别图形验证码<br/>
-2、机器识别验证码（常见流程：去噪处理-图像二值化-切片处理-文件图片标准化-字符模板识别）<br/>
-3、LTE／4G 伪基站＋GSM 中间人攻击实现手机短信验证码攻击（相关安全事件可见&quot;这下一无所有了&quot;：<a href="http://netsecurity.51cto.com/art/201808/580812.htm%EF%BC%89">http://netsecurity.51cto.com/art/201808/580812.htm）</a><br/>
-4、验证码流程绕过（空验证码、返回包含验证码、验证码固定、验证码前端校验、验证流程有误）<br/>
-5、人工打码平台</p>
 
 ]]></content>
   </entry>

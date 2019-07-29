@@ -138,6 +138,68 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15643634653227.html">
+                
+                  <h1>manjaro 安装 vmtools</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>下载vmwaretools补丁<br/>
+<code>git clone https://github.com/rasa/vmware-tools-patches.git</code></p>
+
+<p>进入vmware-tools-patches目录<br/>
+<code>cd vmware-tools-patches</code></p>
+
+<p>运行补丁<br/>
+中间一路回车<br/>
+sudo ./patched-open-vm-tools.sh</p>
+
+<p>经过漫长的等待不负众望迎来了第一个错误提示：<br/>
+找不到/lib/modules/4.19.28-1-MANJARO<br/>
+这里不慌，反手进入这个目录发现有三个文件：3.16.65-1-MANJARO、4.19.36-1-MANJARO、extramodules-4.19-MANJARO<br/>
+然后我把4.19.36-1-MANJARO重命名为他需要的4.19.28-1-MANJARO文件名，这样他脚本加载到运行4.19.28-1-MANJARO时可以正确找到该文件，就算这个文件原名不是这个，相当于是假装降级操作<br/>
+<code>sudo mv 4.19.36-1-MANJARO 4.19.28-1-MANJARO</code></p>
+
+<p>删除刚刚安装到一半就报错的安装目录<br/>
+<code>sudo rm -rf vmware-tools-patches</code></p>
+
+<p>重新安装补丁<br/>
+<code>sudo ./patched-open-vm-tools.sh</code></p>
+
+<p>完成</p>
+
+<h2 id="toc_0">Enjoy</h2>
+
+<p>作者：猴猴猴猴猴猴子 <br/>
+来源：CSDN <br/>
+原文：<a href="https://blog.csdn.net/weixin_43043603/article/details/89853916">https://blog.csdn.net/weixin_43043603/article/details/89853916</a> <br/>
+版权声明：本文为博主原创文章，转载请附上博文链接！</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/29 9:24 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15642124072307.html">
                 
                   <h1>Mutillidae 遇到的一个奇怪问题</h1>
@@ -347,41 +409,6 @@ $ ./patched-open-vm-tools.sh
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15605030813483.html">
-                
-                  <h1>linux 在终端中打开图形化文件管理器</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>xdg-open ./ 用图形化文件管理器打开当前文件夹</p>
-
-<p>xdg-open &quot;dir&quot; 打开任意路径</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/6/14 17:4 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -467,6 +494,12 @@ $ ./patched-open-vm-tools.sh
 	      
 		      
 			      <li class="post">
+			        <a href="15643634653227.html">manjaro 安装 vmtools</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15642124072307.html">Mutillidae 遇到的一个奇怪问题</a>
 			      </li>
 		     
@@ -486,12 +519,6 @@ $ ./patched-open-vm-tools.sh
 		      
 			      <li class="post">
 			        <a href="15638711886127.html">Archiso</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15611953556975.html">archlinux 安装 vmtools 遇到坑了怎么办</a>
 			      </li>
 		     
 		  

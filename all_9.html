@@ -138,6 +138,45 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15489296290618.html">
+                
+                  <h1>Mediakit报告设备商的空间不足以执行此操作</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>网上大部分都写的去 windows 中使用DiskGenius重新分区，这搞麻烦了，不用这么麻烦的。</p>
+
+<p>1、打开终端，输入<code>diskutil list</code>列出磁盘内容，这里我们可以找到要格式化的磁盘，我是 disk2<br/>
+2、卸载要格式化的磁盘<code>diskutil unmountDisk force disk2</code><br/>
+3、写入启动扇区<code>sudo dd if=/dev/zero of=/dev/disk2 bs=1024 count=1024</code><br/>
+4、对磁盘进行分区<code>diskutil partitionDisk disk2 GPT JHFS+ &quot;AWESOME DISK&quot; 0g</code><br/>
+5、打完收工，写博客发出来。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/31 18:13 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15488284836388.html">
                 
                   <h1>90后空巢青年生活指南</h1>
@@ -389,111 +428,6 @@ Snipaste 版本：1.16.2</p>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15483045491003.html">
-                
-                  <h1>JavaScript基础</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>JavaScript是一种脚本编程语言。<br/>
-JavaScript运行顺序是从上往下，因此要注意代码的顺序。</p>
-
-<h2 id="toc_0">如何使用JavaScript</h2>
-
-<p>内部JavaScript：在html页面中嵌入<code>&lt;script&gt;这里写js代码&lt;/script&gt;</code>即可插入js代码。<br/>
-外部JavaScript：<code>&lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;</code>可以调用html文件同级目录下的script.js文件。</p>
-
-<h2 id="toc_1">注释</h2>
-
-<p><code>// 这是单行注释</code><br/>
-<code>/* 这是多行注释 */</code></p>
-
-<h2 id="toc_2">变量</h2>
-
-<p>var用来定义变量</p>
-
-<h2 id="toc_3">函数</h2>
-
-<p>function funName(){<br/>
-    js代码<br/>
-}<br/>
-函数是可复用的代码块，可以一次编写反复使用。</p>
-
-<h2 id="toc_4">运算符</h2>
-
-<p><code>+</code>、<code>-</code>、<code>*</code>、<code>/</code> 分别是加减乘除<br/>
-<code>===</code>、<code>!==</code>、<code>&lt;</code>、<code>&gt;</code> 分别是等于、不等于、小于、大于<br/>
-<code>&amp;&amp;</code>、<code>||</code>、<code>!</code> 分别表示与、或、非</p>
-
-<h2 id="toc_5">条件语句</h2>
-
-<p>if(条件){<br/>
-    js代码<br/>
-} else {<br/>
-    js代码<br/>
-}</p>
-
-<h2 id="toc_6">事件</h2>
-
-<p>事件相关函数分为：事件监听器和事件处理器 </p>
-
-<h2 id="toc_7">循环</h2>
-
-<p>for(起式值；退出条件；增加器){<br/>
-    js代码<br/>
-}</p>
-
-<h2 id="toc_8">switch语句</h2>
-
-<p>switch - 他们以单个表达式/值作为输入，然后查看多个选项，直到找到与该值相匹配的选项，执行与之相关的代码。</p>
-
-<pre class="line-numbers"><code class="language-javascript">switch (expression) {
-  case choice1:
-    run this code
-    break;
-
-  case choice2:
-    run this code instead
-    break;
-    
-  // include as many cases as you like
-
-  default:
-    actually, just run this code
-}
-</code></pre>
-
-<h2 id="toc_9">写一个猜数字的小游戏</h2>
-
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/First_steps/A_first_splash#%E7%8C%9C%E6%95%B0%E5%AD%97%E6%B8%B8%E6%88%8F">猜数字游戏</a></p>
-
-<p>未完待续...</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/24 12:35 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -579,6 +513,12 @@ JavaScript运行顺序是从上往下，因此要注意代码的顺序。</p>
 	      
 		      
 			      <li class="post">
+			        <a href="15643634653227.html">manjaro 安装 vmtools</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15642124072307.html">Mutillidae 遇到的一个奇怪问题</a>
 			      </li>
 		     
@@ -598,12 +538,6 @@ JavaScript运行顺序是从上往下，因此要注意代码的顺序。</p>
 		      
 			      <li class="post">
 			        <a href="15638711886127.html">Archiso</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15611953556975.html">archlinux 安装 vmtools 遇到坑了怎么办</a>
 			      </li>
 		     
 		  

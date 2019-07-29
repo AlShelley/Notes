@@ -138,6 +138,246 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15590262822391.html">
+                
+                  <h1>洞察-宜信集应用系统资产管理、漏洞全生命周期管理、安全知识库管理三位一体的平台的安装与使用</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p><a href="https://github.com/creditease-sec/insight">https://github.com/creditease-sec/insight</a> 感谢作者！</p>
+</blockquote>
+
+<h2 id="toc_0">部署和启动 mysql in docker</h2>
+
+<p>1、首先安装 docker，这里略过</p>
+
+<p>2、安装 mysql 的 docker 镜像<code>docker pull mysql:5.7.13</code></p>
+
+<p>3、启动 mysql，这里的 name 可以自行指定。</p>
+
+<pre class="line-numbers"><code class="language-text">docker run -d -p 127.0.0.1:6606:3306 \
+--name open_source_mysqldb \
+-e MYSQL_ROOT_PASSWORD=root \
+mysql:5.7.13
+</code></pre>
+
+<p>4、查看已经启动的 docker 镜像，这里注意 name 后面要用到。<code>docker ps -a</code><br/>
+<figure><img src="media/15590262822391/15590264712809.jpg" alt=""/></figure></p>
+
+<p>5、进入容器bash<code>docker exec -it open_source_mysqldb bash</code></p>
+
+<p>6、进入 mysql 并创建数据库和账号权限配置<br/>
+<code>mysql -h localhost -P 6606 -u root -p</code><br/>
+<figure><img src="media/15590262822391/15590267094981.jpg" alt=""/></figure></p>
+
+<pre class="line-numbers"><code class="language-text">mysql&gt; CREATE DATABASE IF NOT EXISTS vuldb DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+mysql&gt; grant all on vuldb.* to vuluser@&#39;%&#39; identified by &#39;vulpassword&#39;;
+mysql&gt; flush privileges;
+mysql&gt; quit
+</code></pre>
+
+<p><figure><img src="media/15590262822391/15590267827107.jpg" alt=""/></figure></p>
+
+<p>7、退出容器 bash<code>exit</code></p>
+
+<h2 id="toc_1">部署和启动 APP</h2>
+
+<p>1、下载源码<br/>
+<code>$ git clone https://github.com/creditease-sec/insight.git</code></p>
+
+<p>2、修改srcpm/config.py 配置文件</p>
+
+<ul>
+<li><p>修改公司邮箱后缀    </p>
+<pre class="line-numbers"><code class="language-text">#公司邮箱后缀限制，只能使用公司邮箱注册账号。
+CORP_MAIL = &#39;@qq.com&#39;
+</code></pre></li>
+<li><p>修改邮件CC抄送列表    </p>
+<pre class="line-numbers"><code class="language-text">#平台发送的每封邮件的邮件抄送列表，可以设置发送给安全部邮箱列表，可自行修改，也可以保持不变为空
+&#39;&#39;&#39;<br/>
+示例：<br/>
+CC_EMAIL = [&#39;xxx1@creditease.cn&#39;,<br/>
+            &#39;xxx2@creditease.cn&#39;,<br/>
+        ]<br/>
+&#39;&#39;&#39;<br/>
+CC_EMAIL = [<br/>
+        ]<br/>
+        ```
+</code></pre></li>
+</ul>
+
+<ul>
+<li><p>修改开发模式的邮箱服务器和发件邮箱配置    </p>
+<pre class="line-numbers"><code class="language-text"># 以开发模式的配置运行，使用测试邮件服务器，并开启debug模式
+# 平台发邮件账号设置<br/>
+SRCPM_MAIL_SENDER = &#39;安全部 &lt;sec_creditease@sina.com&gt;&#39;<br/>
+# 发送邮件的服务器设置，邮箱密码由系统变量中读取<br/>
+MAIL_SERVER = &#39;smtp.sina.com&#39;<br/>
+MAIL_PORT = 587<br/>
+MAIL_USE_TLS = True<br/>
+MAIL_USERNAME = os.environ.get(<br/>
+    &#39;MAIL_USERNAME&#39;) or &#39;sec_creditease@sina.com&#39;<br/>
+MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
+</code></pre></li>
+<li><p>修改生产模式的邮箱服务器和发件邮箱配置</p>
+<pre class="line-numbers"><code class="language-text"># 以生产模式的配置运行，使用生产邮件服务器，并关闭debug模式
+# 平台发邮件账号设置<br/>
+SRCPM_MAIL_SENDER = &#39;安全部 &lt;xxx@creditease.cn&gt;&#39;<br/>
+# 发送邮件的服务器设置，账号密码由系统变量中读取<br/>
+MAIL_SERVER = &#39;x.x.x.x&#39;<br/>
+MAIL_PORT = 25<br/>
+MAIL_USE_TLS = False<br/>
+MAIL_USERNAME = os.environ.get(<br/>
+    &#39;MAIL_USERNAME&#39;) or &#39;xxx@creditease.cn&#39;<br/>
+MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
+</code></pre></li>
+</ul>
+
+<p>3、修改定时周期邮件 mail_sender.py 的配置    </p>
+
+<pre class="line-numbers"><code class="language-text">    #平台发送的每封邮件的邮件抄送列表，可以设置发送给安全部邮箱列表，可自行修改，也可以保持不变为空
+    &#39;&#39;&#39;
+    示例：
+    CC_EMAIL = [&#39;xxx1@creditease.cn&#39;,
+                &#39;xxx2@creditease.cn&#39;,
+            ]
+    &#39;&#39;&#39;
+    CC_EMAIL = [
+            ]
+    #主机名设置
+    SERVER_NAME = &#39;xxx.creditease.corp&#39;
+    # 平台发邮件账号设置
+    SRCPM_MAIL_SENDER = &#39;安全部 &lt;xxx@creditease.cn&gt;&#39;
+    # 发送邮件的服务器设置，账号密码由系统变量中读取
+    MAIL_SERVER = &#39;x.x.x.x&#39;
+    MAIL_PORT = 25
+    MAIL_USE_TLS = False
+    MAIL_USERNAME = os.environ.get(
+        &#39;MAIL_USERNAME&#39;) or &#39;xxx@creditease.cn&#39;
+    MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
+</code></pre>
+
+<p>4、修改srcpm/app/src/forms.py 漏洞来源下拉列表    </p>
+
+<pre class="line-numbers"><code class="language-text">    &#39;&#39;&#39; 下拉选项 &#39;&#39;&#39;
+    source_choices = [(&#39;&#39;,&#39;&#39;), (u&#39;安全部&#39;, u&#39;安全部&#39;), (u&#39;YISRC&#39;, u&#39;YISRC&#39;), (u&#39;公众平台&#39;, u&#39;公众平台&#39;), (u&#39;合作伙伴&#39;, u&#39;合作伙伴&#39;)]
+</code></pre>
+
+<p>5、在项目根目录下部署和启动APP    </p>
+
+<pre class="line-numbers"><code class="language-text"># 拉取镜像
+docker pull daocloud.io/liusheng/vulpm_docker:latest
+或
+自己构建镜像
+docker build -t=&#39;vulpm_docker&#39; .
+# 在项目目录下启动容器，确保当前目录下存在srcpm文件夹，MAIL_PASSOWRD替换为自己邮箱服务器的密码。
+$ docker run -d -p 127.0.0.1:9000:5000 \
+--link open_source_mysqldb:db \
+--name open_source_srcpm \
+-v $PWD/srcpm:/opt/webapp/srcpm \
+-e DEV_DATABASE_URL=&#39;mysql://vuluser:vulpassword@db/vuldb&#39; \
+-e SrcPM_CONFIG=development \
+-e MAIL_PASSWORD=&#39;xxxxxx&#39; \
+daocloud.io/liusheng/vulpm_docker:latest \
+sh -c &#39;supervisord -c srcpm/supervisor.conf &amp;&amp; supervisorctl -c srcpm/supervisor.conf start all &amp;&amp; tail -f srcpm/log/gunicorn.err &amp;&amp; tail -f srcpm/log/mail_sender.err&#39;
+</code></pre>
+
+<h1 id="toc_2">初始化数据库</h1>
+
+<p>参考作者写的就可以了。</p>
+
+<p><a href="https://github.com/creditease-sec/insight/blob/open-source/docs/db_init.md">数据库初始化详细配置指南</a></p>
+
+<p>或者</p>
+
+<p>直接导入初始化的sql</p>
+
+<p>导入sql</p>
+
+<pre class="line-numbers"><code class="language-text">$ mysql -h127.0.0.1 -P6606 -uroot -p vuldb &lt; srcpm/vuldb_init.sql
+</code></pre>
+
+<p>Enter password:root</p>
+
+<h2 id="toc_3">搭建完成</h2>
+
+<p>访问域名：<a href="http://127.0.0.1:9000/srcpm/">http://127.0.0.1:9000/srcpm/</a> 即可<br/>
+账号：<a href="mailto:admin@admin.com">admin@admin.com</a><br/>
+密码：11</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/5/28 14:51 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15589173721679.html">
+                
+                  <h1>svn 报错：“svn: E155015: Commit failed (details follow):svn: E155015: Aborting commit: '/Users/lonelyor/xxx.xls' remains in conflict” 解决方法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>解决方案来自：<a href="https://stackoverflow.com/questions/2406469/svn-remains-in-conflict">https://stackoverflow.com/questions/2406469/svn-remains-in-conflict</a></p>
+</blockquote>
+
+<p>1、执行 svn resolved /Users/lonelyor/xxx.xlsx<br/>
+2、svn update<br/>
+3、svn commit -m &quot;xxxxxx&quot;</p>
+
+<p>搞定，可以正常执行 commit 操作。</p>
+
+<pre class="line-numbers"><code class="language-text">Sending        xxx.xlsx
+Transmitting file data .done
+Committing transaction...
+Committed revision 1135.
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/5/27 8:36 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15586769387988.html">
                 
                   <h1>Markdown XSS Payloads</h1>
@@ -413,280 +653,6 @@
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15578813198735.html">
-                
-                  <h1>家思</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>慈母手中线，游子身上衣。临行密密缝，易恐迟迟归。谁言寸草心，报得三春晖。</p>
-
-<p>少时不知家可贵，为离故乡，奔波十年方始回。年轻时讨厌家人的管教，只想远离家乡，一个人在外求学四年，虽多遇不平之事，但那时仍觉家无温暖，家人也依然还是喜欢絮絮叨叨。后过三年，每逢春节回家，倍感家人渐渐衰老，虽父亲染发，但依然掩饰不了已经满头白发的事实。不是不爱家，只是说不出口。最怕爱将至而时已晚，最恨情已深而口难开。</p>
-
-<p>来深方半月时间，然小病却接连不断。上一次生病的记忆还是三年前的了。人总是越脆弱的时候越想家，越孤单的时候越想家人。时光将自己雕琢成了大人，将家人雕琢成了老人，将情越琢越深，将思念越琢越纯。</p>
-
-<p>不知是因为什么原因，无论心态还是身体都感觉像灌注了水泥，渐渐凝滞。也许是懒惰阻碍了思考，也许是勤奋想得太多，也许是白日梦空白了一切，也许是现实的光芒点缀了头顶的星空。眼前尽是空白，转瞬又光怪陆离，张口不知道在怎样的胡言乱语，缄默才是最好的表达吧。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/5/15 8:48 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html'>风花雪月</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15577346001597.html">
-                
-                  <h1>linux 敏感目录</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>Linux敏感目录，网站存在包含漏洞、任意文件读取漏洞等，权限允许的条件下，放在burp里面批量跑。</p>
-
-<p>/apache/apache/conf/httpd.conf<br/>
-/apache/apache2/conf/httpd.conf<br/>
-/apache/php/php.ini<br/>
-/bin/php.ini<br/>
-/etc/anacrontab<br/>
-/etc/apache/apache.conf<br/>
-/etc/apache/httpd.conf<br/>
-/etc/apache2/apache.conf<br/>
-/etc/apache2/httpd.conf<br/>
-/etc/apache2/sites-available/default<br/>
-/etc/apache2/vhosts.d/00_default_vhost.conf<br/>
-/etc/at.allow<br/>
-/etc/at.deny<br/>
-/etc/cron.allow<br/>
-/etc/cron.deny<br/>
-/etc/crontab<br/>
-/etc/fstab<br/>
-/etc/host.conf<br/>
-/etc/httpd/conf.d/httpd.conf<br/>
-/etc/httpd/conf.d/php.conf<br/>
-/etc/httpd/conf/httpd.conf<br/>
-/etc/httpd/htdocs/index.html<br/>
-/etc/httpd/htdocs/index.php<br/>
-/etc/httpd/logs/access.log<br/>
-/etc/httpd/logs/access_log<br/>
-/etc/httpd/logs/error.log<br/>
-/etc/httpd/logs/error_log<br/>
-/etc/httpd/php.ini<br/>
-/etc/init.d/httpd<br/>
-/etc/init.d/mysql<br/>
-/etc/ld.so.conf<br/>
-/etc/motd<br/>
-/etc/my.cnf<br/>
-/etc/mysql/my.cnf<br/>
-/etc/mysql/my.cnf<br/>
-/etc/network/interfaces<br/>
-/etc/networks<br/>
-/etc/passwd<br/>
-/etc/php.ini<br/>
-/etc/php/apache/php.ini<br/>
-/etc/php/apache2/php.ini<br/>
-/etc/php/cgi/php.ini<br/>
-/etc/php/php.ini<br/>
-/etc/php/php4/php.ini<br/>
-/etc/php4.4/fcgi/php.ini<br/>
-/etc/php4/apache/php.ini<br/>
-/etc/php4/apache2/php.ini<br/>
-/etc/php4/cgi/php.ini<br/>
-/etc/php5/apache/php.ini<br/>
-/etc/php5/apache2/php.ini<br/>
-/etc/php5/cgi/php.ini<br/>
-/etc/phpmyadmin/config.inc.php<br/>
-/etc/resolv.conf<br/>
-/etc/shadow<br/>
-/etc/ssh/sshd_config<br/>
-/etc/ssh/sshd_config<br/>
-/etc/ssh/ssh_config<br/>
-/etc/ssh/ssh_config<br/>
-/etc/ssh/ssh_host_dsa_key<br/>
-/etc/ssh/ssh_host_dsa_key<br/>
-/etc/ssh/ssh_host_dsa_key.pub<br/>
-/etc/ssh/ssh_host_dsa_key.pub<br/>
-/etc/ssh/ssh_host_key<br/>
-/etc/ssh/ssh_host_key<br/>
-/etc/ssh/ssh_host_key.pub<br/>
-/etc/ssh/ssh_host_key.pub<br/>
-/etc/ssh/ssh_host_rsa_key<br/>
-/etc/ssh/ssh_host_rsa_key<br/>
-/etc/ssh/ssh_host_rsa_key.pub<br/>
-/etc/ssh/ssh_host_rsa_key.pub<br/>
-/etc/sysconfig/network<br/>
-/etc/sysconfig/network<br/>
-/home/apache/conf/httpd.conf<br/>
-/home/apache2/conf/httpd.conf<br/>
-/home/bin/stable/apache/php.ini<br/>
-/home2/bin/stable/apache/php.ini<br/>
-/NetServer/bin/stable/apache/php.ini<br/>
-/opt/www/conf/httpd.conf<br/>
-/opt/www/htdocs/index.html<br/>
-/opt/www/htdocs/index.php<br/>
-/opt/xampp/etc/php.ini<br/>
-/PHP/php.ini<br/>
-/php/php.ini<br/>
-/php4/php.ini<br/>
-/php5/php.ini<br/>
-/root/.atftp_history<br/>
-/root/.bashrc<br/>
-/root/.bash_history<br/>
-/root/.mysql_history<br/>
-/root/.nano_history<br/>
-/root/.php_history<br/>
-/root/.profile<br/>
-/root/.ssh/authorized_keys<br/>
-/root/.ssh/identity<br/>
-/root/.ssh/identity.pub<br/>
-/root/.ssh/id_dsa<br/>
-/root/.ssh/id_dsa.pub<br/>
-/root/.ssh/id_rsa<br/>
-/root/.ssh/id_rsa.pub<br/>
-/root/anaconda-ks.cfg<br/>
-/tmp/apache/htdocs/index.html<br/>
-/tmp/apache/htdocs/index.php<br/>
-/usr/lib/php.ini<br/>
-/usr/lib/php/php.ini<br/>
-/usr/local/apache/conf/httpd.conf<br/>
-/usr/local/apache/conf/php.ini<br/>
-/usr/local/apache/htdocs/index.html<br/>
-/usr/local/apache/htdocs/index.php<br/>
-/usr/local/apache/logs/access.log<br/>
-/usr/local/apache/logs/access_log<br/>
-/usr/local/apache/logs/access_logaccess_log.old<br/>
-/usr/local/apache/logs/error.log<br/>
-/usr/local/apache/logs/error_log<br/>
-/usr/local/apache/logs/error_logerror_log.old<br/>
-/usr/local/apache2/conf/httpd.conf<br/>
-/usr/local/apache2/conf/php.ini<br/>
-/usr/local/apache2/htdocs/index.html<br/>
-/usr/local/apache2/htdocs/index.php<br/>
-/usr/local/cpanel/logs<br/>
-/usr/local/cpanel/logs/access_log<br/>
-/usr/local/cpanel/logs/error_log<br/>
-/usr/local/cpanel/logs/license_log<br/>
-/usr/local/cpanel/logs/login_log<br/>
-/usr/local/cpanel/logs/stats_log<br/>
-/usr/local/cpanel/logs/stats_log<br/>
-/usr/local/etc/php.ini<br/>
-/usr/local/httpd/conf/httpd.conf<br/>
-/usr/local/httpd2.2/htdocs/index.html<br/>
-/usr/local/httpd2.2/htdocs/index.php<br/>
-/usr/local/lib/php.ini<br/>
-/usr/local/mysql/bin/mysql<br/>
-/usr/local/mysql/my.cnf<br/>
-/usr/local/php/lib/php.ini<br/>
-/usr/local/php4/lib/php.ini<br/>
-/usr/local/php4/lib/php.ini<br/>
-/usr/local/php4/php.ini<br/>
-/usr/local/php5/etc/php.ini<br/>
-/usr/local/php5/lib/php.ini<br/>
-/usr/local/php5/php5.ini<br/>
-/usr/local/share/examples/php/php.ini<br/>
-/usr/local/share/examples/php4/php.ini<br/>
-/usr/local/tomcat5527/bin/version.sh<br/>
-/usr/local/Zend/etc/php.ini<br/>
-/usr/share/tomcat6/bin/startup.sh<br/>
-/usr/tomcat6/bin/startup.sh<br/>
-/var/apache2/config.inc<br/>
-/var/httpd/conf/httpd.conf<br/>
-/var/httpd/conf/php.ini<br/>
-/var/httpd/conf/php.ini<br/>
-/var/httpd/htdocs/index.html<br/>
-/var/httpd/htdocs/index.php<br/>
-/var/lib/mysql/my.cnf<br/>
-/var/lib/mysql/mysql/user.MYD<br/>
-/var/local/www/conf/httpd.conf<br/>
-/var/local/www/conf/php.ini<br/>
-/var/log/access.log<br/>
-/var/log/access_log<br/>
-/var/log/apache/access.log<br/>
-/var/log/apache/access_log<br/>
-/var/log/apache/error.log<br/>
-/var/log/apache/error_log<br/>
-/var/log/apache2/access.log<br/>
-/var/log/apache2/access_log<br/>
-/var/log/apache2/error.log<br/>
-/var/log/apache2/error_log<br/>
-/var/log/error.log<br/>
-/var/log/error_log<br/>
-/var/log/mysql.log<br/>
-/var/log/mysql/mysql-bin.log<br/>
-/var/log/mysql/mysql-slow.log<br/>
-/var/log/mysql/mysql.log<br/>
-/var/log/mysqlderror.log<br/>
-/var/mail/root<br/>
-/var/mysql.log<br/>
-/var/spool/cron/crontabs/root<br/>
-/var/spool/mail/root<br/>
-/var/www/conf/httpd.conf<br/>
-/var/www/htdocs/index.html<br/>
-/var/www/htdocs/index.php<br/>
-/var/www/index.html<br/>
-/var/www/index.php<br/>
-/var/www/logs/access.log<br/>
-/var/www/logs/access_log<br/>
-/var/www/logs/error.log<br/>
-/var/www/logs/error_log<br/>
-/web/conf/php.ini<br/>
-/www/conf/httpd.conf<br/>
-/www/htdocs/index.html<br/>
-/www/htdocs/index.php<br/>
-/www/php/php.ini<br/>
-/www/php4/php.ini<br/>
-/www/php5/php.ini<br/>
-/xampp/apache/bin/php.ini<br/>
-/xampp/apache/conf/httpd.conf<br/>
-root/.ssh/authorized_keys<br/>
-root/.ssh/identity<br/>
-root/.ssh/identity.pub<br/>
-root/.ssh/id_dsa<br/>
-root/.ssh/id_dsa.pub<br/>
-root/.ssh/id_rsa<br/>
-root/.ssh/id_rsa.pub</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/5/13 16:3 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -772,6 +738,18 @@ root/.ssh/id_rsa.pub</p>
 	      
 		      
 			      <li class="post">
+			        <a href="15643953233297.html">oh-my-zsh配置</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15643901825363.html">arch 使用 nginx -t 时报错“could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size” 解决办法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15643634653227.html">manjaro 安装 vmtools</a>
 			      </li>
 		     
@@ -785,18 +763,6 @@ root/.ssh/id_rsa.pub</p>
 		      
 			      <li class="post">
 			        <a href="15641083818915.html">manjaro更改国内源操作</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15640473747565.html">kali 下更新软件时报错，说下列签名无效的解决办法</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15638711886127.html">Archiso</a>
 			      </li>
 		     
 		  

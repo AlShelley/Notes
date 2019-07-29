@@ -138,6 +138,125 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15550584590400.html">
+                
+                  <h1>HTTP.sys远程代码执行漏洞</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>转载自：<a href="http://www.cnvd.org.cn/webinfo/show/3614">http://www.cnvd.org.cn/webinfo/show/3614</a></p>
+</blockquote>
+
+<p>4月14日，微软月度例行安全公告披露一个HTTP.sys远程代码执行漏洞（CNVD-2015-02422，对应CVE-2015-1635）,主要威胁到IIS服务器的安全。该漏洞存在于 HTTP 协议堆栈 (HTTP.sys) 中，攻击者可以在系统帐户的上下文中执行任意代码或提升权限。目前，互联网已经出现了可以使服务器蓝屏的利用代码，不过可导致控制服务器主机的攻击代码还未出现。</p>
+
+<h2 id="toc_0">这漏洞能干啥</h2>
+
+<p>IIS 是 windows 主机上的 Web 服务程序，支持 asp、jsp 脚本，应用广泛漏洞众多。IIS服务进程依赖HTTP.sys内核驱动程序文件。漏洞产生的原因是HTTP.sys未能正确分析经特殊设计的HTTP请求所致，通过发送特定构造的HTTP请求包（如：在请求包中相关字段包含类似0xFFFFFFFFFFFFFFFF的大整数值参数），导致整数溢出。成功利用后，攻击者有可能在系统帐户的上下文中执行任意代码，导致拒绝服务或提取权限。目前相关分析表明，漏洞的溢出只限于整数型参数，直接构造可执行系统指令的攻击代码还有一定的难度。</p>
+
+<p>漏洞评级“高危”，因为被攻击会导致服务器蓝屏死机呀。</p>
+
+<h2 id="toc_1">影响范围</h2>
+
+<p>受影响操作系统的IIS服务器版本如下所示：<br/>
+WindowsServer 2012<br/>
+WindowsServer 2012 R2<br/>
+用于基于32位系统：<br/>
+Windows7 SP1<br/>
+Windows8<br/>
+用于基于x64位系统：<br/>
+Windows7 SP1<br/>
+Windows8<br/>
+Windows8.1<br/>
+WindowsServer 2008 R2 SP1<br/>
+用于基于 Itanium 的系统:<br/>
+WindowsServer 2008 R2 SP1</p>
+
+<h2 id="toc_2">漏洞修复建议</h2>
+
+<p>补丁：<a href="https://support.microsoft.com/zh-cn/kb/3042553">https://support.microsoft.com/zh-cn/kb/3042553</a><br/>
+装完后要重启才会生效</p>
+
+<p>一些系统管理员在部署微软的Server系统时可能不作为Web服务器使用，但有可能在默认安装了IIS，请相关单位用户注意排查。</p>
+
+<h2 id="toc_3">验证该漏洞注意事项</h2>
+
+<p>网络流传的poc可能导致服务器蓝屏死机，请谨慎验证......别把线上业务搞挂了。</p>
+
+<h2 id="toc_4">参考链接</h2>
+
+<p><a href="https://technet.microsoft.com/zh-CN/library/security/ms15-034.aspx">https://technet.microsoft.com/zh-CN/library/security/ms15-034.aspx</a></p>
+
+<p><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1635">https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1635</a></p>
+
+<p><a href="http://bobao.360.cn/news/detail/1435.html?from=groupmessage&amp;isappinstalled=0">http://bobao.360.cn/news/detail/1435.html?from=groupmessage&amp;isappinstalled=0</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/4/12 16:40 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15550532565333.html">
+                
+                  <h1>lonelyor个人技能清单</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>这里记录我已经知道的和计划知道的知识。每个人的路都是不一样的，但结果殊途同归。</p>
+
+<p>知识有三个阶段：不知道自己不知道、知道自己知道、知道自己不知道。</p>
+
+<p>智慧是：大智若愚、勤能补拙。</p>
+</blockquote>
+
+<p><figure><img src="media/15550532565333/lonelyor%20%E4%B8%AA%E4%BA%BA%E6%8A%80%E8%83%BD%E6%A0%91.png" alt="lonelyor 个人技能树"/><figcaption>lonelyor 个人技能树</figcaption></figure></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/4/12 15:14 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html'>星火流萤</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15547243035014.html">
                 
                   <h1>相见欢·林花谢了春红</h1>
@@ -890,153 +1009,6 @@ sudo pacman-mirrors -i -c China -m rank</p>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15543568335321.html">
-                
-                  <h1>python 计算代码运行时间的方法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>话不多说，直接上代码：<br/>
-方法一：</p>
-
-<pre class="line-numbers"><code class="language-text">import time
-start = time.time()
-run_function()
-end = time.time()
-print(end)
-</code></pre>
-
-<p>方法二：</p>
-
-<pre class="line-numbers"><code class="language-text">import time
-start = time.clock()
-run_function()
-end = time.clock()
-print(end-start)
-</code></pre>
-
-<h2 id="toc_0">秒级计算</h2>
-
-<p>上述方法 print 的结果是原始时间数据，可以对其进行加减运算，但是结果不太直观，通常我们统计时间是以秒为单位。<br/>
-下面给出秒级计算的代码:</p>
-
-<pre class="line-numbers"><code class="language-text">import time
-start = time.time()
-run_function()
-end = time.time()
-print(int(end))
-</code></pre>
-
-<h2 id="toc_1">扩展</h2>
-
-<pre class="line-numbers"><code class="language-text">import time
-import datetime
-
-t = time.time()
-
-print (t)                       #原始时间数据
-print (int(t))                  #秒级时间戳
-print (int(round(t * 1000)))    #毫秒级时间戳
-
-nowTime = lambda:int(round(t * 1000))
-print (nowTime());              #毫秒级时间戳，基于lambda
-
-print (datetime.datetime.now().strftime(&#39;%Y-%m-%d %H:%M:%S&#39;))   #日期格式化
-</code></pre>
-
-<p>返回为：    </p>
-
-<pre class="line-numbers"><code class="language-text">1554358917.381631
-1554358917
-1554358917382
-1554358917382
-2019-04-04 14:21:57
-</code></pre>
-
-<p>将秒级时间戳转为日期     </p>
-
-<pre class="line-numbers"><code class="language-text">ts = 1515774430
-dt = time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, time.localtime(ts))
-print(dt)
-</code></pre>
-
-<p>返回<br/><br/>
-<code>2018-01-13 00:27:10</code></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/4/4 13:47 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15543511984993.html">
-                
-                  <h1>python程序退出的几种方式</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>最常见的方式是使用 sys 库中的 sys.exit() 方法。不需要考虑平台等因素的影响，一般是退出Python程序的首选方法。</p>
-
-<p>该方法中包含一个参数status，默认为0，表示正常退出，也可以为1，表示异常退出。</p>
-
-<pre class="line-numbers"><code class="language-text">sys.exit()
-sys.exit(0)
-sys.exit(1)
-</code></pre>
-
-<p>该方法引发的是一个SystemExit异常(这是唯一一个不会被认为是错误的异常)，当没有设置捕获这个异常将会直接退出程序执行，当然也可以捕获这个异常进行一些其他操作。</p>
-
-<p>其他方法非首选因此不详细介绍，这里简单提一下，具体信息自行百度。</p>
-
-<p>其他方法有：<br/>
-os._exit()<br/>
-os.kill() 仅用于 unix 平台<br/>
-os.popen() 仅用于 windows 平台</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/4/4 12:13 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -1122,6 +1094,18 @@ os.popen() 仅用于 windows 平台</p>
 	      
 		      
 			      <li class="post">
+			        <a href="15643953233297.html">oh-my-zsh配置</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15643901825363.html">arch 使用 nginx -t 时报错“could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size” 解决办法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15643634653227.html">manjaro 安装 vmtools</a>
 			      </li>
 		     
@@ -1135,18 +1119,6 @@ os.popen() 仅用于 windows 平台</p>
 		      
 			      <li class="post">
 			        <a href="15641083818915.html">manjaro更改国内源操作</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15640473747565.html">kali 下更新软件时报错，说下列签名无效的解决办法</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15638711886127.html">Archiso</a>
 			      </li>
 		     
 		  

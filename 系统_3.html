@@ -138,6 +138,94 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15489296290618.html">
+                
+                  <h1>Mediakit报告设备商的空间不足以执行此操作</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>网上大部分都写的去 windows 中使用DiskGenius重新分区，这搞麻烦了，不用这么麻烦的。</p>
+
+<p>1、打开终端，输入<code>diskutil list</code>列出磁盘内容，这里我们可以找到要格式化的磁盘，我是 disk2<br/>
+2、卸载要格式化的磁盘<code>diskutil unmountDisk force disk2</code><br/>
+3、写入启动扇区<code>sudo dd if=/dev/zero of=/dev/disk2 bs=1024 count=1024</code><br/>
+4、对磁盘进行分区<code>diskutil partitionDisk disk2 GPT JHFS+ &quot;AWESOME DISK&quot; 0g</code><br/>
+5、打完收工，写博客发出来。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/31 18:13 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15483045489079.html">
+                
+                  <h1>iterm2 常用技巧</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>按住 com 键</p>
+
+<ul>
+<li>可以拖拽选中字符串</li>
+<li>点击url能直接打开</li>
+<li>点击文件：调用默认程序打开文件</li>
+<li>点击文件夹：在finder中打开文件夹</li>
+<li>同时按住option键，可以矩形选中</li>
+</ul>
+
+<p>新建windows：cmd+N<br/>
+新建tab：cmd+T<br/>
+切分屏幕：cmd+D水平切分<br/>
+智能查找，支持正则：cmd+F</p>
+
+<p>智能补全：cmd+；<br/>
+调用历史记录：cmd+shift+h</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/1/24 12:35 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15483045489099.html">
                 
                   <h1>终端配置代理</h1>
@@ -287,74 +375,6 @@
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15480046445603.html">
-                
-                  <h1>校验文件md5</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>打开终端<br/>
-使用命令 md5 或 shawun 即可查看。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/21 1:17 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15480046337420.html">
-                
-                  <h1>无法安装docker</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>请检查是否开启防火墙，防火墙是否屏蔽了docker的传入链接。<br/>
-通常连不上docker是因为防火墙的原因</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/21 1:17 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -440,6 +460,18 @@
 	      
 		      
 			      <li class="post">
+			        <a href="15643953233297.html">oh-my-zsh配置</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15643901825363.html">arch 使用 nginx -t 时报错“could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size” 解决办法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15643634653227.html">manjaro 安装 vmtools</a>
 			      </li>
 		     
@@ -453,18 +485,6 @@
 		      
 			      <li class="post">
 			        <a href="15641083818915.html">manjaro更改国内源操作</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15640473747565.html">kali 下更新软件时报错，说下列签名无效的解决办法</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15638711886127.html">Archiso</a>
 			      </li>
 		     
 		  

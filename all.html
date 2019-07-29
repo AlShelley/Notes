@@ -138,6 +138,122 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15643953233297.html">
+                
+                  <h1>oh-my-zsh配置</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">下载安装</h2>
+
+<p>sh -c &quot;$(curl -fsSL <a href="https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)">https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</a>&quot;</p>
+
+<h2 id="toc_1">修改主题</h2>
+
+<p>nano ~/.zshrc 或者 nano /home/lonelyor/.zshrc<br/>
+ZSH_THEME=&quot;angoster&quot;</p>
+
+<p>使用命令<br/>
+ls ~/.oh-my-zsh/themes  查看可使用的主题列表</p>
+
+<h2 id="toc_2">更换默认shell</h2>
+
+<p>chsh -s /usr/bin/zsh<br/>
+重启即可看到效果</p>
+
+<h2 id="toc_3">安装插件</h2>
+
+<p>增加插件直接写名字就行，用空格隔开。<br/>
+plugins=(git autojump)</p>
+
+<p>安装 autojump<br/>
+sudo pacman -S autojump<br/>
+把以下代码添加到.zshrc<br/>
+<code>[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] &amp;&amp; . ~/.autojump/etc/profile.d/autojump.sh</code></p>
+
+<p>安装zsh-syntax-highlighting命令高亮插件</p>
+
+<p>plugins=(git autojump zsh-syntax-highlighting)</p>
+
+<p>安装自动补全zsh-autosuggestions</p>
+
+<p>git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions</p>
+
+<p>一键解压<br/>
+extract 自带的</p>
+
+<p>最后使用 source .zshrc 命令让配置生效。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/29 18:15 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15643901825363.html">
+                
+                  <h1>arch 使用 nginx -t 时报错“could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size” 解决办法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>根据官网说明解决。<br/>
+<a href="https://wiki.archlinux.org/index.php/Nginx">https://wiki.archlinux.org/index.php/Nginx</a></p>
+
+<p>添加配置 /etc/nginx/nginx.conf</p>
+
+<pre class="line-numbers"><code class="language-nginx">http {
+    types_hash_max_size 4096;
+    server_names_hash_bucket_size 128;
+    ...
+}
+</code></pre>
+
+<p><figure><img src="media/15643901825363/15643902439005.jpg" alt="" style="width:1070px;"/></figure></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/29 16:49 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15643634653227.html">
                 
                   <h1>manjaro 安装 vmtools</h1>
@@ -319,96 +435,6 @@ Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15638711886127.html">
-                
-                  <h1>Archiso</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>参考官方文档，自制 archlinux 可启动镜像。这样就可以拥有自己的 linux 发行版了。</p>
-
-<p><a href="https://wiki.archlinux.org/index.php/Archiso">https://wiki.archlinux.org/index.php/Archiso</a></p>
-
-<p>修改 pacman.conf，添加自定义存储库<br/>
-<figure><img src="media/15638711886127/15638731637993.jpg" alt="" style="width:460px;"/></figure></p>
-
-<p>将 customrepo 的内容改为 archlinuxcn</p>
-
-<pre class="line-numbers"><code class="language-text">#[customrepo]
-SigLevel = Optional TrustAll
-Server = file:///home/user/customrepo/$arch
-</code></pre>
-
-<p>改为</p>
-
-<pre class="line-numbers"><code class="language-text">#[archlinuxcn]
-SigLevel = Optional TrustAll
-Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/23 16:39 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15611953556975.html">
-                
-                  <h1>archlinux 安装 vmtools 遇到坑了怎么办</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>使用这个脚本即可：<a href="https://github.com/rasa/vmware-tools-patches">https://github.com/rasa/vmware-tools-patches</a></p>
-
-<pre class="line-numbers"><code class="language-text">$ git clone https://github.com/rasa/vmware-tools-patches.git
-$ cd vmware-tools-patches
-$ ./patched-open-vm-tools.sh
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/6/22 17:22 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -494,6 +520,18 @@ $ ./patched-open-vm-tools.sh
 	      
 		      
 			      <li class="post">
+			        <a href="15643953233297.html">oh-my-zsh配置</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15643901825363.html">arch 使用 nginx -t 时报错“could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size” 解决办法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15643634653227.html">manjaro 安装 vmtools</a>
 			      </li>
 		     
@@ -507,18 +545,6 @@ $ ./patched-open-vm-tools.sh
 		      
 			      <li class="post">
 			        <a href="15641083818915.html">manjaro更改国内源操作</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15640473747565.html">kali 下更新软件时报错，说下列签名无效的解决办法</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15638711886127.html">Archiso</a>
 			      </li>
 		     
 		  

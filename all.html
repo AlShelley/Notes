@@ -326,10 +326,12 @@ sudo ./patched-open-vm-tools.sh</p>
                         	<p>在进行 dom 型 xss 测试的时候，发现 payload 中输入 x 或 y 会弹窗，其他字母不弹窗。具体如下图所示。<br/>
 <code>&lt;img src=1 onerror=alert(z)&gt;</code><br/>
 <figure><img src="media/15642124072307/15642124281235.jpg" alt="" style="width:1017px;"/></figure></p>
-<img src=1 onerror=alert(x)>
-<p><figure><img src="media/15642124072307/15642124904179.jpg" alt="" style="width:774px;"/></figure></p>
-<img src=1 onerror=alert(y)>
-<p><figure><img src="media/15642124072307/15642125078089.jpg" alt="" style="width:769px;"/></figure></p>
+
+<p><code>&lt;img src=1 onerror=alert(x)&gt;</code><br/>
+<figure><img src="media/15642124072307/15642124904179.jpg" alt="" style="width:774px;"/></figure></p>
+
+<p><code>&lt;img src=1 onerror=alert(y)&gt;</code><br/>
+<figure><img src="media/15642124072307/15642125078089.jpg" alt="" style="width:769px;"/></figure></p>
 
                         
                       </div>

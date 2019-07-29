@@ -147,43 +147,46 @@
                         
                         	<h2 id="toc_0">下载安装</h2>
 
-<p>sh -c &quot;$(curl -fsSL <a href="https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)">https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</a>&quot;</p>
+<p><code>sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;</code></p>
 
 <h2 id="toc_1">修改主题</h2>
 
 <p>nano ~/.zshrc 或者 nano /home/lonelyor/.zshrc<br/>
 ZSH_THEME=&quot;angoster&quot;</p>
 
-<p>使用命令<br/>
-ls ~/.oh-my-zsh/themes  查看可使用的主题列表</p>
+<p>查看可使用的主题列表<br/>
+<code>ls ~/.oh-my-zsh/themes</code>  </p>
 
 <h2 id="toc_2">更换默认shell</h2>
 
-<p>chsh -s /usr/bin/zsh<br/>
+<p><code>chsh -s /usr/bin/zsh</code><br/>
 重启即可看到效果</p>
 
 <h2 id="toc_3">安装插件</h2>
 
-<p>增加插件直接写名字就行，用空格隔开。<br/>
+<p>增加插件直接写名字就行，用空格隔开。以下是一个示例。<br/>
 plugins=(git autojump)</p>
 
-<p>安装 autojump<br/>
-sudo pacman -S autojump<br/>
-把以下代码添加到.zshrc<br/>
-<code>[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] &amp;&amp; . ~/.autojump/etc/profile.d/autojump.sh</code></p>
+<p>安装文件夹跳转工具 autojump，<br/>
+sudo pacman -S autojump</p>
 
-<p>安装zsh-syntax-highlighting命令高亮插件</p>
+<p>把以下代码添加到~/.zshrc才能使 autojump 生效<br/>
+<code>[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] &amp;&amp; . ~/.autojump/etc/profile.d/autojump.sh</code>    </p>
 
-<p>plugins=(git autojump zsh-syntax-highlighting)</p>
+<p>安装zsh-syntax-highlighting命令高亮插件<br/>
+<code>git clone https://github.com/zsh-users/zsh-syntax-highlighting.git <br/>
+echo &quot;source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh&quot; &gt;&gt; ${ZDOTDIR:-$HOME}/.zshrc</code></p>
 
-<p>安装自动补全zsh-autosuggestions</p>
+<p>安装命令自动补全zsh-autosuggestions插件<br/>
+<code>git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions</code>   </p>
 
-<p>git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions</p>
+<p>一键解压，自带的<br/>
+extract</p>
 
-<p>一键解压<br/>
-extract 自带的</p>
+<p>配置~/.zshrc 文件，添加内容：<br/>
+plugins=(git autojump zsh-syntax-highlighting zsh-autosuggestions extract)</p>
 
-<p>最后使用 source .zshrc 命令让配置生效。</p>
+<p>最后使用 source ~/.zshrc 命令让配置生效。</p>
 
                         
                       </div>

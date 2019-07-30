@@ -138,6 +138,98 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15512579928868.html">
+                
+                  <h1>excel for Mac 如何点击单元格高亮整行</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>参考答案：<a href="https://zhidao.baidu.com/question/488433413549944532.html">https://zhidao.baidu.com/question/488433413549944532.html</a> 中的 ZouJiLiangRJ 的答案</p>
+</blockquote>
+
+<p>1、复制以下代码</p>
+
+<pre class="line-numbers"><code class="language-excel">Private Sub Worksheet_SelectionChange(ByVal T As Range)
+Cells.Interior.ColorIndex = 0
+T.EntireRow.Interior.ColorIndex = 8
+T.Interior.ColorIndex = 2
+End Sub
+</code></pre>
+
+<p>2、右键单击工作表标签（如：sheet1），点击查看代码<br/>
+3、在代码框中粘贴上述代码。然后关闭代码框。<br/>
+4、回到 excel 表格然后随意点击一个单元格试试看效果如何。</p>
+
+<p><em>还有一种方法就是使用 wps 的阅读模式。</em></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/2/27 16:59 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15507295741483.html">
+                
+                  <h1>最强渗透测试教程</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>作者：Micropoor 侯总<br/>
+作者简介：十多年一线渗透测试大牛，目前在职于360.<br/>
+侯总博客：<br/>
+<a href="https://blog.csdn.net/micropoor">https://blog.csdn.net/micropoor</a><br/>
+<a href="https://micropoor.blogspot.com/%EF%BC%88%E9%9C%80%E8%A6%81%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%EF%BC%89">https://micropoor.blogspot.com/（需要科学上网）</a><br/>
+侯总教程地址：<br/>
+<a href="https://github.com/Micropoor/Micro8">https://github.com/Micropoor/Micro8</a></p>
+
+<p>经典语录：<br/>
+渗透的本质是信息搜集。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/2/21 14:12 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15506293038772.html">
                 
                   <h1>使用浏览器进行Web应用安全测试</h1>
@@ -660,113 +752,6 @@ Dnspionage<br/>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15487463359475.html">
-                
-                  <h1>给网站添加百度、谷歌搜索框</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>以下是我北斗页面的搜索框代码：</p>
-
-<pre class="line-numbers"><code class="language-markup"> &lt;div style=&#39;overflow:auto&#39;&gt;&lt;form onsubmit=&quot;return baiduWithHttps(this)&quot; action=&quot;http://www.baidu.com/s&quot; target=&quot;_blank&quot;&gt;
-        &lt;input class=&#39;bdtext&#39; type=&quot;text&quot;  onfocus=&quot;checkHttps&quot; name=&quot;wd&quot;  size=&quot;30&quot;&gt;&lt;input class=&#39;bdbtn&#39; type=&quot;submit&quot;value=&quot;百度搜索&quot;&gt;
-        &lt;/form&gt;&lt;script&gt;function checkHttps () {
-                BaiduHttps.useHttps();    
-            };
-            function baiduWithHttps (formname) {
-                var data = BaiduHttps.useHttps();
-                if (data.s === 0) {
-                    return true;
-                }
-                else {
-                    formname.action = &#39;https://www.baidu.com/s&#39; + &#39;?wd&#39; + data.ssl_code;
-                    return true;
-                }
-            };&lt;/script&gt;&lt;/div&gt;&lt;div style=&#39;overflow:auto&#39;&gt;&lt;form onsubmit=&quot;return googleWithHttps(this)&quot; action=&quot;http://www.google.com/search&quot; target=&quot;_blank&quot;&gt;
-    &lt;input class=&#39;bdtext&#39; type=&quot;text&quot;  onfocus=&quot;checkHttps&quot; name=&quot;q&quot;  size=&quot;30&quot;&gt;&lt;input class=&#39;bdbtn&#39; type=&quot;submit&quot;value=&quot;谷歌搜索&quot;&gt;
-    &lt;/form&gt;&lt;script&gt;function checkHttps () {
-            googleHttps.useHttps();    
-        };
-        function googleWithHttps (formname) {
-            var data = googleHttps.useHttps();
-            if (data.s === 0) {
-                return true;
-            }
-            else {
-                formname.action = &#39;https://www.google.com/search&#39; + &#39;?q&#39; + data.ssl_code;
-                return true;
-            }
-        };&lt;/script&gt;&lt;/div&gt;
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/29 15:18 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15484074464554.html">
-                
-                  <h1>Snipaste 无法在 Mac 上截图的解决办法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>MacOSX 版本：Mojave 10.14.2<br/>
-Snipaste 版本：1.16.2</p>
-
-<p>以下列出遇到部分问题：<br/>
-1、使用截图功能，手动画矩形框，但是选定框画完后松开触摸板，选定框自动消失，导致无法截图。（手动选定截图区域占截图使用时间99%）<br/>
-2、使用截图功能，程序自动识别截图区域，双击可以得到截图并且有箭头等选项，画一个箭头后，选定框自动消失，截图会带着箭头自动保存到图片目录。（这导致没法多画几个箭头，也没法另存为图片）</p>
-
-<h1 id="toc_0">解决办法</h1>
-
-<p>我后来在 <a href="https://github.com/Snipaste/feedback/issues/1012">https://github.com/Snipaste/feedback/issues/1012</a> 这里找到了答案。<br/>
-关闭欧路词典的划词翻译功能，即可正常使用截图。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/1/25 17:10 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -852,6 +837,18 @@ Snipaste 版本：1.16.2</p>
 	      
 		      
 			      <li class="post">
+			        <a href="15644581924907.html">arch 无法使用 zenmap，报错：'No module named gtk'的解决办法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15644488533834.html">Manjaro vmware 虚拟机共享宿主机文件夹</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15643953233297.html">oh-my-zsh配置</a>
 			      </li>
 		     
@@ -865,18 +862,6 @@ Snipaste 版本：1.16.2</p>
 		      
 			      <li class="post">
 			        <a href="15643634653227.html">manjaro 安装 vmtools</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15642124072307.html">Mutillidae 遇到的一个奇怪问题</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15641083818915.html">manjaro更改国内源操作</a>
 			      </li>
 		     
 		  

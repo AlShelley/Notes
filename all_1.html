@@ -138,6 +138,87 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15641083818915.html">
+                
+                  <h1>manjaro更改国内源操作</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>1、排序并增加中文rank源<br/>
+<code>sudo pacman-mirrors -i -c China -m rank</code><br/>
+选择喜欢的就行，不知道就全选好了。</p>
+
+<p>2、添加 archlinuxcn（archlinux 可用）<br/>
+修改<code>/etc/pacman.conf</code>文件，在文件后添加如下语句：</p>
+
+<pre class="line-numbers"><code class="language-text">[archlinuxcn]
+SigLevel = Optional TrustedOnly
+Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+</code></pre>
+
+<p>导入GPG Key<br/>
+<code>sudo pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring</code></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/26 10:33 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15640473747565.html">
+                
+                  <h1>kali 下更新软件时报错，说下列签名无效的解决办法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>解决办法就是重新获取下签名key </p>
+
+<p>wget -q -O - <a href="https://archive.kali.org/archive-key.asc">https://archive.kali.org/archive-key.asc</a> | sudo apt-key add</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/25 17:36 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15638711886127.html">
                 
                   <h1>Archiso</h1>
@@ -305,133 +386,6 @@ Docker Engine: 18.09.2</p>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15602308144902.html">
-                
-                  <h1>Metasploit 完全使用教程</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>计划写一个 msf 从安装到使用到编写 exploit 的教程，在这里留个坑。本文不适合新手，很多地方不会说的太细致。但是会说清楚。</p>
-</blockquote>
-
-<h2 id="toc_0">环境搭建</h2>
-
-<p>1、安装 Postgresql<br/>
-2、安装 metasploit</p>
-
-<p>关于 metasploit，linux 的话可以使用软件管理器安装；macosx 的话可以使用 brew 安装；windows 别装了，去学 linux 吧。</p>
-
-<p>如果用包管理器安装有问题，则去官网下载二进制文件安装或者 github 下载源码下来，然后给 install 可执行权限，再执行安装。</p>
-
-<p>安装完成之后，使用 alias 命令将<code>/opt/metasploit-framework/bin ./msfconsole</code>（具体路径根据自己安装的实际情况选定）指定成<code>msf</code>，这样以后要用只需要在终端输入 msf 即可立即开始使用。</p>
-
-<h2 id="toc_1">使用入门</h2>
-
-<p>打开终端然后输入 msf 即可启动，如下图所示：<br/>
-<figure><img src="media/15602308144902/15602325257924.jpg" alt=""/></figure></p>
-
-<p><figure><img src="media/15602308144902/15602325455212.jpg" alt=""/></figure></p>
-
-<p>上图黄字部分表示当前 msf 版本，如果版本过低，请使用<code>msfupdate</code>进行升级（注意执行此命令时终端所在的目录）。</p>
-
-<h2 id="toc_2">使用 msf 进行信息收集</h2>
-
-<p>主动信息收集的第一步通常都是端口扫描</p>
-
-<p><figure><img src="media/15602308144902/15602328461015.jpg" alt=""/></figure></p>
-
-<p>首先查找端口扫描模块，命令<code>search portscan</code>，search 是个非常重要的命令，当我们需要扫描或者利用某个漏洞时，可以使用 search 命令来查找 msf 是否有相关模块。</p>
-
-<p>（未完待续）</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/6/11 13:26 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15597856399146.html">
-                
-                  <h1>黑盒测试中的信息收集</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>信息搜集分为主动搜集和被动搜集，主动搜集会惊动资产方因此需要有所针对，动静越小越好；而被动搜集不会惊动资产方因此更为隐蔽。</p>
-
-<h2 id="toc_0">第一阶段：资产（域名及子域名）搜集</h2>
-
-<p>1、确认目标性质：了解网站所在行业，他是一个黑产赌博色情站、还是政府学校官方站、亦或是金融游戏商业站。了解这类网站通常的安全关注点在哪，那么避开其关注点，就是它的薄弱点。</p>
-
-<p>2、收集目标资产 1：使用搜索引擎搜索关键词（公司名、域名等），找出搜索引擎搜录的相关域名，这里可以用一些现成的工具或者自写爬虫</p>
-
-<p>3、收集目标资产 2：使用子域名扫描器，根据 2 中搜集来的域名进一步进行资产收集。</p>
-
-<p>4、收集目标资产 3：使用爬虫在 3 所在的页面中爬取隐藏页面或引用的 url。</p>
-
-<p>信息搜集是层层递进的，根据上一次收集的信息来进行扩展，尽可能多的收集目标资产、扩大打击面。</p>
-
-<h2 id="toc_1">第二阶段：资产属性收集</h2>
-
-<p>5、得到域名和 ip 相关信息后，对资产进行端口扫描、敏感目录（包括后台、备份文件、隐藏接口、邮箱系统、运维自带后门、github 或网盘泄露等）扫描、GoogleHacking（快照信息、已知后门、代码泄露、已知安全事件）、操作系统版本（win、linux）、web 应用服务器版本（nginx、apache、tomcat 等）、后端框架（spring、flask、thinkphp 等）、网络拓扑（多少主机、路由、交换、网段、DNS服务器等）、防御软硬件信息（防火墙、waf、网闸等）等。并一一记录资产对应的信息。这里还有些值得注意的信息就是：邮箱、手机号、身份证号等个人敏感信息。</p>
-
-<p>6、分析信息并对有效信息进行提取和记录。</p>
-
-<p>比如你可以这样来记录（这只是个例子，信息收集自然是越详细越好）：<br/>
-<figure><img src="media/15597856399146/15598028215198.jpg" alt=""/></figure></p>
-
-<h2 id="toc_2">第三阶段：资产攻击面分析</h2>
-
-<p>7、收集了各种信息后，就是分析各个资产可能存在的防御薄弱点、分析攻击面。可以从软硬件漏洞、业务、人三个方向来进行分析。</p>
-
-<p>8、收集攻击相关工具、字典等，针对可入侵性高的攻击面进行攻击，此时会获得攻击工具的部分反馈。根据反馈我们可以更好地了解对方的防御措施和脆弱点。根据不同的攻击行为，系统会有不同的反应，分析这些信息对后续展开更深层次的攻击也是有积极意义的。</p>
-
-<p>基本上，到这里，我们就可以开始展开针对性的攻击了。如果物理上离目标近，还可以使用钓鱼二维码、社工、应聘、潜入停车场、办公区域，若网络未做内外网隔离还可以连接办公室 wifi 等方式（连接 wifi 这个绝对是大杀器）。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/6/6 9:47 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -517,6 +471,18 @@ Docker Engine: 18.09.2</p>
 	      
 		      
 			      <li class="post">
+			        <a href="15644581924907.html">arch 无法使用 zenmap，报错：'No module named gtk'的解决办法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15644488533834.html">Manjaro vmware 虚拟机共享宿主机文件夹</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15643953233297.html">oh-my-zsh配置</a>
 			      </li>
 		     
@@ -530,18 +496,6 @@ Docker Engine: 18.09.2</p>
 		      
 			      <li class="post">
 			        <a href="15643634653227.html">manjaro 安装 vmtools</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15642124072307.html">Mutillidae 遇到的一个奇怪问题</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15641083818915.html">manjaro更改国内源操作</a>
 			      </li>
 		     
 		  

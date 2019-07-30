@@ -138,6 +138,77 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15542101741047.html">
+                
+                  <h1>linux sudo配置免密及排除部分命令</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><code>lonelyor ALL=(ALL) NOPASSWD:ALL, !/usr/bin/reboot, !/sbin/reboot, !/sbin/ifconfig, !/sbin/shutdown, !/sbin/route, !/sbin/ip</code></p>
+
+<p>即lonelyor可以免密码执行除reboot、ifconfig、shutdown、route、ip之外的指令。</p>
+
+<p><strong>注意，/etc/sudoers的命令是顺序执行，添加在错误的位置（比如 %sudo ALL=(ALL:ALL) ALL 之前）是无效的。</strong></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/4/2 21:2 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15542098568070.html">
+                
+                  <h1>linux sudo:/etc/sudoers 可被任何人写 解决方案</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>只需要使用<code>su -</code>进入 root<br/>
+然后<code>cd /etc</code>，使用<code>chmod 0440 sudoers</code>将权限改回来即可。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/4/2 20:57 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15542044701566.html">
                 
                   <h1>debian or ubuntu 修改终端欢迎语</h1>
@@ -294,87 +365,6 @@
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15532282104799.html">
-                
-                  <h1>Mac 终端设置欢迎页</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><code>cd /etc</code><br/>
-<code>sudo pico motd</code><br/>
-输入密码后会打开nano，然后在里面输入图案或者文字。然后保存后退出，之后打开终端就能看到欢迎页了。</p>
-
-<p>其实本质就是在/etc目录下创建文件 motd，然后往里面写内容即可。</p>
-
-<p>我只是添加了一段文字，结果如下：</p>
-
-<p><figure><img src="media/15532282104799/15532284069773.jpg" alt=""/></figure></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/3/22 12:16 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15523826250881.html">
-                
-                  <h1>excel 工作表插入当前时间和日期</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>参考链接：<a href="https://jingyan.baidu.com/article/75ab0bcbb03035d6864db203.html">https://jingyan.baidu.com/article/75ab0bcbb03035d6864db203.html</a></p>
-</blockquote>
-
-<p>1、选定单元格然后同时按<code>CTRL+;</code>可以快速设置日期。<br/>
-2、在单元格中输入函数<code>=TODAY()</code>然后回车也可以快速设置日期。<br/>
-3、选定单元格然后同时按下<code>Ctrl+Shift+；</code>可以快速设置当前时刻的时间。<br/>
-4、在单元格中输入函数<code>=NOW()</code>然后回车可以显示当前时刻的时间。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/3/12 17:23 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -460,6 +450,18 @@
 	      
 		      
 			      <li class="post">
+			        <a href="15644581924907.html">arch 无法使用 zenmap，报错：'No module named gtk'的解决办法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15644488533834.html">Manjaro vmware 虚拟机共享宿主机文件夹</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15643953233297.html">oh-my-zsh配置</a>
 			      </li>
 		     
@@ -473,18 +475,6 @@
 		      
 			      <li class="post">
 			        <a href="15643634653227.html">manjaro 安装 vmtools</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15642124072307.html">Mutillidae 遇到的一个奇怪问题</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15641083818915.html">manjaro更改国内源操作</a>
 			      </li>
 		     
 		  

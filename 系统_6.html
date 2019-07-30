@@ -138,6 +138,111 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15453579778110.html">
+                
+                  <h1>nano常见设置，如语法高亮、启用行号、启用鼠标等</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>下载nano<br/>
+linux根据包管理不同，使用不通的命令。<br/>
+macosx使用brew安装。</p>
+
+<p>编辑（没有就创建）配置文件<br/>
+nano ～/.nanorc<br/>
+然后添加以下内容</p>
+
+<pre class="line-numbers"><code class="language-text"># 语法高亮
+include &quot;/usr/share/nano/*.nanorc&quot;
+</code></pre>
+
+<p>或者</p>
+
+<pre class="line-numbers"><code class="language-text"># 语法高亮
+include &quot;/usr/local/share/nano/*.nanorc&quot;
+</code></pre>
+
+<p>这里include哪一个主要取决于nanorc的具体位置。通常linux在share，macosx在local/share。<br/>
+其他内容如：</p>
+
+<pre class="line-numbers"><code class="language-text"># 启用行号
+set linenumbers
+# 平滑滚动
+set smooth
+# 自动缩进
+set autoindent
+# tab为空格
+set tabstospaces
+# 启用鼠标
+set mouse
+</code></pre>
+
+<p>然后保存，重新打开终端，即可发现设置生效，以上方法适用于linux和macosx。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21 10:6 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15453576869884.html">
+                
+                  <h1>linux查看磁盘空间占用情况</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>主要是使用 df 命令，使用 df --help 可以查看更多选项。</p>
+
+<p>举例：<br/>
+df -k 以KB为单位显示磁盘使用量和占用率。<br/>
+df -k 以M×××</p>
+
+<p>使用“du -ck /home”命令，列出home目录下所有文件或目录占用的大小，以KB作为计量单位。以及统计出当前home目录占用的总大小。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21 10:1 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15453574952135.html">
                 
                   <h1>crontab设置定时任务</h1>
@@ -307,85 +412,6 @@
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15446969783198.html">
-                
-                  <h1>解决windows右键新建消失问题</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>新建一个文件后缀名写为reg（注册表文件格式）的文件。<br/>
-然后用记事本或文本编辑器打开，写入文件内容：</p>
-
-<pre class="line-numbers"><code class="language-text">Windows Registry Editor Version 5.00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\New]
-
-@=&quot;{D969A300-E7FF-11d0-A93B-00A0C90F2719}&quot;
-</code></pre>
-
-<p>保存，然后双击该文件，即可。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/13 18:29 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15446968262703.html">
-                
-                  <h1>OneDrive映射到本地（像访问本地磁盘一样访问网盘）</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>参考以下链接即可：<br/>
-<a href="http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc">http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc</a></p>
-
-<p>举一反三，webdav、nfs、samba等都可以使用这种方式挂载，来方便访问。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/13 18:27 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -471,6 +497,18 @@
 	      
 		      
 			      <li class="post">
+			        <a href="15644581924907.html">arch 无法使用 zenmap，报错：'No module named gtk'的解决办法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15644488533834.html">Manjaro vmware 虚拟机共享宿主机文件夹</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15643953233297.html">oh-my-zsh配置</a>
 			      </li>
 		     
@@ -484,18 +522,6 @@
 		      
 			      <li class="post">
 			        <a href="15643634653227.html">manjaro 安装 vmtools</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15642124072307.html">Mutillidae 遇到的一个奇怪问题</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15641083818915.html">manjaro更改国内源操作</a>
 			      </li>
 		     
 		  

@@ -138,6 +138,91 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15644581924907.html">
+                
+                  <h1>arch 无法使用 zenmap，报错：'No module named gtk'的解决办法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>问题截图：<br/>
+<figure><img src="media/15644581924907/15644582412797.jpg" alt="" style="width:842px;"/></figure></p>
+
+<p>参考链接：<a href="https://bbs.archlinux.org/viewtopic.php?id=200299">https://bbs.archlinux.org/viewtopic.php?id=200299</a></p>
+
+<p>问题解决办法：安装 pygtk 包<br/>
+<figure><img src="media/15644581924907/15644583244261.jpg" alt="" style="width:1366px;"/></figure></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/30 11:43 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15644488533834.html">
+                
+                  <h1>Manjaro vmware 虚拟机共享宿主机文件夹</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>在客机里运行如下命令可以列出共享目录：<br/>
+$ vmware-hgfsclient</p>
+
+<p><figure><img src="media/15644488533834/15644489412501.jpg" alt="" style="width:554px;"/></figure></p>
+
+<p>然后以如下方式挂载：</p>
+
+<pre class="line-numbers"><code class="language-text"># mkdir &lt;shared folders root directory&gt;
+# vmhgfs-fuse -o allow_other -o auto_unmount .host:/&lt;shared_folder&gt; &lt;shared folders root directory&gt;
+</code></pre>
+
+<p>我发现这个方法比较麻烦，而且后续问题比较多。</p>
+
+<p>目前使用 smb 文件共享来实现虚拟机与主机共享文件，不依赖虚拟机。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/30 9:7 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15643953233297.html">
                 
                   <h1>oh-my-zsh配置</h1>
@@ -359,87 +444,6 @@ sudo ./patched-open-vm-tools.sh</p>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15641083818915.html">
-                
-                  <h1>manjaro更改国内源操作</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>1、排序并增加中文rank源<br/>
-<code>sudo pacman-mirrors -i -c China -m rank</code><br/>
-选择喜欢的就行，不知道就全选好了。</p>
-
-<p>2、添加 archlinuxcn（archlinux 可用）<br/>
-修改<code>/etc/pacman.conf</code>文件，在文件后添加如下语句：</p>
-
-<pre class="line-numbers"><code class="language-text">[archlinuxcn]
-SigLevel = Optional TrustedOnly
-Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
-</code></pre>
-
-<p>导入GPG Key<br/>
-<code>sudo pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring</code></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/26 10:33 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15640473747565.html">
-                
-                  <h1>kali 下更新软件时报错，说下列签名无效的解决办法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>解决办法就是重新获取下签名key </p>
-
-<p>wget -q -O - <a href="https://archive.kali.org/archive-key.asc">https://archive.kali.org/archive-key.asc</a> | sudo apt-key add</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/25 17:36 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -525,6 +529,18 @@ Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
 	      
 		      
 			      <li class="post">
+			        <a href="15644581924907.html">arch 无法使用 zenmap，报错：'No module named gtk'的解决办法</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15644488533834.html">Manjaro vmware 虚拟机共享宿主机文件夹</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15643953233297.html">oh-my-zsh配置</a>
 			      </li>
 		     
@@ -538,18 +554,6 @@ Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
 		      
 			      <li class="post">
 			        <a href="15643634653227.html">manjaro 安装 vmtools</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15642124072307.html">Mutillidae 遇到的一个奇怪问题</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15641083818915.html">manjaro更改国内源操作</a>
 			      </li>
 		     
 		  

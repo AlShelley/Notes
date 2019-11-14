@@ -18,3 +18,7 @@ www.lonelyor.org 使用https访问时可能会丢失js导致页面异常（这�
 4、原创内容
 
 最近建了个微信公众号，闲的没事的可以关注一下：lonelyor工作室（暂时没有时间运营）
+
+
+
+# 以前写的blog组织结构不好，现在停止wiki的更新，将内容迁移到blog.lonelyor.org上。

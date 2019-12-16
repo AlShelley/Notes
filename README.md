@@ -4,7 +4,7 @@
 用来展示部分学习笔记，主要以安全技术为主。想要更直观的访问文章可以访问我的博客。
 
 笔记主页如下：
-https://wiki.lonelyor.org
+http://wiki.lonelyor.org
 
 博客主页通过 http://www.lonelyor.org/ 或 https://alshelley.github.io/ 访问  
 

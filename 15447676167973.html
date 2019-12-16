@@ -3,10 +3,6 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <link rel="bookmark" href="https://raw.githubusercontent.com/AlShelley/lonelyorWiki/master/asset/img/favicon.ico" type="images/x-icon"/>
-    <link rel="shortcut icon" href="https://raw.githubusercontent.com/AlShelley/lonelyorWiki/master/asset/img/favicon.ico" type="images/x-icon"/>
-
     <title>
     
   我是如何从Google窃取你的照片的-我的3个Google漏洞赏金报告分享 - lonelyorWiki
@@ -19,9 +15,7 @@
     <link rel="stylesheet" href="asset/css/docs.css" />
     <script src="asset/js/vendor/modernizr.js"></script>
     <script src="asset/js/vendor/jquery.js"></script>
-  <script src="asset/highlightjs/highlight.pack.js"></script>
-  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script>hljs.initHighlightingOnLoad();</script>
+ 
 <script type="text/javascript">
   function before_search(){
     var searchVal = 'site:www.lonelyor.org/lonelyorWiki ' + document.getElementById('search_input').value;
@@ -46,17 +40,17 @@
         
         <li id=""><a target="_self" href="index.html">首页</a></li>
         
-        <li id=""><a target="_self" href="archives.html">归档</a></li>
+        <li id=""><a target="_blank" href="archives.html">归档</a></li>
         
-        <li id=""><a target="_self" href="beautiful.html">惊鸿</a></li>
+        <li id=""><a target="_blank" href="ruby.html">流光</a></li>
         
-        <li id=""><a target="_self" href="ruby.html">流光</a></li>
+        <li id=""><a target="_blank" href="beautiful.html">惊鸿</a></li>
         
-        <li id=""><a target="_self" href="search.html">北斗</a></li>
+        <li id=""><a target="_blank" href="lose.html">失乐园</a></li>
         
-        <li id=""><a target="_self" href="lose.html">失乐园</a></li>
+        <li id=""><a target="_blank" href="search.html">北斗</a></li>
         
-        <li id=""><a target="_self" href="about.html">关于</a></li>
+        <li id=""><a target="_blank" href="about.html">关于</a></li>
         
         </ul>
 
@@ -85,17 +79,17 @@
         
         <li><a target="_self" href="index.html">首页</a></li>
         
-        <li><a target="_self" href="archives.html">归档</a></li>
+        <li><a target="_blank" href="archives.html">归档</a></li>
         
-        <li><a target="_self" href="beautiful.html">惊鸿</a></li>
+        <li><a target="_blank" href="ruby.html">流光</a></li>
         
-        <li><a target="_self" href="ruby.html">流光</a></li>
+        <li><a target="_blank" href="beautiful.html">惊鸿</a></li>
         
-        <li><a target="_self" href="search.html">北斗</a></li>
+        <li><a target="_blank" href="lose.html">失乐园</a></li>
         
-        <li><a target="_self" href="lose.html">失乐园</a></li>
+        <li><a target="_blank" href="search.html">北斗</a></li>
         
-        <li><a target="_self" href="about.html">关于</a></li>
+        <li><a target="_blank" href="about.html">关于</a></li>
         
 
     <li><label>Categories</label></li>
@@ -143,7 +137,7 @@
         <div class="read-more clearfix">
           <span class="date">2018/12/14 14:6 下午</span>
 
-          <span>发表于&nbsp;</span> 
+          <span>posted in&nbsp;</span> 
           
               <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
            
@@ -172,7 +166,7 @@
 
 <p>如果共享文件所有者打开上面的链接，则会加载文档，并弹出一个“与其他人共享”模式，该模式自填充了一个来自URL的电子邮件地址：</p>
 
-<p><figure><img src="media/15447676167973/15447677231852.png" alt=""/></figure></p>
+<p><img src="media/15447676167973/15447677231852.png" alt=""/></p>
 
 <p>我的第一个想法是“嗯……用户的输入反映在DOM中——我应该尝试XSS吗？但我的第二个念头立刻涌现：“我决不是第一个发现这点的人。”这是谷歌，世界上有很多比我更聪明的人一直在尝试攻击它。我不会把时间浪费在XSS上…”</p>
 
@@ -184,7 +178,7 @@
 
 <p>它正如我所预期的那样——表单中显示的是名字而不是地址，只有当您将鼠标移到名称时才会显示真正的电子邮件地址。</p>
 
-<p><figure><img src="media/15447676167973/15447678384880.png" alt=""/></figure></p>
+<p><img src="media/15447676167973/15447678384880.png" alt=""/></p>
 
 <h2 id="toc_1">这会带来什么问题？</h2>
 
@@ -196,10 +190,10 @@
 
 <p>等待直到他们打开链接并允许您访问文件</p>
 
-<p>时间线：<br/>
-2017.10.03-漏洞报告<br/>
-2017.10.03-漏洞由安全工程师验证（P4-&gt;P3）<br/>
-2017.10.10-500美元奖金<br/>
+<p>时间线：
+2017.10.03-漏洞报告
+2017.10.03-漏洞由安全工程师验证（P4-&gt;P3）
+2017.10.10-500美元奖金
 2018.01.16-漏洞修复</p>
 
 <h2 id="toc_2">从你的谷歌驱动中获取照片</h2>
@@ -218,8 +212,8 @@
 
 <p>整个过程又长又无聊。我花了下午和晚上阅读发起的网络请求和回复，但没有成功。我甚至不记得我尝试过多少不同的测试：</p>
 
-<p>“也许这个CSS存在一些漏洞……那些字体如何？”<br/>
-“好的，如果我用另一个帐户的cookie回放这个请求会咋样？”“<br/>
+<p>“也许这个CSS存在一些漏洞……那些字体如何？”
+“好的，如果我用另一个帐户的cookie回放这个请求会咋样？”“
 “嗯，我可以在这里上传SVG。是时候测试一些XSS了”。</p>
 
 <p>最后我关注了Drive和Google Docs系列应用，因为它们是相互连接的（Docs可以访问您的文件），很流行（因此出现安全缺陷就意味着严重安全威胁），并且它们有很多特性和设置。我首先注意到的是，Slides确实类似于文档和表格，但是它在不同的情况下了使用了不同的（遗留？）API接口。例如，当从我的驱动器插入一张图像时会触发这两个请求：</p>
@@ -243,10 +237,10 @@ curl &#39;https://docs.google.com/presentation/d/pReS3nTaT10N_1D/renderdata?id=b
 
 <p>这听起来很酷，但事实是这些图像ID是很长的，并且包含大小写字符。这就是为什么我想不出什么可怕的攻击场景，这也是这个漏洞奖励相对较低的原因。</p>
 
-<p>时间线：<br/>
-2017.11.27-漏洞报告<br/>
-2017.12.09-漏洞由安全工程师验证（P3-&gt;P1）<br/>
-2018.01.09-500美元奖金<br/>
+<p>时间线：
+2017.11.27-漏洞报告
+2017.12.09-漏洞由安全工程师验证（P3-&gt;P1）
+2018.01.09-500美元奖金
 2018.01.16-漏洞修复</p>
 
 <p>在模拟环境中，您可以看到这个漏洞是如何工作的（<a href="https://platform.avatao.com/challenges/630fa4fc-3138-4805-bd78-ea85e492c2e2%EF%BC%89%E3%80%82">https://platform.avatao.com/challenges/630fa4fc-3138-4805-bd78-ea85e492c2e2）。</a></p>
@@ -273,10 +267,10 @@ https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGw
 
 <p>我把其中的电子邮件改成了我自己的（不修改其他值），然后重新编码，并用点替换了最后的等号。并在我登录我的第二个帐户之后打开这个精心编制的URL，照片立刻被和第一个帐户共享。最棒的是，我甚至没有收到任何警告/通知/电子邮件。我迫不及待的想进一步分析漏洞。并且测试如果你直接访问第二个URL会发生什么——您甚至不需要登录就可以与攻击者共享您的图片，因为只要向发送第二个URL的GET请求就足够了。</p>
 
-<p>时间线：<br/>
-2018.05.12-漏洞报告<br/>
-2018.05.14-漏洞由安全工程师验证（P4-&gt;P2，P2-&gt;P1）<br/>
-2018.05.22-3133.70美元奖金<br/>
+<p>时间线：
+2018.05.12-漏洞报告
+2018.05.14-漏洞由安全工程师验证（P4-&gt;P2，P2-&gt;P1）
+2018.05.22-3133.70美元奖金
 2018.08.22-漏洞修复</p>
 
 <p>尝试使用我们的模拟环境，可以更好地理解这种漏洞。（<a href="https://platform.avatao.com/challenges/e069a6c1-8265-4115-9126-f8e188c62765%EF%BC%89">https://platform.avatao.com/challenges/e069a6c1-8265-4115-9126-f8e188c62765）</a></p>
@@ -395,31 +389,31 @@ https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGw
 	      
 		      
 			      <li class="post">
-			        <a href="15644581924907.html">arch 无法使用 zenmap，报错：'No module named gtk'的解决办法</a>
+			        <a href="15747334018156.html">msfvenom各类木马生成脚本</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15644488533834.html">Manjaro vmware 虚拟机共享宿主机文件夹</a>
+			        <a href="15724200154293.html">v2ray实现科学上网</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15643953233297.html">oh-my-zsh配置</a>
+			        <a href="15708455642675.html">如何使用cmd开启3389端口与查看3389端口</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15643901825363.html">arch 使用 nginx -t 时报错“could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size” 解决办法</a>
+			        <a href="15695779467285.html">给linux终端加一个移动到回收站的功能</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15643634653227.html">manjaro 安装 vmtools</a>
+			        <a href="15694777838251.html">Proxmox TASK ERROR: Failed to run vncproxy.解决办法</a>
 			      </li>
 		     
 		  
@@ -464,7 +458,7 @@ https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGw
 
  <div class="page-bottom clearfix">
   <div class="row">
-   <p class="copyright">Copyright &copy; 2018
+   <p class="copyright">Copyright &copy; 2015
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
 Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
   </div>
@@ -473,6 +467,215 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
         </section>
       </div>
     </div>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="asset/prism.js"></script>
+
+
+<style type="text/css">
+figure{margin: 0;padding: 0;}
+figcaption{text-align:center;}
+
+/* PrismJS 1.14.0
+ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: black;
+    background: none;
+    text-shadow: 0 1px white;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background:#b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+@media print {
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #F7F7F7;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: slategray;
+}
+
+.token.punctuation {
+    color: #999;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #9a6e3a;
+    background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+.token.function,
+.token.class-name {
+    color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #e90;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+
+pre[class*="language-"].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+    .line-numbers-rows > span {
+        pointer-events: none;
+        display: block;
+        counter-increment: linenumber;
+    }
+
+        .line-numbers-rows > span:before {
+            content: counter(linenumber);
+            color: #999;
+            display: block;
+            padding-right: 0.8em;
+            text-align: right;
+        }
+
+</style>
 
   
     
@@ -493,8 +696,6 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
       });
      
     </script>
-
-    
 
 
 

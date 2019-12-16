@@ -3,10 +3,6 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <link rel="bookmark" href="https://raw.githubusercontent.com/AlShelley/lonelyorWiki/master/asset/img/favicon.ico" type="images/x-icon"/>
-    <link rel="shortcut icon" href="https://raw.githubusercontent.com/AlShelley/lonelyorWiki/master/asset/img/favicon.ico" type="images/x-icon"/>
-
     <title>
     
   lonelyorWiki
@@ -19,9 +15,7 @@
     <link rel="stylesheet" href="asset/css/docs.css" />
     <script src="asset/js/vendor/modernizr.js"></script>
     <script src="asset/js/vendor/jquery.js"></script>
-  <script src="asset/highlightjs/highlight.pack.js"></script>
-  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script>hljs.initHighlightingOnLoad();</script>
+ 
 <script type="text/javascript">
   function before_search(){
     var searchVal = 'site:www.lonelyor.org/lonelyorWiki ' + document.getElementById('search_input').value;
@@ -46,17 +40,17 @@
         
         <li id=""><a target="_self" href="index.html">首页</a></li>
         
-        <li id=""><a target="_self" href="archives.html">归档</a></li>
+        <li id=""><a target="_blank" href="archives.html">归档</a></li>
         
-        <li id=""><a target="_self" href="beautiful.html">惊鸿</a></li>
+        <li id=""><a target="_blank" href="ruby.html">流光</a></li>
         
-        <li id=""><a target="_self" href="ruby.html">流光</a></li>
+        <li id=""><a target="_blank" href="beautiful.html">惊鸿</a></li>
         
-        <li id=""><a target="_self" href="search.html">北斗</a></li>
+        <li id=""><a target="_blank" href="lose.html">失乐园</a></li>
         
-        <li id=""><a target="_self" href="lose.html">失乐园</a></li>
+        <li id=""><a target="_blank" href="search.html">北斗</a></li>
         
-        <li id=""><a target="_self" href="about.html">关于</a></li>
+        <li id=""><a target="_blank" href="about.html">关于</a></li>
         
         </ul>
 
@@ -85,17 +79,17 @@
         
         <li><a target="_self" href="index.html">首页</a></li>
         
-        <li><a target="_self" href="archives.html">归档</a></li>
+        <li><a target="_blank" href="archives.html">归档</a></li>
         
-        <li><a target="_self" href="beautiful.html">惊鸿</a></li>
+        <li><a target="_blank" href="ruby.html">流光</a></li>
         
-        <li><a target="_self" href="ruby.html">流光</a></li>
+        <li><a target="_blank" href="beautiful.html">惊鸿</a></li>
         
-        <li><a target="_self" href="search.html">北斗</a></li>
+        <li><a target="_blank" href="lose.html">失乐园</a></li>
         
-        <li><a target="_self" href="lose.html">失乐园</a></li>
+        <li><a target="_blank" href="search.html">北斗</a></li>
         
-        <li><a target="_self" href="about.html">关于</a></li>
+        <li><a target="_blank" href="about.html">关于</a></li>
         
 
     <li><label>Categories</label></li>
@@ -138,27 +132,16 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15641083818915.html">
+                <a class="clearlink" href="15692024431140.html">
                 
-                  <h1>manjaro更改国内源操作</h1>
+                  <h1>BlackArch安装vmtools后依然不能复制粘贴解决办法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>1、排序并增加中文rank源<br/>
-<code>sudo pacman-mirrors -i -c China -m rank</code><br/>
-选择喜欢的就行，不知道就全选好了。</p>
-
-<p>2、添加 archlinuxcn（archlinux 可用）<br/>
-修改<code>/etc/pacman.conf</code>文件，在文件后添加如下语句：</p>
-
-<pre class="line-numbers"><code class="language-text">[archlinuxcn]
-SigLevel = Optional TrustedOnly
-Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
-</code></pre>
-
-<p>导入GPG Key<br/>
-<code>sudo pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring</code></p>
+                        	<p>执行下面两条命令：
+<code>sudo /usr/bin/vmware-user</code>
+<code>sudo /etc/init.d/vmware-tools restart</code></p>
 
                         
                       </div>
@@ -167,11 +150,13 @@ Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/26 10:33 上午</span>
+                    <span class="date">2019/9/23 9:34 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
           				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -184,67 +169,20 @@ Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15640473747565.html">
+                <a class="clearlink" href="15685648962681.html">
                 
-                  <h1>kali 下更新软件时报错，说下列签名无效的解决办法</h1>
+                  <h1>创建虚拟机时报权限错误：monitor: Could not access KVM kernel module: Permission denied failed to initialize KVM: Permission</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>解决办法就是重新获取下签名key </p>
+                        	<p>修改/etc/libvirt/qemu.conf，</p>
 
-<p>wget -q -O - <a href="https://archive.kali.org/archive-key.asc">https://archive.kali.org/archive-key.asc</a> | sudo apt-key add</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/25 17:36 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15638711886127.html">
-                
-                  <h1>Archiso</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>参考官方文档，自制 archlinux 可启动镜像。这样就可以拥有自己的 linux 发行版了。</p>
-
-<p><a href="https://wiki.archlinux.org/index.php/Archiso">https://wiki.archlinux.org/index.php/Archiso</a></p>
-
-<p>修改 pacman.conf，添加自定义存储库<br/>
-<figure><img src="media/15638711886127/15638731637993.jpg" alt="" style="width:460px;"/></figure></p>
-
-<p>将 customrepo 的内容改为 archlinuxcn</p>
-
-<pre class="line-numbers"><code class="language-text">#[customrepo]
-SigLevel = Optional TrustAll
-Server = file:///home/user/customrepo/$arch
-</code></pre>
-
-<p>改为</p>
-
-<pre class="line-numbers"><code class="language-text">#[archlinuxcn]
-SigLevel = Optional TrustAll
-Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+<pre class="line-numbers"><code class="language-text">#user=&quot;root&quot;
+user=&quot;root&quot;
+#group=&quot;root&quot;
+group=&quot;root&quot;
+sudo systemctl restart libvirtd.service
 </code></pre>
 
                         
@@ -254,11 +192,13 @@ Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/23 16:39 下午</span>
+                    <span class="date">2019/9/16 0:28 上午</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
           				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -271,18 +211,161 @@ Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15611953556975.html">
+                <a class="clearlink" href="15677432474303.html">
                 
-                  <h1>archlinux 安装 vmtools 遇到坑了怎么办</h1>
+                  <h1>安装blackarch后需要注意的事情</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>使用这个脚本即可：<a href="https://github.com/rasa/vmware-tools-patches">https://github.com/rasa/vmware-tools-patches</a></p>
+                        	<p>编辑/etc/sudoers文件
+添加“用户名 ALL=(ALL:ALL) ALL”</p>
 
-<pre class="line-numbers"><code class="language-text">$ git clone https://github.com/rasa/vmware-tools-patches.git
-$ cd vmware-tools-patches
-$ ./patched-open-vm-tools.sh
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/9/6 12:14 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15672837491280.html">
+                
+                  <h1>高分辨率下解决虚拟机模糊的问题</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>Mac 分辨率太高导致虚拟机中字体模糊，调高分辨率后字体太小看不清怎么办？主要原因是hidpi设置问题。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/9/1 4:35 上午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15655143025936.html">
+                
+                  <h1>windows下创建和启动wifi</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>整理文件时候找到了3年前写的东西：</p>
+
+<p>创建 wifi
+netsh wlan set hostednetwork mode=allow ssid=!@#$%<sup>&amp;*</sup> key=passwd123
+启动 wifi
+netsh wlan start hostednetwork</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/8/11 17:5 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15655136450838.html">
+                
+                  <h1>Hexo守护进程</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>Node进程守护有很多工具，Forever，PM2，PM2.5 blah blah.解决的问题也是很容易讲清楚，比如：ssh登陆服务器，启动node服务，然后ssh断开连接，服务中断，网站无法访问。这里讲一下用forever 解决 Hexo 进程守护的问题，安装Forever:</p>
+
+<pre class="line-numbers"><code class="language-shell">$ npm install forever -g
+$# cd /path/to/your/project
+$ npm install forever-monitor
+</code></pre>
+
+<p>Hexo下新建一个app.js,写入下面代码：</p>
+
+<pre class="line-numbers"><code class="language-text">var spawn = require(&#39;child_process&#39;).spawn;
+free = spawn(&#39;hexo&#39;, [&#39;server&#39;, &#39;-p 4000&#39;]);/*其实就是等于执行hexo server -p 4000*/
+free.stdout.on(&#39;data&#39;, function (data) {
+console.log(&#39;standard output:\n&#39; + data);
+});
+free.stderr.on(&#39;data&#39;, function (data) { 
+console.log(&#39;standard error output:\n&#39; + data);
+});
+free.on(&#39;exit&#39;, function (code, signal) {
+console.log(&#39;child process eixt ,exit:&#39; + code);
+});
+</code></pre>
+
+<p>此处输入代码其实思路也很简单，大致意思就是node启动一个子进程，用forever 守护 hexo sever -p 4000这条命令（4000代表端口），关于node的child_process的相关知识，请自行baidu、google,或者去查nodejs<code>此处输入代码</code>的文档。</p>
+
+<h1 id="toc_0">执行forever命令：</h1>
+
+<p><code>$ forever --minUptime 10000 --spinSleepTime 26000 start app.js</code></p>
+
+<p>至于后面这几个minUptime、spinSleepTime可填可不填，不填默认也会有，参数的意思可以直接去forever上查询。</p>
+
+<h1 id="toc_1">停止服务</h1>
+
+<p>这里值得注意的是你拿forever启动的服务，通过forever stopall是根本停不掉的，因为其实你执行的是hexo sever，可以通过下面的办法：</p>
+
+<pre class="line-numbers"><code class="language-shell">＄lsof -i:[port]
+＄ps aux|grep hexo
+＄kill pid(进程的id)
 </code></pre>
 
                         
@@ -292,89 +375,13 @@ $ ./patched-open-vm-tools.sh
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/6/22 17:22 下午</span>
+                    <span class="date">2019/8/11 16:54 下午</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
           				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+                    
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15605030813483.html">
-                
-                  <h1>linux 在终端中打开图形化文件管理器</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>xdg-open ./ 用图形化文件管理器打开当前文件夹</p>
-
-<p>xdg-open &quot;dir&quot; 打开任意路径</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/6/14 17:4 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15604965103558.html">
-                
-                  <h1>Docker for Mac 卡在 "is starting"</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>解决方案来自：<a href="https://github.com/docker/for-mac/issues/2420">https://github.com/docker/for-mac/issues/2420</a> 中的sagidM的回复</p>
-</blockquote>
-
-<p>本机环境：<br/>
-macOS 10.14.4<br/>
-Docker Engine: 18.09.2</p>
-
-<p><figure><img src="media/15604965103558/15604966419596.jpg" alt=""/></figure></p>
-
-<p>大意是，打开终端然后输入<code>screen ~/Library/Containers/com.docker.docker/Data/vms/0/tty</code>，接着回车几次，就 ok 了。事实证明这个方法确实能解决问题。如果你输入一次没什么反应，就多开几个终端标签多试几次就可以了。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/6/14 15:15 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -471,31 +478,31 @@ Docker Engine: 18.09.2</p>
 	      
 		      
 			      <li class="post">
-			        <a href="15644581924907.html">arch 无法使用 zenmap，报错：'No module named gtk'的解决办法</a>
+			        <a href="15747334018156.html">msfvenom各类木马生成脚本</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15644488533834.html">Manjaro vmware 虚拟机共享宿主机文件夹</a>
+			        <a href="15724200154293.html">v2ray实现科学上网</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15643953233297.html">oh-my-zsh配置</a>
+			        <a href="15708455642675.html">如何使用cmd开启3389端口与查看3389端口</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15643901825363.html">arch 使用 nginx -t 时报错“could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size” 解决办法</a>
+			        <a href="15695779467285.html">给linux终端加一个移动到回收站的功能</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15643634653227.html">manjaro 安装 vmtools</a>
+			        <a href="15694777838251.html">Proxmox TASK ERROR: Failed to run vncproxy.解决办法</a>
 			      </li>
 		     
 		  
@@ -540,7 +547,7 @@ Docker Engine: 18.09.2</p>
 
  <div class="page-bottom clearfix">
   <div class="row">
-   <p class="copyright">Copyright &copy; 2018
+   <p class="copyright">Copyright &copy; 2015
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
 Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
   </div>
@@ -549,6 +556,213 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
         </section>
       </div>
     </div>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+figure{margin: 0;padding: 0;}
+figcaption{text-align:center;}
+
+/* PrismJS 1.14.0
+ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: black;
+    background: none;
+    text-shadow: 0 1px white;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background:#b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+@media print {
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #F7F7F7;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: slategray;
+}
+
+.token.punctuation {
+    color: #999;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #9a6e3a;
+    background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+.token.function,
+.token.class-name {
+    color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #e90;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+
+pre[class*="language-"].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+    .line-numbers-rows > span {
+        pointer-events: none;
+        display: block;
+        counter-increment: linenumber;
+    }
+
+        .line-numbers-rows > span:before {
+            content: counter(linenumber);
+            color: #999;
+            display: block;
+            padding-right: 0.8em;
+            text-align: right;
+        }
+
+</style>
 
   
     
@@ -569,8 +783,6 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
       });
      
     </script>
-
-    
 
 
 

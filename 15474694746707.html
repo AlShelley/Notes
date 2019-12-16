@@ -3,10 +3,6 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <link rel="bookmark" href="https://raw.githubusercontent.com/AlShelley/lonelyorWiki/master/asset/img/favicon.ico" type="images/x-icon"/>
-    <link rel="shortcut icon" href="https://raw.githubusercontent.com/AlShelley/lonelyorWiki/master/asset/img/favicon.ico" type="images/x-icon"/>
-
     <title>
     
   十大经典排序算法（动图演示） - lonelyorWiki
@@ -19,9 +15,7 @@
     <link rel="stylesheet" href="asset/css/docs.css" />
     <script src="asset/js/vendor/modernizr.js"></script>
     <script src="asset/js/vendor/jquery.js"></script>
-  <script src="asset/highlightjs/highlight.pack.js"></script>
-  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script>hljs.initHighlightingOnLoad();</script>
+ 
 <script type="text/javascript">
   function before_search(){
     var searchVal = 'site:www.lonelyor.org/lonelyorWiki ' + document.getElementById('search_input').value;
@@ -46,17 +40,17 @@
         
         <li id=""><a target="_self" href="index.html">首页</a></li>
         
-        <li id=""><a target="_self" href="archives.html">归档</a></li>
+        <li id=""><a target="_blank" href="archives.html">归档</a></li>
         
-        <li id=""><a target="_self" href="beautiful.html">惊鸿</a></li>
+        <li id=""><a target="_blank" href="ruby.html">流光</a></li>
         
-        <li id=""><a target="_self" href="ruby.html">流光</a></li>
+        <li id=""><a target="_blank" href="beautiful.html">惊鸿</a></li>
         
-        <li id=""><a target="_self" href="search.html">北斗</a></li>
+        <li id=""><a target="_blank" href="lose.html">失乐园</a></li>
         
-        <li id=""><a target="_self" href="lose.html">失乐园</a></li>
+        <li id=""><a target="_blank" href="search.html">北斗</a></li>
         
-        <li id=""><a target="_self" href="about.html">关于</a></li>
+        <li id=""><a target="_blank" href="about.html">关于</a></li>
         
         </ul>
 
@@ -85,17 +79,17 @@
         
         <li><a target="_self" href="index.html">首页</a></li>
         
-        <li><a target="_self" href="archives.html">归档</a></li>
+        <li><a target="_blank" href="archives.html">归档</a></li>
         
-        <li><a target="_self" href="beautiful.html">惊鸿</a></li>
+        <li><a target="_blank" href="ruby.html">流光</a></li>
         
-        <li><a target="_self" href="ruby.html">流光</a></li>
+        <li><a target="_blank" href="beautiful.html">惊鸿</a></li>
         
-        <li><a target="_self" href="search.html">北斗</a></li>
+        <li><a target="_blank" href="lose.html">失乐园</a></li>
         
-        <li><a target="_self" href="lose.html">失乐园</a></li>
+        <li><a target="_blank" href="search.html">北斗</a></li>
         
-        <li><a target="_self" href="about.html">关于</a></li>
+        <li><a target="_blank" href="about.html">关于</a></li>
         
 
     <li><label>Categories</label></li>
@@ -143,7 +137,7 @@
         <div class="read-more clearfix">
           <span class="date">2019/1/14 20:37 下午</span>
 
-          <span>发表于&nbsp;</span> 
+          <span>posted in&nbsp;</span> 
           
               <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
            
@@ -174,11 +168,11 @@
 <p>线性时间非比较类排序：不通过比较来决定元素间的相对次序，它可以突破基于比较排序的时间下界，以线性时间运行，因此称为线性时间非比较类排序。 </p>
 </blockquote>
 
-<p><figure><img src="media/15474694746707/15474696026744.jpg" alt=""/></figure></p>
+<p><img src="media/15474694746707/15474696026744.jpg" alt=""/></p>
 
 <h3 id="toc_2">0.2 算法复杂度</h3>
 
-<p><figure><img src="media/15474694746707/15474696174505.jpg" alt=""/></figure></p>
+<p><img src="media/15474694746707/15474696174505.jpg" alt=""/></p>
 
 <h3 id="toc_3">0.3 相关概念</h3>
 
@@ -198,9 +192,9 @@
 
 <h3 id="toc_5">1.1 算法描述</h3>
 
-<p>比较相邻的元素。如果第一个比第二个大，就交换它们两个；<br/>
-对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对，这样在最后的元素应该会是最大的数；<br/>
-针对所有的元素重复以上的步骤，除了最后一个；<br/>
+<p>比较相邻的元素。如果第一个比第二个大，就交换它们两个；
+对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对，这样在最后的元素应该会是最大的数；
+针对所有的元素重复以上的步骤，除了最后一个；
 重复步骤1~3，直到排序完成。</p>
 
 <h3 id="toc_6">1.2 动图演示</h3>
@@ -230,11 +224,11 @@
 
 <p>n个记录的直接选择排序可经过n-1趟直接选择排序得到有序结果。具体算法描述如下：</p>
 
-<p>初始状态：无序区为R[1..n]，有序区为空；<br/>
-第i趟排序(i=1,2,3…n-1)开始时，当前有序区和无序区分别为R[1..i-1]和R(i..n）。该趟排序从当前无序区中-选出关键字最小的记录 R[k]，将它与无序区的第1个记录R交换，使R[1..i]和R[i+1..n)分别变为记录个数增加1个的新有序区和记录个数减少1个的新无序区；<br/>
-n-1趟结束，数组有序化了。<br/>
-2.2 动图演示<br/>
-　　<br/>
+<p>初始状态：无序区为R[1..n]，有序区为空；
+第i趟排序(i=1,2,3…n-1)开始时，当前有序区和无序区分别为R[1..i-1]和R(i..n）。该趟排序从当前无序区中-选出关键字最小的记录 R[k]，将它与无序区的第1个记录R交换，使R[1..i]和R[i+1..n)分别变为记录个数增加1个的新有序区和记录个数减少1个的新无序区；
+n-1趟结束，数组有序化了。
+2.2 动图演示
+　　
 <img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015224719590-1433219824.gif" alt="" width="684" height="209"></p>
 
 <h3 id="toc_10">2.3 代码实现</h3>
@@ -269,11 +263,11 @@ n-1趟结束，数组有序化了。<br/>
 
 <p>一般来说，插入排序都采用in-place在数组上实现。具体算法描述如下：</p>
 
-<p>从第一个元素开始，该元素可以认为已经被排序；<br/>
-取出下一个元素，在已经排序的元素序列中从后向前扫描；<br/>
-如果该元素（已排序）大于新元素，将该元素移到下一位置；<br/>
-重复步骤3，直到找到已排序的元素小于或者等于新元素的位置；<br/>
-将新元素插入到该位置后；<br/>
+<p>从第一个元素开始，该元素可以认为已经被排序；
+取出下一个元素，在已经排序的元素序列中从后向前扫描；
+如果该元素（已排序）大于新元素，将该元素移到下一位置；
+重复步骤3，直到找到已排序的元素小于或者等于新元素的位置；
+将新元素插入到该位置后；
 重复步骤2~5。</p>
 
 <h3 id="toc_14">3.2 动图演示</h3>
@@ -308,8 +302,8 @@ n-1趟结束，数组有序化了。<br/>
 
 <p>先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，具体算法描述：</p>
 
-<p>选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1；<br/>
-按增量序列个数k，对序列进行k 趟排序；<br/>
+<p>选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1；
+按增量序列个数k，对序列进行k 趟排序；
 每趟排序，根据对应的增量ti，将待排序列分割成若干长度为m 的子序列，分别对各子表进行直接插入排序。仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。</p>
 
 <h3 id="toc_19">4.2 动图演示</h3>
@@ -346,8 +340,8 @@ n-1趟结束，数组有序化了。<br/>
 
 <h3 id="toc_23">5.1 算法描述</h3>
 
-<p>把长度为n的输入序列分成两个长度为n/2的子序列；<br/>
-对这两个子序列分别采用归并排序；<br/>
+<p>把长度为n的输入序列分成两个长度为n/2的子序列；
+对这两个子序列分别采用归并排序；
 将两个排序好的子序列合并成一个最终的排序序列。</p>
 
 <h3 id="toc_24">5.2 动图演示</h3>
@@ -398,8 +392,8 @@ function merge(left, right) {
 
 <p>快速排序使用分治法来把一个串（list）分为两个子串（sub-lists）。具体算法描述如下：</p>
 
-<p>从数列中挑出一个元素，称为 “基准”（pivot）；<br/>
-重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；<br/>
+<p>从数列中挑出一个元素，称为 “基准”（pivot）；
+重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；
 递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。</p>
 
 <h3 id="toc_29">6.2 动图演示</h3>
@@ -446,8 +440,8 @@ function swap(arr, i, j) {
 
 <h3 id="toc_32">7.1 算法描述</h3>
 
-<p>将初始待排序关键字序列(R1,R2….Rn)构建成大顶堆，此堆为初始的无序区；<br/>
-将堆顶元素R[1]与最后一个元素R[n]交换，此时得到新的无序区(R1,R2,……Rn-1)和新的有序区(Rn),且满足R[1,2…n-1]&lt;=R[n]；<br/>
+<p>将初始待排序关键字序列(R1,R2….Rn)构建成大顶堆，此堆为初始的无序区；
+将堆顶元素R[1]与最后一个元素R[n]交换，此时得到新的无序区(R1,R2,……Rn-1)和新的有序区(Rn),且满足R[1,2…n-1]&lt;=R[n]；
 由于交换后新的堆顶R[1]可能违反堆的性质，因此需要对当前无序区(R1,R2,……Rn-1)调整为新堆，然后再次将R[1]与无序区最后一个元素交换，得到新的无序区(R1,R2….Rn-2)和新的有序区(Rn-1,Rn)。不断重复此过程直到有序区的元素个数为n-1，则整个排序过程完成。</p>
 
 <h3 id="toc_33">7.2 动图演示</h3>
@@ -506,9 +500,9 @@ function heapSort(arr) {
 
 <h3 id="toc_36">8.1 算法描述</h3>
 
-<p>找出待排序的数组中最大和最小的元素；<br/>
-统计数组中每个值为i的元素出现的次数，存入数组C的第i项；<br/>
-对所有的计数累加（从C中的第一个元素开始，每一项和前一项相加）；<br/>
+<p>找出待排序的数组中最大和最小的元素；
+统计数组中每个值为i的元素出现的次数，存入数组C的第i项；
+对所有的计数累加（从C中的第一个元素开始，每一项和前一项相加）；
 反向填充目标数组：将每个元素i放在新数组的第C(i)项，每放一个元素就将C(i)减去1。</p>
 
 <h3 id="toc_37">8.2 动图演示</h3>
@@ -549,14 +543,14 @@ function heapSort(arr) {
 
 <h3 id="toc_41">9.1 算法描述</h3>
 
-<p>设置一个定量的数组当作空桶；<br/>
-遍历输入数据，并且把数据一个一个放到对应的桶里去；<br/>
-对每个不是空的桶进行排序；<br/>
+<p>设置一个定量的数组当作空桶；
+遍历输入数据，并且把数据一个一个放到对应的桶里去；
+对每个不是空的桶进行排序；
 从不是空的桶里把排好序的数据拼接起来。 </p>
 
 <h3 id="toc_42">9.2 图片演示</h3>
 
-<p><figure><img src="media/15474694746707/15474703458460.jpg" alt=""/></figure></p>
+<p><img src="media/15474694746707/15474703458460.jpg" alt=""/></p>
 
 <h3 id="toc_43">9.3 代码实现</h3>
 
@@ -612,9 +606,9 @@ function heapSort(arr) {
 
 <h3 id="toc_46">10.1 算法描述</h3>
 
-<p>取得数组中的最大数，并取得位数；<br/>
-arr为原始数组，从最低位开始取每个位组成radix数组；<br/>
-对radix进行计数排序（利用计数排序适用于小范围数的特点）；<br/>
+<p>取得数组中的最大数，并取得位数；
+arr为原始数组，从最低位开始取每个位组成radix数组；
+对radix进行计数排序（利用计数排序适用于小范围数的特点）；
 10.2 动图演示</p>
 <img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015232453668-1397662527.gif" alt="" width="686" height="389">
 <h3 id="toc_47">10.3 代码实现</h3>
@@ -758,31 +752,31 @@ function radixSort(arr, maxDigit) {
 	      
 		      
 			      <li class="post">
-			        <a href="15644581924907.html">arch 无法使用 zenmap，报错：'No module named gtk'的解决办法</a>
+			        <a href="15747334018156.html">msfvenom各类木马生成脚本</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15644488533834.html">Manjaro vmware 虚拟机共享宿主机文件夹</a>
+			        <a href="15724200154293.html">v2ray实现科学上网</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15643953233297.html">oh-my-zsh配置</a>
+			        <a href="15708455642675.html">如何使用cmd开启3389端口与查看3389端口</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15643901825363.html">arch 使用 nginx -t 时报错“could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size” 解决办法</a>
+			        <a href="15695779467285.html">给linux终端加一个移动到回收站的功能</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15643634653227.html">manjaro 安装 vmtools</a>
+			        <a href="15694777838251.html">Proxmox TASK ERROR: Failed to run vncproxy.解决办法</a>
 			      </li>
 		     
 		  
@@ -827,7 +821,7 @@ function radixSort(arr, maxDigit) {
 
  <div class="page-bottom clearfix">
   <div class="row">
-   <p class="copyright">Copyright &copy; 2018
+   <p class="copyright">Copyright &copy; 2015
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
 Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
   </div>
@@ -836,6 +830,215 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
         </section>
       </div>
     </div>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="asset/prism.js"></script>
+
+
+<style type="text/css">
+figure{margin: 0;padding: 0;}
+figcaption{text-align:center;}
+
+/* PrismJS 1.14.0
+ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: black;
+    background: none;
+    text-shadow: 0 1px white;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background:#b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+@media print {
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #F7F7F7;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: slategray;
+}
+
+.token.punctuation {
+    color: #999;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #9a6e3a;
+    background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+.token.function,
+.token.class-name {
+    color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #e90;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+
+pre[class*="language-"].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+    .line-numbers-rows > span {
+        pointer-events: none;
+        display: block;
+        counter-increment: linenumber;
+    }
+
+        .line-numbers-rows > span:before {
+            content: counter(linenumber);
+            color: #999;
+            display: block;
+            padding-right: 0.8em;
+            text-align: right;
+        }
+
+</style>
 
   
     
@@ -856,8 +1059,6 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
       });
      
     </script>
-
-    
 
 
 

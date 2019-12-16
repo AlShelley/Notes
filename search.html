@@ -3,10 +3,6 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <link rel="bookmark" href="https://raw.githubusercontent.com/AlShelley/lonelyorWiki/master/asset/img/favicon.ico" type="images/x-icon"/>
-    <link rel="shortcut icon" href="https://raw.githubusercontent.com/AlShelley/lonelyorWiki/master/asset/img/favicon.ico" type="images/x-icon"/>
-
     <title>
     
   北斗 - lonelyorWiki
@@ -19,9 +15,7 @@
     <link rel="stylesheet" href="asset/css/docs.css" />
     <script src="asset/js/vendor/modernizr.js"></script>
     <script src="asset/js/vendor/jquery.js"></script>
-  <script src="asset/highlightjs/highlight.pack.js"></script>
-  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script>hljs.initHighlightingOnLoad();</script>
+ 
 <script type="text/javascript">
   function before_search(){
     var searchVal = 'site:www.lonelyor.org/lonelyorWiki ' + document.getElementById('search_input').value;
@@ -46,17 +40,17 @@
         
         <li id=""><a target="_self" href="index.html">首页</a></li>
         
-        <li id=""><a target="_self" href="archives.html">归档</a></li>
+        <li id=""><a target="_blank" href="archives.html">归档</a></li>
         
-        <li id=""><a target="_self" href="beautiful.html">惊鸿</a></li>
+        <li id=""><a target="_blank" href="ruby.html">流光</a></li>
         
-        <li id=""><a target="_self" href="ruby.html">流光</a></li>
+        <li id=""><a target="_blank" href="beautiful.html">惊鸿</a></li>
         
-        <li id=""><a target="_self" href="search.html">北斗</a></li>
+        <li id=""><a target="_blank" href="lose.html">失乐园</a></li>
         
-        <li id=""><a target="_self" href="lose.html">失乐园</a></li>
+        <li id=""><a target="_blank" href="search.html">北斗</a></li>
         
-        <li id=""><a target="_self" href="about.html">关于</a></li>
+        <li id=""><a target="_blank" href="about.html">关于</a></li>
         
         </ul>
 
@@ -85,17 +79,17 @@
         
         <li><a target="_self" href="index.html">首页</a></li>
         
-        <li><a target="_self" href="archives.html">归档</a></li>
+        <li><a target="_blank" href="archives.html">归档</a></li>
         
-        <li><a target="_self" href="beautiful.html">惊鸿</a></li>
+        <li><a target="_blank" href="ruby.html">流光</a></li>
         
-        <li><a target="_self" href="ruby.html">流光</a></li>
+        <li><a target="_blank" href="beautiful.html">惊鸿</a></li>
         
-        <li><a target="_self" href="search.html">北斗</a></li>
+        <li><a target="_blank" href="lose.html">失乐园</a></li>
         
-        <li><a target="_self" href="lose.html">失乐园</a></li>
+        <li><a target="_blank" href="search.html">北斗</a></li>
         
-        <li><a target="_self" href="about.html">关于</a></li>
+        <li><a target="_blank" href="about.html">关于</a></li>
         
 
     <li><label>Categories</label></li>
@@ -147,89 +141,89 @@
 
 <h1 id="toc_0">搜索引擎</h1>
 
-<p><div style='overflow:auto'><form onsubmit="return baiduWithHttps(this)" action="http://www.baidu.com/s" target="_blank"><br/>
-        <input class='bdtext' type="text"  onfocus="checkHttps" name="wd"  size="30"><input class='bdbtn' type="submit"value="百度搜索"><br/>
-        </form><script>function checkHttps () {<br/>
-                BaiduHttps.useHttps();<br/><br/>
-            };<br/>
-            function baiduWithHttps (formname) {<br/>
-                var data = BaiduHttps.useHttps();<br/>
-                if (data.s === 0) {<br/>
-                    return true;<br/>
-                }<br/>
-                else {<br/>
-                    formname.action = &#39;<a href="https://www.baidu.com/s">https://www.baidu.com/s</a>&#39; + &#39;?wd&#39; + data.ssl_code;<br/>
-                    return true;<br/>
-                }<br/>
-            };</script></div><div style='overflow:auto'><form onsubmit="return googleWithHttps(this)" action="http://www.google.com/search" target="_blank"><br/>
-    <input class='bdtext' type="text"  onfocus="checkHttps" name="q"  size="30"><input class='bdbtn' type="submit"value="谷歌搜索"><br/>
-    </form><script>function checkHttps () {<br/>
-            googleHttps.useHttps();<br/><br/>
-        };<br/>
-        function googleWithHttps (formname) {<br/>
-            var data = googleHttps.useHttps();<br/>
-            if (data.s === 0) {<br/>
-                return true;<br/>
-            }<br/>
-            else {<br/>
-                formname.action = &#39;<a href="https://www.google.com/search">https://www.google.com/search</a>&#39; + &#39;?q&#39; + data.ssl_code;<br/>
-                return true;<br/>
-            }<br/>
+<p><div style='overflow:auto'><form onsubmit="return baiduWithHttps(this)" action="http://www.baidu.com/s" target="_blank">
+        <input class='bdtext' type="text"  onfocus="checkHttps" name="wd"  size="30"><input class='bdbtn' type="submit"value="百度搜索">
+        </form><script>function checkHttps () {
+                BaiduHttps.useHttps();<br/>
+            };
+            function baiduWithHttps (formname) {
+                var data = BaiduHttps.useHttps();
+                if (data.s === 0) {
+                    return true;
+                }
+                else {
+                    formname.action = &#39;<a href="https://www.baidu.com/s">https://www.baidu.com/s</a>&#39; + &#39;?wd&#39; + data.ssl_code;
+                    return true;
+                }
+            };</script></div><div style='overflow:auto'><form onsubmit="return googleWithHttps(this)" action="http://www.google.com/search" target="_blank">
+    <input class='bdtext' type="text"  onfocus="checkHttps" name="q"  size="30"><input class='bdbtn' type="submit"value="谷歌搜索">
+    </form><script>function checkHttps () {
+            googleHttps.useHttps();<br/>
+        };
+        function googleWithHttps (formname) {
+            var data = googleHttps.useHttps();
+            if (data.s === 0) {
+                return true;
+            }
+            else {
+                formname.action = &#39;<a href="https://www.google.com/search">https://www.google.com/search</a>&#39; + &#39;?q&#39; + data.ssl_code;
+                return true;
+            }
         };</script></div></p>
 
-<p><figure><img src="media/15483045488539/2fdda3cc7cd98d10c85b970e223fb80e7bec9006.jpg" alt="2fdda3cc7cd98d10c85b970e223fb80e7bec9006"/><figcaption>2fdda3cc7cd98d10c85b970e223fb80e7be</figcaption></figure></p>
+<p><img src="media/15483045488539/2fdda3cc7cd98d10c85b970e223fb80e7bec9006.jpg" alt="2fdda3cc7cd98d10c85b970e223fb80e7bec9006"/></p>
 
 <h1 id="toc_1">信息收集</h1>
 
-<p><a href="http://scholar.chongbuluo.com/">虫部落学术搜索</a><br/>
-<a href="https://www.zoomeye.org/">钟馗之眼</a>收录了互联网空间中的设备，网站及其使用的服务或组件等信息。<br/>
-<a href="https://reg007.com/">你注册过哪些网站？</a><br/>
-<a href="http://www.4243.net/">大木虫学术导航</a><br/>
+<p><a href="http://scholar.chongbuluo.com/">虫部落学术搜索</a>
+<a href="https://www.zoomeye.org/">钟馗之眼</a>收录了互联网空间中的设备，网站及其使用的服务或组件等信息。
+<a href="https://reg007.com/">你注册过哪些网站？</a>
+<a href="http://www.4243.net/">大木虫学术导航</a>
 <a href="https://www.ietf.org/rfc/">rfc 标准</a></p>
 
 <h1 id="toc_2">常用工具</h1>
 
-<p><a href="http://tool.oschina.net/codeformat/json">在线代码格式化</a><br/>
-<a href="https://beautifier.io/">在线 javascript 美化</a><br/>
-<a href="https://www.runoob.com/runcode">HTML/CSS/Javascript在线代码运行工具</a><br/>
-<a href="https://www.whois365.com/tw/">全球 Whois 查询</a><br/>
-<a href="http://tool.chinaz.com/Tools/Base64.aspx">Base64加解密</a><br/>
-<a href="http://tool.chinaz.com/tools/urlencode.aspx">Url 编码解码</a><br/>
-<a href="http://tool.chinaz.com/">更多站长工具</a><br/>
-<a href="https://www.websocket.org/echo.html">HTML5 WebSocket测试</a><br/>
-<a href="http://id.chacha138.com/">身份证查询</a><br/>
-<a href="http://www.businessinfo.co.uk/labs/hackvertor/hackvertor.php">hackvertor编码解码器</a><br/>
-<a href="https://www.ipip.net/">ipip</a><br/>
-<a href="http://www.ttmd5.com/index.php">md5加解密</a><br/>
-<a href="https://51pwd.com/?vipread.com">密码生成器</a><br/>
-<a href="https://filippo.io/Heartbleed/">Heartbleed测试</a><br/>
-<a href="https://cirt.net/passwords">默认密码数据库</a><br/>
-<a href="http://www.passwordsdatabase.com/">默认密码数据库</a><br/>
-<a href="http://www.yopmail.com/zh/">匿名邮箱</a><br/>
-<a href="https://www.guerrillamail.com/zh/inbox">匿名邮箱</a><br/>
-<a href="http://www.convertfiles.com/">在线文件转换器</a><br/>
-<a href="https://www.virustotal.com/zh-cn/">在线病毒扫描virustotal</a><br/>
-<a href="http://www.virscan.org/">在线病毒扫描virscan</a><br/>
-<a href="https://virustotalcloud.appspot.com/#/home/upload">恶意文件或 URL 分析</a><br/>
-<a href="http://www.faviconico.org/">在线 ico 制作</a><br/>
-<a href="https://apps.evozi.com/apk-downloader/">Google 商店 apk 下载器</a><br/>
-<a href="http://www.nicetool.net/app/image_color.html">在线图片取色器</a><br/>
+<p><a href="http://tool.oschina.net/codeformat/json">在线代码格式化</a>
+<a href="https://beautifier.io/">在线 javascript 美化</a>
+<a href="https://www.runoob.com/runcode">HTML/CSS/Javascript在线代码运行工具</a>
+<a href="https://www.whois365.com/tw/">全球 Whois 查询</a>
+<a href="http://tool.chinaz.com/Tools/Base64.aspx">Base64加解密</a>
+<a href="http://tool.chinaz.com/tools/urlencode.aspx">Url 编码解码</a>
+<a href="http://tool.chinaz.com/">更多站长工具</a>
+<a href="https://www.websocket.org/echo.html">HTML5 WebSocket测试</a>
+<a href="http://id.chacha138.com/">身份证查询</a>
+<a href="http://www.businessinfo.co.uk/labs/hackvertor/hackvertor.php">hackvertor编码解码器</a>
+<a href="https://www.ipip.net/">ipip</a>
+<a href="http://www.ttmd5.com/index.php">md5加解密</a>
+<a href="https://51pwd.com/?vipread.com">密码生成器</a>
+<a href="https://filippo.io/Heartbleed/">Heartbleed测试</a>
+<a href="https://cirt.net/passwords">默认密码数据库</a>
+<a href="http://www.passwordsdatabase.com/">默认密码数据库</a>
+<a href="http://www.yopmail.com/zh/">匿名邮箱</a>
+<a href="https://www.guerrillamail.com/zh/inbox">匿名邮箱</a>
+<a href="http://www.convertfiles.com/">在线文件转换器</a>
+<a href="https://www.virustotal.com/zh-cn/">在线病毒扫描virustotal</a>
+<a href="http://www.virscan.org/">在线病毒扫描virscan</a>
+<a href="https://virustotalcloud.appspot.com/#/home/upload">恶意文件或 URL 分析</a>
+<a href="http://www.faviconico.org/">在线 ico 制作</a>
+<a href="https://apps.evozi.com/apk-downloader/">Google 商店 apk 下载器</a>
+<a href="http://www.nicetool.net/app/image_color.html">在线图片取色器</a>
 <a href="https://www.draw.io/">在线流程图</a></p>
 
 <h1 id="toc_3">导航网站</h1>
 
-<p><a href="https://www.anquanquan.info/">安全圈info</a><br/>
-<a href="https://www.aqdh.com/">安全导航 AQDH</a><br/>
-<a href="https://alternativeto.net/">软件推荐网站</a><br/>
-<a href="https://sourceforge.net/">开源和商业软件平台</a><br/>
-<a href="https://www.iplaysoft.com/">异次元软件站</a><br/>
-<a href="https://www.appinn.com/">小众软件站</a><br/>
-<a href="https://sspai.com/">少数派软件站</a><br/>
+<p><a href="https://www.anquanquan.info/">安全圈info</a>
+<a href="https://www.aqdh.com/">安全导航 AQDH</a>
+<a href="https://alternativeto.net/">软件推荐网站</a>
+<a href="https://sourceforge.net/">开源和商业软件平台</a>
+<a href="https://www.iplaysoft.com/">异次元软件站</a>
+<a href="https://www.appinn.com/">小众软件站</a>
+<a href="https://sspai.com/">少数派软件站</a>
 <a href="https://addoncrop.com/">浏览器插件下载站</a></p>
 
 <h1 id="toc_4">知识 wiki</h1>
 
-<p><a href="https://oi-wiki.org/">信息学奥林匹克竞赛wiki</a><br/>
+<p><a href="https://oi-wiki.org/">信息学奥林匹克竞赛wiki</a>
 <a href="http://man.linuxde.net/">Linux 命令大全</a></p>
 
 <h1 id="toc_5">未完待续...</h1>
@@ -241,7 +235,7 @@
 </div>              
  <div class="page-bottom clearfix">
   <div class="row">
-   <p class="copyright">Copyright &copy; 2018
+   <p class="copyright">Copyright &copy; 2015
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
 Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
   </div>
@@ -250,6 +244,213 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
         </section>
       </div>
     </div>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+figure{margin: 0;padding: 0;}
+figcaption{text-align:center;}
+
+/* PrismJS 1.14.0
+ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: black;
+    background: none;
+    text-shadow: 0 1px white;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background:#b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+@media print {
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #F7F7F7;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: slategray;
+}
+
+.token.punctuation {
+    color: #999;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #9a6e3a;
+    background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+.token.function,
+.token.class-name {
+    color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #e90;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+
+pre[class*="language-"].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+    .line-numbers-rows > span {
+        pointer-events: none;
+        display: block;
+        counter-increment: linenumber;
+    }
+
+        .line-numbers-rows > span:before {
+            content: counter(linenumber);
+            color: #999;
+            display: block;
+            padding-right: 0.8em;
+            text-align: right;
+        }
+
+</style>
 
   
     
@@ -270,8 +471,6 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
       });
      
     </script>
-
-    
 
 
 

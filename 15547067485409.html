@@ -3,10 +3,6 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <link rel="bookmark" href="https://raw.githubusercontent.com/AlShelley/lonelyorWiki/master/asset/img/favicon.ico" type="images/x-icon"/>
-    <link rel="shortcut icon" href="https://raw.githubusercontent.com/AlShelley/lonelyorWiki/master/asset/img/favicon.ico" type="images/x-icon"/>
-
     <title>
     
   arch 安装配置指南 - lonelyorWiki
@@ -19,9 +15,7 @@
     <link rel="stylesheet" href="asset/css/docs.css" />
     <script src="asset/js/vendor/modernizr.js"></script>
     <script src="asset/js/vendor/jquery.js"></script>
-  <script src="asset/highlightjs/highlight.pack.js"></script>
-  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script>hljs.initHighlightingOnLoad();</script>
+ 
 <script type="text/javascript">
   function before_search(){
     var searchVal = 'site:www.lonelyor.org/lonelyorWiki ' + document.getElementById('search_input').value;
@@ -46,17 +40,17 @@
         
         <li id=""><a target="_self" href="index.html">首页</a></li>
         
-        <li id=""><a target="_self" href="archives.html">归档</a></li>
+        <li id=""><a target="_blank" href="archives.html">归档</a></li>
         
-        <li id=""><a target="_self" href="beautiful.html">惊鸿</a></li>
+        <li id=""><a target="_blank" href="ruby.html">流光</a></li>
         
-        <li id=""><a target="_self" href="ruby.html">流光</a></li>
+        <li id=""><a target="_blank" href="beautiful.html">惊鸿</a></li>
         
-        <li id=""><a target="_self" href="search.html">北斗</a></li>
+        <li id=""><a target="_blank" href="lose.html">失乐园</a></li>
         
-        <li id=""><a target="_self" href="lose.html">失乐园</a></li>
+        <li id=""><a target="_blank" href="search.html">北斗</a></li>
         
-        <li id=""><a target="_self" href="about.html">关于</a></li>
+        <li id=""><a target="_blank" href="about.html">关于</a></li>
         
         </ul>
 
@@ -85,17 +79,17 @@
         
         <li><a target="_self" href="index.html">首页</a></li>
         
-        <li><a target="_self" href="archives.html">归档</a></li>
+        <li><a target="_blank" href="archives.html">归档</a></li>
         
-        <li><a target="_self" href="beautiful.html">惊鸿</a></li>
+        <li><a target="_blank" href="ruby.html">流光</a></li>
         
-        <li><a target="_self" href="ruby.html">流光</a></li>
+        <li><a target="_blank" href="beautiful.html">惊鸿</a></li>
         
-        <li><a target="_self" href="search.html">北斗</a></li>
+        <li><a target="_blank" href="lose.html">失乐园</a></li>
         
-        <li><a target="_self" href="lose.html">失乐园</a></li>
+        <li><a target="_blank" href="search.html">北斗</a></li>
         
-        <li><a target="_self" href="about.html">关于</a></li>
+        <li><a target="_blank" href="about.html">关于</a></li>
         
 
     <li><label>Categories</label></li>
@@ -143,7 +137,7 @@
         <div class="read-more clearfix">
           <span class="date">2019/4/8 14:59 下午</span>
 
-          <span>发表于&nbsp;</span> 
+          <span>posted in&nbsp;</span> 
           
               <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
            
@@ -165,7 +159,7 @@
 (parted)#set 1 boot on
 (parted)#mkpart primary linux-swap 200M 8.5G
 (parted)#mkpart primary ext4 8.5G -1
-#q
+# q
 
 # mkfs.etx4 /dev/sda1
 # mkfs.etx4 /dev/sda3
@@ -184,6 +178,7 @@ nano基本操作：
 
 # arch-chroot /mnt /bin/bash
 # pacman -S grub
+# pacman -S efibootmgr
 双系统的话，还需要安装os-prober
 如果使用Intel CPU的话，则需要安装 intel-ucode 并启用因特尔微码更新
 # grub-install --recheck /dev/sda
@@ -208,221 +203,222 @@ nano基本操作：
 <code># vi /etc/rc.conf</code>
 添加 interface = eth0 
 <code># dhcpcd</code></li>
-<li>配置编码<br/>
-首先释放en_US.UTF-8,保证系统正常工作<br/>
-然后 Ctrl+_，Ctrl+v 进入最后一行释放zh_CN.UTF-8保证中文<br/>
-保存退出<br/>
+<li>配置编码
+首先释放en_US.UTF-8,保证系统正常工作
+然后 Ctrl+_，Ctrl+v 进入最后一行释放zh_CN.UTF-8保证中文
+保存退出
 然后生成编码并使用，配置系统优先语言环境为英文
 <code>shell
-# nano /etc/locale.gen<br/>
-取消utf-8的注释，然后<br/>
-# locale-gen<br/>
-# echo LANG=en_US.UTF-8 &gt; /etc/locale.conf<br/>
-# locale<br/>
-在~/.xinitrc中添加<br/>
-export LANG=zh_CN.UTF-8<br/>
-export LANGUAGE=zh_CN:en_US<br/>
-export LC_CTYPE=en_US.UTF-8<br/>
-~/.xprofile添加<br/>
-export LANG=zh_CN.UTF-8<br/>
-export LC_ALL=&quot;zh_CN.UTF-8&quot;<br/>
-export LANG=zh_CN.UTF-8<br/>
-export LANGUAGE=zh_CN:en_US<br/>
-export LC_CTYPE=en_US.UTF-8<br/>
+# nano /etc/locale.gen
+取消utf-8的注释，然后
+# locale-gen
+# echo LANG=en_US.UTF-8 &gt; /etc/locale.conf
+# locale
+在~/.xinitrc中添加
+export LANG=zh_CN.UTF-8
+export LANGUAGE=zh_CN:en_US
+export LC_CTYPE=en_US.UTF-8
+~/.xprofile添加
+export LANG=zh_CN.UTF-8
+export LC_ALL=&quot;zh_CN.UTF-8&quot;
+export LANG=zh_CN.UTF-8
+export LANGUAGE=zh_CN:en_US
+export LC_CTYPE=en_US.UTF-8
 # pacman -S kde-l10n-zh_cn firefox-i18n-zh-cn libreoffice-still-zh-cn
 </code>
 安装输入法前端
 <code># pacman -S kimtoy</code></li>
 <li>配置archlinuxcn源
 <code>shell
-修改`/etc/pacman.conf`文件<br/>
-在文件后添加如下语句<br/>
-[archlinuxcn]<br/>
-SigLevel = Optional TrustedOnly<br/>
+修改`/etc/pacman.conf`文件
+在文件后添加如下语句
+[archlinuxcn]
+SigLevel = Optional TrustedOnly
 Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
 </code>
 <code>shell
-导入GPG Key<br/>
+导入GPG Key
 sudo pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring
 </code></li>
 <li>设置root密码
 <code>#passwd</code></li>
 <li>添加用户和sudo
 <code>shell
-useradd -m -g users -G wheel -s /bin/bash lonelyor<br/>
-passwd lonelyor<br/>
-pacman -S sudo</code><br/>
-打开 <code>/etc/sudoers</code> 文件，找到 <code>root ALL=(ALL) ALL</code> 并依葫芦画瓢添加 <code>lonelyor ALL=(ALL) ALL</code> 即可。<br/>
-* watchdog did not stop<br/>
-编辑<code>/etc/systemd/system.conf</code>文件：<br/>
-将<br/>
-DefaultTimeoutStopSec=90s<br/>
-更改为<br/>
-DefaultTimeoutStopSec=10s<br/>
-将终止服务的等待时间更改为10秒，从而解决关机缓慢的问题。<br/>
-我顺手将其他时间长的都改短了。<br/>
+useradd -m -g users -G wheel -s /bin/bash lonelyor
+passwd lonelyor
+pacman -S sudo</code>
+打开 <code>/etc/sudoers</code> 文件，找到 <code>root ALL=(ALL) ALL</code> 并依葫芦画瓢添加 <code>lonelyor ALL=(ALL) ALL</code> 即可。
+* watchdog did not stop
+编辑<code>/etc/systemd/system.conf</code>文件：
+将
+DefaultTimeoutStopSec=90s
+更改为
+DefaultTimeoutStopSec=10s
+将终止服务的等待时间更改为10秒，从而解决关机缓慢的问题。
+我顺手将其他时间长的都改短了。
 * 安装桌面环境kde
 <code>shell
-pacman -S xorg xorg-server xorg-xinit<br/>
-pacman -S plasma<br/>
-pacman -S sddm<br/>
+pacman -S xorg xorg-server xorg-xinit
+pacman -S plasma
+pacman -S sddm
 systemctl enable sddm
 </code>
 * 安装触摸板驱动
 <code>pacman -S xf86-input-synaptics</code>
 * 小工具合集
 <code>konsole net-tools p7zip wget cmake curl</code>
-* 安装字体<br/>
-noto-fonts-sc(aur)<br/>
-ttf-ms-win10-zh_cn(aur)<br/>
-wqy-zenhei<br/>
-wqy-bitmapfont<br/>
-noto-fonts-emoji<br/>
-号称最好看的编程字体<br/>
-ttf-inconsolata<br/>
-ttf-monaco<br/>
-# 软件安装<br/>
+* 安装字体
+noto-fonts-sc(aur)
+ttf-ms-win10-zh_cn(aur)
+wqy-zenhei
+wqy-bitmapfont
+noto-fonts-emoji
+号称最好看的编程字体
+ttf-inconsolata
+ttf-monaco
+# 软件安装
 * 安装搜狗输入法
 <code>shell
-# yaourt -S fcitx-sogoupinyin<br/>
-# sudo pacman -S fcitx-im<br/>
-# sudo pacman -S fcitx-configtool<br/>
-# 图形化的配置工具<br/>
-需要修改配置文件`~/.xprofile`<br/>
-添加如下语句<br/>
-export GTK_IM_MODULE=fcitx<br/>
-export QT_IM_MODULE=fcitx<br/>
-export XMODIFIERS=&quot;@im=fcitx&quot;<br/>
+# yaourt -S fcitx-sogoupinyin
+# sudo pacman -S fcitx-im
+# sudo pacman -S fcitx-configtool
+# 图形化的配置工具
+需要修改配置文件`~/.xprofile`
+添加如下语句
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=&quot;@im=fcitx&quot;
 重新登录之后就可以使用中文输入法啦
 </code></li>
 </ul>
 
 <ul>
-<li><p>安装字体<br/>
+<li><p>安装字体
 <code>pacman -S ttf-dejavu wqy-zenhei wqy-microhei</code></p></li>
-<li><p>安装文件系统支持<br/>
+<li><p>安装文件系统支持
 <code>sudo pacman -S ntfs-3g dosfstools</code></p></li>
-<li><p>安装chrome<br/>
+<li><p>安装chrome
 <code>yaourt -S google-chrome</code></p></li>
-<li><p>安装网易云音乐<br/>
+<li><p>安装网易云音乐
 <code>pacman -S netease-cloud-music</code></p></li>
 <li><p>安装v2ray</p>
+
 <pre class="line-numbers"><code class="language-shell">wget https://install.direct/go.sh
-sudo bash go.sh<br/>
-sudo systemctl start v2ray<br/>
+sudo bash go.sh
+sudo systemctl start v2ray
 编辑 /etc/v2ray/config.json 文件来配置客户端
 </code></pre></li>
-<li><p>安装host修改工具<br/>
+<li><p>安装host修改工具
 <code>yaourt -S switchhosts-bin</code></p></li>
-<li><p>安装fish<br/>
+<li><p>安装fish
 <code>pacman -S fish</code></p></li>
-<li><p>更改默认shell为fish<br/>
+<li><p>更改默认shell为fish
 <code>sudo -u lonelyor chsh -s /usr/bin/fish</code></p></li>
-<li><p>安装wps<br/>
+<li><p>安装wps
 <code>yaourt wps</code></p></li>
-<li><p>安装vscode<br/>
-<code>yaourt visual-studio-code-bin</code><br/>
+<li><p>安装vscode
+<code>yaourt visual-studio-code-bin</code>
 <code>3</code></p></li>
-<li><p>安装数据库管理工具<br/>
+<li><p>安装数据库管理工具
 <code>pacman -S dbeaver</code></p></li>
-<li><p>安装pycharm<br/>
+<li><p>安装pycharm
 <code>pacman -S pycharm</code></p></li>
-<li><p>xmind思维导图<br/>
+<li><p>xmind思维导图
 <code>yaourt xmind</code></p></li>
-<li><p>安装备份工具<br/>
+<li><p>安装备份工具
 <code>yaourt fsarchiver</code></p></li>
-<li><p>待办事项<br/>
+<li><p>待办事项
 <code>yaourt -S go-for-it-git</code></p></li>
-<li><p>视频录制软件<br/>
+<li><p>视频录制软件
 <code>yaourt simplescreenrecorder</code></p></li>
-<li><p>屏幕录像工具<br/>
-<code>yaourt green-recorder</code><br/>
+<li><p>屏幕录像工具
+<code>yaourt green-recorder</code>
 选择qt那个</p></li>
-<li><p>markdown编辑工具<br/>
+<li><p>markdown编辑工具
 <code>pacman -S typora</code></p></li>
-<li><p>跨所有设备进行连接的工具<br/>
+<li><p>跨所有设备进行连接的工具
 <code>kdeconnect</code></p></li>
-<li><p>分层记录应用程序，具有丰富的文本和语法突出显示功能，可将数据存储在单个xml或sqlite文件中<br/>
+<li><p>分层记录应用程序，具有丰富的文本和语法突出显示功能，可将数据存储在单个xml或sqlite文件中
 <code>pacman -S cherrytree</code></p></li>
-<li><p>深度截图工具<br/>
+<li><p>深度截图工具
 <code>pacman -S deepin-screenshot</code></p></li>
-<li><p>适合写markdown的工具Haroopad<br/>
+<li><p>适合写markdown的工具Haroopad
 <code>yaourt -S haroopad</code></p></li>
 <li><p>sakura终端、支持修改背景图</p></li>
-<li><p>文件管理器<br/>
+<li><p>文件管理器
 <code>pacman -S krusader</code></p></li>
-<li><p>文件管理器<br/>
+<li><p>文件管理器
 <code>pacman -S dolphin</code></p></li>
-<li><p>压缩解压缩<br/>
+<li><p>压缩解压缩
 <code>pacman -S ark</code></p></li>
-<li><p>文本编辑器<br/>
+<li><p>文本编辑器
 <code>pacman -S kate</code></p></li>
-<li><p>终端<br/>
+<li><p>终端
 <code>pacman -S konsole</code></p></li>
-<li><p>文档查看器<br/>
+<li><p>文档查看器
 <code>okular</code></p></li>
-<li><p>查看系统信息<br/>
-<code>pacman -S screenfetch</code><br/>
-打开终端自动显示<br/>
+<li><p>查看系统信息
+<code>pacman -S screenfetch</code>
+打开终端自动显示
 nano ~/.bashrc 加入 screenfetch</p></li>
-<li><p>翻墙<br/>
+<li><p>翻墙
 <code>pacman -S v2ray</code></p></li>
-<li><p>密码相关<br/>
+<li><p>密码相关
 <code>pacman -S keepass</code></p></li>
-<li><p>hosts文件相关<br/>
+<li><p>hosts文件相关
 <code>yaourt -S switchhosts-bin</code></p></li>
-<li><p>备份工具<br/>
+<li><p>备份工具
 <code>yaourt -S qt4-fsarchiver</code></p></li>
-<li><p>安装pdf管理工具buka<br/>
+<li><p>安装pdf管理工具buka
 <code>yaourt -S buka</code></p></li>
-<li><p>安装sshfs<br/>
+<li><p>安装sshfs
 <code>pacman -S sshfs</code></p></li>
-<li><p>webdav服务wsgidav<br/>
+<li><p>webdav服务wsgidav
 <code>pip install wsgidav</code></p></li>
-<li><p>系统工具<br/>
+<li><p>系统工具
 <code>iftop\htop\atop</code></p></li>
-<li><p>chm阅读器<br/>
+<li><p>chm阅读器
 <code>kchmviewer</code></p></li>
-<li><p>下载<br/>
-<code>aria2\uget</code><br/>
-<code>pip install youtube-dl</code><br/>
+<li><p>下载
+<code>aria2\uget</code>
+<code>pip install youtube-dl</code>
 <code>yaourt persepolis</code></p></li>
-<li><p>web相关<br/>
+<li><p>web相关
 <code>nginx、node</code></p></li>
-<li><p>火狐汉化<br/>
+<li><p>火狐汉化
 <code>http://releases.mozilla.org/pub/firefox/releases/59.0/linux-x86_64/xpi/（注意版本）</code></p></li>
-<li><p>grub修改<br/>
+<li><p>grub修改
 <code>yaourt -S grub-customizer</code></p></li>
-<li><p>webdav文件共享<br/>
+<li><p>webdav文件共享
 <code>pacman -S phodav</code></p></li>
-<li><p>网盘同步<br/>
+<li><p>网盘同步
 <code>yaourt -S cloudcross</code></p></li>
-<li><p>日志查看工具<br/>
+<li><p>日志查看工具
 <code>pacman -S ksystemlog</code></p></li>
-<li><p>二进制编辑器<br/>
+<li><p>二进制编辑器
 <code>pacman -S okteta</code></p></li>
-<li><p>ssh爆破防护<br/>
+<li><p>ssh爆破防护
 <code>pacman -S sshguard</code></p></li>
-<li><p>smb共享工具<br/>
+<li><p>smb共享工具
 <code>pacman -S smb4k</code></p></li>
-<li><p>文档编辑工具<br/>
+<li><p>文档编辑工具
 <code>marktext</code></p></li>
-<li><p>命令补全工具<br/>
+<li><p>命令补全工具
 <code>pacman -S bash-completion</code></p></li>
-<li><p>文件共享、webdav、ftp等<br/>
+<li><p>文件共享、webdav、ftp等
 <code>pacman -S filezilla</code></p></li>
-<li><p>文件同步<br/>
+<li><p>文件同步
 <code>syncthing</code></p></li>
-<li><p>使用ftp<br/>
-<code>sudo pacman -S vsftpd</code><br/>
-详细设置 /etc/vsftpd.conf<br/>
-允许本地用户登录 local_enable=YES<br/>
-可以进行写的操作 write_enable=YES<br/>
-设定最大连接传输时间 data_connection_timeout=3600<br/>
+<li><p>使用ftp
+<code>sudo pacman -S vsftpd</code>
+详细设置 /etc/vsftpd.conf
+允许本地用户登录 local_enable=YES
+可以进行写的操作 write_enable=YES
+设定最大连接传输时间 data_connection_timeout=3600
 设定支持异步传输的功能 async_abor_enable=YES</p></li>
-<li><p>剪贴板增强工具<br/>
+<li><p>剪贴板增强工具
 <code>pacman -S copyq</code></p></li>
-<li><p>局域网共享工具dukto<br/>
+<li><p>局域网共享工具dukto
 <code>yaourt -S dukto</code></p></li>
 </ul>
 
@@ -438,6 +434,15 @@ systemctl enable vmware-vmblock-fuse
 systemctl enable vmtoolsd
 </code></pre>
 
+<p>无法使用复制粘贴时，可以运行如下命令：
+sudo /etc/init.d/vmware-tools restart
+sudo /usr/bin/vmware-user</p>
+
+<p>还是不能的话，安装lts内核
+pacman -S linux-lts</p>
+
+<p>使用 vmware-hgfsclient  查看共享的文件</p>
+
 <h1 id="toc_2">详细设置</h1>
 
 <ul>
@@ -448,52 +453,52 @@ systemctl enable vmtoolsd
 <code>sudo pacman -S kwalletmanager</code></li>
 <li>区域设置</li>
 <li>输入法问题可以输入 fcitx-diagnose 来查看日志，通常就有答案了。</li>
-<li>git下载太慢，配置git代理：nano ~/.gitconfig<br/>
-[https]<br/>
-    proxy = socks5://127.0.0.1:1080<br/>
-[http]<br/>
-    proxy = socks5://127.0.0.1:1080<br/>
-然后修改hosts：nano /etc/hosts<br/>
-151.101.72.249 <a href="http://global-ssl.fastly.Net">http://global-ssl.fastly.Net</a><br/>
+<li>git下载太慢，配置git代理：nano ~/.gitconfig
+[https]
+    proxy = socks5://127.0.0.1:1080
+[http]
+    proxy = socks5://127.0.0.1:1080
+然后修改hosts：nano /etc/hosts
+151.101.72.249 <a href="http://global-ssl.fastly.Net">http://global-ssl.fastly.Net</a>
 192.30.253.112 <a href="http://github.com">http://github.com</a></li>
 <li>typora段错误的解决方法：<a href="https://aur.archlinux.org/packages/typora/">https://aur.archlinux.org/packages/typora/</a></li>
-<li>使用nfs共享文件：pacman -S nfs-utils，参考：<a href="https://wiki.archlinux.org/index.php/NFS#Installation">https://wiki.archlinux.org/index.php/NFS#Installation</a><br/>
+<li>使用nfs共享文件：pacman -S nfs-utils，参考：<a href="https://wiki.archlinux.org/index.php/NFS#Installation">https://wiki.archlinux.org/index.php/NFS#Installation</a>
 1、配置 /etc/exports
 <code>
-/home 192.168.48.142(rw,sync,no_root_squash)   这里可以写客户端ip<br/>
-exportfs -rav<br/>
-exportfs -v<br/>
-systemctl start nfs-server.service<br/>
-修改 /etc/nfs.conf 来增加安全性<br/>
-[nfsd]<br/>
-host=192.168.48.142<br/>
-# Alternatively, you can use your hostname.<br/>
+/home 192.168.48.142(rw,sync,no_root_squash)   这里可以写客户端ip
+exportfs -rav
+exportfs -v
+systemctl start nfs-server.service
+修改 /etc/nfs.conf 来增加安全性
+[nfsd]
+host=192.168.48.142
+# Alternatively, you can use your hostname.
 # host=myhostname
 </code>
-如果上面的启动nfs报错，重启电脑<br/>
-showmount -e 192.168.48.136(服务器端IP)<br/>
-若出现：Export list for 192.168.48.142:<br/>
-/home 192.168.1.120字眼则证明通过<br/>
-下面贴出我敲的：<br/>
-╰─&gt;\( showmount -e 192.168.48.136<br/>
-Export list for 192.168.48.136:<br/>
-/home 192.168.48.142<br/>
-┬─[lonelyor@lonelyor:~]─[16时00分18秒]<br/>
-╰─&gt;\) mount -t nfs 192.168.48.136<br/>
-mount: 只有 root 用户能使用“--types”选项<br/>
-┬─[lonelyor@lonelyor:~]─[16时03分14秒]<br/>
-╰─&gt;\( sudo mount -t nfs 192.168.48.136<br/>
-mount: 192.168.48.136: can&#39;t find in /etc/fstab.<br/>
-┬─[lonelyor@lonelyor:~]─[16时03分18秒]<br/>
-╰─&gt;\) sudo mount -t nfs 192.168.48.136:/home /mnt/tmp/<br/>
-然后就ok了。<br/>
+如果上面的启动nfs报错，重启电脑
+showmount -e 192.168.48.136(服务器端IP)
+若出现：Export list for 192.168.48.142:
+/home 192.168.1.120字眼则证明通过
+下面贴出我敲的：
+╰─&gt;\( showmount -e 192.168.48.136
+Export list for 192.168.48.136:
+/home 192.168.48.142
+┬─[lonelyor@lonelyor:~]─[16时00分18秒]
+╰─&gt;\) mount -t nfs 192.168.48.136
+mount: 只有 root 用户能使用“--types”选项
+┬─[lonelyor@lonelyor:~]─[16时03分14秒]
+╰─&gt;\( sudo mount -t nfs 192.168.48.136
+mount: 192.168.48.136: can&#39;t find in /etc/fstab.
+┬─[lonelyor@lonelyor:~]─[16时03分18秒]
+╰─&gt;\) sudo mount -t nfs 192.168.48.136:/home /mnt/tmp/
+然后就ok了。
 解除挂载用umount</li>
 </ul>
 
-<p>一键安装脚本<br/>
+<p>一键安装脚本
 pacman -S konsole net-tools p7zip wget cmake curl gcc  wqy-zenhei wqy-bitmapfont ttf-dejavu ntfs-3g dosfstools dbeaver typora ark sshfs iftop htop atop sqlmap nmap aria2 uget phodav ksystemlog okteta sshguard smb4k copyq nmap sqlmap docker </p>
 
-<p>一键换源<br/>
+<p>一键换源
 sudo pacman-mirrors -i -c China -m rank</p>
 
 
@@ -602,31 +607,31 @@ sudo pacman-mirrors -i -c China -m rank</p>
 	      
 		      
 			      <li class="post">
-			        <a href="15644581924907.html">arch 无法使用 zenmap，报错：'No module named gtk'的解决办法</a>
+			        <a href="15747334018156.html">msfvenom各类木马生成脚本</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15644488533834.html">Manjaro vmware 虚拟机共享宿主机文件夹</a>
+			        <a href="15724200154293.html">v2ray实现科学上网</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15643953233297.html">oh-my-zsh配置</a>
+			        <a href="15708455642675.html">如何使用cmd开启3389端口与查看3389端口</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15643901825363.html">arch 使用 nginx -t 时报错“could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size” 解决办法</a>
+			        <a href="15695779467285.html">给linux终端加一个移动到回收站的功能</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15643634653227.html">manjaro 安装 vmtools</a>
+			        <a href="15694777838251.html">Proxmox TASK ERROR: Failed to run vncproxy.解决办法</a>
 			      </li>
 		     
 		  
@@ -671,7 +676,7 @@ sudo pacman-mirrors -i -c China -m rank</p>
 
  <div class="page-bottom clearfix">
   <div class="row">
-   <p class="copyright">Copyright &copy; 2018
+   <p class="copyright">Copyright &copy; 2015
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
 Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
   </div>
@@ -680,6 +685,218 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
         </section>
       </div>
     </div>
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="asset/prism.js"></script>
+
+
+<style type="text/css">
+figure{margin: 0;padding: 0;}
+figcaption{text-align:center;}
+
+/* PrismJS 1.14.0
+ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: black;
+    background: none;
+    text-shadow: 0 1px white;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background:#b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+@media print {
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #F7F7F7;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: slategray;
+}
+
+.token.punctuation {
+    color: #999;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #9a6e3a;
+    background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+.token.function,
+.token.class-name {
+    color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #e90;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+
+pre[class*="language-"].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+    .line-numbers-rows > span {
+        pointer-events: none;
+        display: block;
+        counter-increment: linenumber;
+    }
+
+        .line-numbers-rows > span:before {
+            content: counter(linenumber);
+            color: #999;
+            display: block;
+            padding-right: 0.8em;
+            text-align: right;
+        }
+
+</style>
 
   
     
@@ -700,8 +917,6 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
       });
      
     </script>
-
-    
 
 
 

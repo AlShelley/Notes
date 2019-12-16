@@ -3,10 +3,10 @@
 
 用来展示部分学习笔记，主要以安全技术为主。想要更直观的访问文章可以访问我的博客。
 
-博客通过 http://www.lonelyor.org/ 或 https://alshelley.github.io/ 访问  
-
 笔记主页如下：
-https://www.lonelyor.org/lonelyorWiki/
+http://wiki.lonelyor.org
+
+博客主页通过 http://www.lonelyor.org/ 或 https://alshelley.github.io/ 访问  
 
 www.lonelyor.org 使用https访问时可能会丢失js导致页面异常（这是由于chrome的安全特性导致的，可以点击搜索栏右上角的红色盾牌——允许加载不安全的脚本，来使页面正常运行，相关讨论可以参考： https://stackoverflow.com/questions/21177387/caution-provisional-headers-are-shown-in-chrome-debugger ）
 

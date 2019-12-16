@@ -130,310 +130,50 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15643953233297.html">
+                <a class="clearlink" href="15655136450838.html">
                 
-                  <h1>oh-my-zsh配置</h1>
+                  <h1>Hexo守护进程</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">下载安装</h2>
+                        	<p>Node进程守护有很多工具，Forever，PM2，PM2.5 blah blah.解决的问题也是很容易讲清楚，比如：ssh登陆服务器，启动node服务，然后ssh断开连接，服务中断，网站无法访问。这里讲一下用forever 解决 Hexo 进程守护的问题，安装Forever:</p>
 
-<p><code>sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;</code></p>
-
-<h2 id="toc_1">修改主题</h2>
-
-<p>nano ~/.zshrc 或者 nano /home/lonelyor/.zshrc
-ZSH_THEME=&quot;agnoster&quot;</p>
-
-<p>查看可使用的主题列表
-<code>ls ~/.oh-my-zsh/themes</code>  </p>
-
-<h2 id="toc_2">更换默认shell</h2>
-
-<p><code>chsh -s /usr/bin/zsh</code>
-重启即可看到效果</p>
-
-<h2 id="toc_3">安装插件</h2>
-
-<p>增加插件直接写名字就行，用空格隔开。以下是一个示例。
-plugins=(git autojump)</p>
-
-<p>安装文件夹跳转工具 autojump，
-sudo pacman -S autojump</p>
-
-<p>把以下代码添加到~/.zshrc才能使 autojump 生效
-<code>[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] &amp;&amp; . ~/.autojump/etc/profile.d/autojump.sh</code>    </p>
-
-<p>安装zsh-syntax-highlighting命令高亮插件
-<code>git clone https://github.com/zsh-users/zsh-syntax-highlighting.git 
-echo &quot;source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh&quot; &gt;&gt; ${ZDOTDIR:-$HOME}/.zshrc</code></p>
-
-<p>安装命令自动补全zsh-autosuggestions插件
-<code>git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions</code>   </p>
-
-<p>一键解压，自带的
-extract</p>
-
-<p>配置~/.zshrc 文件，添加内容：
-plugins=(git autojump  zsh-autosuggestions extract zsh-syntax-highlighting)</p>
-
-<p>请务必保证插件顺序，zsh-syntax-highlighting必须在最后一个。
-然后在文件的最后一行添加：source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh</p>
-
-<p>最后使用 source ~/.zshrc 命令让配置生效。</p>
-
-<p>安装 powerline字体
-pacman -S powerline-fonts</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/07/29</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15590262822391.html">
-                
-                  <h1>洞察-宜信集应用系统资产管理、漏洞全生命周期管理、安全知识库管理三位一体的平台的安装与使用</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p><a href="https://github.com/creditease-sec/insight">https://github.com/creditease-sec/insight</a> 感谢作者！</p>
-</blockquote>
-
-<h2 id="toc_0">部署和启动 mysql in docker</h2>
-
-<p>1、首先安装 docker，这里略过</p>
-
-<p>2、安装 mysql 的 docker 镜像<code>docker pull mysql:5.7.13</code></p>
-
-<p>3、启动 mysql，这里的 name 可以自行指定。</p>
-
-<pre class="line-numbers"><code class="language-text">docker run -d -p 127.0.0.1:6606:3306 \
---name open_source_mysqldb \
--e MYSQL_ROOT_PASSWORD=root \
-mysql:5.7.13
+<pre class="line-numbers"><code class="language-shell">$ npm install forever -g
+$# cd /path/to/your/project
+$ npm install forever-monitor
 </code></pre>
 
-<p>4、查看已经启动的 docker 镜像，这里注意 name 后面要用到。<code>docker ps -a</code>
-<img src="media/15590262822391/15590264712809.jpg" alt=""/></p>
+<p>Hexo下新建一个app.js,写入下面代码：</p>
 
-<p>5、进入容器bash<code>docker exec -it open_source_mysqldb bash</code></p>
-
-<p>6、进入 mysql 并创建数据库和账号权限配置
-<code>mysql -h localhost -P 6606 -u root -p</code>
-<img src="media/15590262822391/15590267094981.jpg" alt=""/></p>
-
-<pre class="line-numbers"><code class="language-text">mysql&gt; CREATE DATABASE IF NOT EXISTS vuldb DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
-mysql&gt; grant all on vuldb.* to vuluser@&#39;%&#39; identified by &#39;vulpassword&#39;;
-mysql&gt; flush privileges;
-mysql&gt; quit
+<pre class="line-numbers"><code class="language-text">var spawn = require(&#39;child_process&#39;).spawn;
+free = spawn(&#39;hexo&#39;, [&#39;server&#39;, &#39;-p 4000&#39;]);/*其实就是等于执行hexo server -p 4000*/
+free.stdout.on(&#39;data&#39;, function (data) {
+console.log(&#39;standard output:\n&#39; + data);
+});
+free.stderr.on(&#39;data&#39;, function (data) { 
+console.log(&#39;standard error output:\n&#39; + data);
+});
+free.on(&#39;exit&#39;, function (code, signal) {
+console.log(&#39;child process eixt ,exit:&#39; + code);
+});
 </code></pre>
 
-<p><img src="media/15590262822391/15590267827107.jpg" alt=""/></p>
+<p>此处输入代码其实思路也很简单，大致意思就是node启动一个子进程，用forever 守护 hexo sever -p 4000这条命令（4000代表端口），关于node的child_process的相关知识，请自行baidu、google,或者去查nodejs<code>此处输入代码</code>的文档。</p>
 
-<p>7、退出容器 bash<code>exit</code></p>
+<h1 id="toc_0">执行forever命令：</h1>
 
-<h2 id="toc_1">部署和启动 APP</h2>
+<p><code>$ forever --minUptime 10000 --spinSleepTime 26000 start app.js</code></p>
 
-<p>1、下载源码
-<code>$ git clone https://github.com/creditease-sec/insight.git</code></p>
+<p>至于后面这几个minUptime、spinSleepTime可填可不填，不填默认也会有，参数的意思可以直接去forever上查询。</p>
 
-<p>2、修改srcpm/config.py 配置文件</p>
+<h1 id="toc_1">停止服务</h1>
 
-<ul>
-<li><p>修改公司邮箱后缀    </p>
+<p>这里值得注意的是你拿forever启动的服务，通过forever stopall是根本停不掉的，因为其实你执行的是hexo sever，可以通过下面的办法：</p>
 
-<pre class="line-numbers"><code class="language-text">#公司邮箱后缀限制，只能使用公司邮箱注册账号。
-CORP_MAIL = &#39;@qq.com&#39;
-</code></pre></li>
-<li><p>修改邮件CC抄送列表    </p>
-
-<pre class="line-numbers"><code class="language-text">#平台发送的每封邮件的邮件抄送列表，可以设置发送给安全部邮箱列表，可自行修改，也可以保持不变为空
-&#39;&#39;&#39;
-示例：
-CC_EMAIL = [&#39;xxx1@creditease.cn&#39;,
-            &#39;xxx2@creditease.cn&#39;,
-        ]
-&#39;&#39;&#39;
-CC_EMAIL = [
-        ]
-        ```
-</code></pre></li>
-</ul>
-
-<ul>
-<li><p>修改开发模式的邮箱服务器和发件邮箱配置    </p>
-
-<pre class="line-numbers"><code class="language-text"># 以开发模式的配置运行，使用测试邮件服务器，并开启debug模式
-# 平台发邮件账号设置
-SRCPM_MAIL_SENDER = &#39;安全部 &lt;sec_creditease@sina.com&gt;&#39;
-# 发送邮件的服务器设置，邮箱密码由系统变量中读取
-MAIL_SERVER = &#39;smtp.sina.com&#39;
-MAIL_PORT = 587
-MAIL_USE_TLS = True
-MAIL_USERNAME = os.environ.get(
-    &#39;MAIL_USERNAME&#39;) or &#39;sec_creditease@sina.com&#39;
-MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
-</code></pre></li>
-<li><p>修改生产模式的邮箱服务器和发件邮箱配置</p>
-
-<pre class="line-numbers"><code class="language-text"># 以生产模式的配置运行，使用生产邮件服务器，并关闭debug模式
-# 平台发邮件账号设置
-SRCPM_MAIL_SENDER = &#39;安全部 &lt;xxx@creditease.cn&gt;&#39;
-# 发送邮件的服务器设置，账号密码由系统变量中读取
-MAIL_SERVER = &#39;x.x.x.x&#39;
-MAIL_PORT = 25
-MAIL_USE_TLS = False
-MAIL_USERNAME = os.environ.get(
-    &#39;MAIL_USERNAME&#39;) or &#39;xxx@creditease.cn&#39;
-MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
-</code></pre></li>
-</ul>
-
-<p>3、修改定时周期邮件 mail_sender.py 的配置    </p>
-
-<pre class="line-numbers"><code class="language-text">    #平台发送的每封邮件的邮件抄送列表，可以设置发送给安全部邮箱列表，可自行修改，也可以保持不变为空
-    &#39;&#39;&#39;
-    示例：
-    CC_EMAIL = [&#39;xxx1@creditease.cn&#39;,
-                &#39;xxx2@creditease.cn&#39;,
-            ]
-    &#39;&#39;&#39;
-    CC_EMAIL = [
-            ]
-    #主机名设置
-    SERVER_NAME = &#39;xxx.creditease.corp&#39;
-    # 平台发邮件账号设置
-    SRCPM_MAIL_SENDER = &#39;安全部 &lt;xxx@creditease.cn&gt;&#39;
-    # 发送邮件的服务器设置，账号密码由系统变量中读取
-    MAIL_SERVER = &#39;x.x.x.x&#39;
-    MAIL_PORT = 25
-    MAIL_USE_TLS = False
-    MAIL_USERNAME = os.environ.get(
-        &#39;MAIL_USERNAME&#39;) or &#39;xxx@creditease.cn&#39;
-    MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
-</code></pre>
-
-<p>4、修改srcpm/app/src/forms.py 漏洞来源下拉列表    </p>
-
-<pre class="line-numbers"><code class="language-text">    &#39;&#39;&#39; 下拉选项 &#39;&#39;&#39;
-    source_choices = [(&#39;&#39;,&#39;&#39;), (u&#39;安全部&#39;, u&#39;安全部&#39;), (u&#39;YISRC&#39;, u&#39;YISRC&#39;), (u&#39;公众平台&#39;, u&#39;公众平台&#39;), (u&#39;合作伙伴&#39;, u&#39;合作伙伴&#39;)]
-</code></pre>
-
-<p>5、在项目根目录下部署和启动APP    </p>
-
-<pre class="line-numbers"><code class="language-text"># 拉取镜像
-docker pull daocloud.io/liusheng/vulpm_docker:latest
-或
-自己构建镜像
-docker build -t=&#39;vulpm_docker&#39; .
-# 在项目目录下启动容器，确保当前目录下存在srcpm文件夹，MAIL_PASSOWRD替换为自己邮箱服务器的密码。
-$ docker run -d -p 127.0.0.1:9000:5000 \
---link open_source_mysqldb:db \
---name open_source_srcpm \
--v $PWD/srcpm:/opt/webapp/srcpm \
--e DEV_DATABASE_URL=&#39;mysql://vuluser:vulpassword@db/vuldb&#39; \
--e SrcPM_CONFIG=development \
--e MAIL_PASSWORD=&#39;xxxxxx&#39; \
-daocloud.io/liusheng/vulpm_docker:latest \
-sh -c &#39;supervisord -c srcpm/supervisor.conf &amp;&amp; supervisorctl -c srcpm/supervisor.conf start all &amp;&amp; tail -f srcpm/log/gunicorn.err &amp;&amp; tail -f srcpm/log/mail_sender.err&#39;
-</code></pre>
-
-<h1 id="toc_2">初始化数据库</h1>
-
-<p>参考作者写的就可以了。</p>
-
-<p><a href="https://github.com/creditease-sec/insight/blob/open-source/docs/db_init.md">数据库初始化详细配置指南</a></p>
-
-<p>或者</p>
-
-<p>直接导入初始化的sql</p>
-
-<p>导入sql</p>
-
-<pre class="line-numbers"><code class="language-text">$ mysql -h127.0.0.1 -P6606 -uroot -p vuldb &lt; srcpm/vuldb_init.sql
-</code></pre>
-
-<p>Enter password:root</p>
-
-<h2 id="toc_3">搭建完成</h2>
-
-<p>访问域名：<a href="http://127.0.0.1:9000/srcpm/">http://127.0.0.1:9000/srcpm/</a> 即可
-账号：<a href="mailto:admin@admin.com">admin@admin.com</a>
-密码：11</p>
-
-<p>部署成功后，在使用的过程中存在各种各样的问题，而且会丢数据，所以放弃。还没我写的玩具稳定，要他何用。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/05/28</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15589173721679.html">
-                
-                  <h1>svn 报错：“svn: E155015: Commit failed (details follow):svn: E155015: Aborting commit: '/Users/lonelyor/xxx.xls' remains in conflict” 解决方法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>解决方案来自：<a href="https://stackoverflow.com/questions/2406469/svn-remains-in-conflict">https://stackoverflow.com/questions/2406469/svn-remains-in-conflict</a></p>
-</blockquote>
-
-<p>1、执行 svn resolved /Users/lonelyor/xxx.xlsx
-2、svn update
-3、svn commit -m &quot;xxxxxx&quot;</p>
-
-<p>搞定，可以正常执行 commit 操作。</p>
-
-<pre class="line-numbers"><code class="language-text">Sending        xxx.xlsx
-Transmitting file data .done
-Committing transaction...
-Committed revision 1135.
+<pre class="line-numbers"><code class="language-shell">＄lsof -i:[port]
+＄ps aux|grep hexo
+＄kill pid(进程的id)
 </code></pre>
 
                         
@@ -443,164 +183,7 @@ Committed revision 1135.
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/05/27</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15573021402615.html">
-                
-                  <h1>Mac 上的 svnGUI 工具：smartsvn 安装、激活和使用</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>smartsvn 是 mac 上的 svn 客户端，svn 是类似 git 的版本控制工具。</p>
-
-<p>1、下载 smartsvn <a href="http://www.smartsvn.com/download">srmatsvn 官网下载地址</a>
-2、在任意目录下新建文件 smartsvn.license，然后写入以下内容：</p>
-
-<pre class="line-numbers"><code class="language-text">Name=csdn  
-Address=1337 iNViSiBLE Str.  
-Email=admin@csdn.net  
-FreeUpdatesUntil=2099-09-26  
-LicenseCount=1337  
-Addon-xMerge=true  
-Addon-API=true  
-Enterprise=true  
-Key=4kl-&lt;Zqcm-iUF7I-IVmYG-XAyvv-KYRoC-xlgsv-sSBds-VAnP6  
-</code></pre>
-
-<p>3、在安装软件需要导入 license 时选择上述文件或者安装软件后在菜单栏的 help-register 中导入密钥文件即可激活软件。</p>
-
-<p>4、点击菜单栏的project-checkout，添加远程目录，然后输入认证信息，输入本地目录信息，即可挂载远程目录到本地。</p>
-
-<p>5、若认证出错，则点击菜单栏的 SmartSVN-preferences，然后选择 Authentication，使用 delete 删除之前存储的认证信息，然后重新 checkout 即可。</p>
-
-<h1 id="toc_0">Mac 终端下 svn 常用命令</h1>
-
-<p>Mac 可以不用安装 svnGUI 而直接使用命令进行 svn 操作，常见svn 命令如下：
-svn help 查看命令帮助
-svn checkout xxx 拉取远程目录到本地
-svn add file 往版本库中添加新文件</p>
-
-<p>更多常用命令可参考：<a href="https://www.cnblogs.com/luckythan/p/4478706.html">Mac终端下svn常用命令</a></p>
-
-<blockquote>
-<p>通过命令行操作进行认证后，其认证信息存储在 <code>~/.subversion/auth/svn.simple</code>目录下，若认证失败，需要在此目录下情况认证信息后重新进行认证。</p>
-</blockquote>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/05/08</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15547237158216.html">
-                
-                  <h1>怎么解决"该虚拟机似乎正在使用中"问题</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>在用VMware虚拟机的时候，有时会发现打开虚拟机时提示“该虚拟机似乎正在使用中。如果该虚拟机未在使用，请按“获取所有权(T)”按钮获取它的所有权。否则，请按“取消(C)”按钮以防损坏。配置文件: D:\win10x64\Windows 10 x64.vmx。”这是由于虚拟机未正常关闭引起的，下面看看解决办法。</p>
-
-<p>1.首先点击“获取所有权(T)”按钮，会发现弹出一个窗口，显示“无法打开虚拟机: D:\win10x64\Windows 10 x64.vmx获取该虚拟机的所有权失败。主机上的某个应用程序正在使用该虚拟机。配置文件: D:\win10x64\Windows 10 x64.vmx。”等信息。这说明获取所有权失败了。</p>
-
-<p>2.当点击“取消(C)”按钮是直接退出窗口，什么也不弹出。这时发现不管点那个按钮都不能解决问题。</p>
-
-<p>3.点击“开始”菜单，选择“文件资源管理器”。</p>
-
-<p>4.打开“文件资源管理器”后，进入到存放此台Vmware虚拟机虚拟磁盘文件及配置文件存放的位置（也就是弹出提示窗口上的路径），在这里是D:\win10x64这个目录下，找到后缀为.lck文件夹。</p>
-
-<p>5.然后，将后缀为.lck的文件夹删除，或者或避免删错可以移动到备份文件夹中，也可以直接重命名此文件夹，在这里将文件夹Windows 10 x64.vmx.lck改为Windows 10 x64.vmx.lck.backup。</p>
-
-<p>6.然后重新打开虚拟机，发现此虚拟机可以正常打开了，这样就成功的解决了“该虚拟机似乎正在使用中”问题。</p>
-
-<p>以后记得正常关机。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/04/08</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15538461504138.html">
-                
-                  <h1>vmware三种网络模式详解</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>文章详情请参阅：
-<a href="https://note.youdao.com/ynoteshare1/index.html?id=236896997b6ffbaa8e0d92eacd13abbf&amp;type=note">https://note.youdao.com/ynoteshare1/index.html?id=236896997b6ffbaa8e0d92eacd13abbf&amp;type=note</a>
-或
-<a href="https://www.cnblogs.com/linjiaxin/p/6476480.html">https://www.cnblogs.com/linjiaxin/p/6476480.html</a></p>
-
-<p>感谢作者的付出。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/03/29</span>
+                    <span class="date">2019/08/11</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>

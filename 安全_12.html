@@ -1,0 +1,775 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  安全 - lonelyorWiki
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="lonelyorWiki" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+ 
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:www.lonelyor.org/lonelyorWiki ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">首页</a></li>
+        
+        <li id=""><a target="_blank" href="archives.html">归档</a></li>
+        
+        <li id=""><a target="_blank" href="ruby.html">流光</a></li>
+        
+        <li id=""><a target="_blank" href="beautiful.html">惊鸿</a></li>
+        
+        <li id=""><a target="_blank" href="lose.html">失乐园</a></li>
+        
+        <li id=""><a target="_blank" href="search.html">北斗</a></li>
+        
+        <li id=""><a target="_blank" href="about.html">关于</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; lonelyorWiki</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">首页</a></li>
+        
+        <li><a target="_blank" href="archives.html">归档</a></li>
+        
+        <li><a target="_blank" href="ruby.html">流光</a></li>
+        
+        <li><a target="_blank" href="beautiful.html">惊鸿</a></li>
+        
+        <li><a target="_blank" href="lose.html">失乐园</a></li>
+        
+        <li><a target="_blank" href="search.html">北斗</a></li>
+        
+        <li><a target="_blank" href="about.html">关于</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
+        
+            <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
+        
+            <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
+        
+            <li><a href="%E5%AE%89%E5%85%A8.html">安全</a></li>
+        
+            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
+        
+            <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
+        
+            <li><a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html">星火流萤</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="15577346001597.html">
+                
+                  <h1>linux 敏感目录</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>Linux敏感目录，网站存在包含漏洞、任意文件读取漏洞等，权限允许的条件下，放在burp里面批量跑。</p>
+
+<p>/apache/apache/conf/httpd.conf
+/apache/apache2/conf/httpd.conf
+/apache/php/php.ini
+/bin/php.ini
+/etc/anacrontab
+/etc/apache/apache.conf
+/etc/apache/httpd.conf
+/etc/apache2/apache.conf
+/etc/apache2/httpd.conf
+/etc/apache2/sites-available/default
+/etc/apache2/vhosts.d/00_default_vhost.conf
+/etc/at.allow
+/etc/at.deny
+/etc/cron.allow
+/etc/cron.deny
+/etc/crontab
+/etc/fstab
+/etc/host.conf
+/etc/httpd/conf.d/httpd.conf
+/etc/httpd/conf.d/php.conf
+/etc/httpd/conf/httpd.conf
+/etc/httpd/htdocs/index.html
+/etc/httpd/htdocs/index.php
+/etc/httpd/logs/access.log
+/etc/httpd/logs/access_log
+/etc/httpd/logs/error.log
+/etc/httpd/logs/error_log
+/etc/httpd/php.ini
+/etc/init.d/httpd
+/etc/init.d/mysql
+/etc/ld.so.conf
+/etc/motd
+/etc/my.cnf
+/etc/mysql/my.cnf
+/etc/mysql/my.cnf
+/etc/network/interfaces
+/etc/networks
+/etc/passwd
+/etc/php.ini
+/etc/php/apache/php.ini
+/etc/php/apache2/php.ini
+/etc/php/cgi/php.ini
+/etc/php/php.ini
+/etc/php/php4/php.ini
+/etc/php4.4/fcgi/php.ini
+/etc/php4/apache/php.ini
+/etc/php4/apache2/php.ini
+/etc/php4/cgi/php.ini
+/etc/php5/apache/php.ini
+/etc/php5/apache2/php.ini
+/etc/php5/cgi/php.ini
+/etc/phpmyadmin/config.inc.php
+/etc/resolv.conf
+/etc/shadow
+/etc/ssh/sshd_config
+/etc/ssh/sshd_config
+/etc/ssh/ssh_config
+/etc/ssh/ssh_config
+/etc/ssh/ssh_host_dsa_key
+/etc/ssh/ssh_host_dsa_key
+/etc/ssh/ssh_host_dsa_key.pub
+/etc/ssh/ssh_host_dsa_key.pub
+/etc/ssh/ssh_host_key
+/etc/ssh/ssh_host_key
+/etc/ssh/ssh_host_key.pub
+/etc/ssh/ssh_host_key.pub
+/etc/ssh/ssh_host_rsa_key
+/etc/ssh/ssh_host_rsa_key
+/etc/ssh/ssh_host_rsa_key.pub
+/etc/ssh/ssh_host_rsa_key.pub
+/etc/sysconfig/network
+/etc/sysconfig/network
+/home/apache/conf/httpd.conf
+/home/apache2/conf/httpd.conf
+/home/bin/stable/apache/php.ini
+/home2/bin/stable/apache/php.ini
+/NetServer/bin/stable/apache/php.ini
+/opt/www/conf/httpd.conf
+/opt/www/htdocs/index.html
+/opt/www/htdocs/index.php
+/opt/xampp/etc/php.ini
+/PHP/php.ini
+/php/php.ini
+/php4/php.ini
+/php5/php.ini
+/root/.atftp_history
+/root/.bashrc
+/root/.bash_history
+/root/.mysql_history
+/root/.nano_history
+/root/.php_history
+/root/.profile
+/root/.ssh/authorized_keys
+/root/.ssh/identity
+/root/.ssh/identity.pub
+/root/.ssh/id_dsa
+/root/.ssh/id_dsa.pub
+/root/.ssh/id_rsa
+/root/.ssh/id_rsa.pub
+/root/anaconda-ks.cfg
+/tmp/apache/htdocs/index.html
+/tmp/apache/htdocs/index.php
+/usr/lib/php.ini
+/usr/lib/php/php.ini
+/usr/local/apache/conf/httpd.conf
+/usr/local/apache/conf/php.ini
+/usr/local/apache/htdocs/index.html
+/usr/local/apache/htdocs/index.php
+/usr/local/apache/logs/access.log
+/usr/local/apache/logs/access_log
+/usr/local/apache/logs/access_logaccess_log.old
+/usr/local/apache/logs/error.log
+/usr/local/apache/logs/error_log
+/usr/local/apache/logs/error_logerror_log.old
+/usr/local/apache2/conf/httpd.conf
+/usr/local/apache2/conf/php.ini
+/usr/local/apache2/htdocs/index.html
+/usr/local/apache2/htdocs/index.php
+/usr/local/cpanel/logs
+/usr/local/cpanel/logs/access_log
+/usr/local/cpanel/logs/error_log
+/usr/local/cpanel/logs/license_log
+/usr/local/cpanel/logs/login_log
+/usr/local/cpanel/logs/stats_log
+/usr/local/cpanel/logs/stats_log
+/usr/local/etc/php.ini
+/usr/local/httpd/conf/httpd.conf
+/usr/local/httpd2.2/htdocs/index.html
+/usr/local/httpd2.2/htdocs/index.php
+/usr/local/lib/php.ini
+/usr/local/mysql/bin/mysql
+/usr/local/mysql/my.cnf
+/usr/local/php/lib/php.ini
+/usr/local/php4/lib/php.ini
+/usr/local/php4/lib/php.ini
+/usr/local/php4/php.ini
+/usr/local/php5/etc/php.ini
+/usr/local/php5/lib/php.ini
+/usr/local/php5/php5.ini
+/usr/local/share/examples/php/php.ini
+/usr/local/share/examples/php4/php.ini
+/usr/local/tomcat5527/bin/version.sh
+/usr/local/Zend/etc/php.ini
+/usr/share/tomcat6/bin/startup.sh
+/usr/tomcat6/bin/startup.sh
+/var/apache2/config.inc
+/var/httpd/conf/httpd.conf
+/var/httpd/conf/php.ini
+/var/httpd/conf/php.ini
+/var/httpd/htdocs/index.html
+/var/httpd/htdocs/index.php
+/var/lib/mysql/my.cnf
+/var/lib/mysql/mysql/user.MYD
+/var/local/www/conf/httpd.conf
+/var/local/www/conf/php.ini
+/var/log/access.log
+/var/log/access_log
+/var/log/apache/access.log
+/var/log/apache/access_log
+/var/log/apache/error.log
+/var/log/apache/error_log
+/var/log/apache2/access.log
+/var/log/apache2/access_log
+/var/log/apache2/error.log
+/var/log/apache2/error_log
+/var/log/error.log
+/var/log/error_log
+/var/log/mysql.log
+/var/log/mysql/mysql-bin.log
+/var/log/mysql/mysql-slow.log
+/var/log/mysql/mysql.log
+/var/log/mysqlderror.log
+/var/mail/root
+/var/mysql.log
+/var/spool/cron/crontabs/root
+/var/spool/mail/root
+/var/www/conf/httpd.conf
+/var/www/htdocs/index.html
+/var/www/htdocs/index.php
+/var/www/index.html
+/var/www/index.php
+/var/www/logs/access.log
+/var/www/logs/access_log
+/var/www/logs/error.log
+/var/www/logs/error_log
+/web/conf/php.ini
+/www/conf/httpd.conf
+/www/htdocs/index.html
+/www/htdocs/index.php
+/www/php/php.ini
+/www/php4/php.ini
+/www/php5/php.ini
+/xampp/apache/bin/php.ini
+/xampp/apache/conf/httpd.conf
+root/.ssh/authorized_keys
+root/.ssh/identity
+root/.ssh/identity.pub
+root/.ssh/id_dsa
+root/.ssh/id_dsa.pub
+root/.ssh/id_rsa
+root/.ssh/id_rsa.pub</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/05/13</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   <a href="安全_11.html">&laquo; Prev Page</a>  
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			 <a href="安全_13.html">&raquo; Next Page</a> 
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <div class="site-a-logo"><img src="https://www.lonelyor.org/lonelyorWiki/media/15483045488413/205a66b0a6c34ba7184d2d68a9f62dd8.jpg" /></div>
+            
+                <h1>lonelyorWiki</h1>
+                <div class="site-des">一个用来记录知识的网站。</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="https://github.com/AlShelley/lonelyorWiki" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:lonelyor.org@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
+        
+            <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
+        
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
+        
+            <a href="%E5%AE%89%E5%85%A8.html"><strong>安全</strong></a>
+        
+            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
+        
+            <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
+        
+            <a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html"><strong>星火流萤</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15764947924982.html">Arch系常用技巧与问题汇总</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15747334018156.html">msfvenom各类木马生成脚本</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15724200154293.html">v2ray实现科学上网</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15708455642675.html">windows渗透技巧</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15692949172295.html">Proxmox物理安装</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+figure{margin: 0;padding: 0;}
+figcaption{text-align:center;}
+
+/* PrismJS 1.14.0
+ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: black;
+    background: none;
+    text-shadow: 0 1px white;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background:#b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+@media print {
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #F7F7F7;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: slategray;
+}
+
+.token.punctuation {
+    color: #999;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #9a6e3a;
+    background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+.token.function,
+.token.class-name {
+    color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #e90;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+
+pre[class*="language-"].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+    .line-numbers-rows > span {
+        pointer-events: none;
+        display: block;
+        counter-increment: linenumber;
+    }
+
+        .line-numbers-rows > span:before {
+            content: counter(linenumber);
+            color: #999;
+            display: block;
+            padding-right: 0.8em;
+            text-align: right;
+        }
+
+</style>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+<div id="container"></div>
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: '<%= page.date %>',
+  owner: 'AlShelley',
+  repo: 'lonelyorwiki-message',
+  oauth: {
+    client_id: '2a0c6ad761806835e987',       
+    client_secret: '083280496d60e9becae3c653f97b18db292333cf',  
+  },
+})
+gitment.render('container')
+</script>
+
+  </body>
+</html>

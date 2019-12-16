@@ -3,10 +3,6 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <link rel="bookmark" href="https://raw.githubusercontent.com/AlShelley/lonelyorWiki/master/asset/img/favicon.ico" type="images/x-icon"/>
-    <link rel="shortcut icon" href="https://raw.githubusercontent.com/AlShelley/lonelyorWiki/master/asset/img/favicon.ico" type="images/x-icon"/>
-
     <title>
     
   lonelyorWiki
@@ -19,9 +15,7 @@
     <link rel="stylesheet" href="asset/css/docs.css" />
     <script src="asset/js/vendor/modernizr.js"></script>
     <script src="asset/js/vendor/jquery.js"></script>
-  <script src="asset/highlightjs/highlight.pack.js"></script>
-  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script>hljs.initHighlightingOnLoad();</script>
+ 
 <script type="text/javascript">
   function before_search(){
     var searchVal = 'site:www.lonelyor.org/lonelyorWiki ' + document.getElementById('search_input').value;
@@ -46,17 +40,17 @@
         
         <li id=""><a target="_self" href="index.html">首页</a></li>
         
-        <li id=""><a target="_self" href="archives.html">归档</a></li>
+        <li id=""><a target="_blank" href="archives.html">归档</a></li>
         
-        <li id=""><a target="_self" href="beautiful.html">惊鸿</a></li>
+        <li id=""><a target="_blank" href="ruby.html">流光</a></li>
         
-        <li id=""><a target="_self" href="ruby.html">流光</a></li>
+        <li id=""><a target="_blank" href="beautiful.html">惊鸿</a></li>
         
-        <li id=""><a target="_self" href="search.html">北斗</a></li>
+        <li id=""><a target="_blank" href="lose.html">失乐园</a></li>
         
-        <li id=""><a target="_self" href="lose.html">失乐园</a></li>
+        <li id=""><a target="_blank" href="search.html">北斗</a></li>
         
-        <li id=""><a target="_self" href="about.html">关于</a></li>
+        <li id=""><a target="_blank" href="about.html">关于</a></li>
         
         </ul>
 
@@ -85,17 +79,17 @@
         
         <li><a target="_self" href="index.html">首页</a></li>
         
-        <li><a target="_self" href="archives.html">归档</a></li>
+        <li><a target="_blank" href="archives.html">归档</a></li>
         
-        <li><a target="_self" href="beautiful.html">惊鸿</a></li>
+        <li><a target="_blank" href="ruby.html">流光</a></li>
         
-        <li><a target="_self" href="ruby.html">流光</a></li>
+        <li><a target="_blank" href="beautiful.html">惊鸿</a></li>
         
-        <li><a target="_self" href="search.html">北斗</a></li>
+        <li><a target="_blank" href="lose.html">失乐园</a></li>
         
-        <li><a target="_self" href="lose.html">失乐园</a></li>
+        <li><a target="_blank" href="search.html">北斗</a></li>
         
-        <li><a target="_self" href="about.html">关于</a></li>
+        <li><a target="_blank" href="about.html">关于</a></li>
         
 
     <li><label>Categories</label></li>
@@ -103,15 +97,13 @@
         
             <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
         
-            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
-        
             <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
-        
-            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
         
-            <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
+            <li><a href="%E5%AE%89%E5%85%A8.html">安全</a></li>
+        
+            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
             <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
         
@@ -138,150 +130,48 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15446864537652.html">
+                <a class="clearlink" href="15573021402615.html">
                 
-                  <h1>Web安全工程师求职清单</h1>
+                  <h1>Mac 上的 svnGUI 工具：smartsvn 安装、激活和使用</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>一年前写的一点玩意，没什么卵用</p>
+                        	<p>smartsvn 是 mac 上的 svn 客户端，svn 是类似 git 的版本控制工具。</p>
+
+<p>1、下载 smartsvn <a href="http://www.smartsvn.com/download">srmatsvn 官网下载地址</a>
+2、在任意目录下新建文件 smartsvn.license，然后写入以下内容：</p>
+
+<pre class="line-numbers"><code class="language-text">Name=csdn  
+Address=1337 iNViSiBLE Str.  
+Email=admin@csdn.net  
+FreeUpdatesUntil=2099-09-26  
+LicenseCount=1337  
+Addon-xMerge=true  
+Addon-API=true  
+Enterprise=true  
+Key=4kl-&lt;Zqcm-iUF7I-IVmYG-XAyvv-KYRoC-xlgsv-sSBds-VAnP6  
+</code></pre>
+
+<p>3、在安装软件需要导入 license 时选择上述文件或者安装软件后在菜单栏的 help-register 中导入密钥文件即可激活软件。</p>
+
+<p>4、点击菜单栏的project-checkout，添加远程目录，然后输入认证信息，输入本地目录信息，即可挂载远程目录到本地。</p>
+
+<p>5、若认证出错，则点击菜单栏的 SmartSVN-preferences，然后选择 Authentication，使用 delete 删除之前存储的认证信息，然后重新 checkout 即可。</p>
+
+<h1 id="toc_0">Mac 终端下 svn 常用命令</h1>
+
+<p>Mac 可以不用安装 svnGUI 而直接使用命令进行 svn 操作，常见svn 命令如下：
+svn help 查看命令帮助
+svn checkout xxx 拉取远程目录到本地
+svn add file 往版本库中添加新文件</p>
+
+<p>更多常用命令可参考：<a href="https://www.cnblogs.com/luckythan/p/4478706.html">Mac终端下svn常用命令</a></p>
+
+<blockquote>
+<p>通过命令行操作进行认证后，其认证信息存储在 <code>~/.subversion/auth/svn.simple</code>目录下，若认证失败，需要在此目录下情况认证信息后重新进行认证。</p>
 </blockquote>
 
-<h2 id="toc_0">安全资讯</h2>
-
-<p><a href="http://www.freebuf.com/">freebuf</a></p>
-
-<p><a href="https://www.t00ls.net/">tools</a></p>
-
-<p><a href="https://www.secpulse.com/">安全脉搏</a></p>
-
-<p><a href="https://packetstormsecurity.com/">数据包风暴</a></p>
-
-<p><a href="http://www.4hou.com/">嘶吼</a></p>
-
-<p><a href="https://www.aqniu.com/">安全牛</a></p>
-
-<p><a href="https://www.anquanke.com/">安全客</a></p>
-
-<p><a href="https://www.sec-wiki.com/">sec-wiki</a></p>
-
-<p><a href="http://www.secdoctor.com/">中国信息安全博士网</a></p>
-
-<h2 id="toc_1">威胁情报</h2>
-
-<p>暂略</p>
-
-<h2 id="toc_2">安全工具</h2>
-
-<p><a href="https://www.ctftools.com/down/">最强安全工具集</a></p>
-
-<ul>
-<li>burpsuite(抓包)</li>
-<li>sqlmap(sql注入)</li>
-<li>whireshark(网络抓包)</li>
-<li>中国菜刀(webshell、一句话后门)</li>
-<li>HxD(十六进制编辑器和磁盘编辑器)</li>
-<li>nmap(扫描)</li>
-<li>hydra(爆破)</li>
-<li>cain(爆破)</li>
-<li>metasploit(漏洞利用)</li>
-<li>mitmproxy(http/https代理)</li>
-<li>commix(命令注入)</li>
-<li>httrack(网站克隆)</li>
-<li>netcat(瑞士军刀-网络调试和探测工具)</li>
-<li>scapy(python的交互式数据包操作程序和库)</li>
-<li>empire(域渗透)</li>
-</ul>
-
-<h2 id="toc_3">靶机环境</h2>
-
-<h2 id="toc_4">安全知识库</h2>
-
-<p><a href="https://www.anquanquan.info/">安全圈</a></p>
-
-<p><a href="http://wiki.open.qq.com/wiki/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8%E8%A7%84%E8%8C%83">腾讯安全开发规范</a></p>
-
-<p><a href="https://highon.coffee/blog/cheat-sheet/">安全研究备忘单</a></p>
-
-<p><a href="https://portswigger.net/kb/issues">Burp漏洞定义</a></p>
-
-<p><a href="https://www.offensive-security.com/metasploit-unleashed/">MSF框架终极指南</a></p>
-
-<p><a href="https://www.owasp.org/index.php/Main_Page">OWASP</a></p>
-
-<p><a href="http://vipread.com/index">vipread知识库</a></p>
-
-<p><a href="https://kb.help.rapid7.com/docs/">Rapid7知识库</a></p>
-
-<p><a href="https://kernelnewbies.org/">linux内核研究</a></p>
-
-<p><a href="http://www.loner.fm/bugs/">乌云漏洞</a></p>
-
-<p><a href="https://wooyun.js.org/">乌云文章</a></p>
-
-<p><a href="http://www.office-cn.net/t/api/index.html?web.htm">WindowsAPI参考手册</a></p>
-
-<p><a href="https://support.portswigger.net/customer/portal/articles/2326039-the-burp-methodology">Burp方法论</a></p>
-
-<p><a href="https://ctf-wiki.github.io/ctf-wiki/">CTF-Wiki</a></p>
-
-<p><a href="https://github.com/ctfs/">CTFs</a></p>
-
-<p><a href="https://ctftime.org">ctftime</a></p>
-
-<p><a href="https://www.codesec.net/">代码安全</a></p>
-
-<p><a href="https://silic.wiki/doku.php">习科小黑板</a></p>
-
-<p><a href="https://bbs.safewiki.org/portal.php">安全文库</a></p>
-
-<p><a href="http://webscan.360.cn/vul">360网站常见漏洞</a></p>
-
-<h2 id="toc_5">漏洞平台</h2>
-
-<p><a href="https://butian.360.cn/">补天</a></p>
-
-<p><a href="https://www.vulbox.com/">漏洞盒子</a></p>
-
-<p><a href="https://www.bugbank.cn/">漏洞银行</a></p>
-
-<p><a href="http://www.cnvd.org.cn/">CNVD国家信息安全漏洞共享平台</a></p>
-
-<p><a href="https://src.edu-info.edu.cn/">教育行业漏洞报告平台</a></p>
-
-<p><a href="https://www.seebug.org">Seebug</a></p>
-
-<p><a href="http://0xsafe.org/vuldb.html">Vuldbs漏洞平台</a></p>
-
-<h2 id="toc_6">技能要求</h2>
-
-<ul>
-<li>不同场景下的渗透测试流程、方法</li>
-<li>常见漏洞的攻击方法和防御方法</li>
-<li>代码级白盒测试能力</li>
-<li>owasp_top10概念、原理、测试方法、防御方法</li>
-<li>主流防火墙、IDS、IPS、漏洞扫描工具的安装、使用方法</li>
-<li>熟悉python、php、javascript、c、c++等语言的一种或多种</li>
-<li>cissp之类的证书或ctf解题能力是加分项</li>
-<li>各种靶机环境搭建</li>
-<li>安全分析报告的编写</li>
-<li>对业务快速熟悉的能力（业务安全重点、应用范围划分、业务安全基线）</li>
-<li>spring、struts、hibernate框架安全相关</li>
-<li>web组件加固、服务器加固、数据库加固</li>
-<li>域渗透、dns、arp等内网渗透知识</li>
-<li>各类提权如系统提权、数据库提权等</li>
-<li>风险评估、等级保护、安全体系规划、安全体系建设。包括信息资产管理、安全威胁和风险评估、安全解决方案制定、信息安全体系实施</li>
-<li>Nginx、Apache、Tomcat等安全配置基线</li>
-<li>各类安全测试标准(ISSAF、OSSTMM、OWASP、微软SDLC、OPENSAMM、BSIMM、SSECMM)</li>
-<li>网络日志分析、攻击流量检测</li>
-<li>hadoop、openstack、sdn云安全</li>
-<li>mongodb、redis、HBASE等nosql安全</li>
-<li>burpsuite插件编写</li>
-<li>python脚本开发能力、shell脚本开发能力</li>
-</ul>
-
                         
                       </div>
                   </div>
@@ -289,134 +179,13 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/13 15:34 下午</span>
+                    <span class="date">2019/05/08</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
           				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+                    
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15446861280668.html">
-                
-                  <h1>hackthebox邀请码</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>不打算好好玩的麻烦不要瞎注册，大量的垃圾账号只会污染整个生态环境。</p>
-</blockquote>
-
-<p>进入注册页面，观察页面js文件会找到以下内容：</p>
-
-<pre class="line-numbers"><code class="language-javascript">eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!&#39;&#39;.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return&#39;\\w+&#39;};c=1};while(c--){if(k[c]){p=p.replace(new RegExp(&#39;\\b&#39;+e(c)+&#39;\\b&#39;,&#39;g&#39;),k[c])}}return p}(&#39;1 i(4){h 8={&quot;4&quot;:4};$.9({a:&quot;7&quot;,5:&quot;6&quot;,g:8,b:\&#39;/d/e/n\&#39;,c:1(0){3.2(0)},f:1(0){3.2(0)}})}1 j(){$.9({a:&quot;7&quot;,5:&quot;6&quot;,b:\&#39;/d/e/k/l/m\&#39;,c:1(0){3.2(0)},f:1(0){3.2(0)}})}&#39;,24,24,&#39;response|function|log|console|code|dataType|json|POST|formData|ajax|type|url|success|api|invite|error|data|var|verifyInviteCode|makeInviteCode|how|to|generate|verify&#39;.split(&#39;|&#39;),0,{}))
-</code></pre>
-
-<p>1、然后把这段代码放到 <a href="http://jsbeautifier.org/">http://jsbeautifier.org/</a> 进行美化，得出：<br/>
-2、</p>
-
-<pre class="line-numbers"><code class="language-javascript">function verifyInviteCode(code) {
-    var formData = {
-        &quot;code&quot;: code
-    };
-    $.ajax({
-        type: &quot;POST&quot;,
-        dataType: &quot;json&quot;,
-        data: formData,
-        url: &#39;/api/invite/verify&#39;,
-        success: function(response) {
-            console.log(response)
-        },
-        error: function(response) {
-            console.log(response)
-        }
-    })
-}
-
-function makeInviteCode() {
-    $.ajax({
-        type: &quot;POST&quot;,
-        dataType: &quot;json&quot;,
-        url: &#39;/api/invite/how/to/generate&#39;,
-        success: function(response) {
-            console.log(response)
-        },
-        error: function(response) {
-            console.log(response)
-        }
-    })
-}
-</code></pre>
-
-<p>可以看出上述代码是让我们访问：<a href="https://www.hackthebox.eu/api/invite/generate">https://www.hackthebox.eu/api/invite/generate</a><br/>
-然后修改请求方式为post<br/>
-于是就得到了：</p>
-
-<pre class="line-numbers"><code class="language-javascript">{&quot;success&quot;:1,&quot;data&quot;:{&quot;code&quot;:&quot;VlJQS1QtQUNXRUstT0tYREwtQ0lZQVUtS0NZSlU=&quot;,&quot;format&quot;:&quot;encoded&quot;},&quot;0&quot;:200}
-</code></pre>
-
-<p>将code进行base64解码，就得到了邀请码。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/13 15:28 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15433912730163.html">
-                
-                  <h1>FOEENSICS 101</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>题目：<a href="https://ctflearn.com/problems/96">https://ctflearn.com/problems/96</a><br/>
-<figure><img src="http://images.lonelyor.org/ctflearn-96-1.png" alt="ctflearn-96-1"/><figcaption>ctflearn-96-</figcaption></figure><br/>
-访问域名，然后会下载一张图片。<br/>
-接下来我们使用十六进制编码器打开这张图片，会发现：<br/>
-<figure><img src="http://images.lonelyor.org/ctflearn-96-2.png" alt="ctflearn-96-2"/><figcaption>ctflearn-96-</figcaption></figure><br/>
-标红部分即是flag。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/28 15:47 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -451,10 +220,10 @@ function makeInviteCode() {
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-                <div class="site-a-logo"><img src="http://images.lonelyor.org/favicon.jpg" /></div>
+                <div class="site-a-logo"><img src="https://www.lonelyor.org/lonelyorWiki/media/15483045488413/205a66b0a6c34ba7184d2d68a9f62dd8.jpg" /></div>
             
                 <h1>lonelyorWiki</h1>
-                <div class="site-des">一个用来记录知识的网站</div>
+                <div class="site-des">一个用来记录知识的网站。</div>
                 <div class="social">
 
 
@@ -484,15 +253,13 @@ function makeInviteCode() {
         
             <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
         
-            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
-        
             <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
-        
-            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
         
-            <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
+            <a href="%E5%AE%89%E5%85%A8.html"><strong>安全</strong></a>
+        
+            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
             <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
         
@@ -513,31 +280,31 @@ function makeInviteCode() {
 	      
 		      
 			      <li class="post">
-			        <a href="15547243035014.html">相见欢·林花谢了春红</a>
+			        <a href="15764947924982.html">Arch系常用技巧与问题汇总</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15547237158216.html">怎么解决"该虚拟机似乎正在使用中"问题</a>
+			        <a href="15747334018156.html">msfvenom各类木马生成脚本</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15547068970077.html">arch 安装配置指南带图版</a>
+			        <a href="15724200154293.html">v2ray实现科学上网</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15547067485409.html">arch 安装配置指南</a>
+			        <a href="15708455642675.html">windows渗透技巧</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15543568335321.html">python 计算代码运行时间的方法</a>
+			        <a href="15692949172295.html">Proxmox物理安装</a>
 			      </li>
 		     
 		  
@@ -582,7 +349,7 @@ function makeInviteCode() {
 
  <div class="page-bottom clearfix">
   <div class="row">
-   <p class="copyright">Copyright &copy; 2018
+   <p class="copyright">Copyright &copy; 2015
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
 Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
   </div>
@@ -591,6 +358,213 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
         </section>
       </div>
     </div>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+figure{margin: 0;padding: 0;}
+figcaption{text-align:center;}
+
+/* PrismJS 1.14.0
+ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: black;
+    background: none;
+    text-shadow: 0 1px white;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background:#b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+@media print {
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #F7F7F7;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: slategray;
+}
+
+.token.punctuation {
+    color: #999;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #9a6e3a;
+    background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+.token.function,
+.token.class-name {
+    color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #e90;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+
+pre[class*="language-"].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+    .line-numbers-rows > span {
+        pointer-events: none;
+        display: block;
+        counter-increment: linenumber;
+    }
+
+        .line-numbers-rows > span:before {
+            content: counter(linenumber);
+            color: #999;
+            display: block;
+            padding-right: 0.8em;
+            text-align: right;
+        }
+
+</style>
 
   
     
@@ -612,9 +586,21 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
      
     </script>
 
-    
-
-
+<div id="container"></div>
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: '<%= page.date %>',
+  owner: 'AlShelley',
+  repo: 'lonelyorwiki-message',
+  oauth: {
+    client_id: '2a0c6ad761806835e987',       
+    client_secret: '083280496d60e9becae3c653f97b18db292333cf',  
+  },
+})
+gitment.render('container')
+</script>
 
   </body>
 </html>

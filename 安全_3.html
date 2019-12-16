@@ -130,28 +130,43 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15483045491162.html">
+                <a class="clearlink" href="15597856399146.html">
                 
-                  <h1>burpsuite设置上游代理</h1>
+                  <h1>黑盒测试中的信息收集</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>burpsuite的使用技巧之一，设置上游代理。比如测试境外网站时可能需要[fanqiang]才能访问，此时这个技巧就能用得上了。</p>
-</blockquote>
+                        	<p>信息搜集分为主动搜集和被动搜集，主动搜集会惊动资产方因此需要有所针对，动静越小越好；而被动搜集不会惊动资产方因此更为隐蔽。</p>
 
-<p><img src="http://images.lonelyor.org/burp%E8%AE%BE%E7%BD%AE%E4%B8%8A%E6%B8%B8%E4%BB%A3%E7%90%8620180823161146.png" alt="burp设置上游代理20180823161146"/></p>
+<h2 id="toc_0">第一阶段：资产（域名及子域名）搜集</h2>
 
-<p>1、在浏览器中设置burp代理以保证可以抓包
-2、开启上游代理
-3、在burp的图中所示位置设置上游代理</p>
+<p>1、确认目标性质：了解网站所在行业，他是一个黑产赌博色情站、还是政府学校官方站、亦或是金融游戏商业站。了解这类网站通常的安全关注点在哪，那么避开其关注点，就是它的薄弱点。</p>
 
-<p>打完收工</p>
+<p>2、收集目标资产 1：使用搜索引擎搜索关键词（公司名、域名等），找出搜索引擎搜录的相关域名，这里可以用一些现成的工具或者自写爬虫</p>
 
-<h2 id="toc_0">参考链接</h2>
+<p>3、收集目标资产 2：使用子域名扫描器，根据 2 中搜集来的域名进一步进行资产收集。</p>
 
-<p><a href="http://www.360zhijia.com/360anquanke/191737.html">http://www.360zhijia.com/360anquanke/191737.html</a></p>
+<p>4、收集目标资产 3：使用爬虫在 3 所在的页面中爬取隐藏页面或引用的 url。</p>
+
+<p>信息搜集是层层递进的，根据上一次收集的信息来进行扩展，尽可能多的收集目标资产、扩大打击面。</p>
+
+<h2 id="toc_1">第二阶段：资产属性收集</h2>
+
+<p>5、得到域名和 ip 相关信息后，对资产进行端口扫描、敏感目录（包括后台、备份文件、隐藏接口、邮箱系统、运维自带后门、github 或网盘泄露等）扫描、GoogleHacking（快照信息、已知后门、代码泄露、已知安全事件）、操作系统版本（win、linux）、web 应用服务器版本（nginx、apache、tomcat 等）、后端框架（spring、flask、thinkphp 等）、网络拓扑（多少主机、路由、交换、网段、DNS服务器等）、防御软硬件信息（防火墙、waf、网闸等）等。并一一记录资产对应的信息。这里还有些值得注意的信息就是：邮箱、手机号、身份证号等个人敏感信息。</p>
+
+<p>6、分析信息并对有效信息进行提取和记录。</p>
+
+<p>比如你可以这样来记录（这只是个例子，信息收集自然是越详细越好）：
+<img src="media/15597856399146/15598028215198.jpg" alt=""/></p>
+
+<h2 id="toc_2">第三阶段：资产攻击面分析</h2>
+
+<p>7、收集了各种信息后，就是分析各个资产可能存在的防御薄弱点、分析攻击面。可以从软硬件漏洞、业务、人三个方向来进行分析。</p>
+
+<p>8、收集攻击相关工具、字典等，针对可入侵性高的攻击面进行攻击，此时会获得攻击工具的部分反馈。根据反馈我们可以更好地了解对方的防御措施和脆弱点。根据不同的攻击行为，系统会有不同的反应，分析这些信息对后续展开更深层次的攻击也是有积极意义的。</p>
+
+<p>基本上，到这里，我们就可以开始展开针对性的攻击了。如果物理上离目标近，还可以使用钓鱼二维码、社工、应聘、潜入停车场、办公区域，若网络未做内外网隔离还可以连接办公室 wifi 等方式（连接 wifi 这个绝对是大杀器）。</p>
 
                         
                       </div>
@@ -160,202 +175,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/01/24</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15483045488670.html">
-                
-                  <h1>burpsuite如何给数据打标的</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>用特殊字符标记关键字即可</p>
-
-<p>类似的有sqlmap，它是使用参数指定要打标的关键词</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/01/24</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15483045489194.html">
-                
-                  <h1>Web安全核心</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>核心是攻防</p>
-
-<p>测试备忘录和利用备忘录——攻击
-防御备忘录和危害备忘录——防御</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/01/24</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15473524859484.html">
-                
-                  <h1>msf更新</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>1、打开终端输入 msf 进入msfconsole
-2、在 msfconsole 中输入 msfupdate 即可自动更新</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/01/13</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15453709108643.html">
-                
-                  <h1>python弱口令脚本的一点备注</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>很久以前写的</p>
-</blockquote>
-
-<p>跑弱口令的脚本
-不要使用字典这种操作，这不利于跑大量数据的场景。
-应该制定规则去跑，比如：
-取出一个用户名，然后根据规则生成弱口令，然后再去匹配用户名对应的密码，匹配则是弱口令，不匹配则不是弱口令。
-这样可以后续变成一个服务，用户输入密码，触发了规则则告诉他密码是弱口令。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15453707290429.html">
-                
-                  <h1>msf安装与维护</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><code>curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb &gt; msfinstall &amp;&amp; \
-  chmod 755 msfinstall &amp;&amp; \
-  ./msfinstall</code></p>
-
-<p>上面是官方提供的一键安装脚本</p>
-
-<p>使用msfupdate可以进行更新</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/21</span>
+                    <span class="date">2019/06/06</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>

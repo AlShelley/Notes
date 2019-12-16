@@ -1,0 +1,754 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  安全 - lonelyorWiki
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="lonelyorWiki" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+ 
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:www.lonelyor.org/lonelyorWiki ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">首页</a></li>
+        
+        <li id=""><a target="_blank" href="archives.html">归档</a></li>
+        
+        <li id=""><a target="_blank" href="ruby.html">流光</a></li>
+        
+        <li id=""><a target="_blank" href="beautiful.html">惊鸿</a></li>
+        
+        <li id=""><a target="_blank" href="lose.html">失乐园</a></li>
+        
+        <li id=""><a target="_blank" href="search.html">北斗</a></li>
+        
+        <li id=""><a target="_blank" href="about.html">关于</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; lonelyorWiki</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">首页</a></li>
+        
+        <li><a target="_blank" href="archives.html">归档</a></li>
+        
+        <li><a target="_blank" href="ruby.html">流光</a></li>
+        
+        <li><a target="_blank" href="beautiful.html">惊鸿</a></li>
+        
+        <li><a target="_blank" href="lose.html">失乐园</a></li>
+        
+        <li><a target="_blank" href="search.html">北斗</a></li>
+        
+        <li><a target="_blank" href="about.html">关于</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
+        
+            <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
+        
+            <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
+        
+            <li><a href="%E5%AE%89%E5%85%A8.html">安全</a></li>
+        
+            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
+        
+            <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
+        
+            <li><a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html">星火流萤</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="15446866501207.html">
+                
+                  <h1>IIS短文件名漏洞</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">漏洞原理</h2>
+
+<hr/>
+
+<p>windows在创建一个新文件时，操作系统还会生成 8.3 格式的兼容 MS-DOS 的（短）文件名，以允许基于 MS-DOS 或16位 windows 的程序访问这些文件。    </p>
+
+<h2 id="toc_1">利用场景</h2>
+
+<hr/>
+
+<p>1、用于猜解文件/文件名<br/>
+2、.Net Framework 的拒绝服务攻击（不常见）</p>
+
+<h2 id="toc_2">检测方法</h2>
+
+<hr/>
+
+<p><strong>黑盒测试</strong><br/>
+使用<a href="https://github.com/lijiejie/IIS_shortname_Scanner">IIS短文件名扫描器</a><br/>
+<strong>白盒测试</strong>
+几乎所有的 windows 操作系统，在 cmd 中使用命令：</p>
+
+<pre class="line-numbers"><code class="language-bat">dir /x
+</code></pre>
+
+<p>如图：
+<img src="media/15446866501207/%E7%9F%AD%E6%96%87%E4%BB%B6%E5%90%8D%E6%98%BE%E7%A4%BA.png" alt="短文件名显示"/></p>
+
+<h2 id="toc_3">修复方案</h2>
+
+<hr/>
+
+<p>1、升级 .net framework 至 4.0 版本或以上<br/>
+2、修改注册表键值<br/>
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem 修改NtfsDisable8dot3NameCreation为1。（此项默认为0）<br/>
+此设置用于禁用短文件名功能，重启后生效。<br/>
+或者通过 CMD 命令：    </p>
+
+<pre class="line-numbers"><code class="language-txt">Windows Server 2008 R2
+查询是否开启短文件名功能：fsutil 8dot3name query
+关闭该功能：fsutil 8dot3name set 1
+
+Windows Server 2003
+关闭该功能：fsutil behavior set disable8dot3 1
+</code></pre>
+
+<p>以上操作只能防止新创建的文件/文件名不会出现短文件名，而当前文件/文件名依然保持短文件名。完整解决方案还需要如下操作：<br/>
+3、<br/>
+　　a、从当前目录中创建一个副本,并将其重命名为 tempNew；<br/>
+　　b、将当前目录重命名为“tempOld”；<br/>
+　　c、将“tempNew”重命名为原来的目录名。<br/>
+4、禁止 url 中使用 “~” 或它的 Unicode 编码。（IIS7.0的请求阻塞不能完全阻止“~”波浪号。）</p>
+
+<hr/>
+
+<hr/>
+
+<hr/>
+
+<h2 id="toc_4">背景知识</h2>
+
+<hr/>
+
+<p>windows 支持的长文件名最多为 255 个字符。windows 还以 8.3 格式生成与 MS-DOS 兼容的（短）文件名，以允许基于 MS-DOS 或 16 位 windows 的程序访问这些文件。<br/>
+8.3格式短文件名规范中：<br/>
+‘8’是指文件名或目录名的主体部分小于等于 8 个字节；‘3’是指文件名的扩展名部分小于等于 3 个字节。<br/>
+windows 会按以下方式从长文件名生成短文件名：<br/>
+windows 首先会删除文件名中的任何无效字符和空格。无效字符包括：</p>
+
+<pre class="line-numbers"><code class="language-txt">.&quot;/\[]:;=,
+</code></pre>
+
+<p>由于短文件名只能包含一个英文句点（.），因此 windows 将删除文件名中的其他英文句点，即使文件名中最后一个英文句点后面是有效的非空格字符也是如此。例如：windows 从长文件名 This is a really long filename.123.456.789.txt 生成短文件名 Thisis~1.txt 否则，windows 将忽略最后一个英文句点，而使用倒数第二个英文句点。例如：windows从长文件名 This is a really long filename.123.456.789. 生成短文件名 Thisis~1.789。<br/>
+生成短文件名若需要复制的话，windows 将文件名截断为 6 个字符，并在后边附加一个波形符号（~）和一个数字（创建的每一个以 ~1 结尾的唯一文件名，复制文件以 ~2、~3等结尾。）    </p>
+
+<h2 id="toc_5">影响范围</h2>
+
+<hr/>
+
+<p>Windows 10 Pro released in July 2015Windows 10 Enterprise released in July 2015Microsoft Windows Server 2003 Standard EditionMicrosoft Windows Server 2003 Enterprise EditionMicrosoft Windows Server 2003 Datacenter EditionMicrosoft Windows Server 2003 Web EditionMicrosoft Windows Server 2003, Enterprise x64 EditionMicrosoft Windows Small Business Server 2003 Standard EditionMicrosoft Windows Small Business Server 2003 Premium EditionMicrosoft Windows XP Home EditionMicrosoft Windows XP Professional EditionMicrosoft Windows Datacenter Server Limited EditionMicrosoft Windows Advanced Server, Limited EditionMicrosoft Windows 2000 ServerMicrosoft Windows 2000 Advanced ServerMicrosoft Windows 2000 Professional EditionMicrosoft Windows NT Workstation 3.5Microsoft Windows NT Workstation 3.51Microsoft Windows NT Workstation 4.0 开发员版Microsoft Windows NT Server 3.51Microsoft Windows NT Server 4.0 Standard EditionWindows Vista Service Pack 2Windows Vista BusinessWindows Vista EnterpriseWindows Vista Home PremiumWindows Vista UltimateWindows Server 2008 Service Pack 2Windows Server 2008 StandardWindows Server 2008 EnterpriseWindows Server 2008 DatacenterWindows Server 2008 for Itanium-Based SystemsWindows 7 Service Pack 1Windows 7 Home PremiumWindows 7 ProfessionalWindows 7 EnterpriseWindows 7 UltimateWindows Server 2008 R2 Service Pack 1Windows Server 2008 R2 StandardWindows Server 2008 R2 EnterpriseWindows Server 2008 R2 DatacenterWindows Server 2008 R2 for Itanium-Based SystemsWindows 8 EnterpriseWindows 8 ProWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 DatacenterWindows Server 2012 DatacenterWindows Server 2012 DatacenterWindows Server 2012 Datacenter
+列表内所有操作系统均受影响（数据来源日期：20171213）<br/>
+该漏洞有其局限性：<br/>
+1、只能猜解文件/文件夹名前六位，以及扩展名前三位<br/>
+2、名称较短的文件是没有响应的短文件名的<br/>
+3、需要 IIS 和 .net 同时满足。  </p>
+
+<h2 id="toc_6">漏洞详情</h2>
+
+<hr/>
+
+<p>在 windows 上的 Apache（Apache支持短文件名）上运行的 web 应用程序正在创建一个长文件名文件（如sql备份文件或会话文件，假设文件名是 backup-082119f75623eb7abd7bf357698ff66c.sql，windows 将创建短文件名 BACKUP〜1.SQL）。这种情况下，如果我们用短文件名访问这个文件，那么就有可能获取这个包含sql数据库备份的文件。<br/>
+比较著名的一个例子：<br/>
+wordpress 有一个备份博客的插件，该插件会为备份创建一个自定义目录（backup-88456）。备份完成后，该目录包含一个名为 wordpress_wp_20120702_576.sql 的文件  ，即 WordPress 数据库备份。这本应该难以猜测的，因为我们的目录名称中有5个数字加上日期和另外3个数字，即使忽略日期也至少有 100,000,000 个组合。然而由于短文件名的原因，目录名会变成 BACKUP~1 而文件名会变成 WORDPR~1.SQL。100,000,000 个组合被缩减为一个组合。    </p>
+
+<h2 id="toc_7">漏洞利用</h2>
+
+<hr/>
+
+<p><strong>短文件名漏洞</strong>
+漏洞利用需要使用到通配符。在 windows 中，* 可以匹配n个字符（n可以为0,一个星号和n个星号的意义一样）。判断某站点是否存在 IIS 短文件名爆破，构造如下payload：    </p>
+
+<pre class="line-numbers"><code class="language-http">1. http://www.xxx.com/*~1*/.aspx
+2. http://www.xxx.com/l1j1e*~1*/.aspx
+</code></pre>
+
+<p>若1返回404而2返回400，则可以判断目标站点存在漏洞。<br/>
+判断漏洞存在后，继续猜解目录下是否存在a开头的文件或文件夹，访问：    </p>
+
+<pre class="line-numbers"><code class="language-http">http://www.xxx.com/a*~1*/.aspx
+</code></pre>
+
+<p>若存在将返回404，不存在则返回400。以此类推，不断向下猜解所有的6个字符。<br/>
+到此要考虑两种情况，若abcdef开头的是一个文件夹则    </p>
+
+<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*/~1/.aspx
+</code></pre>
+
+<p>返回404。若abcdef开头的是一个文件，则    </p>
+
+<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*~1/.aspx
+</code></pre>
+
+<p>返回404（注意！返回404表示存在）同理我们可以猜出文件后缀名：    </p>
+
+<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*~1*h*/.aspx
+</code></pre>
+
+<p>若返回404则代表扩展名中肯定存在h字符。<br/>
+利用此漏洞可以猜解后台地址、敏感文件/文件名（如备份的rar、bak、sql等）；某些情况下，可以通过短文件名漏洞直接下载对应的文件（如备份sql文件）。<br/>
+<br>
+<strong>.Net Framework 拒绝服务攻击</strong><br/>
+当请求文件夹名称包含 ~1 的请求，会导致不存在该文件的 .Net Framework 去递归查询所有根目录。如果只有一个“~1”是无效的，当“~1”大于一个，比如像这样：        </p>
+
+<pre class="line-numbers"><code class="language-http">\wwwtest\fuck~1\~1\~1\~1.aspx
+</code></pre>
+
+<p>此时文件系统会这样调用：    </p>
+
+<pre class="line-numbers"><code class="language-txt">\wwwtest                           SUCCESS
+\wwwtest\fuck~1\~1\~1\~1           PATH NOT FOUND
+\wwwtest\fuck~1                    NAME NOT FOUND
+\wwwtest\fuck~1\~1\                PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1\             PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1              PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
+\wwwtest\fuck~1\~1\~1              PATH NOT FOUND
+\wwwtest\fuck~1\~1                 PATH NOT FOUND
+\wwwtest\fuck~1                    NAME NOT FOUND
+\wwwtest                           SUCCESS
+\wwwtest                           SUCCESS
+</code></pre>
+
+<p>如果我们请求的文件/文件夹名同时存在大小写时，这个请求会被请求两次，一次是原封不动的请求，一次是全部使用小写的请求。<br/>
+下表显示了每个请求的FS调用的数量（Windows 2008 R2, IIS 7.5(latest patch – June 2012), and .Net framework 4.0.30319 (在别的系统下可能会不同)）<br/>
+<img src="media/15446866501207/F5%E8%B0%83%E7%94%A8.png" alt="F5调用"/></p>
+
+<p>这个问题适用于当时的 .Net framework 的所有版本(<br/>
+    IIS 1.0, Windows NT 3.51<br/>
+    IIS 2.0, Windows NT 4.0<br/>
+    IIS 3.0, Windows NT 4.0 Service Pack 2<br/>
+    IIS 4.0, Windows NT 4.0 Option Pack<br/>
+    IIS 5.0, Windows 2000<br/>
+    IIS 5.1, Windows XP Professional and Windows XP Media Center Edition<br/>
+    IIS 6.0, Windows Server 2003 and Windows XP Professional x64 Edition<br/>
+    IIS 7.0, Windows Server 2008 and Windows Vista<br/>
+    IIS 7.5, Windows 7 (error remotely enabled or no web.config)<br/>
+    IIS 7.5, Windows 2008 (classic pipeline mode))<br/>
+只是 F5 的调用次数会有不同。    </p>
+
+<h2 id="toc_8">参考链接</h2>
+
+<hr/>
+
+<ul>
+<li><a href="http://www.lijiejie.com/iis-win8-3-shortname-brute/">http://www.lijiejie.com/iis-win8-3-shortname-brute/</a><br/></li>
+<li><a href="https://www.acunetix.com/blog/articles/windows-short-8-3-filenames-web-security-problem/">https://www.acunetix.com/blog/articles/windows-short-8-3-filenames-web-security-problem/</a><br/></li>
+<li><a href="http://www.freebuf.com/articles/4908.html">http://www.freebuf.com/articles/4908.html</a><br/></li>
+<li><a href="https://support.microsoft.com/zh-cn/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions">https://support.microsoft.com/zh-cn/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions</a><br/></li>
+<li><a href="https://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf">https://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf</a><br/></li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   <a href="安全_36.html">&laquo; Prev Page</a>  
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			 <a href="安全_38.html">&raquo; Next Page</a> 
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <div class="site-a-logo"><img src="https://www.lonelyor.org/lonelyorWiki/media/15483045488413/205a66b0a6c34ba7184d2d68a9f62dd8.jpg" /></div>
+            
+                <h1>lonelyorWiki</h1>
+                <div class="site-des">一个用来记录知识的网站。</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="https://github.com/AlShelley/lonelyorWiki" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:lonelyor.org@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
+        
+            <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
+        
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
+        
+            <a href="%E5%AE%89%E5%85%A8.html"><strong>安全</strong></a>
+        
+            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
+        
+            <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
+        
+            <a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html"><strong>星火流萤</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15764947924982.html">Arch系常用技巧与问题汇总</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15747334018156.html">msfvenom各类木马生成脚本</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15724200154293.html">v2ray实现科学上网</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15708455642675.html">windows渗透技巧</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15692949172295.html">Proxmox物理安装</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+figure{margin: 0;padding: 0;}
+figcaption{text-align:center;}
+
+/* PrismJS 1.14.0
+ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: black;
+    background: none;
+    text-shadow: 0 1px white;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background:#b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+@media print {
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #F7F7F7;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: slategray;
+}
+
+.token.punctuation {
+    color: #999;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #9a6e3a;
+    background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+.token.function,
+.token.class-name {
+    color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #e90;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+
+pre[class*="language-"].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+    .line-numbers-rows > span {
+        pointer-events: none;
+        display: block;
+        counter-increment: linenumber;
+    }
+
+        .line-numbers-rows > span:before {
+            content: counter(linenumber);
+            color: #999;
+            display: block;
+            padding-right: 0.8em;
+            text-align: right;
+        }
+
+</style>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+<div id="container"></div>
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: '<%= page.date %>',
+  owner: 'AlShelley',
+  repo: 'lonelyorwiki-message',
+  oauth: {
+    client_id: '2a0c6ad761806835e987',       
+    client_secret: '083280496d60e9becae3c653f97b18db292333cf',  
+  },
+})
+gitment.render('container')
+</script>
+
+  </body>
+</html>

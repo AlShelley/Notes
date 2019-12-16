@@ -3,10 +3,6 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <link rel="bookmark" href="https://raw.githubusercontent.com/AlShelley/lonelyorWiki/master/asset/img/favicon.ico" type="images/x-icon"/>
-    <link rel="shortcut icon" href="https://raw.githubusercontent.com/AlShelley/lonelyorWiki/master/asset/img/favicon.ico" type="images/x-icon"/>
-
     <title>
     
   工具 - lonelyorWiki
@@ -19,9 +15,7 @@
     <link rel="stylesheet" href="asset/css/docs.css" />
     <script src="asset/js/vendor/modernizr.js"></script>
     <script src="asset/js/vendor/jquery.js"></script>
-  <script src="asset/highlightjs/highlight.pack.js"></script>
-  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script>hljs.initHighlightingOnLoad();</script>
+ 
 <script type="text/javascript">
   function before_search(){
     var searchVal = 'site:www.lonelyor.org/lonelyorWiki ' + document.getElementById('search_input').value;
@@ -46,17 +40,17 @@
         
         <li id=""><a target="_self" href="index.html">首页</a></li>
         
-        <li id=""><a target="_self" href="archives.html">归档</a></li>
+        <li id=""><a target="_blank" href="archives.html">归档</a></li>
         
-        <li id=""><a target="_self" href="beautiful.html">惊鸿</a></li>
+        <li id=""><a target="_blank" href="ruby.html">流光</a></li>
         
-        <li id=""><a target="_self" href="ruby.html">流光</a></li>
+        <li id=""><a target="_blank" href="beautiful.html">惊鸿</a></li>
         
-        <li id=""><a target="_self" href="search.html">北斗</a></li>
+        <li id=""><a target="_blank" href="lose.html">失乐园</a></li>
         
-        <li id=""><a target="_self" href="lose.html">失乐园</a></li>
+        <li id=""><a target="_blank" href="search.html">北斗</a></li>
         
-        <li id=""><a target="_self" href="about.html">关于</a></li>
+        <li id=""><a target="_blank" href="about.html">关于</a></li>
         
         </ul>
 
@@ -85,17 +79,17 @@
         
         <li><a target="_self" href="index.html">首页</a></li>
         
-        <li><a target="_self" href="archives.html">归档</a></li>
+        <li><a target="_blank" href="archives.html">归档</a></li>
         
-        <li><a target="_self" href="beautiful.html">惊鸿</a></li>
+        <li><a target="_blank" href="ruby.html">流光</a></li>
         
-        <li><a target="_self" href="ruby.html">流光</a></li>
+        <li><a target="_blank" href="beautiful.html">惊鸿</a></li>
         
-        <li><a target="_self" href="search.html">北斗</a></li>
+        <li><a target="_blank" href="lose.html">失乐园</a></li>
         
-        <li><a target="_self" href="lose.html">失乐园</a></li>
+        <li><a target="_blank" href="search.html">北斗</a></li>
         
-        <li><a target="_self" href="about.html">关于</a></li>
+        <li><a target="_blank" href="about.html">关于</a></li>
         
 
     <li><label>Categories</label></li>
@@ -103,13 +97,13 @@
         
             <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
         
-            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
-        
             <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
         
-            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
+            <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
         
-            <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
+            <li><a href="%E5%AE%89%E5%85%A8.html">安全</a></li>
+        
+            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
             <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
         
@@ -136,372 +130,27 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15446974404003.html">
+                <a class="clearlink" href="15515375536566.html">
                 
-                  <h1>wsgidav独立服务器使用手册</h1>
+                  <h1>rclone挂载 onedrive 教程</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>很久以前写的，我也不记得写的什么东西了。wsgidav是一个提供webdav服务的python库，可以用来共享文件。更多相关知识可以自行百度“什么是webdav？”。</p>
-</blockquote>
-
-<h1 id="toc_0">使用示例（或者说是个本地测试）</h1>
-
-<p>sudo wsgidav --host=0.0.0.0 --port=80 --root=/home/lonelyor<br/>
-这里的sudo是个坑，不加的话就找不到wsgidav指令，为此搞了好久诶。</p>
-
-<h1 id="toc_1">wsgidav高级设置：</h1>
-
-<p>sudo wsgidav  --config=./wsgidav.conf<br/>
-引用配置文件，配置文件使用python语法来指定这些选项：<br/>
-服务器选项（主机名，端口，SSL证书，...）<br/>
-共享名称/ WebDAV提供程序映射列表<br/>
-认证用户列表<br/>
-可选的自定义DAV提供程序（即FilesystemProvider以外）<br/>
-可选的自定义锁管理器，属性管理器和域控制器<br/>
-高级调试选项<br/>
-（和更多）</p>
-
-<h1 id="toc_2">配置文件示例</h1>
-
-<pre class="line-numbers"><code class="language-python">＃注意：这个文件是Python的语法和格式
-
-####################################### #########################################＃
-WsgiDAV配置文件
-＃请参阅
-＃http ： //wsgidav.readthedocs.io/en/latest/run-configure.html＃
-以获取配置文件格式的一些解释。
-################################################## ############################## 
-
-＃助手-请不要修改此节
-
-provider_mapping  =  {} 
-user_mapping  =  {} 
-
-高清 addShare （SHARENAME ， davProvider ）：
-    provider_mapping [ shareName ]  =  davProvider
-
-    
-def  addUser （realmName ， user ， password ， description ， roles = []）：
-    realmName  =  “/”  +  realmName 。条（- [R “\ /” ）
-    的UserDict  =  user_mapping 。setdefault （realmName ， {}）。setdefault （user ， {}）
-    userDict [ “password” ]  =  密码
-    userDict [ “description”]  =  描述
-    userDict [ “roles” ]  =  角色
-
-
-####################################### #########################################＃
-SERVER OPTIONS 
-＃===== ================================================== ======================== 
-＃在这个WSGI服务器中运行WsgiDAV。
-＃支持的服务器：“cheroot”，“cherrypy-wsgiserver”，“ext_wsgiutils”，
-＃“flup-fcgi”，“flup-fcgi-fork”，“paste”，“wsgiref” 
-＃“wsgiref”和“ext_wsgiutils”内置的服务器，应该*不* 
-生产中使用。
-＃所有其他服务器必须已经安装，例如`pip install cheroot`。
-＃（二进制发行版已经包含了&#39;cheroot&#39;）
-＃默认：“cheroot”，使用命令行上的--server选项来改变它。
-
-#server =“cheroot” 
-
-＃在初始化时传递给服务器的附加参数（取决于`server`）
-＃例如，对于cheroot：
-
-#server_args = { 
-＃“numthreads”：10，
-＃“max”：-1，
-＃“request_queue_size “：5，
-＃”timeout“：10，
-＃”shutdown_timeout“：5，
-＃”verbose“：0，
-＃} 
-
-＃服务器端口（默认：8080，在命令行使用--port）
-port  =  8080 
-
-＃服务器主机名默认：localhost，
-  
-
-＃================================================= ============================== 
-＃启用SSL支持
-＃注意：
-＃有效的证书必须与服务器的主机名匹配，所以假的证书将
-不会在所有情况下工作。
-＃改为创建自己的证书！
- 
-＃ssl_certificate =“wsgidav / server / sample_bogo_server.crt” 
-＃ssl_private_key =“wsgidav / server / sample_bogo_server.key” 
-＃ssl_certificate_chain = None 
-
-＃cheroot服务器支持&#39;builtin&#39;和&#39;pyopenssl&#39;（默认值：&#39;builtin&#39;）
-＃ssl_adapter = pyopenssl“ 
-
-
-＃=============================================== ================================= 
-＃Misc。setings 
-＃
-
-＃将MS-Author-Via响应头添加到OPTIONS命令，以允许
-使用Microsoft Office 
-
-编辑＃（默认值：False）add_header_MS_Author_Via  =  True 
-
-
-＃以字节为单位的块大小
-
-＃block_size = 8192 
-
-
-＃将此值设置为True，强制不引用PATH_INFO。这应该已经由WSGI 
-＃Framework 
-
-完成了，所以这个设置只能用来解决那里的意外问题（见问题＃8）。＃unquote_path_info = False 
-
-
-＃使用UTF-8重新编码PATH_INFO（回落到ISO-8859-1）。
-＃这似乎是错误的，因为每个PEP 3333 PATH_INFO始终是ISO-8859-1编码
-＃（请参阅https://www.python.org/dev/peps/pep-3333/#unicode-issues）。
-＃但是，在使用中文字符访问资源时，似乎可以解决错误
-（例如，参见问题＃73）。
-＃设置为`None`（默认），仅对Python 3启用。
-
-＃re_encode_path_info =无
-
-
-＃============================================= ================================== 
-＃中间件
-＃＃
-使用此部分来修改默认中间件堆栈
-
-＃from wsgidav .dir_browser import WsgiDavDirBrowser＃
-from debug_filter import WsgiDavDebugFilter＃
-from http_authenticator import HTTPAuthenticator 
-#from error_printer import ErrorPrinter 
-#middleware_stack = [WsgiDavDirBrowser，HTTPAuthenticator，ErrorPrinter，WsgiDavDebugFilter]
-
-＃================================================= ============================== 
-＃调试
-
-verbose  =  1        ＃0  - 没有输出（除了应用程序例外）          
-                     ＃1  - 显示单一（HTTP日志记录）
-                     ＃2  - 显示附加事件
-                     ＃3  - 显示完整的请求/响应头信息（HTTP日志记录）
-                     ＃请求正文和GET响应正文未显示
-
-
-＃启用特定的模块记录器
-＃Eg [“lock_manager”，“property_manager “，”http_authenticator“，...] 
-enable_loggers  =  [] 
-
-＃启用最大值。记录某些http方法
-＃Eg [“COPY”，“DELETE”，“GET”，“HEAD”，“LOCK”，“MOVE”，
-debug_methods  =  [] 
-
-＃启用最大值。在包含某些字符串的石蕊套件测试中进行日志记录
-＃Eg [“lock_excl”，“notowner_modify”，“fail_cond_put_unlocked”，...] 
-debug_litmus  =  [] 
-
-
-################## ################################################## ############# 
-WsgiDavDirBrowser 
-
-dir_browser  =  { 
-    “enable” ： True ，               ＃为集合的GET请求呈现HTML列表
-    “response_trailer” ： “” ，       ＃原始HTML代码，附加为页脚
-    “davmount” ： 假，            ＃发送&lt;dm：mount&gt;
-    “ms_mount” ： False ，            ＃添加一个“打开为webfolder”链接（需要Windows）
-    “ms_sharepoint_plugin” ： True ， ＃调用MS 
-    Offce 文档以使用WebDAV进行编辑“ms_sharepoint_urls” ： False ，  ＃
-Prepend&#39;ms -word：ofe | u |” 到MS Offce 
-文档的URL ＃“app_class”：MyBrowser，
-
-
-
-
-
-
-
-
-
-＃默认值：死性不支持
-wsgidav.property_manager.PropertyManager：＃也可用
-＃wsgidav.property_manager.ShelvePropertyManager 
-＃
-＃查看如何开发定制物业管理的文档。
-＃注意，默认的PropertyManager在内存中工作，因此不是
-＃持久化的。
-
-###使用内存中的属性管理器（不是永久的）
-＃（这与传递&#39;propsmanager = True&#39;相同）
-＃from wsgidav.property_manager import PropertyManager 
-#propsmanager = PropertyManager（）
-
-###使用基于持久性架构的属性管理器
-＃从wsgidav.property_manager导入ShelvePropertyManager
-#propsmanager = ShelvePropertyManager（“wsgidav-props.shelve”）
-
-###使用基于持久性MongoDB的属性管理器
-＃from wsgidav.addons.mongo_property_manager import MongoPropertyManager 
-#prop_man_opts = {} 
-#propsmanager = MongoPropertyManager（prop_man_opts）
-
-###使用基于持久性CouchDB属性管理器
-#from wsgidav.addons.couch_property_manager import CouchPropertyManager 
-#prop_man_opts = {} 
-#propsmanager = CouchPropertyManager（prop_man_opts）
-
-###使用内存中的属性管理器（NOT persistent）
-propsmanager  =  True 
-
-
-###可选的附加动态属性修改
-＃注意：默认情况下，像文件大小和上次修改时间的生活属性是
-＃只读，但如果底层DAV提供程序
-＃支持
-，则可以在这里覆盖。现在只有FileSystemProvider支持它，只有＃更改为上次修改的时间戳。使用下面的mutable_live_props 
-＃列表来
-启用它，以允许客户端使用utime系统调用，或者例如＃touch 或cp / rsync命令与挂载的
-＃DAV共享中
-的preserve-timestamp标志一起使用。＃请注意，时间戳是在实际的文件或目录中设置的，所以
-即使对于内存中的属性管理器
-，它也是持久的。还应该注意＃可变的最后修改可能不符合RFC 
-4918. #mutable_live_props = [“{DAV：} getlastmodified”]
-
-
-＃================================================= ============================== 
-＃锁管理器
-＃＃
-取消注释此行以指定您自己的锁管理器。                    
-＃默认值：wsgidav.lock_storage.LockStorageDict 
-＃还有：wsgidav.lock_storage.LockStorageShelve 
-＃
-＃查看如何开发自定义锁管理器的文档。
-＃注意默认的LockStorageDict在内存中工作，因此不是
-＃持久化的。
-                 
-＃示例：使用内存中的锁存储
-＃（这与默认情况下传递&#39;locksmanager = True&#39;相同）
-＃from wsgidav.lock_storage import LockStorageDict 
-#locksmanager = LockStorageDict（）
-
-
-＃示例：使用基于PERSISTENT架构的锁管理器
-＃from wsgidav.lock_storage import LockStorageShelve 
-#locksmanager = LockStorageShelve（“wsgidav-locks.shelve”）
-
-
-##################### ################################################## #########＃
-SHARES 
-＃＃
-如果您想通过
-＃WsgiDAV共享文件
-发布位置“/ v_root”中的文件，以便可以通过以下URL访问文件：＃http   ：/ / /服务器：端口/文件
-＃插入以下行：
-＃addShare（ “文件”， “/ v_root”） 
-＃或者，在Windows中：
-＃addShare（ “文件”， “C：\\ v_root”） ＃
-＃
-要使用根级别共享访问相同的目录
-＃http：// server：港口/
-
-＃add this line：＃addShare（“”，“/ v_root”）
-＃＃
-上面的例子使用wsgidav.fs_dav_provider.FilesystemProvider，它是
-缺省提供程序实现。
-＃＃
-如果您希望使用自定义提供程序，则必须将对象作为第二个
-参数
-
-
-传递。看下面的例子。  ###添加一个读写文件共享：
-addShare （“dav” ， r “C：\ temp” ）
-
-###添加一个只读文件共享：
-＃from wsgidav.fs_dav_provider import FilesystemProvider 
-#addShare（“tmp”， FilesystemProvider（“/ tmp”，readonly = True））
-
-
-###发布MySQL&#39;world&#39;数据库作为共享&#39;/ world-db&#39;
-#from wsgidav.addons.mysql_dav_provider import MySQLBrowserProvider 
-#addShare（“world-db”，MySQLBrowserProvider（“localhost”，“root”，“test”，“world”））
-
-
-### 
-从wsgidav.samples 
-发布一个虚拟结构。 virtual_dav_provider import VirtualResourceProvider #addShare（“virtres”，VirtualResourceProvider（））
-
-
-###发布一个Mercurial仓库
-＃from wsgidav.addons.hg_dav_provider import HgResourceProvider 
-#addShare（“hg”，HgResourceProvider（“PATH_OR_URL”））
-
-
-###发布一个MongoDB 
-#from wsgidav.samples.mongo_dav_provider import MongoResourceProvider 
-#mongo_dav_opts = {} 
-#addShare（“mongo”，MongoResourceProvider（mongo_dav_opts））
-
-
-################################################## ##############################＃
-AUTHENTICATION 
-＃================= ================================================== ============ 
-＃HTTP验证选项
-
-acceptbasic  =  True     ＃允许基本验证，True或False 
-acceptdigest  =  True    ＃允许摘要验证，True或False 
-defaultdigest  =  True   ＃True（默认摘要）或False默认基本）
-
-＃输入将被接受为授权用户的标题字段的名称。
-＃包括引号，例如：trusted_auth_header =“REMOTE_USER” 
-trusted_auth_header  =  无
-
-
-＃================================================= ============================== 
-＃域控制器
-＃取消注释此行以指定您自己的域控制器
-＃默认值：wsgidav.domain_controller，它采用下面的用户部分
-＃
-＃示例：
-＃使用域控制器，允许用户对一个认证
-＃Windows NT域或本地计算机。
-＃注意：NTDomainController需要基本身份验证：
-＃set acceptbasic = True，acceptdigest = False，defaultdigest = False 
-
-#from wsgidav.addons.nt_domain_controller import NTDomainController 
-#domaincontroller = NTDomainController（presetdomain = None，presetserver = None）
-#acceptbasic = True 
-#acceptdigest =假
-#defaultdigest = False 
-
-
-＃============================================= ================================== 
-＃USERS 
-＃＃
-此部分仅供DEFAULT域控制器使用。
-＃
-＃用户被每领域中定义的：
-＃ADDUSER（&lt;境界&gt;，&lt;用户&gt;，&lt;密码&gt;，&lt;描述&gt;） ＃   
-＃
-请注意，缺省域控制器使用共享名作为领域名称。   
-＃＃
-如果没有用户指定领域，则不需要认证。
-＃因此授予读写访问匿名！
-＃＃
-注意：如果您希望使用Windows WebDAV支持（例如Windows XP的My 
-＃网络位置），则需要将用户的域作为
-
-＃username 
-
-（注意DOUBLE斜线），例如：＃addUser（“v_root”，“domain \\ user”，“password”，“description”）addUser （“” ， “tester” ， “secret” ， “” ）
-ADDUSER （“” ， “tester2” ， “secret2” ，“”  ）
-
-#addUser（ “DAV”， “测试器”， “秘密”， “”）
-#addUser（ “DAV”， “tester2”， “secret2”，“ “）
-
-#addUser（”virtres“，”tester“，”secret“，”“）
-</code></pre>
+                        	<p>1、rclone config选 n
+2、给网盘起个名字如 xlz
+3、选择要挂载的网盘类型，输入数字即可，如 onedrive 则输入18
+4、按回车直到<code>Edit advanced config</code>选 y 来编辑配置
+5、<code>chunk-size</code>我选了200M,这个随便写。
+6、连续回车直到<code>expose_onenote_files&gt; true</code>，这里默认为 false，选 true 是为了在 finder 中显示。
+7、<code>Use auto config</code>，我选的是，然后浏览器自动弹出来进行认证
+8、认证结束后，<code>Your choice&gt; 1</code>
+9、<code>Chose drive to use:&gt;</code>选你要用的（数字）然后选y
+10、<code>y/e/d&gt; y</code>选 y 然后就添加好了
+11、新开一个终端，然后新建一个目录（待会儿网盘就会挂载到这个目录下，比如我新建 xlz）
+12、rclone mount xlz:/ /Users/lonelyor/NBonedrive/xlz
+13、如果要在后台运行就<code>nohup rclone mount xlz:/ /Users/lonelyor/NBonedrive/xlz &amp;</code>
+14、终端输入 <code>df -h</code> 查看</p>
 
                         
                       </div>
@@ -510,135 +159,13 @@ ADDUSER （“” ， “tester2” ， “secret2” ，“”  ）
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/13 18:37 下午</span>
+                    <span class="date">2019/03/02</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
           				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+                    
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15428711597348.html">
-                
-                  <h1>burpsuite设置上游代理</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>burpsuite的使用技巧之一，设置上游代理。比如测试境外网站时可能需要[fanqiang]才能访问，此时这个技巧就能用得上了。</p>
-</blockquote>
-
-<p><figure><img src="http://images.lonelyor.org/burp%E8%AE%BE%E7%BD%AE%E4%B8%8A%E6%B8%B8%E4%BB%A3%E7%90%8620180823161146.png" alt="burp设置上游代理20180823161146"/><figcaption>burp设置上游代理201808</figcaption></figure></p>
-
-<p>1、在浏览器中设置burp代理以保证可以抓包<br/>
-2、开启上游代理<br/>
-3、在burp的图中所示位置设置上游代理</p>
-
-<p>打完收工</p>
-
-<h2 id="toc_0">参考链接</h2>
-
-<p><a href="http://www.360zhijia.com/360anquanke/191737.html">http://www.360zhijia.com/360anquanke/191737.html</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/22 15:19 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15428708110510.html">
-                
-                  <h1>更优雅的使用Hexo写博客</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>曾经的博客是使用 Hexo 写的，我觉得Hexo这种在文章前面写上元信息的方式很棒。然而，每此写markdown文档都要输入这些元信息，这很麻烦，所以就写了个shell脚本来自动化输入文件元信息的过程。<br/>
-代码如下：</p>
-</blockquote>
-
-<pre class="line-numbers"><code class="language-bash">#!/bin/bash
-
-printf &quot;请输入文件名(example.md)，记得写后缀!\n&quot;
-read -p &quot;文件名是: &quot; filename
-# 这里的title取文件名不取后缀
-echo &quot;title: &quot;${filename%.*} &gt;&gt; $filename
-echo &quot;author: lonelyor&quot; &gt;&gt; $filename
-echo &quot;language: zh-CN&quot; &gt;&gt; $filename
-echo &quot;tags:&quot; &gt;&gt; $filename
-echo &quot;  - 标签&quot; &gt;&gt; $filename
-echo &quot;categories:&quot; &gt;&gt; $filename
-echo &quot;  - 分类&quot; &gt;&gt; $filename
-time=$(date &quot;+%Y-%m-%d %H:%M:%S&quot;)
-echo &quot;date: ${time}&quot;&gt;&gt; $filename
-echo &quot;---&quot; &gt;&gt; $filename
-echo &quot;&gt; description: &quot; &gt;&gt; $filename
-# printf和echo都是输出，&gt;&gt;表示追加，&gt;会覆盖文件
-# shell中使用变量需要先定义变量，然后使用时加 $
-# read 用来创建文件，文件名从终端获取
-</code></pre>
-
-<p>展示效果如下:</p>
-
-<pre class="line-numbers"><code class="language-md">title: 如何优雅的创建markdown文件
-author: lonelyor
-language: zh-CN
-tags:
-  - Hexo
-  - markdown
-categories:
-  - 技术杂文
-date: 2018-09-06 17:42:40
----
-&gt; description: 若爱请深爱，若不爱请离开。
-</code></pre>
-
-<p>接下来说说如何使用(仅限linux、macos，或者说可以执行bash的环境，win用户请自行转换成bat)：<br/>
-首先，创建一个名叫 md.sh 的文件（名字你爱咋咋地），把代码copy进去。<br/>
-然后，<code>ln -s /md文件绝对路径 /usr/local/bin/md</code> ,这条语句的意思就是创建一个软连接，把 md.sh 连接到当前用户的 md 命令上。<br/>
-最后，打开终端输入 md ，然后输入要创建的markdown文件名（如：test.md），即可在当前目录下创建带有元信息的markdown文件。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/22 15:13 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -661,7 +188,7 @@ date: 2018-09-06 17:42:40
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			
+			 <a href="工具_15.html">&raquo; Next Page</a> 
 			</p>
 			  </div>
 			</div>
@@ -673,10 +200,10 @@ date: 2018-09-06 17:42:40
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-                <div class="site-a-logo"><img src="http://images.lonelyor.org/favicon.jpg" /></div>
+                <div class="site-a-logo"><img src="https://www.lonelyor.org/lonelyorWiki/media/15483045488413/205a66b0a6c34ba7184d2d68a9f62dd8.jpg" /></div>
             
                 <h1>lonelyorWiki</h1>
-                <div class="site-des">一个用来记录知识的网站</div>
+                <div class="site-des">一个用来记录知识的网站。</div>
                 <div class="social">
 
 
@@ -706,13 +233,13 @@ date: 2018-09-06 17:42:40
         
             <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
         
-            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
-        
             <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
         
-            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
         
-            <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
+            <a href="%E5%AE%89%E5%85%A8.html"><strong>安全</strong></a>
+        
+            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
             <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
         
@@ -733,31 +260,31 @@ date: 2018-09-06 17:42:40
 	      
 		      
 			      <li class="post">
-			        <a href="15532149133328.html">古语</a>
+			        <a href="15764947924982.html">Arch系常用技巧与问题汇总</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15523826250881.html">excel 工作表插入当前时间和日期</a>
+			        <a href="15747334018156.html">msfvenom各类木马生成脚本</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15520392147631.html">GTD 管理法</a>
+			        <a href="15724200154293.html">v2ray实现科学上网</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15520390232741.html">用四象限管理任务</a>
+			        <a href="15708455642675.html">windows渗透技巧</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15520320136368.html">bundle install 无法使用的解决办法</a>
+			        <a href="15692949172295.html">Proxmox物理安装</a>
 			      </li>
 		     
 		  
@@ -802,7 +329,7 @@ date: 2018-09-06 17:42:40
 
  <div class="page-bottom clearfix">
   <div class="row">
-   <p class="copyright">Copyright &copy; 2018
+   <p class="copyright">Copyright &copy; 2015
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
 Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
   </div>
@@ -811,6 +338,213 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
         </section>
       </div>
     </div>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+figure{margin: 0;padding: 0;}
+figcaption{text-align:center;}
+
+/* PrismJS 1.14.0
+ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: black;
+    background: none;
+    text-shadow: 0 1px white;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background:#b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+@media print {
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #F7F7F7;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: slategray;
+}
+
+.token.punctuation {
+    color: #999;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #9a6e3a;
+    background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+.token.function,
+.token.class-name {
+    color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #e90;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+
+pre[class*="language-"].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+    .line-numbers-rows > span {
+        pointer-events: none;
+        display: block;
+        counter-increment: linenumber;
+    }
+
+        .line-numbers-rows > span:before {
+            content: counter(linenumber);
+            color: #999;
+            display: block;
+            padding-right: 0.8em;
+            text-align: right;
+        }
+
+</style>
 
   
     
@@ -832,9 +566,21 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
      
     </script>
 
-    
-
-
+<div id="container"></div>
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: '<%= page.date %>',
+  owner: 'AlShelley',
+  repo: 'lonelyorwiki-message',
+  oauth: {
+    client_id: '2a0c6ad761806835e987',       
+    client_secret: '083280496d60e9becae3c653f97b18db292333cf',  
+  },
+})
+gitment.render('container')
+</script>
 
   </body>
 </html>

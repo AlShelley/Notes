@@ -130,513 +130,87 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15578813198735.html">
+                <a class="clearlink" href="15655143025936.html">
                 
-                  <h1>家思</h1>
+                  <h1>Windows常用技巧与问题汇总</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>慈母手中线，游子身上衣。临行密密缝，易恐迟迟归。谁言寸草心，报得三春晖。</p>
+                        	<h2 id="toc_0">windows下创建和启动wifi</h2>
 
-<p>少时不知家可贵，为离故乡，奔波十年方始回。年轻时讨厌家人的管教，只想远离家乡，一个人在外求学四年，虽多遇不平之事，但那时仍觉家无温暖，家人也依然还是喜欢絮絮叨叨。后过三年，每逢春节回家，倍感家人渐渐衰老，虽父亲染发，但依然掩饰不了已经满头白发的事实。不是不爱家，只是说不出口。最怕爱将至而时已晚，最恨情已深而口难开。</p>
+<p>整理文件时候找到了3年前写的东西：</p>
 
-<p>来深方半月时间，然小病却接连不断。上一次生病的记忆还是三年前的了。人总是越脆弱的时候越想家，越孤单的时候越想家人。时光将自己雕琢成了大人，将家人雕琢成了老人，将情越琢越深，将思念越琢越纯。</p>
+<p>创建 wifi
+netsh wlan set hostednetwork mode=allow ssid=!@#$%<sup>&amp;*</sup> key=passwd123
+启动 wifi
+netsh wlan start hostednetwork</p>
 
-<p>不知是因为什么原因，无论心态还是身体都感觉像灌注了水泥，渐渐凝滞。也许是懒惰阻碍了思考，也许是勤奋想得太多，也许是白日梦空白了一切，也许是现实的光芒点缀了头顶的星空。眼前尽是空白，转瞬又光怪陆离，张口不知道在怎样的胡言乱语，缄默才是最好的表达吧。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/05/15</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html'>风花雪月</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15577346001597.html">
-                
-                  <h1>linux 敏感目录</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>Linux敏感目录，网站存在包含漏洞、任意文件读取漏洞等，权限允许的条件下，放在burp里面批量跑。</p>
-
-<p>/apache/apache/conf/httpd.conf
-/apache/apache2/conf/httpd.conf
-/apache/php/php.ini
-/bin/php.ini
-/etc/anacrontab
-/etc/apache/apache.conf
-/etc/apache/httpd.conf
-/etc/apache2/apache.conf
-/etc/apache2/httpd.conf
-/etc/apache2/sites-available/default
-/etc/apache2/vhosts.d/00_default_vhost.conf
-/etc/at.allow
-/etc/at.deny
-/etc/cron.allow
-/etc/cron.deny
-/etc/crontab
-/etc/fstab
-/etc/host.conf
-/etc/httpd/conf.d/httpd.conf
-/etc/httpd/conf.d/php.conf
-/etc/httpd/conf/httpd.conf
-/etc/httpd/htdocs/index.html
-/etc/httpd/htdocs/index.php
-/etc/httpd/logs/access.log
-/etc/httpd/logs/access_log
-/etc/httpd/logs/error.log
-/etc/httpd/logs/error_log
-/etc/httpd/php.ini
-/etc/init.d/httpd
-/etc/init.d/mysql
-/etc/ld.so.conf
-/etc/motd
-/etc/my.cnf
-/etc/mysql/my.cnf
-/etc/mysql/my.cnf
-/etc/network/interfaces
-/etc/networks
-/etc/passwd
-/etc/php.ini
-/etc/php/apache/php.ini
-/etc/php/apache2/php.ini
-/etc/php/cgi/php.ini
-/etc/php/php.ini
-/etc/php/php4/php.ini
-/etc/php4.4/fcgi/php.ini
-/etc/php4/apache/php.ini
-/etc/php4/apache2/php.ini
-/etc/php4/cgi/php.ini
-/etc/php5/apache/php.ini
-/etc/php5/apache2/php.ini
-/etc/php5/cgi/php.ini
-/etc/phpmyadmin/config.inc.php
-/etc/resolv.conf
-/etc/shadow
-/etc/ssh/sshd_config
-/etc/ssh/sshd_config
-/etc/ssh/ssh_config
-/etc/ssh/ssh_config
-/etc/ssh/ssh_host_dsa_key
-/etc/ssh/ssh_host_dsa_key
-/etc/ssh/ssh_host_dsa_key.pub
-/etc/ssh/ssh_host_dsa_key.pub
-/etc/ssh/ssh_host_key
-/etc/ssh/ssh_host_key
-/etc/ssh/ssh_host_key.pub
-/etc/ssh/ssh_host_key.pub
-/etc/ssh/ssh_host_rsa_key
-/etc/ssh/ssh_host_rsa_key
-/etc/ssh/ssh_host_rsa_key.pub
-/etc/ssh/ssh_host_rsa_key.pub
-/etc/sysconfig/network
-/etc/sysconfig/network
-/home/apache/conf/httpd.conf
-/home/apache2/conf/httpd.conf
-/home/bin/stable/apache/php.ini
-/home2/bin/stable/apache/php.ini
-/NetServer/bin/stable/apache/php.ini
-/opt/www/conf/httpd.conf
-/opt/www/htdocs/index.html
-/opt/www/htdocs/index.php
-/opt/xampp/etc/php.ini
-/PHP/php.ini
-/php/php.ini
-/php4/php.ini
-/php5/php.ini
-/root/.atftp_history
-/root/.bashrc
-/root/.bash_history
-/root/.mysql_history
-/root/.nano_history
-/root/.php_history
-/root/.profile
-/root/.ssh/authorized_keys
-/root/.ssh/identity
-/root/.ssh/identity.pub
-/root/.ssh/id_dsa
-/root/.ssh/id_dsa.pub
-/root/.ssh/id_rsa
-/root/.ssh/id_rsa.pub
-/root/anaconda-ks.cfg
-/tmp/apache/htdocs/index.html
-/tmp/apache/htdocs/index.php
-/usr/lib/php.ini
-/usr/lib/php/php.ini
-/usr/local/apache/conf/httpd.conf
-/usr/local/apache/conf/php.ini
-/usr/local/apache/htdocs/index.html
-/usr/local/apache/htdocs/index.php
-/usr/local/apache/logs/access.log
-/usr/local/apache/logs/access_log
-/usr/local/apache/logs/access_logaccess_log.old
-/usr/local/apache/logs/error.log
-/usr/local/apache/logs/error_log
-/usr/local/apache/logs/error_logerror_log.old
-/usr/local/apache2/conf/httpd.conf
-/usr/local/apache2/conf/php.ini
-/usr/local/apache2/htdocs/index.html
-/usr/local/apache2/htdocs/index.php
-/usr/local/cpanel/logs
-/usr/local/cpanel/logs/access_log
-/usr/local/cpanel/logs/error_log
-/usr/local/cpanel/logs/license_log
-/usr/local/cpanel/logs/login_log
-/usr/local/cpanel/logs/stats_log
-/usr/local/cpanel/logs/stats_log
-/usr/local/etc/php.ini
-/usr/local/httpd/conf/httpd.conf
-/usr/local/httpd2.2/htdocs/index.html
-/usr/local/httpd2.2/htdocs/index.php
-/usr/local/lib/php.ini
-/usr/local/mysql/bin/mysql
-/usr/local/mysql/my.cnf
-/usr/local/php/lib/php.ini
-/usr/local/php4/lib/php.ini
-/usr/local/php4/lib/php.ini
-/usr/local/php4/php.ini
-/usr/local/php5/etc/php.ini
-/usr/local/php5/lib/php.ini
-/usr/local/php5/php5.ini
-/usr/local/share/examples/php/php.ini
-/usr/local/share/examples/php4/php.ini
-/usr/local/tomcat5527/bin/version.sh
-/usr/local/Zend/etc/php.ini
-/usr/share/tomcat6/bin/startup.sh
-/usr/tomcat6/bin/startup.sh
-/var/apache2/config.inc
-/var/httpd/conf/httpd.conf
-/var/httpd/conf/php.ini
-/var/httpd/conf/php.ini
-/var/httpd/htdocs/index.html
-/var/httpd/htdocs/index.php
-/var/lib/mysql/my.cnf
-/var/lib/mysql/mysql/user.MYD
-/var/local/www/conf/httpd.conf
-/var/local/www/conf/php.ini
-/var/log/access.log
-/var/log/access_log
-/var/log/apache/access.log
-/var/log/apache/access_log
-/var/log/apache/error.log
-/var/log/apache/error_log
-/var/log/apache2/access.log
-/var/log/apache2/access_log
-/var/log/apache2/error.log
-/var/log/apache2/error_log
-/var/log/error.log
-/var/log/error_log
-/var/log/mysql.log
-/var/log/mysql/mysql-bin.log
-/var/log/mysql/mysql-slow.log
-/var/log/mysql/mysql.log
-/var/log/mysqlderror.log
-/var/mail/root
-/var/mysql.log
-/var/spool/cron/crontabs/root
-/var/spool/mail/root
-/var/www/conf/httpd.conf
-/var/www/htdocs/index.html
-/var/www/htdocs/index.php
-/var/www/index.html
-/var/www/index.php
-/var/www/logs/access.log
-/var/www/logs/access_log
-/var/www/logs/error.log
-/var/www/logs/error_log
-/web/conf/php.ini
-/www/conf/httpd.conf
-/www/htdocs/index.html
-/www/htdocs/index.php
-/www/php/php.ini
-/www/php4/php.ini
-/www/php5/php.ini
-/xampp/apache/bin/php.ini
-/xampp/apache/conf/httpd.conf
-root/.ssh/authorized_keys
-root/.ssh/identity
-root/.ssh/identity.pub
-root/.ssh/id_dsa
-root/.ssh/id_dsa.pub
-root/.ssh/id_rsa
-root/.ssh/id_rsa.pub</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/05/13</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15573021402615.html">
-                
-                  <h1>Mac 上的 svnGUI 工具：smartsvn 安装、激活和使用</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>smartsvn 是 mac 上的 svn 客户端，svn 是类似 git 的版本控制工具。</p>
-
-<p>1、下载 smartsvn <a href="http://www.smartsvn.com/download">srmatsvn 官网下载地址</a>
-2、在任意目录下新建文件 smartsvn.license，然后写入以下内容：</p>
-
-<pre class="line-numbers"><code class="language-text">Name=csdn  
-Address=1337 iNViSiBLE Str.  
-Email=admin@csdn.net  
-FreeUpdatesUntil=2099-09-26  
-LicenseCount=1337  
-Addon-xMerge=true  
-Addon-API=true  
-Enterprise=true  
-Key=4kl-&lt;Zqcm-iUF7I-IVmYG-XAyvv-KYRoC-xlgsv-sSBds-VAnP6  
-</code></pre>
-
-<p>3、在安装软件需要导入 license 时选择上述文件或者安装软件后在菜单栏的 help-register 中导入密钥文件即可激活软件。</p>
-
-<p>4、点击菜单栏的project-checkout，添加远程目录，然后输入认证信息，输入本地目录信息，即可挂载远程目录到本地。</p>
-
-<p>5、若认证出错，则点击菜单栏的 SmartSVN-preferences，然后选择 Authentication，使用 delete 删除之前存储的认证信息，然后重新 checkout 即可。</p>
-
-<h1 id="toc_0">Mac 终端下 svn 常用命令</h1>
-
-<p>Mac 可以不用安装 svnGUI 而直接使用命令进行 svn 操作，常见svn 命令如下：
-svn help 查看命令帮助
-svn checkout xxx 拉取远程目录到本地
-svn add file 往版本库中添加新文件</p>
-
-<p>更多常用命令可参考：<a href="https://www.cnblogs.com/luckythan/p/4478706.html">Mac终端下svn常用命令</a></p>
+<h2 id="toc_1">虚拟机安装win10操作系统</h2>
 
 <blockquote>
-<p>通过命令行操作进行认证后，其认证信息存储在 <code>~/.subversion/auth/svn.simple</code>目录下，若认证失败，需要在此目录下情况认证信息后重新进行认证。</p>
+<p>本片文章是为新手准备的</p>
 </blockquote>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/05/08</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                    
+<p>虚拟机安装win10可以查看以下教程：
+<a href="http://baijiahao.baidu.com/s?id=1597148758310739517&amp;wfr=spider&amp;for=pc">http://baijiahao.baidu.com/s?id=1597148758310739517&amp;wfr=spider&amp;for=pc</a></p>
 
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p>若原文链接失效，则可以百度搜索“虚拟机安装win10操作系统”</p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15572001451538.html">
-                
-                  <h1>c 语言中变量前面加`*`表示什么？如`*`p</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>*p的意思是：p是一个指针（即指向某一个区域的地址）
-如果前面加了修饰，就表示为那个类型的指针
-如：int *p;表示p是一个整型指针，指向一个整型变量的地址</p>
+<h2 id="toc_2">解决windows右键新建消失问题</h2>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/05/07</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
-          				   
-                    
+<p>新建一个文件后缀名写为reg（注册表文件格式）的文件。
+然后用记事本或文本编辑器打开，写入文件内容：</p>
 
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<pre class="line-numbers"><code class="language-text">Windows Registry Editor Version 5.00
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15554899648347.html">
-                
-                  <h1>CEO、COO、CFO、CIO、CTO、CMO的中文是什么?</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ol>
-<li>CEO：首席执行官</li>
-</ol>
+[HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\New]
 
-<p>首席执行官（Chief Executive Officer，缩写CEO）是在一个企业中负责日常事务的最高行政官员，主司企业行政事务，又称作司政、行政总裁、总经理或最高执行长。</p>
+@=&quot;{D969A300-E7FF-11d0-A93B-00A0C90F2719}&quot;
+</code></pre>
 
-<ol>
-<li>COO：首席运营官</li>
-</ol>
+<p>保存，然后双击该文件，即可。</p>
 
-<p>首席运营官（Chief Operating Officer，缩写COO，营运长），就是制定企业长远战略，督导各分公司总经理执行工作的官。主要是负责公司的日常运营，辅助CEO的工作。对CEO负责，负责企业的运营管理。COO在某些公司中同时任职总裁，但他们通常是常务或资深的副总裁。</p>
+<h2 id="toc_3">OneDrive映射到本地（像访问本地磁盘一样访问网盘）</h2>
 
-<ol>
-<li>CFO：首席财务官</li>
-</ol>
+<p>参考以下链接即可：
+<a href="http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc">http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc</a></p>
 
-<p>首席财务官（Chief
-Financial
-Officer）是企业治理结构发展到一个新阶段的必然产物。没有首席财务官的治理结构不是现代意义上完善的治理结构。从这一层面上看，中国构造治理结构也应设立CFO之类的职位。当然，从本质上讲，CFO在现代治理结构中的真正含义，不是其名称的改变、官位的授予，而是其职责权限的取得，在管理中作用的真正发挥。</p>
+<p>举一反三，webdav、nfs、samba等都可以使用这种方式挂载，来方便访问。</p>
 
-<ol>
-<li>CIO：首席信息官</li>
-</ol>
+<h2 id="toc_4">windows右键添加管理员获得所有权</h2>
 
-<p>首席信息官（Chief Information Officer）中文意思是首席信息官或信息主管，是负责一个公司信息技术和系统所有领域的高级官员。是一个比较新的职位，目前只有在一些全球500强的大企业才设立职位。</p>
-
-<ol>
-<li>CTO：首席技术官</li>
-</ol>
-
-<p>首席技术官（Chief Technology Officer），即企业内负责技术的最高负责人。这个名称在1980年代从美国开始时兴起于做很多研究的大公司，如General Electric，AT&amp;T，ALCOA，主要责任是将科学研究成果成为盈利产品。</p>
-
-<ol>
-<li>CMO：首席营销官</li>
-</ol>
-
-<p>首席营销官（Chief Marketing Officer）是指企业中负责市场运营工作的高级管理人员，又称作市场部经理、营销总监。主要负责在企业中对营销思想进行定位；把握市场机会，制定市场营销战略和实施计划，完成企业的营销目标；协调企业内外部关系，对企业市场营销战略计划的执行进行监督和控制；负责企业营销组织建设与激励工作。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/04/17</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html'>星火流萤</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15550584590400.html">
-                
-                  <h1>HTTP.sys远程代码执行漏洞</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>转载自：<a href="http://www.cnvd.org.cn/webinfo/show/3614">http://www.cnvd.org.cn/webinfo/show/3614</a></p>
+<blockquote>
+<p>右键添加获得管理员所有权是个比较方便的功能。</p>
 </blockquote>
 
-<p>4月14日，微软月度例行安全公告披露一个HTTP.sys远程代码执行漏洞（CNVD-2015-02422，对应CVE-2015-1635）,主要威胁到IIS服务器的安全。该漏洞存在于 HTTP 协议堆栈 (HTTP.sys) 中，攻击者可以在系统帐户的上下文中执行任意代码或提升权限。目前，互联网已经出现了可以使服务器蓝屏的利用代码，不过可导致控制服务器主机的攻击代码还未出现。</p>
+<p>打开记事本或者别的文本编辑器，然后写入如下内容:</p>
 
-<h2 id="toc_0">这漏洞能干啥</h2>
+<pre class="line-numbers"><code class="language-bat">Windows Registry Editor Version 5.00
 
-<p>IIS 是 windows 主机上的 Web 服务程序，支持 asp、jsp 脚本，应用广泛漏洞众多。IIS服务进程依赖HTTP.sys内核驱动程序文件。漏洞产生的原因是HTTP.sys未能正确分析经特殊设计的HTTP请求所致，通过发送特定构造的HTTP请求包（如：在请求包中相关字段包含类似0xFFFFFFFFFFFFFFFF的大整数值参数），导致整数溢出。成功利用后，攻击者有可能在系统帐户的上下文中执行任意代码，导致拒绝服务或提取权限。目前相关分析表明，漏洞的溢出只限于整数型参数，直接构造可执行系统指令的攻击代码还有一定的难度。</p>
+[HKEY_CLASSES_ROOT\*\shell\runas]
+@=&quot;管理员取得所有权&quot;
+&quot;NoWorkingDirectory&quot;=&quot;&quot;
+[HKEY_CLASSES_ROOT\*\shell\runas\command]
+@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
+&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
+[HKEY_CLASSES_ROOT\exefile\shell\runas2]
+@=&quot;管理员取得所有权&quot;
+&quot;NoWorkingDirectory&quot;=&quot;&quot;
+[HKEY_CLASSES_ROOT\exefile\shell\runas2\command]
+@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
+&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
+[HKEY_CLASSES_ROOT\Directory\shell\runas]
+@=&quot;管理员取得所有权&quot;
+&quot;NoWorkingDirectory&quot;=&quot;&quot;
+[HKEY_CLASSES_ROOT\Directory\shell\runas\command]
+@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; /r /d y &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F /t&quot;
+&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; /r /d y &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F /t&quot;
+</code></pre>
 
-<p>漏洞评级“高危”，因为被攻击会导致服务器蓝屏死机呀。</p>
-
-<h2 id="toc_1">影响范围</h2>
-
-<p>受影响操作系统的IIS服务器版本如下所示：
-WindowsServer 2012
-WindowsServer 2012 R2
-用于基于32位系统：
-Windows7 SP1
-Windows8
-用于基于x64位系统：
-Windows7 SP1
-Windows8
-Windows8.1
-WindowsServer 2008 R2 SP1
-用于基于 Itanium 的系统:
-WindowsServer 2008 R2 SP1</p>
-
-<h2 id="toc_2">漏洞修复建议</h2>
-
-<p>补丁：<a href="https://support.microsoft.com/zh-cn/kb/3042553">https://support.microsoft.com/zh-cn/kb/3042553</a>
-装完后要重启才会生效</p>
-
-<p>一些系统管理员在部署微软的Server系统时可能不作为Web服务器使用，但有可能在默认安装了IIS，请相关单位用户注意排查。</p>
-
-<h2 id="toc_3">验证该漏洞注意事项</h2>
-
-<p>网络流传的poc可能导致服务器蓝屏死机，请谨慎验证......别把线上业务搞挂了。</p>
-
-<h2 id="toc_4">参考链接</h2>
-
-<p><a href="https://technet.microsoft.com/zh-CN/library/security/ms15-034.aspx">https://technet.microsoft.com/zh-CN/library/security/ms15-034.aspx</a></p>
-
-<p><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1635">https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1635</a></p>
-
-<p><a href="http://bobao.360.cn/news/detail/1435.html?from=groupmessage&amp;isappinstalled=0">http://bobao.360.cn/news/detail/1435.html?from=groupmessage&amp;isappinstalled=0</a></p>
+<p>然后另存为：管理员获得所有权.reg
+文件名可以随便写，但是后缀记得写成reg（改成这个后缀后文件图标就会变成一个破碎蓝色魔方）。
+然后右键以管理员身份运行，若弹框注册表xxx的，同意就行了。</p>
 
                         
                       </div>
@@ -645,10 +219,10 @@ WindowsServer 2008 R2 SP1</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/04/12</span>
+                    <span class="date">2019/08/11</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
           				   
                     
 

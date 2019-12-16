@@ -130,395 +130,81 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15428712896668.html">
+                <a class="clearlink" href="15596178265897.html">
                 
-                  <h1>CRLF注入</h1>
+                  <h1>业务逻辑漏洞安全检查checklist</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>文章翻译自OWASP的<a href="https://www.owasp.org/index.php/CRLF_Injection">CRLF_Injection</a></p>
+<p>整理的部分业务逻辑漏洞 checklist，不打算全部公开。</p>
 </blockquote>
 
-<p>CRLF即回车Carriage Return (ASCII 13, \r) 和 换行 Line Feed (ASCII 10, \n)。他们被用于注释掉一行的终止。不过不同系统的处理方式有点不同。windows中，CR和LF都被用于注释掉一行的结尾，而linux/unix中只需要一个LF。在HTTP协议中，CRLF序列始终用于一行的终止。
-当用户设法将CRLF提交到应用程序时，可能发生CRLF注入攻击，这通常是通过修改HTTP参数或URL来完成。</p>
-
-<p>CRLF注入可能产生这样的问题：</p>
-
-<ul>
-<li>HTTP响应拆分</li>
-<li>日志注入
-## HTTP响应拆分
-通常，当出现以下情况时会发生HTTP响应拆分</li>
-<li>数据通过不受信任的来源进入Web应用程序，如HTTP请求。</li>
-<li>数据包含在发送给Web用户的HTTP响应标头中，而不会对恶意字符进行验证。
-HTTP响应拆分是达到目的的手段而不是目的本身。
-攻击方式如下：攻击者将恶意数据传递给易受攻击的应用程序，应用程序将数据包含在HTTP响应中。
-要成功利用漏洞，应用程序必须允许<strong>包含有 CR（回车，即 %0d 或者 \r\n）和 LF（换行符，%0a 或者 \n）的输入在header中</strong>和<strong>底层平台必须容易注入这样的字符</strong>。</li>
-</ul>
-
-<p><em>大多数现代应用程序服务器(无论用什么语言编写的代码)，都已经不存在HTTP响应拆分漏洞。</em></p>
-
-<p>下面上一段java代码来举例说明：</p>
-
-<pre class="line-numbers"><code class="language-java">String author = request.getParameter(AUTHOR_PARAM);
-...
-Cookie cookie = new Cookie(&quot;author&quot;, author);
-      cookie.setMaxAge(cookieExpiration);
-      response.addCookie(cookie);
-</code></pre>
-
-<p>上述代码的意思是：从客户端HTTP请求中接受参数（author），并将其设置在HTTP响应的cookie头中。
-如果我们正常提交数据(author=lonelyor)，HTTP响应应该是这样：</p>
-
-<pre class="line-numbers"><code class="language-java">HTTP/1.1 200 OK
-...
-Set-Cookie: author=Jane Smith
-...
-</code></pre>
-
-<p>但是，由于源代码中的cookie是由未经验证的用户输入组成的，因此如果我们提交恶意代码<code>Hacker By xxx\r\nContent-Length:45\r\n\r\n...</code>则HTTP响应将被拆分为原始响应和伪造响应。</p>
-
-<pre class="line-numbers"><code class="language-java">HTTP/1.1 200 OK
-    ...
-    Set-Cookie: author=Hacker By xxx
-    Content-Length: 999
-    
-    &lt;html&gt;恶意内容...&lt;/html&gt; (这个例子中为第999个字符)
-    原始内容以1000开头, 现在被浏览器忽略了...
-</code></pre>
-
-<h3 id="toc_0">危害</h3>
-
-<p>攻击者构建任意HTTP响应的能力可能导致以下攻击：
-跨用户污染（Cross-User_Defacement）——利用条件很苛刻
-缓存中毒（Cache_Poisoning）——利用条件很苛刻
-XSS跨站脚本攻击
-页面劫持</p>
-
-<h2 id="toc_1">日志注入</h2>
-
-<p>将未经验证的用户输入写入日志文件可能导致攻击者伪造日志或者将恶意内容注入日志。
-以下情况可能导致日志伪造漏洞：</p>
-
-<ul>
-<li>数据从不受信任的来源进入应用程序</li>
-<li>数据将写入应用程序或者系统日志文件</li>
-</ul>
-
-<p>下面上一段java代码来举例说明：</p>
-
-<pre class="line-numbers"><code class="language-java">...
-String val = request.getParameter(&quot;val&quot;);
-try {
-  int value = Integer.parseInt(val);
-}
-catch (NumberFormatException) {
-  log.info(&quot;Failed to parse val = &quot; + val);
-}
-...
-</code></pre>
-
-<p>上述代码的功能是，从请求对象中读取整数值，如果该值无法解析为整数，则会记录输入，并显示一条错误信息。
-如果用户提交字符串“one”，则会记录以下条目
-<code>INFO: Failed to parse val=one</code>
-然而，如果攻击者提交字符串<code>one%0a%0aINFO:+User+logged+out%3dbadguy</code>则会在日志中显示：</p>
-
-<pre class="line-numbers"><code class="language-text">    INFO: Failed to parse val=one
-
-    INFO: User logged out=badguy
-</code></pre>
-
-<p>显然攻击者可以使用相同机制插入任意日志条目。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/22</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15428708110510.html">
-                
-                  <h1>更优雅的使用Hexo写博客</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>曾经的博客是使用 Hexo 写的，我觉得Hexo这种在文章前面写上元信息的方式很棒。然而，每此写markdown文档都要输入这些元信息，这很麻烦，所以就写了个shell脚本来自动化输入文件元信息的过程。
-代码如下：</p>
-</blockquote>
-
-<pre class="line-numbers"><code class="language-bash">#!/bin/bash
-
-printf &quot;请输入文件名(example.md)，记得写后缀!\n&quot;
-read -p &quot;文件名是: &quot; filename
-# 这里的title取文件名不取后缀
-echo &quot;title: &quot;${filename%.*} &gt;&gt; $filename
-echo &quot;author: lonelyor&quot; &gt;&gt; $filename
-echo &quot;language: zh-CN&quot; &gt;&gt; $filename
-echo &quot;tags:&quot; &gt;&gt; $filename
-echo &quot;  - 标签&quot; &gt;&gt; $filename
-echo &quot;categories:&quot; &gt;&gt; $filename
-echo &quot;  - 分类&quot; &gt;&gt; $filename
-time=$(date &quot;+%Y-%m-%d %H:%M:%S&quot;)
-echo &quot;date: ${time}&quot;&gt;&gt; $filename
-echo &quot;---&quot; &gt;&gt; $filename
-echo &quot;&gt; description: &quot; &gt;&gt; $filename
-# printf和echo都是输出，&gt;&gt;表示追加，&gt;会覆盖文件
-# shell中使用变量需要先定义变量，然后使用时加 $
-# read 用来创建文件，文件名从终端获取
-</code></pre>
-
-<p>展示效果如下:</p>
-
-<pre class="line-numbers"><code class="language-md">title: 如何优雅的创建markdown文件
-author: lonelyor
-language: zh-CN
-tags:
-  - Hexo
-  - markdown
-categories:
-  - 技术杂文
-date: 2018-09-06 17:42:40
----
-&gt; description: 若爱请深爱，若不爱请离开。
-</code></pre>
-
-<p>接下来说说如何使用(仅限linux、macos，或者说可以执行bash的环境，win用户请自行转换成bat)：
-首先，创建一个名叫 md.sh 的文件（名字你爱咋咋地），把代码copy进去。
-然后，<code>ln -s /md文件绝对路径 /usr/local/bin/md</code> ,这条语句的意思就是创建一个软连接，把 md.sh 连接到当前用户的 md 命令上。
-最后，打开终端输入 md ，然后输入要创建的markdown文件名（如：test.md），即可在当前目录下创建带有元信息的markdown文件。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/11/22</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15428591301433.html">
-                
-                  <h1>Web安全检测checklist</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">x01 爆破</h2>
-
-<h3 id="toc_1">弱口令</h3>
-
-<p>HTTP登录
-SSH
-MySQL
-Telnet</p>
-
-<h3 id="toc_2">遍历</h3>
-
-<p>网站敏感文件
-    源码
-    配置文件
-    备份文件
-    探针类文件
-网站敏感目录
-    物理路径
-    网站管理后台
-    上传目录
-    数据库Web管理入口
-    现成的Webshell
-端口扫描
-0day扫描
-子域名</p>
-
-<h2 id="toc_3">x02 不安全配置</h2>
-
-<h3 id="toc_4">Web服务器</h3>
-
-<p>Nginx
-Apache
-IIS</p>
-
-<h3 id="toc_5">Web应用服务器</h3>
-
-<p>Tomcat
-JBoss
-Weblogic</p>
-
-<h3 id="toc_6">HTTP安全特性</h3>
-
-<p>HTTP Headers
-HTTP Options
-rebots.txt
-flash跨域策略</p>
-
-<h2 id="toc_7">x03 敏感信息泄露</h2>
-
-<h3 id="toc_8">用户敏感信息</h3>
-
-<p>手机号
-身份证号
-社保
-银行卡号
-家庭住址</p>
-
-<h3 id="toc_9">应用敏感信息</h3>
-
-<p>debug信息
-堆栈报错</p>
-
-<h3 id="toc_10">站点敏感信息</h3>
-
-<p>测试页面
-备份文件</p>
-
-<h3 id="toc_11">本地敏感信息</h3>
-
-<p>前端保存用户密码
-前端保存验证码</p>
-
-<h2 id="toc_12">x04 xss跨站脚本</h2>
-
-<p>反射型xss
-存储型xss
-DOM型xss</p>
-
-<h2 id="toc_13">x05 请求伪造</h2>
-
-<p>csrf跨站请求伪造
-ssrf服务器请求伪造</p>
-
-<h2 id="toc_14">x06 注入</h2>
-
-<p>LDAP注入
-ORM注入
-XML注入
-XPath注入
-IMAP/SMTP注入
-SQL注入
-代码注入
-客户端模板注入（CSTI）
-服务端模板注入（SSTI）
-服务器端包含注入（SSI）</p>
-
-<h2 id="toc_15">x07 已知漏洞组件</h2>
-
-<p>库文件（某些库会导致远程命令执行）
-框架（如wordpress、thinkphp、django等）
-模块（python的某些模块会导致代码注入）</p>
-
-<h2 id="toc_16">x08 文件类漏洞</h2>
-
-<p>文件包含漏洞
-任意文件创建
-任意文件读取
-任意文件上传
-任意文件下载
-任意文件删除</p>
-
-<h2 id="toc_17">x09 解析漏洞</h2>
-
-<p>IIS解析漏洞
-Nginx解析漏洞
-Apache解析漏洞
-PHP CGI解析漏洞</p>
-
-<h2 id="toc_18">x10 劫持类漏洞</h2>
-
-<p>点击劫持
-Jsonp劫持
-WebSocket劫持
-DNS劫持
-二维码劫持
-子域名劫持</p>
-
-<h2 id="toc_19">x11 业务逻辑漏洞</h2>
-
-<h3 id="toc_20">认证</h3>
-
-<p>使用默认凭证
+<h2 id="toc_0">认证</h2>
+
+<p>图形验证码问题（验证码缺失、验证码回显、验证码绕过、验证流程不正确、重放攻击）
+手机验证码（短信轰炸、验证码劫持）
+会话固定
+cookie 伪造/爆破
+使用默认凭证（管理后台、数据库密码）
 冻结账户策略不当
 弱用户名和密码
-“记住我”功能
+“记住我”功能缺陷（前端记住/发送密码）
 自动登录
-单点登录
+单点登录劫持
+第三方登录劫持
+二维码登录劫持
 弱口令
 弱安全问题/答案
-第三方登录风险
-Oauth2.0安全
+弱的密码恢复机制
+Oauth2.0授权漏洞
 JWT安全
 注册覆盖
 未验证的重定向和转发
-双因素认证不当</p>
+双因素认证不当（双因素后获取的凭证，在无需双因素处可以获得）
+恶意注册</p>
 
-<h3 id="toc_21">授权</h3>
+<h2 id="toc_1">授权</h2>
 
-<p>测试角色定义
-权限管理缺失
+<p>测试角色定义（授权不当）
+权限管理缺失（无权限设计）
 匿名访问（备用接口——常见于兼容老的不安全的接口时产生）
 水平越权
 垂直越权
 超级账户
 实名认证不严格</p>
 
-<h3 id="toc_22">会话管理</h3>
+<h2 id="toc_2">会话管理</h2>
 
 <p>cookie安全属性
-cookie可猜解
+cookie可猜解/伪造
 cookie溢出
-会话固定
+会话固定漏洞
 用户凭证不安全传输（弱加密或明文传输）
 用户凭证未一次失效
 用户凭证可猜解
 注销与会话超时
-敏感数据不安全传输</p>
+敏感数据不安全传输（get 方法传输 session）</p>
 
-<h3 id="toc_23">流程绕过</h3>
+<h2 id="toc_3">内容安全</h2>
 
-<p>找回密码流程绕过</p>
+<p>敏感信息过度显示
+违法违规信息</p>
 
-<h2 id="toc_24">x12 API安全</h2>
+<h2 id="toc_4">设计缺陷</h2>
 
-<p>整理中</p>
+<p>业务一致性（篡改类）漏洞（订单 id、邮箱或用户名、手机号、商品编号、用户 id、支付金额、优惠券金额、商品数量、最大数限制、前端限制绕过）
+刷赞、刷关注、刷票、刷奖品
+流程绕过（密码找回、支付、登录验证）</p>
+
+<h2 id="toc_5">典型场景</h2>
+
+<p>个人信息
+密码找回/修改
+支付流程
+注册流程
+需要手机/邮箱验证的业务</p>
 
                         
                       </div>
@@ -527,7 +213,7 @@ cookie溢出
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/11/22</span>
+                    <span class="date">2019/06/04</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
@@ -556,7 +242,7 @@ cookie溢出
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			
+			 <a href="all_19.html">&raquo; Next Page</a> 
 			</p>
 			  </div>
 			</div>

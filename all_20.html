@@ -97,8 +97,6 @@
         
             <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
         
-            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
-        
             <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
@@ -132,46 +130,24 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15453704835251.html">
+                <a class="clearlink" href="15595455557551.html">
                 
-                  <h1>fluxgui安装与卸载</h1>
+                  <h1>使用 msf 检测 cve-2019-0708 WindowsRDP 远程代码执行漏洞</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>很久以前的笔记了</p>
-</blockquote>
+                        	<p>MSF模块：<a href="https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/rdp/cve_2019_0708_bluekeep.rb">https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/rdp/cve_2019_0708_bluekeep.rb</a></p>
 
-<pre class="line-numbers"><code class="language-text">Ubuntu/Debian Manual Install
-# Install dependencies
-sudo apt-get install git python-appindicator python-xdg python-pexpect python-gconf python-gtk2 python-glade2 libxxf86vm1
+<p>前提：先在终端中更新 msf，使用命令<code>msfupdate</code>；如果没法更新，而 msf 版本又低就去 github 下载 msf 模块。</p>
 
-# Download fluxgui
-cd /tmp
-git clone &quot;https://github.com/xflux-gui/fluxgui.git&quot;
-cd fluxgui
-python download-xflux.py
+<p>现在开始验证：
+1、终端输入<code>msf</code>启动 msf
+2、使用 cve_2019_0708_bluekeep 模块：<code>use auxiliary/scanner/rdp/cve_2019_0708_bluekeep</code>
+3、设置目标计算机 ip：<code>set RHOSTS 192.168.1.1</code>，如果是域名，可以先 ping 得出 ip 地址。
+4、输入<code>exploit</code>开始检测，如果出现方框中的内容，则表示漏洞存在（相关 ip 已打码）。</p>
 
-# EITHER install globally
-sudo python setup.py install
-# EXCLUSIVE OR, install in your home directory. The binary installs
-# into ~/.local/bin, so be sure to add that to your PATH if installing locally.
-python setup.py install --user
-
-# Run flux
-fluxgui
-Ubuntu/Debian Manual Uninstall
-If you manually installed instead of using the PPA, you can uninstall by making setup.py tell you where it installed files and then removing the installed files.
-
-# EITHER uninstall globally
-sudo python setup.py install --record installed.txt
-sudo xargs rm -vr &lt; installed.txt
-
-# EXCLUSIVE OR uinstall in your home directory
-python setup.py install --user --record installed.txt
-xargs rm -vr &lt; installed.txt
-</code></pre>
+<p><img src="media/15595455557551/15595462320619.jpg" alt=""/></p>
 
                         
                       </div>
@@ -180,235 +156,7 @@ xargs rm -vr &lt; installed.txt
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15453702906439.html">
-                
-                  <h1>backup系统备份工具介绍</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>backup是一款强大的备份软件，用于系统备份、增量备份、远程备份，企业级。
-我还是当年使用debian时用过...这是以前的笔记，留一份在这好了。</p>
-</blockquote>
-
-<p>软件安装（debian 9）
-<code>apt-get install backuppc</code>
-然后会弹窗：
-backuppc设定
-管理web地址：
-<code>http://lonelyor/backuppc</code>
-<code>user：backuppc</code>
-<code>passwd：u6oN2KE1</code>
-可以通过运行<code>htpasswd /etc/backuppc/htpasswd</code>来修改密码
-这些信息要记住！</p>
-
-<p>安装后：
-<code>Creating config file /etc/backuppc/config.pl with new version（可以暂时忽略）</code></p>
-
-<p>然后运行：
-<code>systemctl restart apache2</code>
-<code>/etc/init.d/backuppc restart</code></p>
-
-<p>接着就打开浏览器访问：
-<code>http://lonelyor/backuppc</code>
-就能看到web管理界面了。
-如果进不去可以打开隐身模式或者清除cookie再试。</p>
-
-<p>官方安装文档：<code>http://backuppc.sourceforge.net/BackupPC-4.1.3.html#Installing-BackupPC</code></p>
-
-<p>参考文档：
-<code>http://server.zol.com.cn/513/5130348.html</code></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15453702115650.html">
-                
-                  <h1>VMware14秘钥</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>CG54H-D8D0H-H8DHY-C6X7X-N2KG6
-ZC3WK-AFXEK-488JP-A7MQX-XL8YF
-AC5XK-0ZD4H-088HP-9NQZV-ZG2R4
-ZC5XK-A6E0M-080XQ-04ZZG-YF08D
-ZY5H0-D3Y8K-M89EZ-AYPEG-MYUA8
-FF590-2DX83-M81LZ-XDM7E-MKUT4</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15453701535252.html">
-                
-                  <h1>v2ray使用方法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>编辑 /etc/v2ray/config.json 文件来配置你需要的代理方式；</p>
-
-<p>运行 service v2ray start 来启动 V2Ray 进程；
-之后可以使用 service v2ray start|stop|status|reload|restart|force-reload 控制 V2Ray 的运行。</p>
-
-<p>v2ray官网：
-<a href="https://www.v2ray.com/chapter_00/install.html">https://www.v2ray.com/chapter_00/install.html</a>
-v2ray一键安装：
-bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.direct/go.sh</a>)</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15453699439742.html">
-                
-                  <h1>使用ssh科学上网</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>打开终端输入：
- <code>ssh -D 1085 -p 6754 root@xx.xx.xx.xx</code>
- 然后输入密码即可。xx即远程服务器ip。
- 这意味着本地1085端口被转发到了远程服务器的6754上，然后在浏览器配置socks5代理：127.0.0.1 1085
- 就可以科学上网了。</p>
-
-<p>如果不稳定，可以考虑使用autossh。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15453600721143.html">
-                
-                  <h1>扫描网站备份文件思路</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>sk15大佬提供一个思路，使用备份文件名list+域名list2扫描，这样每次循环都是一个备份文件名扫描list2次。
-如果使用域名list2+备份文件名list1则每次循环都是一个域名就会扫描list1次（这样由于请求频次高容易导致服务器宕机）</p>
-
-<p>大佬还提供了一个更有意思的方法，将list1和list2做成一个list，然后将其打乱，再扫描。（骚思路就像好算法，是编程的精髓。）</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/21</span>
+                    <span class="date">2019/06/03</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
@@ -482,8 +230,6 @@ bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.dire
         
             <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
         
-            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
-        
             <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
@@ -511,6 +257,12 @@ bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.dire
 	      
 		      
 			      <li class="post">
+			        <a href="15764947924982.html">Arch系常用技巧与问题汇总</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15747334018156.html">msfvenom各类木马生成脚本</a>
 			      </li>
 		     
@@ -523,19 +275,13 @@ bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.dire
 		  
 		      
 			      <li class="post">
-			        <a href="15708455642675.html">如何使用cmd开启3389端口与查看3389端口</a>
+			        <a href="15708455642675.html">windows渗透技巧</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15695779467285.html">给linux终端加一个移动到回收站的功能</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15694777838251.html">Proxmox TASK ERROR: Failed to run vncproxy.解决办法</a>
+			        <a href="15692949172295.html">Proxmox物理安装</a>
 			      </li>
 		     
 		  

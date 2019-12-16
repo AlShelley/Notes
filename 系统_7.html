@@ -97,8 +97,6 @@
         
             <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
         
-            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
-        
             <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
@@ -131,120 +129,6 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
-			<div class="article">
-                <a class="clearlink" href="15480046242082.html">
-                
-                  <h1>批量删除当前目录及其子目录下指定后缀名文件</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>find . -name &quot;*.tmp&quot; -type f -print -exec rm -rf {} \;</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/01/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15480046120109.html">
-                
-                  <h1>降低cpu使用率</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>pulimit -l 50 -p 1234
--l后面是使用百分比，-p后面是进城PID，可以使用htop查看进程pid</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/01/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15470312265923.html">
-                
-                  <h1>修改Mac主机名、计算机名</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><code>$sudo scutil --set ComputerName 你想要的计算机名称</code>
-<code>$sudo scutil --set HostName 你想要的主机名称</code></p>
-
-<p>举例：
-<code>$sudo scutil --set HostName lonelyor</code></p>
-
-<p>使用以下命令查看主机名或计算机名
-<code>$ scutil --get ComputerName</code>
-<code>$ scutil --get HostName</code></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/01/09</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
 			<div class="article">
                 <a class="clearlink" href="15456175398128.html">
                 
@@ -395,99 +279,6 @@ cmd /k
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15453716917526.html">
-                
-                  <h1>mongodb安装配置（arch）</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>参考文档：<a href="https://wiki.archlinux.org/index.php/MongoDB_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E4.BD.BF.E7.94.A8">https://wiki.archlinux.org/index.php/MongoDB_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E4.BD.BF.E7.94.A8</a></p>
-</blockquote>
-
-<p><code>pacman -S mongo</code>
-<code>/usr/bin/.mongo --help</code>
-<code>systemctl start mongodb.service</code>
-这样就启动了mongo，启动的配置文件是：<code>cat /etc/mongodb.conf</code>
-然后退出到用户目录，运行mongo
-<code>~ ❯❯❯ mongo</code>
-<code>/var/lib/mongodb/ 是Arch Linux 的 ** 默认dbpath**</code>
-但是无法访问
-修改mongodb的用户组为自己的
-<code>chown mongodb:lonelyor mongodb</code></p>
-
-<p><code>mkdir /home/lonelyor/工作/mongodb</code>
-<code>touch /home/lonelyor/工作/mongodb/data</code>
-<code>touch /home/lonelyor/工作/mongodb/logs</code></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15453713553710.html">
-                
-                  <h1>linux下搜狗输入法不能用的解决办法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>删除
-<code>～/config</code>
-下的
-<code>sogou-qimpanel</code>
-<code>SogouPY</code>
-<code>SogouPY.users</code>
-这三个文件夹，然后重启。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -544,8 +335,6 @@ cmd /k
         
             <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
         
-            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
-        
             <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
@@ -573,6 +362,12 @@ cmd /k
 	      
 		      
 			      <li class="post">
+			        <a href="15764947924982.html">Arch系常用技巧与问题汇总</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15747334018156.html">msfvenom各类木马生成脚本</a>
 			      </li>
 		     
@@ -585,19 +380,13 @@ cmd /k
 		  
 		      
 			      <li class="post">
-			        <a href="15708455642675.html">如何使用cmd开启3389端口与查看3389端口</a>
+			        <a href="15708455642675.html">windows渗透技巧</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15695779467285.html">给linux终端加一个移动到回收站的功能</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15694777838251.html">Proxmox TASK ERROR: Failed to run vncproxy.解决办法</a>
+			        <a href="15692949172295.html">Proxmox物理安装</a>
 			      </li>
 		     
 		  

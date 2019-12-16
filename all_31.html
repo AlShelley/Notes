@@ -3,10 +3,6 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <link rel="bookmark" href="https://raw.githubusercontent.com/AlShelley/lonelyorWiki/master/asset/img/favicon.ico" type="images/x-icon"/>
-    <link rel="shortcut icon" href="https://raw.githubusercontent.com/AlShelley/lonelyorWiki/master/asset/img/favicon.ico" type="images/x-icon"/>
-
     <title>
     
   lonelyorWiki
@@ -19,9 +15,7 @@
     <link rel="stylesheet" href="asset/css/docs.css" />
     <script src="asset/js/vendor/modernizr.js"></script>
     <script src="asset/js/vendor/jquery.js"></script>
-  <script src="asset/highlightjs/highlight.pack.js"></script>
-  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script>hljs.initHighlightingOnLoad();</script>
+ 
 <script type="text/javascript">
   function before_search(){
     var searchVal = 'site:www.lonelyor.org/lonelyorWiki ' + document.getElementById('search_input').value;
@@ -46,17 +40,17 @@
         
         <li id=""><a target="_self" href="index.html">首页</a></li>
         
-        <li id=""><a target="_self" href="archives.html">归档</a></li>
+        <li id=""><a target="_blank" href="archives.html">归档</a></li>
         
-        <li id=""><a target="_self" href="beautiful.html">惊鸿</a></li>
+        <li id=""><a target="_blank" href="ruby.html">流光</a></li>
         
-        <li id=""><a target="_self" href="ruby.html">流光</a></li>
+        <li id=""><a target="_blank" href="beautiful.html">惊鸿</a></li>
         
-        <li id=""><a target="_self" href="search.html">北斗</a></li>
+        <li id=""><a target="_blank" href="lose.html">失乐园</a></li>
         
-        <li id=""><a target="_self" href="lose.html">失乐园</a></li>
+        <li id=""><a target="_blank" href="search.html">北斗</a></li>
         
-        <li id=""><a target="_self" href="about.html">关于</a></li>
+        <li id=""><a target="_blank" href="about.html">关于</a></li>
         
         </ul>
 
@@ -85,17 +79,17 @@
         
         <li><a target="_self" href="index.html">首页</a></li>
         
-        <li><a target="_self" href="archives.html">归档</a></li>
+        <li><a target="_blank" href="archives.html">归档</a></li>
         
-        <li><a target="_self" href="beautiful.html">惊鸿</a></li>
+        <li><a target="_blank" href="ruby.html">流光</a></li>
         
-        <li><a target="_self" href="ruby.html">流光</a></li>
+        <li><a target="_blank" href="beautiful.html">惊鸿</a></li>
         
-        <li><a target="_self" href="search.html">北斗</a></li>
+        <li><a target="_blank" href="lose.html">失乐园</a></li>
         
-        <li><a target="_self" href="lose.html">失乐园</a></li>
+        <li><a target="_blank" href="search.html">北斗</a></li>
         
-        <li><a target="_self" href="about.html">关于</a></li>
+        <li><a target="_blank" href="about.html">关于</a></li>
         
 
     <li><label>Categories</label></li>
@@ -103,15 +97,13 @@
         
             <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
         
-            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
-        
             <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
-        
-            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
         
-            <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
+            <li><a href="%E5%AE%89%E5%85%A8.html">安全</a></li>
+        
+            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
         
             <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
         
@@ -138,132 +130,216 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15446874145620.html">
+                <a class="clearlink" href="15577346001597.html">
                 
-                  <h1>burpsuite插件编写之官方代码示例解读</h1>
+                  <h1>linux 敏感目录</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>description: 分析burpsuite官方提供的示例代码，以此来学习插件编写。</p>
-</blockquote>
+                        	<p>Linux敏感目录，网站存在包含漏洞、任意文件读取漏洞等，权限允许的条件下，放在burp里面批量跑。</p>
 
-<h2 id="toc_0">HelloWorld</h2>
-
-<p>废话不多说，直接上代码！</p>
-
-<pre class="line-numbers"><code class="language-python">from burp import IBurpExtender
-from java.io import PrintWriter
-from java.lang import RuntimeException
-
-# 上面import的第一句是所有burp插件都必须有的
-# 下面开始创建一个burp插件的类来实现插件
-class BurpExtender(IBurpExtender):
-    def registerExtenderCallbacks(self, callbacks):
-        # 创建插件名
-        callbacks.setExtensionName(&quot;HelloWorld extension&quot;)
-        # 获取输出和错误流
-        stdout = PrintWriter(callbacks.getStdout(), True)
-        stderr = PrintWriter(callbacks.getStderr(), True)
-        # 在输出流和错误流中插入消息
-        stdout.println(&quot;Hello output&quot;)
-        stderr.println(&quot;Hello errors&quot;)
-        # 将消息插入burp的alert警报标签中
-        callbacks.issueAlert(&quot;Hello alerts&quot;)
-        # 抛出将出现在错误流中的异常
-        raise RuntimeException(&quot;Hello exception&quot;)
-</code></pre>
-
-<p>现在开始来说几个坑：<br/>
-1、插件最好尽量放在英文路径，不然可能会报错<br/>
-2、编写代码前指定编码(如：# -<em>- coding:utf8 -</em>-)<br/>
-3、raise RuntimeException(&quot;Hello exception&quot;) 这行代码我没看懂是要干嘛的，反正写了之后Errors就报错，不想看的话就注释掉好了。</p>
-
-<h2 id="toc_1">event_listeners 事件监听器</h2>
-
-<pre class="line-numbers"><code class="language-python">#!/usr/bin/python3
-# -*- coding:utf-8 -*-
-
-from burp import IBurpExtender
-from burp import IHttpListener
-from burp import IProxyListener
-from burp import IScannerListener
-from burp import IExtensionStateListener
-from java.io import PrintWriter
-
-class BurpExtender(IBurpExtender, IHttpListener, IProxyListener, IScannerListener, IExtensionStateListener):
-    def registerExtenderCallbacks(self, callbacks):
-        # 保持对回调对象的引用
-        self._callbacks = callbacks
-        # 创建插件名
-        callbacks.setExtensionName(&quot;Event Listeners&quot;)
-        # 获取输出流
-        self._stdout = PrintWriter(callbacks.getStdout(), True)
-        # 注册为http监听器
-        callbacks.registerHttpListener(self)
-        # 注册为proxy监听器
-        callbacks.registerProxyListener(self)
-        # 注册为scanner监听器
-        callbacks.registerScannerListener(self)
-        # 注册为扩展插件状态监听器
-        callbacks.registerExtensionStateListener(self)
-    # 下面几个函数各自实现监听
-    def processHttpMessage(self, toolFlag, messageIsRequest, messageInfo):
-        self._stdout.println(
-            (&quot;HTTP request to &quot; if messageIsRequest else &quot;HTTP response from&quot;) +
-            messageInfo.getHttpService().toString() +
-            &quot;[&quot; + self._callbacks.getToolName(toolFlag) + &quot;]&quot;
-        )
-
-    def processProxyMessage(self, messageIsRequest, message):
-        self._stdout.println(
-            (&quot;Proxy request to &quot; if messageIsRequest else &quot;Proxy response from&quot;) +
-            message.getMessageInfo.getHTTPService().toString()
-        )
-
-    def newScanIssue(self, issue):
-        self._stdout.prinln(&quot;New scan issue &quot; + issue.getIssueName())
-
-    def extensionUnloaded(self):
-        self._stdout.println(&quot;Extension was unloaded&quot;)
-</code></pre>
-
-<p>我是没搞懂这个插件做了什么，诶无所谓，也就是多敲敲代码，熟悉熟悉感觉。</p>
-
-<h2 id="toc_2">traffic_redirector 流量重定向</h2>
-
-<pre class="line-numbers"><code class="language-python">#!/usr/bin/python3
-# -*- coding:utf-8 -*-
-
-from burp import IBurpExtender
-from burp import IHttpListener
-
-HOST_FROM = &quot;www.baidu.com&quot;
-HOST_TO = &quot;www.zhihu.com&quot;
-
-class BurpExtender(IBurpExtender, IHttpListener):
-    def registerExtenderCallbacks(self, callbacks):
-        # 获取扩展helpers对象
-        self._helpers = callbacks.getHelpers()
-        # 设置扩展名
-        callbacks.setExtensionName(&quot;Traffic redirector&quot;)
-        # 将自己注册为HTTP侦听器
-        callbacks.registerHttpListener(self)
-
-    def processHttpMessage(self, toolsFlag, messageIsRequest, messageInfo):
-        # 只获取请求
-        if not messageIsRequest:
-            return
-        # 获取http服务的请求
-        httpService = messageInfo.getHttpService()
-        # 如果主机是HOST_FROM则将它改成HOST_TO
-        if (HOST_FROM == httpService.getHost()):
-            messageInfo.setHttpService(self._helpers.buildHttpService(HOST_TO,
-                httpService.getPort(), httpService.getProtocol()))
-</code></pre>
-
-<p>这个插件简单来说就是，把请求中的host部分修改掉。比如上述代码会监听所有host为百度的请求，一旦出现，就会把host改成知乎。</p>
+<p>/apache/apache/conf/httpd.conf
+/apache/apache2/conf/httpd.conf
+/apache/php/php.ini
+/bin/php.ini
+/etc/anacrontab
+/etc/apache/apache.conf
+/etc/apache/httpd.conf
+/etc/apache2/apache.conf
+/etc/apache2/httpd.conf
+/etc/apache2/sites-available/default
+/etc/apache2/vhosts.d/00_default_vhost.conf
+/etc/at.allow
+/etc/at.deny
+/etc/cron.allow
+/etc/cron.deny
+/etc/crontab
+/etc/fstab
+/etc/host.conf
+/etc/httpd/conf.d/httpd.conf
+/etc/httpd/conf.d/php.conf
+/etc/httpd/conf/httpd.conf
+/etc/httpd/htdocs/index.html
+/etc/httpd/htdocs/index.php
+/etc/httpd/logs/access.log
+/etc/httpd/logs/access_log
+/etc/httpd/logs/error.log
+/etc/httpd/logs/error_log
+/etc/httpd/php.ini
+/etc/init.d/httpd
+/etc/init.d/mysql
+/etc/ld.so.conf
+/etc/motd
+/etc/my.cnf
+/etc/mysql/my.cnf
+/etc/mysql/my.cnf
+/etc/network/interfaces
+/etc/networks
+/etc/passwd
+/etc/php.ini
+/etc/php/apache/php.ini
+/etc/php/apache2/php.ini
+/etc/php/cgi/php.ini
+/etc/php/php.ini
+/etc/php/php4/php.ini
+/etc/php4.4/fcgi/php.ini
+/etc/php4/apache/php.ini
+/etc/php4/apache2/php.ini
+/etc/php4/cgi/php.ini
+/etc/php5/apache/php.ini
+/etc/php5/apache2/php.ini
+/etc/php5/cgi/php.ini
+/etc/phpmyadmin/config.inc.php
+/etc/resolv.conf
+/etc/shadow
+/etc/ssh/sshd_config
+/etc/ssh/sshd_config
+/etc/ssh/ssh_config
+/etc/ssh/ssh_config
+/etc/ssh/ssh_host_dsa_key
+/etc/ssh/ssh_host_dsa_key
+/etc/ssh/ssh_host_dsa_key.pub
+/etc/ssh/ssh_host_dsa_key.pub
+/etc/ssh/ssh_host_key
+/etc/ssh/ssh_host_key
+/etc/ssh/ssh_host_key.pub
+/etc/ssh/ssh_host_key.pub
+/etc/ssh/ssh_host_rsa_key
+/etc/ssh/ssh_host_rsa_key
+/etc/ssh/ssh_host_rsa_key.pub
+/etc/ssh/ssh_host_rsa_key.pub
+/etc/sysconfig/network
+/etc/sysconfig/network
+/home/apache/conf/httpd.conf
+/home/apache2/conf/httpd.conf
+/home/bin/stable/apache/php.ini
+/home2/bin/stable/apache/php.ini
+/NetServer/bin/stable/apache/php.ini
+/opt/www/conf/httpd.conf
+/opt/www/htdocs/index.html
+/opt/www/htdocs/index.php
+/opt/xampp/etc/php.ini
+/PHP/php.ini
+/php/php.ini
+/php4/php.ini
+/php5/php.ini
+/root/.atftp_history
+/root/.bashrc
+/root/.bash_history
+/root/.mysql_history
+/root/.nano_history
+/root/.php_history
+/root/.profile
+/root/.ssh/authorized_keys
+/root/.ssh/identity
+/root/.ssh/identity.pub
+/root/.ssh/id_dsa
+/root/.ssh/id_dsa.pub
+/root/.ssh/id_rsa
+/root/.ssh/id_rsa.pub
+/root/anaconda-ks.cfg
+/tmp/apache/htdocs/index.html
+/tmp/apache/htdocs/index.php
+/usr/lib/php.ini
+/usr/lib/php/php.ini
+/usr/local/apache/conf/httpd.conf
+/usr/local/apache/conf/php.ini
+/usr/local/apache/htdocs/index.html
+/usr/local/apache/htdocs/index.php
+/usr/local/apache/logs/access.log
+/usr/local/apache/logs/access_log
+/usr/local/apache/logs/access_logaccess_log.old
+/usr/local/apache/logs/error.log
+/usr/local/apache/logs/error_log
+/usr/local/apache/logs/error_logerror_log.old
+/usr/local/apache2/conf/httpd.conf
+/usr/local/apache2/conf/php.ini
+/usr/local/apache2/htdocs/index.html
+/usr/local/apache2/htdocs/index.php
+/usr/local/cpanel/logs
+/usr/local/cpanel/logs/access_log
+/usr/local/cpanel/logs/error_log
+/usr/local/cpanel/logs/license_log
+/usr/local/cpanel/logs/login_log
+/usr/local/cpanel/logs/stats_log
+/usr/local/cpanel/logs/stats_log
+/usr/local/etc/php.ini
+/usr/local/httpd/conf/httpd.conf
+/usr/local/httpd2.2/htdocs/index.html
+/usr/local/httpd2.2/htdocs/index.php
+/usr/local/lib/php.ini
+/usr/local/mysql/bin/mysql
+/usr/local/mysql/my.cnf
+/usr/local/php/lib/php.ini
+/usr/local/php4/lib/php.ini
+/usr/local/php4/lib/php.ini
+/usr/local/php4/php.ini
+/usr/local/php5/etc/php.ini
+/usr/local/php5/lib/php.ini
+/usr/local/php5/php5.ini
+/usr/local/share/examples/php/php.ini
+/usr/local/share/examples/php4/php.ini
+/usr/local/tomcat5527/bin/version.sh
+/usr/local/Zend/etc/php.ini
+/usr/share/tomcat6/bin/startup.sh
+/usr/tomcat6/bin/startup.sh
+/var/apache2/config.inc
+/var/httpd/conf/httpd.conf
+/var/httpd/conf/php.ini
+/var/httpd/conf/php.ini
+/var/httpd/htdocs/index.html
+/var/httpd/htdocs/index.php
+/var/lib/mysql/my.cnf
+/var/lib/mysql/mysql/user.MYD
+/var/local/www/conf/httpd.conf
+/var/local/www/conf/php.ini
+/var/log/access.log
+/var/log/access_log
+/var/log/apache/access.log
+/var/log/apache/access_log
+/var/log/apache/error.log
+/var/log/apache/error_log
+/var/log/apache2/access.log
+/var/log/apache2/access_log
+/var/log/apache2/error.log
+/var/log/apache2/error_log
+/var/log/error.log
+/var/log/error_log
+/var/log/mysql.log
+/var/log/mysql/mysql-bin.log
+/var/log/mysql/mysql-slow.log
+/var/log/mysql/mysql.log
+/var/log/mysqlderror.log
+/var/mail/root
+/var/mysql.log
+/var/spool/cron/crontabs/root
+/var/spool/mail/root
+/var/www/conf/httpd.conf
+/var/www/htdocs/index.html
+/var/www/htdocs/index.php
+/var/www/index.html
+/var/www/index.php
+/var/www/logs/access.log
+/var/www/logs/access_log
+/var/www/logs/error.log
+/var/www/logs/error_log
+/web/conf/php.ini
+/www/conf/httpd.conf
+/www/htdocs/index.html
+/www/htdocs/index.php
+/www/php/php.ini
+/www/php4/php.ini
+/www/php5/php.ini
+/xampp/apache/bin/php.ini
+/xampp/apache/conf/httpd.conf
+root/.ssh/authorized_keys
+root/.ssh/identity
+root/.ssh/identity.pub
+root/.ssh/id_dsa
+root/.ssh/id_dsa.pub
+root/.ssh/id_rsa
+root/.ssh/id_rsa.pub</p>
 
                         
                       </div>
@@ -272,418 +348,13 @@ class BurpExtender(IBurpExtender, IHttpListener):
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2018/12/13 15:50 下午</span>
+                    <span class="date">2019/05/13</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
+          					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
           				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+                    
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15446869314706.html">
-                
-                  <h1>xss、csrf、sql注入快速检测方法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">CSRF跨站请求伪造</h2>
-
-<ul>
-<li>原理<br/>
-攻击者在受害者不知情的情况下，以受害者的名义伪造请求发送给受攻击的站点，从而在未授权的情况下执行在权限保护之下的操作。<br/>
-CSRF攻击的对象是那些可以直接产生数据改变的服务，而对于读取数据的服务，则不需要进行 CSRF 的保护。<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>检测方法<br/>
-1.查看重要操作接口提交的请求中是否包含 csrf_token<br/>
-2.更改和删除 csrf_token 后提交表单，查看请求是否能被正确响应。<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>修复方案<br/>
-1.对涉及数据<strong>增、删、改</strong>操作提交的表单中添加csrf_token，token 参数应校验一次后失效。<br/>
-2.最好是在容器或框架上<strong>全局</strong>启用 csrf_token。(很多框架自带的解决办法容易遗漏一次失效的问题)<br/>
-3.token 应有一定的<strong>时效性</strong>，建议为30分钟，过期需失效（即：单页面停留30分钟后，用户提交请求需提示“页面过期，请刷新页面后再次提交”）<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>参考<br/>
-<a href="https://www.owasp.org/index.php/Testing_for_CSRF_(OTG-SESS-005)">CSRF测试</a><br/>
-<a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">跨站请求伪造（CSRF）</a><br/>
-<a href="https://www.ibm.com/developerworks/cn/web/1102_niugang_csrf/">CSRF 攻击的应对之道</a><br/>
-## XSS跨站脚本攻击<br/>
-### 反射型</li>
-<li>原理<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>检测方法<br/>
-<strong>检测场景</strong>：任何有输入输出地方......<br/>
-1.使用通用的web扫描器一般的都能发掘潜在的反射型XSS漏洞。<br/>
-2.手工在一些输入框中或者post参数中加入拼凑过的JS代码，根据返回的页面源码中是否成功嵌入JS代码来判断XSS是否存在。<br/>
-3.如果注入的代码经过后端处理后，永久性的嵌入到了页面当中，则该XSS为存储型的，反射型的XSS一般依赖于该次请求，且同时只能被用户自己所看到。<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>修复方案<br/>
-1.输出时统一使用 htmlEscape（）转义用户输入的数据，将html、js中涉及到的关键字符进行html编码处理后再输出到页面上。<br/>
-2.如果存在用户编写文章等类似用户可以自定义页面样式的功能，则限制用户输入，采用严格的白名单来过滤用户的输入，这种过滤应在后端应实现。(很多开源的第三方富文本编辑器，部分编辑器仅在JS端进行过滤，而不在后端进行关键字过滤)。<br/></li>
-</ul>
-
-<hr/>
-
-<h3 id="toc_1">存储型</h3>
-
-<ul>
-<li>原理<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>检测方法<br/>
-<strong>检测场景</strong>：存在富文本编辑器的地方；用户的输入信息会作为固定的值回显到页面中；后台管理应用中维护用户输入的相关信息。<br/>
-1.手工在一些输入框中或者post参数中加入污染的JS代码，根据返回的页面源码中是否成功嵌入JS代码来判断XSS是否存在(注入前端转义的情况)。<br/>
-2.如果注入的代码经过后端处理后，永久性的嵌入到了页面当中，则该XSS为存储型的。<br/>
-3.如果尝试注入的代码在页面中均被html编码，则再考虑其数据的流转会不会在后台其他应用中处理这些输入数据，如果有，对应的后台应用是否也做了完善的过滤机制。<br/>
-4.可远程搭建XSS检测平台，如果有XSS测试代码被触发，则自动发起链接到该平台上，这样相对来说可以测试那些未知的数据流向是否造成问题。<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>修复方案<br/>
-1.输出时统一使用 htmlEscape（）转义用户输入的数据，将html、js中涉及到的关键字符进行html编码处理后再输出到页面上。<br/>
-2.如果存在用户编写文章等类似用户可以自定义页面样式的功能，则限制用户输入，采用严格的白名单来过滤用户的输入，这种过滤应在后端应实现。(很多开源的第三方富文本编辑器，部分编辑器仅在JS端进行过滤，而不在后端进行关键字过滤)。<br/></li>
-</ul>
-
-<hr/>
-
-<h3 id="toc_2">基于DOM型</h3>
-
-<ul>
-<li>原理<br/></li>
-</ul>
-
-<hr/>
-
-<p>没啥可说的，可以当成是特殊的反射型。</p>
-
-<ul>
-<li>检测方法<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>修复方案<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>参考<br/>
-<a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">XSS跨站脚本</a>
-## SQL_Inject<br/></li>
-<li>原理<br/></li>
-</ul>
-
-<hr/>
-
-<p>开发人员使用直接拼接 sql 的方法来访问数据库，导致攻击者能通过特殊构造的语句控制代码逻辑。典型的代码与数据没有分离导致的安全问题之一。</p>
-
-<ul>
-<li>检测方法<br/></li>
-</ul>
-
-<hr/>
-
-<ul>
-<li>常规方法<br/>
-<code>
-1 ，新建一个1 .txt文件，burp抓包将包含关键参数的请求存入。<br/>
-2 ，使用sqlmap 进行扫描（python sqlmap [options] [file path]）<br/>
-3、等待结果输出
-</code></li>
-<li>另一种常规方法<br/>
-<code>
-使用burp插件SQLiPy<br/>
-方案一（通用）：将sqlapi地址配置成 192.168.2.22 2222<br/>
-方案二：使用sqlipy生成测试语句，然后添加 -p 参数，指定注入参数，然后在 shell 里面运行 sqlmap。<br/>
-一个指定参数的SqlMap示例语句：    <br/>
-sqlmap -u “ http://xxxxxx.com:80/x/xx?x_id=1507 ” --method = “GET”-- cookie = “SESSIONID = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;<br/>
---user-agent= &quot;Mozilla / 5.0（X11; Linux_x86_64; RV：60.0）/ 20100101火狐/ 60.0&quot;  --delay=0 --timeout=30 --retries=0 --dbms=&quot;MySQL&quot;  --os=Linux   <br/>
---level=3 --risk=3 --threads=2 --time-sec=10 -b --batch --answers=&quot;crack=N,dict = N&quot;  -p &quot;zone_id&quot; --tables           
-</code>
-我们在跑注入的时候需要重点设置的参数：<br/>
--risk=3<br/>
--level=3<br/>
---threads=2<br/>
---dbms和–os去问开发或者测试<br/>
--p 指定阐述减少服务器压力</li>
-<li>不太常规的方法<br/>
-1、写一个web界面调用sqlmapapi<br/>
-2、直接找开发拉代码过来进行审计</li>
-<li>修复方案<br/></li>
-</ul>
-
-<hr/>
-
-<p>1、使用安全的API ，完全避免使用解释器，或提供参数化界面的接口，或迁移到ORM 或实体框架(通常开发框架里会自带访问sql的方法来预防注入)。<br/><br/>
-2、做参数绑定，预编译查询。</p>
-
-<ul>
-<li>参考<br/>
-<a href="https://www.owasp.org/index.php/SQL_Injection">SQL注入</a></li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/13 15:42 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15446866501207.html">
-                
-                  <h1>IIS短文件名漏洞</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">漏洞原理</h2>
-
-<hr/>
-
-<p>windows在创建一个新文件时，操作系统还会生成 8.3 格式的兼容 MS-DOS 的（短）文件名，以允许基于 MS-DOS 或16位 windows 的程序访问这些文件。    </p>
-
-<h2 id="toc_1">利用场景</h2>
-
-<hr/>
-
-<p>1、用于猜解文件/文件名<br/><br/>
-2、.Net Framework 的拒绝服务攻击（不常见）</p>
-
-<h2 id="toc_2">检测方法</h2>
-
-<hr/>
-
-<p><strong>黑盒测试</strong><br/><br/>
-使用<a href="https://github.com/lijiejie/IIS_shortname_Scanner">IIS短文件名扫描器</a><br/><br/>
-<strong>白盒测试</strong><br/>
-几乎所有的 windows 操作系统，在 cmd 中使用命令：</p>
-
-<pre class="line-numbers"><code class="language-bat">dir /x
-</code></pre>
-
-<p>如图：<br/>
-<figure><img src="media/15446866501207/%E7%9F%AD%E6%96%87%E4%BB%B6%E5%90%8D%E6%98%BE%E7%A4%BA.png" alt="短文件名显示"/><figcaption>短文件名显示</figcaption></figure></p>
-
-<h2 id="toc_3">修复方案</h2>
-
-<hr/>
-
-<p>1、升级 .net framework 至 4.0 版本或以上<br/><br/>
-2、修改注册表键值<br/><br/>
-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem 修改NtfsDisable8dot3NameCreation为1。（此项默认为0）<br/><br/>
-此设置用于禁用短文件名功能，重启后生效。<br/><br/>
-或者通过 CMD 命令：    </p>
-
-<pre class="line-numbers"><code class="language-txt">Windows Server 2008 R2
-查询是否开启短文件名功能：fsutil 8dot3name query
-关闭该功能：fsutil 8dot3name set 1
-
-Windows Server 2003
-关闭该功能：fsutil behavior set disable8dot3 1
-</code></pre>
-
-<p>以上操作只能防止新创建的文件/文件名不会出现短文件名，而当前文件/文件名依然保持短文件名。完整解决方案还需要如下操作：<br/><br/>
-3、<br/><br/>
-　　a、从当前目录中创建一个副本,并将其重命名为 tempNew；<br/><br/>
-　　b、将当前目录重命名为“tempOld”；<br/><br/>
-　　c、将“tempNew”重命名为原来的目录名。<br/><br/>
-4、禁止 url 中使用 “~” 或它的 Unicode 编码。（IIS7.0的请求阻塞不能完全阻止“~”波浪号。）</p>
-
-<hr/>
-
-<hr/>
-
-<hr/>
-
-<h2 id="toc_4">背景知识</h2>
-
-<hr/>
-
-<p>windows 支持的长文件名最多为 255 个字符。windows 还以 8.3 格式生成与 MS-DOS 兼容的（短）文件名，以允许基于 MS-DOS 或 16 位 windows 的程序访问这些文件。<br/><br/>
-8.3格式短文件名规范中：<br/><br/>
-‘8’是指文件名或目录名的主体部分小于等于 8 个字节；‘3’是指文件名的扩展名部分小于等于 3 个字节。<br/><br/>
-windows 会按以下方式从长文件名生成短文件名：<br/><br/>
-windows 首先会删除文件名中的任何无效字符和空格。无效字符包括：</p>
-
-<pre class="line-numbers"><code class="language-txt">.&quot;/\[]:;=,
-</code></pre>
-
-<p>由于短文件名只能包含一个英文句点（.），因此 windows 将删除文件名中的其他英文句点，即使文件名中最后一个英文句点后面是有效的非空格字符也是如此。例如：windows 从长文件名 This is a really long filename.123.456.789.txt 生成短文件名 Thisis~1.txt 否则，windows 将忽略最后一个英文句点，而使用倒数第二个英文句点。例如：windows从长文件名 This is a really long filename.123.456.789. 生成短文件名 Thisis~1.789。<br/><br/>
-生成短文件名若需要复制的话，windows 将文件名截断为 6 个字符，并在后边附加一个波形符号（~）和一个数字（创建的每一个以 ~1 结尾的唯一文件名，复制文件以 ~2、~3等结尾。）    </p>
-
-<h2 id="toc_5">影响范围</h2>
-
-<hr/>
-
-<p>Windows 10 Pro released in July 2015Windows 10 Enterprise released in July 2015Microsoft Windows Server 2003 Standard EditionMicrosoft Windows Server 2003 Enterprise EditionMicrosoft Windows Server 2003 Datacenter EditionMicrosoft Windows Server 2003 Web EditionMicrosoft Windows Server 2003, Enterprise x64 EditionMicrosoft Windows Small Business Server 2003 Standard EditionMicrosoft Windows Small Business Server 2003 Premium EditionMicrosoft Windows XP Home EditionMicrosoft Windows XP Professional EditionMicrosoft Windows Datacenter Server Limited EditionMicrosoft Windows Advanced Server, Limited EditionMicrosoft Windows 2000 ServerMicrosoft Windows 2000 Advanced ServerMicrosoft Windows 2000 Professional EditionMicrosoft Windows NT Workstation 3.5Microsoft Windows NT Workstation 3.51Microsoft Windows NT Workstation 4.0 开发员版Microsoft Windows NT Server 3.51Microsoft Windows NT Server 4.0 Standard EditionWindows Vista Service Pack 2Windows Vista BusinessWindows Vista EnterpriseWindows Vista Home PremiumWindows Vista UltimateWindows Server 2008 Service Pack 2Windows Server 2008 StandardWindows Server 2008 EnterpriseWindows Server 2008 DatacenterWindows Server 2008 for Itanium-Based SystemsWindows 7 Service Pack 1Windows 7 Home PremiumWindows 7 ProfessionalWindows 7 EnterpriseWindows 7 UltimateWindows Server 2008 R2 Service Pack 1Windows Server 2008 R2 StandardWindows Server 2008 R2 EnterpriseWindows Server 2008 R2 DatacenterWindows Server 2008 R2 for Itanium-Based SystemsWindows 8 EnterpriseWindows 8 ProWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 FoundationWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 StandardWindows Server 2012 DatacenterWindows Server 2012 DatacenterWindows Server 2012 DatacenterWindows Server 2012 Datacenter<br/>
-列表内所有操作系统均受影响（数据来源日期：20171213）<br/><br/>
-该漏洞有其局限性：<br/><br/>
-1、只能猜解文件/文件夹名前六位，以及扩展名前三位<br/><br/>
-2、名称较短的文件是没有响应的短文件名的<br/><br/>
-3、需要 IIS 和 .net 同时满足。  </p>
-
-<h2 id="toc_6">漏洞详情</h2>
-
-<hr/>
-
-<p>在 windows 上的 Apache（Apache支持短文件名）上运行的 web 应用程序正在创建一个长文件名文件（如sql备份文件或会话文件，假设文件名是 backup-082119f75623eb7abd7bf357698ff66c.sql，windows 将创建短文件名 BACKUP〜1.SQL）。这种情况下，如果我们用短文件名访问这个文件，那么就有可能获取这个包含sql数据库备份的文件。<br/><br/>
-比较著名的一个例子：<br/><br/>
-wordpress 有一个备份博客的插件，该插件会为备份创建一个自定义目录（backup-88456）。备份完成后，该目录包含一个名为 wordpress_wp_20120702_576.sql 的文件  ，即 WordPress 数据库备份。这本应该难以猜测的，因为我们的目录名称中有5个数字加上日期和另外3个数字，即使忽略日期也至少有 100,000,000 个组合。然而由于短文件名的原因，目录名会变成 BACKUP~1 而文件名会变成 WORDPR~1.SQL。100,000,000 个组合被缩减为一个组合。    </p>
-
-<h2 id="toc_7">漏洞利用</h2>
-
-<hr/>
-
-<p><strong>短文件名漏洞</strong><br/>
-漏洞利用需要使用到通配符。在 windows 中，* 可以匹配n个字符（n可以为0,一个星号和n个星号的意义一样）。判断某站点是否存在 IIS 短文件名爆破，构造如下payload：    </p>
-
-<pre class="line-numbers"><code class="language-http">1. http://www.xxx.com/*~1*/.aspx
-2. http://www.xxx.com/l1j1e*~1*/.aspx
-</code></pre>
-
-<p>若1返回404而2返回400，则可以判断目标站点存在漏洞。<br/><br/>
-判断漏洞存在后，继续猜解目录下是否存在a开头的文件或文件夹，访问：    </p>
-
-<pre class="line-numbers"><code class="language-http">http://www.xxx.com/a*~1*/.aspx
-</code></pre>
-
-<p>若存在将返回404，不存在则返回400。以此类推，不断向下猜解所有的6个字符。<br/><br/>
-到此要考虑两种情况，若abcdef开头的是一个文件夹则    </p>
-
-<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*/~1/.aspx
-</code></pre>
-
-<p>返回404。若abcdef开头的是一个文件，则    </p>
-
-<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*~1/.aspx
-</code></pre>
-
-<p>返回404（注意！返回404表示存在）同理我们可以猜出文件后缀名：    </p>
-
-<pre class="line-numbers"><code class="language-http">http://www.xxx.com/abcdef*~1*h*/.aspx
-</code></pre>
-
-<p>若返回404则代表扩展名中肯定存在h字符。<br/><br/>
-利用此漏洞可以猜解后台地址、敏感文件/文件名（如备份的rar、bak、sql等）；某些情况下，可以通过短文件名漏洞直接下载对应的文件（如备份sql文件）。<br/><br/>
-<br><br/>
-<strong>.Net Framework 拒绝服务攻击</strong><br/><br/>
-当请求文件夹名称包含 ~1 的请求，会导致不存在该文件的 .Net Framework 去递归查询所有根目录。如果只有一个“~1”是无效的，当“~1”大于一个，比如像这样：        </p>
-
-<pre class="line-numbers"><code class="language-http">\wwwtest\fuck~1\~1\~1\~1.aspx
-</code></pre>
-
-<p>此时文件系统会这样调用：    </p>
-
-<pre class="line-numbers"><code class="language-txt">\wwwtest                           SUCCESS
-\wwwtest\fuck~1\~1\~1\~1           PATH NOT FOUND
-\wwwtest\fuck~1                    NAME NOT FOUND
-\wwwtest\fuck~1\~1\                PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1\             PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1              PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1\~1.aspx      PATH NOT FOUND
-\wwwtest\fuck~1\~1\~1              PATH NOT FOUND
-\wwwtest\fuck~1\~1                 PATH NOT FOUND
-\wwwtest\fuck~1                    NAME NOT FOUND
-\wwwtest                           SUCCESS
-\wwwtest                           SUCCESS
-</code></pre>
-
-<p>如果我们请求的文件/文件夹名同时存在大小写时，这个请求会被请求两次，一次是原封不动的请求，一次是全部使用小写的请求。<br/><br/>
-下表显示了每个请求的FS调用的数量（Windows 2008 R2, IIS 7.5(latest patch – June 2012), and .Net framework 4.0.30319 (在别的系统下可能会不同)）<br/><br/>
-<figure><img src="media/15446866501207/F5%E8%B0%83%E7%94%A8.png" alt="F5调用"/><figcaption>F5调用</figcaption></figure></p>
-
-<p>这个问题适用于当时的 .Net framework 的所有版本(<br/><br/>
-    IIS 1.0, Windows NT 3.51<br/><br/>
-    IIS 2.0, Windows NT 4.0<br/><br/>
-    IIS 3.0, Windows NT 4.0 Service Pack 2<br/><br/>
-    IIS 4.0, Windows NT 4.0 Option Pack<br/><br/>
-    IIS 5.0, Windows 2000<br/><br/>
-    IIS 5.1, Windows XP Professional and Windows XP Media Center Edition<br/><br/>
-    IIS 6.0, Windows Server 2003 and Windows XP Professional x64 Edition<br/><br/>
-    IIS 7.0, Windows Server 2008 and Windows Vista<br/><br/>
-    IIS 7.5, Windows 7 (error remotely enabled or no web.config)<br/><br/>
-    IIS 7.5, Windows 2008 (classic pipeline mode))<br/><br/>
-只是 F5 的调用次数会有不同。    </p>
-
-<h2 id="toc_8">参考链接</h2>
-
-<hr/>
-
-<ul>
-<li><a href="http://www.lijiejie.com/iis-win8-3-shortname-brute/">http://www.lijiejie.com/iis-win8-3-shortname-brute/</a><br/></li>
-<li><a href="https://www.acunetix.com/blog/articles/windows-short-8-3-filenames-web-security-problem/">https://www.acunetix.com/blog/articles/windows-short-8-3-filenames-web-security-problem/</a><br/></li>
-<li><a href="http://www.freebuf.com/articles/4908.html">http://www.freebuf.com/articles/4908.html</a><br/></li>
-<li><a href="https://support.microsoft.com/zh-cn/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions">https://support.microsoft.com/zh-cn/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions</a><br/></li>
-<li><a href="https://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf">https://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf</a><br/></li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2018/12/13 15:37 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -718,10 +389,10 @@ wordpress 有一个备份博客的插件，该插件会为备份创建一个自�
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-                <div class="site-a-logo"><img src="http://images.lonelyor.org/favicon.jpg" /></div>
+                <div class="site-a-logo"><img src="https://www.lonelyor.org/lonelyorWiki/media/15483045488413/205a66b0a6c34ba7184d2d68a9f62dd8.jpg" /></div>
             
                 <h1>lonelyorWiki</h1>
-                <div class="site-des">一个用来记录知识的网站</div>
+                <div class="site-des">一个用来记录知识的网站。</div>
                 <div class="social">
 
 
@@ -751,15 +422,13 @@ wordpress 有一个备份博客的插件，该插件会为备份创建一个自�
         
             <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
         
-            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
-        
             <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
-        
-            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
         
-            <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
+            <a href="%E5%AE%89%E5%85%A8.html"><strong>安全</strong></a>
+        
+            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
         
             <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
         
@@ -780,31 +449,31 @@ wordpress 有一个备份博客的插件，该插件会为备份创建一个自�
 	      
 		      
 			      <li class="post">
-			        <a href="15547243035014.html">相见欢·林花谢了春红</a>
+			        <a href="15764947924982.html">Arch系常用技巧与问题汇总</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15547237158216.html">怎么解决"该虚拟机似乎正在使用中"问题</a>
+			        <a href="15747334018156.html">msfvenom各类木马生成脚本</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15547068970077.html">arch 安装配置指南带图版</a>
+			        <a href="15724200154293.html">v2ray实现科学上网</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15547067485409.html">arch 安装配置指南</a>
+			        <a href="15708455642675.html">windows渗透技巧</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15543568335321.html">python 计算代码运行时间的方法</a>
+			        <a href="15692949172295.html">Proxmox物理安装</a>
 			      </li>
 		     
 		  
@@ -849,7 +518,7 @@ wordpress 有一个备份博客的插件，该插件会为备份创建一个自�
 
  <div class="page-bottom clearfix">
   <div class="row">
-   <p class="copyright">Copyright &copy; 2018
+   <p class="copyright">Copyright &copy; 2015
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
 Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
   </div>
@@ -858,6 +527,213 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
         </section>
       </div>
     </div>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+figure{margin: 0;padding: 0;}
+figcaption{text-align:center;}
+
+/* PrismJS 1.14.0
+ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: black;
+    background: none;
+    text-shadow: 0 1px white;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background:#b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+@media print {
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #F7F7F7;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: slategray;
+}
+
+.token.punctuation {
+    color: #999;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #9a6e3a;
+    background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+.token.function,
+.token.class-name {
+    color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #e90;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+
+pre[class*="language-"].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+    .line-numbers-rows > span {
+        pointer-events: none;
+        display: block;
+        counter-increment: linenumber;
+    }
+
+        .line-numbers-rows > span:before {
+            content: counter(linenumber);
+            color: #999;
+            display: block;
+            padding-right: 0.8em;
+            text-align: right;
+        }
+
+</style>
 
   
     
@@ -879,9 +755,21 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
      
     </script>
 
-    
-
-
+<div id="container"></div>
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: '<%= page.date %>',
+  owner: 'AlShelley',
+  repo: 'lonelyorwiki-message',
+  oauth: {
+    client_id: '2a0c6ad761806835e987',       
+    client_secret: '083280496d60e9becae3c653f97b18db292333cf',  
+  },
+})
+gitment.render('container')
+</script>
 
   </body>
 </html>

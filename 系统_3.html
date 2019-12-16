@@ -97,8 +97,6 @@
         
             <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
         
-            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
-        
             <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
@@ -132,259 +130,151 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15643634653227.html">
+                <a class="clearlink" href="15649354856110.html">
                 
-                  <h1>manjaro 安装 vmtools</h1>
+                  <h1>MacOS常用技巧与问题汇总</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>下载vmwaretools补丁
-<code>git clone https://github.com/rasa/vmware-tools-patches.git</code></p>
+                        	<h2 id="toc_0">1. quicktime player 录制屏幕的时候不能暂停怎么办？</h2>
 
-<p>进入vmware-tools-patches目录
-<code>cd vmware-tools-patches</code></p>
+<p>文章转载自：<a href="https://zhidao.baidu.com/question/2117520508734516867.html">https://zhidao.baidu.com/question/2117520508734516867.html</a></p>
 
-<p>运行补丁
-中间一路回车
-sudo ./patched-open-vm-tools.sh</p>
+<p>Mac自带的QuickTime还是很强大的，不过在录制的时候发现只能停止，不能暂停，其实是有解决方法的，按照以下步骤进行：</p>
 
-<p>经过漫长的等待不负众望迎来了第一个错误提示：
-找不到/lib/modules/4.19.28-1-MANJARO
-这里不慌，反手进入这个目录发现有三个文件：3.16.65-1-MANJARO、4.19.36-1-MANJARO、extramodules-4.19-MANJARO
-然后我把4.19.36-1-MANJARO重命名为他需要的4.19.28-1-MANJARO文件名，这样他脚本加载到运行4.19.28-1-MANJARO时可以正确找到该文件，就算这个文件原名不是这个，相当于是假装降级操作
-<code>sudo mv 4.19.36-1-MANJARO 4.19.28-1-MANJARO</code></p>
+<ol>
+<li>打开QuickTime Player，点击影片-&gt;新建屏幕录制（ˆ ⌘N）</li>
+<li>点击鼠标左键开始录制（选取区域也行）
+注意，下面是关键步骤3.点击dock上的QuickTime player图标，让QuickTime处于活动状态
+4.按下键盘的Esc出来正在录制的QuickTime界面，点击中间的停止可以停止录制</li>
+<li>按下键盘的option（Alt）键，这时候奇迹出现了，停止按键变成了暂停，</li>
+<li>下面的不用说喽~
+另外，QuickTime还可以录制iPhone、iPad等的屏幕，在新建影片录制里，录制后面有个下三角，点击一下，可以选择的。</li>
+</ol>
 
-<p>删除刚刚安装到一半就报错的安装目录
-<code>sudo rm -rf vmware-tools-patches</code></p>
+<h2 id="toc_1">2. 高分辨率下解决虚拟机模糊的问题</h2>
 
-<p>重新安装补丁
-<code>sudo ./patched-open-vm-tools.sh</code></p>
+<p>Mac 分辨率太高导致虚拟机中字体模糊，调高分辨率后字体太小看不清怎么办？主要原因是hidpi设置问题。
+解决办法是：
+1、安装hidpi相关驱动
+2、打开虚拟机显示中的相关设置</p>
 
-<p>完成</p>
+<p>如果开启hidpi后字体太小，可以前往虚拟操作系统的设置中设置dpi值，不同桌面环境的设置位置和方法略有不同。</p>
 
-<h2 id="toc_0">Enjoy</h2>
+<h2 id="toc_2">Docker for Mac 卡在 &quot;is starting&quot;</h2>
 
-<p>作者：猴猴猴猴猴猴子 
-来源：CSDN 
-原文：<a href="https://blog.csdn.net/weixin_43043603/article/details/89853916">https://blog.csdn.net/weixin_43043603/article/details/89853916</a> 
-版权声明：本文为博主原创文章，转载请附上博文链接！</p>
+<blockquote>
+<p>解决方案来自：<a href="https://github.com/docker/for-mac/issues/2420">https://github.com/docker/for-mac/issues/2420</a> 中的sagidM的回复</p>
+</blockquote>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/07/29</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                    
+<p>本机环境：
+macOS 10.14.4
+Docker Engine: 18.09.2</p>
 
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p><img src="media/15604965103558/15604966419596.jpg" alt=""/></p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15641083818915.html">
-                
-                  <h1>manjaro更改国内源操作</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>1、排序并增加中文rank源
-<code>sudo pacman-mirrors -i -c China -m rank</code>
-选择喜欢的就行，不知道就全选好了。</p>
+<p>大意是，打开终端然后输入<code>screen ~/Library/Containers/com.docker.docker/Data/vms/0/tty</code>，接着回车几次，就 ok 了。事实证明这个方法确实能解决问题。如果你输入一次没什么反应，就多开几个终端多试几次就可以了。</p>
 
-<p>2、添加 archlinuxcn（archlinux 可用）
-修改<code>/etc/pacman.conf</code>文件，在文件后添加如下语句：</p>
+<h2 id="toc_3">Mac下的 VMware Fusion 端口映射</h2>
 
-<pre class="line-numbers"><code class="language-text">[archlinuxcn]
-SigLevel = Optional TrustedOnly
-Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+<blockquote>
+<p>文章转载自：<a href="https://blog.csdn.net/weixin_43302757/article/details/82911332">https://blog.csdn.net/weixin_43302757/article/details/82911332</a></p>
+</blockquote>
+
+<p>Windows版本VM进行端口映射有相关的设置界面，但是Mac系统的VM（VMware Fusion）没有。Google 以下找到相关方法。具体步骤如下</p>
+
+<p>打开配置文件
+<code>sudo vi  /Library/Preferences/VMware\ Fusion/vmnet8/nat.conf</code>
+找到如下配置</p>
+
+<pre class="line-numbers"><code class="language-text">[incomingtcp]
+# Use these with care - anyone can enter into your VM through these...
+# The format and example are as follows:
+#&lt;external port number&gt; = &lt;VM&#39;s IP address&gt;:&lt;VM&#39;s port number&gt;
+23 = 172.16.161.129:22 #将IP172.16.161.129虚拟机的22 端口映射到主机23端口
 </code></pre>
 
-<p>导入GPG Key
-<code>sudo pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring</code></p>
+<p>重启VM的网络服务</p>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/07/26</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15640473747565.html">
-                
-                  <h1>kali 下更新软件时报错，说下列签名无效的解决办法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>解决办法就是重新获取下签名key </p>
-
-<p>wget -q -O - <a href="https://archive.kali.org/archive-key.asc">https://archive.kali.org/archive-key.asc</a> | sudo apt-key add</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/07/25</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15638711886127.html">
-                
-                  <h1>Archiso</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>参考官方文档，自制 archlinux 可启动镜像。这样就可以拥有自己的 linux 发行版了。</p>
-
-<p><a href="https://wiki.archlinux.org/index.php/Archiso">https://wiki.archlinux.org/index.php/Archiso</a></p>
-
-<p>修改 pacman.conf，添加自定义存储库
-<img src="media/15638711886127/15638731637993.jpg" alt="" style="width:460px;"/></p>
-
-<p>将 customrepo 的内容改为 archlinuxcn</p>
-
-<pre class="line-numbers"><code class="language-text">#[customrepo]
-SigLevel = Optional TrustAll
-Server = file:///home/user/customrepo/$arch
+<pre class="line-numbers"><code class="language-text">sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --stop
+sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --start
 </code></pre>
 
-<p>改为</p>
+<h2 id="toc_4">Mac 终端设置欢迎页</h2>
 
-<pre class="line-numbers"><code class="language-text">#[archlinuxcn]
-SigLevel = Optional TrustAll
-Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
-</code></pre>
+<p><code>cd /etc</code>
+<code>sudo pico motd</code>
+输入密码后会打开nano，然后在里面输入图案或者文字。然后保存后退出，之后打开终端就能看到欢迎页了。</p>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/07/23</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                    
+<p>其实本质就是在/etc目录下创建文件 motd，然后往里面写内容即可。</p>
 
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p>我只是添加了一段文字，结果如下：</p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15611953556975.html">
-                
-                  <h1>archlinux 安装 vmtools 遇到坑了怎么办</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>使用这个脚本即可：<a href="https://github.com/rasa/vmware-tools-patches">https://github.com/rasa/vmware-tools-patches</a></p>
+<p><img src="media/15532282104799/15532284069773.jpg" alt=""/></p>
 
-<pre class="line-numbers"><code class="language-text">$ git clone https://github.com/rasa/vmware-tools-patches.git
-$ cd vmware-tools-patches
-$ ./patched-open-vm-tools.sh
-</code></pre>
+<h2 id="toc_5">使用Mac对磁盘进行分区，显示“Mediakit报告设备商的空间不足以执行此操作”</h2>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/06/22</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                    
+<p>网上大部分都写的去 windows 中使用DiskGenius重新分区，这搞麻烦了，不用这么麻烦的。</p>
 
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p>1、打开终端，输入<code>diskutil list</code>列出磁盘内容，这里我们可以找到要格式化的磁盘，我是 disk2
+2、卸载要格式化的磁盘<code>diskutil unmountDisk force disk2</code>
+3、写入启动扇区<code>sudo dd if=/dev/zero of=/dev/disk2 bs=1024 count=1024</code>
+4、对磁盘进行分区<code>diskutil partitionDisk disk2 GPT JHFS+ &quot;AWESOME DISK&quot; 0g</code>
+5、打完收工，写博客发出来。</p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15605030813483.html">
-                
-                  <h1>linux 在终端中打开图形化文件管理器</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>xdg-open ./ 用图形化文件管理器打开当前文件夹</p>
+<h2 id="toc_6">iterm2 常用技巧</h2>
 
-<p>xdg-open &quot;dir&quot; 打开任意路径</p>
+<p>按住 com 键</p>
+
+<ul>
+<li>可以拖拽选中字符串</li>
+<li>点击url能直接打开</li>
+<li>点击文件：调用默认程序打开文件</li>
+<li>点击文件夹：在finder中打开文件夹</li>
+<li>同时按住option键，可以矩形选中</li>
+</ul>
+
+<p>新建windows：cmd+N
+新建tab：cmd+T
+切分屏幕：cmd+D水平切分
+智能查找，支持正则：cmd+F</p>
+
+<p>智能补全：cmd+；
+调用历史记录：cmd+shift+h</p>
+
+<h2 id="toc_7">Mac大小写切换</h2>
+
+<p>无论中文还是英文状态下,按住 shift 输入即是大写</p>
+
+<p>长按 caps lock 2s 灯亮后输入即是大写</p>
+
+<h2 id="toc_8">校验文件md5</h2>
+
+<p>打开终端
+使用命令 md5 或 shawun 即可查看。</p>
+
+<h2 id="toc_9">修改Mac主机名、计算机名</h2>
+
+<p><code>$sudo scutil --set ComputerName 你想要的计算机名称</code>
+<code>$sudo scutil --set HostName 你想要的主机名称</code></p>
+
+<p>举例：
+<code>$sudo scutil --set HostName lonelyor</code></p>
+
+<p>使用以下命令查看主机名或计算机名
+<code>$ scutil --get ComputerName</code>
+<code>$ scutil --get HostName</code></p>
+
+<h2 id="toc_10">Mac 启动 apache</h2>
+
+<p>apachectl start</p>
+
+<h2 id="toc_11">Mac 启动 tomcat</h2>
+
+<p>brew services start tomcat  开始</p>
+
+<p>brew services stop tomcat  停止</p>
 
                         
                       </div>
@@ -393,7 +283,7 @@ $ ./patched-open-vm-tools.sh
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/06/14</span>
+                    <span class="date">2019/08/05</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
@@ -467,8 +357,6 @@ $ ./patched-open-vm-tools.sh
         
             <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
         
-            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
-        
             <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
@@ -496,6 +384,12 @@ $ ./patched-open-vm-tools.sh
 	      
 		      
 			      <li class="post">
+			        <a href="15764947924982.html">Arch系常用技巧与问题汇总</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15747334018156.html">msfvenom各类木马生成脚本</a>
 			      </li>
 		     
@@ -508,19 +402,13 @@ $ ./patched-open-vm-tools.sh
 		  
 		      
 			      <li class="post">
-			        <a href="15708455642675.html">如何使用cmd开启3389端口与查看3389端口</a>
+			        <a href="15708455642675.html">windows渗透技巧</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15695779467285.html">给linux终端加一个移动到回收站的功能</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15694777838251.html">Proxmox TASK ERROR: Failed to run vncproxy.解决办法</a>
+			        <a href="15692949172295.html">Proxmox物理安装</a>
 			      </li>
 		     
 		  

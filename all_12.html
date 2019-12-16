@@ -97,8 +97,6 @@
         
             <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
         
-            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
-        
             <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
@@ -132,316 +130,129 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15520392147631.html">
+                <a class="clearlink" href="15456175398128.html">
                 
-                  <h1>GTD 管理法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>GTD 分为5个步骤</p>
-
-<ul>
-<li>收集</li>
-<li>理清</li>
-<li>组织</li>
-<li>执行</li>
-<li>回顾</li>
-</ul>
-
-<p>每一步都很重要，但是我觉得比较难的还是执行。</p>
-
-<p>执行的精髓是一定要去做</p>
-
-<p>不去做的原因可能是因为目标困难，难以去实现，此时要降低困难度（举个例子：每天都要读书，然后规定自己每天读2页而不是每天读50页，这样每天就能至少读2页，时间充足的话还能多读48页，主动去坚持才是最棒的）</p>
-
-<p>科学的养成一个习惯，在前期我们尽量做到：</p>
-
-<ul>
-<li>这个习惯划分到每天的目标量足够小，这样易获得成就感，也没有放弃的理由。</li>
-<li>不间断，不管这一天发生了什么，哪怕是你削减目标量，也要每天都去做。</li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/03/08</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html'>星火流萤</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15520390232741.html">
-                
-                  <h1>用四象限管理任务</h1>
+                  <h1>自建kms服务器激活windows</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>文章来自滴答清单帮助中心</p>
+<p>kms的脚本来自：<a href="https://github.com/SystemRage/py-kms">https://github.com/SystemRage/py-kms</a>
+密钥来自：
+<a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj612867(v%3dws.11)">https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj612867(v%3dws.11)</a>
+<a href="https://github.com/SystemRage/py-kms/wiki/Office-GVLK-Keys">https://github.com/SystemRage/py-kms/wiki/Office-GVLK-Keys</a>
+<a href="https://github.com/SystemRage/py-kms/wiki/Windows-GVLK-Keys">https://github.com/SystemRage/py-kms/wiki/Windows-GVLK-Keys</a></p>
 </blockquote>
 
-<p>四象限是一种常用的时间管理理论，它将需要处理的事按“重要”和“紧急”两个维度划分，并对应到四种待处理状态中，帮助你决定下一步应该做什么。</p>
+<h2 id="toc_0">下载kms服务端和客户端程序</h2>
 
-<p><img src="media/15520390232741/15520390786216.jpg" alt=""/></p>
+<p>分别在服务器和客户端下载py-kms
+<code>git clone https://github.com/SystemRage/py-kms.git</code></p>
 
-<p>通常，你需要马上执行“急事”，确保它们不会延期，比如：</p>
+<h2 id="toc_1">服务器设置</h2>
 
-<p>本周五前必须冻结项目到可发布状态
-明天女友生日，所以今天要去买礼物
-但长远来看，最好将重心放在“要事”上。想想看，需要马上执行的“急事”是否曾经也是“要事”？早点把“要事”消化掉就不会压力满满了。</p>
+<p>使用python3</p>
 
-<p>不过在实际情况中，恼人的“烦事”会比预期多。这些突发事件本不在你的计划中，但又不得不尽快解决，比如：</p>
-
-<p>小区门禁升级需要去物业更换房卡
-亲朋好友突然造访，向你咨询些事情
-因为迫切的呼声让你产生“这很重要”的错觉——实际上就算重要也是对别人而言。一旦进入忙碌的状态，你可能更想在结束后去打个游戏、看看综艺节目、约朋友聊个天放松放松......乍一想没什么不对是吧？忙碌之后确实需要缓缓，但是朋友，你还记得第一象限里的“要事”吗？</p>
-
-<p>所以，减少在第三象限的忙碌，尽早处理第二象限的事情，合理分配时间，去做对你而言重要的事情，才是四象限理论的核心。</p>
-
-<h2 id="toc_0">一、利用清单创建四象限系统</h2>
-
-<p>如果你的事情不太多，那么使用这种方式可以快速搭建起简易的四象限任务系统。你只需要做好以下四步，就能在滴答清单里实践四象限了：</p>
-
-<p>创建四个清单，对应四个象限
-将这四个清单放进同一个文件夹“四象限”
-将收集箱的任务移动到对应清单
-每天在“四象限”文件夹下查看并及时调整任务的状态
-在处理收集箱前，先在侧边栏创建四个清单，分别和四个象限对应。然后为它们创建文件夹“四象限”。</p>
-
-<p><img src="media/15520390232741/15520390924137.jpg" alt=""/></p>
-
-<blockquote>
-<p>注：长按清单A并拖放到清单B上即可为清单A和B创建文件夹。推荐给清单设置不同的颜色，更好的区分任务在哪个象限。</p>
-</blockquote>
-
-<p>以后每天处理收集箱时，就可以将任务逐条移动到对应的清单内。</p>
-
-<ul>
-<li>今天去给女友买生日礼物 → 重要且紧急</li>
-<li>打电话给小文，帮忙购买《哈利波特 8》英文原版书 → 重要不紧急</li>
-<li>明天下午2点去面试 → 重要且紧急</li>
-<li>买回家的火车票 → 重要不紧急</li>
-<li>帮赵星问推荐信的书写要求 → 不重要但紧急</li>
-<li>预定纪念款球衣 → 不重要不紧急
-在“四象限”文件夹的“所有任务”中，选择「按清单排序」，就能清晰的看到每个象限中都有什么事情。</li>
-</ul>
-
-<p><img src="media/15520390232741/15520391146931.jpg" alt=""/></p>
-
-<blockquote>
-<p>注：当某件事情从某个象限转化到其他象限时，你可以直接在文件夹的“所有任务”中，长按这条任务，并拖动到对应的清单
-注：如果需要提醒，记得给任务设置好日期和时间</p>
-</blockquote>
-
-<p>接下来，就可以每天查看、处理并调整任务——做完的事情及时打勾，有变更的事情及时移动。</p>
-
-<ul>
-<li>优先执行重要且紧急的事件</li>
-<li>尽量提前规划重要不紧急事件，在它们变得紧急前就完成</li>
-<li>如果可以的话，试着将不重要但紧急的事情交由他人处理，或者学会对别人的请求说 Sorry</li>
-<li><p>需要控制去做不重要不紧急事件的时间，不要过度放松</p>
-
-<h2 id="toc_1">二、利用自定义智能清单创建四象限系统</h2>
-
-<p>如果你已经创建了“工作”、“学习”、“生日提醒”等不同的类别的清单，那么把任务从“生日提醒”清单移动到“重要且紧急”清单也许不是好的选择。这时候不妨试试创建自定义智能清单，可以在保留现有清单的基础上创建四象限系统。同样的，四个步骤即可搞定：</p></li>
-<li><p>创建四个自定义智能清单，对应四个象限</p></li>
-<li><p>设置好每个自定义智能清单的筛选条件</p></li>
-<li><p>为收集箱的任务设置优先级和日期</p></li>
-<li><p>每天在自定义智能清单里查看并处理任务
-首先，进入「智能清单」，在页面底部添加自定义智能清单，分别和四个象限对应。</p></li>
-</ul>
-
-<p><img src="media/15520390232741/15520391551650.jpg" alt=""/></p>
-
-<p>几天内的事情算紧急？什么状态的任务算重要？创建自定义智能清单时，记得给每个象限都设置好对应的筛选规则。例如，“重要且紧急”的筛选条件可以设置如下：</p>
-
-<p><img src="media/15520390232741/15520391631530.jpg" alt=""/></p>
-
-<ul>
-<li>日期选中「今天」、「明天」</li>
-<li>优先级选中「高优先级」、「中优先级」
-自定义清单创建完，你的四象限系统框架就搭好了。以后处理收集箱时，除了移动到对应分类，也要记得给任务都设置好优先级和日期，如果一些不紧急的事情无法估计什么时候完成，可以只设置优先级。</li>
-</ul>
-
-<p><img src="media/15520390232741/15520391757107.jpg" alt=""/></p>
-
-<blockquote>
-<p>注：任务前面的小方框，红色代表高优先级，黄色代表中优先级，蓝色代表低优先级，灰色代表无优先级。其中，红色和黄色都可以表示任务是重要的，蓝色和灰色则可以表示任务是不重要的。任务后面的日期，则代表了紧急程度。</p>
-</blockquote>
-
-<ul>
-<li>今天去给女友买生日礼物 → 中优先级，今天下午5点</li>
-<li>明天下午2点去面试 → 高优先级，明天下午2点</li>
-<li>买回家的火车票 → 高优先级，没有日期</li>
-<li>帮赵星问推荐信的书写要求 → 低优先级，明天</li>
-<li>预定纪念款球衣 → 无优先级，下周三
-设置优先级和日期时，你不需要去思考这些事属于哪个象限，只需要根据实际情况设置好即可，剩下的工作都交给自定义智能清单，它会帮你将符合条件的任务都筛选出来。</li>
-</ul>
-
-<p><img src="media/15520390232741/15520391940195.jpg" alt=""/></p>
-
-<p>并且，你不用手动去调整任务的状态，如果一个重要不紧急的任务没有被及时处理，它会自动从重要不紧急转移到重要且紧急。不过，你应该不希望这事儿发生吧:)</p>
-
-<p>以上两种方法都能帮助你在滴答里实践四象限系统，快来试试吧。别忘记四象限的核心：去做对你真正重要的事儿，合理分配你的时间。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/03/08</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html'>星火流萤</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15520320136368.html">
-                
-                  <h1>bundle install 无法使用的解决办法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>在学习 hack101 课程的时候，发现无法使用bundle install 安装所需库，考虑到可能是墙的问题。</p>
-
-<p>解决办法如下：
-更换源
-访问网站 <a href="https://gems.ruby-china.com/">Ruby China</a>，然后按照如下操作即可。
-<img src="media/15520320136368/15520321533528.jpg" alt=""/></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/03/08</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15515375536566.html">
-                
-                  <h1>rclone挂载 onedrive 教程</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>1、rclone config选 n
-2、给网盘起个名字如 xlz
-3、选择要挂载的网盘类型，输入数字即可，如 onedrive 则输入18
-4、按回车直到<code>Edit advanced config</code>选 y 来编辑配置
-5、<code>chunk-size</code>我选了200M,这个随便写。
-6、连续回车直到<code>expose_onenote_files&gt; true</code>，这里默认为 false，选 true 是为了在 finder 中显示。
-7、<code>Use auto config</code>，我选的是，然后浏览器自动弹出来进行认证
-8、认证结束后，<code>Your choice&gt; 1</code>
-9、<code>Chose drive to use:&gt;</code>选你要用的（数字）然后选y
-10、<code>y/e/d&gt; y</code>选 y 然后就添加好了
-11、新开一个终端，然后新建一个目录（待会儿网盘就会挂载到这个目录下，比如我新建 xlz）
-12、rclone mount xlz:/ /Users/lonelyor/NBonedrive/xlz
-13、如果要在后台运行就<code>nohup rclone mount xlz:/ /Users/lonelyor/NBonedrive/xlz &amp;</code>
-14、终端输入 <code>df -h</code> 查看</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/03/02</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15512579928868.html">
-                
-                  <h1>excel for Mac 如何点击单元格高亮整行</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>参考答案：<a href="https://zhidao.baidu.com/question/488433413549944532.html">https://zhidao.baidu.com/question/488433413549944532.html</a> 中的 ZouJiLiangRJ 的答案</p>
-</blockquote>
-
-<p>1、复制以下代码</p>
-
-<pre class="line-numbers"><code class="language-excel">Private Sub Worksheet_SelectionChange(ByVal T As Range)
-Cells.Interior.ColorIndex = 0
-T.EntireRow.Interior.ColorIndex = 8
-T.Interior.ColorIndex = 2
-End Sub
+<pre class="line-numbers"><code class="language-text">python3 -m pip install argparse
+python3 -m pip install tzlocal
+python3 -m pip install pysqlite3
+python3 server
 </code></pre>
 
-<p>2、右键单击工作表标签（如：sheet1），点击查看代码
-3、在代码框中粘贴上述代码。然后关闭代码框。
-4、回到 excel 表格然后随意点击一个单元格试试看效果如何。</p>
+<p>在一台服务器上运行server，默认运行在 0.0.0.0 1688。
+这里的服务器可以是你的本地Mac主机，或者本地or远程Linux主机，Windows没试过不清楚。</p>
 
-<p><em>还有一种方法就是使用 wps 的阅读模式。</em></p>
+<h2 id="toc_2">客户端设置(不需要)</h2>
+
+<p><code>python client.py 0.0.0.0（使用服务端ip） 1688</code>我运行了上述指令发现并没有什么卵用，也对，密钥都没导入，能有用才怪了。
+现在我们创建一个activate.bat脚本：</p>
+
+<pre class="line-numbers"><code class="language-bat">cscript //nologo slmgr.vbs /upk
+cscript //nologo slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GXc
+cscript //nologo slmgr.vbs /ipk MH37W-N47XK-V7XM9-C7227-GCQG9
+cscript //nologo slmgr.vbs /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43
+cscript //nologo slmgr.vbs /ipk DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4
+cscript //nologo slmgr.vbs /ipk NW6C2-QMPVW-D7KKK-3GKT6-VCFB2
+cscript //nologo slmgr.vbs /ipk DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ
+cscript //nologo slmgr.vbs /ipk D2N9P-3P6X9-2R39C-7RTCD-MDVJX
+cscript //nologo slmgr.vbs /ipk W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9
+cscript //nologo slmgr.vbs /ipk KNC87-3J2TX-XB4WP-VCPJV-M4FWM
+cscript //nologo slmgr.vbs /ipk FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4
+cscript //nologo slmgr.vbs /ipk MRPKT-YTG23-K7D7T-X2JMM-QY7MG
+cscript //nologo slmgr.vbs /ipk W82YF-2Q76Y-63HXB-FGJG9-GF7QX
+cscript //nologo slmgr.vbs /ipk 33PXH-7Y6KF-2VJC9-XBBR8-HVTHH
+cscript //nologo slmgr.vbs /ipk YDRBP-3D83W-TY26F-D46B2-XCKRJ
+cscript //nologo slmgr.vbs /ipk CB7KF-BWN84-R7R2Y-793K2-8XDDG
+cscript //nologo slmgr.vbs /ipk WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY
+cscript //nologo slmgr.vbs /ipk JCKRF-N37P4-C2D82-9YXRT-4M63B
+cscript //nologo slmgr.vbs /ipk YC7DK-G2NP3-2QQC3-J6H88-GVGXT
+cscript //nologo slmgr.vbs /ipk KBKQT-2NMXY-JJWGP-M62JB-92CD4
+cscript //nologo slmgr.vbs /ipk XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99
+cscript //nologo slmgr.vbs /ipk JNRGM-WHDWX-FJJG3-K47QV-DRTFM
+cscript //nologo slmgr.vbs /ipk YC7DK-G2NP3-2QQC3-J6H88-GVGXT
+cscript //nologo slmgr.vbs /ipk KBKQT-2NMXY-JJWGP-M62JB-92CD4
+cscript //nologo slmgr.vbs /ipk FN8TT-7WMH6-2D4X9-M337T-2342K
+cscript //nologo slmgr.vbs /ipk 6NTH3-CW976-3G3Y2-JK3TX-8QHTT
+cscript //nologo slmgr.vbs /ipk C2FG9-N6J68-H8BTJ-BW3QX-RM3B3
+cscript //nologo slmgr.vbs /ipk J484Y-4NKBF-W2HMG-DBMJC-PGWR7
+cscript //nologo slmgr.vbs /ipk VGPNG-Y7HQW-9RHP7-TKPV3-BG7GB
+cscript //nologo slmgr.vbs /ipk TGN6P-8MMBC-37P2F-XHXXK-P34VW
+cscript //nologo slmgr.vbs /ipk 4NT99-8RJFH-Q2VDH-KYG2C-4RD4F
+cscript //nologo slmgr.vbs /ipk 6Q7VD-NX8JD-WJ2VH-88V73-4GBJ7
+cscript //nologo slmgr.vbs /ipk XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99
+cscript //nologo slmgr.vbs /ipk JNRGM-WHDWX-FJJG3-K47QV-DRTFM
+cscript //nologo slmgr.vbs /ipk YG9NW-3K39V-2T3HJ-93F3Q-G83KT
+cscript //nologo slmgr.vbs /ipk WGT24-HCNMF-FQ7XH-6M8K7-DRTW9
+cscript //nologo slmgr.vbs /ipk GNFHQ-F6YQM-KQDGJ-327XX-KQBVC
+cscript //nologo slmgr.vbs /ipk D8NRQ-JTYM3-7J2DX-646CT-6836M
+cscript //nologo slmgr.vbs /ipk PD3PC-RHNGV-FXJ29-8JK7D-RJRJK
+cscript //nologo slmgr.vbs /ipk 69WXN-MBYV6-22PQG-3WGHK-RM6XC
+cscript //nologo slmgr.vbs /ipk 7WHWN-4T7MP-G96JF-G33KR-W8GF4
+cscript //nologo slmgr.vbs /ipk NY48V-PPYYH-3F4PX-XJRKJ-W4423
+cscript //nologo slmgr.vbs /ipk 9C2PK-NWTVB-JMPW8-BFT28-7FTBF
+cscript //nologo slmgr.vbs /ipk DR92N-9HTF2-97XKM-XW2WJ-XW3J6
+cscript //nologo slmgr.vbs /ipk R69KK-NTPKF-7M3Q4-QYBHW-6MT9B
+cscript //nologo slmgr.vbs /ipk WXY84-JN2Q9-RBCCQ-3Q3J3-3PFJ6
+cscript //nologo slmgr.vbs /ipk J7MQP-HNJ4Y-WJ7YM-PFYGF-BY6C6
+cscript //nologo slmgr.vbs /ipk VQ9DP-NVHPH-T9HJC-J9PDT-KTQRG
+cscript //nologo slmgr.vbs /ipk NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP
+cscript //nologo slmgr.vbs /ipk XM2V9-DN9HH-QB449-XDGKC-W2RMW
+cscript //nologo slmgr.vbs /ipk B4NPR-3FKK7-T2MBV-FRQ4W-PKD2B
+cscript //nologo slmgr.vbs /ipk C4F7P-NCP8C-6CQPT-MQHV9-JXD2M
+cscript //nologo slmgr.vbs /ipk TMJWT-YYNMB-3BKTF-644FC-RVXBD
+cscript //nologo slmgr.vbs /ipk 7HD7K-N4PVK-BHBCQ-YWQRW-XW4VK
+cscript //nologo slmgr.vbs /ipk RRNCX-C64HY-W2MM7-MCH9G-TJHMQ
+cscript //nologo slmgr.vbs /ipk PBX3G-NWMT6-Q7XBW-PYJGG-WXD33
+cscript //nologo slmgr.vbs /ipk N2CG9-YD3YK-936X4-3WR82-Q3X4H
+cscript //nologo slmgr.vbs /ipk 9BGNQ-K37YR-RQHF2-38RQ3-7VCBB
+cscript //nologo slmgr.vbs /ipk 7TQNQ-K3YQQ-3PFH7-CCPPM-X4VQ2c
+cscript //nologo slmgr.vbs /skms 192.168.220.187:1688
+cscript //nologo slmgr.vbs /ato
+cscript //nologo slmgr.vbs /ato
+cscript //nologo slmgr.vbs /dlv
+cmd /k
+</code></pre>
+
+<p>上面的脚本包含了win10、win7、office2019、office2016、office2013的大部分密钥（主要是专业版），基本满足需求，不过其实也没必要搞那么多，但是懒得筛选了。</p>
+
+<h2 id="toc_3">激活win和office</h2>
+
+<p>首先在服务器上运行 kms server。</p>
+
+<ul>
+<li>打开终端然后进入py-kms的py3-kms目录</li>
+<li>然后输入<code>python3 server</code>并回车</li>
+<li>右键点击以管理员身份运行 activate.bat 即可。</li>
+</ul>
+
+<p>显示如下信息表示激活成功：</p>
+
+<p><img src="media/15456175398128/win%E6%BF%80%E6%B4%BB2018-12-24%2011-12-38.png" alt="win激活2018-12-24 11-12-38"/></p>
+
+<h2 id="toc_4">其他</h2>
+
+<p>kms每次只激活180天也就是3个月，这样每三个月就要重新激活一次，你可以每次提醒的时候再打开server然后运行activate.bat脚本。也可以把server部署在远程服务器上，然后在client添加一个计时任务周期性的运行bat脚本。</p>
 
                         
                       </div>
@@ -450,7 +261,115 @@ End Sub
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/02/27</span>
+                    <span class="date">2018/12/24</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15453757934453.html">
+                
+                  <h1>css美化文章标题</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>MWeb自带的标题不好看，特别是首页展示的文章多的时候，没有区分度，看的眼花缭乱的。
+参考自：<a href="http://www.fly63.com/article/detial/642">http://www.fly63.com/article/detial/642</a></p>
+</blockquote>
+
+<h2 id="toc_0">彩虹字</h2>
+
+<p>下面是我添加的css代码，用来稍微美化一下文章标题。</p>
+
+<pre class="line-numbers"><code class="language-css3">.markdown-body h1 {
+  font-size: 2rem;
+  margin: 0.67rem 0;
+  background: linear-gradient(to right, red, orange, green, blue, indigo, violet);
+  -webkit-background-clip: text; 
+  color: transparent;   
+}
+</code></pre>
+
+<h2 id="toc_1">虚化标题</h2>
+
+<pre class="line-numbers"><code class="language-text">.markdown-body h1 {
+  font-size: 30px;
+  color:  #00cccc;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  overflow-y: scroll;
+  margin: 0px;
+}
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15453720146052.html">
+                
+                  <h1>Pycharm编程遇到的技巧</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">pycharm技巧</h2>
+
+<p>ctrl+z 撤回
+全部选中然后tab是全部缩进
+全部选中然后shift+tab是全部反缩进</p>
+
+<h2 id="toc_1">编程技巧</h2>
+
+<p>dir()    #输出函数包含的方法
+type() #输出类型</p>
+
+<p>更多技巧可以查阅官方文档的使用帮助。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
@@ -469,23 +388,55 @@ End Sub
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15507295741483.html">
+                <a class="clearlink" href="15453717965995.html">
                 
-                  <h1>最强渗透测试教程</h1>
+                  <h1>npm Cannot find module 'semver' --解决方案</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>作者：Micropoor 侯总
-作者简介：十多年一线渗透测试大牛，目前在职于360.
-侯总博客：
-<a href="https://blog.csdn.net/micropoor">https://blog.csdn.net/micropoor</a>
-<a href="https://micropoor.blogspot.com/%EF%BC%88%E9%9C%80%E8%A6%81%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%EF%BC%89">https://micropoor.blogspot.com/（需要科学上网）</a>
-侯总教程地址：
-<a href="https://github.com/Micropoor/Micro8">https://github.com/Micropoor/Micro8</a></p>
+                        	<blockquote>
+<p><a href="https://blog.csdn.net/hanshuonb/article/details/77969080">https://blog.csdn.net/hanshuonb/article/details/77969080</a></p>
+</blockquote>
 
-<p>经典语录：
-渗透的本质是信息搜集。</p>
+<p>度娘上面我没有找到相关的解决方法所以只能去Stack Overflow上寻找答案，找到的结果是这样的：</p>
+
+<pre class="line-numbers"><code class="language-text">sudo rm -rf /usr/local/lib/node_modules
+sudo rm -rf ~/.npm
+brew uninstall --force node
+brew install node
+</code></pre>
+
+<p>上面命令的意思删除所有全局包和.npm文件夹，重新安装node。 
+这种方法我没试过，因为肯定有很多小伙伴安装了除npm之外的全局包比如express、webpack等等，如果不考虑清楚直接全删了的话。。。后果惨不忍睹。。。(ps:因为本人英语实在不好，所以经常直接傻瓜式粘命令，提醒小伙伴们最好粘命令之前去查查是什么意思，否则出了问题有可能都没法回退。。。)</p>
+
+<p>说了这么多，下面切入正题 
+首先需要知道为啥有报这个错，可以到全局的npm包看一下，路径是</p>
+
+<p><code>/usr/local/lib/node_modules/npm</code>
+进入npm的node_modules中的semver文件夹可以看到里面变成空的了！具体的原因不好意思我没有深究，但是我觉得一定和yarn是有关系的。不仅如此，你会看到其他的文件夹也基本都是变成空的了，这下咱们就知道为啥报semver这个module找不到了吧！</p>
+
+<p>网上还有解决方法是说用 <code>npm unintall npm -g</code> 删除npm包，实测不好使。。。npm所有的命令都不行了 uninstall肯定也不行了啊！！！</p>
+
+<h2 id="toc_0">我的解决方法：</h2>
+
+<p>1.先删除全局的npm包：也就是把刚才提到的<code>/usr/local/lib/node_modules/npm</code>，这个npm文件夹删除掉 
+2.回到<code>/usr/local/lib/node_modules</code>这个目录，从GitHub上重新clone下git包 
+终端:
+<code>git clone --recursive git://github.com/isaacs/npm.git</code>
+这样新的npm包就回到了全局node_modules中 
+3.打开终端输入
+<code>npm -v</code>
+看一下npm是否可以打印出版本号，如果可以，npm就可以正常使用啦！</p>
+
+<p>说白了就是：</p>
+
+<pre class="line-numbers"><code class="language-text">rm -rf /usr/local/lib/node_modules/npm
+cd /usr/local/lib/node_modules
+git clone --recursive git://github.com/isaacs/npm.git`
+</code></pre>
+
+<p>搞定</p>
 
                         
                       </div>
@@ -494,7 +445,91 @@ End Sub
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/02/21</span>
+                    <span class="date">2018/12/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15453709108643.html">
+                
+                  <h1>python弱口令脚本的一点备注</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>很久以前写的</p>
+</blockquote>
+
+<p>跑弱口令的脚本
+不要使用字典这种操作，这不利于跑大量数据的场景。
+应该制定规则去跑，比如：
+取出一个用户名，然后根据规则生成弱口令，然后再去匹配用户名对应的密码，匹配则是弱口令，不匹配则不是弱口令。
+这样可以后续变成一个服务，用户输入密码，触发了规则则告诉他密码是弱口令。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15453707290429.html">
+                
+                  <h1>msf安装与维护</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><code>curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb &gt; msfinstall &amp;&amp; \
+  chmod 755 msfinstall &amp;&amp; \
+  ./msfinstall</code></p>
+
+<p>上面是官方提供的一键安装脚本</p>
+
+<p>使用msfupdate可以进行更新</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/21</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
@@ -568,8 +603,6 @@ End Sub
         
             <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
         
-            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
-        
             <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
@@ -597,6 +630,12 @@ End Sub
 	      
 		      
 			      <li class="post">
+			        <a href="15764947924982.html">Arch系常用技巧与问题汇总</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15747334018156.html">msfvenom各类木马生成脚本</a>
 			      </li>
 		     
@@ -609,19 +648,13 @@ End Sub
 		  
 		      
 			      <li class="post">
-			        <a href="15708455642675.html">如何使用cmd开启3389端口与查看3389端口</a>
+			        <a href="15708455642675.html">windows渗透技巧</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15695779467285.html">给linux终端加一个移动到回收站的功能</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15694777838251.html">Proxmox TASK ERROR: Failed to run vncproxy.解决办法</a>
+			        <a href="15692949172295.html">Proxmox物理安装</a>
 			      </li>
 		     
 		  

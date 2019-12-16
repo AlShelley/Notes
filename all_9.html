@@ -97,8 +97,6 @@
         
             <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
         
-            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
-        
             <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
@@ -132,59 +130,365 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15550584590400.html">
+                <a class="clearlink" href="15505564665657.html">
                 
-                  <h1>HTTP.sys远程代码执行漏洞</h1>
+                  <h1>深入了解最近普遍存在的DNS劫持攻击事件</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>转载自：<a href="http://www.cnvd.org.cn/webinfo/show/3614">http://www.cnvd.org.cn/webinfo/show/3614</a></p>
+<p>文章摘抄自<a href="https://krebsonsecurity.com/2019/02/a-deep-dive-on-the-recent-widespread-dns-hijacking-attacks/">A Deep Dive on the Recent Widespread DNS Hijacking Attacks</a>，中文翻译由谷歌翻译提供。</p>
 </blockquote>
 
-<p>4月14日，微软月度例行安全公告披露一个HTTP.sys远程代码执行漏洞（CNVD-2015-02422，对应CVE-2015-1635）,主要威胁到IIS服务器的安全。该漏洞存在于 HTTP 协议堆栈 (HTTP.sys) 中，攻击者可以在系统帐户的上下文中执行任意代码或提升权限。目前，互联网已经出现了可以使服务器蓝屏的利用代码，不过可导致控制服务器主机的攻击代码还未出现。</p>
+<p>美国政府 - 以及一些领先的安全公司 - 最近警告说，一系列高度复杂和广泛的攻击使得可疑的伊朗黑客窃取了来自多个政府和私营公司的大量电子邮件密码和其他敏感数据。但到目前为止，这次袭击究竟是如何发生袭击以及谁被击中的细节依然笼罩在保密之中。</p>
 
-<h2 id="toc_0">这漏洞能干啥</h2>
+<p>这篇文章旨在记录这些攻击的程度，并将这一绝对成功的网络间谍活动的起源追溯到关键互联网基础设施提供商的一系列连锁违规行为。</p>
 
-<p>IIS 是 windows 主机上的 Web 服务程序，支持 asp、jsp 脚本，应用广泛漏洞众多。IIS服务进程依赖HTTP.sys内核驱动程序文件。漏洞产生的原因是HTTP.sys未能正确分析经特殊设计的HTTP请求所致，通过发送特定构造的HTTP请求包（如：在请求包中相关字段包含类似0xFFFFFFFFFFFFFFFF的大整数值参数），导致整数溢出。成功利用后，攻击者有可能在系统帐户的上下文中执行任意代码，导致拒绝服务或提取权限。目前相关分析表明，漏洞的溢出只限于整数型参数，直接构造可执行系统指令的攻击代码还有一定的难度。</p>
+<p><img src="media/15505564665657/15505565989858.jpg" alt=""/></p>
 
-<p>漏洞评级“高危”，因为被攻击会导致服务器蓝屏死机呀。</p>
+<p>在我们深入研究在这篇文章中达到高潮的广泛研究之前，回顾到目前为止公开披露的事实是有帮助的。在2018年11月27日，思科的Talos研究部门<a href="https://blog.talosintelligence.com/2018/11/dnspionage-campaign-targets-middle-east.html">发表了一篇文章</a>，概述了一项名为“ DNSpionage ” 的复杂网络间谍活动的轮廓。</p>
 
-<h2 id="toc_1">影响范围</h2>
+<p>该名称的DNS部分是指全球“ <a href="https://en.wikipedia.org/wiki/Domain_Name_System">D omain N ame S ystem</a> ”，它通过将人性化的网站名称（example.com）转换为更容易的数字Internet地址，作为互联网的一种电话簿。供计算机管理。</p>
 
-<p>受影响操作系统的IIS服务器版本如下所示：
-WindowsServer 2012
-WindowsServer 2012 R2
-用于基于32位系统：
-Windows7 SP1
-Windows8
-用于基于x64位系统：
-Windows7 SP1
-Windows8
-Windows8.1
-WindowsServer 2008 R2 SP1
-用于基于 Itanium 的系统:
-WindowsServer 2008 R2 SP1</p>
+<p>Talos表示，DNSpionage的肇事者能够通过劫持这些目标的DNS服务器来窃取黎巴嫩和阿拉伯联合酋长国的一些政府和私营部门实体的电子邮件和其他登录凭证，以便所有电子邮件和虚拟专用网络（VPN） ）流量被重定向到攻击者控制的Internet地址。</p>
 
-<h2 id="toc_2">漏洞修复建议</h2>
+<p>Talos报告称，这些DNS劫持还为攻击者获取目标域的SSL加密证书铺平了道路（例如webmail.finance.gov.lb），这使得他们能够解密截获的电子邮件和VPN凭证并以纯文本格式查看。</p>
 
-<p>补丁：<a href="https://support.microsoft.com/zh-cn/kb/3042553">https://support.microsoft.com/zh-cn/kb/3042553</a>
-装完后要重启才会生效</p>
+<p>在2019年1月9日，安全厂商FireEye <a href="https://www.fireeye.com/blog/threat-research/2019/01/global-dns-hijacking-campaign-dns-record-manipulation-at-scale.html">发布了其报告</a> “全球DNS劫持活动：大规模DNS记录操作”，该报告对于间谍活动的“方式”进行了更为详尽的技术细节，但其中包含的其他细节很少。受害者。</p>
 
-<p>一些系统管理员在部署微软的Server系统时可能不作为Web服务器使用，但有可能在默认安装了IIS，请相关单位用户注意排查。</p>
+<p>与FireEye报告大致同时，美国国土安全部发布了一项罕见的紧急指令，<a href="https://cyber.dhs.gov/blog/#why-cisa-issued-our-first-emergency-directive">命令</a>所有美国联邦民用机构保护其互联网域名记录的登录凭证。作为该任务的一部分，DHS发布了DNSpionage活动中使用的域名和Internet地址的简短列表，尽管这些细节并未超出Cisco Talos或FireEye之前发布的内容。</p>
 
-<h2 id="toc_3">验证该漏洞注意事项</h2>
+<p>这种情况在2019年1月25日发生了变化，当时安全公司CrowdStrike <a href="https://www.crowdstrike.com/blog/widespread-dns-hijacking-activity-targets-multiple-sectors/">发布了一篇博文</a>，列出了迄今为止间谍活动所使用的几乎所有互联网地址。本篇文章的其余部分基于KrebsOnSecurity进行的开源研究和访谈，旨在更加了解这种非同寻常的持续攻击的真实程度。</p>
 
-<p>网络流传的poc可能导致服务器蓝屏死机，请谨慎验证......别把线上业务搞挂了。</p>
+<p><img src="media/15505564665657/15505567298359.jpg" alt=""/></p>
 
-<h2 id="toc_4">参考链接</h2>
+<p>与CrowdStrike发布的DNSpionage活动相关的“妥协指标”。</p>
 
-<p><a href="https://technet.microsoft.com/zh-CN/library/security/ms15-034.aspx">https://technet.microsoft.com/zh-CN/library/security/ms15-034.aspx</a></p>
+<h2 id="toc_0">被动DNS</h2>
 
-<p><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1635">https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1635</a></p>
+<p>我开始研究CrowdStrike报告中列出的每个互联网地址，并通过<a href="https://www.farsightsecurity.com/">Farsight Security</a>和<a href="https://securitytrails.com/">SecurityTrails</a>运行它们，这些服务被动地收集有关与全球数千万个网站域相关的DNS记录变化的数据。</p>
 
-<p><a href="http://bobao.360.cn/news/detail/1435.html?from=groupmessage&amp;isappinstalled=0">http://bobao.360.cn/news/detail/1435.html?from=groupmessage&amp;isappinstalled=0</a></p>
+<p>从每个互联网地址向后工作，我能够看到，在2018年的最后几个月，DNSpionage背后的黑客成功地破坏了50多个中东公司和政府机构的DNS基础设施的关键组件，包括塞浦路斯阿尔巴尼亚的目标，埃及，伊拉克，约旦，科威特，黎巴嫩，利比亚，沙特阿拉伯和阿拉伯联合酋长国。</p>
+
+<p>例如，被动DNS数据显示攻击者能够劫持mail.gov.ae的DNS记录，mail.gov.ae处理阿拉伯联合酋长国政府办公室的电子邮件。以下是此网络间谍活动中成功入侵的其他一些有趣资产：</p>
+
+<pre class="line-numbers"><code class="language-text">-nsa.gov.iq：伊拉克国家安全咨询
+-webmail.mofa.gov.ae：阿拉伯联合酋长国外交部电子邮件
+-shish.gov.al：阿尔巴尼亚国家情报局
+-mail.mfa .gov.eg：埃及外交部邮件服务器
+-mod.gov.eg：埃及国防部
+--embassy.ly：利比亚大使馆
+-owa.e-albania.al：电子邮件的Outlook Web Access门户网站阿尔巴尼亚政府门户网站
+-mail.dgca.gov.kw：科威特民航局的电子邮件服务器
+-gid.gov.jo：约旦的综合情报总局
+-adpvpn.adpolice.gov.ae：阿布扎比警方的VPN服务
+-mail.asp.gov.al:Albanian State Police的电子邮件
+-owa.gov.cy：塞浦路斯政府的Microsoft Outlook Web Access 
+-webmail.finance.gov.lb：黎巴嫩财政部的电子邮件
+-mail.petroleum.gov .eg：埃及石油部
+-mail.cyta.com.cy:Cyta电信和互联网提供商，塞浦路斯
+-mail.mea.com.lb：中东航空公司的电子邮件访问
+</code></pre>
+
+<p>Farsight和SecurityTrails提供的被动DNS数据也提供了关于何时每个域被劫持的线索。在大多数情况下，攻击者似乎已经更改了这些域的DNS记录（我们马上就会看到“如何”），以便这些域指向他们控制的欧洲服务器。</p>
+
+<p>在这些TLD的DNS记录被劫持后不久 - 有时几周，有时只有几天或几小时 - 攻击者能够从SSL提供商<a href="https://www.comodo.com/">Comodo</a>和/或<a href="https://letsencrypt.org/">Let&#39;s Encrypt</a>获取这些域的SSL证书。可以在<a href="https://crt.sh/">cert.sh</a>上看到针对其中几种攻击的准备工作，该数据库提供了所有新SSL证书创建的可搜索数据库。</p>
+
+<p>让我们仔细看一个例子。CrowdStrike报告引用了互联网地址**139.59.134[.]216 **（见上文），根据Farsight多年来，它只是七个不同领域的所在地。其中两个域名仅在2018年12月出现在该互联网地址，包括黎巴嫩的域名，以及 - 奇怪的是 - 瑞典。</p>
+
+<p>第一个域是“ <strong>ns0.idm.net.lb</strong> ”，它是黎巴嫩互联网服务提供商IDM的服务器。从2014年初到2018年12月，ns0.idm.net.lb指向<strong>194.126.10[.]18</strong>，其中足够的是一个基于黎巴嫩的互联网地址。但正如我们在下面的Farsight数据截图中看到的那样，2018年12月18日，该ISP的DNS记录被更改为将指向IDM的互联网流量指向德国的托管服务提供商（ 139.59.134[.]216 地址）。</p>
+
+<p><img src="media/15505564665657/15505569469853.jpg" alt=""/></p>
+
+<p>资料来源：远见安全</p>
+
+<p>根据Farsight的说法，请注意在IDM的域名中列出的其他内容为139.59.134 [。] 216：</p>
+
+<p><img src="media/15505564665657/15505569541143.jpg" alt=""/></p>
+
+<p>域名<strong>sa1.dnsnode.net和fork.sth.dnsnode.net</strong>的DNS记录也从他们在瑞典的合法家园改为12月份由攻击者控制的德国托管服务提供商。这些域名由<a href="https://www.netnod.se/">Netnod Internet Exchange</a>拥有，  <a href="https://www.netnod.se/">Netnod Internet Exchange</a>是一家位于瑞典的主要全球DNS提供商。Netnod还运营着<a href="https://en.wikipedia.org/wiki/Root_name_server">13个“根”名称服务器之一</a>，  这是构成全球DNS系统基础的关键资源。</p>
+
+<p>我们马上回到Netnod。但首先让我们看看CrowdStrike报告中引用的另一个Internet地址，作为DNSpionage黑客滥用的基础设施的一部分：<strong>82.196.11[.]127</strong>。荷兰的这个地址也是域名<strong>mmfasi[.]com</strong>的所在地，Crowdstrike说这是一个攻击者的域名之一，被用作一些被劫持的基础设施的DNS服务器。</p>
+
+<p><img src="media/15505564665657/15505570490488.jpg" alt=""/></p>
+
+<p>正如我们在上面的屏幕截图中看到的那样，82.196.11[.]127暂时是另一对Netnod DNS服务器以及服务器“ ns.anycast.woodynet.net ”的所在地。该域名来源于昵称  <a href="https://en.wikipedia.org/wiki/Bill_Woodcock">Bill Woodcock</a>，担任<a href="https://www.pch.net/">Packet Clearing House（PCH）</a>的执行董事  。</p>
+
+<p>PCH是一家位于加利福尼亚州北部的非营利性实体，它还管理着世界上大量的DNS基础设施，特别是超过500个顶级域名的DNS和DNSpionage所针对的一些中东顶级域名。</p>
+
+<p>以目标公司为目标
+Netnod首席执行官 LarsMichaelJogbäck于2月14日与KrebsOnSecurity联系，确认Netnod的DNS基础设施部分在2018年12月底和2019年1月初被攻击者获取Netnod域名注册商账户后被劫持。</p>
+
+<p>Jogbäck指出该公司于2月5日在其网站上发布的<a href="https://www.netnod.se/news/statement-on-man-in-the-middle-attack-against-netnod">声明</a>，该声明称Netnod在1月2日了解了它在攻击中的作用，并在整个过程中与所有相关方和客户保持联系。</p>
+
+<p>“作为国际安全合作的参与者，Netnod在2019年1月2日意识到我们已经陷入了这波浪潮中，我们经历了MITM（中间人）攻击，”声明中写道。“Netnod不是袭击的最终目标。该目标被认为是在瑞典以外的国家捕获互联网服务的登录详细信息。“</p>
+
+<p>在2月15日与该作者的访谈中，PCH的伍德科克承认，在DNSpionage黑客滥用未经授权的域名注册商访问后，其组织的部分基础设施遭到了破坏。</p>
+
+<p>碰巧，pch.net和dnsnode.net的注册商记录指向相同的来源：<strong>Key-Systems GmbH</strong>，一家位于德国的域名注册商; 和<strong>Frobbit.se</strong>，瑞典的一家公司。Frobbit是Key Systems的经销商，两家公司共享一些相同的在线资源。</p>
+
+<p>伍德科克表示，黑客已经破获了PCH的注册商用于发送称为<a href="https://en.wikipedia.org/wiki/Extensible_Provisioning_Protocol">可扩展供应协议（EPP</a>的信令消息的凭据  。EPP是一个鲜为人知的界面，可作为全球DNS系统的一种后端，允许域名注册商通知区域注册机构（如Verisign）有关域记录的更改，包括新域名注册，修改和转移。</p>
+
+<p>“1月初，Key-Systems表示，他们相信他们的EPP界面已被滥用有效证件的人滥用，”伍德科克说。</p>
+
+<p>Key-Systems拒绝评论这个故事，除了说它没有讨论其经销商客户业务的细节。</p>
+
+<p>Netnod 关于此次袭击的<a href="https://www.netnod.se/news/statement-on-man-in-the-middle-attack-against-netnod">书面声明</a>提到了该公司安全总监PatrikFältström的进一步询问，PatrikFältström也是Frobbit.se的共同所有人。</p>
+
+<p>Fältström在给KrebsOnSecurity的电子邮件中表示，Frobbit和Key Systems的DNSpionage攻击者将未经授权的EPP指令发送到各个注册机构。</p>
+
+<p>“从我的角度来看，这次攻击显然是严重的EPP攻击的早期版本，”他写道。“也就是说，目标是将正确的EPP命令发送到注册管理机构。对于未来的推断，我个人非常紧张。注册管理机构是否允许任何EPP命令来自注册商？我们总会有一些弱的注册商，对吧？“</p>
+
+<h2 id="toc_1">DNSSEC</h2>
+
+<p>这些攻击的一个更有趣的方面是，Netnod和PCH都是DNSSEC（又称“DNS安全扩展”）的声音支持者和采用者，这是一种旨在打败DNSpionage黑客能够攻击的那种攻击的技术。执行。</p>
+
+<p><img src="media/15505564665657/15505571774864.jpg" alt=""/>
+图片：APNIC</p>
+
+<p>DNSSEC通过要求对给定域或域集的所有DNS查询进行数字签名来保护应用程序不使用伪造或操纵的DNS数据。在DNSSEC中，如果名称服务器确定给定域的地址记录在传输过程中未被修改，则它会解析域并让用户访问该站点。但是，如果该记录已以某种方式被修改或与所请求的域不匹配，则名称服务器会阻止用户访问欺诈性地址。</p>
+
+<p>根据APNIC（亚太地区互联网地址注册机构）收集的<a href="https://stats.labs.apnic.net/dnssec/XA?c=XA&amp;x=1&amp;g=1&amp;r=1&amp;w=7&amp;g=0">测量数据</a>，虽然DNSSEC可以成为减轻DNSpionage发起的攻击的有效工具，但只有约20％的全球主要网络和网站启用了它。区域。</p>
+
+<p>Jogbäck表示，Netnod的基础设施遭受了来自DNSpionage攻击者的三次单独攻击。前两个发生在2018年12月14日到2019年1月2日之间的两周时间窗口中，以及未受 DNSSEC保护的目标公司服务器。</p>
+
+<p>不过，他说，12月29日和1月2日的第三次攻击针对性的Netnod基础设施是由DNSSEC和服务自己的内部电子邮件网络保护。然而，由于攻击者已经可以访问其注册商的系统，因此他们能够暂时禁用该安全措施 - 或者至少足以获得<a href="two%20of%20Netnod%E2%80%99s">Netnod的两个</a> <a href="https://crt.sh/?id=1071723007">电子邮件服务器的</a> SSL证书。</p>
+
+<p>Jogbäck告诉KrebsOnSecurity，一旦攻击者拥有这些证书，他们就会为公司的目标服务器重新启用DNSSEC，同时显然准备启动攻击的第二阶段 - 将流经其邮件服务器的流量转移到攻击者控制的机器上。但Jogbäck表示，无论出于何种原因，攻击者在以后尝试吸收互联网流量之前，都忽略了使用未经授权的访问其注册商来禁用DNSSEC。</p>
+
+<p>“对我们来说幸运的是，当他们发起他们的中间人攻击时，他们忘了删除它，”他说。“如果他们更熟练，他们就会删除域名上的DNSSEC，这是他们本可以做到的。”</p>
+
+<p>伍德科克表示，PCH在其所有基础设施上验证了DNSSEC，但并非所有公司的客户 - 特别是DNSpionage所针对的中东国家 - 都已将其系统配置为全面实施该技术。</p>
+
+<p>Woodcock表示，PCP的基础设施是针对DNSpionage攻击者在2018年12月13日和2019年1月2日之间的四次不同攻击中的目标。每次攻击，黑客都会打开他们的密码啜饮工具大约一个小时，然后在返回之前将其关闭每次运行后网络恢复到原始状态。</p>
+
+<p>攻击者不需要每次启动他们的监控拖网超过一个小时，因为大多数现代智能手机被配置为持续为用户可能在他的设备上设置的任何帐户提取新电子邮件。因此，攻击者能够通过每次短暂的劫持来获取大量的电子邮件凭据。</p>
+
+<p>在2019年1月2日 - 也就是DNSpionage黑客追踪Netnod内部电子邮件系统的同一天 - 他们还直接针对PCH，从Comodo获得了两个处理该公司内部电子邮件的PCH域的<a href="https://crt.sh/?id=1075482182">SSL </a><a href="https://crt.sh/?id=1075482666">证书</a>。</p>
+
+<p>伍德科克表示，PCH对DNSSEC的依赖几乎完全阻止了这种攻击，但它设法为当时旅行的两名员工收集电子邮件凭据。这些员工的移动设备通过酒店无线网络下载公司电子邮件 - 作为使用无线服务的先决条件 - 迫使他们的设备使用酒店的DNS服务器，而不是PCH的DNNSEC系统。</p>
+
+<p>伍奇科克说：“这两个人确实被弹出，他们都在旅行并且使用他们的iPhone，他们不得不在劫持期间穿越俘虏门户网站。” “他们不得不关闭我们的名称服务器以使用强制网络门户，在此期间，手机上的邮件客户端检查了新的电子邮件。除此之外，DNSSEC还使我们免于真正彻底拥有。“</p>
+
+<p>由于PCH使用DNSSEC保护其域名，劫持其邮件基础设施的实际效果是，大约一个小时没有人，但两名远程员工收到任何电子邮件。</p>
+
+<p>“对于我们基本上所有的用户来说，它看起来就像邮件服务器短时间内无法使用，”伍德科克说。“如果他们碰巧正在检查他们的手机或其他什么，它暂时没有解决，而且每个人都认为这很有趣，我会在一段时间后再检查一下。当他们再次检查时它工作正常。我们的一些工作人员注意到我们的电子邮件服务发生了短暂的中断，但没有人认为可以与其他任何人讨论或打开机票。“</p>
+
+<p>但DNSpionage黑客并没有被吓倒。PCH在本月早些时候发给客户的一封信中表示，法医调查确定，1月24日，一台拥有其网站用户数据库的计算机遭到入侵。存储在数据库中的用户数据包括客户的用户名，<a href="https://en.wikipedia.org/wiki/Bcrypt">bcrypt</a>密码哈希值，电子邮件，地址和公司名称。</p>
+
+<p>“我们没有看到任何证据表明攻击者访问了用户数据库或泄露了它，”该消息显示。“因此，我们在透明度和预防措施方面为您提供这些信息，而不是因为我们认为您的数据受到了损害。”</p>
+
+<h2 id="toc_2">改进</h2>
+
+<p>针对这个故事接受采访的多位专家表示，基于DNS的攻击存在的一个长期问题是，许多组织倾向于将其大部分DNS基础架构视为理所当然。例如，许多实体甚至不记录其DNS流量，也不密切关注对其域记录所做的任何更改。</p>
+
+<p>即使对于那些努力监控其DNS基础架构以进行可疑更改的公司，一些监控服务也只是被动地拍摄DNS记录的快照，或者只是每天一次地主动执行。事实上，伍德科克表示，PCH依赖于不少于三个监控系统，并且他们都没有提醒他的组织注意到PCH的DNS系统遭遇的各种一小时劫持事件。</p>
+
+<p>“我们有三种不同的商业DNS监控服务，其中没有一项能够实现，”他说。“他们甚至都没有警告我们事情发生后就已经发生了。”</p>
+
+<p>伍德科克表示，PCH已经建立了一个系统，每小时多次轮询自己的DNS基础设施，并在任何变化时立即发出警报。</p>
+
+<p>Jogbäck表示，Netnod还加强了监控，并加倍努力确保使用所有可用于保护其域基础架构的选项。例如，该公司之前没有使用“ <a href="https://www.icann.org/resources/pages/locked-2013-05-03-en">域锁定</a> ” 保护其所有域名，“ <a href="https://www.icann.org/resources/pages/locked-2013-05-03-en">域名锁定</a> ”是一种服务，要求注册商在对域记录进行任何修改之前采取其他身份验证步骤。</p>
+
+<p>“我们真的很伤心，我们没有更好地保护我们的客户，但我们也是攻击链中的受害者，”Jogbäck说。“你被抢劫后可以换成更好的锁，并希望让某人再次做到更难。但我可以真实地说，我们已经从这次袭击中成为受害者中学到了很多，而且我们现在比以前好多了。“</p>
+
+<p>伍德科克表示，他担心互联网决策者和其他基础设施提供商不会严重或迫切地对全球DNS构成威胁，他相信DNSpionage黑客将在未来数月和数年内有大量其他受害者攻击和利用。</p>
+
+<p>“伊朗人不只是试图做出这些攻击立即生效。他们试图深入到互联网基础设施中，这样他们就可以随时随地使用这些东西。</p>
+
+<p>“所有这一切都是一场战斗，”他说。“伊朗人不只是试图做出这些攻击立即生效。他们试图深入到互联网基础设施中，这样他们就可以随时随地使用这些东西。他们希望获得尽可能多的方式，以便将来可以用于特定的目标。“</p>
+
+<h2 id="toc_3">建议</h2>
+
+<p>John Crain是<a href="https://en.wikipedia.org/wiki/ICANN">ICANN</a>的首席安全，稳定和弹性官员，ICANN是负责监管全球域名行业的非营利实体。Crain表示，许多可以使攻击者更难以劫持目标域或DNS基础架构的最佳实践已经有十多年了。</p>
+
+<p>“这很大程度上取决于数据卫生，”Crain说。“大型组织直到妈妈和流行实体都没有关注一些非常基本的安全实践，比如多因素身份验证。如今，如果你有一个次优的安全立场，你就会被拥有。这就是今天的现实。我们现在看到更复杂的对手现在在互联网上采取行动，如果你没有做基本的事情，他们会打击你。“</p>
+
+<p>组织的一些最佳实践包括：</p>
+
+<ul>
+<li><p>使用DNSSEC（签名区域和验证响应）</p></li>
+<li><p>使用注册表锁等注册功能，可以帮助保护域名记录不被更改</p></li>
+<li><p>使用应用程序，Internet流量和监控的访问控制列表</p></li>
+<li><p>使用双因素身份验证，并要求所有相关用户和分包商使用它</p></li>
+<li><p>如果使用密码，请选择唯一密码并考虑密码管理器</p></li>
+<li><p>审核注册商和其他提供商的帐户</p></li>
+<li><p>通过监控来监控证书，例如，<a href="%E8%AF%81%E4%B9%A6%E9%80%8F%E6%98%8E%E5%BA%A6%E6%97%A5%E5%BF%97">证书透明度日志</a></p></li>
+</ul>
+
+<p>标签：APNIC，比尔·伍德科克，思科塔洛斯，科摩多，CrowdStrike，国土安全部，DNSpionage，DNSSEC，EPP，可扩展的供应协议，远见安全，FireEye的，Frobbit，ICANN，约翰·克雷恩，键控系统，拉尔斯·迈克尔Jogbäck，LetsEncrypt，Netnod，包清算所，PatrikFältström，PCH，SecurityTrails，美国国土安全部</p>
+
+<p>此条目发布于2019年2月18日星期一上午8:51，并在A Little Sunshine，Data Breaches，The Coming Storm下提交。您可以通过RSS 2.0 Feed 关注此条目的任何评论。您可以跳到最后并发表评论。目前不允许Pinging。</p>
+
+<hr/>
+
+<h2 id="toc_4">26条评论（懒得处理格式了）</h2>
+
+<p>Beau Kinstler
+2019年2月18日上午9:50
+一如既往的棒极了。谢谢Brian。出于好奇，你如何将DNSSEC和你在这里发布的攻击与GRC.com和Steve Gibson的“DNS欺骗”测试工具中描述的DNS缓存中毒联系起来？
+<a href="https://www.grc.com/dns/dns.htm">https://www.grc.com/dns/dns.htm</a></p>
+
+<p>答复
+BrianKrebs
+2019年2月18日晚上10:21
+DNS缓存中毒最常发生在更本地级别，即用户的机器或路由器。本故事中描述的攻击涉及将DNS设置妥协到更高级别，远远超出最终用户的控制范围。</p>
+
+<p>答复
+汤姆威尔士
+2019年2月18日上午9:58
+“伊朗人不只是试图做出这些攻击立即生效”。</p>
+
+<p>我查看了这篇文章，但我找不到任何证据表明“伊朗人”是肇事者。</p>
+
+<p>有没有，或者这只是更具政治色彩的暗杀？</p>
+
+<p>答复
+BrianKrebs
+2019年2月18日上午10:31
+查看故事中链接的CrowdStrike博客文章。我没有打印很多我的信息，主要是因为故事已经很长了，无论如何这可能不是我将在这个主题上写的最后一个。但是，我也试图不提供太多细节，以帮助攻击者在未来改进攻击。也就是说，从我对这个故事中未提及的许多人的访谈中可以清楚地看出，有一些线索指向某些特定威胁行为者的相当大的努力。</p>
+
+<p>答复
+TreFunny
+2019年2月18日上午11点50分
+关注CrowdStrike，他们只是联邦调查局的私人部门......看看与FBI的所有联系，这是可怕的。</p>
+
+<p>看看他们是如何处理DNC黑客的，并没有停止它19天或疯狂的事情，但只花了2个小时来识别“熊”......吓人。</p>
+
+<p>CrowdStrike将会在这些日子里曝光......</p>
+
+<p>答复
+戴夫亚当斯
+2019年2月18日上午10:42
+优秀的研究Brian。我希望使用DNSSec的20％都在美国。作为网络安全分析师，任何异常都是有原因的。如果您的邮件交换中断一小时，请进行调查。我们都需要做的不仅仅是保护我们的系统。我们还需要验证数据的来源。</p>
+
+<p>答复
+阳光之州
+2019年2月18日上午11:41
+我知道我的域名，我使用2FA访问网站界面，以及DNSSEC和注册表锁定已启用</p>
+
+<p>答复
+Greg Askew
+2019年2月18日上午11:54
+“然而，他说，12月29日至1月2日的第三次攻击是针对受DNSSEC保护并服务于其内部电子邮件网络的Netnod基础设施。然而，由于攻击者已经可以访问其注册商的系统，他们能够暂时禁用该安全措施“。</p>
+
+<p>这没有意义。不应该通过关闭服务器区域上的DNSSEC来禁用DNSSEC。要使DNSSEC提供任何值，它需要配置DNS服务器和客户端计算机上的实施。在Windows上，使用名称解析策略表（NRPT）执行客户端强制执行。如果未在客户端上强制执行DNSSEC，则它实际上不提供任何值。如果在客户端上强制执行DNSSEC，则禁用DNS服务器上的区域的DNSSEC将导致客户端上的名称解析失败。如果任何受害组织拥有支持DNSSEC的域，但未在其客户端计算机上强制执行DNSSEC，则他们会自行开枪。</p>
+
+<p>答复
+JJ
+2019年2月18日下午2:53
+杀死DNSSEC只需要摆脱DS记录。我不得不走很多公司，为什么他们全新的DNSSEC配置并没有真正起作用，而且几乎总是因为他们没有相应的DS记录。人们不再做功课了：“但我们签了这个区！”</p>
+
+<p>答复
+丹尼斯塞甘
+2019年2月18日下午12:17
+“为什么CISA发布了我们的第一份紧急指令” 
+，主任Christopher Krebs</p>
+
+<p>任何关系？</p>
+
+<p>答复
+BrianKrebs
+2019年2月18日下午12:18
+不</p>
+
+<p>答复
+表姐艾迪
+2019年2月18日下午12:28
+伊朗和俄罗斯似乎正在为网络战争做准备。
+希望我们的政府（Home Land Security，FBI，CIA）能够保护我们的国家。我真的希望并祈祷特朗普总统会让Brian Krebs成为我们政府网络恐怖部门的负责人！</p>
+
+<p>答复
+橡子
+2019年2月18日下午12:55
+185.20.187 [。] 8封锁，未知原因，由Forcepoint，Fortinet，卡巴斯基（等）
+提供，分析，卡巴斯基（等）2019-02-15 
+<a href="http://www.virustotal.com/en/url/0054576de4b5c983f49d77046800ed029b9d3aebdc6334261386c9aac4be39a5/analysis">http://www.virustotal.com/en/url/0054576de4b5c983f49d77046800ed029b9d3aebdc6334261386c9aac4be39a5/analysis</a></p>
+
+<p>2018-12-03 
+<a href="http://www.virustotal.com/en/url/55263f4edcd02ab7e9c391f1a36c4e84ff9868133a40020e9db2046fba42a11f/analysis">http://www.virustotal.com/en/url/55263f4edcd02ab7e9c391f1a36c4e84ff9868133a40020e9db2046fba42a11f/analysis</a></p>
+
+<p>答复
+橡子
+2019年2月18日下午1:24
+Talos：“攻击者将主机名重定向到IP 185.20.187 [。] 8短时间。”11月6日，9月13日等</p>
+
+<p>C2（命令和控制）服务器，以及另外两个IP（全部在同一荷兰网络上）。</p>
+
+<p>答复
+ChrisSuperPogi
+2019年2月18日下午2:03
+令我惊讶的是，我们可能无法实践多年前推荐的数据卫生！我的意思是，DNSSEC已经很老了。注册表锁定也已有一段时间了。
+多因素身份验证是一个非常新的趋势，但它是网络杀戮链的关键部分。</p>
+
+<p>希望我们从中吸取教训。</p>
+
+<p>答复
+JJ
+2019年2月18日下午2:55
+注册表锁实际上并不是众所周知的，人们将它与传输锁混淆。再加上它需要花钱而且你有答案。</p>
+
+<p>答复
+YYZ
+2019年2月18日下午3:12
+IP地址的最后一个八位字节点周围的括号[]是什么意思？</p>
+
+<p>答复
+大卫C.
+2019年2月18日下午4:29
+它们旨在防止Web爬虫爬进那些（犯罪）服务器。并且防止移动网络浏览器将它们变成链接，最终可能会欺骗无辜的读者访问这些网站。</p>
+
+<p>答复
+ASB
+2019年2月18日下午4:32
+[。]旨在确保链接不会变为可点击。因此它是本网站读者的保护机制（除其他外）</p>
+
+<p>答复
+Nobby Nobbs
+2019年2月18日下午5:24
+可能是为了防止IP地址在大多数浏览器中显示为链接。在讨论像Brian这样的恶意网站时可能会出现问题。</p>
+
+<p>感谢另一篇伟大的文章，布莱恩！</p>
+
+<p>答复
+BrianKrebs
+2019年2月18日晚上10:18
+谢谢。是的，正如其他人所说，括号有效地阻止了任何网站，浏览器或电子邮件客户端将这些地址变成可点击的链接。</p>
+
+<p>答复
+大卫C.
+2019年2月18日下午4:28
+我将添加到实践列表中以获取包含身份证明的证书，而不仅仅是域。</p>
+
+<p>面对DNS劫持，证明“这是example.com”的证书毫无意义。</p>
+
+<p>一个说“示例公司，1234假街，圣克拉拉，加利福尼亚州”并且来自需要身份证明文件的权威机构将更加安全。特别是如果用户习惯于在位置栏中看到全名，并且在某些时候突然变为“example.com”。</p>
+
+<p>答复
+伊恩
+2019年2月18日晚上8:39
+没有最终用户如何保护自己的指标。在看了DNS问题很长一段时间后，我刚刚做了一次重拍。曾经有一次我没有使用我的DNS旋转器脚本 - 我有一个脚本可以随机选择随机dns服务器。野蛮但似乎可以防止明显的dns渎职行为。有点厌倦了所有这一切，互联网是故意保持borken恕我直言。伊朗应该实施制裁，例如将所有伊朗学生/教授从大学中移除，直到他们学会成为好公民。与中国人一样... LOL看看任何“敏感”的工作场所以及振动器和推动者的名字，所有人都经过了完美的审查......国家赞助的所有最敏感的地方的傀儡和间谍，而同等或更好能力的国内学生必须如果他们能找到一个地方，就要与债务和贷款斗争！最高阶的愚蠢！</p>
+
+<p>答复
+BrianKrebs
+2019年2月18日晚上9:35
+对最终用户来说有点复杂。您可以将DNS设置设置为Google的DNS - 8.8.8.8和4.4.2.2 - 当域名签名时，应该强制执行DNNSEC。但是，如果您不在自己的网络上，并且您的移动数据提供商的DNS设置启动，事情会变得更加棘手。我不确定最终用户是否有办法控制在这种情况下使用的DNS设置。</p>
+
+<p>答复
+Rich Altmaier
+2019年2月18日晚上11:09
+保护DNS当然很重要而且很好。然而，就用户保护自己而言，这基本上是一个问题：我是否连接到我建立帐户的服务器？
+我们可以使用Yubikey或等效服务器来验证用户身份。<em>但我们需要</em>一个反向Yubikey，我的密钥也确认服务器是我建立我的帐户的那个。</p>
+
+<p>我相信Yubikey的技术适用于此。但用户体验是擅离!! 我想插入我的密钥并要求密钥+浏览器确认：基于加密交换，我正在与之通信的服务器确实拥有我之前在那里建立的加密密钥。</p>
+
+<p>请！！！</p>
+
+<p>答复
+Dnspionage
+2019年2月18日晚上11:29
+更多的组织应该部署DNSSEC，但大多数组织不了解它的工作原理以及它的价值。</p>
 
                         
                       </div>
@@ -193,7 +497,7 @@ WindowsServer 2008 R2 SP1</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/04/12</span>
+                    <span class="date">2019/02/19</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
@@ -212,24 +516,45 @@ WindowsServer 2008 R2 SP1</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15550532565333.html">
+                <a class="clearlink" href="15488284836388.html">
                 
-                  <h1>lonelyor个人技能清单v1.0</h1>
+                  <h1>90后空巢青年生活指南</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>2019年10月整理</p>
-
-<blockquote>
-<p>这里记录我已经知道的和计划知道的知识。每个人的路都是不一样的，但结果殊途同归。</p>
-
-<p>知识有三个阶段：不知道自己不知道、知道自己知道、知道自己不知道。</p>
-
-<p>智慧是：大智若愚、勤能补拙。</p>
+                        	<blockquote>
+<p>你永远不知道下一秒会发生什么，所以赶紧珍惜现在吧。</p>
 </blockquote>
 
-<p><img src="media/15550532565333/lonelyor%20%E4%B8%AA%E4%BA%BA%E6%8A%80%E8%83%BD%E6%A0%91.png" alt="lonelyor 个人技能树"/></p>
+<h1 id="toc_0">生活习惯篇</h1>
+
+<h2 id="toc_1">多喝热水</h2>
+
+<p>不止&quot;女人是水做的&quot;，男人也是。人体70%是的成分是水。
+多喝水可以减肥、缓解皮肤干燥、排毒除痘、缓解眼睛疲劳等。多喝水还能治疗肾结石。</p>
+
+<h2 id="toc_2">不要久坐</h2>
+
+<p>久坐和喝水少一样危害巨大，因此不可久坐。每坐一个小时就起来走动顺便喝点水吧。</p>
+
+<h2 id="toc_3">给物品定位</h2>
+
+<p>将各类常用物品找一个固定的位置，每次取用后将其放回原处，同时记录每一件物品。掌握自己的生活从掌握自己有多少物品开始。</p>
+
+<h2 id="toc_4">常清洁</h2>
+
+<p>拒绝&quot;仓鼠症&quot;，不要囤积物品。制定房屋打扫计划，经常打扫、整理房间。
+学习&quot;断舍离&quot;</p>
+
+<h2 id="toc_5">注意个人护理</h2>
+
+<p>包括美容养颜、强身健体、预防疾病、个人卫生等。</p>
+
+<h2 id="toc_6">迈开腿管住嘴</h2>
+
+<p>吃饭只吃八分饱，不可贪食吃十分。
+经常出门走走，有利身心健康。看看展馆、游玩山水。工作修炼的是技术、出门修的是身心。</p>
 
                         
                       </div>
@@ -238,7 +563,7 @@ WindowsServer 2008 R2 SP1</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/04/12</span>
+                    <span class="date">2019/01/30</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html'>星火流萤</a></span>
@@ -257,24 +582,45 @@ WindowsServer 2008 R2 SP1</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15547243035014.html">
+                <a class="clearlink" href="15487463359475.html">
                 
-                  <h1>相见欢·林花谢了春红</h1>
+                  <h1>给网站添加百度、谷歌搜索框</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>【作者】李煜 
-【朝代】五代</p>
+                        	<p>以下是我北斗页面的搜索框代码：</p>
 
-<p>林花谢了春红，太匆匆。无奈朝来寒雨，晚来风。
-胭脂泪，相留醉，几时重。自是人生长恨，水长东。</p>
-
-<blockquote>
-<p>五代是指后梁、后唐、后晋、后汉和后周。
-前蜀、后蜀、南吴、南唐、吴越、闽、楚、南汉、南平（荆南）、北汉等十余个割据政权被《新五代史》及后世史学家统称十国。
-五代十国（907年—979年）是中国历史上的一段大分裂时期。这一称谓出自《新五代史》，是对五代（907年—960年）与十国（902年—979年）的合称。</p>
-</blockquote>
+<pre class="line-numbers"><code class="language-markup"> &lt;div style=&#39;overflow:auto&#39;&gt;&lt;form onsubmit=&quot;return baiduWithHttps(this)&quot; action=&quot;http://www.baidu.com/s&quot; target=&quot;_blank&quot;&gt;
+        &lt;input class=&#39;bdtext&#39; type=&quot;text&quot;  onfocus=&quot;checkHttps&quot; name=&quot;wd&quot;  size=&quot;30&quot;&gt;&lt;input class=&#39;bdbtn&#39; type=&quot;submit&quot;value=&quot;百度搜索&quot;&gt;
+        &lt;/form&gt;&lt;script&gt;function checkHttps () {
+                BaiduHttps.useHttps();    
+            };
+            function baiduWithHttps (formname) {
+                var data = BaiduHttps.useHttps();
+                if (data.s === 0) {
+                    return true;
+                }
+                else {
+                    formname.action = &#39;https://www.baidu.com/s&#39; + &#39;?wd&#39; + data.ssl_code;
+                    return true;
+                }
+            };&lt;/script&gt;&lt;/div&gt;&lt;div style=&#39;overflow:auto&#39;&gt;&lt;form onsubmit=&quot;return googleWithHttps(this)&quot; action=&quot;http://www.google.com/search&quot; target=&quot;_blank&quot;&gt;
+    &lt;input class=&#39;bdtext&#39; type=&quot;text&quot;  onfocus=&quot;checkHttps&quot; name=&quot;q&quot;  size=&quot;30&quot;&gt;&lt;input class=&#39;bdbtn&#39; type=&quot;submit&quot;value=&quot;谷歌搜索&quot;&gt;
+    &lt;/form&gt;&lt;script&gt;function checkHttps () {
+            googleHttps.useHttps();    
+        };
+        function googleWithHttps (formname) {
+            var data = googleHttps.useHttps();
+            if (data.s === 0) {
+                return true;
+            }
+            else {
+                formname.action = &#39;https://www.google.com/search&#39; + &#39;?q&#39; + data.ssl_code;
+                return true;
+            }
+        };&lt;/script&gt;&lt;/div&gt;
+</code></pre>
 
                         
                       </div>
@@ -283,10 +629,10 @@ WindowsServer 2008 R2 SP1</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/04/08</span>
+                    <span class="date">2019/01/29</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html'>风花雪月</a></span>
+          					    <span class="posted-in"><a href='%E5%BC%80%E5%8F%91.html'>开发</a></span>
           				   
                     
 
@@ -302,28 +648,24 @@ WindowsServer 2008 R2 SP1</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15547237158216.html">
+                <a class="clearlink" href="15484074464554.html">
                 
-                  <h1>怎么解决"该虚拟机似乎正在使用中"问题</h1>
+                  <h1>Snipaste 无法在 Mac 上截图的解决办法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>在用VMware虚拟机的时候，有时会发现打开虚拟机时提示“该虚拟机似乎正在使用中。如果该虚拟机未在使用，请按“获取所有权(T)”按钮获取它的所有权。否则，请按“取消(C)”按钮以防损坏。配置文件: D:\win10x64\Windows 10 x64.vmx。”这是由于虚拟机未正常关闭引起的，下面看看解决办法。</p>
+                        	<p>MacOSX 版本：Mojave 10.14.2
+Snipaste 版本：1.16.2</p>
 
-<p>1.首先点击“获取所有权(T)”按钮，会发现弹出一个窗口，显示“无法打开虚拟机: D:\win10x64\Windows 10 x64.vmx获取该虚拟机的所有权失败。主机上的某个应用程序正在使用该虚拟机。配置文件: D:\win10x64\Windows 10 x64.vmx。”等信息。这说明获取所有权失败了。</p>
+<p>以下列出遇到部分问题：
+1、使用截图功能，手动画矩形框，但是选定框画完后松开触摸板，选定框自动消失，导致无法截图。（手动选定截图区域占截图使用时间99%）
+2、使用截图功能，程序自动识别截图区域，双击可以得到截图并且有箭头等选项，画一个箭头后，选定框自动消失，截图会带着箭头自动保存到图片目录。（这导致没法多画几个箭头，也没法另存为图片）</p>
 
-<p>2.当点击“取消(C)”按钮是直接退出窗口，什么也不弹出。这时发现不管点那个按钮都不能解决问题。</p>
+<h1 id="toc_0">解决办法</h1>
 
-<p>3.点击“开始”菜单，选择“文件资源管理器”。</p>
-
-<p>4.打开“文件资源管理器”后，进入到存放此台Vmware虚拟机虚拟磁盘文件及配置文件存放的位置（也就是弹出提示窗口上的路径），在这里是D:\win10x64这个目录下，找到后缀为.lck文件夹。</p>
-
-<p>5.然后，将后缀为.lck的文件夹删除，或者或避免删错可以移动到备份文件夹中，也可以直接重命名此文件夹，在这里将文件夹Windows 10 x64.vmx.lck改为Windows 10 x64.vmx.lck.backup。</p>
-
-<p>6.然后重新打开虚拟机，发现此虚拟机可以正常打开了，这样就成功的解决了“该虚拟机似乎正在使用中”问题。</p>
-
-<p>以后记得正常关机。</p>
+<p>我后来在 <a href="https://github.com/Snipaste/feedback/issues/1012">https://github.com/Snipaste/feedback/issues/1012</a> 这里找到了答案。
+关闭欧路词典的划词翻译功能，即可正常使用截图。</p>
 
                         
                       </div>
@@ -332,7 +674,7 @@ WindowsServer 2008 R2 SP1</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/04/08</span>
+                    <span class="date">2019/01/25</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
@@ -351,278 +693,22 @@ WindowsServer 2008 R2 SP1</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15547068970077.html">
+                <a class="clearlink" href="15483045490492.html">
                 
-                  <h1>arch 安装配置指南带图版</h1>
+                  <h1>汉化firefox火狐浏览器</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">虚拟机准备</h2>
-
-<p><img src="media/15547068970077/15547069447878.jpg" alt=""/></p>
-
-<p><img src="media/15547068970077/15547069791316.jpg" alt=""/></p>
-
-<p><img src="media/15547068970077/15547070232740.jpg" alt=""/></p>
-
-<p><img src="media/15547068970077/15547070491488.jpg" alt=""/></p>
-
-<p><img src="media/15547068970077/15547070734913.jpg" alt=""/></p>
-
-<p><img src="media/15547068970077/15547071198237.jpg" alt=""/></p>
-
-<p><img src="media/15547068970077/15547071592651.jpg" alt=""/></p>
-
-<p><img src="media/15547068970077/15547072404641.jpg" alt=""/></p>
-
-<p><img src="media/15547068970077/15547073247770.jpg" alt=""/></p>
-
-<p><img src="media/15547068970077/15547075090849.jpg" alt=""/></p>
-
-<p><img src="media/15547068970077/15547075838610.jpg" alt=""/></p>
-
-<p>进入系统后首先检查系统是否联通
-<img src="media/15547068970077/15547080621623.jpg" alt=""/></p>
-
-<h2 id="toc_1">分区</h2>
-
-<p>进入 parted 命令进行分区操作
-<img src="media/15547068970077/15547082391052.jpg" alt=""/></p>
-
-<p>建立 gpt 分区表
-<img src="media/15547068970077/15547083585597.jpg" alt=""/></p>
-
-<p>建立 ESP 分区，用于挂载 efi 分区（uefi 模式必须要有 efi 分区）
-<img src="media/15547068970077/15547084670126.jpg" alt=""/></p>
-
-<p>创建交换分区，范围从550M 到8G
-<img src="media/15547068970077/15547086682024.jpg" alt=""/></p>
-
-<p>剩下的创建为主分区
-<img src="media/15547068970077/15547087728757.jpg" alt=""/></p>
-
-<p>设定ESP分区标志：boot
-<img src="media/15547068970077/15547088810797.jpg" alt=""/></p>
-
-<p>使用 p 查看分区情况，然后使用 q 退出 parted
-<img src="media/15547068970077/15547089223456.jpg" alt=""/></p>
-
-<p>查看硬盘分区状态，图中可以看到 sda1、sda2、sda3 分别为我们刚才创建的三个分区。
-<img src="media/15547068970077/15547089844964.jpg" alt=""/></p>
-
-<p>现在对三个分区分别进行格式化操作
-<img src="media/15547068970077/15547092045028.jpg" alt=""/></p>
-
-<p>挂载主分区/dev/sda3，创建 efi 目录并将 efi 分区 /dev/sda1 挂载到 efi 目录下，最后激活交换分区 /dev/sda2。
-<img src="media/15547068970077/15547096145622.jpg" alt=""/></p>
-
-<p>至此分区结束，下面开始系统安装过程</p>
-
-<h2 id="toc_2">安装系统</h2>
-
-<p>更改软件源为中国源
-首先打开源文件
-<img src="media/15547068970077/15547097960961.jpg" alt=""/></p>
-
-<p>ctrl+w 然后输入 china 搜索中国源
-<img src="media/15547068970077/15547098842992.jpg" alt=""/></p>
-
-<p>再次按 ctrl+w 并输入 china 可以搜索其他中国源，这里推荐使用 ustc 或163。
-找到指定的源之后，将光标调整到行首，然后按 ctrl+k 执行剪贴操作，然后移动光标到首行，按 ctrl+u 执行粘贴操作。使用上述方法将 ustc 和163源放在最上面，这样可以提高软件下载速度。
-<img src="media/15547068970077/15547102886290.jpg" alt=""/></p>
-
-<p>接下来按 ctrl+o 并回车保存修改，然后按 ctrl+x 退出编辑器。</p>
-
-<p>输入<code>head -n 15 文件名</code>显示指定文件的前15行内容。来查看是否修改成功。
-<img src="media/15547068970077/15547104407258.jpg" alt=""/></p>
-
-<p>安装基础包，这里会弹出几个提示，一路按回车确认即可。
-<img src="media/15547068970077/15547106618484.jpg" alt=""/></p>
-
-<p>生成 fstab 文件
-<code>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</code>
-<img src="media/15547068970077/15547111978314.jpg" alt=""/></p>
-
-<p>进入 chroot 环境即进入到新安装的系统。然后：安装 gurb 启动程序。
-arch-chroot /mnt
-<img src="media/15547068970077/15547115736898.jpg" alt=""/></p>
-
-<p><img src="media/15547068970077/15547116310713.jpg" alt=""/></p>
-
-<p>把 grub 引导管理器安装到 efi 分区里
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch-grub --recheck
-<img src="media/15547068970077/15547118108821.jpg" alt=""/></p>
-
-<p>修改主机名为 lonelyor，使用<code>nano /etc/hostname</code>打开文件然后输入 lonelyor，再按 ctrl+o 保存文件，然后 ctrl+x 退出编辑器即可。查看修改是否成功。
-<img src="media/15547068970077/15547121379520.jpg" alt=""/></p>
-
-<p>修改 hosts 文件
-<img src="media/15547068970077/15547123034205.jpg" alt=""/></p>
-
-<p>设置 root 密码</p>
-
-<p><img src="media/15547068970077/15547123951237.jpg" alt=""/></p>
-
-<p>添加普通用户并为该用户设置密码
-<img src="media/15547068970077/15547124838351.jpg" alt=""/></p>
-
-<p>设置时区与编码，编辑 /etc/locale.gen 文件，去掉en_US.UTF-8,zh_CN.UTF-8,zh_CN.GBK前面的#符号。然后保存并退出编辑器。
-<img src="media/15547068970077/15547126694587.jpg" alt=""/></p>
-
-<p>输入 locale-gen 重建编码表
-<img src="media/15547068970077/15547127405137.jpg" alt=""/></p>
-
-<p>设置系统时区，然后同步本地时钟
-ln -S /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-hwclock --localtime
-<img src="media/15547068970077/15547128041918.jpg" alt=""/></p>
-
-<p>基本系统安装完毕，现在输入 exit 退出 chroot，然后输入 reboot 重启系统。
-<img src="media/15547068970077/15547129531734.jpg" alt=""/>
-至此，完成了基本系统的安装。</p>
-
-<h2 id="toc_3">配置系统</h2>
-
-<p>进入系统后输入刚才设置的账号和密码，即可登录系统，按照之前的设置，我拥有两个账号，一个是 root，另一个是 lonelyor。</p>
-
-<p>现在依次点击：虚拟机、快照、拍摄快照，来保存目前的进度，拍摄快照非常重要，在进行重要操作，如更新系统，对系统文件进行设置之前，一定要记得拍摄快照。并养成定期拍摄快照的习惯。</p>
-
-<p>重启后使用 ping 检查网络是否畅通。
-<img src="media/15547068970077/15547133030679.jpg" alt=""/></p>
-
-<p>这里发现网络不通，可能是 dhcp 的问题，设置 dhcp。由于 /etc 下的文件是系统文件，修改时需要 root 权限，因此这里输入 sudo 来临时获取 root 权限。
-<img src="media/15547068970077/15547133860799.jpg" alt=""/></p>
-
-<p>结果发现提示我们的账户不在 sudoers 中，这里需要单独设置，具体方法我们后续再介绍，这里我们使用 su 直接提升权限至 root。
-<img src="media/15547068970077/15547135280940.jpg" alt=""/></p>
-
-<p>然后<code>nano /etc/rc.conf</code>再次修改文件，修改后查看是否修改成功。
-<img src="media/15547068970077/15547136346391.jpg" alt=""/></p>
-
-<p>接着输入<code>dhcpcd</code>启动 dhcp 服务。
-<img src="media/15547068970077/15547137236716.jpg" alt=""/></p>
-
-<p>再次使用 ping 检查网络是否畅通
-<img src="media/15547068970077/15547137679260.jpg" alt=""/></p>
-
-<p>配置 archlinuxcn 源并安装 yaourt，就可以使用 aur 中的超量软件了。</p>
-
-<pre class="line-numbers"><code class="language-shell">修改`/etc/pacman.conf`文件
-在文件后添加如下语句
-[archlinuxcn]
-SigLevel = Optional TrustedOnly
-Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
-</code></pre>
-
-<p><img src="media/15547068970077/15547140679869.jpg" alt=""/></p>
-
-<p>更新软件并导入 key</p>
-
-<pre class="line-numbers"><code class="language-shell">导入GPG Key
-sudo pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring
-</code></pre>
-
-<p><img src="media/15547068970077/15547141254558.jpg" alt=""/>
-安装 yaourt
-<code>pacman -S yaourt</code></p>
-
-<p>添加sudo
-<code>pacman -S sudo</code>
-打开 <code>/etc/sudoers</code> 文件，找到 <code>root ALL=(ALL) ALL</code> 并依葫芦画瓢添加 <code>lonelyor ALL=(ALL) ALL</code>，然后取消<code>%wheel ALL=(ALL) NOPASSWD: ALL</code>前的注释。
-<img src="media/15547068970077/15547165486151.jpg" alt=""/></p>
-
-<p>修改 watchdog did not stop，降低关键等待时间。
-编辑<code>/etc/systemd/system.conf</code>文件：
-将
-DefaultTimeoutStopSec=90s
-更改为
-DefaultTimeoutStopSec=9s
-将终止服务的等待时间更改为9秒，从而解决关机缓慢的问题。
-我顺手将其他时间长的都改短了。
-<img src="media/15547068970077/15547145148991.jpg" alt=""/></p>
-
-<p>安装图形界面，输入下列命令一路回车即可。</p>
-
-<pre class="line-numbers"><code class="language-shell">pacman -S xorg xorg-server xorg-xinit
-pacman -S plasma
-pacman -S sddm
-systemctl enable sddm
-</code></pre>
-
-<p>安装触摸板驱动
-<code>pacman -S xf86-input-synaptics</code></p>
-
-<p>安装字体
-<code>pacman -S ttf-dejavu wqy-zenhei ttf-inconsolata</code></p>
-
-<p>安装小工具合集
-<code>pacman -S konsole net-tools p7zip wget cmake curl</code></p>
-
-<p>安装搜狗输入法和图形化配置工具</p>
-
-<pre class="line-numbers"><code class="language-shell">sudo pacman -S fcitx-sogoupinyin
-sudo pacman -S fcitx-im
-sudo pacman -S fcitx-configtool 
-</code></pre>
-
-<p>需要修改配置文件<code>/home/lonelyor/.xprofile</code>
-添加如下语句</p>
-
-<pre class="line-numbers"><code class="language-text">export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=&quot;@im=fcitx&quot;
-</code></pre>
-
-<p>安装 networkmanager 开机启动网络管理程序，你没看错，这两个字母确实是大写。
-<code>pacman -S networkmanager</code>
-<code>systemctl enable NetworkManager.service</code> </p>
-
-<p>安装 ntfs 文件系统识别软件，这样linux 就能识别 windows 使用的 ntfs 文件系统了。
-<code>pacman -S ntfs-3g dosfstools</code></p>
-
-<p>安装chrome
-<code>yaourt -S google-chrome</code></p>
-
-<p>文件管理器
-<code>pacman -S dolphin</code></p>
-
-<p>安装看图工具
-<code>pacman -S gpicview</code></p>
-
-<p>安装host修改工具
-<code>yaourt -S switchhosts-bin</code>
-由于 yaourt 不能使用 root 权限进行软件安装，因为我们要切换到 lonelyor 用户。使用命令<code>su lonelyor</code>即可。
-<img src="media/15547068970077/15547172677600.jpg" alt=""/>
-然后一路回车即可安装软件。</p>
-
-<p>安装vscode编辑器
-<code>yaourt -S visual-studio-code-bin</code></p>
-
-<p>命令补全工具
-<code>pacman -S bash-completion</code></p>
-
-<p>安装 vmtools</p>
-
-<pre class="line-numbers"><code class="language-shell">pacman -S open-vm-tools
-pacman -S linux-headers
-yay -S open-vm-tools-dkms gtkmm gtkmm3（这里还要安装 xf86xxx 之类的东西才能调节分辨率）
-systemctl enable vmware-vmblock-fuse
-systemctl enable vmtoolsd
-</code></pre>
-
-<p>编辑 ~/.xinitrc或~/.xprofile 在文件开头添加以下内容，来设置中文显示</p>
-
-<pre class="line-numbers"><code class="language-text">export LANG=zh_CN.UTF-8
-export LANGUAGE=zh_CN:en_US
-export LC_CTYPE=en_US.UTF-8
-</code></pre>
-
-<p>若要图形界面用户设置全面的中文显示
-添加如下内容到文件~/.xprofile文件中
-<code>export LC_ALL=&quot;zh_CN.UTF-8&quot;</code></p>
-
-<p>全部安全配置完成，输入<code>reboot</code>重启即可。</p>
+                        	<p>1、点击 help——about 查看火狐版本<br/>
+2、在火狐浏览器输入:<a href="http://ftp.mozilla.org,%E6%8C%89%E7%85%A7%E6%88%91%E4%B8%8B%E9%9D%A2%E7%BB%99%E7%9A%84%E7%BD%91%E5%9D%80%E4%BE%9D%E6%AC%A1%E9%80%89%E6%8B%A9%E7%9B%AE%E5%BD%95%EF%BC%8C%E8%AF%AD%E8%A8%80%E5%8C%85%E5%9C%A8xpi%E7%9B%AE%E5%BD%95%E4%B8%8B%EF%BC%8C%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%EF%BC%88zh-CN.xpi%EF%BC%89/%E7%B9%81%E4%BD%93%EF%BC%88zh-TW.xpi%EF%BC%89%E3%80%82">http://ftp.mozilla.org,按照我下面给的网址依次选择目录，语言包在xpi目录下，简体中文（zh-CN.xpi）/繁体（zh-TW.xpi）。</a><br/>
+为了方便也可以直接拷贝下列链接到浏览器地址栏，安装。<br/>
+32位系统目录：<a href="http://ftp.mozilla.org/pub/firefox/releases/50.1.0/linux-i686/xpi/zh-CN.xpi">http://ftp.mozilla.org/pub/firefox/releases/50.1.0/linux-i686/xpi/zh-CN.xpi</a><br/>
+64位系统目录：<a href="http://ftp.mozilla.org/pub/firefox/releases/50.1.0/linux-x86_64/xpi/zh-CN.xpi">http://ftp.mozilla.org/pub/firefox/releases/50.1.0/linux-x86_64/xpi/zh-CN.xpi</a><br/>
+记得把版本号修改成浏览器当前版本号。</p>
+
+<p>另一种方法是打开扩展商店，输入chinese，然后添加即可。或者直接访问该页面安装插件：
+<a href="https://addons.mozilla.org/en-US/firefox/addon/chinese-simplified-zh-cn-la/?src=api">https://addons.mozilla.org/en-US/firefox/addon/chinese-simplified-zh-cn-la/?src=api</a></p>
 
                         
                       </div>
@@ -631,10 +717,10 @@ export LC_CTYPE=en_US.UTF-8
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/04/08</span>
+                    <span class="date">2019/01/24</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
           				   
                     
 
@@ -650,361 +736,22 @@ export LC_CTYPE=en_US.UTF-8
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15547067485409.html">
+                <a class="clearlink" href="15483045490848.html">
                 
-                  <h1>arch 安装配置指南</h1>
+                  <h1>HttpOnly</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<pre class="line-numbers"><code class="language-shell"># parted
-# mklabel
-# msdos
-(parted)#mkpart primary ext4 1M 200M
-(parted)#set 1 boot on
-(parted)#mkpart primary linux-swap 200M 8.5G
-(parted)#mkpart primary ext4 8.5G -1
-# q
+                        	<p>HttpOnly是 Set-Cookie HTTP响应头中包含的附加标志。生成cookie时使用httponly标志有助于降低客户端脚本访问受保护cookie的风险。</p>
 
-# mkfs.etx4 /dev/sda1
-# mkfs.etx4 /dev/sda3
-# mkswap /dev/sda2
-# swapon /dev/sda2
-# mount /dev/sda3 /mnt
-# cd /mnt
-# mkdir boot
-# mount /dev/sda1 /mnt/boot
-换源成China nano /etc/pacman.d/mirrorlist
-nano基本操作：
-按Ctrl+6（或者Alt+A）做标记；复制一整行：Alt+6；剪切一整行：Ctrl+K；粘贴：Ctrl+U；用Ctrl+Y到上一页，Ctrl+V到下一页。“^”表示Ctrl键，“M”表示 Alt键。
-# pacstrap /mnt base base-devel
-# genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
-# nano /mnt/etc/fstab
+<p>如果HTTP响应头中包含HttpOnly标志，则无法通过客户端脚本访问cookie。因此即使存在xss跨站脚本漏洞，并且用户意外访问到恶意链接，浏览器也不会向第三方透露cookie（前提是浏览器支持HttpOnly）。</p>
 
-# arch-chroot /mnt /bin/bash
-# pacman -S grub
-# pacman -S efibootmgr
-双系统的话，还需要安装os-prober
-如果使用Intel CPU的话，则需要安装 intel-ucode 并启用因特尔微码更新
-# grub-install --recheck /dev/sda
-# grub-mkconfig -o /boot/grub/grub.cfg
-# exit
-# pacman -Syu
-# reboot
-</code></pre>
+<p>参考链接：</p>
 
-<h1 id="toc_0">基本配置</h1>
-
-<ul>
-<li>修改主机名
-<code>nano /etc/hostname</code>
-<code>lonelyor</code></li>
-<li>修改host
-<code>nano /etc/hosts</code>
-<code>127.0.0.1  localhost</code>
-<code>::1        localhost</code>
-<code>127.0.1.1  myhostname.localdomain  myhostname</code></li>
-<li>启动dhcp
-<code># vi /etc/rc.conf</code>
-添加 interface = eth0 
-<code># dhcpcd</code></li>
-<li>配置编码
-首先释放en_US.UTF-8,保证系统正常工作
-然后 Ctrl+_，Ctrl+v 进入最后一行释放zh_CN.UTF-8保证中文
-保存退出
-然后生成编码并使用，配置系统优先语言环境为英文
-<code>shell
-# nano /etc/locale.gen
-取消utf-8的注释，然后
-# locale-gen
-# echo LANG=en_US.UTF-8 &gt; /etc/locale.conf
-# locale
-在~/.xinitrc中添加
-export LANG=zh_CN.UTF-8
-export LANGUAGE=zh_CN:en_US
-export LC_CTYPE=en_US.UTF-8
-~/.xprofile添加
-export LANG=zh_CN.UTF-8
-export LC_ALL=&quot;zh_CN.UTF-8&quot;
-export LANG=zh_CN.UTF-8
-export LANGUAGE=zh_CN:en_US
-export LC_CTYPE=en_US.UTF-8
-# pacman -S kde-l10n-zh_cn firefox-i18n-zh-cn libreoffice-still-zh-cn
-</code>
-安装输入法前端
-<code># pacman -S kimtoy</code></li>
-<li>配置archlinuxcn源
-<code>shell
-修改`/etc/pacman.conf`文件
-在文件后添加如下语句
-[archlinuxcn]
-SigLevel = Optional TrustedOnly
-Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
-</code>
-<code>shell
-导入GPG Key
-sudo pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring
-</code></li>
-<li>设置root密码
-<code>#passwd</code></li>
-<li>添加用户和sudo
-<code>shell
-useradd -m -g users -G wheel -s /bin/bash lonelyor
-passwd lonelyor
-pacman -S sudo</code>
-打开 <code>/etc/sudoers</code> 文件，找到 <code>root ALL=(ALL) ALL</code> 并依葫芦画瓢添加 <code>lonelyor ALL=(ALL) ALL</code> 即可。
-* watchdog did not stop
-编辑<code>/etc/systemd/system.conf</code>文件：
-将
-DefaultTimeoutStopSec=90s
-更改为
-DefaultTimeoutStopSec=10s
-将终止服务的等待时间更改为10秒，从而解决关机缓慢的问题。
-我顺手将其他时间长的都改短了。
-* 安装桌面环境kde
-<code>shell
-pacman -S xorg xorg-server xorg-xinit
-pacman -S plasma
-pacman -S sddm
-systemctl enable sddm
-</code>
-* 安装触摸板驱动
-<code>pacman -S xf86-input-synaptics</code>
-* 小工具合集
-<code>konsole net-tools p7zip wget cmake curl</code>
-* 安装字体
-noto-fonts-sc(aur)
-ttf-ms-win10-zh_cn(aur)
-wqy-zenhei
-wqy-bitmapfont
-noto-fonts-emoji
-号称最好看的编程字体
-ttf-inconsolata
-ttf-monaco
-# 软件安装
-* 安装搜狗输入法
-<code>shell
-# yaourt -S fcitx-sogoupinyin
-# sudo pacman -S fcitx-im
-# sudo pacman -S fcitx-configtool
-# 图形化的配置工具
-需要修改配置文件`~/.xprofile`
-添加如下语句
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=&quot;@im=fcitx&quot;
-重新登录之后就可以使用中文输入法啦
-</code></li>
-</ul>
-
-<ul>
-<li><p>安装字体
-<code>pacman -S ttf-dejavu wqy-zenhei wqy-microhei</code></p></li>
-<li><p>安装文件系统支持
-<code>sudo pacman -S ntfs-3g dosfstools</code></p></li>
-<li><p>安装chrome
-<code>yaourt -S google-chrome</code></p></li>
-<li><p>安装网易云音乐
-<code>pacman -S netease-cloud-music</code></p></li>
-<li><p>安装v2ray</p>
-
-<pre class="line-numbers"><code class="language-shell">wget https://install.direct/go.sh
-sudo bash go.sh
-sudo systemctl start v2ray
-编辑 /etc/v2ray/config.json 文件来配置客户端
-</code></pre></li>
-<li><p>安装host修改工具
-<code>yaourt -S switchhosts-bin</code></p></li>
-<li><p>安装fish
-<code>pacman -S fish</code></p></li>
-<li><p>更改默认shell为fish
-<code>sudo -u lonelyor chsh -s /usr/bin/fish</code></p></li>
-<li><p>安装wps
-<code>yaourt wps</code></p></li>
-<li><p>安装vscode
-<code>yaourt visual-studio-code-bin</code>
-<code>3</code></p></li>
-<li><p>安装数据库管理工具
-<code>pacman -S dbeaver</code></p></li>
-<li><p>安装pycharm
-<code>pacman -S pycharm</code></p></li>
-<li><p>xmind思维导图
-<code>yaourt xmind</code></p></li>
-<li><p>安装备份工具
-<code>yaourt fsarchiver</code></p></li>
-<li><p>待办事项
-<code>yaourt -S go-for-it-git</code></p></li>
-<li><p>视频录制软件
-<code>yaourt simplescreenrecorder</code></p></li>
-<li><p>屏幕录像工具
-<code>yaourt green-recorder</code>
-选择qt那个</p></li>
-<li><p>markdown编辑工具
-<code>pacman -S typora</code></p></li>
-<li><p>跨所有设备进行连接的工具
-<code>kdeconnect</code></p></li>
-<li><p>分层记录应用程序，具有丰富的文本和语法突出显示功能，可将数据存储在单个xml或sqlite文件中
-<code>pacman -S cherrytree</code></p></li>
-<li><p>深度截图工具
-<code>pacman -S deepin-screenshot</code></p></li>
-<li><p>适合写markdown的工具Haroopad
-<code>yaourt -S haroopad</code></p></li>
-<li><p>sakura终端、支持修改背景图</p></li>
-<li><p>文件管理器
-<code>pacman -S krusader</code></p></li>
-<li><p>文件管理器
-<code>pacman -S dolphin</code></p></li>
-<li><p>压缩解压缩
-<code>pacman -S ark</code></p></li>
-<li><p>文本编辑器
-<code>pacman -S kate</code></p></li>
-<li><p>终端
-<code>pacman -S konsole</code></p></li>
-<li><p>文档查看器
-<code>okular</code></p></li>
-<li><p>查看系统信息
-<code>pacman -S screenfetch</code>
-打开终端自动显示
-nano ~/.bashrc 加入 screenfetch</p></li>
-<li><p>翻墙
-<code>pacman -S v2ray</code></p></li>
-<li><p>密码相关
-<code>pacman -S keepass</code></p></li>
-<li><p>hosts文件相关
-<code>yaourt -S switchhosts-bin</code></p></li>
-<li><p>备份工具
-<code>yaourt -S qt4-fsarchiver</code></p></li>
-<li><p>安装pdf管理工具buka
-<code>yaourt -S buka</code></p></li>
-<li><p>安装sshfs
-<code>pacman -S sshfs</code></p></li>
-<li><p>webdav服务wsgidav
-<code>pip install wsgidav</code></p></li>
-<li><p>系统工具
-<code>iftop\htop\atop</code></p></li>
-<li><p>chm阅读器
-<code>kchmviewer</code></p></li>
-<li><p>下载
-<code>aria2\uget</code>
-<code>pip install youtube-dl</code>
-<code>yaourt persepolis</code></p></li>
-<li><p>web相关
-<code>nginx、node</code></p></li>
-<li><p>火狐汉化
-<code>http://releases.mozilla.org/pub/firefox/releases/59.0/linux-x86_64/xpi/（注意版本）</code></p></li>
-<li><p>grub修改
-<code>yaourt -S grub-customizer</code></p></li>
-<li><p>webdav文件共享
-<code>pacman -S phodav</code></p></li>
-<li><p>网盘同步
-<code>yaourt -S cloudcross</code></p></li>
-<li><p>日志查看工具
-<code>pacman -S ksystemlog</code></p></li>
-<li><p>二进制编辑器
-<code>pacman -S okteta</code></p></li>
-<li><p>ssh爆破防护
-<code>pacman -S sshguard</code></p></li>
-<li><p>smb共享工具
-<code>pacman -S smb4k</code></p></li>
-<li><p>文档编辑工具
-<code>marktext</code></p></li>
-<li><p>命令补全工具
-<code>pacman -S bash-completion</code></p></li>
-<li><p>文件共享、webdav、ftp等
-<code>pacman -S filezilla</code></p></li>
-<li><p>文件同步
-<code>syncthing</code></p></li>
-<li><p>使用ftp
-<code>sudo pacman -S vsftpd</code>
-详细设置 /etc/vsftpd.conf
-允许本地用户登录 local_enable=YES
-可以进行写的操作 write_enable=YES
-设定最大连接传输时间 data_connection_timeout=3600
-设定支持异步传输的功能 async_abor_enable=YES</p></li>
-<li><p>剪贴板增强工具
-<code>pacman -S copyq</code></p></li>
-<li><p>局域网共享工具dukto
-<code>yaourt -S dukto</code></p></li>
-</ul>
-
-<h1 id="toc_1">安装 vmtools</h1>
-
-<pre class="line-numbers"><code class="language-shell">pacman -S open-vm-tools
-pacman -S linux-headers
-yaourt -S open-vm-tools-dkms
-open-vm-tools-desktop
-gtkmm
-gtkmm3
-systemctl enable vmware-vmblock-fuse
-systemctl enable vmtoolsd
-</code></pre>
-
-<p>无法使用复制粘贴时，可以运行如下命令：
-sudo /etc/init.d/vmware-tools restart
-sudo /usr/bin/vmware-user</p>
-
-<p>还是不能的话，安装lts内核
-pacman -S linux-lts</p>
-
-<p>使用 vmware-hgfsclient  查看共享的文件</p>
-
-<h1 id="toc_2">详细设置</h1>
-
-<ul>
-<li>fish_config打开fish的web设置界面</li>
-<li>终端设置颜色和背景透明</li>
-<li>kate设置行号和代码高亮</li>
-<li>关闭钱包
-<code>sudo pacman -S kwalletmanager</code></li>
-<li>区域设置</li>
-<li>输入法问题可以输入 fcitx-diagnose 来查看日志，通常就有答案了。</li>
-<li>git下载太慢，配置git代理：nano ~/.gitconfig
-[https]
-    proxy = socks5://127.0.0.1:1080
-[http]
-    proxy = socks5://127.0.0.1:1080
-然后修改hosts：nano /etc/hosts
-151.101.72.249 <a href="http://global-ssl.fastly.Net">http://global-ssl.fastly.Net</a>
-192.30.253.112 <a href="http://github.com">http://github.com</a></li>
-<li>typora段错误的解决方法：<a href="https://aur.archlinux.org/packages/typora/">https://aur.archlinux.org/packages/typora/</a></li>
-<li>使用nfs共享文件：pacman -S nfs-utils，参考：<a href="https://wiki.archlinux.org/index.php/NFS#Installation">https://wiki.archlinux.org/index.php/NFS#Installation</a>
-1、配置 /etc/exports
-<code>
-/home 192.168.48.142(rw,sync,no_root_squash)   这里可以写客户端ip
-exportfs -rav
-exportfs -v
-systemctl start nfs-server.service
-修改 /etc/nfs.conf 来增加安全性
-[nfsd]
-host=192.168.48.142
-# Alternatively, you can use your hostname.
-# host=myhostname
-</code>
-如果上面的启动nfs报错，重启电脑
-showmount -e 192.168.48.136(服务器端IP)
-若出现：Export list for 192.168.48.142:
-/home 192.168.1.120字眼则证明通过
-下面贴出我敲的：
-╰─&gt;\( showmount -e 192.168.48.136
-Export list for 192.168.48.136:
-/home 192.168.48.142
-┬─[lonelyor@lonelyor:~]─[16时00分18秒]
-╰─&gt;\) mount -t nfs 192.168.48.136
-mount: 只有 root 用户能使用“--types”选项
-┬─[lonelyor@lonelyor:~]─[16时03分14秒]
-╰─&gt;\( sudo mount -t nfs 192.168.48.136
-mount: 192.168.48.136: can&#39;t find in /etc/fstab.
-┬─[lonelyor@lonelyor:~]─[16时03分18秒]
-╰─&gt;\) sudo mount -t nfs 192.168.48.136:/home /mnt/tmp/
-然后就ok了。
-解除挂载用umount</li>
-</ul>
-
-<p>一键安装脚本
-pacman -S konsole net-tools p7zip wget cmake curl gcc  wqy-zenhei wqy-bitmapfont ttf-dejavu ntfs-3g dosfstools dbeaver typora ark sshfs iftop htop atop sqlmap nmap aria2 uget phodav ksystemlog okteta sshguard smb4k copyq nmap sqlmap docker </p>
-
-<p>一键换源
-sudo pacman-mirrors -i -c China -m rank</p>
+<blockquote>
+<p><a href="https://www.owasp.org/index.php/HttpOnly">https://www.owasp.org/index.php/HttpOnly</a></p>
+</blockquote>
 
                         
                       </div>
@@ -1013,10 +760,10 @@ sudo pacman-mirrors -i -c China -m rank</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/04/08</span>
+                    <span class="date">2019/01/24</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
           				   
                     
 
@@ -1087,8 +834,6 @@ sudo pacman-mirrors -i -c China -m rank</p>
         
             <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
         
-            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
-        
             <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
@@ -1116,6 +861,12 @@ sudo pacman-mirrors -i -c China -m rank</p>
 	      
 		      
 			      <li class="post">
+			        <a href="15764947924982.html">Arch系常用技巧与问题汇总</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15747334018156.html">msfvenom各类木马生成脚本</a>
 			      </li>
 		     
@@ -1128,19 +879,13 @@ sudo pacman-mirrors -i -c China -m rank</p>
 		  
 		      
 			      <li class="post">
-			        <a href="15708455642675.html">如何使用cmd开启3389端口与查看3389端口</a>
+			        <a href="15708455642675.html">windows渗透技巧</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15695779467285.html">给linux终端加一个移动到回收站的功能</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15694777838251.html">Proxmox TASK ERROR: Failed to run vncproxy.解决办法</a>
+			        <a href="15692949172295.html">Proxmox物理安装</a>
 			      </li>
 		     
 		  

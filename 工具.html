@@ -97,8 +97,6 @@
         
             <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
         
-            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
-        
             <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
@@ -848,178 +846,32 @@ sudo systemctl start docker   </p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15590262822391.html">
+                <a class="clearlink" href="15644638922385.html">
                 
-                  <h1>洞察-宜信集应用系统资产管理、漏洞全生命周期管理、安全知识库管理三位一体的平台的安装与使用</h1>
+                  <h1>浏览器问题汇总</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p><a href="https://github.com/creditease-sec/insight">https://github.com/creditease-sec/insight</a> 感谢作者！</p>
-</blockquote>
+                        	<h2 id="toc_0">firefox 总是发送get请求到<a href="http://detectportal.firefox.com/success.txt%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95">http://detectportal.firefox.com/success.txt解决办法</a></h2>
 
-<h2 id="toc_0">部署和启动 mysql in docker</h2>
+<p>1.在firefox地址栏输入：
+about:config</p>
 
-<p>1、首先安装 docker，这里略过</p>
+<p>2.搜索如下内容，并将其设置为false</p>
 
-<p>2、安装 mysql 的 docker 镜像<code>docker pull mysql:5.7.13</code></p>
+<p>network.captive-portal-service.enadbled</p>
 
-<p>3、启动 mysql，这里的 name 可以自行指定。</p>
+<p><img src="media/15644638922385/15644639826340.jpg" alt="" style="width:981px;"/></p>
 
-<pre class="line-numbers"><code class="language-text">docker run -d -p 127.0.0.1:6606:3306 \
---name open_source_mysqldb \
--e MYSQL_ROOT_PASSWORD=root \
-mysql:5.7.13
-</code></pre>
+<p>转载于:<a href="https://my.oschina.net/u/1771419/blog/3025419">https://my.oschina.net/u/1771419/blog/3025419</a></p>
 
-<p>4、查看已经启动的 docker 镜像，这里注意 name 后面要用到。<code>docker ps -a</code>
-<img src="media/15590262822391/15590264712809.jpg" alt=""/></p>
+<h2 id="toc_1">此地址使用了一个通常用于网络浏览以外目的的端口.出于安全原因,Firefox取消了该请求</h2>
 
-<p>5、进入容器bash<code>docker exec -it open_source_mysqldb bash</code></p>
-
-<p>6、进入 mysql 并创建数据库和账号权限配置
-<code>mysql -h localhost -P 6606 -u root -p</code>
-<img src="media/15590262822391/15590267094981.jpg" alt=""/></p>
-
-<pre class="line-numbers"><code class="language-text">mysql&gt; CREATE DATABASE IF NOT EXISTS vuldb DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
-mysql&gt; grant all on vuldb.* to vuluser@&#39;%&#39; identified by &#39;vulpassword&#39;;
-mysql&gt; flush privileges;
-mysql&gt; quit
-</code></pre>
-
-<p><img src="media/15590262822391/15590267827107.jpg" alt=""/></p>
-
-<p>7、退出容器 bash<code>exit</code></p>
-
-<h2 id="toc_1">部署和启动 APP</h2>
-
-<p>1、下载源码
-<code>$ git clone https://github.com/creditease-sec/insight.git</code></p>
-
-<p>2、修改srcpm/config.py 配置文件</p>
-
-<ul>
-<li><p>修改公司邮箱后缀    </p>
-
-<pre class="line-numbers"><code class="language-text">#公司邮箱后缀限制，只能使用公司邮箱注册账号。
-CORP_MAIL = &#39;@qq.com&#39;
-</code></pre></li>
-<li><p>修改邮件CC抄送列表    </p>
-
-<pre class="line-numbers"><code class="language-text">#平台发送的每封邮件的邮件抄送列表，可以设置发送给安全部邮箱列表，可自行修改，也可以保持不变为空
-&#39;&#39;&#39;
-示例：
-CC_EMAIL = [&#39;xxx1@creditease.cn&#39;,
-            &#39;xxx2@creditease.cn&#39;,
-        ]
-&#39;&#39;&#39;
-CC_EMAIL = [
-        ]
-        ```
-</code></pre></li>
-</ul>
-
-<ul>
-<li><p>修改开发模式的邮箱服务器和发件邮箱配置    </p>
-
-<pre class="line-numbers"><code class="language-text"># 以开发模式的配置运行，使用测试邮件服务器，并开启debug模式
-# 平台发邮件账号设置
-SRCPM_MAIL_SENDER = &#39;安全部 &lt;sec_creditease@sina.com&gt;&#39;
-# 发送邮件的服务器设置，邮箱密码由系统变量中读取
-MAIL_SERVER = &#39;smtp.sina.com&#39;
-MAIL_PORT = 587
-MAIL_USE_TLS = True
-MAIL_USERNAME = os.environ.get(
-    &#39;MAIL_USERNAME&#39;) or &#39;sec_creditease@sina.com&#39;
-MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
-</code></pre></li>
-<li><p>修改生产模式的邮箱服务器和发件邮箱配置</p>
-
-<pre class="line-numbers"><code class="language-text"># 以生产模式的配置运行，使用生产邮件服务器，并关闭debug模式
-# 平台发邮件账号设置
-SRCPM_MAIL_SENDER = &#39;安全部 &lt;xxx@creditease.cn&gt;&#39;
-# 发送邮件的服务器设置，账号密码由系统变量中读取
-MAIL_SERVER = &#39;x.x.x.x&#39;
-MAIL_PORT = 25
-MAIL_USE_TLS = False
-MAIL_USERNAME = os.environ.get(
-    &#39;MAIL_USERNAME&#39;) or &#39;xxx@creditease.cn&#39;
-MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
-</code></pre></li>
-</ul>
-
-<p>3、修改定时周期邮件 mail_sender.py 的配置    </p>
-
-<pre class="line-numbers"><code class="language-text">    #平台发送的每封邮件的邮件抄送列表，可以设置发送给安全部邮箱列表，可自行修改，也可以保持不变为空
-    &#39;&#39;&#39;
-    示例：
-    CC_EMAIL = [&#39;xxx1@creditease.cn&#39;,
-                &#39;xxx2@creditease.cn&#39;,
-            ]
-    &#39;&#39;&#39;
-    CC_EMAIL = [
-            ]
-    #主机名设置
-    SERVER_NAME = &#39;xxx.creditease.corp&#39;
-    # 平台发邮件账号设置
-    SRCPM_MAIL_SENDER = &#39;安全部 &lt;xxx@creditease.cn&gt;&#39;
-    # 发送邮件的服务器设置，账号密码由系统变量中读取
-    MAIL_SERVER = &#39;x.x.x.x&#39;
-    MAIL_PORT = 25
-    MAIL_USE_TLS = False
-    MAIL_USERNAME = os.environ.get(
-        &#39;MAIL_USERNAME&#39;) or &#39;xxx@creditease.cn&#39;
-    MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
-</code></pre>
-
-<p>4、修改srcpm/app/src/forms.py 漏洞来源下拉列表    </p>
-
-<pre class="line-numbers"><code class="language-text">    &#39;&#39;&#39; 下拉选项 &#39;&#39;&#39;
-    source_choices = [(&#39;&#39;,&#39;&#39;), (u&#39;安全部&#39;, u&#39;安全部&#39;), (u&#39;YISRC&#39;, u&#39;YISRC&#39;), (u&#39;公众平台&#39;, u&#39;公众平台&#39;), (u&#39;合作伙伴&#39;, u&#39;合作伙伴&#39;)]
-</code></pre>
-
-<p>5、在项目根目录下部署和启动APP    </p>
-
-<pre class="line-numbers"><code class="language-text"># 拉取镜像
-docker pull daocloud.io/liusheng/vulpm_docker:latest
-或
-自己构建镜像
-docker build -t=&#39;vulpm_docker&#39; .
-# 在项目目录下启动容器，确保当前目录下存在srcpm文件夹，MAIL_PASSOWRD替换为自己邮箱服务器的密码。
-$ docker run -d -p 127.0.0.1:9000:5000 \
---link open_source_mysqldb:db \
---name open_source_srcpm \
--v $PWD/srcpm:/opt/webapp/srcpm \
--e DEV_DATABASE_URL=&#39;mysql://vuluser:vulpassword@db/vuldb&#39; \
--e SrcPM_CONFIG=development \
--e MAIL_PASSWORD=&#39;xxxxxx&#39; \
-daocloud.io/liusheng/vulpm_docker:latest \
-sh -c &#39;supervisord -c srcpm/supervisor.conf &amp;&amp; supervisorctl -c srcpm/supervisor.conf start all &amp;&amp; tail -f srcpm/log/gunicorn.err &amp;&amp; tail -f srcpm/log/mail_sender.err&#39;
-</code></pre>
-
-<h1 id="toc_2">初始化数据库</h1>
-
-<p>参考作者写的就可以了。</p>
-
-<p><a href="https://github.com/creditease-sec/insight/blob/open-source/docs/db_init.md">数据库初始化详细配置指南</a></p>
-
-<p>或者</p>
-
-<p>直接导入初始化的sql</p>
-
-<p>导入sql</p>
-
-<pre class="line-numbers"><code class="language-text">$ mysql -h127.0.0.1 -P6606 -uroot -p vuldb &lt; srcpm/vuldb_init.sql
-</code></pre>
-
-<p>Enter password:root</p>
-
-<h2 id="toc_3">搭建完成</h2>
-
-<p>访问域名：<a href="http://127.0.0.1:9000/srcpm/">http://127.0.0.1:9000/srcpm/</a> 即可
-账号：<a href="mailto:admin@admin.com">admin@admin.com</a>
-密码：11</p>
+<p>遇到标题出现的错误时，可以使用以下方法解决：
+1、打开火狐在地址栏输入&quot;about:config&quot;
+2、然后在&quot;首选项名称&quot;处点击右键选择&quot;新建&quot;-&quot;字符串&quot;，在弹框中输入&quot;network.security.banned.override&quot;，点确定
+3、在再次弹出的框&quot;输入字符串的值&quot;中输入要开放的端口，如666（不行的话就换其他的），最后单击&quot;确定&quot;，即可。</p>
 
                         
                       </div>
@@ -1028,7 +880,7 @@ sh -c &#39;supervisord -c srcpm/supervisor.conf &amp;&amp; supervisorctl -c srcp
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/05/28</span>
+                    <span class="date">2019/07/30</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
@@ -1102,8 +954,6 @@ sh -c &#39;supervisord -c srcpm/supervisor.conf &amp;&amp; supervisorctl -c srcp
         
             <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
         
-            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
-        
             <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
@@ -1131,6 +981,12 @@ sh -c &#39;supervisord -c srcpm/supervisor.conf &amp;&amp; supervisorctl -c srcp
 	      
 		      
 			      <li class="post">
+			        <a href="15764947924982.html">Arch系常用技巧与问题汇总</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15747334018156.html">msfvenom各类木马生成脚本</a>
 			      </li>
 		     
@@ -1143,19 +999,13 @@ sh -c &#39;supervisord -c srcpm/supervisor.conf &amp;&amp; supervisorctl -c srcp
 		  
 		      
 			      <li class="post">
-			        <a href="15708455642675.html">如何使用cmd开启3389端口与查看3389端口</a>
+			        <a href="15708455642675.html">windows渗透技巧</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15695779467285.html">给linux终端加一个移动到回收站的功能</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15694777838251.html">Proxmox TASK ERROR: Failed to run vncproxy.解决办法</a>
+			        <a href="15692949172295.html">Proxmox物理安装</a>
 			      </li>
 		     
 		  

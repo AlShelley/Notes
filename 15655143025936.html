@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  windows下创建和启动wifi - lonelyorWiki
+  Windows常用技巧与问题汇总 - lonelyorWiki
   
   </title>
   
@@ -97,8 +97,6 @@
         
             <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
         
-            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
-        
             <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
@@ -132,7 +130,7 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>windows下创建和启动wifi</h1>
+          <h1>Windows常用技巧与问题汇总</h1>
      
         <div class="read-more clearfix">
           <span class="date">2019/08/11</span>
@@ -152,12 +150,80 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <p>整理文件时候找到了3年前写的东西：</p>
+      <h2 id="toc_0">windows下创建和启动wifi</h2>
+
+<p>整理文件时候找到了3年前写的东西：</p>
 
 <p>创建 wifi
 netsh wlan set hostednetwork mode=allow ssid=!@#$%<sup>&amp;*</sup> key=passwd123
 启动 wifi
 netsh wlan start hostednetwork</p>
+
+<h2 id="toc_1">虚拟机安装win10操作系统</h2>
+
+<blockquote>
+<p>本片文章是为新手准备的</p>
+</blockquote>
+
+<p>虚拟机安装win10可以查看以下教程：
+<a href="http://baijiahao.baidu.com/s?id=1597148758310739517&amp;wfr=spider&amp;for=pc">http://baijiahao.baidu.com/s?id=1597148758310739517&amp;wfr=spider&amp;for=pc</a></p>
+
+<p>若原文链接失效，则可以百度搜索“虚拟机安装win10操作系统”</p>
+
+<h2 id="toc_2">解决windows右键新建消失问题</h2>
+
+<p>新建一个文件后缀名写为reg（注册表文件格式）的文件。
+然后用记事本或文本编辑器打开，写入文件内容：</p>
+
+<pre class="line-numbers"><code class="language-text">Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\New]
+
+@=&quot;{D969A300-E7FF-11d0-A93B-00A0C90F2719}&quot;
+</code></pre>
+
+<p>保存，然后双击该文件，即可。</p>
+
+<h2 id="toc_3">OneDrive映射到本地（像访问本地磁盘一样访问网盘）</h2>
+
+<p>参考以下链接即可：
+<a href="http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc">http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc</a></p>
+
+<p>举一反三，webdav、nfs、samba等都可以使用这种方式挂载，来方便访问。</p>
+
+<h2 id="toc_4">windows右键添加管理员获得所有权</h2>
+
+<blockquote>
+<p>右键添加获得管理员所有权是个比较方便的功能。</p>
+</blockquote>
+
+<p>打开记事本或者别的文本编辑器，然后写入如下内容:</p>
+
+<pre class="line-numbers"><code class="language-bat">Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\runas]
+@=&quot;管理员取得所有权&quot;
+&quot;NoWorkingDirectory&quot;=&quot;&quot;
+[HKEY_CLASSES_ROOT\*\shell\runas\command]
+@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
+&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
+[HKEY_CLASSES_ROOT\exefile\shell\runas2]
+@=&quot;管理员取得所有权&quot;
+&quot;NoWorkingDirectory&quot;=&quot;&quot;
+[HKEY_CLASSES_ROOT\exefile\shell\runas2\command]
+@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
+&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
+[HKEY_CLASSES_ROOT\Directory\shell\runas]
+@=&quot;管理员取得所有权&quot;
+&quot;NoWorkingDirectory&quot;=&quot;&quot;
+[HKEY_CLASSES_ROOT\Directory\shell\runas\command]
+@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; /r /d y &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F /t&quot;
+&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; /r /d y &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F /t&quot;
+</code></pre>
+
+<p>然后另存为：管理员获得所有权.reg
+文件名可以随便写，但是后缀记得写成reg（改成这个后缀后文件图标就会变成一个破碎蓝色魔方）。
+然后右键以管理员身份运行，若弹框注册表xxx的，同意就行了。</p>
 
 
     
@@ -168,8 +234,8 @@ netsh wlan start hostednetwork</p>
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15672837491280.html" 
-          title="Previous Post: 高分辨率下解决虚拟机模糊的问题">&laquo; 高分辨率下解决虚拟机模糊的问题</a>
+          <a href="15692949172295.html" 
+          title="Previous Post: Proxmox物理安装">&laquo; Proxmox物理安装</a>
       
         </p>
         </div>
@@ -236,8 +302,6 @@ netsh wlan start hostednetwork</p>
         
             <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
         
-            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
-        
             <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
@@ -265,6 +329,12 @@ netsh wlan start hostednetwork</p>
 	      
 		      
 			      <li class="post">
+			        <a href="15764947924982.html">Arch系常用技巧与问题汇总</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15747334018156.html">msfvenom各类木马生成脚本</a>
 			      </li>
 		     
@@ -277,19 +347,13 @@ netsh wlan start hostednetwork</p>
 		  
 		      
 			      <li class="post">
-			        <a href="15708455642675.html">如何使用cmd开启3389端口与查看3389端口</a>
+			        <a href="15708455642675.html">windows渗透技巧</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15695779467285.html">给linux终端加一个移动到回收站的功能</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15694777838251.html">Proxmox TASK ERROR: Failed to run vncproxy.解决办法</a>
+			        <a href="15692949172295.html">Proxmox物理安装</a>
 			      </li>
 		     
 		  
@@ -359,6 +423,8 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
 
 
 
+
+<script src="asset/prism.js"></script>
 
 
 <style type="text/css">

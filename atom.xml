@@ -4,7 +4,7 @@
   <title><![CDATA[lonelyorWiki]]></title>
   <link href="http://www.lonelyor.org/lonelyorWiki/atom.xml" rel="self"/>
   <link href="http://www.lonelyor.org/lonelyorWiki/"/>
-  <updated>2019-12-16T15:01:43+08:00</updated>
+  <updated>2019-12-16T16:40:21+08:00</updated>
   <id>http://www.lonelyor.org/lonelyorWiki/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -61,6 +61,8 @@ bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.dire
 /etc/v2ray/config.json：配置文件；
 /usr/bin/v2ray/geoip.dat：IP 数据文件
 /usr/bin/v2ray/geosite.dat：域名数据文件</p>
+
+<p>2、后面的我会了就不写了...2333</p>
 
 ]]></content>
   </entry>

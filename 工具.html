@@ -1,249 +1,1214 @@
-
-
-<!DOCTYPE html>
-<html lang="zh">
+<!doctype html>
+<html class="no-js" lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      
-    工具 - lonelyorWiki
     
-    </title>
-    <link rel="shortcut icon" href="https://pic2.zhimg.com/v2-640a8298aed88f9660c378786" type="image/png" />
+  工具 - lonelyorWiki
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="lonelyorWiki" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+ 
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:www.lonelyor.org/lonelyorWiki ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
     
-    
-    <link href="atom.xml" rel="alternate" title="lonelyorWiki" type="application/atom+xml">
-    <link rel="stylesheet" href="asset/style.css">
-    
-</head>
-  <body>
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
 
 
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
 
 
-        <div id="wrapper">
-            <header class="site-header">
-                <div class="container">
-                    <div class="site-title-wrapper">
-                          <a class="button-square" href="index.html">
-<svg class="svg-inline--fa fa-home fa-w-18" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="home" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path></svg>
-                            </a>
-                        
-                         
-                        
-                        
-                        
-                        <a class="button-square" href="https://github.com/AlShelley/lonelyorWiki" target="_blank" title="github">
-                               <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github fa-lg"></i> -->
-                          </a>
-                        
-                        
-                      
-                      <a class="button-square" href="atom.xml" target="_blank" title="RSS">
-                              <svg class="svg-inline--fa fa-rss fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
-                      </a>
-
-              
-                       
-                         
-                        
-                    </div>
-
-                    <ul class="site-nav">
-                        
-                    </ul>
-                </div>
-            </header>
-
-            <div id="container">
-
- <div id="post-index" class="container">
-    
-    <header class="post-header">
-        <h1 class="post-title">lonelyorWiki</h1>
-        <p class="des">一个用来记录知识的网站。</p>
-    </header>
-     <ol class="post-list">
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
         
+        <li id=""><a target="_self" href="index.html">首页</a></li>
         
-            <li class="post-stub">
-              <h2 class="post-stub-title">
-                <a href="15724200154293.html">
-                  v2ray实现科学上网
-                </a>
-              </h2>
-              <p>
-                <time class="post-stub-date" datetime="2019-09-26">Posted 2019/10/30</time>
-              </p>
-
-                 
-            
-              <div class="post-read-more">
-                <a href="15724200154293.html">[Read More]</a>
-              </div>
-            </li>
-            
+        <li id=""><a target="_blank" href="archives.html">归档</a></li>
         
-            <li class="post-stub">
-              <h2 class="post-stub-title">
-                <a href="15655136450838.html">
-                  Hexo守护进程
-                </a>
-              </h2>
-              <p>
-                <time class="post-stub-date" datetime="2019-09-26">Posted 2019/08/11</time>
-              </p>
-
-                 
-            
-              <div class="post-read-more">
-                <a href="15655136450838.html">[Read More]</a>
-              </div>
-            </li>
-            
+        <li id=""><a target="_blank" href="ruby.html">流光</a></li>
         
-            <li class="post-stub">
-              <h2 class="post-stub-title">
-                <a href="15648965459106.html">
-                  sqlmap 详细文档中文版
-                </a>
-              </h2>
-              <p>
-                <time class="post-stub-date" datetime="2019-09-26">Posted 2019/08/04</time>
-              </p>
-
-                 
-            
-              <div class="post-read-more">
-                <a href="15648965459106.html">[Read More]</a>
-              </div>
-            </li>
-            
+        <li id=""><a target="_blank" href="beautiful.html">惊鸿</a></li>
         
-            <li class="post-stub">
-              <h2 class="post-stub-title">
-                <a href="15647294001055.html">
-                  利用Excel轻松更换照片背景色，证件照轻松搞定
-                </a>
-              </h2>
-              <p>
-                <time class="post-stub-date" datetime="2019-09-26">Posted 2019/08/02</time>
-              </p>
-
-                 
-            
-              <div class="post-read-more">
-                <a href="15647294001055.html">[Read More]</a>
-              </div>
-            </li>
-            
+        <li id=""><a target="_blank" href="lose.html">失乐园</a></li>
         
-            <li class="post-stub">
-              <h2 class="post-stub-title">
-                <a href="15645039971877.html">
-                  Couldn't connect to Docker daemon at http+docker://localhost - is it running?
-                </a>
-              </h2>
-              <p>
-                <time class="post-stub-date" datetime="2019-09-26">Posted 2019/07/31</time>
-              </p>
-
-                 
-            
-              <div class="post-read-more">
-                <a href="15645039971877.html">[Read More]</a>
-              </div>
-            </li>
-            
+        <li id=""><a target="_blank" href="search.html">北斗</a></li>
         
-            <li class="post-stub">
-              <h2 class="post-stub-title">
-                <a href="15590262822391.html">
-                  洞察-宜信集应用系统资产管理、漏洞全生命周期管理、安全知识库管理三位一体的平台的安装与使用
-                </a>
-              </h2>
-              <p>
-                <time class="post-stub-date" datetime="2019-09-26">Posted 2019/05/28</time>
-              </p>
+        <li id=""><a target="_blank" href="about.html">关于</a></li>
+        
+        </ul>
 
-                 
-            
-              <div class="post-read-more">
-                <a href="15590262822391.html">[Read More]</a>
-              </div>
-            </li>
-            
-      </ol>
-  <div class="post-navigation">
-    <nav class="pagination">
-       
-       <a class="older-posts" href="工具_1.html">Older Posts &rarr;</a> 
-    </nav>
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
   </div>
-</div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; lonelyorWiki</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">首页</a></li>
+        
+        <li><a target="_blank" href="archives.html">归档</a></li>
+        
+        <li><a target="_blank" href="ruby.html">流光</a></li>
+        
+        <li><a target="_blank" href="beautiful.html">惊鸿</a></li>
+        
+        <li><a target="_blank" href="lose.html">失乐园</a></li>
+        
+        <li><a target="_blank" href="search.html">北斗</a></li>
+        
+        <li><a target="_blank" href="about.html">关于</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
+        
+            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
+        
+            <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
+        
+            <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
+        
+            <li><a href="%E5%AE%89%E5%85%A8.html">安全</a></li>
+        
+            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
+        
+            <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
+        
+            <li><a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html">星火流萤</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="15724200154293.html">
+                
+                  <h1>v2ray实现科学上网</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>1、linux一键安装
+bash &lt;(curl -L -s <a href="https://install.direct/go.sh">https://install.direct/go.sh</a>)</p>
+
+<p>此脚本会自动安装以下文件：</p>
+
+<p>/usr/bin/v2ray/v2ray：V2Ray 程序；
+/usr/bin/v2ray/v2ctl：V2Ray 工具；
+/etc/v2ray/config.json：配置文件；
+/usr/bin/v2ray/geoip.dat：IP 数据文件
+/usr/bin/v2ray/geosite.dat：域名数据文件</p>
+
+<p>2、后面的我会了就不写了...2333</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/10/30</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15655136450838.html">
+                
+                  <h1>Hexo守护进程</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>Node进程守护有很多工具，Forever，PM2，PM2.5 blah blah.解决的问题也是很容易讲清楚，比如：ssh登陆服务器，启动node服务，然后ssh断开连接，服务中断，网站无法访问。这里讲一下用forever 解决 Hexo 进程守护的问题，安装Forever:</p>
+
+<pre class="line-numbers"><code class="language-shell">$ npm install forever -g
+$# cd /path/to/your/project
+$ npm install forever-monitor
+</code></pre>
+
+<p>Hexo下新建一个app.js,写入下面代码：</p>
+
+<pre class="line-numbers"><code class="language-text">var spawn = require(&#39;child_process&#39;).spawn;
+free = spawn(&#39;hexo&#39;, [&#39;server&#39;, &#39;-p 4000&#39;]);/*其实就是等于执行hexo server -p 4000*/
+free.stdout.on(&#39;data&#39;, function (data) {
+console.log(&#39;standard output:\n&#39; + data);
+});
+free.stderr.on(&#39;data&#39;, function (data) { 
+console.log(&#39;standard error output:\n&#39; + data);
+});
+free.on(&#39;exit&#39;, function (code, signal) {
+console.log(&#39;child process eixt ,exit:&#39; + code);
+});
+</code></pre>
+
+<p>此处输入代码其实思路也很简单，大致意思就是node启动一个子进程，用forever 守护 hexo sever -p 4000这条命令（4000代表端口），关于node的child_process的相关知识，请自行baidu、google,或者去查nodejs<code>此处输入代码</code>的文档。</p>
+
+<h1 id="toc_0">执行forever命令：</h1>
+
+<p><code>$ forever --minUptime 10000 --spinSleepTime 26000 start app.js</code></p>
+
+<p>至于后面这几个minUptime、spinSleepTime可填可不填，不填默认也会有，参数的意思可以直接去forever上查询。</p>
+
+<h1 id="toc_1">停止服务</h1>
+
+<p>这里值得注意的是你拿forever启动的服务，通过forever stopall是根本停不掉的，因为其实你执行的是hexo sever，可以通过下面的办法：</p>
+
+<pre class="line-numbers"><code class="language-shell">＄lsof -i:[port]
+＄ps aux|grep hexo
+＄kill pid(进程的id)
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/08/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15648965459106.html">
+                
+                  <h1>sqlmap 详细文档中文版</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>转载自：<a href="https://blog.csdn.net/u012763794/article/details/52638931">https://blog.csdn.net/u012763794/article/details/52638931</a></p>
+
+<pre class="line-numbers"><code class="language-text">         _
+ ___ ___| |_____ ___ ___  {1.0.9.8#dev}
+|_ -| . | |     | .&#39;| . |
+|___|_  |_|_|_|_|__,|  _|
+      |_|           |_|   http://sqlmap.org
+</code></pre>
+
+<p>用法
+Usage: python sqlmap.py [options]
+Options: 选项
+  -h, --help            Show basic help message and exit
+    基本的帮助信息
+  -hh                   Show advanced help message and exit
+    更加详细的帮助信息
+  --version             Show program&#39;s version number and exit
+    版本信息
+  -v VERBOSE            Verbosity level: 0-6 (default 1)
+    这个是设置sqlmap输出信息的详细程度，默认是1,设置成3（-v 3）就显示出payload的信息了，这个非常适合学习的一个参数</p>
+
+<p>下面给出sqlmap.config文件中的对这个的详细描述
+    # Verbosity level.
+    # Valid: integer between 0 and 6
+    # 0: Show only error and critical messages  只显示错误和关键信息
+    # 1: Show also warning and info messages    警告和信息
+    # 2: Show also debug messages               调试信息
+    # 3: Show also payloads injected            payload，如：[15:32:10] [PAYLOAD] 1)&#39;,(..)&quot;(&quot;
+    # 4: Show also HTTP requests                整个GET报文都看到了
+    # 5: Show also HTTP responses&#39; headers         返回报文的头部 
+    # 6: Show also HTTP responses&#39; page content    返回的html代码都有了
+    # Default: 1</p>
+
+<p>Target: 目标
+    At least one of these options has to be provided to define the
+    target(s)
+        至少从下面选择设定一个目标，最常用的就-u了，url嘛</p>
+
+<pre class="line-numbers"><code class="language-text">-d DIRECT           Connection string for direct database connection
+直接连接数据库，如：mysql的话
+    -d mysql://USER:PASSWORD@DBMS_IP:DBMS_PORT/DATABASE_NAME
+    不过的话呢，这个我试过是要装第三方库的
+-u URL, --url=URL   Target URL (e.g. &quot;http://www.site.com/vuln.php?id=1&quot;)
+    这个指定url的肯定最熟悉了
+-l LOGFILE          Parse target(s) from Burp or WebScarab proxy log file
+    burp用的多，但这个应该我们很少用啊，在burp的option-misc里面有个logging选项保存log文件
+    查了一下：加多两个参数效率更快
+    python sqlmap.py -l 文件名 --batch -smart
+        batch：自动选yes。
+        smart：启发式快速判断，节约时间。
+-x SITEMAPURL       Parse target(s) from remote sitemap(.xml) file
+    从xml文件中解析目标
+-m BULKFILE         Scan multiple targets given in a textual file
+    这个应该是从大文件中读取超级多的目标，一般文件多了就一部分一部分地读了，这个就像是一个大字典
+-r REQUESTFILE      Load HTTP request from a file
+    这个也用的较多，尤其是POST注入，将一些抓包软件（如burp）抓到的HTTP报文直接保存在文件中，跟着-r就搞掂了
+-g GOOGLEDORK       Process Google dork results as target URLs
+    通过google搜索找到的url作为目标，这个也是google hacking了
+-c CONFIGFILE       Load options from a configuration INI file
+    通过ini文件设置选项，这个还用过啊,下面的--save参数就是保存参数到ini文件的了，这个方便下次再次黑它
+</code></pre>
+
+<p>Request: 请求
+    These options can be used to specify how to connect to the target URL</p>
+
+<pre class="line-numbers"><code class="language-text">--method=METHOD     Force usage of given HTTP method (e.g. PUT)
+    指定HTTP请求的方法，GET，POST，PUT，MOVE等
+--data=DATA         Data string to be sent through POST
+    指定POST的参数
+--param-del=PARA..  Character used for splitting parameter values
+    这个拆分一些参数的，如下面用;拆分post参数
+    python sqlmap.py -u &quot;http://www.target.com/vuln.php&quot; --data=&quot;query=foobar;id=1&quot; --param-del=&quot;;&quot; -f --banner --dbs --users
+--cookie=COOKIE     HTTP Cookie header value
+    指定cookie值
+--cookie-del=COO..  Character used for splitting cookie values
+    指定分割cookie值的字符是什么
+--load-cookies=L..  File containing cookies in Netscape/wget format
+    这个是从文件中读取cookie吧，Netscape/wget格式的
+--drop-set-cookie   Ignore Set-Cookie header from response
+    忽略响应包的Set-Cookie头
+--user-agent=AGENT  HTTP User-Agent header value
+    指定User-Agent用户代理
+--random-agent      Use randomly selected HTTP User-Agent header value
+    随机选用sqlmap目录中的User-Agent，这个文件再txt目录
+--host=HOST         HTTP Host header value
+    指定主机头
+--referer=REFERER   HTTP Referer header value
+    指定Referer头，就是请求来源的意思
+-H HEADER, --hea..  Extra header (e.g. &quot;X-Forwarded-For: 127.0.0.1&quot;)
+    指定某个头部，如： -H &quot;X-Forwarded-For: 127.0.0.1&quot;
+--headers=HEADERS   Extra headers (e.g. &quot;Accept-Language: fr\nETag: 123&quot;)
+    这个的话应该是可以指定多个，用\n分割
+--auth-type=AUTH..  HTTP authentication type (Basic, Digest, NTLM or PKI)
+    指定http认证类型
+--auth-cred=AUTH..  HTTP authentication credentials (name:password)
+    指定http认证的账户名和密码，就行apache就可以设置访问某个目录时要认证
+--auth-file=AUTH..  HTTP authentication PEM cert/private key file
+    指定一个私钥文件来认证
+--ignore-401        Ignore HTTP Error 401 (Unauthorized)
+    忽略401错误
+--proxy=PROXY       Use a proxy to connect to the target URL
+    指定代理
+--proxy-cred=PRO..  Proxy authentication credentials (name:password)
+    指定代理的认证信息，就是账号密码
+--proxy-file=PRO..  Load proxy list from a file
+    从文件中选择代理
+--ignore-proxy      Ignore system default proxy settings
+    忽略系统默认代理
+--tor               Use Tor anonymity network
+    使用tor网络
+--tor-port=TORPORT  Set Tor proxy port other than default
+    设置tor的端口，如果不是默认端口的话
+--tor-type=TORTYPE  Set Tor proxy type (HTTP, SOCKS4 or SOCKS5 (default))
+    设置tor代理的类型
+--check-tor         Check to see if Tor is used properly
+    检测tor能不能用
+--delay=DELAY       Delay in seconds between each HTTP request
+    设置每个HTTP请求的时间间隔，这个在有些限制单位时间请求数的防火墙的时候可以用得到，我上次就用过
+--timeout=TIMEOUT   Seconds to wait before timeout connection (default 30)
+    设置超时时间，默认30秒
+--retries=RETRIES   Retries when the connection timeouts (default 3)
+    设置重试的次数，默认3次
+--randomize=RPARAM  Randomly change value for given parameter(s)
+    随机地更改给定参数的值
+--safe-url=SAFEURL  URL address to visit frequently during testing
+    有的web应用程序会在你多次访问错误的请求时屏蔽掉你以后的所有请求
+    这里提供一个安全不错误的连接，每隔一段时间都会去访问一下
+--safe-post=SAFE..  POST data to send to a safe URL
+    这里设置一个正确的post数据
+--safe-req=SAFER..  Load safe HTTP request from a file
+    从文件中读取安全，或者叫正确的http请求
+--safe-freq=SAFE..  Test requests between two visits to a given safe URL
+    设置访问安全url的时间间隔
+--skip-urlencode    Skip URL encoding of payload data
+    不进行url编码
+--csrf-token=CSR..  Parameter used to hold anti-CSRF token
+    设置CSRF的token
+--csrf-url=CSRFURL  URL address to visit to extract anti-CSRF token
+
+--force-ssl         Force usage of SSL/HTTPS
+    强制使用https
+--hpp               Use HTTP parameter pollution method
+    尝试了一下，只能用于ASP，得到报错信息如下：
+    [WARNING] HTTP parameter pollution should work only against ASP(.NET) targets
+
+--eval=EVALCODE     Evaluate provided Python code before the request (e.g.
+                    &quot;import hashlib;id2=hashlib.md5(id).hexdigest()&quot;)
+    发送请求之前，先运行这段python代码，比如对某个参数进行处理
+    比如下面的，hash参数就是id的md5值
+    python sqlmap.py -u &quot;http://www.target.com/vuln.php?id=1&amp;hash=c4ca4238a0b923820dcc509a6f75849b&quot; --eval=&quot;import hashlib;hash=hashlib.md5(id).hexdigest()&quot;
+</code></pre>
+
+<p>Optimization: 一些优化
+    These options can be used to optimize the performance of sqlmap</p>
+
+<pre class="line-numbers"><code class="language-text">-o                  Turn on all optimization switches
+    开启所有优化选项
+--predict-output    Predict common queries output
+    预测常见的查询输出，可能跟一些报错出数据库信息那些有关，具体应要看源码才能说，有机会的话我看源码补充下
+--keep-alive        Use persistent HTTP(s) connections
+    使用持久连接
+--null-connection   Retrieve page length without actual HTTP response body
+    获得页面的长度（应该有多少字符吧，这个具体我也不确定） 除去HTTP的响应的body部分
+--threads=THREADS   Max number of concurrent HTTP(s) requests (default 1)
+    设置线程，默认为1
+</code></pre>
+
+<p>Injection: 注入
+    These options can be used to specify which parameters to test for,
+    provide custom injection payloads and optional tampering scripts</p>
+
+<pre class="line-numbers"><code class="language-text">-p TESTPARAMETER    Testable parameter(s)
+    设定测试的参数，sqlmap默认测试所有的GET和POST参数，当--level的值大于等于2的时候也会测试HTTP Cookie头的值，当大于等于3的时候也会测试User-Agent和HTTP Referer头的值。
+    这里就给你自己设定了 例如： -p &quot;id,user-agent&quot;
+
+--skip=SKIP         Skip testing for given parameter(s)
+    跳过测试给定的参数
+--skip-static       Skip testing parameters that not appear dynamic
+    跳过测试参数是否是静态的
+--dbms=DBMS         Force back-end DBMS to this value
+    指定后端的数据库类型（mysql，mssql等）
+--dbms-cred=DBMS..  DBMS authentication credentials (user:password)
+    指定数据库的认证信息(user:password)
+--os=OS             Force back-end DBMS operating system to this value
+    指定后台的系统类型
+--invalid-bignum    Use big numbers for invalidating values
+    使用大数字（说是无效值），比如payload会出现8446744073709551610这样大的，配合-v 3就能看到
+--invalid-logical   Use logical operations for invalidating values
+    使用逻辑字符，比如下面的：
+        SELECT CHR(101)&amp;CHR(99)&amp;CHR(108)&amp;CHR(89)
+        SELECT CHAR(82)+CHAR(90)+CHAR(71)+CHAR(84))
+        SELECT CHAR(67)||CHAR(88)||CHAR(73)||CHAR(105)
+--invalid-string    Use random strings for invalidating values
+    使用随机字符
+--no-cast           Turn off payload casting mechanism
+    这个看着英文像是关闭payload构造机制
+--no-escape         Turn off string escaping mechanism
+    关闭字符串逃逸机制
+--prefix=PREFIX     Injection payload prefix string
+    设置注入的前缀，比如单引号注入点就设置前缀为单引号
+--suffix=SUFFIX     Injection payload suffix string
+    设置注入payload的后缀
+--tamper=TAMPER     Use given script(s) for tampering injection data
+    使用给定的脚本去修改payload中的数据，达到绕过WAF的目的
+</code></pre>
+
+<p>Detection: 发现
+    These options can be used to customize the detection phase</p>
+
+<pre class="line-numbers"><code class="language-text">--level=LEVEL       Level of tests to perform (1-5, default 1)
+    这个的话，sqlmap使用测试的方法就越多，发送越多请求，耗时也越长
+--risk=RISK         Risk of tests to perform (1-3, default 1)
+    boolean-based blind SQL injection tests with AND are considered risk 1, with OR are considered risk 3：这句话是从sqlmap配置文件中找的，就是说基于布尔型盲注and型的就是risk1，or型的就是risk3，那么risk2是两个都搞？
+--string=STRING     String to match when query is evaluated to True
+    设置一些返回页面中的字符，页面返回这个字符，说明我们的注入判断语句是正确的
+--not-string=NOT..  String to match when query is evaluated to False
+    设置返回页面没返回某个字符，就是判断错误
+--regexp=REGEXP     Regexp to match when query is evaluated to True
+    用正则匹配告诉sqlmap返回什么是正确的
+--code=CODE         HTTP code to match when query is evaluated to True
+    用HTTP的响应码来判断注入判断语句是正确的，例如，响应200的时候为真，响应401的时候为假，可以添加参数--code=200
+--text-only         Compare pages based only on the textual content
+    真条件下的返回页面与假条件下返回页面是不同可以使用这个
+--titles            Compare pages based only on their titles
+    真条件下的返回页面的标题与假条件下返回页面的标题是不同可以使用这个
+</code></pre>
+
+<p>Techniques: 注入技术
+    These options can be used to tweak testing of specific SQL injection
+    techniques</p>
+
+<pre class="line-numbers"><code class="language-text">--technique=TECH    SQL injection techniques to use (default &quot;BEUSTQ&quot;)
+    指定注入技术，默认使用全部(default &quot;BEUSTQ&quot;)，那个含义如下：
+    # B: Boolean-based blind SQL injection
+    # E: Error-based SQL injection
+    # U: UNION query SQL injection
+    # S: Stacked queries SQL injection
+    # T: Time-based blind SQL injection
+    # Q: Inline SQL injection
+--time-sec=TIMESEC  Seconds to delay the DBMS response (default 5)
+    使用基于时间的盲注时，设置的数据库延迟，默认是5
+--union-cols=UCOLS  Range of columns to test for UNION query SQL injection
+    设置联合查询列的数目的范围
+--union-char=UCHAR  Character to use for bruteforcing number of columns
+    设定union查询使用的字符，默认使用NULL
+--union-from=UFROM  Table to use in FROM part of UNION query SQL injection
+    这个就不知道了，使用表单中的元素放到union注入中？
+--dns-domain=DNS..  Domain name used for DNS exfiltration attack
+    利用dns进行注入加快盲注，可以看看这个
+    http://blog.csdn.net/qq_27446553/article/details/51794326
+    示例url：http://localhost/inject.php?user=123&#39; and if((SELECT LOAD_FILE(CONCAT(、\\\&#39;,(SELECT concat(user,&#39;_&#39;,mid(password,2,41)) from user where ser=&#39;root&#39; limit 1),&#39;.md5crack.cn\\foobar&#39;))),1,1)%23 
+--second-order=S..  Resulting page URL searched for second-order response
+    这个就是我们常说的二次注入了，设置后帮你寻找二次注入的页面，不过没用过。。。
+</code></pre>
+
+<p>Fingerprint:
+    -f, --fingerprint   Perform an extensive DBMS version fingerprint
+        这个应该是数据库指纹识别，加了可能识别更好
+  Enumeration:
+    These options can be used to enumerate the back-end database
+    management system information, structure and data contained in the
+    tables. Moreover you can run your own SQL statements
+    -a, --all           Retrieve everything
+        检索所有，这是拖库的节奏啊
+    -b, --banner        Retrieve DBMS banner
+        检索数据库的一些标志性的信息，就是指纹这样子吧
+    --current-user      Retrieve DBMS current user
+        检索当前连接数据库的用户
+    --current-db        Retrieve DBMS current database
+        检索当前连接的数据库
+    --hostname          Retrieve DBMS server hostname
+        检索服务器的主机名
+    --is-dba            Detect if the DBMS current user is DBA
+        检测是不是dba，就是root权限咯
+    --users             Enumerate DBMS users
+        枚举数据库用户
+    --passwords         Enumerate DBMS users password hashes
+        枚举数据库用户的哈希值
+    --privileges        Enumerate DBMS users privileges
+        枚举数据库用户的权限
+    --roles             Enumerate DBMS users roles
+        枚举数据库用户的角色
+    --dbs               Enumerate DBMS databases
+        枚举数据库有哪些
+    --tables            Enumerate DBMS database tables
+        枚举数据表名
+    --columns           Enumerate DBMS database table columns
+        枚举列名
+    --schema            Enumerate DBMS schema
+        这个测试过，将所有的数据库的表的基本信息都枚举了，有哪些列，列的数据类型，具体数据就没有枚举
+    --count             Retrieve number of entries for table(s)
+        枚举表格个数
+    --dump              Dump DBMS database table entries
+        输出数据库表的数据
+    --dump-all          Dump all DBMS databases tables entries
+        输出所有
+    --search            Search column(s), table(s) and/or database name(s)
+        查找特定的列名，表名或数据库名，配合下面的-D,-C,-T
+    --comments          Retrieve DBMS comments
+        枚举数据库的注释
+    -D DB               DBMS database to enumerate
+        指定数据库名
+    -T TBL              DBMS database table(s) to enumerate
+        指定表名
+    -C COL              DBMS database table column(s) to enumerate
+        指定列名
+    -X EXCLUDECOL       DBMS database table column(s) to not enumerate
+        指定不枚举那个列
+    -U USER             DBMS user to enumerate
+        枚举用户，但单独用这个参数感觉没什么用啊，这个可能要看源码才能解决了，估计要配合其他参数
+    --exclude-sysdbs    Exclude DBMS system databases when enumerating tables
+        枚举时排除系统的数据库
+    --pivot-column=P..  Pivot column name
+        以某一列为核心？这个用过没感觉出什么用
+    --where=DUMPWHERE   Use WHERE condition while table dumping
+        使用where调试限制table的输出
+    --start=LIMITSTART  First query output entry to retrieve
+        指定开始从第几行开始输出，如--start=3，前两行就不输出了
+    --stop=LIMITSTOP    Last query output entry to retrieve
+        指定从第几行开始停止输出
+    --first=FIRSTCHAR   First query output word character to retrieve
+        指定只输出第几个字符开始输出，盲注才有效，亲测
+    --last=LASTCHAR     Last query output word character to retrieve
+        指定只输出第几个字符停止输出，盲注才有效，亲测，跟上面的配合指定范围，
+        如 ：--first 3 --last 5  只输出3到5位置的字符
+    --sql-query=QUERY   SQL statement to be executed
+        指定执行我们的sql语句
+    --sql-shell         Prompt for an interactive SQL shell
+        返回一个sql的shell
+    --sql-file=SQLFILE  Execute SQL statements from given file(s)
+        从文件中读取执行sql语句</p>
+
+<p>Brute force: 爆破
+    These options can be used to run brute force checks</p>
+
+<pre class="line-numbers"><code class="language-text">--common-tables     Check existence of common tables
+    检测常见的表名
+--common-columns    Check existence of common columns
+    检测常见的列名
+</code></pre>
+
+<p>User-defined function injection: 使用用户定义的函数注入
+    These options can be used to create custom user-defined functions</p>
+
+<pre class="line-numbers"><code class="language-text">--udf-inject        Inject custom user-defined functions
+--shared-lib=SHLIB  Local path of the shared library
+    这两个具体没用过，直译就是注入用户定义的函数，另一个就是指定本地共享库
+</code></pre>
+
+<p>File system access:  文件系统访问
+    These options can be used to access the back-end database management
+    system underlying file system</p>
+
+<pre class="line-numbers"><code class="language-text">--file-read=RFILE   Read a file from the back-end DBMS file system
+    读取服务器文件
+--file-write=WFILE  Write a local file on the back-end DBMS file system
+    写服务器文件
+--file-dest=DFILE   Back-end DBMS absolute filepath to write to
+    设置写入的绝对路径
+</code></pre>
+
+<p>Operating system access:  操作系统访问
+    These options can be used to access the back-end database management
+    system underlying operating system</p>
+
+<pre class="line-numbers"><code class="language-text">注意下面这些要有相应的权限，一般要root
+
+--os-cmd=OSCMD      Execute an operating system command
+    执行一个指定的命令
+--os-shell          Prompt for an interactive operating system shell
+    返回一个shell
+--os-pwn            Prompt for an OOB shell, Meterpreter or VNC
+    这个参数需要访问metasploit，结合metasploit使用的
+--os-smbrelay       One click prompt for an OOB shell, Meterpreter or VNC
+    这个参数也需要访问metasploit
+--os-bof            Stored procedure buffer overflow exploitation
+    尝试储存过程的缓冲区溢出
+--priv-esc          Database process user privilege escalation
+    利用数据库进程用户进行权限提升
+--msf-path=MSFPATH  Local path where Metasploit Framework is installed
+    指定metasploit的路径
+--tmp-path=TMPPATH  Remote absolute path of temporary files directory
+    设定临时文件路径
+</code></pre>
+
+<p>Windows registry access: windows注册表访问
+    These options can be used to access the back-end database management
+    system Windows registry</p>
+
+<pre class="line-numbers"><code class="language-text">--reg-read          Read a Windows registry key value
+    读取一个键
+--reg-add           Write a Windows registry key value data
+    写一个键
+--reg-del           Delete a Windows registry key value
+    删除一个键
+</code></pre>
+
+<p>下面的应该配合上面使用的
+    --reg-key=REGKEY    Windows registry key
+        指定键
+    --reg-value=REGVAL  Windows registry key value
+        指定键值
+    --reg-data=REGDATA  Windows registry key value data
+        值的数据
+    --reg-type=REGTYPE  Windows registry key value type
+        值得类型</p>
+
+<p>General: 通用的
+    These options can be used to set some general working parameters</p>
+
+<pre class="line-numbers"><code class="language-text">-s SESSIONFILE      Load session from a stored (.sqlite) file
+    从.sqlite恢复那个会话（注入过就会自动生成），那个文件在sqlmap的output文件，（windows在C:\Users\Administrator\.sqlmap\output\）
+-t TRAFFICFILE      Log all HTTP traffic into a textual file
+    HTTP请求保存到文件中
+--batch             Never ask for user input, use the default behaviour
+    不要询问，使用默认选项
+--binary-fields=..  Result fields having binary values (e.g. &quot;digest&quot;)
+    设置有些字段是二进制数值？
+--charset=CHARSET   Force character encoding used for data retrieval
+    设置编码
+--crawl=CRAWLDEPTH  Crawl the website starting from the target URL
+    从某个url开始爬取网站
+--crawl-exclude=..  Regexp to exclude pages from crawling (e.g. &quot;logout&quot;)
+    排除爬取网站的关键字，如logout
+--csv-del=CSVDEL    Delimiting character used in CSV output (default &quot;,&quot;)
+    设置输出结果时的分隔符
+--dump-format=DU..  Format of dumped data (CSV (default), HTML or SQLITE)
+    设置输出是的格式，csv，html，SQLITE等
+--eta               Display for each output the estimated time of arrival
+    显示每个输出估计的耗时
+--flush-session     Flush session files for current target
+    刷新这个url的储存会话信息，就是更新以前注入的记录，如管理员改密码了，就要重新注入了
+--forms             Parse and test forms on target URL
+    解析测试目标url的表单
+--fresh-queries     Ignore query results stored in session file
+    忽略保存在会话文件储存的查询结果
+--hex               Use DBMS hex function(s) for data retrieval
+    使用十六进制
+--output-dir=OUT..  Custom output directory path
+    设置输出路径
+--parse-errors      Parse and display DBMS error messages from responses
+    解析输出数据库错误信息
+--save=SAVECONFIG   Save options to a configuration INI file
+    保存选项到ini文件
+--scope=SCOPE       Regexp to filter targets from provided proxy log
+    正则表达式过滤代理文件提供的代理？
+--test-filter=TE..  Select tests by payloads and/or titles (e.g. ROW)
+    设置含我们指定关键字的某些测试的payload
+--test-skip=TEST..  Skip tests by payloads and/or titles (e.g. BENCHMARK)
+    跳过测试指定关键字的某些测试的payload
+--update            Update sqlmap
+    更新sqlmap，记得更新了
+</code></pre>
+
+<p>Miscellaneous:  杂项
+    -z MNEMONICS        Use short mnemonics (e.g. &quot;flu,bat,ban,tec=EU&quot;)
+        短记忆，什么鬼
+    --alert=ALERT       Run host OS command(s) when SQL injection is found
+        如果存在注入，运行系统命令
+    --answers=ANSWERS   Set question answers (e.g. &quot;quit=N,follow=N&quot;)
+        设定
+    --beep              Beep on question and/or when SQL injection is found
+        哔一声，找到注入的话
+    --cleanup           Clean up the DBMS from sqlmap specific UDF and tables
+        清理数据库什么鬼，这个也不懂<br/>
+    --dependencies      Check for missing (non-core) sqlmap dependencies
+        看看sqlmap缺少什么第三方库
+    --disable-coloring  Disable console output coloring
+        关闭颜色的输出，就没那么美观咯
+    --gpage=GOOGLEPAGE  Use Google dork results from specified page number
+        指定google搜索的页码，找sqlmap注入目标
+    --identify-waf      Make a thorough testing for a WAF/IPS/IDS protection
+        尝试辨认WAF/IPS/IDS的类型
+    --mobile            Imitate smartphone through HTTP User-Agent header
+        使用手机User-Agent
+    --offline           Work in offline mode (only use session data)
+        使用离线模式
+    --page-rank         Display page rank (PR) for Google dork results
+        显示该url，google的rank值
+    --purge-output      Safely remove all content from output directory
+        安全地删除output文件夹
+    --skip-waf          Skip heuristic detection of WAF/IPS/IDS protection
+        跳过探测WAF/IPS/IDS
+    --smart             Conduct thorough tests only if positive heuristic(s)
+        全面的扫描如果是积极的启发式，不知什么鬼
+    --sqlmap-shell      Prompt for an interactive sqlmap shell
+        交互式的sqlmap shell
+    --tmp-dir=TMPDIR    Local directory for storing temporary files
+        设置临时文件目录
+    --wizard            Simple wizard interface for beginner users</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/08/04</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15647294001055.html">
+                
+                  <h1>利用Excel轻松更换照片背景色，证件照轻松搞定</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>参考这篇文章：
+<a href="https://baijiahao.baidu.com/s?id=1624373186564333816&amp;wfr=spider&amp;for=pc">https://baijiahao.baidu.com/s?id=1624373186564333816&amp;wfr=spider&amp;for=pc</a></p>
+
+<p>很实用的技能</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/08/02</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15645039971877.html">
+                
+                  <h1>Couldn't connect to Docker daemon at http+docker://localhost - is it running?</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>启动 docker 即可
+sudo systemctl start docker   </p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/07/31</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15590262822391.html">
+                
+                  <h1>洞察-宜信集应用系统资产管理、漏洞全生命周期管理、安全知识库管理三位一体的平台的安装与使用</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p><a href="https://github.com/creditease-sec/insight">https://github.com/creditease-sec/insight</a> 感谢作者！</p>
+</blockquote>
+
+<h2 id="toc_0">部署和启动 mysql in docker</h2>
+
+<p>1、首先安装 docker，这里略过</p>
+
+<p>2、安装 mysql 的 docker 镜像<code>docker pull mysql:5.7.13</code></p>
+
+<p>3、启动 mysql，这里的 name 可以自行指定。</p>
+
+<pre class="line-numbers"><code class="language-text">docker run -d -p 127.0.0.1:6606:3306 \
+--name open_source_mysqldb \
+-e MYSQL_ROOT_PASSWORD=root \
+mysql:5.7.13
+</code></pre>
+
+<p>4、查看已经启动的 docker 镜像，这里注意 name 后面要用到。<code>docker ps -a</code>
+<img src="media/15590262822391/15590264712809.jpg" alt=""/></p>
+
+<p>5、进入容器bash<code>docker exec -it open_source_mysqldb bash</code></p>
+
+<p>6、进入 mysql 并创建数据库和账号权限配置
+<code>mysql -h localhost -P 6606 -u root -p</code>
+<img src="media/15590262822391/15590267094981.jpg" alt=""/></p>
+
+<pre class="line-numbers"><code class="language-text">mysql&gt; CREATE DATABASE IF NOT EXISTS vuldb DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+mysql&gt; grant all on vuldb.* to vuluser@&#39;%&#39; identified by &#39;vulpassword&#39;;
+mysql&gt; flush privileges;
+mysql&gt; quit
+</code></pre>
+
+<p><img src="media/15590262822391/15590267827107.jpg" alt=""/></p>
+
+<p>7、退出容器 bash<code>exit</code></p>
+
+<h2 id="toc_1">部署和启动 APP</h2>
+
+<p>1、下载源码
+<code>$ git clone https://github.com/creditease-sec/insight.git</code></p>
+
+<p>2、修改srcpm/config.py 配置文件</p>
+
+<ul>
+<li><p>修改公司邮箱后缀    </p>
+
+<pre class="line-numbers"><code class="language-text">#公司邮箱后缀限制，只能使用公司邮箱注册账号。
+CORP_MAIL = &#39;@qq.com&#39;
+</code></pre></li>
+<li><p>修改邮件CC抄送列表    </p>
+
+<pre class="line-numbers"><code class="language-text">#平台发送的每封邮件的邮件抄送列表，可以设置发送给安全部邮箱列表，可自行修改，也可以保持不变为空
+&#39;&#39;&#39;
+示例：
+CC_EMAIL = [&#39;xxx1@creditease.cn&#39;,
+            &#39;xxx2@creditease.cn&#39;,
+        ]
+&#39;&#39;&#39;
+CC_EMAIL = [
+        ]
+        ```
+</code></pre></li>
+</ul>
+
+<ul>
+<li><p>修改开发模式的邮箱服务器和发件邮箱配置    </p>
+
+<pre class="line-numbers"><code class="language-text"># 以开发模式的配置运行，使用测试邮件服务器，并开启debug模式
+# 平台发邮件账号设置
+SRCPM_MAIL_SENDER = &#39;安全部 &lt;sec_creditease@sina.com&gt;&#39;
+# 发送邮件的服务器设置，邮箱密码由系统变量中读取
+MAIL_SERVER = &#39;smtp.sina.com&#39;
+MAIL_PORT = 587
+MAIL_USE_TLS = True
+MAIL_USERNAME = os.environ.get(
+    &#39;MAIL_USERNAME&#39;) or &#39;sec_creditease@sina.com&#39;
+MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
+</code></pre></li>
+<li><p>修改生产模式的邮箱服务器和发件邮箱配置</p>
+
+<pre class="line-numbers"><code class="language-text"># 以生产模式的配置运行，使用生产邮件服务器，并关闭debug模式
+# 平台发邮件账号设置
+SRCPM_MAIL_SENDER = &#39;安全部 &lt;xxx@creditease.cn&gt;&#39;
+# 发送邮件的服务器设置，账号密码由系统变量中读取
+MAIL_SERVER = &#39;x.x.x.x&#39;
+MAIL_PORT = 25
+MAIL_USE_TLS = False
+MAIL_USERNAME = os.environ.get(
+    &#39;MAIL_USERNAME&#39;) or &#39;xxx@creditease.cn&#39;
+MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
+</code></pre></li>
+</ul>
+
+<p>3、修改定时周期邮件 mail_sender.py 的配置    </p>
+
+<pre class="line-numbers"><code class="language-text">    #平台发送的每封邮件的邮件抄送列表，可以设置发送给安全部邮箱列表，可自行修改，也可以保持不变为空
+    &#39;&#39;&#39;
+    示例：
+    CC_EMAIL = [&#39;xxx1@creditease.cn&#39;,
+                &#39;xxx2@creditease.cn&#39;,
+            ]
+    &#39;&#39;&#39;
+    CC_EMAIL = [
+            ]
+    #主机名设置
+    SERVER_NAME = &#39;xxx.creditease.corp&#39;
+    # 平台发邮件账号设置
+    SRCPM_MAIL_SENDER = &#39;安全部 &lt;xxx@creditease.cn&gt;&#39;
+    # 发送邮件的服务器设置，账号密码由系统变量中读取
+    MAIL_SERVER = &#39;x.x.x.x&#39;
+    MAIL_PORT = 25
+    MAIL_USE_TLS = False
+    MAIL_USERNAME = os.environ.get(
+        &#39;MAIL_USERNAME&#39;) or &#39;xxx@creditease.cn&#39;
+    MAIL_PASSWORD = os.environ.get(&#39;MAIL_PASSWORD&#39;) or &#39;&#39;
+</code></pre>
+
+<p>4、修改srcpm/app/src/forms.py 漏洞来源下拉列表    </p>
+
+<pre class="line-numbers"><code class="language-text">    &#39;&#39;&#39; 下拉选项 &#39;&#39;&#39;
+    source_choices = [(&#39;&#39;,&#39;&#39;), (u&#39;安全部&#39;, u&#39;安全部&#39;), (u&#39;YISRC&#39;, u&#39;YISRC&#39;), (u&#39;公众平台&#39;, u&#39;公众平台&#39;), (u&#39;合作伙伴&#39;, u&#39;合作伙伴&#39;)]
+</code></pre>
+
+<p>5、在项目根目录下部署和启动APP    </p>
+
+<pre class="line-numbers"><code class="language-text"># 拉取镜像
+docker pull daocloud.io/liusheng/vulpm_docker:latest
+或
+自己构建镜像
+docker build -t=&#39;vulpm_docker&#39; .
+# 在项目目录下启动容器，确保当前目录下存在srcpm文件夹，MAIL_PASSOWRD替换为自己邮箱服务器的密码。
+$ docker run -d -p 127.0.0.1:9000:5000 \
+--link open_source_mysqldb:db \
+--name open_source_srcpm \
+-v $PWD/srcpm:/opt/webapp/srcpm \
+-e DEV_DATABASE_URL=&#39;mysql://vuluser:vulpassword@db/vuldb&#39; \
+-e SrcPM_CONFIG=development \
+-e MAIL_PASSWORD=&#39;xxxxxx&#39; \
+daocloud.io/liusheng/vulpm_docker:latest \
+sh -c &#39;supervisord -c srcpm/supervisor.conf &amp;&amp; supervisorctl -c srcpm/supervisor.conf start all &amp;&amp; tail -f srcpm/log/gunicorn.err &amp;&amp; tail -f srcpm/log/mail_sender.err&#39;
+</code></pre>
+
+<h1 id="toc_2">初始化数据库</h1>
+
+<p>参考作者写的就可以了。</p>
+
+<p><a href="https://github.com/creditease-sec/insight/blob/open-source/docs/db_init.md">数据库初始化详细配置指南</a></p>
+
+<p>或者</p>
+
+<p>直接导入初始化的sql</p>
+
+<p>导入sql</p>
+
+<pre class="line-numbers"><code class="language-text">$ mysql -h127.0.0.1 -P6606 -uroot -p vuldb &lt; srcpm/vuldb_init.sql
+</code></pre>
+
+<p>Enter password:root</p>
+
+<h2 id="toc_3">搭建完成</h2>
+
+<p>访问域名：<a href="http://127.0.0.1:9000/srcpm/">http://127.0.0.1:9000/srcpm/</a> 即可
+账号：<a href="mailto:admin@admin.com">admin@admin.com</a>
+密码：11</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/05/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			 <a href="工具_1.html">&raquo; Next Page</a> 
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <div class="site-a-logo"><img src="https://www.lonelyor.org/lonelyorWiki/media/15483045488413/205a66b0a6c34ba7184d2d68a9f62dd8.jpg" /></div>
+            
+                <h1>lonelyorWiki</h1>
+                <div class="site-des">一个用来记录知识的网站。</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="https://github.com/AlShelley/lonelyorWiki" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:lonelyor.org@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
              
 
-
-    <footer class="footer">
-            <div class="container">
-                <div class="site-footer-wrapper">
-                        <a class="button-square" href="index.html">
-<svg class="svg-inline--fa fa-home fa-w-18" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="home" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path></svg>
-                            </a>
-                        
-                         
-                        
-                        
-                        
-                        <a class="button-square" href="https://github.com/AlShelley/lonelyorWiki" target="_blank" title="github">
-                               <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github fa-lg"></i> -->
-                          </a>
-                        
-                        
-                      
-                      <a class="button-square" href="atom.xml" target="_blank" title="RSS">
-                              <svg class="svg-inline--fa fa-rss fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
-                      </a>
-
-              
-                       
-                                                
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
                 </div>
-                <div class="site-menu-wrapper">
-                  &nbsp;<span>|</span>&nbsp;
-                  
-                    <a target="_self" class="" href="index.html">首页</a>
-                    &nbsp;<span>|</span>&nbsp;
-                  
-                    <a target="_blank" class="" href="archives.html">归档</a>
-                    &nbsp;<span>|</span>&nbsp;
-                  
-                    <a target="_blank" class="" href="ruby.html">流光</a>
-                    &nbsp;<span>|</span>&nbsp;
-                  
-                    <a target="_blank" class="" href="beautiful.html">惊鸿</a>
-                    &nbsp;<span>|</span>&nbsp;
-                  
-                    <a target="_blank" class="" href="lose.html">失乐园</a>
-                    &nbsp;<span>|</span>&nbsp;
-                  
-                    <a target="_blank" class="" href="search.html">北斗</a>
-                    &nbsp;<span>|</span>&nbsp;
-                  
-                    <a target="_blank" class="" href="about.html">关于</a>
-                    &nbsp;<span>|</span>&nbsp;
-                                             
-                </div>
+                <div class="side-content">
 
-                <p class="footer-copyright">
-                        Copyright &copy; 2019
-                        Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
-                        Theme used <a target="_blank" href="https://blog.timac.org">Timac</a>.
-                </p>
-            </div>
-        </footer>
+      	<p class="cat-list">
+        
+            <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
+        
+            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
+        
+            <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
+        
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
+        
+            <a href="%E5%AE%89%E5%85%A8.html"><strong>安全</strong></a>
+        
+            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
+        
+            <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
+        
+            <a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html"><strong>星火流萤</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15747334018156.html">msfvenom各类木马生成脚本</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15724200154293.html">v2ray实现科学上网</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15708455642675.html">如何使用cmd开启3389端口与查看3389端口</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15695779467285.html">给linux终端加一个移动到回收站的功能</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15694777838251.html">Proxmox TASK ERROR: Failed to run vncproxy.解决办法</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
 
 
 
@@ -261,11 +1226,231 @@
 
 
 
-        
-      
+
+<style type="text/css">
+figure{margin: 0;padding: 0;}
+figcaption{text-align:center;}
+
+/* PrismJS 1.14.0
+ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: black;
+    background: none;
+    text-shadow: 0 1px white;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background:#b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+@media print {
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #F7F7F7;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: slategray;
+}
+
+.token.punctuation {
+    color: #999;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #9a6e3a;
+    background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+.token.function,
+.token.class-name {
+    color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #e90;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+
+pre[class*="language-"].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+    .line-numbers-rows > span {
+        pointer-events: none;
+        display: block;
+        counter-increment: linenumber;
+    }
+
+        .line-numbers-rows > span:before {
+            content: counter(linenumber);
+            color: #999;
+            display: block;
+            padding-right: 0.8em;
+            text-align: right;
+        }
+
+</style>
+
   
     
 
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
 
-    </body>
+<div id="container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: 'AlShelley',
+  repo: 'https://github.com/AlShelley/lonelyorWiki',
+  oauth: {
+    client_id: '2a0c6ad761806835e987',       
+    client_secret: '083280496d60e9becae3c653f97b18db292333cf',  
+  },
+})
+gitment.render('container')
+</script>
+
+  </body>
 </html>

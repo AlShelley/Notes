@@ -1,249 +1,1006 @@
-
-
-<!DOCTYPE html>
-<html lang="zh">
+<!doctype html>
+<html class="no-js" lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      
-    lonelyorWiki
     
-    </title>
-    <link rel="shortcut icon" href="https://pic2.zhimg.com/v2-640a8298aed88f9660c378786" type="image/png" />
+  lonelyorWiki
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="lonelyorWiki" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+ 
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:www.lonelyor.org/lonelyorWiki ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
     
-    
-    <link href="atom.xml" rel="alternate" title="lonelyorWiki" type="application/atom+xml">
-    <link rel="stylesheet" href="asset/style.css">
-    
-</head>
-  <body>
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
 
 
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
 
 
-        <div id="wrapper">
-            <header class="site-header">
-                <div class="container">
-                    <div class="site-title-wrapper">
-                          <a class="button-square" href="index.html">
-<svg class="svg-inline--fa fa-home fa-w-18" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="home" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path></svg>
-                            </a>
-                        
-                         
-                        
-                        
-                        
-                        <a class="button-square" href="https://github.com/AlShelley/lonelyorWiki" target="_blank" title="github">
-                               <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github fa-lg"></i> -->
-                          </a>
-                        
-                        
-                      
-                      <a class="button-square" href="atom.xml" target="_blank" title="RSS">
-                              <svg class="svg-inline--fa fa-rss fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
-                      </a>
-
-              
-                       
-                         
-                        
-                    </div>
-
-                    <ul class="site-nav">
-                        
-                    </ul>
-                </div>
-            </header>
-
-            <div id="container">
-
- <div id="post-index" class="container">
-    
-    <header class="post-header">
-        <h1 class="post-title">lonelyorWiki</h1>
-        <p class="des">一个用来记录知识的网站。</p>
-    </header>
-     <ol class="post-list">
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
         
+        <li id=""><a target="_self" href="index.html">首页</a></li>
         
-            <li class="post-stub">
-              <h2 class="post-stub-title">
-                <a href="15447786718296.html">
-                  Mac 启动 tomcat
-                </a>
-              </h2>
-              <p>
-                <time class="post-stub-date" datetime="2019-09-26">Posted 2018/12/14</time>
-              </p>
-
-                 
-            
-              <div class="post-read-more">
-                <a href="15447786718296.html">[Read More]</a>
-              </div>
-            </li>
-            
+        <li id=""><a target="_blank" href="archives.html">归档</a></li>
         
-            <li class="post-stub">
-              <h2 class="post-stub-title">
-                <a href="15447676167973.html">
-                  我是如何从Google窃取你的照片的-我的3个Google漏洞赏金报告分享
-                </a>
-              </h2>
-              <p>
-                <time class="post-stub-date" datetime="2019-09-26">Posted 2018/12/14</time>
-              </p>
-
-                 
-            
-              <div class="post-read-more">
-                <a href="15447676167973.html">[Read More]</a>
-              </div>
-            </li>
-            
+        <li id=""><a target="_blank" href="ruby.html">流光</a></li>
         
-            <li class="post-stub">
-              <h2 class="post-stub-title">
-                <a href="15446978130922.html">
-                  enigmagroup入门挑战-基础1
-                </a>
-              </h2>
-              <p>
-                <time class="post-stub-date" datetime="2019-09-26">Posted 2018/12/13</time>
-              </p>
-
-                 
-            
-              <div class="post-read-more">
-                <a href="15446978130922.html">[Read More]</a>
-              </div>
-            </li>
-            
+        <li id=""><a target="_blank" href="beautiful.html">惊鸿</a></li>
         
-            <li class="post-stub">
-              <h2 class="post-stub-title">
-                <a href="15446974404003.html">
-                  wsgidav独立服务器使用手册
-                </a>
-              </h2>
-              <p>
-                <time class="post-stub-date" datetime="2019-09-26">Posted 2018/12/13</time>
-              </p>
-
-                 
-            
-              <div class="post-read-more">
-                <a href="15446974404003.html">[Read More]</a>
-              </div>
-            </li>
-            
+        <li id=""><a target="_blank" href="lose.html">失乐园</a></li>
         
-            <li class="post-stub">
-              <h2 class="post-stub-title">
-                <a href="15446973583267.html">
-                  解决npm更新或安装软件时下载较慢等问题
-                </a>
-              </h2>
-              <p>
-                <time class="post-stub-date" datetime="2019-09-26">Posted 2018/12/13</time>
-              </p>
-
-                 
-            
-              <div class="post-read-more">
-                <a href="15446973583267.html">[Read More]</a>
-              </div>
-            </li>
-            
+        <li id=""><a target="_blank" href="search.html">北斗</a></li>
         
-            <li class="post-stub">
-              <h2 class="post-stub-title">
-                <a href="15446971543515.html">
-                  此地址使用了一个通常用于网络浏览以外目的的端口.出于安全原因,Firefox取消了该请求
-                </a>
-              </h2>
-              <p>
-                <time class="post-stub-date" datetime="2019-09-26">Posted 2018/12/13</time>
-              </p>
+        <li id=""><a target="_blank" href="about.html">关于</a></li>
+        
+        </ul>
 
-                 
-            
-              <div class="post-read-more">
-                <a href="15446971543515.html">[Read More]</a>
-              </div>
-            </li>
-            
-      </ol>
-  <div class="post-navigation">
-    <nav class="pagination">
-       <a class="newer-posts" href="all_21.html">&larr; Newer Posts</a>  
-       <a class="older-posts" href="all_23.html">Older Posts &rarr;</a> 
-    </nav>
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
   </div>
-</div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; lonelyorWiki</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">首页</a></li>
+        
+        <li><a target="_blank" href="archives.html">归档</a></li>
+        
+        <li><a target="_blank" href="ruby.html">流光</a></li>
+        
+        <li><a target="_blank" href="beautiful.html">惊鸿</a></li>
+        
+        <li><a target="_blank" href="lose.html">失乐园</a></li>
+        
+        <li><a target="_blank" href="search.html">北斗</a></li>
+        
+        <li><a target="_blank" href="about.html">关于</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E7%B3%BB%E7%BB%9F.html">系统</a></li>
+        
+            <li><a href="%E7%BD%91%E7%BB%9C.html">网络</a></li>
+        
+            <li><a href="%E5%BC%80%E5%8F%91.html">开发</a></li>
+        
+            <li><a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库</a></li>
+        
+            <li><a href="%E5%AE%89%E5%85%A8.html">安全</a></li>
+        
+            <li><a href="%E5%B7%A5%E5%85%B7.html">工具</a></li>
+        
+            <li><a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html">风花雪月</a></li>
+        
+            <li><a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html">星火流萤</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="15447786718296.html">
+                
+                  <h1>Mac 启动 tomcat</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>brew services start tomcat  开始</p>
+
+<p>brew services stop tomcat  停止</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/14</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15447676167973.html">
+                
+                  <h1>我是如何从Google窃取你的照片的-我的3个Google漏洞赏金报告分享</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>文章转载自：<a href="https://nosec.org/home/detail/2063.html">https://nosec.org/home/detail/2063.html</a></p>
+</blockquote>
+
+<p>安全是一个非常宏大的主题，在找到第一个漏洞之前，您不能确定您拥有安全人员所需的知识、运气和耐心。作为一个新手，加入漏洞赏金猎人俱乐部是件很困难的事，在这里，让我和你分享我的故事。</p>
+
+<h2 id="toc_0">邀请欺诈</h2>
+
+<p>我的第一个漏洞是意外发现的，就在我试图和老师共享一个Google电子表格程序时。当时，我发送共享邀请到他的非Gmail电子邮件地址，然后用e-mail将链接发给他。当然，他无法访问它……幸运的是，Google非常强大，在这种情况下（当您试图打开一个不与您共享的文档时），曝出的错误消息下面有一个Request access 按钮，其功能是向共享文件所有者发送电子邮件，其中包含的链接如下：</p>
+
+<p><code>https://docs.google.com/spreadsheets/d/cmFuZG9t_c3ByZWFkc2hlZXQ_aWQ/edit?usp=sharing_erp&amp;userstoinvite=billgates@microsoft.com</code></p>
+
+<p>如果共享文件所有者打开上面的链接，则会加载文档，并弹出一个“与其他人共享”模式，该模式自填充了一个来自URL的电子邮件地址：</p>
+
+<p><img src="media/15447676167973/15447677231852.png" alt=""/></p>
+
+<p>我的第一个想法是“嗯……用户的输入反映在DOM中——我应该尝试XSS吗？但我的第二个念头立刻涌现：“我决不是第一个发现这点的人。”这是谷歌，世界上有很多比我更聪明的人一直在尝试攻击它。我不会把时间浪费在XSS上…”</p>
+
+<p>你可以称我为悲观主义者，但是我最近读过一些关于Google XSS漏洞的文章，我知道找到XSS的难度有多大。但是，这个url的其他一些东西引起了我的注意……参数的名称是userStoinvite，而不是usertoinvite，这意味着这个url可以用来同时邀请更多的用户，对吧？</p>
+
+<p>我开始测试这个参数，并且很快发现，如果我用逗号分隔多个电子邮件地址并添加到url中，那它们将都出现在表单中。就像你想给多个收件人发邮件一样……现在，让我看看如果我指定一个名字而不是电子邮件地址时会发生什么：</p>
+
+<p><code>https://docs.google.com/spreadsheets/d/cmFuZG9t_c3ByZWFkc2hlZXQ_aWQ/edit?usp=sharing_erp&amp;userstoinvite=Bill Gates&lt;billgates@microsoft.com&gt;</code></p>
+
+<p>它正如我所预期的那样——表单中显示的是名字而不是地址，只有当您将鼠标移到名称时才会显示真正的电子邮件地址。</p>
+
+<p><img src="media/15447676167973/15447678384880.png" alt=""/></p>
+
+<h2 id="toc_1">这会带来什么问题？</h2>
+
+<p>如果使用伪造的电子邮件地址代替你的姓名，则可以设计一个分享邀请欺诈，欺骗没有防范经验的用户允许你访问他的文件。攻击场景：</p>
+
+<p>您不再为公司工作，对重要电子表格的访问权限被撤销，但是您仍然知道访问的URL（例如，在浏览器历史中）</p>
+
+<p>用老板的电子邮件地址给秘书/会计发送一个虚假的共享邀请链接</p>
+
+<p>等待直到他们打开链接并允许您访问文件</p>
+
+<p>时间线：
+2017.10.03-漏洞报告
+2017.10.03-漏洞由安全工程师验证（P4-&gt;P3）
+2017.10.10-500美元奖金
+2018.01.16-漏洞修复</p>
+
+<h2 id="toc_2">从你的谷歌驱动中获取照片</h2>
+
+<p>在我发现第一个漏洞后，我的感觉好坏参半。一方面，我感到非常自豪和高兴，因为我在谷歌发现了一个安全问题，我也真的很感激这笔奖金。另一方面，我对自己并不满意，因为任何人只要运气好发过这样一封邮件，就会发现这个漏洞——我觉得我可以做得更好。但是从哪里开始呢？我敢肯定使用自动化工具会浪费时间，因为我认为其他人已经做过很多次，我想尝试一些不同的东西。我想我对web的基本概念（如SOP和CORS）有很好的理解，因为我真的爱上了Chrome Dev工具，所以我决定开始在JS文件中寻找不安全的API接口或敏感数据。我的代码如下：</p>
+
+<pre class="line-numbers"><code class="language-text">for webapp in literally_every_online_google_product_I_have_found:
+    devtools.open()
+    devtools.select_tab(&#39;network&#39;)
+    for button in webapp:
+        button.click()
+    for request, response in devtools.requests:
+        request.analyze_manually()
+        response.analyze_manually()
+</code></pre>
+
+<p>整个过程又长又无聊。我花了下午和晚上阅读发起的网络请求和回复，但没有成功。我甚至不记得我尝试过多少不同的测试：</p>
+
+<p>“也许这个CSS存在一些漏洞……那些字体如何？”
+“好的，如果我用另一个帐户的cookie回放这个请求会咋样？”“
+“嗯，我可以在这里上传SVG。是时候测试一些XSS了”。</p>
+
+<p>最后我关注了Drive和Google Docs系列应用，因为它们是相互连接的（Docs可以访问您的文件），很流行（因此出现安全缺陷就意味着严重安全威胁），并且它们有很多特性和设置。我首先注意到的是，Slides确实类似于文档和表格，但是它在不同的情况下了使用了不同的（遗留？）API接口。例如，当从我的驱动器插入一张图像时会触发这两个请求：</p>
+
+<pre class="line-numbers"><code class="language-text">curl &#39;https://docs.google.com/presentation/d/pReS3nTaT10N_1D/copyimages?id=bG9s_Y2hlY2tvdXR0aGlz_dDY4UkV1MEh3Qnc&#39; --data &#39;photo=bG9s_Y2hlY2tvdXR0aGlz_dDY4UkV1MEh3Qnc&#39;
+
+{&quot;bG9s_Y2hlY2tvdXR0aGlz_dDY4UkV1MEh3Qnc&quot;:&quot;MDRjYWVhO-QtYjc0Ny00NDdkLWJlODctZ-VmNzVkOTI1YTkw&quot;}
+
+---
+
+curl &#39;https://docs.google.com/presentation/d/pReS3nTaT10N_1D/renderdata?id=bG9s_Y2hlY2tvdXR0aGlz_dDY4UkV1MEh3Qnc&#39; --data &#39;cosmoId=MDRjYWVhO-QtYjc0Ny00NDdkLWJlODctZ-VmNzVkOTI1YTkw&#39;
+
+{&quot;r0&quot;:&quot;https://lh6.googleusercontent.com/dmVyeXZlcnl2ZXJ5dmVyeXZlcnl2ZXJ5dmVyeXZlcnl2ZXJ5dmVyeXZlcnl2ZXJ5dmVyeXZlcnl2ZXJ5dmVyeXZlcnl2ZXJ5dmVyeXZlcnl2ZXJ5bG9uZ3N0cmluZw&quot;}
+</code></pre>
+
+<p>你应该也注意到，第一个响应包含有&quot;ID_OF_THE_IMAGE&quot;:&quot;SOME_RANDOM_ID&quot;, 而“SOME_RANDOM_ID”出现在第二个倾请求的cosmoId参数的值中。而且，第二个响应也包含图片链接。</p>
+
+<p>我真的不明白使用两个API接口处理图像的原因，感觉有点过于复杂——这就是为什么我认为Slides有一些值得关注的遗留问题。接下来，我用不同的cookie回放了上面的这些请求。</p>
+
+<p>幸运的是，这些接口缺乏权限控制，所以只要添加一个有效的谷歌会话cookie，我可以从任何驱动器得到任何图片的URL（如果我有文件的ID）！</p>
+
+<p>这听起来很酷，但事实是这些图像ID是很长的，并且包含大小写字符。这就是为什么我想不出什么可怕的攻击场景，这也是这个漏洞奖励相对较低的原因。</p>
+
+<p>时间线：
+2017.11.27-漏洞报告
+2017.12.09-漏洞由安全工程师验证（P3-&gt;P1）
+2018.01.09-500美元奖金
+2018.01.16-漏洞修复</p>
+
+<p>在模拟环境中，您可以看到这个漏洞是如何工作的（<a href="https://platform.avatao.com/challenges/630fa4fc-3138-4805-bd78-ea85e492c2e2%EF%BC%89%E3%80%82">https://platform.avatao.com/challenges/630fa4fc-3138-4805-bd78-ea85e492c2e2）。</a></p>
+
+<h2 id="toc_3">请登录后给我你的照片</h2>
+
+<p>在这两次漏洞之后，我休息了一段时间，因为我觉得我已经用尽了所有的运气，需要一些时间来恢复。在五月，我决定再尝试试一次，在3个小时内，我发现了一个可怕的漏洞。我认为这个漏洞太强了以至于不可能是真的，所以我在报告它之前检查了三四次。</p>
+
+<p>在我第一次安全测试时，不知何故我跳过了Google Photos，所以这次我用我的老方法开始集中精力寻找它的漏洞。</p>
+
+<p>“网络”选项卡上没有什么值得注意的地方，但“共享库（自动与伙伴共享照片）特性”看起来很有希望。如果你想建立合伙人账户，你必须先输入合伙人的电子邮件地址。提交之后，会出现一个带有Google帐户登录页面的弹出窗口。最后，您需要输入您的登入凭证，然后您的照片将被共享，并且您将被重定向到仅包含“成功消息”以及一个“关闭窗口”按钮的页面。弹出窗口的过小使我无法看到整个URL，所以我把它复制到记事本以便进一步研究：</p>
+
+<pre class="line-numbers"><code class="language-text">// URL before login
+https://accounts.google.com/signin/v2/sl/pwd?passive=801337085&amp;osid=1&amp;continue=https%3A%2F%2Fphotos.google.com%2Finitps%3Frequest%3DW1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGwsImUtbWFpbEBleGFtcGxlLmNvbSIsbnVsbCxbMixudWxsLCJXVzkxSUhKbFlXeHNlU0JzYVd0bElfR1JsWTI5a2FXNW5JSEpoYm1SdmJTQmlZWE5sTmpRZ2MzX1J5YVc1bmN5QXRJR1J2YmlkMElIbHZkVDgiXV0.
+
+// URL after login
+https://photos.google.com/initps?request=W1tudWxsLCIxMjU4NzQyNzU5MTIzOSJdLG51bGwsImUtbWFpbEBleGFtcGxlLmNvbSIsbnVsbCxbMixudWxsLCJXVzkxSUhKbFlXeHNlU0JzYVd0bElfR1JsWTI5a2FXNW5JSEpoYm1SdmJTQmlZWE5sTmpRZ2MzX1J5YVc1bmN5QXRJR1J2YmlkMElIbHZkVDgiXV0.
+</code></pre>
+
+<p>显然，在continue参数被编码包含在第二个URL中，乍一看，request的值只是一组随机字符，末尾跟有一个点。这个点好像没有任何意义——为什么它只出现在最后，像填充物一样？如果它是一个等号，那么‘request’的值很可能就是一个经过ba se64编码的字符串……所以我修改了它，并将修改后的字符串粘贴到一个ba se64解码器中，看看这段字符串的明文是啥：</p>
+
+<pre class="line-numbers"><code class="language-text">[[null,&quot;12587427591239&quot;],null,&quot;e-mail@example.com&quot;,null,[2,null,&quot;WW91IHJlYWxseSBsaWtlI_GRlY29kaW5nIHJhbmRvbSBiYXNlNjQgc3_RyaW5ncyAtIGRvbid0IHlvdT8&quot;]]
+</code></pre>
+
+<p>我把其中的电子邮件改成了我自己的（不修改其他值），然后重新编码，并用点替换了最后的等号。并在我登录我的第二个帐户之后打开这个精心编制的URL，照片立刻被和第一个帐户共享。最棒的是，我甚至没有收到任何警告/通知/电子邮件。我迫不及待的想进一步分析漏洞。并且测试如果你直接访问第二个URL会发生什么——您甚至不需要登录就可以与攻击者共享您的图片，因为只要向发送第二个URL的GET请求就足够了。</p>
+
+<p>时间线：
+2018.05.12-漏洞报告
+2018.05.14-漏洞由安全工程师验证（P4-&gt;P2，P2-&gt;P1）
+2018.05.22-3133.70美元奖金
+2018.08.22-漏洞修复</p>
+
+<p>尝试使用我们的模拟环境，可以更好地理解这种漏洞。（<a href="https://platform.avatao.com/challenges/e069a6c1-8265-4115-9126-f8e188c62765%EF%BC%89">https://platform.avatao.com/challenges/e069a6c1-8265-4115-9126-f8e188c62765）</a></p>
+
+<p>最难的部分是不知道我们的目标是啥，这在大多数其他的漏洞悬赏项目中也一样。我从这些情况中得到的启发是，不要把自己局限于特定的漏洞，比如XSS或SQLi。要睁大眼睛，富有创造力。</p>
+
+<h2 id="toc_4">关于作者</h2>
+
+<p>Gergő是Avatao团队的第一批成员之一，现在他是我们最好的软件工程师之一。在大学，他对网络安全开始感兴趣并延续至今。他在Avatao平台上开发漏洞环境，同时还负责指导其他开发者。当然，空闲时他也会寻找漏洞。</p>
+
+<p>原文：<a href="https://blog.avatao.com/How-I-could-steal-your-photos-from-Google/">https://blog.avatao.com/How-I-could-steal-your-photos-from-Google/</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/14</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15446978130922.html">
+                
+                  <h1>enigmagroup入门挑战-基础1</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><a href="http://challenges.enigmagroup.org/basics/pre/1/">基础1题目地址</a>
+1、右键查看源码
+2、ctrl+f查找passw
+3、注释里面说了：<code>&lt;!-- the first levels are easy, the password is 39f13b --&gt;</code></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%AE%89%E5%85%A8.html'>安全</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15446974404003.html">
+                
+                  <h1>wsgidav独立服务器使用手册</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>很久以前写的，我也不记得写的什么东西了。wsgidav是一个提供webdav服务的python库，可以用来共享文件。更多相关知识可以自行百度“什么是webdav？”。</p>
+</blockquote>
+
+<h1 id="toc_0">使用示例（或者说是个本地测试）</h1>
+
+<p>sudo wsgidav --host=0.0.0.0 --port=80 --root=/home/lonelyor
+这里的sudo是个坑，不加的话就找不到wsgidav指令，为此搞了好久诶。</p>
+
+<h1 id="toc_1">wsgidav高级设置：</h1>
+
+<p>sudo wsgidav  --config=./wsgidav.conf
+引用配置文件，配置文件使用python语法来指定这些选项：
+服务器选项（主机名，端口，SSL证书，...）
+共享名称/ WebDAV提供程序映射列表
+认证用户列表
+可选的自定义DAV提供程序（即FilesystemProvider以外）
+可选的自定义锁管理器，属性管理器和域控制器
+高级调试选项
+（和更多）</p>
+
+<h1 id="toc_2">配置文件示例</h1>
+
+<pre class="line-numbers"><code class="language-python">＃注意：这个文件是Python的语法和格式
+
+####################################### #########################################＃
+WsgiDAV配置文件
+＃请参阅
+＃http ： //wsgidav.readthedocs.io/en/latest/run-configure.html＃
+以获取配置文件格式的一些解释。
+################################################## ############################## 
+
+＃助手-请不要修改此节
+
+provider_mapping  =  {} 
+user_mapping  =  {} 
+
+高清 addShare （SHARENAME ， davProvider ）：
+    provider_mapping [ shareName ]  =  davProvider
+
+    
+def  addUser （realmName ， user ， password ， description ， roles = []）：
+    realmName  =  “/”  +  realmName 。条（- [R “\ /” ）
+    的UserDict  =  user_mapping 。setdefault （realmName ， {}）。setdefault （user ， {}）
+    userDict [ “password” ]  =  密码
+    userDict [ “description”]  =  描述
+    userDict [ “roles” ]  =  角色
+
+
+####################################### #########################################＃
+SERVER OPTIONS 
+＃===== ================================================== ======================== 
+＃在这个WSGI服务器中运行WsgiDAV。
+＃支持的服务器：“cheroot”，“cherrypy-wsgiserver”，“ext_wsgiutils”，
+＃“flup-fcgi”，“flup-fcgi-fork”，“paste”，“wsgiref” 
+＃“wsgiref”和“ext_wsgiutils”内置的服务器，应该*不* 
+生产中使用。
+＃所有其他服务器必须已经安装，例如`pip install cheroot`。
+＃（二进制发行版已经包含了&#39;cheroot&#39;）
+＃默认：“cheroot”，使用命令行上的--server选项来改变它。
+
+#server =“cheroot” 
+
+＃在初始化时传递给服务器的附加参数（取决于`server`）
+＃例如，对于cheroot：
+
+#server_args = { 
+＃“numthreads”：10，
+＃“max”：-1，
+＃“request_queue_size “：5，
+＃”timeout“：10，
+＃”shutdown_timeout“：5，
+＃”verbose“：0，
+＃} 
+
+＃服务器端口（默认：8080，在命令行使用--port）
+port  =  8080 
+
+＃服务器主机名默认：localhost，
+  
+
+＃================================================= ============================== 
+＃启用SSL支持
+＃注意：
+＃有效的证书必须与服务器的主机名匹配，所以假的证书将
+不会在所有情况下工作。
+＃改为创建自己的证书！
+ 
+＃ssl_certificate =“wsgidav / server / sample_bogo_server.crt” 
+＃ssl_private_key =“wsgidav / server / sample_bogo_server.key” 
+＃ssl_certificate_chain = None 
+
+＃cheroot服务器支持&#39;builtin&#39;和&#39;pyopenssl&#39;（默认值：&#39;builtin&#39;）
+＃ssl_adapter = pyopenssl“ 
+
+
+＃=============================================== ================================= 
+＃Misc。setings 
+＃
+
+＃将MS-Author-Via响应头添加到OPTIONS命令，以允许
+使用Microsoft Office 
+
+编辑＃（默认值：False）add_header_MS_Author_Via  =  True 
+
+
+＃以字节为单位的块大小
+
+＃block_size = 8192 
+
+
+＃将此值设置为True，强制不引用PATH_INFO。这应该已经由WSGI 
+＃Framework 
+
+完成了，所以这个设置只能用来解决那里的意外问题（见问题＃8）。＃unquote_path_info = False 
+
+
+＃使用UTF-8重新编码PATH_INFO（回落到ISO-8859-1）。
+＃这似乎是错误的，因为每个PEP 3333 PATH_INFO始终是ISO-8859-1编码
+＃（请参阅https://www.python.org/dev/peps/pep-3333/#unicode-issues）。
+＃但是，在使用中文字符访问资源时，似乎可以解决错误
+（例如，参见问题＃73）。
+＃设置为`None`（默认），仅对Python 3启用。
+
+＃re_encode_path_info =无
+
+
+＃============================================= ================================== 
+＃中间件
+＃＃
+使用此部分来修改默认中间件堆栈
+
+＃from wsgidav .dir_browser import WsgiDavDirBrowser＃
+from debug_filter import WsgiDavDebugFilter＃
+from http_authenticator import HTTPAuthenticator 
+#from error_printer import ErrorPrinter 
+#middleware_stack = [WsgiDavDirBrowser，HTTPAuthenticator，ErrorPrinter，WsgiDavDebugFilter]
+
+＃================================================= ============================== 
+＃调试
+
+verbose  =  1        ＃0  - 没有输出（除了应用程序例外）          
+                     ＃1  - 显示单一（HTTP日志记录）
+                     ＃2  - 显示附加事件
+                     ＃3  - 显示完整的请求/响应头信息（HTTP日志记录）
+                     ＃请求正文和GET响应正文未显示
+
+
+＃启用特定的模块记录器
+＃Eg [“lock_manager”，“property_manager “，”http_authenticator“，...] 
+enable_loggers  =  [] 
+
+＃启用最大值。记录某些http方法
+＃Eg [“COPY”，“DELETE”，“GET”，“HEAD”，“LOCK”，“MOVE”，
+debug_methods  =  [] 
+
+＃启用最大值。在包含某些字符串的石蕊套件测试中进行日志记录
+＃Eg [“lock_excl”，“notowner_modify”，“fail_cond_put_unlocked”，...] 
+debug_litmus  =  [] 
+
+
+################## ################################################## ############# 
+WsgiDavDirBrowser 
+
+dir_browser  =  { 
+    “enable” ： True ，               ＃为集合的GET请求呈现HTML列表
+    “response_trailer” ： “” ，       ＃原始HTML代码，附加为页脚
+    “davmount” ： 假，            ＃发送&lt;dm：mount&gt;
+    “ms_mount” ： False ，            ＃添加一个“打开为webfolder”链接（需要Windows）
+    “ms_sharepoint_plugin” ： True ， ＃调用MS 
+    Offce 文档以使用WebDAV进行编辑“ms_sharepoint_urls” ： False ，  ＃
+Prepend&#39;ms -word：ofe | u |” 到MS Offce 
+文档的URL ＃“app_class”：MyBrowser，
+
+
+
+
+
+
+
+
+
+＃默认值：死性不支持
+wsgidav.property_manager.PropertyManager：＃也可用
+＃wsgidav.property_manager.ShelvePropertyManager 
+＃
+＃查看如何开发定制物业管理的文档。
+＃注意，默认的PropertyManager在内存中工作，因此不是
+＃持久化的。
+
+###使用内存中的属性管理器（不是永久的）
+＃（这与传递&#39;propsmanager = True&#39;相同）
+＃from wsgidav.property_manager import PropertyManager 
+#propsmanager = PropertyManager（）
+
+###使用基于持久性架构的属性管理器
+＃从wsgidav.property_manager导入ShelvePropertyManager
+#propsmanager = ShelvePropertyManager（“wsgidav-props.shelve”）
+
+###使用基于持久性MongoDB的属性管理器
+＃from wsgidav.addons.mongo_property_manager import MongoPropertyManager 
+#prop_man_opts = {} 
+#propsmanager = MongoPropertyManager（prop_man_opts）
+
+###使用基于持久性CouchDB属性管理器
+#from wsgidav.addons.couch_property_manager import CouchPropertyManager 
+#prop_man_opts = {} 
+#propsmanager = CouchPropertyManager（prop_man_opts）
+
+###使用内存中的属性管理器（NOT persistent）
+propsmanager  =  True 
+
+
+###可选的附加动态属性修改
+＃注意：默认情况下，像文件大小和上次修改时间的生活属性是
+＃只读，但如果底层DAV提供程序
+＃支持
+，则可以在这里覆盖。现在只有FileSystemProvider支持它，只有＃更改为上次修改的时间戳。使用下面的mutable_live_props 
+＃列表来
+启用它，以允许客户端使用utime系统调用，或者例如＃touch 或cp / rsync命令与挂载的
+＃DAV共享中
+的preserve-timestamp标志一起使用。＃请注意，时间戳是在实际的文件或目录中设置的，所以
+即使对于内存中的属性管理器
+，它也是持久的。还应该注意＃可变的最后修改可能不符合RFC 
+4918. #mutable_live_props = [“{DAV：} getlastmodified”]
+
+
+＃================================================= ============================== 
+＃锁管理器
+＃＃
+取消注释此行以指定您自己的锁管理器。                    
+＃默认值：wsgidav.lock_storage.LockStorageDict 
+＃还有：wsgidav.lock_storage.LockStorageShelve 
+＃
+＃查看如何开发自定义锁管理器的文档。
+＃注意默认的LockStorageDict在内存中工作，因此不是
+＃持久化的。
+                 
+＃示例：使用内存中的锁存储
+＃（这与默认情况下传递&#39;locksmanager = True&#39;相同）
+＃from wsgidav.lock_storage import LockStorageDict 
+#locksmanager = LockStorageDict（）
+
+
+＃示例：使用基于PERSISTENT架构的锁管理器
+＃from wsgidav.lock_storage import LockStorageShelve 
+#locksmanager = LockStorageShelve（“wsgidav-locks.shelve”）
+
+
+##################### ################################################## #########＃
+SHARES 
+＃＃
+如果您想通过
+＃WsgiDAV共享文件
+发布位置“/ v_root”中的文件，以便可以通过以下URL访问文件：＃http   ：/ / /服务器：端口/文件
+＃插入以下行：
+＃addShare（ “文件”， “/ v_root”） 
+＃或者，在Windows中：
+＃addShare（ “文件”， “C：\\ v_root”） ＃
+＃
+要使用根级别共享访问相同的目录
+＃http：// server：港口/
+
+＃add this line：＃addShare（“”，“/ v_root”）
+＃＃
+上面的例子使用wsgidav.fs_dav_provider.FilesystemProvider，它是
+缺省提供程序实现。
+＃＃
+如果您希望使用自定义提供程序，则必须将对象作为第二个
+参数
+
+
+传递。看下面的例子。  ###添加一个读写文件共享：
+addShare （“dav” ， r “C：\ temp” ）
+
+###添加一个只读文件共享：
+＃from wsgidav.fs_dav_provider import FilesystemProvider 
+#addShare（“tmp”， FilesystemProvider（“/ tmp”，readonly = True））
+
+
+###发布MySQL&#39;world&#39;数据库作为共享&#39;/ world-db&#39;
+#from wsgidav.addons.mysql_dav_provider import MySQLBrowserProvider 
+#addShare（“world-db”，MySQLBrowserProvider（“localhost”，“root”，“test”，“world”））
+
+
+### 
+从wsgidav.samples 
+发布一个虚拟结构。 virtual_dav_provider import VirtualResourceProvider #addShare（“virtres”，VirtualResourceProvider（））
+
+
+###发布一个Mercurial仓库
+＃from wsgidav.addons.hg_dav_provider import HgResourceProvider 
+#addShare（“hg”，HgResourceProvider（“PATH_OR_URL”））
+
+
+###发布一个MongoDB 
+#from wsgidav.samples.mongo_dav_provider import MongoResourceProvider 
+#mongo_dav_opts = {} 
+#addShare（“mongo”，MongoResourceProvider（mongo_dav_opts））
+
+
+################################################## ##############################＃
+AUTHENTICATION 
+＃================= ================================================== ============ 
+＃HTTP验证选项
+
+acceptbasic  =  True     ＃允许基本验证，True或False 
+acceptdigest  =  True    ＃允许摘要验证，True或False 
+defaultdigest  =  True   ＃True（默认摘要）或False默认基本）
+
+＃输入将被接受为授权用户的标题字段的名称。
+＃包括引号，例如：trusted_auth_header =“REMOTE_USER” 
+trusted_auth_header  =  无
+
+
+＃================================================= ============================== 
+＃域控制器
+＃取消注释此行以指定您自己的域控制器
+＃默认值：wsgidav.domain_controller，它采用下面的用户部分
+＃
+＃示例：
+＃使用域控制器，允许用户对一个认证
+＃Windows NT域或本地计算机。
+＃注意：NTDomainController需要基本身份验证：
+＃set acceptbasic = True，acceptdigest = False，defaultdigest = False 
+
+#from wsgidav.addons.nt_domain_controller import NTDomainController 
+#domaincontroller = NTDomainController（presetdomain = None，presetserver = None）
+#acceptbasic = True 
+#acceptdigest =假
+#defaultdigest = False 
+
+
+＃============================================= ================================== 
+＃USERS 
+＃＃
+此部分仅供DEFAULT域控制器使用。
+＃
+＃用户被每领域中定义的：
+＃ADDUSER（&lt;境界&gt;，&lt;用户&gt;，&lt;密码&gt;，&lt;描述&gt;） ＃   
+＃
+请注意，缺省域控制器使用共享名作为领域名称。   
+＃＃
+如果没有用户指定领域，则不需要认证。
+＃因此授予读写访问匿名！
+＃＃
+注意：如果您希望使用Windows WebDAV支持（例如Windows XP的My 
+＃网络位置），则需要将用户的域作为
+
+＃username 
+
+（注意DOUBLE斜线），例如：＃addUser（“v_root”，“domain \\ user”，“password”，“description”）addUser （“” ， “tester” ， “secret” ， “” ）
+ADDUSER （“” ， “tester2” ， “secret2” ，“”  ）
+
+#addUser（ “DAV”， “测试器”， “秘密”， “”）
+#addUser（ “DAV”， “tester2”， “secret2”，“ “）
+
+#addUser（”virtres“，”tester“，”secret“，”“）
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%B7%A5%E5%85%B7.html'>工具</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15446973583267.html">
+                
+                  <h1>解决npm更新或安装软件时下载较慢等问题</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>更换淘宝源即可，
+在终端执行命令：
+<code>npm config set registry https://registry.npm.taobao.org</code></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15446971543515.html">
+                
+                  <h1>此地址使用了一个通常用于网络浏览以外目的的端口.出于安全原因,Firefox取消了该请求</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>遇到标题出现的错误时，可以使用以下方法解决：
+1、打开火狐在地址栏输入&quot;about:config&quot;
+2、然后在&quot;首选项名称&quot;处点击右键选择&quot;新建&quot;-&quot;字符串&quot;，在弹框中输入&quot;network.security.banned.override&quot;，点确定
+3、在再次弹出的框&quot;输入字符串的值&quot;中输入要开放的端口，如666（不行的话就换其他的），最后单击&quot;确定&quot;，即可。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/12/13</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%BD%91%E7%BB%9C.html'>网络</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   <a href="all_21.html">&laquo; Prev Page</a>  
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			 <a href="all_23.html">&raquo; Next Page</a> 
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <div class="site-a-logo"><img src="https://www.lonelyor.org/lonelyorWiki/media/15483045488413/205a66b0a6c34ba7184d2d68a9f62dd8.jpg" /></div>
+            
+                <h1>lonelyorWiki</h1>
+                <div class="site-des">一个用来记录知识的网站。</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="https://github.com/AlShelley/lonelyorWiki" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:lonelyor.org@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
              
 
-
-    <footer class="footer">
-            <div class="container">
-                <div class="site-footer-wrapper">
-                        <a class="button-square" href="index.html">
-<svg class="svg-inline--fa fa-home fa-w-18" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="home" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path></svg>
-                            </a>
-                        
-                         
-                        
-                        
-                        
-                        <a class="button-square" href="https://github.com/AlShelley/lonelyorWiki" target="_blank" title="github">
-                               <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github fa-lg"></i> -->
-                          </a>
-                        
-                        
-                      
-                      <a class="button-square" href="atom.xml" target="_blank" title="RSS">
-                              <svg class="svg-inline--fa fa-rss fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
-                      </a>
-
-              
-                       
-                                                
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
                 </div>
-                <div class="site-menu-wrapper">
-                  &nbsp;<span>|</span>&nbsp;
-                  
-                    <a target="_self" class="" href="index.html">首页</a>
-                    &nbsp;<span>|</span>&nbsp;
-                  
-                    <a target="_blank" class="" href="archives.html">归档</a>
-                    &nbsp;<span>|</span>&nbsp;
-                  
-                    <a target="_blank" class="" href="ruby.html">流光</a>
-                    &nbsp;<span>|</span>&nbsp;
-                  
-                    <a target="_blank" class="" href="beautiful.html">惊鸿</a>
-                    &nbsp;<span>|</span>&nbsp;
-                  
-                    <a target="_blank" class="" href="lose.html">失乐园</a>
-                    &nbsp;<span>|</span>&nbsp;
-                  
-                    <a target="_blank" class="" href="search.html">北斗</a>
-                    &nbsp;<span>|</span>&nbsp;
-                  
-                    <a target="_blank" class="" href="about.html">关于</a>
-                    &nbsp;<span>|</span>&nbsp;
-                                             
-                </div>
+                <div class="side-content">
 
-                <p class="footer-copyright">
-                        Copyright &copy; 2019
-                        Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
-                        Theme used <a target="_blank" href="https://blog.timac.org">Timac</a>.
-                </p>
-            </div>
-        </footer>
+      	<p class="cat-list">
+        
+            <a href="%E7%B3%BB%E7%BB%9F.html"><strong>系统</strong></a>
+        
+            <a href="%E7%BD%91%E7%BB%9C.html"><strong>网络</strong></a>
+        
+            <a href="%E5%BC%80%E5%8F%91.html"><strong>开发</strong></a>
+        
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html"><strong>数据库</strong></a>
+        
+            <a href="%E5%AE%89%E5%85%A8.html"><strong>安全</strong></a>
+        
+            <a href="%E5%B7%A5%E5%85%B7.html"><strong>工具</strong></a>
+        
+            <a href="%E9%A3%8E%E8%8A%B1%E9%9B%AA%E6%9C%88.html"><strong>风花雪月</strong></a>
+        
+            <a href="%E6%98%9F%E7%81%AB%E6%B5%81%E8%90%A4.html"><strong>星火流萤</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15747334018156.html">msfvenom各类木马生成脚本</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15724200154293.html">v2ray实现科学上网</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15708455642675.html">如何使用cmd开启3389端口与查看3389端口</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15695779467285.html">给linux终端加一个移动到回收站的功能</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15694777838251.html">Proxmox TASK ERROR: Failed to run vncproxy.解决办法</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
 
 
 
@@ -261,11 +1018,231 @@
 
 
 
-        
-      
+
+<style type="text/css">
+figure{margin: 0;padding: 0;}
+figcaption{text-align:center;}
+
+/* PrismJS 1.14.0
+ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: black;
+    background: none;
+    text-shadow: 0 1px white;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background:#b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+@media print {
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #F7F7F7;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: slategray;
+}
+
+.token.punctuation {
+    color: #999;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #9a6e3a;
+    background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+.token.function,
+.token.class-name {
+    color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #e90;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+
+pre[class*="language-"].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+    .line-numbers-rows > span {
+        pointer-events: none;
+        display: block;
+        counter-increment: linenumber;
+    }
+
+        .line-numbers-rows > span:before {
+            content: counter(linenumber);
+            color: #999;
+            display: block;
+            padding-right: 0.8em;
+            text-align: right;
+        }
+
+</style>
+
   
     
 
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
 
-    </body>
+<div id="container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: 'AlShelley',
+  repo: 'https://github.com/AlShelley/lonelyorWiki',
+  oauth: {
+    client_id: '2a0c6ad761806835e987',       
+    client_secret: '083280496d60e9becae3c653f97b18db292333cf',  
+  },
+})
+gitment.render('container')
+</script>
+
+  </body>
 </html>

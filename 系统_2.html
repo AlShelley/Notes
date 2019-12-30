@@ -130,87 +130,151 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15655143025936.html">
+                <a class="clearlink" href="15649354856110.html">
                 
-                  <h1>Windows常用技巧与问题汇总</h1>
+                  <h1>MacOS常用技巧与问题汇总</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">windows下创建和启动wifi</h2>
+                        	<h2 id="toc_0">1. quicktime player 录制屏幕的时候不能暂停怎么办？</h2>
 
-<p>整理文件时候找到了3年前写的东西：</p>
+<p>文章转载自：<a href="https://zhidao.baidu.com/question/2117520508734516867.html">https://zhidao.baidu.com/question/2117520508734516867.html</a></p>
 
-<p>创建 wifi
-netsh wlan set hostednetwork mode=allow ssid=!@#$%<sup>&amp;*</sup> key=passwd123
-启动 wifi
-netsh wlan start hostednetwork</p>
+<p>Mac自带的QuickTime还是很强大的，不过在录制的时候发现只能停止，不能暂停，其实是有解决方法的，按照以下步骤进行：</p>
 
-<h2 id="toc_1">虚拟机安装win10操作系统</h2>
+<ol>
+<li>打开QuickTime Player，点击影片-&gt;新建屏幕录制（ˆ ⌘N）</li>
+<li>点击鼠标左键开始录制（选取区域也行）
+注意，下面是关键步骤3.点击dock上的QuickTime player图标，让QuickTime处于活动状态
+4.按下键盘的Esc出来正在录制的QuickTime界面，点击中间的停止可以停止录制</li>
+<li>按下键盘的option（Alt）键，这时候奇迹出现了，停止按键变成了暂停，</li>
+<li>下面的不用说喽~
+另外，QuickTime还可以录制iPhone、iPad等的屏幕，在新建影片录制里，录制后面有个下三角，点击一下，可以选择的。</li>
+</ol>
 
-<blockquote>
-<p>本片文章是为新手准备的</p>
-</blockquote>
+<h2 id="toc_1">2. 高分辨率下解决虚拟机模糊的问题</h2>
 
-<p>虚拟机安装win10可以查看以下教程：
-<a href="http://baijiahao.baidu.com/s?id=1597148758310739517&amp;wfr=spider&amp;for=pc">http://baijiahao.baidu.com/s?id=1597148758310739517&amp;wfr=spider&amp;for=pc</a></p>
+<p>Mac 分辨率太高导致虚拟机中字体模糊，调高分辨率后字体太小看不清怎么办？主要原因是hidpi设置问题。
+解决办法是：
+1、安装hidpi相关驱动
+2、打开虚拟机显示中的相关设置</p>
 
-<p>若原文链接失效，则可以百度搜索“虚拟机安装win10操作系统”</p>
+<p>如果开启hidpi后字体太小，可以前往虚拟操作系统的设置中设置dpi值，不同桌面环境的设置位置和方法略有不同。</p>
 
-<h2 id="toc_2">解决windows右键新建消失问题</h2>
-
-<p>新建一个文件后缀名写为reg（注册表文件格式）的文件。
-然后用记事本或文本编辑器打开，写入文件内容：</p>
-
-<pre class="line-numbers"><code class="language-text">Windows Registry Editor Version 5.00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\New]
-
-@=&quot;{D969A300-E7FF-11d0-A93B-00A0C90F2719}&quot;
-</code></pre>
-
-<p>保存，然后双击该文件，即可。</p>
-
-<h2 id="toc_3">OneDrive映射到本地（像访问本地磁盘一样访问网盘）</h2>
-
-<p>参考以下链接即可：
-<a href="http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc">http://baijiahao.baidu.com/s?id=1549908946659905&amp;wfr=spider&amp;for=pc</a></p>
-
-<p>举一反三，webdav、nfs、samba等都可以使用这种方式挂载，来方便访问。</p>
-
-<h2 id="toc_4">windows右键添加管理员获得所有权</h2>
+<h2 id="toc_2">Docker for Mac 卡在 &quot;is starting&quot;</h2>
 
 <blockquote>
-<p>右键添加获得管理员所有权是个比较方便的功能。</p>
+<p>解决方案来自：<a href="https://github.com/docker/for-mac/issues/2420">https://github.com/docker/for-mac/issues/2420</a> 中的sagidM的回复</p>
 </blockquote>
 
-<p>打开记事本或者别的文本编辑器，然后写入如下内容:</p>
+<p>本机环境：
+macOS 10.14.4
+Docker Engine: 18.09.2</p>
 
-<pre class="line-numbers"><code class="language-bat">Windows Registry Editor Version 5.00
+<p><img src="media/15604965103558/15604966419596.jpg" alt=""/></p>
 
-[HKEY_CLASSES_ROOT\*\shell\runas]
-@=&quot;管理员取得所有权&quot;
-&quot;NoWorkingDirectory&quot;=&quot;&quot;
-[HKEY_CLASSES_ROOT\*\shell\runas\command]
-@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
-&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
-[HKEY_CLASSES_ROOT\exefile\shell\runas2]
-@=&quot;管理员取得所有权&quot;
-&quot;NoWorkingDirectory&quot;=&quot;&quot;
-[HKEY_CLASSES_ROOT\exefile\shell\runas2\command]
-@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
-&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F&quot;
-[HKEY_CLASSES_ROOT\Directory\shell\runas]
-@=&quot;管理员取得所有权&quot;
-&quot;NoWorkingDirectory&quot;=&quot;&quot;
-[HKEY_CLASSES_ROOT\Directory\shell\runas\command]
-@=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; /r /d y &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F /t&quot;
-&quot;IsolatedCommand&quot;=&quot;cmd.exe /c takeown /f \&quot;%1\&quot; /r /d y &amp;&amp; icacls \&quot;%1\&quot; /grant administrators:F /t&quot;
+<p>大意是，打开终端然后输入<code>screen ~/Library/Containers/com.docker.docker/Data/vms/0/tty</code>，接着回车几次，就 ok 了。事实证明这个方法确实能解决问题。如果你输入一次没什么反应，就多开几个终端多试几次就可以了。</p>
+
+<h2 id="toc_3">Mac下的 VMware Fusion 端口映射</h2>
+
+<blockquote>
+<p>文章转载自：<a href="https://blog.csdn.net/weixin_43302757/article/details/82911332">https://blog.csdn.net/weixin_43302757/article/details/82911332</a></p>
+</blockquote>
+
+<p>Windows版本VM进行端口映射有相关的设置界面，但是Mac系统的VM（VMware Fusion）没有。Google 以下找到相关方法。具体步骤如下</p>
+
+<p>打开配置文件
+<code>sudo vi  /Library/Preferences/VMware\ Fusion/vmnet8/nat.conf</code>
+找到如下配置</p>
+
+<pre class="line-numbers"><code class="language-text">[incomingtcp]
+# Use these with care - anyone can enter into your VM through these...
+# The format and example are as follows:
+#&lt;external port number&gt; = &lt;VM&#39;s IP address&gt;:&lt;VM&#39;s port number&gt;
+23 = 172.16.161.129:22 #将IP172.16.161.129虚拟机的22 端口映射到主机23端口
 </code></pre>
 
-<p>然后另存为：管理员获得所有权.reg
-文件名可以随便写，但是后缀记得写成reg（改成这个后缀后文件图标就会变成一个破碎蓝色魔方）。
-然后右键以管理员身份运行，若弹框注册表xxx的，同意就行了。</p>
+<p>重启VM的网络服务</p>
+
+<pre class="line-numbers"><code class="language-text">sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --stop
+sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --start
+</code></pre>
+
+<h2 id="toc_4">Mac 终端设置欢迎页</h2>
+
+<p><code>cd /etc</code>
+<code>sudo pico motd</code>
+输入密码后会打开nano，然后在里面输入图案或者文字。然后保存后退出，之后打开终端就能看到欢迎页了。</p>
+
+<p>其实本质就是在/etc目录下创建文件 motd，然后往里面写内容即可。</p>
+
+<p>我只是添加了一段文字，结果如下：</p>
+
+<p><img src="media/15532282104799/15532284069773.jpg" alt=""/></p>
+
+<h2 id="toc_5">使用Mac对磁盘进行分区，显示“Mediakit报告设备商的空间不足以执行此操作”</h2>
+
+<p>网上大部分都写的去 windows 中使用DiskGenius重新分区，这搞麻烦了，不用这么麻烦的。</p>
+
+<p>1、打开终端，输入<code>diskutil list</code>列出磁盘内容，这里我们可以找到要格式化的磁盘，我是 disk2
+2、卸载要格式化的磁盘<code>diskutil unmountDisk force disk2</code>
+3、写入启动扇区<code>sudo dd if=/dev/zero of=/dev/disk2 bs=1024 count=1024</code>
+4、对磁盘进行分区<code>diskutil partitionDisk disk2 GPT JHFS+ &quot;AWESOME DISK&quot; 0g</code>
+5、打完收工，写博客发出来。</p>
+
+<h2 id="toc_6">iterm2 常用技巧</h2>
+
+<p>按住 com 键</p>
+
+<ul>
+<li>可以拖拽选中字符串</li>
+<li>点击url能直接打开</li>
+<li>点击文件：调用默认程序打开文件</li>
+<li>点击文件夹：在finder中打开文件夹</li>
+<li>同时按住option键，可以矩形选中</li>
+</ul>
+
+<p>新建windows：cmd+N
+新建tab：cmd+T
+切分屏幕：cmd+D水平切分
+智能查找，支持正则：cmd+F</p>
+
+<p>智能补全：cmd+；
+调用历史记录：cmd+shift+h</p>
+
+<h2 id="toc_7">Mac大小写切换</h2>
+
+<p>无论中文还是英文状态下,按住 shift 输入即是大写</p>
+
+<p>长按 caps lock 2s 灯亮后输入即是大写</p>
+
+<h2 id="toc_8">校验文件md5</h2>
+
+<p>打开终端
+使用命令 md5 或 shawun 即可查看。</p>
+
+<h2 id="toc_9">修改Mac主机名、计算机名</h2>
+
+<p><code>$sudo scutil --set ComputerName 你想要的计算机名称</code>
+<code>$sudo scutil --set HostName 你想要的主机名称</code></p>
+
+<p>举例：
+<code>$sudo scutil --set HostName lonelyor</code></p>
+
+<p>使用以下命令查看主机名或计算机名
+<code>$ scutil --get ComputerName</code>
+<code>$ scutil --get HostName</code></p>
+
+<h2 id="toc_10">Mac 启动 apache</h2>
+
+<p>apachectl start</p>
+
+<h2 id="toc_11">Mac 启动 tomcat</h2>
+
+<p>brew services start tomcat  开始</p>
+
+<p>brew services stop tomcat  停止</p>
 
                         
                       </div>
@@ -219,7 +283,7 @@ netsh wlan start hostednetwork</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/08/11</span>
+                    <span class="date">2019/08/05</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E7%B3%BB%E7%BB%9F.html'>系统</a></span>
@@ -320,7 +384,7 @@ netsh wlan start hostednetwork</p>
 	      
 		      
 			      <li class="post">
-			        <a href="15764947924982.html">Arch系常用技巧与问题汇总</a>
+			        <a href="15776921791111.html">整改中</a>
 			      </li>
 		     
 		  
